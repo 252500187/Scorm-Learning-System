@@ -1,0 +1,132 @@
+@charset "utf-8";
+
+body {
+    background-color: #fff;
+    font-size: 62.5%;
+    margin: 0;
+    padding: 0;
+}
+body * {
+    font-size: 100%;
+}
+
+ul.symbolList {
+    display: inline;
+    float: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.AbsWrap {
+    position: relative;
+    width: 100%;
+}
+.rowWrap {
+    width: 100%;
+}
+.main {
+    margin: 0 auto 0 0;
+    width: 1676px;
+}
+.form{
+    font-size:20px;
+    font-weight:800;
+    color:#333;
+    margin-left:50px;
+    margin-top:100px;
+}
+.username{
+    width:200px;
+}
+.password{
+    width:200px;
+    margin-left:20px
+}
+.submit{
+    width:80px;
+    height:30px;
+    margin-left:120px
+}
+.left{
+    margin-left: 0px;
+    margin-top: 0px;
+    display: inline;
+    float: left;
+    height: 943px;
+    margin-bottom: 0;
+    width: 515px;
+}
+.colwrap1 {
+    float: left;
+    margin-left: 0px;
+    margin-top: 0px;
+    width: 1161px;
+}
+.colwrap3 {
+    float: left;
+    margin-left: 0px;
+    margin-top: 0px;
+    width: 649px;
+}
+.top{
+    margin-left: 0px;
+    margin-top: 0px;
+    display: inline;
+    float: left;
+    height: 165px;
+    margin-bottom: 0;
+    width: 649px;
+}
+.pageleft {
+    margin-left: 0px;
+    margin-top: -2px;
+    display: inline;
+    float: left;
+    height: 406px;
+    margin-bottom: 0;
+    width: 102px;
+}
+.colwrap5 {
+    float: left;
+    margin-left: 0px;
+    margin-top: 0px;
+    width: 446px;
+}
+
+.logo {
+    margin-left: 0px;
+    margin-top: 0px;
+    display: inline;
+    float: left;
+    height: 46px;
+    margin-bottom: 0;
+    width: 446px;
+}
+
+.pageright {
+    margin-left: 0px;
+    margin-top: -2px;
+    display: inline;
+    float: left;
+    height: 406px;
+    margin-bottom: 0;
+    width: 101px;
+}
+.right {
+    margin-left: 0px;
+    margin-top: 0px;
+    display: inline;
+    float: left;
+    height: 571px;
+    margin-bottom: 0;
+    width: 512px;
+}
+.bottom {
+    margin-left: 0px;
+    margin-top: 0px;
+    display: inline;
+    float: left;
+    height: 372px;
+    margin-bottom: 0;
+    width: 1161px;
+}

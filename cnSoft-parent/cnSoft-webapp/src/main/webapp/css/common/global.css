@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+/*全局*/
+*{
+	font-size:14px;
+}
+body {
+    font-family:helvetica,tahoma,verdana,sans-serif;
+    padding:0;
+    font-size:12px;
+    margin:0;
+}
+.m10{margin: 10px}
+.textInput{border: none!important;background: none!important;}
+a{cursor: pointer;color: #3366CC}
+/*table.style1{border:1px solid #a9cbe1;width:100%;border-collapse : collapse;}*/
+/*table.style1 th{font-weight: 600}*/
+/*table.style1 th,table.style1 td{background:none repeat scroll 0 0 #eff4f7;border:1px solid #D2E3ED;color:#333333;line-height:18px;padding:4px 6px!important;text-align:left;white-space:nowrap;}*/
+/*table.style1 td{background:none;}*/
+.alignLeft{text-align: left!important;}
+.alignRight{text-align: right!important;}
+.alignCenter{text-align: center!important;}
+/*input[type=text],input[type=password],textarea{background-color: #ffffff; border: #a4bed4 solid 1px;width:120px;height:18px; line-height:18px;}*/
+/*input[type=text]:focus, input[type=password]:focus, textarea:focus{background:#F0F7FA}*/
+.memo{width:207px;height:100px}
