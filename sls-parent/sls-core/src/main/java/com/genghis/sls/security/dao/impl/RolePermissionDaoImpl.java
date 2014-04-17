@@ -18,19 +18,6 @@ import java.util.List;
 public class RolePermissionDaoImpl extends PageDao implements RolePermissionDao {
 
     @Override
-    public List<String> findAllPermTokensByAnyRoleNames(String[] roleNames) {
-        StringBuilder buf = new StringBuilder();
-        for (int i = 0, len = roleNames.length; i < len; i++) {
-            if (i > 0) {
-                buf.append(",");
-            }
-            buf.append(roleNames[i]);
-        }
-        final String sql = "SELECT p.permission_token FROM sys_permission p,sys_role_permission rp,sys_role r WHERE p.id = rp.permission_id AND rp.role_id = r.id AND r.role_name IN (?)";
-        return getJdbcTemplate().queryForList(sql, String.class, buf.toString());
-    }
-
-    @Override
     public void addRolePermission(RolePermission rolePermission) {
         String sql = "INSERT INTO sys_role_permission(role_Id, permission_id) VALUES(:roleId, :permissionId)";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(rolePermission));

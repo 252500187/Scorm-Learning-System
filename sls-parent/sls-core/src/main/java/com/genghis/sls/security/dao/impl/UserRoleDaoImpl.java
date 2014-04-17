@@ -18,24 +18,6 @@ import java.util.List;
  */
 @Repository("userRoleDao")
 public class UserRoleDaoImpl extends PageDao implements UserRoleDao {
-    @Override
-    public int createUserRole(final String[] usernames, final String roleName) {
-        final String insertSql = "INSERT INTO acl_user_role(username, role_name) VALUES(?, ?)";
-        int[] nums = getJdbcTemplate().batchUpdate(insertSql, new BatchPreparedStatementSetter() {
-            @Override
-            public void setValues(PreparedStatement ps, int i) throws SQLException {
-                ps.setString(1, usernames[i]);
-                ps.setString(2, roleName);
-            }
-
-            @Override
-            public int getBatchSize() {
-                return usernames.length;
-            }
-        });
-
-        return getSum(nums);
-    }
 
     @Override
     public int addUserRole(UserRole userRole) {
@@ -56,20 +38,8 @@ public class UserRoleDaoImpl extends PageDao implements UserRoleDao {
     }
 
     @Override
-    public int deleteUserRoleByRoleId(String roleId) {
-        final String sql = "DELETE FROM acl_user_role WHERE role_Id = ?";
-        return getJdbcTemplate().update(sql, roleId);
-    }
-
-    @Override
     public List<String> findAllRoleNamesByUserId(int userId) {
         final String sql = "SELECT r.role_name FROM sys_user_role ur,sys_role r WHERE r.id = ur.role_id and ur.user_id = ?";
         return getJdbcTemplate().queryForList(sql,String.class, userId);
-    }
-
-    @Override
-    public UserRole findUserRoleByUserId (String userId) {
-        final String sql = "select * from acl_user_role where user_id=?";
-        return getJdbcTemplate().queryForObject(sql,new BeanPropertyRowMapper<UserRole>(UserRole.class),userId);
     }
 }

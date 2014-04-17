@@ -13,6 +13,4 @@ public interface AccountService {
     User findUserByLoginName(String username);
 
     List<String> getRolesByLoginName(String loginName);
-
-    List<String> getPermTokensByLoginName(String loginName);
 }

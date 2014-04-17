@@ -105,13 +105,6 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
-    public Boolean checkRepeatPermissionToken(String permissionToken, String oldPermissionToken) {
-        Boolean hasRepeatPermToken = permissionDao.checkRepeatPermToken(permissionToken);
-        Boolean notEquOldPermToken = !(permissionToken.equals(oldPermissionToken));
-        return !(hasRepeatPermToken && notEquOldPermToken);
-    }
-
-    @Override
     public int addPermission(Permission permission) {
         return permissionDao.addPermission(permission);
     }

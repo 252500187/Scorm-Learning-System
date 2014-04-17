@@ -15,10 +15,5 @@ public interface RolePermissionService {
 
     void addRolePermissions(int roleId, String permissionTokens);
 
-    void editRolePermissions(int roleId, String permissionIds);
-
     List<Permission> findChoosedPermsByRoleId(int roleId);
-
-    List<RolePermission> findRolePermissionsByRoleId(int roleId);
-
 }

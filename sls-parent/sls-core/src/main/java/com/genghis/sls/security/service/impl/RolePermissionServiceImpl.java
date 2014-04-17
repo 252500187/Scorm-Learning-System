@@ -47,9 +47,4 @@ public class RolePermissionServiceImpl implements RolePermissionService {
     public List<Permission> findChoosedPermsByRoleId(int roleId) {
         return rolePermissionDao.findChoosedPermsByRoleId(roleId);
     }
-
-    @Override
-    public List<RolePermission> findRolePermissionsByRoleId(int roleId) {
-        return rolePermissionDao.findRolePermissionsByRoleId(roleId);
-    }
 }

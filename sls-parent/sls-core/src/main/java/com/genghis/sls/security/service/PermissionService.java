@@ -26,8 +26,6 @@ public interface PermissionService {
 
     Page<Permission> listAllPermission(PageParameter pageParameter, Permission permission);
 
-    Boolean checkRepeatPermissionToken(String permissionToken, String oldPermissionToken);
-
     int addPermission(Permission permission);
 
     void editPermission(Permission permission);

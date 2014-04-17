@@ -11,8 +11,6 @@ import java.util.List;
  */
 public interface RolePermissionDao {
 
-    List<String> findAllPermTokensByAnyRoleNames(String[] roleNames);
-
     void addRolePermission(RolePermission rolePermission);
 
     void deleteRolePermissionsByRoleId(int roleId);
