@@ -32,14 +32,14 @@ public class ShiroDbRealm extends AuthorizingRealm {
         String loginName = (String) getAvailablePrincipal(principals);
         if (loginName != null) {
             List<String> roles = accountService.getRolesByLoginName(loginName);
-            List<String> permTokens = accountService.getPermTokensByLoginName(loginName);
+//            List<String> permTokens = accountService.getPermTokensByLoginName(loginName);
             SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
             if (roles != null) {
                 info.addRoles(roles);
             }
-            if (permTokens != null) {
-                info.addStringPermissions(permTokens);
-            }
+//            if (permTokens != null) {
+//                info.addStringPermissions(permTokens);
+//            }
             return info;
         }
         return null;
