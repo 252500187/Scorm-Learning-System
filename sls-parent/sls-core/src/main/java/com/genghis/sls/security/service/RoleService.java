@@ -23,7 +23,7 @@ public interface RoleService {
 
     int addRole(Role role);
 
-    void editRole(Role role, String permissionTokens);
+    void editRole(Role role);
 
     int delRoleDo(Role role);
 

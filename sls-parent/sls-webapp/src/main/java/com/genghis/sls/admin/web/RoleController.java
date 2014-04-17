@@ -58,8 +58,6 @@ public class RoleController {
 
     @RequestMapping(value = "addRoleDo", method = {RequestMethod.GET})
     public String addRoleDo(HttpServletRequest request) {
-        List<MenuPerm> menuPermList = permissionService.getMenuPermTree();
-        request.setAttribute("menuPermList", menuPermList);
         return "admin/role/addRoleDo";
     }
 
@@ -75,14 +73,7 @@ public class RoleController {
     @RequestMapping(value = "editRoleDo", method = {RequestMethod.GET})
     public String editRoleDo(HttpServletRequest request, @RequestParam("id") int id) {
         Role role = roleService.findRoleById(id);
-        List<MenuPerm> menuPermList = permissionService.getMenuPermTree();
-        List<Permission> choosedPerms = rolePermissionService.findChoosedPermsByRoleId(id);
-        String permissionTokenValue = roleService.getPermissionTokenValue(choosedPerms);
-        roleService.setHasChecked(menuPermList, choosedPerms);
         request.setAttribute("role", role);
-        request.setAttribute("menuPermList", menuPermList);
-        request.setAttribute("choosedPerms", choosedPerms);
-        request.setAttribute("permissionTokenValue", permissionTokenValue);
         return "admin/role/editRoleDo";
     }
 
@@ -95,7 +86,7 @@ public class RoleController {
     @RequestMapping(value = "editRole", method = {RequestMethod.POST})
     @ResponseBody
     public void editRole(Role role, @RequestParam("permissionTokens") String permissionTokens) throws GeneralSecurityException {
-        roleService.editRole(role, permissionTokens);
+        roleService.editRole(role);
         autoCompleteService.initAutoComplete();
     }
 

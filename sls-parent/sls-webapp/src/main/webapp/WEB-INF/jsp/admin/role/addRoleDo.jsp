@@ -35,14 +35,6 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="permName"><spring:message code="select"/><spring:message code="permission"/></label>
-
-                <div class="controls">
-                    <input id="permName" type="text" readonly value="" onclick="showMenuPerm();"/>
-                    &nbsp;<a id="permissionTokens" href="#" onclick="showMenuPerm(); return false;"><spring:message code="select"/></a>
-                </div>
-            </div>
-            <div class="control-group">
                 <label class="control-label"></label>
 
                 <div class="controls">
@@ -59,9 +51,6 @@
 </body>
 </html>
 <script type="text/javascript">
-    var zNodesMenu;
-    var zTree;
-
     var rule = {
         objInfo: {
             roleName: {
@@ -77,39 +66,6 @@
             }
         }
     };
-    var settingMenu = {
-        view: {
-            expandSpeed: "fast"
-        },
-        check: {
-            enable: true,
-            chkStyle: "checkbox",
-            chkboxType: { "Y": "p", "N": "s" }
-        },
-        data: {
-            simpleData: {
-                enable: true,
-                idKey: "id",
-                pIdKey: "pId"
-            },
-            key: {
-                name: "name"
-            },
-            keep: {
-                parent: true
-            }
-        },
-        callback: {
-            beforeClick: beforeClick,
-            onCheck: onCheckMenu
-        }
-    };
-
-    var zNodes = [
-        <c:forEach var="MenuPerm" items="${menuPermList}">
-        {id: "${MenuPerm.id}", pId: "${MenuPerm.parentId}", name: "${MenuPerm.menuName}", permissionToken: "${MenuPerm.permissionToken}"},
-        </c:forEach>
-    ];
 
     function backFunc(data, returnObj) {
         returnObj.obj = $('#roleName');
@@ -149,58 +105,4 @@
     function quit() {
         parent.$("#dataEdit").dialog('close');
     }
-
-    function beforeClick(treeNode) {
-        var zTreeRole = $.fn.zTree.getZTreeObj("menuTree");
-        zTreeRole.checkNode(treeNode, !treeNode.checked, null, true);
-        return false;
-    }
-
-    function onCheckMenu() {
-        var zTree = $.fn.zTree.getZTreeObj("menuTree"),
-                nodes = zTree.getCheckedNodes(true),
-                menuNames = "", ids = "";
-        for (var i = 0, l = nodes.length; i < l; i++) {
-            menuNames += nodes[i].name + ",";
-        }
-        for (i = 0, l = nodes.length; i < l; i++) {
-            ids += nodes[i].permissionToken + ",";
-        }
-        if (menuNames.length > 0) menuNames = menuNames.substring(0, menuNames.length - 1);
-        var userObj = $("#permName");
-        userObj.attr("value", menuNames);
-        if (ids.length > 0) ids = ids.substring(0, ids.length - 1);
-        var userIdsObj = $("#permissionTokens");
-        userIdsObj.attr("value", ids);
-    }
-
-    function showMenuPerm() {
-        var obj = $("#permName");
-        var objOffset = obj.offset();
-        var width = obj.width() + 10;
-        $("#menuContent").css({width: width + 'px', height: 900 + 'px', left: objOffset.left + "px", top: objOffset.top + obj.outerHeight() + "px"}).slideDown("fast");
-        $("body").unbind("mousedown").bind("mousedown", onBodyDown);
-    }
-
-    function onBodyDown(event) {
-        if (!(event.target.id == "menuBtn" || event.target.id == "permissionToken" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length > 0)) {
-            hideMenu();
-        }
-    }
-
-    function hideMenu() {
-        $("#menuContent").fadeOut("fast");
-        $("body").unbind("mousedown", onBodyDown);
-    }
-
-    $(document).ready(function () {
-        for (var i = 0; i < zNodes.length; i++) {
-            if (zNodes[i].id == "1") {
-                zNodes[i].nocheck = true;
-            }
-        }
-        $.fn.zTree.init($("#menuTree"), settingMenu, zNodes);
-        var treeObj = $.fn.zTree.getZTreeObj("menuTree");
-        treeObj.expandAll(true);
-    });
 </script>

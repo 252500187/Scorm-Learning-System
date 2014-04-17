@@ -51,10 +51,8 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void editRole(Role role, String permissionTokens) {
+    public void editRole(Role role) {
         roleDao.editRole(role);
-        rolePermissionDao.deleteRolePermissionsByRoleId(role.getId());
-        rolePermissionService.addRolePermissions(role.getId(), permissionTokens);
     }
 
     @Override

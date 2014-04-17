@@ -74,7 +74,6 @@ public class RoleServiceTest extends SpringTransactionalTestCase {
         assertEquals("描述文字", roleService.findRoleByRoleName(role.getRoleName()).getDescription());
         role.setRoleName("角色新");
         role.setId(roleId);
-        roleService.editRole(role, "");
         assertEquals("角色新", roleService.findRoleById(roleId).getRoleName());
         assertEquals(1, roleService.delRoleDo(role));
     }
@@ -126,7 +125,6 @@ public class RoleServiceTest extends SpringTransactionalTestCase {
         for (Permission permission : permissionList) {
             permTokens = permTokens + permission.getPermissionToken() + ",";
         }
-        roleService.editRole(role, permTokens);
         return roleService.checkRepeatRoleName("修改角色", "修改角色");
     }
 
