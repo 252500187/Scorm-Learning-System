@@ -19,6 +19,10 @@
                         </li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a role="menuitem" tabindex="-1"
+                       onclick="addTab('角色管理','admin/user/UP')">测试</a>
+                </li>
             </ul>
         </div>
     </div>

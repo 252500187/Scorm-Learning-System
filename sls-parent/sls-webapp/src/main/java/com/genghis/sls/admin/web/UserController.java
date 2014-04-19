@@ -11,6 +11,7 @@ import com.genghis.core.page.entity.Page;
 import com.genghis.core.page.entity.PageParameter;
 import com.genghis.sls.security.entity.User;
 import com.genghis.sls.security.service.UserService;
+import com.genghis.sls.util.Ftp;
 import com.genghis.sls.util.LoginUserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 
 /**
@@ -37,7 +39,7 @@ public class UserController {
 
     @RequestMapping(value = "listAllUserDo", method = {RequestMethod.GET})
     public String listAllUserDo(HttpServletRequest request) {
-        request.setAttribute("myLoginId",userService.findUserByLoginName(LoginUserUtil.findLoginUserName()).getId());
+        request.setAttribute("myLoginId", userService.findUserByLoginName(LoginUserUtil.findLoginUserName()).getId());
         return "admin/user/listAllUserDo";
     }
 
@@ -60,13 +62,13 @@ public class UserController {
 
     @RequestMapping(value = "checkRepeatLoginName", method = {RequestMethod.POST})
     @ResponseBody
-    public boolean checkRepeatPermissionToken(@RequestParam("loginName") String loginName,@RequestParam("oldName") String oldName) {
+    public boolean checkRepeatPermissionToken(@RequestParam("loginName") String loginName, @RequestParam("oldName") String oldName) {
         return userService.checkRepeatLoginName(loginName, oldName);
     }
 
     @RequestMapping(value = "checkRepeatUserName", method = {RequestMethod.POST})
     @ResponseBody
-    public boolean checkRepeatUserName(@RequestParam("userName") String userName,@RequestParam("oldName") String oldName) {
+    public boolean checkRepeatUserName(@RequestParam("userName") String userName, @RequestParam("oldName") String oldName) {
         return userService.checkRepeatUserName(userName, oldName);
     }
 
@@ -89,5 +91,31 @@ public class UserController {
     public void delUser(@RequestParam("ids") String ids) throws GeneralSecurityException {
         String[] userIds = ids.split(",");
         userService.delUsers(userIds);
+    }
+
+    @RequestMapping(value = "UP", method = {RequestMethod.GET})
+    public String UP() {
+        return "test/test";
+    }
+
+    @RequestMapping(value = "upup", method = {RequestMethod.POST})
+    @ResponseBody
+    public void upup(HttpServletRequest request) {
+        String upfile = iso2utf(request.getParameter("upfile"));
+        Ftp ftp = new Ftp();
+        ftp.connectServer("192.168.1.201", 21, "", "", "");
+
+        ftp.download("ftp://192.168.1.201/scorm/scormPhoto/QQ%BD%D8%CD%BC20140419143400.jpg","C:\\tmp\\1.txt");
+        ftp.closeConnect();
+        return;
+    }
+
+    public static String iso2utf(String str) {
+        try {
+            return new String(str.getBytes("iso-8859-1"), "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }
