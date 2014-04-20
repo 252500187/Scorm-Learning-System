@@ -1,10 +1,9 @@
 package com.genghis.sls.util;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import sun.net.TelnetInputStream;
 import sun.net.TelnetOutputStream;
 import sun.net.ftp.FtpClient;
@@ -39,12 +38,12 @@ public class Ftp {
         try {
             /* ******连接服务器的两种方法*******/
             //第一种方法
-            ftpClient = new FtpClient();
-            ftpClient.openServer(ip, port);
+//            ftpClient = new FtpClient();
+//            ftpClient.openServer(ip, port);
             //第二种方法
-//            ftpClient = new FtpClient(ip);
-//
-//            ftpClient.login(user, password);
+            ftpClient = new FtpClient(ip);
+
+            ftpClient.login(user, password);
             // 设置成2进制传输
             ftpClient.binary();
             System.out.println("login success!");
@@ -125,6 +124,45 @@ public class Ftp {
         }
     }
 
+    public void uploadtest(InputStream input, String remoteFile) {
+        this.remotefilename = remoteFile;
+        TelnetOutputStream os = null;
+        InputStream is = null;
+        try {
+            //将远程文件加入输出流中
+            os = ftpClient.put(this.remotefilename);
+            //获取本地文件的输入流
+            is =  input;
+            //创建一个缓冲区
+            byte[] bytes = new byte[1024];
+            int c;
+            while ((c = is.read(bytes)) != -1) {
+                os.write(bytes, 0, c);
+            }
+            System.out.println("upload success");
+        } catch (IOException ex) {
+            System.out.println("not upload");
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+        } finally {
+            try {
+                if (is != null) {
+                    is.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    if (os != null) {
+                        os.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     /**
      * 下载文件
      *
@@ -138,7 +176,7 @@ public class Ftp {
         FileOutputStream os = null;
         try {
             //获取远程机器上的文件filename，借助TelnetInputStream把该文件传送到本地。
-            is = this.ftpClient.get(remoteFile);
+            is = ftpClient.get(remoteFile);
             File file_in = new File(localFile);
             os = new FileOutputStream(file_in);
             byte[] bytes = new byte[1024];
@@ -192,4 +230,84 @@ public class Ftp {
         fu.upload(localfile, remotefile);
         fu.closeConnect();
     }
+
+    public static InputStream getInputStream(MultipartHttpServletRequest request, String photoId) throws IOException {
+        MultipartFile file = request.getFile(photoId);
+        return file.getInputStream();
+    }
+
+    //ftp文件上传方法
+//    public static String ftpFileUpload(InputStream input, String attachmentName) throws IOException {
+//        //将上传的附加名名处理，用uuid重命名，用于存储到ftp服务器
+//        attachmentName = "haha";
+//        String serverFileName = DateUtil.getSystemDate(DateUtil.yyyy_MM_dd);
+//        String url = fileServer.getRootUrl() + fileServer.getEnterpriseUrl() + "/" + serverFileName + "/" + attachmentName;
+//        upLoadFromProduction("10.33.0.175",
+//                21,
+//                "bblll", "bblll"
+//                "", serverFileName, attachmentName, input);
+//        return url;
+//    }
+
+//    public static void upLoadFromProduction(String url,// FTP服务器hostname
+//                                            int port,// FTP服务器端口
+//                                            String username, // FTP登录账号
+//                                            String password, // FTP登录密码
+//                                            String enterprisePath, // FTP服务器保存根目录下的一级企业目录
+//                                            String path, // FTP服务器保存目录
+//                                            String filename, // 上传到FTP服务器上的文件名
+//                                            InputStream in // 输入流文件名
+//    ) {
+//        try {
+//            boolean flag = uploadFile(url, port, username, password, enterprisePath, path, filename, in);
+//            System.out.println(flag);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+//    public static boolean uploadFile(String url,// FTP服务器hostname
+//                                     int port,// FTP服务器端口
+//                                     String username, // FTP登录账号
+//                                     String password, // FTP登录密码
+//                                     String enterprisePath, // FTP服务器保存根目录下的一级企业目录
+//                                     String path, // FTP服务器保存目录
+//                                     String filename, // 上传到FTP服务器上的文件名
+//                                     InputStream input // 输入流
+//    ) {
+//        boolean success = false;
+//        FTPClient ftp = new FtpClient();
+//        ftp.setControlEncoding("GBK");
+//        try {
+//            int reply;
+//            ftp.connect(url, port);// 连接FTP服务器
+//            // 如果采用默认端口，可以使用ftp.connect(url)的方式直接连接FTP服务器
+//            ftp.login(username, password);// 登录
+//            reply = ftp.getReplyCode();
+//            ftp.enterLocalPassiveMode();
+//            if (!FTPReply.isPositiveCompletion(reply)) {
+//                ftp.disconnect();
+//                return success;
+//            }
+//            ftp.setFileType(FTPClient.BINARY_FILE_TYPE);
+//            ftp.makeDirectory(enterprisePath);
+//            ftp.changeWorkingDirectory(enterprisePath);
+//            ftp.makeDirectory(path);
+//            ftp.changeWorkingDirectory(path);
+//            ftp.storeFile(filename, input);
+//            input.close();
+//            ftp.logout();
+//            success = true;
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            if (ftp.isConnected()) {
+//                try {
+//                    ftp.disconnect();
+//                } catch (IOException ioe) {
+//                }
+//            }
+//        }
+//        return success;
+//    }
 }

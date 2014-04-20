@@ -20,8 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 
@@ -99,15 +103,19 @@ public class UserController {
     }
 
     @RequestMapping(value = "upup", method = {RequestMethod.POST})
-    @ResponseBody
-    public void upup(HttpServletRequest request) {
-        String upfile = iso2utf(request.getParameter("upfile"));
+    public String upup(HttpServletRequest request) throws ServletException, IOException {
         Ftp ftp = new Ftp();
-        ftp.connectServer("192.168.1.201", 21, "", "", "");
+        ftp.connectServer("10.33.0.175", 21, "bblll", "bblll", "");
+//        ftp.download("/1.mp4","E:/1.mp4");
+        ftp.upload("E:/1.mp4", "/up/2.zip");
+        request.setAttribute("jpg", "ftp://10.33.0.175/20140420093216.jpg");
 
-        ftp.download("ftp://192.168.1.201/scorm/scormPhoto/QQ%BD%D8%CD%BC20140419143400.jpg","C:\\tmp\\1.txt");
+        String upfile = iso2utf(request.getParameter("upfile"));
+        InputStream input = ftp.getInputStream((MultipartHttpServletRequest) request, "upfile");
+        ftp.uploadtest(input, "/up/1.zip");
+//        String url = ftp.ftpFileUpload(input, upfile, fileServer);
         ftp.closeConnect();
-        return;
+        return "test/jpg";
     }
 
     public static String iso2utf(String str) {

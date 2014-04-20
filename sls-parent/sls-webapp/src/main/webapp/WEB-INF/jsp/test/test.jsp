@@ -26,7 +26,6 @@
                     <input type="button" id="button" onclick="fileUpAttachment()" class="btn btn-primary" value="上传"/>
                 </div>
             </div>
-
         </fieldset>
     </form>
 </div>
