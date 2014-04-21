@@ -107,7 +107,8 @@ public class UserController {
     public String upup(HttpServletRequest request) throws ServletException, IOException {
         FileSava fileSava = new FileSava();
         InputStream input =fileSava.getInputStream((MultipartHttpServletRequest) request, "upfile");
-        fileSava.uploadFile(input, "D:/1/a.txt");
+        //todo 添加文件夹
+        fileSava.uploadFile(input, "D:/1/a.jpg");
         return "test/jpg";
     }
 

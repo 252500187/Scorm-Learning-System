@@ -12,5 +12,7 @@
 </head>
 <body>
 <img src="${jpg}">
+dsdd
+<img src="D:\1\a.jpg">
 </body>
 </html>
