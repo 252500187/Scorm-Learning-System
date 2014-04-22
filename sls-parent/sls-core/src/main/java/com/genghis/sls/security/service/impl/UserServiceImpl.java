@@ -38,16 +38,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public Page<User> findUserPageList(PageParameter pageParameter, User user) {
         Page<User> users = userDao.findUserPageList(pageParameter, user);
-        for (User oneUser : users.getResultList()) {
-            oneUser.setShowDepartmentId(dictService.changeDictCodeToValue(oneUser.getDepartmentId(), DictConstant.DEPARTMENT));
-        }
         return users;
     }
 
     @Override
     public User findUserAllInfoById(int id) {
         User user = userDao.findUserAllInfoById(id);
-        user.setShowDepartmentId(dictService.changeDictCodeToValue(user.getDepartmentId(), DictConstant.DEPARTMENT));
         return user;
     }
 

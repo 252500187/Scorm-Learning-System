@@ -1,17 +1,10 @@
-/*
-* UserController.java
-* Created on  2013-9-26 下午10:42
-* 版本       修改时间          作者      修改内容
-* V1.0.1    2013-9-26       gaoxinyu    初始版本
-*
-*/
 package com.genghis.sls.admin.web;
 
 import com.genghis.core.page.entity.Page;
 import com.genghis.core.page.entity.PageParameter;
 import com.genghis.sls.security.entity.User;
 import com.genghis.sls.security.service.UserService;
-import com.genghis.sls.util.FileSava;
+import com.genghis.sls.system.service.UpScormService;
 import com.genghis.sls.util.LoginUserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,13 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 
@@ -41,6 +31,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UpScormService upScormService;
 
     @RequestMapping(value = "listAllUserDo", method = {RequestMethod.GET})
     public String listAllUserDo(HttpServletRequest request) {
@@ -105,19 +98,7 @@ public class UserController {
 
     @RequestMapping(value = "upup", method = {RequestMethod.POST})
     public String upup(HttpServletRequest request) throws ServletException, IOException {
-        FileSava fileSava = new FileSava();
-        InputStream input =fileSava.getInputStream((MultipartHttpServletRequest) request, "upfile");
-        //todo 添加文件夹
-        fileSava.uploadFile(input, "D:/1/a.jpg");
+        upScormService.upScorm(request, "upFile", "upFile");
         return "test/jpg";
-    }
-
-    public static String iso2utf(String str) {
-        try {
-            return new String(str.getBytes("iso-8859-1"), "utf-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 }

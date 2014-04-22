@@ -33,16 +33,11 @@ public class HomeController {
         String loginName = LoginUserUtil.findLoginUserName();
         User user = userService.findUserByLoginName(loginName);
         Role role = roleService.findRoleByUserId(user.getId());
-        Boolean isChairman = DictConstant.ROLE_CHAIRMAN.equals(role.getRoleName());
+        Boolean isChairman;
         session.setAttribute("roleName", role.getRoleName());
-        session.setAttribute("isChairman", isChairman);
         session.setAttribute("userId", user.getId());
         request.setAttribute("user", user);
-        if (DictConstant.ROLE_CHAIRMAN.equals(role.getRoleName()) || DictConstant.ROLE_JUDGE.equals(role.getRoleName())) {
-            return "judges/headPage";
-        } else {
-            return "/index";
-        }
+        return "/index";
     }
 
     @RequestMapping("lock_screen.*")

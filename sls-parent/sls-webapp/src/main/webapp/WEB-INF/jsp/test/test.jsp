@@ -9,14 +9,14 @@
 </head>
 <body>
 <div>
-    <form id="filegetup" method="post" enctype="multipart/form-data" class="form-horizontal">
+    <form id="fileGetUp" method="post" enctype="multipart/form-data" class="form-horizontal">
         <fieldset>
             <legend></legend>
             <div class="control-group">
                 <label class="control-label" for="upfile"></label>
 
                 <div class="controls">
-                    <input type="file" name="upfile" id="upfile"/>
+                    <input type="file" name="upFile" id="upFile"/>
                 </div>
             </div>
             <div class="control-group">
@@ -33,8 +33,8 @@
 </html>
 <script>
     function fileUpAttachment() {
-        var upfile = document.getElementById("upfile").value;
-        $("#filegetup").attr("action", basePath + "admin/user/upup?upfile=" + upfile);
-        $("#filegetup").submit();
+        var upFile = document.getElementById("upFile").value;
+        $("#fileGetUp").attr("action", basePath + "admin/user/upup?upFile=" + upFile);
+        $("#fileGetUp").submit();
     }
 </script>
