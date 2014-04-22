@@ -1,7 +1,10 @@
 package com.genghis.sls.util;
 
 import java.io.*;
+import java.util.Enumeration;
 import java.util.StringTokenizer;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import com.genghis.sls.constant.DictConstant;
 import org.springframework.web.multipart.MultipartFile;
@@ -57,4 +60,39 @@ public class FileUp {
         scormFile[1] = scormImgPath + DictConstant.SCORM_IMG;
         return scormFile;
     }
+
+    public void unzip(String fileName,String filePath){
+        try {
+            ZipFile zipFile=new ZipFile(fileName);
+            Enumeration emu=zipFile.entries();
+
+            while(emu.hasMoreElements()){
+                ZipEntry entry=(ZipEntry)emu.nextElement();
+
+                if(entry.isDirectory()){
+                    new File(filePath+entry.getName()).mkdirs();
+                    continue;
+                }
+
+                BufferedInputStream bis=new BufferedInputStream(zipFile.getInputStream(entry));
+                File file=new File(filePath+entry.getName());
+
+                FileOutputStream fos=new FileOutputStream(file);
+                BufferedOutputStream bos=new BufferedOutputStream(fos);
+                int count;
+                byte data[]=new byte[1024];
+                while((count=bis.read(data,0,1024))!=-1){
+                    bos.write(data,0,count);
+                }
+                System.out.println("end....");
+                bos.flush();
+                bos.close();
+                bis.close();
+            }
+            zipFile.close();
+        } catch (Exception e) {
+        }
+    }
+
+
 }

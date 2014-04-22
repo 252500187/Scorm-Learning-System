@@ -28,6 +28,6 @@ public class UpScormServiceImpl implements UpScormService {
         String scormPath = path[0];
         String imgPath = path[1];
         //解压ZIP
-        //todo解压
+        fileUp.unzip("E:\\test\\scorm.zip", "E:\\test");
     }
 }
