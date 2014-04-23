@@ -2,6 +2,8 @@ package com.genghis.sls.util;
 
 import java.io.*;
 import java.util.Enumeration;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.StringTokenizer;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -9,12 +11,20 @@ import java.util.zip.ZipFile;
 import com.genghis.sls.constant.DictConstant;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 import sun.net.TelnetInputStream;
 import sun.net.TelnetOutputStream;
 import sun.net.ftp.FtpClient;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.*;
 
 public class FileUp {
 
@@ -94,8 +104,28 @@ public class FileUp {
             }
             zipFile.close();
         } catch (Exception e) {
-
         }
     }
 
+    public List<String> analyzeXml(String url) throws ParserConfigurationException, SAXException,
+            IOException, XPathExpressionException {
+        //得到一个Xpath对象
+        XPathFactory factory = XPathFactory.newInstance();
+        XPath xpath = factory.newXPath();
+        XPathExpression expression = xpath.compile("/manifest/resources/resource");
+        //得到一个输入对象
+        DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
+        Document document = documentBuilder.parse(new File(url));
+        NodeList nodeList = (NodeList) expression.evaluate(document, XPathConstants.NODESET);
+        //获得进入课件路径
+        url = url.substring(0, url.indexOf(DictConstant.IMSMANIFEST));
+        url=url.substring(url.indexOf(DictConstant.TOP_SCORM_FILE_NAME));
+        List<String> hre = new LinkedList<String>();
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Element element = (Element) nodeList.item(i);
+            hre.add(url + element.getAttribute("href"));
+        }
+        return hre;
+    }
 }

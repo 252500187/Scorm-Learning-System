@@ -22,6 +22,9 @@ public class DictConstant {
     public static final String SCORM_IMG = "logo.jpg";
     // SCORM对应的课件名
     public static final String SCORM_NAME = "scorm.zip";
+    // SCORM课件XML名
+    public static final String IMSMANIFEST = "imsmanifest.xml";
+
 
 
 }

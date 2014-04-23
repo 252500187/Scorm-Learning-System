@@ -1,7 +1,11 @@
 package com.genghis.sls.system.service;
 
+import org.xml.sax.SAXException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
 
 /**
@@ -12,5 +16,6 @@ import java.io.IOException;
  * To change this template use File | Settings | File Templates.
  */
 public interface UpScormService {
-    void upScorm(HttpServletRequest request, String upFile, String upImg) throws ServletException, IOException;
+    void upScorm(HttpServletRequest request, String upFile, String upImg) throws ServletException, IOException, ParserConfigurationException, SAXException,
+            XPathExpressionException;
 }

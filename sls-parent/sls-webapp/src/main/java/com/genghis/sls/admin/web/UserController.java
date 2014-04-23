@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.xml.sax.SAXException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
@@ -97,7 +100,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "upup", method = {RequestMethod.POST})
-    public String upup(HttpServletRequest request) throws ServletException, IOException {
+    public String upup(HttpServletRequest request) throws ServletException, IOException, ParserConfigurationException, SAXException,
+            XPathExpressionException {
         upScormService.upScorm(request, "upScorm", "upImg");
         return "test/jpg";
     }

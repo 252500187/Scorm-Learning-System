@@ -12,7 +12,8 @@
     <%@include file="../includes/common.jsp" %>
 </head>
 <body>
-    <img src="" id="a"/>
+<img src="" id="a" width="300" height="300"/>
+<iframe src="${scosrc}"  width="1000" height="600" ></iframe>
 </body>
 </html>
 <script>
