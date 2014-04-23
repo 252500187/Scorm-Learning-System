@@ -15,13 +15,13 @@ public class DictConstant {
     public static final int VOID_VALUE = -1;
 
     // 上传Scorm的地址
-    public static final String SCORM_PATH = "D:/workspace/sls/sls-parent/sls-webapp/src/main/webapp/WEB-INF/jsp/scorms/";
-    // SCORM对应的图片名
-    public static final String SCORM_IMG = "/logo.jpg";
+    public static final String TOP_SCORM_FILE_NAME = "scorms";
     // SCORM解压到的文件夹名
-    public static final String SCORM_FILE_NAME = "/scorm/";
+    public static final String SCORM_FILE_NAME = "scorm";
+    // SCORM对应的图片名
+    public static final String SCORM_IMG = "logo.jpg";
     // SCORM对应的课件名
-    public static final String SCORM_NAME = "/scorm.zip";
+    public static final String SCORM_NAME = "scorm.zip";
 
 
 }

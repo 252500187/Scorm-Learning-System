@@ -44,8 +44,9 @@ public class FileUp {
     }
 
     public String[] upScorm(HttpServletRequest request, String scormPath, String upFile, String img) throws ServletException, IOException {
-        String scormImgPath = DictConstant.SCORM_PATH + scormPath;
-        String scormFilePath = DictConstant.SCORM_PATH + scormPath + DictConstant.SCORM_FILE_NAME;
+        String path = request.getSession().getServletContext().getRealPath("/" + DictConstant.TOP_SCORM_FILE_NAME + "/");
+        String scormImgPath = path + "/" + scormPath + "/";
+        String scormFilePath = path + "/" + scormPath + "/" + DictConstant.SCORM_FILE_NAME + "/";
         //创建文件，防文件夹不存在
         File file = new File(scormFilePath);
         file.mkdirs();
@@ -54,35 +55,37 @@ public class FileUp {
         uploadFile(input, scormFilePath, DictConstant.SCORM_NAME);
         input = getInputStream((MultipartHttpServletRequest) request, img);
         uploadFile(input, scormImgPath, DictConstant.SCORM_IMG);
-        //返回路径 0文件路径 1图片路径
+        //返回路径 0文件路径 1图片引用路径
         String scormFile[] = {"", ""};
         scormFile[0] = scormFilePath + DictConstant.SCORM_NAME;
         scormFile[1] = scormImgPath + DictConstant.SCORM_IMG;
+        int i = scormFile[1].indexOf(DictConstant.TOP_SCORM_FILE_NAME);
+        scormFile[1] = scormFile[1].substring(i);
         return scormFile;
     }
 
-    public void unzip(String fileName,String filePath){
+    public void unzip(String fileName, String filePath) {
         try {
-            ZipFile zipFile=new ZipFile(fileName);
-            Enumeration emu=zipFile.entries();
+            ZipFile zipFile = new ZipFile(fileName);
+            Enumeration emu = zipFile.entries();
 
-            while(emu.hasMoreElements()){
-                ZipEntry entry=(ZipEntry)emu.nextElement();
+            while (emu.hasMoreElements()) {
+                ZipEntry entry = (ZipEntry) emu.nextElement();
 
-                if(entry.isDirectory()){
-                    new File(filePath+entry.getName()).mkdirs();
+                if (entry.isDirectory()) {
+                    new File(filePath + entry.getName()).mkdirs();
                     continue;
                 }
 
-                BufferedInputStream bis=new BufferedInputStream(zipFile.getInputStream(entry));
-                File file=new File(filePath+entry.getName());
+                BufferedInputStream bis = new BufferedInputStream(zipFile.getInputStream(entry));
+                File file = new File(filePath + entry.getName());
 
-                FileOutputStream fos=new FileOutputStream(file);
-                BufferedOutputStream bos=new BufferedOutputStream(fos);
+                FileOutputStream fos = new FileOutputStream(file);
+                BufferedOutputStream bos = new BufferedOutputStream(fos);
                 int count;
-                byte data[]=new byte[1024];
-                while((count=bis.read(data,0,1024))!=-1){
-                    bos.write(data,0,count);
+                byte data[] = new byte[1024];
+                while ((count = bis.read(data, 0, 1024)) != -1) {
+                    bos.write(data, 0, count);
                 }
                 System.out.println("end....");
                 bos.flush();

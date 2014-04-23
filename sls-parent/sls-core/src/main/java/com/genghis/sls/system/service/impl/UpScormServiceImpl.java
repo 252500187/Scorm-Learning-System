@@ -26,8 +26,9 @@ public class UpScormServiceImpl implements UpScormService {
         String fileName = "iddate";//todo 用户ID和日期
         String path[] = fileUp.upScorm(request, fileName, upFile, upImg);
         String scormPath = path[0];
-        String imgPath = path[1];
+        String imgUsePath = path[1];
+        request.setAttribute("jpg", imgUsePath);
         //解压ZIP
-        fileUp.unzip("E:\\test\\scorm.zip", "E:\\test");
+//        fileUp.unzip(scormPath,scormPath);
     }
 }
