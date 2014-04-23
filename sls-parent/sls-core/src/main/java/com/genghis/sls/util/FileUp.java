@@ -57,29 +57,30 @@ public class FileUp {
         uploadFile(input, scormImgPath, DictConstant.SCORM_IMG);
         //返回路径 0文件路径 1图片引用路径
         String scormFile[] = {"", ""};
-        scormFile[0] = scormFilePath + DictConstant.SCORM_NAME;
-        scormFile[1] = scormImgPath + DictConstant.SCORM_IMG;
-        int i = scormFile[1].indexOf(DictConstant.TOP_SCORM_FILE_NAME);
-        scormFile[1] = scormFile[1].substring(i);
+        scormFile[0] = scormImgPath + DictConstant.SCORM_IMG;
+        scormFile[0] = scormFile[0].substring(scormFile[0].indexOf(DictConstant.SCORM_FILE_NAME));
+        scormFile[1] = scormFilePath;
+        unzip(scormFile[1] + DictConstant.SCORM_NAME);
         return scormFile;
     }
 
-    public void unzip(String fileName, String filePath) {
+    public void unzip(String fileName) {
         try {
+            String filePath = fileName.substring(0, fileName.lastIndexOf("/") + 1);
             ZipFile zipFile = new ZipFile(fileName);
             Enumeration emu = zipFile.entries();
-
             while (emu.hasMoreElements()) {
                 ZipEntry entry = (ZipEntry) emu.nextElement();
-
                 if (entry.isDirectory()) {
                     new File(filePath + entry.getName()).mkdirs();
                     continue;
                 }
-
                 BufferedInputStream bis = new BufferedInputStream(zipFile.getInputStream(entry));
                 File file = new File(filePath + entry.getName());
-
+                File parent = file.getParentFile();
+                if (parent != null && (!parent.exists())) {
+                    parent.mkdirs();
+                }
                 FileOutputStream fos = new FileOutputStream(file);
                 BufferedOutputStream bos = new BufferedOutputStream(fos);
                 int count;
@@ -87,15 +88,14 @@ public class FileUp {
                 while ((count = bis.read(data, 0, 1024)) != -1) {
                     bos.write(data, 0, count);
                 }
-                System.out.println("end....");
                 bos.flush();
                 bos.close();
                 bis.close();
             }
             zipFile.close();
         } catch (Exception e) {
+
         }
     }
-
 
 }

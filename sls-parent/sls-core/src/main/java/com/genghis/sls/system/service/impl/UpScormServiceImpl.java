@@ -21,14 +21,11 @@ import java.io.IOException;
 public class UpScormServiceImpl implements UpScormService {
     @Override
     public void upScorm(HttpServletRequest request, String upFile, String upImg) throws ServletException, IOException {
-        //上传Scorm课件和图片，返回图片和文件路径
+        //上传Scorm课件和图片，返回使用的图片路径和文件绝对路径
         FileUp fileUp = new FileUp();
         String fileName = "iddate";//todo 用户ID和日期
+        //0 图片路径 1 xml的文件夹路径
         String path[] = fileUp.upScorm(request, fileName, upFile, upImg);
-        String scormPath = path[0];
-        String imgUsePath = path[1];
-        request.setAttribute("jpg", imgUsePath);
-        //解压ZIP
-//        fileUp.unzip(scormPath,scormPath);
+        request.setAttribute("jpg", path[0]);
     }
 }

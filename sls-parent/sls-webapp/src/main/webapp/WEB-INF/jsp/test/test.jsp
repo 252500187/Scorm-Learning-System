@@ -13,10 +13,13 @@
         <fieldset>
             <legend></legend>
             <div class="control-group">
-                <label class="control-label" for="upfile"></label>
+                <label class="control-label" for="upScorm"></label>
 
                 <div class="controls">
-                    <input type="file" name="upFile" id="upFile"/>
+                    课件：<input type="file" name="upScorm" id="upScorm"/>
+                </div>
+                <div class="controls">
+                    图片：<input type="file" name="upImg" id="upImg"/>
                 </div>
             </div>
             <div class="control-group">
@@ -33,8 +36,9 @@
 </html>
 <script>
     function fileUpAttachment() {
-        var upFile = document.getElementById("upFile").value;
-        $("#fileGetUp").attr("action", basePath + "admin/user/upup?upFile=" + upFile);
+        var upScorm = document.getElementById("upScorm").value;
+        var upImg = document.getElementById("upImg").value;
+        $("#fileGetUp").attr("action", basePath + "admin/user/upup?upScorm=" + upScorm + "&upImg=" + upImg);
         $("#fileGetUp").submit();
     }
 </script>

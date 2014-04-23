@@ -98,7 +98,7 @@ public class UserController {
 
     @RequestMapping(value = "upup", method = {RequestMethod.POST})
     public String upup(HttpServletRequest request) throws ServletException, IOException {
-        upScormService.upScorm(request, "upFile", "upFile");
+        upScormService.upScorm(request, "upScorm", "upImg");
         return "test/jpg";
     }
 }

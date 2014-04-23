@@ -12,14 +12,9 @@
     <%@include file="../includes/common.jsp" %>
 </head>
 <body>
-<%--<img src="../../../img/login/00.png">--%>
-<%--<img src="../../jsp/scorms/iddate/logo.jpg">--%>
-<%--<img src="../../jsp/scorms/iddate/log2o.jpg">--%>
-
-<img src="" id="a"/>
+    <img src="" id="a"/>
 </body>
 </html>
 <script>
-//    $("#a").attr("src",basePath+"WEB-INF/jsp/scorms/iddate/logo.jpg");
-    $("#a").attr("src",basePath+"${jpg}");
+    $("#a").attr("src", basePath + "${jpg}");
 </script>
