@@ -107,25 +107,87 @@ public class FileUp {
         }
     }
 
-    public List<String> analyzeXml(String url) throws ParserConfigurationException, SAXException,
-            IOException, XPathExpressionException {
+    public List<XmalInfo> analyzeXml(String url) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
         //得到一个Xpath对象
         XPathFactory factory = XPathFactory.newInstance();
         XPath xpath = factory.newXPath();
-        XPathExpression expression = xpath.compile("/manifest/resources/resource");
+        XPathExpression expression = xpath.compile("/manifest/organizations/organization");
         //得到一个输入对象
         DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
         Document document = documentBuilder.parse(new File(url));
-        NodeList nodeList = (NodeList) expression.evaluate(document, XPathConstants.NODESET);
-        //获得进入课件路径
-        url = url.substring(0, url.indexOf(DictConstant.IMSMANIFEST));
-        url=url.substring(url.indexOf(DictConstant.TOP_SCORM_FILE_NAME));
-        List<String> hre = new LinkedList<String>();
-        for (int i = 0; i < nodeList.getLength(); i++) {
-            Element element = (Element) nodeList.item(i);
-            hre.add(url + element.getAttribute("href"));
+        NodeList nodeChapterList = (NodeList) expression.evaluate(document, XPathConstants.NODESET);
+        //获得课件章路径
+        List<XmalInfo> xmalInfos = new LinkedList<XmalInfo>();
+        xmalInfos.add(new XmalInfo(0,"1","scorm","scorm","0",""));
+        XmalInfo xmalInfo = new XmalInfo();
+        for (int i = 0; i < nodeChapterList.getLength(); i++) {
+            Element element = (Element) nodeChapterList.item(i);
+            xmalInfo.setXmalId(element.getAttribute("identifier"));
+            NodeList nodeList = element.getElementsByTagName("title");
+            xmalInfo.setTitle(nodeList.item(0).getTextContent());
+            xmalInfo.setType(element.getTagName());
+            xmalInfo.setParentId("1");
+            xmalInfo.setUrl("");
+            xmalInfos.add(xmalInfo);
+            //获得课件节路径
+            getElement(element, xmalInfos, url, document);
         }
-        return hre;
+        return xmalInfos;
     }
+
+
+    private void getElement(Element element, List<XmalInfo> xmalInfos, String url, Document document) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
+        NodeList nodes = element.getChildNodes();
+        for (int i = 0; i < nodes.getLength(); i++) {
+            String b = nodes.item(i).getNodeName();
+            if (nodes.item(i).getNodeName().equals("item")) {
+                getElement((Element) nodes.item(i), xmalInfos, url, document);
+                Element element1 = (Element) nodes.item(i);
+                XmalInfo xmalInfo = new XmalInfo();
+                NodeList nodeList = element1.getElementsByTagName("title");
+                xmalInfo.setTitle(nodeList.item(0).getTextContent());
+                xmalInfo.setType(element1.getTagName());
+                xmalInfo.setParentId(element.getAttribute("identifier"));
+                xmalInfo.setXmalId(element1.getAttribute("identifier"));
+                xmalInfo.setUrl(url.substring(url.length() - 15) + getUrl(element1.getAttribute("identifierref"), document));
+                xmalInfos.add(xmalInfo);
+            }
+        }
+    }
+
+
+//    private void getElement(Element element, List<XmalInfo> xmalInfos, String url, Document document) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
+//        NodeList nodes = element.getElementsByTagName("item");
+//        if (element.hasAttribute("item")) {
+//            for (int i = 0; i < nodes.getLength(); i++) {
+//                getElement((Element)nodes.item(i), xmalInfos, url, document);
+//            }
+//        } else {
+//            for (int i = 0; i < nodes.getLength(); i++) {
+//                Element element1 = (Element) nodes.item(i);
+//                XmalInfo xmalInfo = new XmalInfo();
+//                NodeList nodeList = element1.getElementsByTagName("title");
+//                xmalInfo.setTitle(nodeList.item(0).getTextContent());
+//                xmalInfo.setType(element1.getTagName());
+//                xmalInfo.setParentId(element.getAttribute("identifier"));
+//                xmalInfo.setXmalId(element1.getAttribute("identifier"));
+//                xmalInfo.setUrl(url.substring(url.length() - 15) + getUrl(element1.getAttribute("identifierref"), document));
+//                xmalInfos.add(xmalInfo);
+//            }
+//        }
+//    }
+
+    //获取路径
+    private String getUrl(String identifier, Document document) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
+        //得到一个Xpath对象
+        XPathFactory factory = XPathFactory.newInstance();
+        XPath xpath = factory.newXPath();
+        XPathExpression expression = xpath.compile("/manifest/resources/resource[@identifier='" + identifier + "']");
+        //得到一个输入对象
+        Element element = (Element) expression.evaluate(document, XPathConstants.NODE);
+        //获取路径
+        return element.getAttribute("href");
+    }
+
 }

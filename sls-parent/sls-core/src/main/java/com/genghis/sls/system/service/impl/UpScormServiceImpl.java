@@ -3,6 +3,7 @@ package com.genghis.sls.system.service.impl;
 import com.genghis.sls.constant.DictConstant;
 import com.genghis.sls.system.service.UpScormService;
 import com.genghis.sls.util.FileUp;
+import com.genghis.sls.util.XmalInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.xml.sax.SAXException;
@@ -33,7 +34,7 @@ public class UpScormServiceImpl implements UpScormService {
         //0 图片路径 1 xml的文件夹路径
         String path[] = fileUp.upScorm(request, fileName, upFile, upImg);
         request.setAttribute("jpg", path[0]);           //todo 存入数据库
-        List<String> scos = fileUp.analyzeXml(path[1] + DictConstant.IMSMANIFEST);  //todo 存入数据库
-        request.setAttribute("scosrc", scos.get(scos.size()-1));
+        List<XmalInfo> scormNodes = fileUp.analyzeXml(path[1] + DictConstant.IMSMANIFEST);  //todo 存入数据库
+        request.setAttribute("scormNodes",scormNodes);
     }
 }
