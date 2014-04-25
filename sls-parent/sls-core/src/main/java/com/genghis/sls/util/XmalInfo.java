@@ -14,6 +14,7 @@ public class XmalInfo {
     private String xmalId;
     private String url;
 
+
     public XmalInfo() {
         this.title = "";
         this.type = "";
