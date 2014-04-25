@@ -36,9 +36,8 @@
 </html>
 <script>
     function fileUpAttachment() {
-        var upScorm = document.getElementById("upScorm").value;
-        var upImg = document.getElementById("upImg").value;
-        $("#fileGetUp").attr("action", basePath + "admin/user/upup?upScorm=" + upScorm + "&upImg=" + upImg);
-        $("#fileGetUp").submit();
+        $("#fileGetUp").attr("action",
+                        basePath + "admin/user/upup?upScorm=" + $("#upScorm").val() + "&upImg=" + $("#upImg").val())
+                .submit();
     }
 </script>

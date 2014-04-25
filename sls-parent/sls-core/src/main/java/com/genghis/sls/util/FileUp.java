@@ -132,6 +132,7 @@ public class FileUp {
             xmalInfos.add(xmalInfo);
             //获得课件节路径
             getElement(element, xmalInfos, url, document);
+            int a = 0;
         }
         return xmalInfos;
     }
@@ -158,30 +159,9 @@ public class FileUp {
         }
     }
 
-
-//    private void getElement(Element element, List<XmalInfo> xmalInfos, String url, Document document) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
-//        NodeList nodes = element.getElementsByTagName("item");
-//        if (element.hasAttribute("item")) {
-//            for (int i = 0; i < nodes.getLength(); i++) {
-//                getElement((Element)nodes.item(i), xmalInfos, url, document);
-//            }
-//        } else {
-//            for (int i = 0; i < nodes.getLength(); i++) {
-//                Element element1 = (Element) nodes.item(i);
-//                XmalInfo xmalInfo = new XmalInfo();
-//                NodeList nodeList = element1.getElementsByTagName("title");
-//                xmalInfo.setTitle(nodeList.item(0).getTextContent());
-//                xmalInfo.setType(element1.getTagName());
-//                xmalInfo.setParentId(element.getAttribute("identifier"));
-//                xmalInfo.setXmalId(element1.getAttribute("identifier"));
-//                xmalInfo.setUrl(url.substring(url.length() - 15) + getUrl(element1.getAttribute("identifierref"), document));
-//                xmalInfos.add(xmalInfo);
-//            }
-//        }
-//    }
-
     //获取路径
     private String getUrl(String identifier, Document document) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
+      try{
         //得到一个Xpath对象
         XPathFactory factory = XPathFactory.newInstance();
         XPath xpath = factory.newXPath();
@@ -189,7 +169,10 @@ public class FileUp {
         //得到一个输入对象
         Element element = (Element) expression.evaluate(document, XPathConstants.NODE);
         //获取路径
-        return element.getAttribute("href");
+        return element.getAttribute("href");    }
+      catch (Exception o){
+          return "";
+      }
     }
 
 }
