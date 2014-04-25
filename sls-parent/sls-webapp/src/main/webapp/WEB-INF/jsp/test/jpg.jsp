@@ -6,18 +6,26 @@
     <title></title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <%@include file="../includes/common.jsp" %>
-    <link rel="stylesheet" type="text/css"
-          href="<c:url value="/js/common/zTree-v3.5.14/css/zTreeStyle/zTreeStyle.css"/>"/>
-    <script src="<c:url value="/js/common/zTree-v3.5.14/js/jquery.ztree.all-3.5.min.js"/>"
-            type="text/javascript"></script>
 </head>
 <body>
-<img src="" id="a" width="300" height="300"/>
-<ul id="menuTree" class="ztree">aa</ul>
+<div>
+    <img src="" id="logo" width="100" height="100"/>
+
+    <div id="menuTree" class="ztree"
+         style="width:200px; height:600px; border: 1px solid; float: left; overflow-x:auto "/>
+</div>
+<div>
+    <iframe id="scorm" height="600" width="1000"></iframe>
+</div>
 </body>
 </html>
 <script>
-    $("#a").attr("src", basePath + "${jpg}");
+    $(function () {
+        $("#logo").attr("src", basePath + "${jpg}");
+        $.fn.zTree.init($("#menuTree"), settingMenu, zNodes);
+        var treeObj = $.fn.zTree.getZTreeObj("menuTree");
+        treeObj.expandAll(true);
+    });
 
     var settingMenu = {
         view: {
@@ -40,21 +48,23 @@
             keep: {
                 parent: true
             }
+        },
+        callback: {
+            onClick: zTreeOnClick
         }
     };
-
 
     var zNodes = [
         <c:forEach var="scormNode" items="${scormNodes}">
         {id: "${scormNode.xmalId}",
             pId: "${scormNode.parentId}",
-            name: "${scormNode.type}"},
+            name: "${scormNode.title}",
+            type: "${scormNode.type}",
+            src: "${scormNode.url}"},
         </c:forEach>
     ];
 
-    $(function () {
-        $.fn.zTree.init($("#menuTree"), settingMenu, zNodes);
-        var treeObj = $.fn.zTree.getZTreeObj("menuTree");
-        treeObj.expandAll(true);
-    });
+    function zTreeOnClick(event, treeId, treeNode) {
+        $("#scorm").attr("src", treeNode.src);
+    }
 </script>

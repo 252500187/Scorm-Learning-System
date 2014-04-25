@@ -65,7 +65,7 @@ public class FileUp {
         uploadFile(input, scormFilePath, DictConstant.SCORM_NAME);
         input = getInputStream((MultipartHttpServletRequest) request, img);
         uploadFile(input, scormImgPath, DictConstant.SCORM_IMG);
-        //返回路径 0文件路径 1图片引用路径
+        //返回路径 0图片引用路径 1文件路径
         String scormFile[] = {"", ""};
         scormFile[0] = scormImgPath + DictConstant.SCORM_IMG;
         scormFile[0] = scormFile[0].substring(scormFile[0].indexOf(DictConstant.SCORM_FILE_NAME));
@@ -120,8 +120,8 @@ public class FileUp {
         //获得课件章路径
         List<XmalInfo> xmalInfos = new LinkedList<XmalInfo>();
         xmalInfos.add(new XmalInfo(0,"1","scorm","scorm","0",""));
-        XmalInfo xmalInfo = new XmalInfo();
         for (int i = 0; i < nodeChapterList.getLength(); i++) {
+            XmalInfo xmalInfo = new XmalInfo();
             Element element = (Element) nodeChapterList.item(i);
             xmalInfo.setXmalId(element.getAttribute("identifier"));
             NodeList nodeList = element.getElementsByTagName("title");
@@ -139,6 +139,8 @@ public class FileUp {
 
     private void getElement(Element element, List<XmalInfo> xmalInfos, String url, Document document) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
         NodeList nodes = element.getChildNodes();
+        String scoPath=url.substring(url.indexOf(DictConstant.TOP_SCORM_FILE_NAME));
+        scoPath=scoPath.substring(0,scoPath.indexOf(DictConstant.IMSMANIFEST));
         for (int i = 0; i < nodes.getLength(); i++) {
             String b = nodes.item(i).getNodeName();
             if (nodes.item(i).getNodeName().equals("item")) {
@@ -150,7 +152,7 @@ public class FileUp {
                 xmalInfo.setType(element1.getTagName());
                 xmalInfo.setParentId(element.getAttribute("identifier"));
                 xmalInfo.setXmalId(element1.getAttribute("identifier"));
-                xmalInfo.setUrl(url.substring(url.length() - 15) + getUrl(element1.getAttribute("identifierref"), document));
+                xmalInfo.setUrl(scoPath+ getUrl(element1.getAttribute("identifierref"), document));
                 xmalInfos.add(xmalInfo);
             }
         }
