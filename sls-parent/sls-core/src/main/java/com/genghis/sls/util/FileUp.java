@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.Enumeration;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.StringTokenizer;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -15,9 +14,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import sun.net.TelnetInputStream;
-import sun.net.TelnetOutputStream;
-import sun.net.ftp.FtpClient;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -30,19 +26,15 @@ public class FileUp {
 
     public void uploadFile(InputStream input, String filePath, String fileName) {
         try {
-            //将远程文件加入输出流中
             FileOutputStream os = new FileOutputStream(filePath + fileName);
-            //创建一个缓冲区
             byte[] bytes = new byte[1024];
             int c;
             while ((c = input.read(bytes)) != -1) {
                 os.write(bytes, 0, c);
             }
-            System.out.println("upload success");
             os.close();
             input.close();
         } catch (IOException ex) {
-            System.out.println("not upload");
             ex.printStackTrace();
             throw new RuntimeException(ex);
         }
@@ -117,61 +109,64 @@ public class FileUp {
         DocumentBuilder documentBuilder = builderFactory.newDocumentBuilder();
         Document document = documentBuilder.parse(new File(url));
         NodeList nodeChapterList = (NodeList) expression.evaluate(document, XPathConstants.NODESET);
-        //获得课件章路径
+        Element element;
+        NodeList nodeList;
+        String scoPath = url.substring(url.indexOf(DictConstant.TOP_SCORM_FILE_NAME));
+        scoPath = scoPath.substring(0, scoPath.indexOf(DictConstant.IMSMANIFEST));
         List<XmalInfo> xmalInfos = new LinkedList<XmalInfo>();
         xmalInfos.add(new XmalInfo("scorm", "scorm", "0", "", "1"));
-        for (int i = 0; i < nodeChapterList.getLength(); i++) {
-            XmalInfo xmalInfo = new XmalInfo();
-            Element element = (Element) nodeChapterList.item(i);
-            xmalInfo.setXmalId(element.getAttribute("identifier"));
-            NodeList nodeList = element.getElementsByTagName("title");
-            if (nodeList.item(0) != null) {
-                xmalInfo.setTitle(nodeList.item(0).getTextContent());
+        //处理没有organization的情况
+        if (nodeChapterList.getLength() < 1) {
+            expression = xpath.compile("/manifest/resources/resource");
+            nodeChapterList = (NodeList) expression.evaluate(document, XPathConstants.NODESET);
+            for (int i = 0; i < nodeChapterList.getLength(); i++) {
+                element = (Element) nodeChapterList.item(i);
+                nodeList = element.getElementsByTagName("title");
+                xmalInfos.add(new XmalInfo(nodeList.item(0) == null ? "" : nodeList.item(0).getTextContent(),
+                        element.getTagName(),
+                        "1",
+                        scoPath + getUrl(element.getAttribute("identifier"), document),
+                        element.getAttribute("identifier")));
             }
-            xmalInfo.setType(element.getTagName());
-            xmalInfo.setParentId("1");
-            xmalInfo.setUrl("");
-            xmalInfos.add(xmalInfo);
-            //获得课件节路径
-            getElement(element, xmalInfos, url, document);
+            return xmalInfos;
+        }
+        //含有organization的情况
+        for (int i = 0; i < nodeChapterList.getLength(); i++) {
+            element = (Element) nodeChapterList.item(i);
+            nodeList = element.getElementsByTagName("title");
+            xmalInfos.add(new XmalInfo(nodeList.item(0) == null ? "" : nodeList.item(0).getTextContent(),
+                    element.getTagName(),
+                    "1",
+                    element.getAttribute("identifierref") == ""?"":scoPath + getUrl(element.getAttribute("identifierref"), document),
+                    element.getAttribute("identifier")));
+            getElement(element, xmalInfos, url, scoPath, document);
         }
         return xmalInfos;
     }
 
-
-    private void getElement(Element element, List<XmalInfo> xmalInfos, String url, Document document) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
+    private void getElement(Element element, List<XmalInfo> xmalInfos, String url, String scoPath, Document document) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
         NodeList nodes = element.getChildNodes();
-        String scoPath = url.substring(url.indexOf(DictConstant.TOP_SCORM_FILE_NAME));
-        scoPath = scoPath.substring(0, scoPath.indexOf(DictConstant.IMSMANIFEST));
+        Element elementNew;
         for (int i = 0; i < nodes.getLength(); i++) {
             if (nodes.item(i).getNodeName().equals("item")) {
-                getElement((Element) nodes.item(i), xmalInfos, url, document);
-                Element element1 = (Element) nodes.item(i);
-                XmalInfo xmalInfo = new XmalInfo();
-                NodeList nodeList = element1.getElementsByTagName("title");
-                if (nodeList.item(0) != null) {
-                    xmalInfo.setTitle(nodeList.item(0).getTextContent());
-                }
-                xmalInfo.setType(element1.getTagName());
-                xmalInfo.setParentId(element.getAttribute("identifier"));
-                xmalInfo.setXmalId(element1.getAttribute("identifier"));
-                if (element1.getAttribute("identifierref") != "") {
-                    xmalInfo.setUrl(scoPath + getUrl(element1.getAttribute("identifierref"), document));
-                }
-                xmalInfos.add(xmalInfo);
+                getElement((Element) nodes.item(i), xmalInfos, url, scoPath, document);
+                elementNew = (Element) nodes.item(i);
+                NodeList nodeList = elementNew.getElementsByTagName("title");
+                xmalInfos.add(new XmalInfo(nodeList.item(0) == null ? "" : nodeList.item(0).getTextContent(),
+                        elementNew.getTagName(),
+                        element.getAttribute("identifier"),
+                        elementNew.getAttribute("identifierref") == ""?"":scoPath + getUrl(elementNew.getAttribute("identifierref"), document),
+                        elementNew.getAttribute("identifier")));
+
             }
         }
     }
 
-    //获取路径
     private String getUrl(String identifier, Document document) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
-        //得到一个Xpath对象
         XPathFactory factory = XPathFactory.newInstance();
         XPath xpath = factory.newXPath();
         XPathExpression expression = xpath.compile("/manifest/resources/resource[@identifier='" + identifier + "']");
-        //得到一个输入对象
         Element element = (Element) expression.evaluate(document, XPathConstants.NODE);
-        //获取路径
         return element.getAttribute("href");
     }
 

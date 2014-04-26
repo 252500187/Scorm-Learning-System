@@ -23,8 +23,7 @@
     $(function () {
         $("#logo").attr("src", basePath + "${jpg}");
         $.fn.zTree.init($("#menuTree"), settingMenu, zNodes);
-        var treeObj = $.fn.zTree.getZTreeObj("menuTree");
-        treeObj.expandAll(true);
+        $.fn.zTree.getZTreeObj("menuTree").expandAll(true);
     });
 
     var settingMenu = {
@@ -58,13 +57,16 @@
         <c:forEach var="scormNode" items="${scormNodes}">
         {id: "${scormNode.xmalId}",
             pId: "${scormNode.parentId}",
-            name: "${scormNode.title}",
+            name: "${scormNode.title} type:${scormNode.type}",
             type: "${scormNode.type}",
             src: "${scormNode.url}"},
         </c:forEach>
     ];
 
     function zTreeOnClick(event, treeId, treeNode) {
+        if (treeNode.src.trim() == "") {
+            return;
+        }
         $("#scorm").attr("src", treeNode.src);
     }
 </script>

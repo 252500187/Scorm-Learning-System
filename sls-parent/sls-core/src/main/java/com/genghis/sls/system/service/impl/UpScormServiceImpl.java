@@ -36,7 +36,6 @@ public class UpScormServiceImpl implements UpScormService {
     @Override
     public void upScorm(HttpServletRequest request, String upFile, String upImg) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
-        //上传Scorm课件和图片，返回使用的图片路径和文件绝对路径
         FileUp fileUp = new FileUp();
         Date date = new Date();
         String fileName = date.getTime() + userService.findUserByLoginName(LoginUserUtil.findLoginUserName()).getId() + "";//todo 用户ID和日期
