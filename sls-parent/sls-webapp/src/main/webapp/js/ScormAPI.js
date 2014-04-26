@@ -1,7 +1,6 @@
 var API = new API_functions();
 var scoInfo = {};
 
-var scoId = "controller获取";
 function API_functions() {
     this.LMSInitialize = LMSInitialize;
     this.LMSSetValue = LMSSetValue;
@@ -41,8 +40,32 @@ function LMSGetValue(key) {
     return scoInfo[key] == null ? "" : scoInfo[key];
 }
 
-function LMSCommit(value) {
-    return "";
+function LMSCommit() {
+    //todo ajax传入数据库 通过scoId
+    $.ajax({
+        url: basePath + "admin/user/addUser",
+        data: {
+            coreStudentId: scoInfo['cmi.core.student_id'],
+            coreStudentName: scoInfo['cmi.core.student_name'],
+            coreLessonLocation: scoInfo['cmi.core.lesson_location'],
+            coreCredit: scoInfo['cmi.core.credit'],
+            coreLessonStatus: scoInfo['cmi.core.lesson_status'],
+            coreEntry: scoInfo['cmi.core.entry'],
+            coreScore: scoInfo['cmi.core.score'],
+            coreScoreRaw: scoInfo['cmi.core.score.raw'],
+            coreTotalTime: scoInfo['cmi.core.total_time'],
+            coreLessonMode: scoInfo['cmi.core.lesson_mode'],
+            coreExit: scoInfo['cmi.core.exit'],
+            coreSessionTime: scoInfo['cmi.core.session_time'],
+            suspendData: scoInfo['cmi.suspend_data']
+        },
+        dataType: "json",
+        type: "POST",
+        success: function () {
+        },
+        error: doError
+    })
+    return true;
 }
 
 function LMSFinish(value) {

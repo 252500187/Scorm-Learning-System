@@ -64,10 +64,14 @@
         </c:forEach>
     ];
 
+    var scoId;
+
     function zTreeOnClick(event, treeId, treeNode) {
         if (treeNode.src.trim() == "") {
             return;
         }
         $("#scorm").attr("src", treeNode.src);
+        //todo 对应数据的id
+        scoId = treeNode.id;
     }
 </script>
