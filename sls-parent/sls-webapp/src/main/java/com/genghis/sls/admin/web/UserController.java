@@ -6,6 +6,7 @@ import com.genghis.sls.security.entity.User;
 import com.genghis.sls.security.service.UserService;
 import com.genghis.sls.system.service.UpScormService;
 import com.genghis.sls.util.LoginUserUtil;
+import com.genghis.sls.util.ScoInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -104,5 +105,12 @@ public class UserController {
             XPathExpressionException {
         upScormService.upScorm(request, "upScorm", "upImg");
         return "test/jpg";
+    }
+
+
+    @RequestMapping(value = "scoInfo", method = {RequestMethod.POST})
+    @ResponseBody
+    public void scoInfo(ScoInfo scoInfo) {
+        //todo 存入数据库
     }
 }

@@ -1,7 +1,7 @@
 var API = new API_functions();
 //自定义1000到65535
 var errorCode = "0";
-var iniFlag = false;
+var iniFlag = "false";
 var scoInfo = {};
 
 function API_functions() {
@@ -40,29 +40,29 @@ function LMSInitialize(parameter) {
 
     scoInfo['cmi.suspend_data'] = "";
     iniFlag = true;
-    return true;
+    return "true";
 }
 
 function LMSSetValue(key, value) {
     key = key.toString();
     value = value.toString();
-    if (iniFlag == false) {
+    if (iniFlag == "false") {
         errorCode = "301";
-        return false;
+        return "false";
     }
     var test = key.substring(key.indexOf("._"), key.length);
-    if ((test == "._version") || (test = "._children") || (test = "._count")) {
+    if ((test == "._version") || (test == "._children") || (test == "._count")) {
         errorCode = "403";
-        return false;
+        return "false";
     }
     scoInfo[key] = value;
-    return true;
+    return "true";
 
 }
 
 function LMSGetValue(key) {
     key = key.toString();
-    if (iniFlag == false) {
+    if (iniFlag == "false") {
         errorCode = "301";
         return "";
     }
@@ -74,7 +74,7 @@ function LMSGetValue(key) {
         }
         if ((test == "._children")) {
             errorCode = "202";
-            return false;
+            return "false";
         }
         if ((test == "._count")) {
             errorCode = "203";
@@ -89,13 +89,13 @@ function LMSGetValue(key) {
 }
 
 function LMSCommit(parameter) {
-    if (iniFlag == false) {
+    if (iniFlag == "false") {
         errorCode = "301";
-        return false;
+        return "false";
     }
     //todo ajax传入数据库 通过scoId
     $.ajax({
-        url: basePath + "/",
+        url: basePath + "admin/user/scoInfo",
         data: {
             id: scoId,
             coreStudentId: scoInfo['cmi.core.student_id'],
@@ -114,27 +114,25 @@ function LMSCommit(parameter) {
         },
         dataType: "json",
         type: "POST",
-        success: function () {
-            return true;
+        success: function (boolean) {
         },
         error: function () {
-            errorCode = "1111";
-            return false;
         }
     })
+    return "true";
 }
 
 function LMSFinish(parameter) {
-    if (iniFlag == false) {
+    if (iniFlag == "false") {
         errorCode = "301";
-        return false;
+        return "false";
     }
-    if (LMSCommit() == false) {
+    if (LMSCommit() == "false") {
         errorCode = "1112";
-        return false;
+        return "false";
     }
-    flag = false;
-    return true;
+    flag = "false";
+    return "true";
 }
 
 function LMSGetLastError() {
@@ -170,8 +168,6 @@ function LMSGetErrorString(error) {
             return "元素属性只写";
         case "405":
             return "错误的数据类型";
-        case "1111":
-            return "Sorry:信息没存进我的脑子里。亲！";
         case "1112":
             return "Sorry:结束的时候信息没存进我的脑子里。亲！";
         case "1115":
@@ -211,8 +207,6 @@ function LMSGetDiagnostic(error) {
             return "元素属性只写";
         case "405":
             return "错误的数据类型";
-        case "1111":
-            return "麻烦您再进行一次学习尝试，刚才我走神了，我这次努力记住。";
         case "1112":
             return "麻烦您再进行一次学习尝试，刚才我走神了，我这次努力记住。";
         case "1115":
