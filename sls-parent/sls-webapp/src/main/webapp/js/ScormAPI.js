@@ -15,13 +15,15 @@ function API_functions() {
     this.LMSGetDiagnostic = LMSGetDiagnostic;
 }
 
-function LMSInitialize() {
+function LMSInitialize(parameter) {
     //todo AJAX 通过scoId，获取所有信息到变量scoInfo
-    scoInfo['cmi.version'] = "1.2";
-    scoInfo['cmi.children'] = "cmi.core.student_id;cmi.core.student_name;cmi.core.lesson_location;cmi.core.credit;" +
+    scoInfo['cmi._version'] = "1.2";
+    scoInfo['cmi.core._children'] = "cmi.core.student_id;cmi.core.student_name;cmi.core.lesson_location;cmi.core.credit;" +
         "cmi.core.lesson_status;cmi.core.entry;cmi.core.score;cmi.core.score.raw;cmi.core.total_time;" +
         "cmi.core.lesson_mode;cmi.core.exit;cmi.core.session_time;";
-    scoInfo['cmi._count'] = "12";
+    scoInfo['cmi.suspend_data._children'] = "";
+    scoInfo['cmi.core._count'] = "12";
+    scoInfo['cmi.suspend_data._count'] = "0";
 
     scoInfo['cmi.core.student_id'] = "";
     scoInfo['cmi.core.student_name'] = "";
@@ -42,12 +44,15 @@ function LMSInitialize() {
 }
 
 function LMSSetValue(key, value) {
+    key = key.toString();
+    value = value.toString();
     if (iniFlag == false) {
         errorCode = "301";
         return false;
     }
-    if ((key == "cmi.version") || (key = "cmi.children") || (key = "cmi._count")) {
-        errorCode = "402";
+    var test = key.substring(key.indexOf("._"), key.length);
+    if ((test == "._version") || (test = "._children") || (test = "._count")) {
+        errorCode = "403";
         return false;
     }
     scoInfo[key] = value;
@@ -56,18 +61,34 @@ function LMSSetValue(key, value) {
 }
 
 function LMSGetValue(key) {
+    key = key.toString();
     if (iniFlag == false) {
         errorCode = "301";
-        return false;
+        return "";
+    }
+    var test = key.substring(key.indexOf("._"), key.length);
+    if ((scoInfo[key] == null) || (scoInfo[key] == "")) {
+        if ((test == "._version")) {
+            errorCode = "401";
+            return "";
+        }
+        if ((test == "._children")) {
+            errorCode = "202";
+            return false;
+        }
+        if ((test == "._count")) {
+            errorCode = "203";
+            return "";
+        }
     }
     if (scoInfo[key] == null) {
-        errorCode = "1114";
-        return false;
+        errorCode = "401";
+        return "";
     }
     return scoInfo[key];
 }
 
-function LMSCommit() {
+function LMSCommit(parameter) {
     if (iniFlag == false) {
         errorCode = "301";
         return false;
@@ -103,7 +124,7 @@ function LMSCommit() {
     })
 }
 
-function LMSFinish() {
+function LMSFinish(parameter) {
     if (iniFlag == false) {
         errorCode = "301";
         return false;
@@ -112,6 +133,7 @@ function LMSFinish() {
         errorCode = "1112";
         return false;
     }
+    flag = false;
     return true;
 }
 
@@ -120,7 +142,12 @@ function LMSGetLastError() {
 }
 
 function LMSGetErrorString(error) {
+    error = error.toString().trim();
+    errorCode = "0";
     switch (error) {
+        case "":
+            errorCode = "201";
+            return "";
         case "0":
             return "Sorry:我检查了一下自己，还没有发现错误啊。";
         case "101":
@@ -147,15 +174,21 @@ function LMSGetErrorString(error) {
             return "Sorry:信息没存进我的脑子里。亲！";
         case "1112":
             return "Sorry:结束的时候信息没存进我的脑子里。亲！";
-        case "1114":
-            return "Sorry:我脑子里好像没这个记忆，是不您没跟我说过？";
+        case "1115":
+            return "这是我不知道的错误CODE。";
         default:
-            return "Sorry:我也不知道自己出什么毛病了，看来要找我父母看看了—.—||";
+            errorCode = "1115";
+            return "";
     }
 }
 
 function LMSGetDiagnostic(error) {
+    error = error.toString().trim();
+    errorCode = "0";
     switch (error) {
+        case "":
+            errorCode = "201";
+            return "";
         case "0":
             return "没有问题，继续。";
         case "101":
@@ -182,9 +215,10 @@ function LMSGetDiagnostic(error) {
             return "麻烦您再进行一次学习尝试，刚才我走神了，我这次努力记住。";
         case "1112":
             return "麻烦您再进行一次学习尝试，刚才我走神了，我这次努力记住。";
-        case "1114":
-            return "跟我说一下，我就知道了！";
+        case "1115":
+            return "这是我不知道的错误CODE。";
         default:
-            return "我会找父母的！";
+            errorCode = "1115";
+            return "";
     }
 }
