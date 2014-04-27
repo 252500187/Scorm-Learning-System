@@ -57,7 +57,6 @@ function LMSSetValue(key, value) {
     }
     scoInfo[key] = value;
     return "true";
-
 }
 
 function LMSGetValue(key) {
@@ -114,7 +113,7 @@ function LMSCommit(parameter) {
         },
         dataType: "json",
         type: "POST",
-        success: function (boolean) {
+        success: function () {
         },
         error: function () {
         }
