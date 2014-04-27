@@ -36,6 +36,7 @@
         top.location.href = "logout"
     }
     function login() {
-        formSub()
+//        formSub()
+        $("form").attr("method","post").submit();
     }
 </script>
