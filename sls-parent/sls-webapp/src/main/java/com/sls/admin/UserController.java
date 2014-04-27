@@ -102,7 +102,11 @@ public class UserController {
     @RequestMapping(value = "upup", method = {RequestMethod.POST})
     public String upup(HttpServletRequest request) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
-        upScormService.upScorm(request, "upScorm", "upImg");
+        try{
+            upScormService.upScorm(request, "upScorm", "upImg");
+        } catch (IOException e){
+            return "";
+        }
         return "scormfront/test/jpg";
     }
 
