@@ -1,4 +1,3 @@
-<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <div class="navbar" style="margin-bottom: 0">
     <div class="navbar-inner">

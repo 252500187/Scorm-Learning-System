@@ -13,7 +13,7 @@
     </bean>
 
     <!-- 項目自定义的Realm -->
-    <bean id="shiroDbRealm" class="com.genghis.sls.security.ShiroDbRealm" depends-on="userDao,userRoleDao,rolePermissionDao">
+    <bean id="shiroDbRealm" class="com.sls.admin.ShiroDbRealm" depends-on="userDao,userRoleDao,rolePermissionDao">
         <property name="accountService" ref="accountService"/>
         <property name="credentialsMatcher">
             <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">

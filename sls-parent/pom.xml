@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.genghis.sls</groupId>
+    <groupId>com.sls</groupId>
     <artifactId>sls-parent</artifactId>
     <version>1.0</version>
     <name>sls parent</name>
@@ -67,13 +67,13 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.genghis.sls</groupId>
+                <groupId>com.sls</groupId>
                 <artifactId>sls-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.genghis.sls</groupId>
+                <groupId>com.sls</groupId>
                 <artifactId>sls-test-util</artifactId>
                 <version>${project.version}</version>
                 <scope>test</scope>

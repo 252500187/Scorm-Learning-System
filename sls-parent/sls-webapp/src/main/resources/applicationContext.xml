@@ -19,7 +19,7 @@
     </bean>
 
     <!-- 使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
-    <context:component-scan base-package="com.genghis.sls">
+    <context:component-scan base-package="com.sls">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         <context:exclude-filter type="annotation"
                                 expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
@@ -36,7 +36,7 @@
     </bean>
 
     <aop:config>
-        <aop:pointcut id="serviceTransactionProxy" expression="execution(* com.genghis.sls..service.*.*(..))"/>
+        <aop:pointcut id="serviceTransactionProxy" expression="execution(* com.sls..service.*.*(..))"/>
         <aop:advisor pointcut-ref="serviceTransactionProxy" advice-ref="defaultTxAdvice"/>
     </aop:config>
 
