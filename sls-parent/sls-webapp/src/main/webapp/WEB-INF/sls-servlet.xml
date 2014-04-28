@@ -47,6 +47,12 @@
 
     <!-- 定义无需Controller的url<->view直接映射 -->
     <mvc:view-controller path="/" view-name="/scormfront/index"/>
+    <mvc:view-controller path="/index.html" view-name="/scormfront/index"/>
+    <mvc:view-controller path="/index.htm" view-name="/scormfront/index"/>
+    <mvc:view-controller path="/index.php" view-name="/scormfront/index"/>
+    <mvc:view-controller path="/index" view-name="/scormfront/index"/>
+
+    <mvc:view-controller path="/index.jsp" view-name="/scormfront/index"/>
 
 	<!-- 将Controller抛出的异常转到特定View, 保持SiteMesh的装饰效果 -->
 	<bean class="com.core.web.handler.CustomSimpleMappingExceptionResolver">
