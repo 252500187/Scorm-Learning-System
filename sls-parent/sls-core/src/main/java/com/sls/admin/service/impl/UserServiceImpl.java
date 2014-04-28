@@ -18,6 +18,8 @@ import com.sls.admin.service.DictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author gaoxinyu
  * @version 1.0.1
@@ -47,7 +49,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserByLoginName(String loginName) {
+    public List<User> findUserByLoginName(String loginName) {
         return userDao.findUserByLoginName(loginName);
     }
 

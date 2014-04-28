@@ -11,7 +11,6 @@
 <div class="container">
     <section class="loginBox row-fluid">
         <h2>用户登录</h2>
-
         <form>
             <p>账号<input type="text" id="username" name="username" placeholder="用户名" value="admin"
                       style="height: 30px;line-height: 30px;margin-bottom: 5px;margin-right: 1px"/></p>
@@ -36,7 +35,6 @@
         top.location.href = "logout"
     }
     function login() {
-//        formSub()
-        $("form").attr("method","post").submit();
+        formSub()
     }
 </script>

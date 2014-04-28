@@ -17,6 +17,6 @@ public class LoginUserUtil {
 
     public static String findLoginUserName() {
         Subject currentUser = SecurityUtils.getSubject();
-        return (String) currentUser.getPrincipal();
+        return currentUser.getPrincipal() == null ? "" : (String) currentUser.getPrincipal();
     }
 }

@@ -26,7 +26,7 @@ import java.security.GeneralSecurityException;
 
 @Controller
 @Transactional
-@RequestMapping("/system/dict/")
+@RequestMapping("/admin/dict/")
 public class DictController {
     @Autowired
     private DictService dictService;

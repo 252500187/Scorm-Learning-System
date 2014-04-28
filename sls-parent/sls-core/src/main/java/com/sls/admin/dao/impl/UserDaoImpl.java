@@ -62,10 +62,10 @@ public class UserDaoImpl extends PageDao implements UserDao {
     }
 
     @Override
-    public User findUserByLoginName(String loginName) {
+    public List<User> findUserByLoginName(String loginName) {
         StringBuilder sql = getUserSql();
         sql.append(" AND a.login_name=?");
-        return getJdbcTemplate().queryForObject(sql.toString(), new BeanPropertyRowMapper<User>(User.class), loginName);
+        return getJdbcTemplate().queryForList(sql.toString(), User.class, loginName);
     }
 
     @Override
@@ -99,13 +99,13 @@ public class UserDaoImpl extends PageDao implements UserDao {
 
     @Override
     public int delUser(int id) {
-       String sql = "DELETE FROM sys_user WHERE id = ?";
+        String sql = "DELETE FROM sys_user WHERE id = ?";
         return getJdbcTemplate().update(sql, id);
     }
 
     @Override
     public List<String> findAllPermTokensByUserId(int userId) {
-       String sql = "SELECT p.permission_token FROM sys_user_permission up,sys_permission p WHERE p.id = up.permission_id and up.user_id = ?";
+        String sql = "SELECT p.permission_token FROM sys_user_permission up,sys_permission p WHERE p.id = up.permission_id and up.user_id = ?";
         return getJdbcTemplate().queryForList(sql, String.class, userId);
     }
 }

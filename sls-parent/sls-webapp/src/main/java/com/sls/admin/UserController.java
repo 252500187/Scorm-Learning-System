@@ -40,7 +40,7 @@ public class UserController {
 
     @RequestMapping(value = "listAllUserDo", method = {RequestMethod.GET})
     public String listAllUserDo(HttpServletRequest request) {
-        request.setAttribute("myLoginId", userService.findUserByLoginName(LoginUserUtil.findLoginUserName()).getId());
+        request.setAttribute("myLoginId", userService.findUserByLoginName(LoginUserUtil.findLoginUserName()).get(0).getId());
         return "scormadmin/user/listAllUserDo";
     }
 

@@ -4,6 +4,8 @@ import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.admin.entity.User;
 
+import java.util.List;
+
 /**
  * 类的描述信息
  *
@@ -16,7 +18,7 @@ public interface UserService {
 
     User findUserAllInfoById(int id);
 
-    User findUserByLoginName(String loginName);
+    List<User> findUserByLoginName(String loginName);
 
     Boolean checkRepeatLoginName(String loginName, String oldName);
 

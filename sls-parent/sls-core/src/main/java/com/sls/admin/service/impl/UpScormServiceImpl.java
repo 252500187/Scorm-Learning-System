@@ -38,7 +38,7 @@ public class UpScormServiceImpl implements UpScormService {
             XPathExpressionException {
         FileUp fileUp = new FileUp();
         Date date = new Date();
-        String fileName = date.getTime() + userService.findUserByLoginName(LoginUserUtil.findLoginUserName()).getId() + "";//todo 用户ID和日期
+        String fileName = date.getTime() + userService.findUserByLoginName(LoginUserUtil.findLoginUserName()).get(0).getId() + "";//todo 用户ID和日期
         //0 图片路径 1 xml的文件夹路径
         String path[] = fileUp.upScorm(request, fileName, upFile, upImg);
         request.setAttribute("jpg", path[0]);           //todo 存入数据库

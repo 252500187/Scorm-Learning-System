@@ -46,28 +46,27 @@
 	<mvc:default-servlet-handler/>
 
     <!-- 定义无需Controller的url<->view直接映射 -->
-   	<mvc:view-controller path="/" view-name="/index"/>
-   	<mvc:view-controller path="/login" view-name="login"/>
+    <mvc:view-controller path="/" view-name="/scormfront/index"/>
 
 	<!-- 将Controller抛出的异常转到特定View, 保持SiteMesh的装饰效果 -->
 	<bean class="com.core.web.handler.CustomSimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
 				<prop key="org.apache.shiro.authz.UnauthorizedException">error/403</prop>
-				<prop key="java.lang.Throwable">error/500</prop>
+				<prop key="java.lang.Throwable">includes/error500</prop>
             </props>
 		</property>
     </bean>
 
 	<!-- 支持 Shiro对Controller的方法级AOP安全控制  begin-->
 
-	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
-		<property name="proxyTargetClass" value="true" />
-	</bean>
+	<!--<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">-->
+		<!--<property name="proxyTargetClass" value="true" />-->
+	<!--</bean>-->
 
-	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
-    	<property name="securityManager" ref="securityManager"/>
-	</bean>
+	<!--<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">-->
+    	<!--<property name="securityManager" ref="securityManager"/>-->
+	<!--</bean>-->
 
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

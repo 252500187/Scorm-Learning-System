@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * @author gaoxinyu
  * @version 1.0.1
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping()
 public class HomeController {
     @Autowired
     private UserService userService;
@@ -25,13 +26,18 @@ public class HomeController {
     @Autowired
     private RoleService roleService;
 
-    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "/index", method = {RequestMethod.GET, RequestMethod.POST})
     public String index(HttpServletRequest request) {
         HttpSession session = request.getSession();
         String loginName = LoginUserUtil.findLoginUserName();
-        User user = userService.findUserByLoginName(loginName);
-        session.setAttribute("userId", user.getId());
-        return "/scormadmin/index";
+        List<User> user = userService.findUserByLoginName(loginName);
+        if (user.size() > 0) {
+            session.setAttribute("userId", user.get(0).getId());
+            if (true) {                 //todo 若登陆了， 且登陆身份为管理员
+                return "/scormadmin/index";
+            }
+        }
+        return "/scormfront/index";
     }
 
     @RequestMapping("lock_screen.*")
