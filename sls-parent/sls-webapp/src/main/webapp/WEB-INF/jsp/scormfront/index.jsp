@@ -11,6 +11,14 @@
     <title>我是主页</title>
 </head>
 <body>
-                   ......................主业主业
+......................主业主业
+<% if (session.getAttribute("userId") != null && !session.getAttribute("userId").equals("")) {%>
+你的userId为：<%=session.getAttribute("userId")%>。
+<input type="button" onclick="location.href='logout'" value="退出"/>
+<%}%>
+<input type="button" onclick="window.location.href='login'" value="登录页"/>
 </body>
 </html>
+<script>
+
+</script>

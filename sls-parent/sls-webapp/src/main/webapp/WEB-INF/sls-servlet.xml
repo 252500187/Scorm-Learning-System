@@ -46,11 +46,11 @@
 	<mvc:default-servlet-handler/>
 
     <!-- 定义无需Controller的url<->view直接映射 -->
-    <mvc:view-controller path="/" view-name="/scormfront/index"/>
-    <mvc:view-controller path="/index.html" view-name="/scormfront/index"/>
-    <mvc:view-controller path="/index.htm" view-name="/scormfront/index"/>
-    <mvc:view-controller path="/index.php" view-name="/scormfront/index"/>
-    <mvc:view-controller path="/index" view-name="/scormfront/index"/>
+    <!--<mvc:view-controller path="/" view-name="/scormfront/index"/>-->
+    <!--<mvc:view-controller path="/index.html" view-name="/scormfront/index"/>-->
+    <!--<mvc:view-controller path="/index.htm" view-name="/scormfront/index"/>-->
+    <!--<mvc:view-controller path="/index.php" view-name="/scormfront/index"/>-->
+    <!--<mvc:view-controller path="/index" view-name="/scormfront/index"/>-->
 
     <mvc:view-controller path="/index.jsp" view-name="/scormfront/index"/>
 
@@ -58,7 +58,7 @@
 	<bean class="com.core.web.handler.CustomSimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
-				<prop key="org.apache.shiro.authz.UnauthorizedException">error/403</prop>
+				<prop key="org.apache.shiro.authz.UnauthorizedException">includes/error403</prop>
 				<prop key="java.lang.Throwable">includes/error500</prop>
             </props>
 		</property>

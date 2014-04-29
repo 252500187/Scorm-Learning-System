@@ -65,7 +65,7 @@ public class UserDaoImpl extends PageDao implements UserDao {
     public List<User> findUserByLoginName(String loginName) {
         StringBuilder sql = getUserSql();
         sql.append(" AND a.login_name=?");
-        return getJdbcTemplate().queryForList(sql.toString(), User.class, loginName);
+        return getJdbcTemplate().query(sql.toString(), new BeanPropertyRowMapper<User>(User.class), loginName);
     }
 
     @Override

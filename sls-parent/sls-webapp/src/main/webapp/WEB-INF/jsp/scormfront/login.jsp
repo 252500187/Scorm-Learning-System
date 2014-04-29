@@ -11,15 +11,17 @@
 <div class="container">
     <section class="loginBox row-fluid">
         <h2>用户登录</h2>
-        <form>
-            <p>账号<input type="text" id="username" name="username" placeholder="用户名" value="admin"
-                      style="height: 30px;line-height: 30px;margin-bottom: 5px;margin-right: 1px"/></p>
+
+        <form id="login">
+            <p>账号<input type="text" id="userName" name="userName" placeholder="用户名" value="admin"
+                        style="height: 30px;line-height: 30px;margin-bottom: 5px;margin-right: 1px"/></p>
 
             <p>密码<input type="password" id="password" name="password" placeholder="密码" value="admin"
-                      style="height: 30px;line-height: 30px;margin-bottom: 5px;"/></p>
+                        style="height: 30px;line-height: 30px;margin-bottom: 5px;"/></p>
             <section class="row-fluid">
                 <section class="span1" style="margin-left: 35%;">
-                    <input type="button" value=" 登录 " class="btn btn-primary" style="line-height: 30px;" onclick="login()"/>
+                    <input type="button" value=" 登录 " class="btn btn-primary" style="line-height: 30px;"
+                           onclick="login()"/>
                 </section>
             </section>
         </form>
@@ -35,6 +37,6 @@
         top.location.href = "logout"
     }
     function login() {
-        formSub()
+        $("#login").attr("action", "loginResult").attr("method","POST").submit();
     }
 </script>

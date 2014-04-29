@@ -27,20 +27,19 @@
         <property name="securityManager" ref="securityManager"/>
         <property name="loginUrl" value="/login"/>
         <!--<property name="successUrl" value="/index.html"/>-->
-<!--
-        <property name="filters">
-            <util:map>
-                <entry key="authc" value-ref="formAuthenticationFilter"/>
-            </util:map>
-        </property>
--->
+        <!--
+                <property name="filters">
+                    <util:map>
+                        <entry key="authc" value-ref="formAuthenticationFilter"/>
+                    </util:map>
+                </property>
+        -->
         <property name="filterChainDefinitions">
             <value>
-                /admin/** = user
                 /css/** = anon
                 /js/** = anon
-                <!--/login = authc-->
-                <!--/logout = logout-->
+                /login = authc
+                /logout = logout
                 <!--/** = user-->
             </value>
         </property>

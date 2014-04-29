@@ -127,7 +127,6 @@
 
     function save() {
         if (!JC.validate(rules)) return;
-        $("#saves").button('loading');
         $.ajax({
             url: basePath + "admin/user/addUser",
             data: {

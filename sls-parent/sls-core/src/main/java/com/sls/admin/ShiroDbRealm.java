@@ -7,6 +7,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -25,26 +26,19 @@ public class ShiroDbRealm extends AuthorizingRealm {
         String loginName = (String) getAvailablePrincipal(principals);
         if (loginName != null) {
             List<String> roles = accountService.getRolesByLoginName(loginName);
-//            List<String> permTokens = accountService.getPermTokensByLoginName(loginName);
             SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
             if (roles != null) {
                 info.addRoles(roles);
             }
-//            if (permTokens != null) {
-//                info.addStringPermissions(permTokens);
-//            }
             return info;
         }
         return null;
     }
 
     @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken)
-            throws AuthenticationException {
-
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
         String loginName = token.getUsername();
-
         if (loginName != null && !"".equals(loginName)) {
             User user = accountService.findUserByLoginName(loginName);
             if (user != null) {
@@ -52,6 +46,12 @@ public class ShiroDbRealm extends AuthorizingRealm {
             }
         }
         return null;
+    }
+
+    public void clearCachedAuthorizationInfo(String principal) {
+        SimplePrincipalCollection principals = new SimplePrincipalCollection(
+                principal, getName());
+        clearCachedAuthorizationInfo(principals);
     }
 
 }
