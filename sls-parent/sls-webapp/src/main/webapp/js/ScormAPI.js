@@ -94,7 +94,7 @@ function LMSCommit(parameter) {
     }
     //todo ajax传入数据库 通过scoId
     $.ajax({
-        url: basePath + "admin/user/scoInfo",
+        url: basePath + "admin/front/scoInfo",
         data: {
             id: scoId,
             coreStudentId: scoInfo['cmi.core.student_id'],

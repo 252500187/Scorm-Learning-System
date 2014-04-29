@@ -6,12 +6,6 @@ import com.sls.admin.entity.User;
 
 import java.util.List;
 
-/**
- * 类的描述信息
- *
- * @author chenl
- * @version 1.0.1
- */
 public interface UserService {
 
     Page<User> findUserPageList(PageParameter pageParameter, User user);

@@ -32,11 +32,15 @@
 </body>
 </html>
 <script type="text/javascript">
+    var message = "${message}";
+    if (message != "") {
+        alert(message);
+    }
     //session过期跳转登录页面
     if (top != window) {
         top.location.href = "logout"
     }
     function login() {
-        $("#login").attr("action", "loginResult").attr("method","POST").submit();
+        $("#login").attr("action", "loginResult").attr("method", "POST").submit();
     }
 </script>

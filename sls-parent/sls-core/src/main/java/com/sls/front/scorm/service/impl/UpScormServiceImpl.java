@@ -1,8 +1,8 @@
-package com.sls.admin.service.impl;
+package com.sls.front.scorm.service.impl;
 
 import com.sls.util.DictConstant;
 import com.sls.admin.service.UserService;
-import com.sls.admin.service.UpScormService;
+import com.sls.front.scorm.service.UpScormService;
 import com.sls.util.FileUp;
 import com.sls.util.LoginUserUtil;
 import com.sls.util.XmalInfo;

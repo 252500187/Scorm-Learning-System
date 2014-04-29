@@ -81,12 +81,12 @@
             loginName: {
                 checkRegExp: ["loginName", "<spring:message code="accountId"/>", JCRegExp.letterNum],
                 checkEmpty: ["loginName", "<spring:message code="accountId"/>"],
-                ajax: [basePath + "admin/user/checkRepeatLoginName", {}, {loginName: "$('#loginName').val().trim()",oldName:"'${user.loginName}'"},
+                ajax: [basePath + "admin/front/checkRepeatLoginName", {}, {loginName: "$('#loginName').val().trim()",oldName:"'${user.loginName}'"},
                     backFuncLoginName, "text", "POST"]
             },
             userName: {
                 checkEmpty: ["userName", "<spring:message code="name"/>"],
-                ajax: [basePath + "admin/user/checkRepeatUserName", {}, {userName: "$('#userName').val().trim()",oldName:"'${user.userName}'"},
+                ajax: [basePath + "admin/front/checkRepeatUserName", {}, {userName: "$('#userName').val().trim()",oldName:"'${user.userName}'"},
                     backFuncUserName, "text", "POST"]
             },
             userPassword: {
@@ -131,7 +131,7 @@
         if (!JC.validate(rules)) return;
         $("#saves").button('loading');
         $.ajax({
-            url: basePath + "admin/user/editUser",
+            url: basePath + "admin/front/editUser",
             data: {
                 id: '${user.id}',
                 oldLoginName: '${user.loginName}',

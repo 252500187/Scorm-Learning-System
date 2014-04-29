@@ -43,7 +43,7 @@
                 /logout = logout
                 /admin/** = roles[admin]
                 /user/** = roles[user]
-                <!--/** = user-->
+                <!--/** = front-->
             </value>
         </property>
     </bean>

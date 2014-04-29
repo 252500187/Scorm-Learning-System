@@ -44,7 +44,7 @@
 
 <script type="text/javascript">
     function query() {
-        listOption.url = basePath + "admin/user/listAllUser";
+        listOption.url = basePath + "admin/front/listAllUser";
         listOption.data = "loginName=" + $("#loginName").val().trim() + "&userName=" + $("#userName").val().trim()
                 + "&showDepartmentId=" + $("#departmentId").val() + "&showRoleId=" + $("#roleId").val();
         listOption.pageNumber = 1;
@@ -53,7 +53,7 @@
 
     function addUser() {
         $("#contentFrame")[0].contentWindow.document.write("");
-        $("#contentFrame").attr("src", basePath + "admin/user/addUserDo");
+        $("#contentFrame").attr("src", basePath + "admin/front/addUserDo");
         $('#dataEdit').dialog({
             title: '<spring:message code="add"/>',
             height: 400,
@@ -86,7 +86,7 @@
         $.messager.confirm("<spring:message code="prompt"/>", "<spring:message code="ensureDelete"/><spring:message code="questionMark"/>", function (r) {
             if (r) {
                 $.ajax({
-                    url: basePath + "admin/user/delUser?ids=" + ids,
+                    url: basePath + "admin/front/delUser?ids=" + ids,
                     dataType: "json",
                     type: "DELETE",
                     success: function () {
@@ -150,7 +150,7 @@
         var rowDataList = [];
         for (var i in temp) {
             idBtn = "&nbsp;<input type='checkbox' name='deleteUserCheckBox' id='" + temp[i].id + "' value='" + temp[i].id + "'\">&nbsp;";
-            editBtn = "&nbsp;<a onclick='user.edit(\"" + temp[i].id + "\")'><spring:message code="edit"/></a>&nbsp;";
+            editBtn = "&nbsp;<a onclick='front.edit(\"" + temp[i].id + "\")'><spring:message code="edit"/></a>&nbsp;";
             temp[i].id = idBtn;
             temp[i].edit = editBtn;
             rowDataList.push(temp[i]);
@@ -161,7 +161,7 @@
     var user = {
         edit: function (id) {
             $("#contentFrame")[0].contentWindow.document.write("");
-            $("#contentFrame").attr("src", basePath + "admin/user/editUserDo?id=" + id);
+            $("#contentFrame").attr("src", basePath + "admin/front/editUserDo?id=" + id);
             $('#dataEdit').dialog({
                 title: '<spring:message code="edit"/>',
                 height: 400,
