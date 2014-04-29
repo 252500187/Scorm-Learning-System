@@ -2,8 +2,6 @@ package com.sls.admin.service;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
-import com.sls.admin.entity.MenuPerm;
-import com.sls.admin.entity.Permission;
 import com.sls.admin.entity.Role;
 
 import java.util.List;
@@ -35,7 +33,4 @@ public interface RoleService {
 
     Role findRoleByUserId(int userId);
 
-    void setHasChecked(List<MenuPerm> menuPermList, List<Permission> choosedPerms);
-
-    String getPermissionTokenValue(List<Permission> choosedPerms);
 }

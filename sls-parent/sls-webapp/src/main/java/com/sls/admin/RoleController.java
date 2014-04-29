@@ -4,8 +4,6 @@ import com.core.autocomplete.service.AutoCompleteService;
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.admin.entity.Role;
-import com.sls.admin.service.PermissionService;
-import com.sls.admin.service.RolePermissionService;
 import com.sls.admin.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,12 +32,6 @@ public class RoleController {
     private RoleService roleService;
 
     @Autowired
-    private PermissionService permissionService;
-
-    @Autowired
-    private RolePermissionService rolePermissionService;
-
-    @Autowired
     private AutoCompleteService autoCompleteService;
 
     @RequestMapping(value = "listAllRoleDo", method = {RequestMethod.GET, RequestMethod.POST})
@@ -63,7 +55,6 @@ public class RoleController {
     public void addRole(Role role, @RequestParam("permissionTokens") String permissionTokens) {
         roleService.checkRepeatRoleName(role.getRoleName(), "");
         int roleId = roleService.addRole(role);
-        rolePermissionService.addRolePermissions(roleId, permissionTokens);
         autoCompleteService.initAutoComplete();
     }
 

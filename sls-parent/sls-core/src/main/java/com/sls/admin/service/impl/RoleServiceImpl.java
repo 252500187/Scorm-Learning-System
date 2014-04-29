@@ -3,11 +3,7 @@ package com.sls.admin.service.impl;
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.admin.dao.RoleDao;
-import com.sls.admin.dao.RolePermissionDao;
-import com.sls.admin.entity.MenuPerm;
-import com.sls.admin.entity.Permission;
 import com.sls.admin.entity.Role;
-import com.sls.admin.service.RolePermissionService;
 import com.sls.admin.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,12 +24,6 @@ public class RoleServiceImpl implements RoleService {
 
     @Autowired
     private RoleDao roleDao;
-
-    @Autowired
-    private RolePermissionDao rolePermissionDao;
-
-    @Autowired
-    private RolePermissionService rolePermissionService;
 
     @Override
     public Page<Role> findRolePageList(PageParameter pageParameter, Role role) {
@@ -57,7 +47,6 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public int delRoleDo(Role role) {
-        rolePermissionDao.deleteRolePermissionsByRoleId(role.getId());
         return roleDao.delRole(role.getId());
     }
 
@@ -82,26 +71,4 @@ public class RoleServiceImpl implements RoleService {
     public Role findRoleByUserId(int userId) {
         return roleDao.findRoleByUserId(userId);
     }
-
-    public void setHasChecked(List<MenuPerm> menuPermList, List<Permission> choosedPerms) {
-        for (MenuPerm menuPerm : menuPermList) {
-            for (Permission permissionSelect : choosedPerms) {
-                if (permissionSelect.getPermissionToken().equals(menuPerm.getPermissionToken())) {
-                    menuPerm.setChecked(true);
-                }
-            }
-        }
-    }
-
-    public String getPermissionTokenValue(List<Permission> choosedPerms) {
-        String permissionTokenValue = "";
-        if (choosedPerms != null && choosedPerms.size() != 0) {
-            for (Permission permission : choosedPerms) {
-                permissionTokenValue += permission.getDescription() + ",";
-            }
-            permissionTokenValue = permissionTokenValue.substring(0, permissionTokenValue.length() - 1);
-        }
-        return permissionTokenValue;
-    }
-
 }
