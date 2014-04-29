@@ -34,7 +34,7 @@ public class UserRoleDaoImpl extends PageDao implements UserRoleDao {
     }
 
     @Override
-    public List<String> findAllRoleNamesByUserId(int userId) {
+    public List<String> findRoleNamesByUserId(int userId) {
         final String sql = "SELECT r.role_name FROM sys_user_role ur,sys_role r WHERE r.id = ur.role_id and ur.user_id = ?";
         return getJdbcTemplate().queryForList(sql,String.class, userId);
     }

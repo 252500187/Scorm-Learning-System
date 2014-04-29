@@ -19,13 +19,13 @@ public class AccountServiceImpl implements AccountService {
     private UserRoleDao userRoleDao;
 
     @Override
-    public User findUserByLoginName(String username) {
-        return userDao.findUserByLoginName(username).get(0);
+    public User findUserByLoginName(String loginName) {
+        return userDao.findUserByLoginName(loginName).get(0);
     }
 
     @Override
     public List<String> getRolesByLoginName(String loginName) {
         User user = userDao.findUserByLoginName(loginName).get(0);
-        return userRoleDao.findAllRoleNamesByUserId(user.getId());
+        return userRoleDao.findRoleNamesByUserId(user.getId());
     }
 }
