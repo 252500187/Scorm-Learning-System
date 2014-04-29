@@ -5,7 +5,7 @@
 * V1.0.1    2013-10-6       gaoxinyu    初始版本
 *
 */
-package com.sls.loginuser;
+package com.sls.login;
 
 import com.sls.admin.entity.User;
 import com.sls.admin.service.UserService;
@@ -25,10 +25,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-/**
- * @author gaoxinyu
- * @version 1.0.1
- */
 @Controller
 @RequestMapping()
 public class LoginController {

@@ -41,7 +41,8 @@
                 /js/** = anon
                 /login = authc
                 /logout = logout
-                /admin/** = roles[admin]
+                /admin/** = admin
+                /user/** = user
                 <!--/** = user-->
             </value>
         </property>
