@@ -5,7 +5,7 @@
 * V1.0.1    2013-10-6       gaoxinyu    初始版本
 *
 */
-package com.sls.admin;
+package com.sls.loginuser;
 
 import com.sls.admin.entity.User;
 import com.sls.admin.service.UserService;
@@ -73,12 +73,10 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/", method = {RequestMethod.GET})
-    public String index(HttpServletRequest request) {
-        HttpSession session = request.getSession();
+    public String index() {
         String loginName = LoginUserUtil.findLoginUserName();
         List<User> user = userService.findUserByLoginName(loginName);
         if (user.size() > 0) {
-            session.setAttribute("userId", user.get(0).getId());
             if (user.get(0).getRoleId()==1) {                 //todo 若登陆了， 且登陆身份为管理员
                 return "/scormadmin/index";
             }

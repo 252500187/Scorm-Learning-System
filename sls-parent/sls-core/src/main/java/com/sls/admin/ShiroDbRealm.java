@@ -47,11 +47,4 @@ public class ShiroDbRealm extends AuthorizingRealm {
         }
         return null;
     }
-
-    public void clearCachedAuthorizationInfo(String principal) {
-        SimplePrincipalCollection principals = new SimplePrincipalCollection(
-                principal, getName());
-        clearCachedAuthorizationInfo(principals);
-    }
-
 }

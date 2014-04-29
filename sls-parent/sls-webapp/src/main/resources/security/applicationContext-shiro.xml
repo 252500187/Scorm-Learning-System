@@ -26,6 +26,7 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <property name="loginUrl" value="/login"/>
+        <property name="unauthorizedUrl" value="/includes/error403" />
         <!--<property name="successUrl" value="/index.html"/>-->
         <!--
                 <property name="filters">
@@ -40,6 +41,7 @@
                 /js/** = anon
                 /login = authc
                 /logout = logout
+                /admin/** = roles[admin]
                 <!--/** = user-->
             </value>
         </property>
