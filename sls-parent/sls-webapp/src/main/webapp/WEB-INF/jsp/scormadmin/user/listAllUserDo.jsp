@@ -4,28 +4,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <%@include file="../../includes/common.jsp" %>
-    <title>><spring:message code="user"/></title>
+    <title>用户表</title>
 </head>
 <body>
 <div id="mainContent" class="easyui-panel" data-options="fit:true" style="padding: 10px">
     <form class="form-inline">
-        <spring:message code="accountId"/><input type="text" class="input-medium" name="loginName" id="loginName"
-                                                 value=""/>
-        <spring:message code="name"/><input type="text" class="input-medium" name="userName" id="userName" value=""/>
+        帐号<input type="text" class="input-medium" name="loginName" id="loginName" value=""/>
+        用户名<input type="text" class="input-medium" name="userName" id="userName" value=""/>
         <span>
-            <spring:message code="department"/><input type="text" name="showDepartment" id="showDepartment" value=""
-                                                      class="input-medium"
-                                                      flag="department" autocomplete="off"/>
-            <input type="hidden" name="departmentId" id="departmentId" value="" autoHidden="autoHidden">
-        </span>
-        <span>
-            <spring:message code="role"/><input type="text" name="roleName" id="roleName" value="" class="input-medium"
-                                                flag="allRoles" autocomplete="off"/>
+            角色<input type="text" name="roleName" id="roleName" value="" class="input-medium"
+                     flag="allRoles" autocomplete="off"/>
             <input type="hidden" name="roleId" id="roleId" value="" autoHidden="autoHidden">
         </span>
+        <span>
+            状态<input type="text" name="stateName" id="stateName" value="" class="input-medium"
+                     flag="allRoles" autocomplete="off"/>
+            <input type="hidden" name="stateId" id="stateId" value="" autoHidden="autoHidden">
+        </span>
         <a class="btn btn-primary" onclick="query()"><spring:message code="query"/></a>
-        <a class="btn btn-primary" onclick="addUser()"><spring:message code="add"/></a>
-        <a class="btn btn-primary" onclick="deleteUser()"><spring:message code="delete"/></a>
     </form>
     <table id="dataTable"></table>
     <div id="dataEdit" closed="true" modal="true" style="overflow: hidden">
@@ -44,53 +40,23 @@
 
 <script type="text/javascript">
     function query() {
-        listOption.url = basePath + "admin/front/listAllUser";
+        listOption.url = basePath + "admin/user/listAllUser";
         listOption.data = "loginName=" + $("#loginName").val().trim() + "&userName=" + $("#userName").val().trim()
-                + "&showDepartmentId=" + $("#departmentId").val() + "&showRoleId=" + $("#roleId").val();
+                + "&showRoleId=" + $("#roleId").val();
         listOption.pageNumber = 1;
         loadData(listOption);
     }
 
-    function addUser() {
-        $("#contentFrame")[0].contentWindow.document.write("");
-        $("#contentFrame").attr("src", basePath + "admin/front/addUserDo");
-        $('#dataEdit').dialog({
-            title: '<spring:message code="add"/>',
-            height: 400,
-            width: 600
-        })
-        $('#dataEdit').dialog('open');
-    }
 
-
-    function deleteUser() {
-        var ids = "";
-        var value;
-        var flag = 0;
-        var allBox = $("[name='deleteUserCheckBox']");
-        for (var i = 0; i < allBox.length; i++) {
-            value = allBox[i].getAttribute("value");
-            if ($("#" + value).attr("checked") == "checked") {
-                if ("${myLoginId}" == value) {
-                    $.messager.alert("<spring:message code="prompt"/>", "<spring:message code="delSelf"/>");
-                    return;
-                }
-                flag = 1;
-                ids += value + ",";
-            }
-        }
-        if (flag == 0) {
-            $.messager.alert("<spring:message code="prompt"/>", "<spring:message code="selectDeleteUser"/>");
-            return;
-        }
-        $.messager.confirm("<spring:message code="prompt"/>", "<spring:message code="ensureDelete"/><spring:message code="questionMark"/>", function (r) {
+    function shieldUser(id, operate) {
+        $.messager.confirm("提示", "确认" + operate + "屏蔽用户？", function (r) {
             if (r) {
                 $.ajax({
-                    url: basePath + "admin/front/delUser?ids=" + ids,
+                    url: basePath + "admin/user/shieldUser?id=" + id,
                     dataType: "json",
-                    type: "DELETE",
+                    type: "POST",
                     success: function () {
-                        $.messager.alert("<spring:message code="succeed"/>", "<spring:message code="deleteSucceed"/><spring:message code="exclamationMark"/>", "", function () {
+                        $.messager.alert("成功", operate + "屏蔽成功！", "", function () {
                             query();
                         })
                     },
@@ -100,27 +66,18 @@
         })
     }
 
-    function selectAll() {
-        if ($("#checkAll").attr("checked") == "checked") {
-            $("[name='deleteUserCheckBox']").attr("checked", true);
-        } else {
-            $("[name='deleteUserCheckBox']").attr("checked", false);
-        }
-    }
-
     function initDataGrid() {
         $('#dataTable').datagrid({
-            title: "<spring:message code="user"/><spring:message code="list"/>",
+            title: "用户列表",
             pagination: true,
             fitColumns: true,
             columns: [
                 [
-                    {field: 'id', title: "&nbsp<input id='checkAll' type='checkbox' onclick='selectAll()'/>", align: 'center', width: 100},
-                    {field: 'loginName', title: '<spring:message code="accountId"/>', sortable: true, align: 'center', width: 300},
-                    {field: 'userName', title: '<spring:message code="name"/>', sortable: true, align: 'center', width: 100},
-                    {field: 'showDepartmentId', title: '<spring:message code="department"/>', align: 'center', width: 300},
-                    {field: 'showRoleId', title: '<spring:message code="role"/>', align: 'center', width: 200},
-                    {field: 'edit', title: '<spring:message code="operate"/>', align: 'center', width: 200}
+                    {field: 'loginName', title: '帐号', sortable: true, align: 'center', width: 300},
+                    {field: 'userName', title: '用户名', sortable: true, align: 'center', width: 100},
+                    {field: 'showRoleId', title: '角色', align: 'center', width: 200},
+                    {field: 'state', title: '状态', align: 'center', width: 200},
+                    {field: 'edit', title: '操作', align: 'center', width: 200}
                 ]
             ],
             sortName: "",
@@ -148,28 +105,18 @@
 
     function queryFormat(temp) {
         var rowDataList = [];
+        var operate = "";
         for (var i in temp) {
-            idBtn = "&nbsp;<input type='checkbox' name='deleteUserCheckBox' id='" + temp[i].id + "' value='" + temp[i].id + "'\">&nbsp;";
-            editBtn = "&nbsp;<a onclick='front.edit(\"" + temp[i].id + "\")'><spring:message code="edit"/></a>&nbsp;";
-            temp[i].id = idBtn;
+            operate = "";
+            if (temp[i].state == "${shield}") {
+                operate = "取消";
+            }
+            editBtn = "&nbsp;<a onclick=shieldUser(" + temp[i].id + ",'" + operate + "')>" + operate + "屏蔽</a>&nbsp;";
             temp[i].edit = editBtn;
             rowDataList.push(temp[i]);
         }
         return rowDataList;
     }
-
-    var user = {
-        edit: function (id) {
-            $("#contentFrame")[0].contentWindow.document.write("");
-            $("#contentFrame").attr("src", basePath + "admin/front/editUserDo?id=" + id);
-            $('#dataEdit').dialog({
-                title: '<spring:message code="edit"/>',
-                height: 400,
-                width: 600
-            })
-            $('#dataEdit').dialog('open');
-        }
-    };
 
     $(function () {
         initDataGrid();

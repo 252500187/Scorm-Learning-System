@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface AccountService {
 
-    User findUserByLoginName(String username);
+    List<User> findUserByLoginName(String username);
 
     List<String> getRolesByLoginName(String loginName);
 }

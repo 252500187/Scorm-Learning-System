@@ -45,9 +45,6 @@ public class UserDaoImpl extends PageDao implements UserDao {
         if (!("").equals(user.getUserName())) {
             sql.append(" AND a.user_name like '%").append(user.getUserName().trim()).append("%'");
         }
-        if (!("").equals(user.getShowDepartmentId())) {
-            sql.append(" AND a.department_id = ").append(user.getShowDepartmentId());
-        }
         if (!("").equals(user.getShowRoleId())) {
             sql.append(" AND b.role_id = ").append(user.getShowRoleId());
         }

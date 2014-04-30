@@ -51,12 +51,11 @@ public class LoginServiceImpl implements LoginService {
         if (currentUser.isAuthenticated()) {
             List<User> userList = userService.findUserByLoginName(LoginUserUtil.findLoginUserName());
             session.setAttribute("userId", userList.get(0).getId());
-            String url = "/scormadmin/index";
+            modelView.setViewName("/scormadmin/index");
             if (userList.get(0).getRoleId() == roleService.findRoleByRoleName(DictConstant.USER).getId()) {
                 setIndexInfo(request);
-                url = "/scormfront/index";
+                modelView.setViewName("/scormfront/index");
             }
-            modelView.setViewName(url);
         } else {
             modelView.addObject("message", "password error！");
             modelView.setViewName("/scormfront/login");

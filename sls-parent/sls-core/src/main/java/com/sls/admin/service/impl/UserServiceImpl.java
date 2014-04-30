@@ -38,8 +38,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Page<User> findUserPageList(PageParameter pageParameter, User user) {
-        Page<User> users = userDao.findUserPageList(pageParameter, user);
-        return users;
+        return userDao.findUserPageList(pageParameter, user);
     }
 
     @Override

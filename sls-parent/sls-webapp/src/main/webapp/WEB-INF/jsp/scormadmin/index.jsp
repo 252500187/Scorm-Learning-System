@@ -13,12 +13,12 @@
     <div class="row-fluid">
         <div class="row" style="margin-left: 0">
             <div class="span12">
-                <%@include file="../includes/top.jsp" %>
+                <%@include file="top.jsp" %>
             </div>
         </div>
         <div class="row" style="margin-left: 0">
             <div class="span12">
-                <%@include file="../includes/menu.jsp" %>
+                <%@include file="menu.jsp" %>
             </div>
         </div>
         <div class="row" style="margin-left: 0">

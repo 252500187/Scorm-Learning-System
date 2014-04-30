@@ -39,9 +39,9 @@ public class ShiroDbRealm extends AuthorizingRealm {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
         String loginName = token.getUsername();
         if (loginName != null && !"".equals(loginName)) {
-            User user = accountService.findUserByLoginName(loginName);
-            if (user != null) {
-                return new SimpleAuthenticationInfo(user.getLoginName(), user.getPassword(), getName());
+            List<User> userList=accountService.findUserByLoginName(loginName);
+            if(userList.size()>0){
+                return new SimpleAuthenticationInfo(userList.get(0).getLoginName(), userList.get(0).getPassword(), getName());
             }
         }
         return null;

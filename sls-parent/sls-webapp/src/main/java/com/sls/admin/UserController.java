@@ -4,6 +4,7 @@ import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.admin.entity.User;
 import com.sls.admin.service.UserService;
+import com.sls.util.DictConstant;
 import com.sls.util.LoginUserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,8 @@ public class UserController {
     @RequestMapping(value = "listAllUserDo", method = {RequestMethod.GET})
     public String listAllUserDo(HttpServletRequest request) {
         request.setAttribute("myLoginId", userService.findUserByLoginName(LoginUserUtil.findLoginUserName()).get(0).getId());
-        return "scormadmin/front/listAllUserDo";
+        request.setAttribute("shield", DictConstant.SHIELD);
+        return "scormadmin/user/listAllUserDo";
     }
 
     @RequestMapping(value = "listAllUser", method = RequestMethod.POST)
@@ -35,6 +37,9 @@ public class UserController {
     public Page listAllUser(PageParameter pageParameter, User user) {
         return userService.findUserPageList(pageParameter, user);
     }
+
+
+
 
     @RequestMapping(value = "addUserDo", method = {RequestMethod.GET})
     public String addUserDo() {
@@ -71,12 +76,5 @@ public class UserController {
     public void editUser(User user, @RequestParam("oldLoginName") String oldLoginName) {
         userService.checkRepeatLoginName(user.getLoginName(), oldLoginName);
         userService.editUser(user);
-    }
-
-    @RequestMapping(value = "delUser", method = {RequestMethod.DELETE})
-    @ResponseBody
-    public void delUser(@RequestParam("ids") String ids) throws GeneralSecurityException {
-        String[] userIds = ids.split(",");
-        userService.delUsers(userIds);
     }
 }

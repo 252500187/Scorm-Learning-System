@@ -19,8 +19,8 @@ public class AccountServiceImpl implements AccountService {
     private UserRoleDao userRoleDao;
 
     @Override
-    public User findUserByLoginName(String loginName) {
-        return userDao.findUserByLoginName(loginName).get(0);
+    public List<User> findUserByLoginName(String loginName) {
+        return userDao.findUserByLoginName(loginName);
     }
 
     @Override

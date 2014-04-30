@@ -32,4 +32,8 @@ public class DictConstant {
     // 用户角色
     public static final String USER = "user";
 
+    //角色是否屏蔽 0 未屏蔽
+    public static final String NO_SHIELD = "0";
+    // 1 屏蔽
+    public static final String SHIELD = "1";
 }
