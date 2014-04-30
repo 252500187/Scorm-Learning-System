@@ -1,8 +1,8 @@
 package com.sls.front.scorm.service.impl;
 
-import com.sls.util.DictConstant;
-import com.sls.admin.service.UserService;
+import com.sls.admin.dao.UserDao;
 import com.sls.front.scorm.service.UpScormService;
+import com.sls.util.DictConstant;
 import com.sls.util.FileUp;
 import com.sls.util.LoginUserUtil;
 import com.sls.util.XmalInfo;
@@ -31,14 +31,14 @@ import java.util.List;
 public class UpScormServiceImpl implements UpScormService {
 
     @Autowired
-    private UserService userService;
+    private UserDao userDao;
 
     @Override
     public void upScorm(HttpServletRequest request, String upFile, String upImg) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
         FileUp fileUp = new FileUp();
         Date date = new Date();
-        String fileName = date.getTime() + userService.findUserByLoginName(LoginUserUtil.findLoginUserName()).get(0).getId() + "";//todo 用户ID和日期
+        String fileName = date.getTime() + userDao.findUserByLoginName(LoginUserUtil.findLoginUserName()).get(0).getId() + "";//todo 用户ID和日期
         //0 图片路径 1 xml的文件夹路径
         String path[] = fileUp.upScorm(request, fileName, upFile, upImg);
         request.setAttribute("jpg", path[0]);           //todo 存入数据库

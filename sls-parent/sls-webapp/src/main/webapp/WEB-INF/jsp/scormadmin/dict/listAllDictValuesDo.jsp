@@ -29,14 +29,14 @@
 </html>
 <script type="text/javascript">
     function query() {
-        listOption.url = basePath + "system/dict/listAllDictValues?dictName=${dictName}";
+        listOption.url = basePath + "admin/dict/listAllDictValues?dictName=${dictName}";
         listOption.data = "dictValue=" + $("#dictValue").val();
         listOption.pageNumber = 1;
         loadData(listOption);
     }
 
     function back() {
-        location.href = basePath + "system/dict/listAllDictDefineDo";
+        location.href = basePath + "admin/dict/listAllDictDefineDo";
     }
 
     function initDataGrid() {
@@ -84,7 +84,7 @@
     }
 
     function addDictValues() {
-        var path = basePath + "system/dict/addDictValuesDo?dictName=${dictName}";
+        var path = basePath + "admin/dict/addDictValuesDo?dictName=${dictName}";
         $("#contentList").attr("src", path);
         $('#dataEdit').dialog({
             title: '<spring:message code="add"/>',
@@ -94,7 +94,7 @@
     }
 
     function editDictValues(dictCode) {
-        var path = basePath + "system/dict/editDictValuesDo?dictName=${dictName}&dictCode=" + dictCode;
+        var path = basePath + "admin/dict/editDictValuesDo?dictName=${dictName}&dictCode=" + dictCode;
         $("#contentList").attr("src", path);
         $('#dataEdit').dialog({
             title: '<spring:message code="edit"/>',
@@ -107,7 +107,7 @@
         $.messager.confirm("<spring:message code="prompt"/>", "<spring:message code="ensureDelete"/>？", function (r) {
             if (r) {
                 $.ajax({
-                    url: basePath + "system/dict/delDictValues?dictName=${dictName}" + "&dictCode=" + dictCode,
+                    url: basePath + "admin/dict/delDictValues?dictName=${dictName}" + "&dictCode=" + dictCode,
                     dataType: "json",
                     type: "DELETE",
                     success: function () {

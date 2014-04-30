@@ -1,8 +1,8 @@
 package com.sls.login.service.impl;
 
+import com.sls.admin.dao.RoleDao;
+import com.sls.admin.dao.UserDao;
 import com.sls.admin.entity.User;
-import com.sls.admin.service.RoleService;
-import com.sls.admin.service.UserService;
 import com.sls.login.service.LoginService;
 import com.sls.util.DictConstant;
 import com.sls.util.LoginUserUtil;
@@ -20,16 +20,16 @@ import java.util.List;
 @Service("loginService")
 public class LoginServiceImpl implements LoginService {
     @Autowired
-    private UserService userService;
+    private UserDao userDao;
 
     @Autowired
-    private RoleService roleService;
+    private RoleDao roleDao;
 
     public String toIndex(HttpServletRequest request) {
         String loginName = LoginUserUtil.findLoginUserName();
-        List<User> user = userService.findUserByLoginName(loginName);
+        List<User> user = userDao.findUserByLoginName(loginName);
         if (user.size() > 0) {
-            if (user.get(0).getRoleId() == roleService.findRoleByRoleName(DictConstant.ADMIN).getId()) {
+            if (user.get(0).getRoleId() == roleDao.findRoleByRoleName(DictConstant.ADMIN).getId()) {
                 return "/scormadmin/index";
             }
         }
@@ -49,10 +49,10 @@ public class LoginServiceImpl implements LoginService {
             modelView.setViewName("/scormfront/login");
         }
         if (currentUser.isAuthenticated()) {
-            List<User> userList = userService.findUserByLoginName(LoginUserUtil.findLoginUserName());
+            List<User> userList = userDao.findUserByLoginName(LoginUserUtil.findLoginUserName());
             session.setAttribute("userId", userList.get(0).getId());
             modelView.setViewName("/scormadmin/index");
-            if (userList.get(0).getRoleId() == roleService.findRoleByRoleName(DictConstant.USER).getId()) {
+            if (userList.get(0).getRoleId() == roleDao.findRoleByRoleName(DictConstant.USER).getId()) {
                 setIndexInfo(request);
                 modelView.setViewName("/scormfront/index");
             }

@@ -1,10 +1,3 @@
-/*
-* UserManager.java
-* Created on  2013-10-21 上午7:44
-* 版本       修改时间          作者      修改内容
-* V1.0.1    2013-10-21       gaoxinyu    初始版本
-*
-*/
 package com.sls.admin.service.impl;
 
 import com.core.page.entity.Page;
@@ -14,24 +7,16 @@ import com.sls.admin.dao.UserRoleDao;
 import com.sls.admin.entity.User;
 import com.sls.admin.entity.UserRole;
 import com.sls.admin.service.UserService;
-import com.sls.admin.service.DictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * @author gaoxinyu
- * @version 1.0.1
- */
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
-
-    @Autowired
-    private DictService dictService;
 
     @Autowired
     private UserRoleDao userRoleDao;

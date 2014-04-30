@@ -44,45 +44,4 @@ public class RoleController {
     public Page<Role> listAllRole(PageParameter pageParameter, Role role) {
         return roleService.findRolePageList(pageParameter, role);
     }
-
-    @RequestMapping(value = "addRoleDo", method = {RequestMethod.GET})
-    public String addRoleDo(HttpServletRequest request) {
-        return "scormadmin/role/addRoleDo";
-    }
-
-    @RequestMapping(value = "addRole", method = {RequestMethod.POST})
-    @ResponseBody
-    public void addRole(Role role, @RequestParam("permissionTokens") String permissionTokens) {
-        roleService.checkRepeatRoleName(role.getRoleName(), "");
-        int roleId = roleService.addRole(role);
-        autoCompleteService.initAutoComplete();
-    }
-
-    @RequestMapping(value = "editRoleDo", method = {RequestMethod.GET})
-    public String editRoleDo(HttpServletRequest request, @RequestParam("id") int id) {
-        Role role = roleService.findRoleById(id);
-        request.setAttribute("role", role);
-        return "scormadmin/role/editRoleDo";
-    }
-
-    @RequestMapping(value = "checkRepeatRoleName", method = {RequestMethod.POST})
-    @ResponseBody
-    public boolean checkRepeatRoleName(Role role, @RequestParam("primaryRoleName") String primaryRoleName) {
-        return roleService.checkRepeatRoleName(role.getRoleName(), primaryRoleName);
-    }
-
-    @RequestMapping(value = "editRole", method = {RequestMethod.POST})
-    @ResponseBody
-    public void editRole(Role role, @RequestParam("permissionTokens") String permissionTokens) throws GeneralSecurityException {
-        roleService.editRole(role);
-        autoCompleteService.initAutoComplete();
-    }
-
-    @RequestMapping(value = "delRoleDo", method = {RequestMethod.DELETE})
-    @ResponseBody
-    public void delRoleDo(@RequestParam("id") int id) throws GeneralSecurityException {
-        Role role = roleService.findRoleById(id);
-        roleService.delRoleDo(role);
-        autoCompleteService.initAutoComplete();
-    }
 }

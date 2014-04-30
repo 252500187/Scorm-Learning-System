@@ -55,7 +55,7 @@
         if (!JC.validate(rules)) return;
         $("#saves").button('loading');
         $.ajax({
-            url: basePath + "system/dict/editDictValues?dictName=${dictValuesTemp.dictName}" + "&dictCode=${dictValuesTemp.dictCode}",
+            url: basePath + "admin/dict/editDictValues?dictName=${dictValuesTemp.dictName}" + "&dictCode=${dictValuesTemp.dictCode}",
             data: {
                 dictValue: $("#dictValue").val()
             },

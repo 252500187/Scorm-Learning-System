@@ -24,19 +24,5 @@ public interface RoleDao {
 
     Page<Role> findRolePageList(PageParameter pageParameter, Role role);
 
-    List<Role> findAllRole();
-
-    int addRole(Role role);
-
-    void editRole(Role role);
-
-    int delRole(int id);
-
-    Role findRoleById(int id);
-
     Role findRoleByRoleName(String roleName);
-
-    Boolean checkRepeatRoleName(String roleName);
-
-    Role findRoleByUserId(int userId);
 }
