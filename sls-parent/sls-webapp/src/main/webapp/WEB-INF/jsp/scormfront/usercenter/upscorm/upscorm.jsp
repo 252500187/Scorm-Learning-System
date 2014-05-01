@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-    <title>上传附件</title>
+    <title>上传课件</title>
     <%@include file="../../../includes/common.jsp" %>
 </head>
 <body>
@@ -37,7 +37,7 @@
 <script>
     function fileUpAttachment() {
         $("#fileGetUp").attr("action",
-                        basePath + "user/upScorm?upScorm=" + $("#upScorm").val() + "&upImg=" + $("#upImg").val())
+                        basePath + "user/center/upScorm?upScorm=" + $("#upScorm").val() + "&upImg=" + $("#upImg").val())
                 .submit();
     }
 </script>

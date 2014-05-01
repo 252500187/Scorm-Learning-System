@@ -1,12 +1,5 @@
-package com.sls.util;
+package com.sls.front.scorm.entity;
 
-/**
- * Created with IntelliJ IDEA.
- * User: bblll
- * Date: 14-4-25
- * Time: 下午9:41
- * To change this template use File | Settings | File Templates.
- */
 public class XmalInfo {
     private String title;
     private String type;
@@ -21,6 +14,14 @@ public class XmalInfo {
         this.parentId = "";
         this.xmalId = "";
         this.url = "";
+    }
+
+    public XmalInfo(String title, String type, String parentId, String url, String xmalId) {
+        this.title = title;
+        this.type = type;
+        this.parentId = parentId;
+        this.url = url;
+        this.xmalId = xmalId;
     }
 
     public String getTitle() {
@@ -61,13 +62,5 @@ public class XmalInfo {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public XmalInfo(String title, String type, String parentId, String url, String xmalId) {
-        this.title = title;
-        this.type = type;
-        this.parentId = parentId;
-        this.url = url;
-        this.xmalId = xmalId;
     }
 }

@@ -18,7 +18,7 @@ import java.io.IOException;
 
 @Controller
 @Transactional
-@RequestMapping("/user/")
+@RequestMapping("/user/center")
 public class UserCenterController {
 
     @Autowired
@@ -32,11 +32,8 @@ public class UserCenterController {
     @RequestMapping(value = "upScorm", method = {RequestMethod.POST})
     public String upScorm(HttpServletRequest request) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
-        try {
-            upScormService.upScorm(request, "upScorm", "upImg");
-        } catch (IOException e) {
-            return "";
-        }
+        upScormService.upScorm(request, "upScorm", "upImg");
+//        return "scormfront/usercenter/upscorm/upResult";
         return "scormfront/studyscorm/studyScorm";
     }
 

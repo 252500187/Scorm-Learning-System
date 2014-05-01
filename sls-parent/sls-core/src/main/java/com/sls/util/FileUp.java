@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import com.sls.front.scorm.entity.XmalInfo;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.w3c.dom.Document;
@@ -44,25 +45,32 @@ public class FileUp {
         return file.getInputStream();
     }
 
-    public String[] upScorm(HttpServletRequest request, String scormPath, String upFile, String img) throws ServletException, IOException {
-        String path = request.getSession().getServletContext().getRealPath("/" + DictConstant.TOP_SCORM_FILE_NAME + "/");
-        String scormImgPath = path + "/" + scormPath + "/";
-        String scormFilePath = path + "/" + scormPath + "/" + DictConstant.SCORM_FILE_NAME + "/";
+    public String upImg(HttpServletRequest request, String imgPath, String imgName, String upImg) throws ServletException, IOException {
+        String path = request.getSession().getServletContext().getRealPath("");
+        path = path + "/" + imgPath + "/";
+        //创建文件，防文件夹不存在
+        File file = new File(path);
+        file.mkdirs();
+        //接受页面流文件
+        InputStream input = getInputStream((MultipartHttpServletRequest) request, upImg);
+        uploadFile(input, path, imgName);
+        //返回路径 0图片引用路径 1文件路径
+        path = path.replace("\"", "/");
+        String filePath = path + imgName;
+        return filePath.substring(filePath.indexOf(DictConstant.SCORM_FILE_NAME));
+    }
+
+    public String upScorm(HttpServletRequest request, String scormPath, String upFile) throws ServletException, IOException {
+        String scormFilePath = request.getSession().getServletContext().getRealPath("");
+        scormFilePath = scormFilePath + "/" + DictConstant.TOP_SCORM_FILE_NAME + "/" + scormPath + "/" + DictConstant.SCORM_FILE_NAME + "/";
         //创建文件，防文件夹不存在
         File file = new File(scormFilePath);
         file.mkdirs();
         //接受页面流文件
         InputStream input = getInputStream((MultipartHttpServletRequest) request, upFile);
         uploadFile(input, scormFilePath, DictConstant.SCORM_NAME);
-        input = getInputStream((MultipartHttpServletRequest) request, img);
-        uploadFile(input, scormImgPath, DictConstant.SCORM_IMG);
-        //返回路径 0图片引用路径 1文件路径
-        String scormFile[] = {"", ""};
-        scormFile[0] = scormImgPath + DictConstant.SCORM_IMG;
-        scormFile[0] = scormFile[0].substring(scormFile[0].indexOf(DictConstant.SCORM_FILE_NAME));
-        scormFile[1] = scormFilePath;
-        unzip(scormFile[1] + DictConstant.SCORM_NAME);
-        return scormFile;
+        unzip(scormFilePath + DictConstant.SCORM_NAME);
+        return scormFilePath;
     }
 
     public void unzip(String fileName) {
@@ -136,7 +144,7 @@ public class FileUp {
             xmalInfos.add(new XmalInfo(nodeList.item(0) == null ? "" : nodeList.item(0).getTextContent(),
                     element.getTagName(),
                     "1",
-                    element.getAttribute("identifierref") == ""?"":scoPath + getUrl(element.getAttribute("identifierref"), document),
+                    element.getAttribute("identifierref") == "" ? "" : scoPath + getUrl(element.getAttribute("identifierref"), document),
                     element.getAttribute("identifier")));
             getElement(element, xmalInfos, url, scoPath, document);
         }
@@ -154,7 +162,7 @@ public class FileUp {
                 xmalInfos.add(new XmalInfo(nodeList.item(0) == null ? "" : nodeList.item(0).getTextContent(),
                         elementNew.getTagName(),
                         element.getAttribute("identifier"),
-                        elementNew.getAttribute("identifierref") == ""?"":scoPath + getUrl(elementNew.getAttribute("identifierref"), document),
+                        elementNew.getAttribute("identifierref") == "" ? "" : scoPath + getUrl(elementNew.getAttribute("identifierref"), document),
                         elementNew.getAttribute("identifier")));
 
             }
