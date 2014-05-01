@@ -34,9 +34,42 @@
 <script src="<c:url value="/js/common/zTree-v3.5.14/js/jquery.ztree.all-3.5.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/js/common/alertMsg/alertMsg.js"/>" type="text/javascript"></script>
 
-<base href="<%=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()%><c:url value="/"/>"/>
+<base href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()%><c:url value="/"/>"/>
 <script>
     $(function () {
         JC.inputInit();
     })
 </script>
+
+
+<script src="<c:url value="/assets/plugins/jquery-1.10.2.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jquery-migrate-1.2.1.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap/js/bootstrap.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jquery.blockui.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jquery.cokie.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/uniform/jquery.uniform.min.js"/>" type="text/javascript"></script>
+
+<script src="<c:url value="/assets/plugins/jquery-validation/dist/jquery.validate.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/backstretch/jquery.backstretch.min.js"/>" type="text/javascript"></script>
+<script type="text/javascript" src="<c:url value="/assets/plugins/select2/select2.min.js"/>"></script>
+
+<script src="<c:url value="/assets/scripts/core/app.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/scripts/custom/login-soft.js"/>" type="text/javascript"></script>
+
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/plugins/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/plugins/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/plugins/uniform/css/uniform.default.css"/>" rel="stylesheet" type="text/css"/>
+
+<link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/select2/select2.css"/>"/>
+<link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/select2/select2-metronic.css"/>"/>
+
+<link href="<c:url value="/assets/css/style-metronic.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/css/style.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/css/style-responsive.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/css/plugins.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/css/themes/default.css"/>" rel="stylesheet" type="text/css" id="style_color"/>
+<link href="<c:url value="/assets/css/pages/login-soft.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>

@@ -19,6 +19,7 @@ import java.util.List;
 
 @Service("loginService")
 public class LoginServiceImpl implements LoginService {
+
     @Autowired
     private UserDao userDao;
 
@@ -68,6 +69,6 @@ public class LoginServiceImpl implements LoginService {
         if (userId != "") {
             //todo ,用户信息
         }
-        //todo 首页信息
+        //todo 首页需要显示的信息
     }
 }
