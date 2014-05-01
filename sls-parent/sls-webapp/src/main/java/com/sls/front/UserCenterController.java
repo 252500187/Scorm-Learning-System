@@ -1,6 +1,7 @@
 package com.sls.front;
 
 import com.sls.front.scorm.service.UpScormService;
+import com.sls.front.scorm.service.UserCenterService;
 import com.sls.util.ScoInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,16 @@ import java.io.IOException;
 public class UserCenterController {
 
     @Autowired
+    private UserCenterService userCenterService;
+
+    @Autowired
     private UpScormService upScormService;
+
+    @RequestMapping(value = "userCenterDo", method = {RequestMethod.GET})
+    public String userCenter(HttpServletRequest request) {
+        userCenterService.toUserCenter(request);
+        return "scormfront/usercenter/userCenter";
+    }
 
     @RequestMapping(value = "upScormDo", method = {RequestMethod.GET})
     public String upScormDo() {
@@ -35,12 +45,5 @@ public class UserCenterController {
         upScormService.upScorm(request, "upScorm", "upImg");
 //        return "scormfront/usercenter/upscorm/upResult";
         return "scormfront/studyscorm/studyScorm";
-    }
-
-
-    @RequestMapping(value = "scoInfo", method = {RequestMethod.POST})
-    @ResponseBody
-    public void scoInfo(ScoInfo scoInfo) {
-        //todo 存入数据库
     }
 }

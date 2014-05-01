@@ -14,6 +14,7 @@
     你的userId为：${userId}。
     <input type="button" onclick="location.href='logout'" value="退出"/>
     <input type="button" onclick="window.location.href='user/center/upScormDo'" value="上传课件"/>
+    <input type="button" onclick="window.location.href='user/center/userCenterDo'" value="个人中心"/>
 </c:if>
 <c:if test="${userId==null||userId==''}">
     <input type="button" onclick="window.location.href='login'" value="登录页"/>
