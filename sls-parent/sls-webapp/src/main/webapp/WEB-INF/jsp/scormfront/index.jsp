@@ -11,11 +11,13 @@
 <body>
 ......................主业主业
 <c:if test="${userId!=null&&userId!=''}">
-你的userId为：${userId}。
-<input type="button" onclick="location.href='logout'" value="退出"/>
-<input type="button" onclick="window.location.href='user/center/upScormDo'" value="上传课件"/>
+    你的userId为：${userId}。
+    <input type="button" onclick="location.href='logout'" value="退出"/>
+    <input type="button" onclick="window.location.href='user/center/upScormDo'" value="上传课件"/>
 </c:if>
-<input type="button" onclick="window.location.href='login'" value="登录页"/>
+<c:if test="${userId==null||userId==''}">
+    <input type="button" onclick="window.location.href='login'" value="登录页"/>
+</c:if>
 </body>
 </html>
 <script>
