@@ -171,12 +171,8 @@
             </button>
         </div>
     </form>
-
 </div>
-
-<div class="copyright">
-    2014 &copy; SLS - SCORM LEARNING OF SEEK .
-</div>
+<%@include file="index/footer.jsp" %>
 </body>
 </html>
 <script>

@@ -3,7 +3,7 @@
 <html lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-    <title>Metronic | Admin Dashboard Template</title>
+    <title>SLS | Study Scorm</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="" name="description"/>
@@ -13,6 +13,7 @@
 </head>
 
 <body class="page-header-fixed page-sidebar-reversed">
+<%@include file="../index/navigationMenu.jsp" %>
 <div class="page-container">
 <div class="page-sidebar-wrapper">
     <div class="page-sidebar navbar-collapse collapse">
@@ -225,7 +226,7 @@
     </div>
 </div>
 </div>
-
+<%@include file="../index/footer.jsp" %>
 </body>
 </html>
 <script>
