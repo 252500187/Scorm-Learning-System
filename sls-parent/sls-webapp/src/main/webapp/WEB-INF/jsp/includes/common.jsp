@@ -42,7 +42,6 @@
 </script>
 
 
-<script src="<c:url value="/assets/plugins/jquery-1.10.2.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/jquery-migrate-1.2.1.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/bootstrap/js/bootstrap.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"/>" type="text/javascript"></script>
@@ -58,6 +57,35 @@
 <script src="<c:url value="/assets/scripts/core/app.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/scripts/custom/login-soft.js"/>" type="text/javascript"></script>
 
+
+<script src="<c:url value="/assets/plugins/respond.min.js"/>"></script>
+<script src="<c:url value="/assets/plugins/excanvas.min.js"/>"></script>
+<script src="<c:url value="/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js"/>" type="text/javascript"></script>
+
+<script src="<c:url value="/assets/plugins/jqvmap/jqvmap/jquery.vmap.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/flot/jquery.flot.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/flot/jquery.flot.resize.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/flot/jquery.flot.categories.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jquery.pulsate.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap-daterangepicker/moment.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/gritter/js/jquery.gritter.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/fullcalendar/fullcalendar/fullcalendar.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jquery.sparkline.min.js"/>" type="text/javascript"></script>
+
+<script src="<c:url value="/assets/scripts/custom/index.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/scripts/custom/tasks.js"/>" type="text/javascript"></script>
+
+
+
+
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet" type="text/css"/>
@@ -72,4 +100,14 @@
 <link href="<c:url value="/assets/css/plugins.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/css/themes/default.css"/>" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="<c:url value="/assets/css/pages/login-soft.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/css/pages/tasks.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/css/print.css"/>" rel="stylesheet" type="text/css" media="print"/>
 <link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>
+
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+<link href="<c:url value="/assets/plugins/gritter/css/jquery.gritter.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/plugins/jqvmap/jqvmap/jqvmap.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.css"/>" rel="stylesheet" type="text/css"/>
