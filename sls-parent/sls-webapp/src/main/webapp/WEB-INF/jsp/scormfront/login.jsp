@@ -172,7 +172,6 @@
         </div>
     </form>
 </div>
-<%@include file="index/footer.jsp" %>
 </body>
 </html>
 <script>
