@@ -41,7 +41,7 @@ public class LoginServiceImpl implements LoginService {
     public ModelAndView loginResult(HttpServletRequest request, User user, HttpSession session) {
         ModelAndView modelView = new ModelAndView();
         Subject currentUser = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPassword());
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getLoginName(), user.getPassword());
         token.setRememberMe(true);
         try {
             currentUser.login(token);

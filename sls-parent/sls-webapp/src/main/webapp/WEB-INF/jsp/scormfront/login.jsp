@@ -24,41 +24,33 @@
 <div class="content">
 
     <form class="login-form" action="loginResult" method="post" id="login">
-        <h3 class="form-title">Login to SLS</h3>
+        <h3 class="form-title">登陆到 SLS</h3>
 
-        <div class="alert alert-danger display-hide">
-            <button class="close" data-close="alert"></button>
-			<span>
-				 Enter any username and password.
-			</span>
-        </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Username</label>
+            <label class="control-label visible-ie8 visible-ie9">帐号</label>
 
             <div class="input-icon">
                 <i class="fa fa-user"></i>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="Username"
-                       id="userName" name="userName" value="admin"/>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="输入帐号"
+                       id="loginName" name="loginName" value="admin"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Password</label>
+            <label class="control-label visible-ie8 visible-ie9">密码</label>
 
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
-                <input class="form-control placeholder-no-fix" type="password" placeholder="Password"
+                <input class="form-control placeholder-no-fix" type="password" placeholder="输入密码"
                        id="password" name="password" value="admin"/>
             </div>
         </div>
         <div class="form-actions">
-            <label class="checkbox">
-                <input type="checkbox" name="remember" value="1"/> Remember me </label>
-            <button type="submit" class="btn blue pull-right" onclick="login()">
-                Login <i class="m-icon-swapright m-icon-white"></i>
+            <button type="submit" class="btn blue pull-right">
+                登陆 <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
         <div class="login-options">
-            <h4>Or Come to index</h4>
+            <h4>去首页看看</h4>
             <ul class="social-icons">
                 <li>
                     <a class="facebook" data-original-title="facebook" onclick="window.location.href='/sls/'">
@@ -67,142 +59,103 @@
             </ul>
         </div>
         <div class="forget-password">
-            <h4>Forgot your password ?</h4>
+            <h4>忘记密码?</h4>
 
             <p>
-                no worries, click
-                <a onclick="window.location.href='/sls/'" id="forget-password">
-                    here
-                    <%--todo 改密码--%>
+                <a href="javascript:;" id="forget-password">
+                    重置
                 </a>
-                to reset your password.
+                密码
             </p>
         </div>
         <div class="create-account">
             <p>
-                Don't have an account yet ?&nbsp;
+                没有帐号?&nbsp;
                 <a href="javascript:;" id="register-btn">
-                    Create an account
+                    注册帐号
                 </a>
             </p>
         </div>
     </form>
     <!-- END LOGIN FORM -->
     <!-- BEGIN FORGOT PASSWORD FORM -->
-    <form class="forget-form" action="index.html" method="post">
-        <h3>Forget Password ?</h3>
+    <form class="forget-form">
+        <h3>忘记密码 ?</h3>
 
         <p>
-            Enter your e-mail address below to reset your password.
+            输入您注册帐号时填写的邮箱，我们会向您发送一封重置密码的邮件哦！
         </p>
 
         <div class="form-group">
             <div class="input-icon">
                 <i class="fa fa-envelope"></i>
-                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email"
+                <input class="form-control placeholder-no-fix" type="text" placeholder="Email"
                        name="email"/>
             </div>
         </div>
         <div class="form-actions">
             <button type="button" id="back-btn" class="btn">
-                <i class="m-icon-swapleft"></i> Back
+                <i class="m-icon-swapleft"></i> 返回
             </button>
-            <button type="submit" class="btn blue pull-right">
-                Submit <i class="m-icon-swapright m-icon-white"></i>
+            <button class="btn blue pull-right">
+                <%--todo 重置密码--%>
+                发送 <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
     </form>
     <!-- END FORGOT PASSWORD FORM -->
     <!-- BEGIN REGISTRATION FORM -->
-    <form class="register-form" action="index.html" method="post">
-        <h3>Sign Up</h3>
+    <form class="register-form">
+        <h3>注册</h3>
 
         <p>
-            Enter your personal details below:
+            快来填注册信息吧:
         </p>
 
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Full Name</label>
+            <label class="control-label visible-ie8 visible-ie9">登陆帐号</label>
 
             <div class="input-icon">
                 <i class="fa fa-font"></i>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="fullname"/>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="输入登陆帐号"
+                       name="register_loginName"/>
             </div>
         </div>
+
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">登陆密码</label>
+
+            <div class="input-icon">
+                <i class="fa fa-lock"></i>
+                <input class="form-control placeholder-no-fix" type="password" id="register_password"
+                       name="register_password"
+                       placeholder="输入登陆密码" name="password"/>
+            </div>
+        </div>
+
         <div class="form-group">
             <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
             <label class="control-label visible-ie8 visible-ie9">Email</label>
 
             <div class="input-icon">
                 <i class="fa fa-envelope"></i>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email"/>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="输入Email（密码找回）" name="email"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Address</label>
-
-            <div class="input-icon">
-                <i class="fa fa-check"></i>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="Address" name="address"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">City/Town</label>
-
-            <div class="input-icon">
-                <i class="fa fa-location-arrow"></i>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="City/Town" name="city"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Country</label>
-            <select name="country" id="select2_sample4" class="select2 form-control">
-                <option value=""></option>
-                <option value="AF">Afghanistan</option>
-            </select>
-        </div>
-        <p>
-            Enter your account details below:
-        </p>
-
-        <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Username</label>
+            <label class="control-label visible-ie8 visible-ie9">昵称</label>
 
             <div class="input-icon">
                 <i class="fa fa-user"></i>
-                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username"
-                       name="username"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Password</label>
-
-            <div class="input-icon">
-                <i class="fa fa-lock"></i>
-                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password"
-                       placeholder="Password" name="password"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
-
-            <div class="controls">
-                <div class="input-icon">
-                    <i class="fa fa-check"></i>
-                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off"
-                           placeholder="Re-type Your Password" name="rpassword"/>
-                </div>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="输入昵称"
+                       name="name"/>
             </div>
         </div>
         <div class="form-group">
             <label>
-                <input type="checkbox" name="tnc"/> I agree to the
+                <input type="checkbox" name="tnc"/> 我同意加入
                 <a href="#">
-                    Terms of Service
-                </a>
-                and
-                <a href="#">
-                    Privacy Policy
+                    SLS大家庭
                 </a>
             </label>
 
@@ -211,10 +164,10 @@
         </div>
         <div class="form-actions">
             <button id="register-back-btn" type="button" class="btn">
-                <i class="m-icon-swapleft"></i> Back
+                <i class="m-icon-swapleft"></i> 返回
             </button>
-            <button type="submit" id="register-submit-btn" class="btn blue pull-right">
-                Sign Up <i class="m-icon-swapright m-icon-white"></i>
+            <button id="register-submit-btn" class="btn blue pull-right">
+                注册！ <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
     </form>
@@ -222,26 +175,22 @@
 </div>
 
 <div class="copyright">
-    2014 &copy; Metronic - Admin Dashboard Template.
+    2014 &copy; SLS - SCORM LEARNING OF SEEK .
 </div>
-
+</body>
+</html>
 <script>
     jQuery(document).ready(function () {
         App.init();
         Login.init();
     });
 
-    function login() {
-        $("#login").submit();
+    function registe() {
+        alert("有待完成");
     }
 
-    $(function () {
-        $("#password").unbind(".entertotab").bind("keydown.entertotab", function (e) {
-            if (e.which == 13) {
-                login()
-            }
-        });
-    })
+    function findPassword() {
+        alert("有待完成a ");
+    }
+
 </script>
-</body>
-</html>
