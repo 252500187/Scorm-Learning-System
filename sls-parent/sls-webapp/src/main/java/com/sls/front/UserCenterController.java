@@ -44,6 +44,6 @@ public class UserCenterController {
             XPathExpressionException {
         upScormService.upScorm(request, "upScorm", "upImg");
 //        return "scormfront/usercenter/upscorm/upResult";
-        return "scormfront/studyscorm/ooooostudyScorm";
+        return "scormfront/studyscorm/studyScorm";
     }
 }
