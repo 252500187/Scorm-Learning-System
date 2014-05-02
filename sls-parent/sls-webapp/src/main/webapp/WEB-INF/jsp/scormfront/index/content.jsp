@@ -35,7 +35,7 @@
                         <div class="ls-layer ls-layer1"
                              style="slidedirection: right; transition2d: 24,25,27,28; ">
                             <img src="<%=basePath%>ecommerce/assets/temp/sliders/slide1/bg.jpg" class="ls-bg"
-                                 alt="Slide background" style="height: 300px;width: 100%;">
+                                 alt="Slide background">
 
                             <div class="ls-s-1 title"
                                  style=" top: 96px; left: 35%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
@@ -52,7 +52,7 @@
                         <div class="ls-layer ls-layer1"
                              style="slidedirection: right; transition2d: 24,25,27,28; ">
                             <img src="<%=basePath%>ecommerce/assets/temp/sliders/slide2/bg.jpg" class="ls-bg"
-                                 alt="Slide background" style="height: 300px;width: 100%;">
+                                 alt="Slide background">
 
                             <div class="ls-s-1 title"
                                  style=" top: 96px; left: 35%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
@@ -69,7 +69,7 @@
                         <div class="ls-layer ls-layer1"
                              style="slidedirection: right; transition2d: 24,25,27,28; ">
                             <img src="<%=basePath%>ecommerce/assets/temp/sliders/slide3/bg.jpg" class="ls-bg"
-                                 alt="Slide background" style="height: 300px;width: 100%;">
+                                 alt="Slide background">
 
                             <div class="ls-s-1 title"
                                  style=" top: 96px; left: 35%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
