@@ -10,8 +10,6 @@
 <body>
 <div>
     <form id="fileGetUp" method="post" enctype="multipart/form-data" class="form-horizontal">
-        <fieldset>
-            <legend></legend>
             <div class="control-group">
                 <label class="control-label" for="upScorm"></label>
 
@@ -29,7 +27,6 @@
                     <input type="button" id="button" onclick="fileUpAttachment()" class="btn btn-primary" value="上传"/>
                 </div>
             </div>
-        </fieldset>
     </form>
 </div>
 </body>
