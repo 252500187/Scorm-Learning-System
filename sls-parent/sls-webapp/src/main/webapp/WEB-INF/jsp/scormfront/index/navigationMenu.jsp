@@ -12,7 +12,16 @@
     <title>首页</title>
     <%@include file="../../includes/common.jsp" %>
 <body>
-
+<!-- BEGIN HEADER -->
+<div class="header navbar navbar-inverse navbar-fixed-top" style="height: 60px">
+    <!-- BEGIN TOP NAVIGATION BAR -->
+    <div class="header-inner">
+        <!-- BEGIN LOGO -->
+        <a class="navbar-brand" href="">
+            <img src="<%=basePath%>assets/img/logo-big.png" alt="logo" class="img-responsive"/>
+        </a>
+        <!-- END LOGO -->
+    </div>
 <c:if test="${userId!=null&&userId!=''}">
     <!-- BEGIN TOP NAVIGATION MENU -->
     <ul class="nav navbar-nav pull-right">
@@ -59,9 +68,7 @@
     </ul>
     <!-- END TOP NAVIGATION MENU -->
 </c:if>
-
-
-
+</div>
 
 </body>
 </html>

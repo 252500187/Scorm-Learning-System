@@ -13,29 +13,16 @@
     %>
 </head>
 <body>
-<c:if test="${userId!=null&&userId!=''}">
-你的userId为：${userId}。
-<input type="button" onclick="location.href='logout'" value="退出"/>
-<input type="button" onclick="window.location.href='user/center/upScormDo'" value="上传课件"/>
-<input type="button" onclick="window.location.href='user/center/userCenterDo'" value="个人中心"/>
-</c:if>
-
-<!-- BEGIN HEADER -->
-<div class="header navbar navbar-inverse navbar-fixed-top" style="height: 60px">
-    <!-- BEGIN TOP NAVIGATION BAR -->
-    <div class="header-inner">
-        <!-- BEGIN LOGO -->
-        <a class="navbar-brand" href="">
-            <img src="<%=basePath%>assets/img/logo-big.png" alt="logo" class="img-responsive"/>
-        </a>
-        <!-- END LOGO -->
-    </div>
-
-    <%--begin navigation--%>
+<%--<c:if test="${userId!=null&&userId!=''}">--%>
+<%--你的userId为：${userId}。--%>
+<%--<input type="button" onclick="location.href='logout'" value="退出"/>--%>
+<%--<input type="button" onclick="window.location.href='user/center/upScormDo'" value="上传课件"/>--%>
+<%--<input type="button" onclick="window.location.href='user/center/userCenterDo'" value="个人中心"/>--%>
+<%--</c:if>--%>
+ <%--begin navigation--%>
     <%@include file="index/navigationMenu.jsp" %>
     <%--end navigation--%>
     <!--end top navigation bar-->
-</div>
 <!--end header-->
 
 <!--begin content-->
