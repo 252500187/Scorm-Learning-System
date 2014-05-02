@@ -101,6 +101,7 @@
 <link href="<c:url value="/assets/css/themes/default.css"/>" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="<c:url value="/assets/css/pages/login-soft.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>
+<%--个人中心所引入的样式--%>
 
 <script src="<c:url value="/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/flot/jquery.flot.js"/>" type="text/javascript"></script>
@@ -113,12 +114,33 @@
 <link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>
 
 <link href="<c:url value="/assets/plugins/gritter/css/jquery.gritter.css"/>" rel="stylesheet" type="text/css"/>
-<link href="<c:url value="/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>" rel="stylesheet" type="text/css"/>
-<link href="<c:url value="/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>" rel="stylesheet"
+      type="text/css"/>
+<link href="<c:url value="/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css"/>" rel="stylesheet"
+      type="text/css"/>
 <link href="<c:url value="/assets/plugins/jqvmap/jqvmap/jqvmap.css"/>" rel="stylesheet" type="text/css"/>
-<link href="<c:url value="/assets/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.css"/>" rel="stylesheet"
+      type="text/css"/>
 <link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>
 
 <link href="<c:url value="/assets/plugins/bootstrap-datepicker/css/datepicker.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/jquery-file-upload/server/gae-go/static/favicon.ico"/>" rel="shortcut icon"/>
 
+
+<link href="<c:url value="/ecommerce/assets/plugins/fancybox/source/jquery.fancybox.css"/>" rel="shortcut icon"/>
+<link href="<c:url value="/ecommerce/assets/plugins/bxslider/jquery.bxslider.css"/>" rel="shortcut icon"/>
+<link href="<c:url value="/ecommerce/assets/plugins/layerslider/css/layerslider.css"/>" rel="shortcut icon"/>
+
+<script src="<c:url value="/ecommerce/assets/plugins/jquery-1.10.2.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/ecommerce/assets/plugins/jquery-migrate-1.2.1.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/ecommerce/assets/plugins/bootstrap/js/bootstrap.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/ecommerce/assets/plugins/back-to-top.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/ecommerce/assets/plugins/fancybox/source/jquery.fancybox.pack.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/ecommerce/assets/plugins/bxslider/jquery.bxslider.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/ecommerce/assets/plugins/zoom/jquery.zoom.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/ecommerce/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/ecommerce/assets/plugins/layerslider/jQuery/jquery-easing-1.3.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/ecommerce/assets/plugins/layerslider/jQuery/jquery-transit-modified.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/ecommerce/assets/plugins/layerslider/js/layerslider.transitions.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/ecommerce/assets/plugins/layerslider/js/layerslider.kreaturamedia.jquery.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/ecommerce/assets/scripts/app.js"/>" type="text/javascript"></script>

@@ -13,12 +13,12 @@
     %>
 </head>
 <body>
-<%--<c:if test="${userId!=null&&userId!=''}">--%>
-<%--你的userId为：${userId}。--%>
-<%--<input type="button" onclick="location.href='logout'" value="退出"/>--%>
-<%--<input type="button" onclick="window.location.href='user/center/upScormDo'" value="上传课件"/>--%>
-<%--<input type="button" onclick="window.location.href='user/center/userCenterDo'" value="个人中心"/>--%>
-<%--</c:if>--%>
+<c:if test="${userId!=null&&userId!=''}">
+你的userId为：${userId}。
+<input type="button" onclick="location.href='logout'" value="退出"/>
+<input type="button" onclick="window.location.href='user/center/upScormDo'" value="上传课件"/>
+<input type="button" onclick="window.location.href='user/center/userCenterDo'" value="个人中心"/>
+</c:if>
 
 <!-- BEGIN HEADER -->
 <div class="header navbar navbar-inverse navbar-fixed-top" style="height: 60px">
@@ -50,6 +50,11 @@
 <!--begin content-->
 <%@include file="index/content.jsp" %>
 <!--end content-->
+
+<!--begin footer-->
+<%@include file="index/footer.jsp" %>
+<!--end footer-->
+
 </body>
 </html>
 <script>

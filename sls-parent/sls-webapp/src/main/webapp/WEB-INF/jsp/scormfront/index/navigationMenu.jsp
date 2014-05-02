@@ -25,10 +25,6 @@
         <ul class="dropdown-menu">
             <li><a href=""><i class="icon-user"></i> 个人中心</a>
             </li>
-            <li><a href=""><i class="icon-calendar"></i> 修改资料</a>
-            </li>
-            <li><a href=""><i class="icon-envelope"></i> 上传课件</a>
-            </li>
             <li class="divider"></li>
             <li><a href="logout"><i class="icon-key"></i> 退出</a>
             </li>
