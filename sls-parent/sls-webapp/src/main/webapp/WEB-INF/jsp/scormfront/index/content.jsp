@@ -227,6 +227,93 @@
             <div class=""></div>
         </div>
     </div>
+    <div class="col-md-9 col-sm-8">
+        <h2>文史</h2>
+
+        <div class="bxslider-wrapper">
+            <div class="bx-wrapper" style="max-width: 1200px;">
+                <div class="col-md-3" style="margin-left: 100px">
+                    <div class="booking-result">
+                        <div class="booking-img">
+                            <div style="position:relative;z-index:2;">
+                                <img src="<%=basePath%>assets/img/gallery/image4.jpg" alt="" class="img-responsive">
+
+                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark2.png');position:absolute; left:-70px; top:20px;width: 70px;z-index:-1">
+                                    我是分数
+                                </div>
+                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark2.png');position:absolute; left:-70px; top:80px;width: 70px;z-index:-1">
+                                    我是标签
+                                </div>
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="#">书名</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" style="color:darkgray">
+                                            read more...
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3" style="margin-left: 100px">
+                    <div class="booking-result">
+                        <div class="booking-img">
+                            <div style="position:relative;z-index:2;">
+                                <img src="<%=basePath%>assets/img/gallery/image4.jpg" alt="">
+
+                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark2.png');position:absolute; left:-70px; top:20px;width: 80px;z-index:-1">
+                                    我是分数
+                                </div>
+                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark2.png');position:absolute; left:-70px; top:80px;width: 80px;z-index:-1">
+                                    我是标签
+                                </div>
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="#">书名</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" style="color:darkgray">
+                                            read more...
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3" style="margin-left: 100px">
+                    <div class="booking-result">
+                        <div class="booking-img">
+                            <div style="position:relative;z-index:2;">
+                                <img src="<%=basePath%>assets/img/gallery/image4.jpg" alt="">
+
+                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark2.png');position:absolute; left:-70px; top:20px;width: 80px;z-index:-1">
+                                    我是分数
+                                </div>
+                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark2.png');position:absolute; left:-70px; top:80px;width: 80px;z-index:-1">
+                                    我是标签
+                                </div>
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="#">书名</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" style="color:darkgray">
+                                            read more...
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=""></div>
+        </div>
+    </div>
 </div>
 <!-- END PAGE CONTENT-->
 </div>

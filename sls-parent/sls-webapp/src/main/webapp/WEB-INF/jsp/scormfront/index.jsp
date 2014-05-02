@@ -29,20 +29,11 @@
             <img src="<%=basePath%>assets/img/logo-big.png" alt="logo" class="img-responsive"/>
         </a>
         <!-- END LOGO -->
-
-        <c:if test="${userId!=null&&userId!=''}">
-            <%--begin navigation--%>
-            <%@include file="index/navigationMenu.jsp" %>
-            <%--end navigation--%>
-        </c:if>
-
-        <c:if test="${userId==null||userId==''}">
-            <%--begin visitorNavigation--%>
-            <%@include file="index/visitorNavigationMenu.jsp" %>
-            <%--end visitorNavigation--%>
-            <%--<input type="button" onclick="window.location.href='login'" value="登录页"/>--%>
-        </c:if>
     </div>
+
+    <%--begin navigation--%>
+    <%@include file="index/navigationMenu.jsp" %>
+    <%--end navigation--%>
     <!--end top navigation bar-->
 </div>
 <!--end header-->

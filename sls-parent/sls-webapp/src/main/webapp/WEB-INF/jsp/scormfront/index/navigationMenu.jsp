@@ -12,26 +12,56 @@
     <title>首页</title>
     <%@include file="../../includes/common.jsp" %>
 <body>
-<!-- BEGIN TOP NAVIGATION MENU -->
-<ul class="nav navbar-nav pull-right">
-    <!-- BEGIN USER LOGIN DROPDOWN -->
-    <li class="dropdown user" style="margin-top: 10px">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-           data-close-others="true">
-            <img alt="" src="<%=basePath%>assets/img/avatar1_small.jpg"/>
-            <span class="username">注册用户</span>
-            <i class="icon-angle-down"></i>
-        </a>
-        <ul class="dropdown-menu">
-            <li><a href=""><i class="icon-user"></i> 个人中心</a>
-            </li>
-            <li class="divider"></li>
-            <li><a href="logout"><i class="icon-key"></i> 退出</a>
-            </li>
-        </ul>
-    </li>
-    <!-- END USER LOGIN DROPDOWN -->
-</ul>
-<!-- END TOP NAVIGATION MENU -->
+
+<c:if test="${userId!=null&&userId!=''}">
+    <!-- BEGIN TOP NAVIGATION MENU -->
+    <ul class="nav navbar-nav pull-right">
+        <!-- BEGIN USER LOGIN DROPDOWN -->
+        <li class="dropdown user" style="margin-top: 10px">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+               data-close-others="true">
+                <img alt="" src="<%=basePath%>assets/img/avatar1_small.jpg"/>
+                <span class="username">注册用户</span>
+                <i class="icon-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href=""><i class="icon-user"></i> 个人中心</a>
+                </li>
+                <li class="divider"></li>
+                <li><a href="logout"><i class="icon-key"></i> 退出</a>
+                </li>
+            </ul>
+        </li>
+        <!-- END USER LOGIN DROPDOWN -->
+    </ul>
+    <!-- END TOP NAVIGATION MENU -->
+</c:if>
+
+<c:if test="${userId==null||userId==''}">
+    <!-- BEGIN TOP NAVIGATION MENU -->
+    <ul class="nav navbar-nav pull-right">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+               data-close-others="true">
+                <span class="username"><a href="login">注册</a></span>
+                <i class="icon-angle-down"></i>
+            </a>
+        </li>
+        <!-- BEGIN USER LOGIN DROPDOWN -->
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+               data-close-others="true">
+                <span class="username"><a href="login">登录</a></span>
+                <i class="icon-angle-down"></i>
+            </a>
+        </li>
+        <!-- END USER LOGIN DROPDOWN -->
+    </ul>
+    <!-- END TOP NAVIGATION MENU -->
+</c:if>
+
+
+
+
 </body>
 </html>
