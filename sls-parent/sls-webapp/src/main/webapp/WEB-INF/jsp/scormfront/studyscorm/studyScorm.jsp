@@ -28,7 +28,13 @@
                     <span class="title">
                         软件工程
                     </span>
-                    <span class="arrow">
+                </a>
+            </li>
+            <li>
+                <a onclick="">
+                    <i class="fa fa-gift"></i>
+                    <span class="title">
+                        Protect you eyes
                     </span>
                 </a>
             </li>
@@ -122,18 +128,6 @@
                         </div>
                     </div>
                 </ul>
-            </li>
-
-
-            <li>
-                <a onclick="">
-                    <i class="fa fa-gift"></i>
-						<span class="title">
-							Protect you eyes
-						</span>
-						<span class="arrow ">
-						</span>
-                </a>
             </li>
         </ul>
     </div>
