@@ -38,7 +38,7 @@
             <div class="input-icon">
                 <i class="fa fa-user"></i>
                 <input class="form-control placeholder-no-fix" type="text" placeholder="Username"
-                       id="userName" name="userName"/>
+                       id="userName" name="userName" value="admin"/>
             </div>
         </div>
         <div class="form-group">
@@ -47,7 +47,7 @@
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
                 <input class="form-control placeholder-no-fix" type="password" placeholder="Password"
-                       id="password" name="password"/>
+                       id="password" name="password" value="admin"/>
             </div>
         </div>
         <div class="form-actions">
@@ -234,6 +234,14 @@
     function login() {
         $("#login").submit();
     }
+
+    $(function () {
+        $("#password").unbind(".entertotab").bind("keydown.entertotab", function (e) {
+            if (e.which == 13) {
+                login()
+            }
+        });
+    })
 </script>
 </body>
 </html>
