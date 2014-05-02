@@ -9,7 +9,6 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/js/common/bootstrap-2.3.2/css/bootstrap.min.css"/>"/>
 <link rel="stylesheet" type="text/css"
       href="<c:url value="/js/common/bootstrap-2.3.2/css/bootstrap-datetimepicker.min.css"/>"/>
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/common/global.css"/>"/>
 <link rel="stylesheet" type="text/css"
       href="<c:url value="/js/common/jquery-easyui-1.3.4/themes/bootstrap/easyui.css"/>"/>
 <link rel="stylesheet" type="text/css" href="<c:url value="/js/common/jquery-easyui-1.3.4/themes/icon.css"/>"/>
@@ -42,7 +41,6 @@
 </script>
 
 
-<script src="<c:url value="/assets/plugins/jquery-1.10.2.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/jquery-migrate-1.2.1.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/bootstrap/js/bootstrap.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"/>" type="text/javascript"></script>
@@ -104,11 +102,13 @@
 <link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>
 <%--个人中心所引入的样式--%>
 
-<script src="/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
-<script src="/assets/plugins/flot/jquery.flot.js" type="text/javascript"></script>
-<script src="/assets/plugins/flot/jquery.flot.resize.js" type="text/javascript"></script>
-<script src="/assets/plugins/flot/jquery.flot.categories.js" type="text/javascript"></script>
-<script src="/assets/scripts/custom/ecommerce-index.js"></script><link href="<c:url value="/assets/css/pages/tasks.css"/>" rel="stylesheet" type="text/css"/>
+<script src="<c:url value="/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/flot/jquery.flot.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/flot/jquery.flot.resize.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/flot/jquery.flot.categories.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/scripts/custom/ecommerce-index.js"/>"></script>
+
+<link href="<c:url value="/assets/css/pages/tasks.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/css/print.css"/>" rel="stylesheet" type="text/css" media="print"/>
 <link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>
 
