@@ -51,7 +51,7 @@
 
 <script src="<c:url value="/assets/plugins/jquery-validation/dist/jquery.validate.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/backstretch/jquery.backstretch.min.js"/>" type="text/javascript"></script>
-<script type="text/javascript" src="<c:url value="/assets/plugins/select2/select2.min.js"/>"></script>
+<script src="<c:url value="/assets/plugins/select2/select2.min.js"/>" type="text/javascript"></script>
 
 <script src="<c:url value="/assets/scripts/core/app.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/scripts/custom/login-soft.js"/>" type="text/javascript"></script>
@@ -82,9 +82,10 @@
 <script src="<c:url value="/assets/scripts/custom/index.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/scripts/custom/tasks.js"/>" type="text/javascript"></script>
 
+<script src="<c:url value="/assets/plugins/dropzone/dropzone.js"/>"></script>
+<script src="<c:url value="/assets/scripts/custom/form-dropzone.js"/>"></script>
 
-
-
+<link href="<c:url value="/assets/plugins/dropzone/css/dropzone.css"/>" rel="stylesheet"/>
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet" type="text/css"/>
@@ -100,7 +101,6 @@
 <link href="<c:url value="/assets/css/themes/default.css"/>" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="<c:url value="/assets/css/pages/login-soft.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>
-<%--个人中心所引入的样式--%>
 
 <script src="<c:url value="/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/flot/jquery.flot.js"/>" type="text/javascript"></script>
@@ -112,8 +112,6 @@
 <link href="<c:url value="/assets/css/print.css"/>" rel="stylesheet" type="text/css" media="print"/>
 <link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>
 
-<!-- END GLOBAL MANDATORY STYLES -->
-<!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
 <link href="<c:url value="/assets/plugins/gritter/css/jquery.gritter.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css"/>" rel="stylesheet" type="text/css"/>
@@ -121,7 +119,6 @@
 <link href="<c:url value="/assets/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>
 
-<%--begin index content--%>
 <link href="<c:url value="/assets/plugins/bootstrap-datepicker/css/datepicker.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/jquery-file-upload/server/gae-go/static/favicon.ico"/>" rel="shortcut icon"/>
-<%--end index content--%>
+
