@@ -42,6 +42,7 @@
 </script>
 
 
+<script src="<c:url value="/assets/plugins/jquery-1.10.2.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/jquery-migrate-1.2.1.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/bootstrap/js/bootstrap.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"/>" type="text/javascript"></script>
@@ -103,11 +104,11 @@
 <link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>
 <%--个人中心所引入的样式--%>
 
-<script src="assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
-<script src="assets/plugins/flot/jquery.flot.js" type="text/javascript"></script>
-<script src="assets/plugins/flot/jquery.flot.resize.js" type="text/javascript"></script>
-<script src="assets/plugins/flot/jquery.flot.categories.js" type="text/javascript"></script>
-<script src="assets/scripts/custom/ecommerce-index.js"></script><link href="<c:url value="/assets/css/pages/tasks.css"/>" rel="stylesheet" type="text/css"/>
+<script src="/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/flot/jquery.flot.js" type="text/javascript"></script>
+<script src="/assets/plugins/flot/jquery.flot.resize.js" type="text/javascript"></script>
+<script src="/assets/plugins/flot/jquery.flot.categories.js" type="text/javascript"></script>
+<script src="/assets/scripts/custom/ecommerce-index.js"></script><link href="<c:url value="/assets/css/pages/tasks.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/css/print.css"/>" rel="stylesheet" type="text/css" media="print"/>
 <link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>
 
@@ -118,3 +119,9 @@
 <link href="<c:url value="/assets/plugins/fullcalendar/fullcalendar/fullcalendar.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/jqvmap/jqvmap/jqvmap.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>
+
+<%--begin index content--%>
+<link href="<c:url value="/assets/plugins/bootstrap-datepicker/css/datepicker.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/assets/plugins/jquery-file-upload/server/gae-go/static/favicon.ico"/>" rel="shortcut icon"/>
+<%--end index content--%>
