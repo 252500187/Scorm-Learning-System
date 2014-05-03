@@ -9,7 +9,7 @@
     <%@include file="../../includes/common.jsp" %>
 </head>
 <body class="page-header-fixed">
-<%--头部--%>
+
 <%@include file="../index/navigationMenu.jsp" %>
 
 </div>
@@ -30,8 +30,9 @@
 </li>
 <!-- 用户信息 -->
 <li class="sidebar-search-wrapper">
-    <div class="info-container" style="border: 1px">
+    <div class="info-container" style="border: 4px">
         用户资料
+
 
     </div>
 </li>
@@ -119,16 +120,7 @@
 </div>
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
-<div class="footer">
-    <div class="footer-inner">
-        2014 &copy; Sls By Seek.
-    </div>
-    <div class="footer-tools">
-		<span class="go-top">
-			<i class="fa fa-angle-up"></i>
-		</span>
-    </div>
-</div>
+<%@include file="../index/footer.jsp" %>
 </body>
 </html>
 <script>
