@@ -12,8 +12,6 @@
     <%@include file="../../../includes/common.jsp" %>
 </head>
 <body class="page-header-fixed">
-
-<div class="page-container">
     <div class="page-content-wrapper">
         <div class="page-content">
             <div class="row">
@@ -107,7 +105,6 @@
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>
 <script>
