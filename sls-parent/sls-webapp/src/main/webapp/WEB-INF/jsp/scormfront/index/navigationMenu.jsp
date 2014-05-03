@@ -7,7 +7,7 @@
     <div class="header navbar navbar-inverse navbar-fixed-top">
         <div class="header-inner">
             <a class="navbar-brand" href="">
-                <img src="assets/img/logo-big.png" alt="logo" class="img-responsive"/>
+                <img src="img/logo/logo-small.png" alt="SLS" class="img-responsive"/>
             </a>
         </div>
         <ul class="nav navbar-nav pull-right">
