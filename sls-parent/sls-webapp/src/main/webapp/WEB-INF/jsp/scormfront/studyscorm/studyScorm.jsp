@@ -2,14 +2,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <title>SLS | Study Scorm</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="" name="description"/>
     <meta content="" name="author"/>
     <%@include file="../../includes/common.jsp" %>
     <script src="<c:url value="/js/ScormAPI.js"/>" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css"
+          href="<c:url value="/js/common/zTree-v3.5.14/css/zTreeStyle/zTreeStyle.css"/>"/>
+    <script src="<c:url value="/js/common/zTree-v3.5.14/js/jquery.ztree.all-3.5.min.js"/>"
+            type="text/javascript"></script>
 </head>
 
 <body class="page-header-fixed page-sidebar-reversed">
@@ -17,7 +19,6 @@
 <div class="page-container">
 <div class="page-sidebar-wrapper">
     <div class="page-sidebar navbar-collapse collapse">
-
         <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
             <li class="sidebar-toggler-wrapper">
                 <div class="sidebar-toggler hidden-phone">
@@ -247,20 +248,12 @@
 </body>
 </html>
 <script>
-    jQuery(document).ready(function () {
-        App.init(); // initlayout and core plugins
-        Index.init();
-        Index.initJQVMAP(); // init index page's custom scripts
-        Index.initCalendar(); // init index page's custom scripts
-        Index.initCharts(); // init index page's custom scripts
-        Index.initChat();
-        Index.initMiniCharts();
-        Index.initDashboardDaterange();
-        Index.initIntro();
-        Tasks.initDashboardWidget();
-    });
-
     $(function () {
+        App.init();
+        $("li").click(function(){
+            $("li").removeAttr("class");
+            $(this).attr("class","active");
+        });
         var i = Math.floor(Math.random() * 10);
         $("#scormIframe").attr("src", basePath + "img/studyscormdefaultimg/" + i + ".jpg");
         $("#scormLogo").attr("src", basePath + "${jpg}");
