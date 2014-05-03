@@ -16,52 +16,74 @@
 <div class="page-content-wrapper">
 <div class="sidebar col-md-3 col-sm-4" style="max-width: 13%;margin-top: 50px;">
     <h2>HOT TOP</h2>
-    <ul class="list-group margin-bottom-25 sidebar-menu">
-        <li class="list-group-item clearfix">
-            <a href="product-list.html">
-                <i class="fa fa-angle-right"></i>
-                Top One
-            </a>
-        </li>
-        <li class="list-group-item clearfix">
-            <a href="product-list.html">
-                <i class="fa fa-angle-right"></i>
-                Top Two
-            </a>
-        </li>
-        <li class="list-group-item clearfix">
-            <a href="product-list.html">
-                <i class="fa fa-angle-right"></i>
-                Top Three
-            </a>
-        </li>
-        <li class="list-group-item clearfix">
-            <a href="product-list.html">
-                <i class="fa fa-angle-right"></i>
-                Top Four
-            </a>
-        </li>
-        <li class="list-group-item clearfix">
-            <a href="product-list.html">
-                <i class="fa fa-angle-right"></i>
-                Top Five
-            </a>
-        </li>
-        <li class="list-group-item clearfix">
-            <a href="product-list.html">
-                <i class="fa fa-angle-right"></i>
-                Top Six
-            </a>
-        </li>
-        <li class="list-group-item clearfix">
-            <a href="product-list.html">
-                <i class="fa fa-angle-right"></i>
-                Top Seven
-            </a>
-        </li>
-    </ul>
+
+    <div class="top-news">
+        <a class="btn red" href="#">
+            <span> TOP ONE</span>
+            <em>书名</em>
+            <em>
+                <i class="fa fa-tags"></i>
+                还有 100,000人在看
+            </em>
+            <i class="fa fa-briefcase top-news-icon"></i>
+        </a>
+        <a class="btn green" href="#">
+            <span> TOP TWO</span>
+            <em>书名</em>
+            <em>
+                <i class="fa fa-tags"></i>
+                还有 100,000人在看
+            </em>
+            <i class="fa fa-briefcase top-news-icon"></i>
+        </a>
+        <a class="btn blue" href="#">
+            <span> TOP THREE</span>
+            <em>书名</em>
+            <em>
+                <i class="fa fa-tags"></i>
+                还有 100,000人在看
+            </em>
+            <i class="fa fa-briefcase top-news-icon"></i>
+        </a>
+        <a class="btn yellow" href="#">
+            <span> TOP FOUR</span>
+            <em>书名</em>
+            <em>
+                <i class="fa fa-tags"></i>
+                还有 100,000人在看
+            </em>
+            <i class="fa fa-briefcase top-news-icon"></i>
+        </a>
+        <a class="btn purple" href="#">
+            <span> TOP FIVE</span>
+            <em>书名</em>
+            <em>
+                <i class="fa fa-tags"></i>
+                还有 100,000人在看
+            </em>
+            <i class="fa fa-briefcase top-news-icon"></i>
+        </a>
+        <a class="btn red" href="#">
+            <span> TOP ONE</span>
+            <em>书名</em>
+            <em>
+                <i class="fa fa-tags"></i>
+                还有 100,000人在看
+            </em>
+            <i class="fa fa-briefcase top-news-icon"></i>
+        </a>
+        <a class="btn green" href="#">
+            <span> TOP TWO</span>
+            <em>书名</em>
+            <em>
+                <i class="fa fa-tags"></i>
+                还有 100,000人在看
+            </em>
+            <i class="fa fa-briefcase top-news-icon"></i>
+        </a>
+    </div>
 </div>
-<div class="page-content">
+<div class="page-content" style="width: 87%;">
 <!-- BEGIN TWO PRODUCTS & PROMO -->
 <div class="row margin-bottom-35" style="margin-top: 50px;">
     <!-- BEGIN PROMO -->
@@ -79,7 +101,7 @@
                         <div class="ls-layer ls-layer1"
                              style="slidedirection: right; transition2d: 24,25,27,28; ">
                             <img src="<%=basePath%>ecommerce/assets/temp/sliders/slide1/bg.jpg" class="ls-bg"
-                                 alt="Slide background" style="margin-left: 6%; width: 88%">
+                                 alt="Slide background" style="margin-left: 4%; width: 92%">
 
                             <div class="ls-s-1 title"
                                  style=" top: 96px; left: 35%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
@@ -96,7 +118,7 @@
                         <div class="ls-layer ls-layer1"
                              style="slidedirection: right; transition2d: 24,25,27,28; ">
                             <img src="<%=basePath%>ecommerce/assets/temp/sliders/slide2/bg.jpg" class="ls-bg"
-                                 alt="Slide background" style="margin-left: 6%; width: 88%">
+                                 alt="Slide background" style="margin-left: 4%; width: 92%">
 
                             <div class="ls-s-1 title"
                                  style=" top: 96px; left: 35%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
@@ -113,7 +135,7 @@
                         <div class="ls-layer ls-layer1"
                              style="slidedirection: right; transition2d: 24,25,27,28; ">
                             <img src="<%=basePath%>ecommerce/assets/temp/sliders/slide3/bg.jpg" class="ls-bg"
-                                 alt="Slide background" style="margin-left: 6%; width: 88%">
+                                 alt="Slide background" style="margin-left: 4%; width: 92%">
 
                             <div class="ls-s-1 title"
                                  style=" top: 96px; left: 35%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
