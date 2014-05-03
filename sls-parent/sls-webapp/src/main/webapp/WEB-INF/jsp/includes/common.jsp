@@ -84,6 +84,22 @@
 
 <script src="<c:url value="/assets/plugins/dropzone/dropzone.js"/>"></script>
 <script src="<c:url value="/assets/scripts/custom/form-dropzone.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/assets/plugins/fuelux/js/spinner.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/assets/plugins/bootstrap-fileinput/bootstrap-fileinput.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/assets/plugins/jquery.input-ip-address-control-1.0.min.js"/>"></script>
+<script src="<c:url value="/assets/plugins/jquery.pwstrength.bootstrap/src/pwstrength.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jquery-tags-input/jquery.tagsinput.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/typeahead/handlebars.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/typeahead/typeahead.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/scripts/custom/components-form-tools.js"/>"></script>
+
+
+
+
 
 <link href="<c:url value="/assets/plugins/dropzone/css/dropzone.css"/>" rel="stylesheet"/>
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
@@ -100,7 +116,6 @@
 <link href="<c:url value="/assets/css/plugins.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/css/themes/default.css"/>" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="<c:url value="/assets/css/pages/login-soft.css"/>" rel="stylesheet" type="text/css"/>
-<link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>
 <%--个人中心所引入的样式--%>
 
 <script src="<c:url value="/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js"/>" type="text/javascript"></script>
@@ -111,7 +126,6 @@
 
 <link href="<c:url value="/assets/css/pages/tasks.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/css/print.css"/>" rel="stylesheet" type="text/css" media="print"/>
-<link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>
 
 <link href="<c:url value="/assets/plugins/gritter/css/jquery.gritter.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>" rel="stylesheet"
@@ -125,3 +139,11 @@
 
 <link href="<c:url value="/assets/plugins/bootstrap-datepicker/css/datepicker.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/jquery-file-upload/server/gae-go/static/favicon.ico"/>" rel="shortcut icon"/>
+
+<!-- BEGIN PAGE LEVEL STYLES -->
+<link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/bootstrap-fileinput/bootstrap-fileinput.css"/>"/>
+<link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/bootstrap-switch/css/bootstrap-switch.min.css"/>"/>
+<link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/jquery-tags-input/jquery.tagsinput.css"/>"/>
+<link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css"/>">
+<link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/typeahead/typeahead.css"/>">
+
