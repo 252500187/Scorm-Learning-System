@@ -30,14 +30,14 @@
 </li>
 <!-- 用户信息 -->
 <li class="sidebar-search-wrapper">
-    <div class="info-container">
+    <div class="info-container" style="border: 1px">
         用户资料
 
     </div>
 </li>
 <!-- 第一个菜单  个人资料-->
 <li>
-    <a onclick="addTab('个人资料','user/center/personnelInfoDo')">
+    <a onclick="addTab('user/center/personnelInfoDo')">
         <i class="fa fa-user"></i>
 						<span class="title">
 							个人资料
@@ -46,7 +46,7 @@
 </li>
 <!-- 第二个菜单  上传课件 -->
 <li>
-    <a onclick="addTab('上传课件','user/center/upScormDo')">
+    <a onclick="addTab('user/center/upScormDo')">
         <i class="fa fa-upload"></i>
 						<span class="title">
 							上传课件
@@ -66,7 +66,7 @@
     <ul class="sub-menu">
         <li class="tooltips" data-container="body" data-placement="right" data-html="true"
             data-original-title="Complete E-Commerce Frontend Theme For Metronic Admin">
-            <a onclick="addTab('已注册课件','user/center/registeredScormDo')" target="_blank">
+            <a onclick="addTab('user/center/registeredScormDo')" target="_blank">
 								<span class="title">
                                    已注册课件
 								</span>
@@ -74,7 +74,7 @@
         </li>
         <li class="tooltips" data-container="body" data-placement="right" data-html="true"
             data-original-title="Complete Multipurpose Corporate Frontend Theme For Metronic Admin">
-            <a onclick="addTab('已完成课件','user/center/finishedScormDo')" target="_blank">
+            <a onclick="addTab('user/center/finishedScormDo')" target="_blank">
 								<span class="title">
 									已完成课件
 								</span>
@@ -84,7 +84,7 @@
 </li>
 <!-- 第四个菜单  我的收藏 -->
 <li class="start ">
-    <a onclick="addTab('我的收藏','user/center/collectionDo')">
+    <a onclick="addTab('user/center/collectionDo')">
         <i class="fa fa-star"></i>
 						<span class="title">
 							我的收藏
@@ -94,7 +94,7 @@
 <!-- 第五个菜单  我的笔记本 -->
 
 <li class="last ">
-    <a onclick="addTab('我的笔记本','user/center/noteDo')">
+    <a onclick="addTab('user/center/noteDo')">
         <i class="fa fa-book"></i>
 						<span class="title">
 							我的笔记本
@@ -108,12 +108,11 @@
 <!-- END SIDEBAR -->
 <!-- BEGIN CONTENT -->
 <div class="page-content-wrapper">
-<div class="page-content" id="content" style="margin-left: 225px">
-    <h1>我是默认的页面</h1>
-    <h1>我是默认的页面</h1>
-    <h1>我是默认的页面</h1>
-    <h1>我是默认的页面</h1>
-    <h1>我是默认的页面</h1>
+<div class="page-content" id="content" style="margin-left: 225px;padding:0 ">
+    <iframe id="ifra" style="width:100%; height:800px;border:0px" scroll="yes"
+            allowfullscreen>
+    </iframe>
+
 </div>
 </div>
 <!-- END CONTENT -->
@@ -135,22 +134,21 @@
 <script>
     jQuery(document).ready(function () {
         App.init();
-        EcommerceIndex.init();
+        Index.init();
+        Index.initJQVMAP(); // init index page's custom scripts
+        Index.initCalendar(); // init index page's custom scripts
+        Index.initCharts(); // init index page's custom scripts
+        Index.initChat();
+        Index.initMiniCharts();
+        Index.initDashboardDaterange();
+        Index.initIntro();
+        Tasks.initDashboardWidget();
     });
-    function initTab() {
-        $('#content').tabs({
-            fit: true,
-            border: true
-        });
+    function addTab(src) {
+        $("#ifra").attr("src", src);
+
     }
-    function addTab(title, src) {
-        var height = $('#content').height();
-        initTab();
-        var contents = '<iframe frameborder="0" id="ifrm" style="width:100%; height: ' + height + 'px" src="' + src + '"></iframe>';
-        document.getElementById("content").innerHTML = contents;
-        $('#myTab a').click(function (e) {
-            e.preventDefault();
-            $(this).tab('show');
-        })
-    }
+    $(function (){
+        addTab('user/center/registeredScormDo');
+    })
 </script>
