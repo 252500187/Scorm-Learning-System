@@ -14,23 +14,11 @@
 </head>
 
 <body>
-<%--<c:if test="${userId!=null&&userId!=''}">--%>
-<%--你的userId为：${userId}。--%>
-<%--<input type="button" onclick="location.href='logout'" value="退出"/>--%>
-<%--<input type="button" onclick="window.location.href='user/center/upScormDo'" value="上传课件"/>--%>
-<%--<input type="button" onclick="window.location.href='user/center/userCenterDo'" value="个人中心"/>--%>
-<%--</c:if>--%>
-<%--begin navigation--%>
 <%@include file="index/navigationMenu.jsp" %>
-<%--end navigation--%>
-<!--end top navigation bar-->
-<!--end header-->
-<!--begin content-->
+
 <%@include file="index/content.jsp" %>
-<!--end content-->
-<!--begin footer-->
+
 <%@include file="index/footer.jsp" %>
-<!--end footer-->
 </body>
 </html>
 <script>
