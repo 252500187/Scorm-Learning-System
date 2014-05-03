@@ -910,6 +910,12 @@ Sidebar Search
   padding-top: 7px;
 }
 
+.page-sidebar .info-container {
+    margin: 15px 20px 15px 20px;
+    height: 180px;
+    padding-top: 7px;
+}
+
 .page-sidebar .sidebar-search .form-container .submit {  
   display: block;
   float: right;

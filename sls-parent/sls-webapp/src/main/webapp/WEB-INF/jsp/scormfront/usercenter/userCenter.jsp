@@ -10,12 +10,7 @@
 </head>
 <body class="page-header-fixed">
 <%--头部--%>
-<div class="header navbar navbar-fixed-top" style="height:60px" >
-    <div class="header-inner">
-        <a class="navbar-brand" href="">
-            <img src="assets/img/logo-big.png" alt="logo" class="img-responsive"/>
-        </a>
-    </div>
+<%@include file="../index/navigationMenu.jsp" %>
 
 </div>
 
@@ -33,25 +28,17 @@
     </div>
 
 </li>
-<!-- 搜索框 -->
+<!-- 用户信息 -->
 <li class="sidebar-search-wrapper">
-    <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-    <form class="sidebar-search" action="extra_search.html" method="POST">
-        <div class="form-container">
-            <div class="input-box">
-                <a href="javascript:;" class="remove">
-                </a>
-                <input type="text" placeholder="Search CourseWare"/>
-                <input type="button" class="submit" value=" "/>
-            </div>
-        </div>
-    </form>
-    <!-- END RESPONSIVE QUICK SEARCH FORM -->
+    <div class="info-container">
+        用户资料
+
+    </div>
 </li>
 <!-- 第一个菜单  个人资料-->
 <li>
-    <a onclick="addTab('个人资料','user/scormfront/usercenter/personnelInfo')">
-        <i class="fa fa-home"></i>
+    <a onclick="addTab('个人资料','user/center/personnelInfoDo')">
+        <i class="fa fa-user"></i>
 						<span class="title">
 							个人资料
 						</span>
@@ -59,8 +46,8 @@
 </li>
 <!-- 第二个菜单  上传课件 -->
 <li>
-    <a href="">
-        <i class="fa fa-home"></i>
+    <a onclick="addTab('上传课件','user/center/upScormDo')">
+        <i class="fa fa-upload"></i>
 						<span class="title">
 							上传课件
 						</span>
@@ -69,7 +56,7 @@
 <!-- 第三个菜单  我的课件 -->
 <li>
     <a href="javascript:;">
-        <i class="fa fa-gift"></i>
+        <i class="fa fa-file"></i>
 						<span class="title">
 							我的课件
 						</span>
@@ -79,7 +66,7 @@
     <ul class="sub-menu">
         <li class="tooltips" data-container="body" data-placement="right" data-html="true"
             data-original-title="Complete E-Commerce Frontend Theme For Metronic Admin">
-            <a href="http://keenthemes.com/preview/index.php?theme=metronic_ecommerce" target="_blank">
+            <a onclick="addTab('已注册课件','user/center/registeredScormDo')" target="_blank">
 								<span class="title">
                                    已注册课件
 								</span>
@@ -87,7 +74,7 @@
         </li>
         <li class="tooltips" data-container="body" data-placement="right" data-html="true"
             data-original-title="Complete Multipurpose Corporate Frontend Theme For Metronic Admin">
-            <a href="http://keenthemes.com/preview/index.php?theme=metronic_frontend" target="_blank">
+            <a onclick="addTab('已完成课件','user/center/finishedScormDo')" target="_blank">
 								<span class="title">
 									已完成课件
 								</span>
@@ -97,8 +84,8 @@
 </li>
 <!-- 第四个菜单  我的收藏 -->
 <li class="start ">
-    <a href="">
-        <i class="fa fa-home"></i>
+    <a onclick="addTab('我的收藏','user/center/collectionDo')">
+        <i class="fa fa-star"></i>
 						<span class="title">
 							我的收藏
 						</span>
@@ -107,8 +94,8 @@
 <!-- 第五个菜单  我的笔记本 -->
 
 <li class="last ">
-    <a href="charts.html">
-        <i class="fa fa-bar-chart-o"></i>
+    <a onclick="addTab('我的笔记本','user/center/noteDo')">
+        <i class="fa fa-book"></i>
 						<span class="title">
 							我的笔记本
 						</span>
@@ -121,7 +108,7 @@
 <!-- END SIDEBAR -->
 <!-- BEGIN CONTENT -->
 <div class="page-content-wrapper">
-<div class="page-content" id="content">
+<div class="page-content" id="content" style="margin-left: 225px">
     <h1>我是默认的页面</h1>
     <h1>我是默认的页面</h1>
     <h1>我是默认的页面</h1>
@@ -157,8 +144,9 @@
         });
     }
     function addTab(title, src) {
+        var height = $('#content').height();
         initTab();
-        var contents = '<iframe frameborder="0" id="ifrm" style="width:100%; height:100%" src="' + src + '"></iframe>';
+        var contents = '<iframe frameborder="0" id="ifrm" style="width:100%; height: ' + height + 'px" src="' + src + '"></iframe>';
         document.getElementById("content").innerHTML = contents;
         $('#myTab a').click(function (e) {
             e.preventDefault();

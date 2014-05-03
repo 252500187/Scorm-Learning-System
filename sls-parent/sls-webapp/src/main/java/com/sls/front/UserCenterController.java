@@ -48,4 +48,42 @@ public class UserCenterController {
 //        return "scormfront/usercenter/upscorm/upResult";
         return "scormfront/studyscorm/studyScorm";
     }
+
+    //个人中心  个人资料的页面跳转
+    @RequestMapping(value = "personnelInfoDo", method = {RequestMethod.GET})
+    public String personnelInfo() {
+        return "scormfront/usercenter/personnelInfo";
+    }
+
+//    //个人中心  上传课件的页面跳转
+//    @RequestMapping(value = "upScormDo", method = {RequestMethod.GET})
+//    public String upScorm() {
+//        return "scormfront/usercenter/upscorm/upScorm";
+//    }
+
+    //个人中心  已注册课件的页面跳转
+    @RequestMapping(value = "registeredScormDo", method = {RequestMethod.GET})
+    public String registeredScorm() {
+        return "scormfront/usercenter/registeredScorm";
+    }
+
+    //个人中心  已完成课件的页面跳转
+    @RequestMapping(value = "finishedScormDo", method = {RequestMethod.GET})
+    public String finishedScorm() {
+        return "scormfront/usercenter/finishedScorm";
+    }
+
+    //个人中心  我的收藏的页面跳转
+    @RequestMapping(value = "collectionDo", method = {RequestMethod.GET})
+    public String collection() {
+        return "scormfront/usercenter/collection";
+    }
+
+    //个人中心  我的笔记本的页面跳转
+    @RequestMapping(value = "noteDo", method = {RequestMethod.GET})
+    public String note() {
+        return "scormfront/usercenter/note";
+    }
+
+
 }
