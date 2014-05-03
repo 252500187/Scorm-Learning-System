@@ -42,8 +42,6 @@ public class UserCenterController {
     @RequestMapping(value = "upScorm", method = {RequestMethod.POST})
     public String upScorm(HttpServletRequest request) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
-        String a=request.getParameter("upScorm");
-        String b=request.getParameter("upImg");
         upScormService.upScorm(request, "upScorm", "upImg");
 //        return "scormfront/usercenter/upscorm/upResult";
         return "scormfront/studyscorm/studyScorm";

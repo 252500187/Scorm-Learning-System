@@ -69,8 +69,25 @@
 
                     <div class="chat-form">
                         传张图片？
-                        <div class="input-cont">
-                            <input class="form-control" type="file" id="notefile"/>
+                        <div class="form-group">
+                            <div class="col-md-9">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+												<span class="btn default btn-file">
+													<span class="fileinput-new">
+														 选图
+													</span>
+													<span class="fileinput-exists">
+														 换一个
+													</span>
+													<input type="file" name="..." id="noteImg">
+												</span>
+												<span class="fileinput-filename">
+												</span>
+                                    <a href="#" class="close fileinput-exists" data-dismiss="fileinput"
+                                       style="float: none">
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div class="btn-cont">
 									<span class="arrow">

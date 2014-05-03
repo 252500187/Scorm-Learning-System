@@ -25,7 +25,8 @@
                             </div>
                         </div>
                         <div class="portlet-body form">
-                            <form class="form-horizontal form-bordered" id="fileGetUp" method="post" enctype="multipart/form-data">
+                            <form class="form-horizontal form-bordered" id="fileGetUp" method="post"
+                                  enctype="multipart/form-data">
                                 <div class="form-body">
                                     <div class="form-group">
                                         <label class="control-label col-md-3">选择SCORM课件（仅支持1.2版本）</label>
@@ -104,12 +105,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-
 </div>
-
 </body>
 </html>
 <script>

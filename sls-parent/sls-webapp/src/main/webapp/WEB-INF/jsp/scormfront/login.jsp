@@ -17,7 +17,7 @@
 <body class="login">
 <div class="logo">
     <a onclick="window.location.href='/sls/'">
-        <img src="assets/img/logo-big.png" alt=""/>
+        <img src="img/logo/logo-big.png" alt="SLS"/>
     </a>
 </div>
 
