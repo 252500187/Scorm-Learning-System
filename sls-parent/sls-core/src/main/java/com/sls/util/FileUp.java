@@ -40,8 +40,8 @@ public class FileUp {
         }
     }
 
-    public InputStream getInputStream(MultipartHttpServletRequest request, String photoId) throws IOException {
-        MultipartFile file = request.getFile(photoId);
+    public InputStream getInputStream(MultipartHttpServletRequest request, String fileIn) throws IOException {
+        MultipartFile file = request.getFile(fileIn);
         return file.getInputStream();
     }
 
