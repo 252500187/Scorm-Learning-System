@@ -116,7 +116,6 @@
 <link href="<c:url value="/assets/css/plugins.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/css/themes/default.css"/>" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="<c:url value="/assets/css/pages/login-soft.css"/>" rel="stylesheet" type="text/css"/>
-<link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>
 <%--个人中心所引入的样式--%>
 
 <script src="<c:url value="/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js"/>" type="text/javascript"></script>
@@ -127,7 +126,6 @@
 
 <link href="<c:url value="/assets/css/pages/tasks.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/css/print.css"/>" rel="stylesheet" type="text/css" media="print"/>
-<link href="<c:url value="/assets/css/custom.css"/>" rel="stylesheet" type="text/css"/>
 
 <link href="<c:url value="/assets/plugins/gritter/css/jquery.gritter.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css"/>" rel="stylesheet"
@@ -141,3 +139,11 @@
 
 <link href="<c:url value="/assets/plugins/bootstrap-datepicker/css/datepicker.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/jquery-file-upload/server/gae-go/static/favicon.ico"/>" rel="shortcut icon"/>
+
+<!-- BEGIN PAGE LEVEL STYLES -->
+<link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/bootstrap-fileinput/bootstrap-fileinput.css"/>"/>
+<link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/bootstrap-switch/css/bootstrap-switch.min.css"/>"/>
+<link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/jquery-tags-input/jquery.tagsinput.css"/>"/>
+<link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css"/>">
+<link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/typeahead/typeahead.css"/>">
+
