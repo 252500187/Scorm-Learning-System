@@ -13,9 +13,7 @@
         <ul class="nav navbar-nav pull-right">
             <c:if test="${userId==null||userId==''}">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                       data-close-others="true">
-                        <span class="username"><a href="login">登陆</a></span>
+                    <a href="login">登陆</a>
                         <i class="icon-angle-down"></i>
                     </a>
                 </li>
