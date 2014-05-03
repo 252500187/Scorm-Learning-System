@@ -123,6 +123,7 @@
 <script src="<c:url value="/assets/plugins/flot/jquery.flot.resize.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/flot/jquery.flot.categories.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/scripts/custom/ecommerce-index.js"/>"></script>
+<script src="<c:url value="/assets/plugins/jquery-1.10.2.min.js"/>"></script>
 
 <link href="<c:url value="/assets/css/pages/tasks.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/css/print.css"/>" rel="stylesheet" type="text/css" media="print"/>
@@ -146,4 +147,5 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/jquery-tags-input/jquery.tagsinput.css"/>"/>
 <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css"/>">
 <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/typeahead/typeahead.css"/>">
-
+<link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/promo.css"/>">
+<link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/animate.css"/>">
