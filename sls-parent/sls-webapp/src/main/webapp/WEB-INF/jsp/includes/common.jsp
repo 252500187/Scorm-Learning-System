@@ -84,6 +84,22 @@
 
 <script src="<c:url value="/assets/plugins/dropzone/dropzone.js"/>"></script>
 <script src="<c:url value="/assets/scripts/custom/form-dropzone.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/assets/plugins/fuelux/js/spinner.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/assets/plugins/bootstrap-fileinput/bootstrap-fileinput.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/assets/plugins/jquery.input-ip-address-control-1.0.min.js"/>"></script>
+<script src="<c:url value="/assets/plugins/jquery.pwstrength.bootstrap/src/pwstrength.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jquery-tags-input/jquery.tagsinput.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/typeahead/handlebars.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/typeahead/typeahead.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/scripts/custom/components-form-tools.js"/>"></script>
+
+
+
+
 
 <link href="<c:url value="/assets/plugins/dropzone/css/dropzone.css"/>" rel="stylesheet"/>
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
