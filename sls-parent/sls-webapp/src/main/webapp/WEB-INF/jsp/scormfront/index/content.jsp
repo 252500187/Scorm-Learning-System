@@ -18,7 +18,7 @@
     <h2>HOT TOP</h2>
 
     <div class="top-news">
-        <a class="btn red" href="#">
+        <a class="btn red sliderbar-transparency" href="#">
             <span> TOP ONE</span>
             <em>书名</em>
             <em>
@@ -119,8 +119,12 @@
                             <div style="position:relative;z-index:2">
                                 <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="" class="img-responsive">
 
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt="" style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt="" style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
+                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
+                                    4.8分
+                                </div>
+                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-60px; top:120px;width: 60px;z-index:-1">
+                                    隋朝文化
+                                </div>
 
                                 <ul class="list-inline">
                                     <li>
@@ -142,8 +146,10 @@
                             <div style="position:relative;z-index:2;">
                                 <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="">
 
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt="" style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt="" style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
 
                                 <ul class="list-inline">
                                     <li>
@@ -165,8 +171,10 @@
                             <div style="position:relative;z-index:2;">
                                 <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="">
 
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt="" style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt="" style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
 
                                 <ul class="list-inline">
                                     <li>
@@ -188,8 +196,10 @@
                             <div style="position:relative;z-index:2;">
                                 <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="">
 
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt="" style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt="" style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
 
                                 <ul class="list-inline">
                                     <li>
@@ -221,8 +231,10 @@
                             <div style="position:relative;z-index:2;">
                                 <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="" class="img-responsive">
 
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt="" style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt="" style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
 
                                 <ul class="list-inline">
                                     <li>
@@ -244,8 +256,10 @@
                             <div style="position:relative;z-index:2;">
                                 <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="">
 
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt="" style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt="" style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
 
                                 <ul class="list-inline">
                                     <li>
@@ -267,8 +281,10 @@
                             <div style="position:relative;z-index:2;">
                                 <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="">
 
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt="" style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt="" style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
 
                                 <ul class="list-inline">
                                     <li>
@@ -290,8 +306,10 @@
                             <div style="position:relative;z-index:2;">
                                 <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="">
 
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt="" style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt="" style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
 
                                 <ul class="list-inline">
                                     <li>
