@@ -146,7 +146,7 @@
                     <div class="booking-result">
                         <div class="booking-img">
                             <div style="position:relative;z-index:2;">
-                                <img src="<%=basePath%>assets/img/gallery/image4.jpg" alt="" class="img-responsive">
+                                <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="" class="img-responsive">
 
                                 <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
                                     4.8分
@@ -172,7 +172,7 @@
                     <div class="booking-result">
                         <div class="booking-img">
                             <div style="position:relative;z-index:2;">
-                                <img src="<%=basePath%>assets/img/gallery/image4.jpg" alt="">
+                                <img src="<%=basePath%>assets/img/gallery/image2.jpg" alt="">
 
                                 <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
                                     4.9分
@@ -198,7 +198,7 @@
                     <div class="booking-result">
                         <div class="booking-img">
                             <div style="position:relative;z-index:2;">
-                                <img src="<%=basePath%>assets/img/gallery/image4.jpg" alt="">
+                                <img src="<%=basePath%>assets/img/gallery/image3.jpg" alt="">
 
                                 <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
                                     4.8分
@@ -224,7 +224,7 @@
                     <div class="booking-result">
                         <div class="booking-img">
                             <div style="position:relative;z-index:2;">
-                                <img src="<%=basePath%>assets/img/gallery/image4.jpg" alt="">
+                                <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="">
 
                                 <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
                                     4.9
@@ -286,7 +286,7 @@
                     <div class="booking-result">
                         <div class="booking-img">
                             <div style="position:relative;z-index:2;">
-                                <img src="<%=basePath%>assets/img/gallery/image4.jpg" alt="">
+                                <img src="<%=basePath%>assets/img/gallery/image3.jpg" alt="">
 
                                 <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
                                     4.9分
@@ -312,7 +312,7 @@
                     <div class="booking-result">
                         <div class="booking-img">
                             <div style="position:relative;z-index:2;">
-                                <img src="<%=basePath%>assets/img/gallery/image4.jpg" alt="">
+                                <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="">
 
                                 <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
                                     4.8分
@@ -338,7 +338,7 @@
                     <div class="booking-result">
                         <div class="booking-img">
                             <div style="position:relative;z-index:2;">
-                                <img src="<%=basePath%>assets/img/gallery/image4.jpg" alt="">
+                                <img src="<%=basePath%>assets/img/gallery/image2.jpg" alt="">
 
                                 <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
                                     4.9
