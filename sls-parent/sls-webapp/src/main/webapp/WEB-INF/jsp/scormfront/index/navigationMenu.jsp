@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@include file="../../includes/common.jsp" %>
 
-<div class="header navbar navbar-inverse navbar-fixed-top" style="height: 60px">
+<div class="header navbar navbar-inverse navbar-fixed-top">
     <div class="header-inner">
         <a class="navbar-brand" href="">
             <img src="assets/img/logo-big.png" alt="logo" class="img-responsive"/>
