@@ -100,7 +100,7 @@
     </div>
     <!--end search-->
 
-    <%@include file="../index/slider.jsp" %>
+    <%--<%@include file="../index/slider.jsp" %>--%>
 
 </div>
 <!-- END TWO PRODUCTS & PROMO -->
@@ -119,12 +119,30 @@
                             <div style="position:relative;z-index:2">
                                 <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="" class="img-responsive">
 
-                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
-                                    4.8分
-                                </div>
-                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-60px; top:120px;width: 60px;z-index:-1">
-                                    隋朝文化
-                                </div>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="#">书名</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" style="color:darkgray">
+                                            read more...
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2" style="margin-left: 8%">
+                    <div class="booking-result">
+                        <div class="booking-img">
+                            <div style="position:relative;z-index:2;">
+                                <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="">
+
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
 
                                 <ul class="list-inline">
                                     <li>
@@ -148,8 +166,6 @@
 
                                 <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
                                      style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
-                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
 
                                 <ul class="list-inline">
                                     <li>
@@ -173,33 +189,6 @@
 
                                 <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
                                      style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
-                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
-
-                                <ul class="list-inline">
-                                    <li>
-                                        <a href="#">书名</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" style="color:darkgray">
-                                            read more...
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2" style="margin-left: 8%">
-                    <div class="booking-result">
-                        <div class="booking-img">
-                            <div style="position:relative;z-index:2;">
-                                <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="">
-
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
-                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
-                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
 
                                 <ul class="list-inline">
                                     <li>
@@ -233,8 +222,6 @@
 
                                 <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
                                      style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
-                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
 
                                 <ul class="list-inline">
                                     <li>
@@ -258,8 +245,6 @@
 
                                 <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
                                      style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
-                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
 
                                 <ul class="list-inline">
                                     <li>
@@ -283,8 +268,6 @@
 
                                 <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
                                      style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
-                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
 
                                 <ul class="list-inline">
                                     <li>
@@ -308,8 +291,6 @@
 
                                 <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
                                      style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
-                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
-                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
 
                                 <ul class="list-inline">
                                     <li>
