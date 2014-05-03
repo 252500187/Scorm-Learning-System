@@ -24,7 +24,7 @@
 <div class="content">
 
     <form class="login-form" action="loginResult" method="post" id="login">
-        <h3 class="form-title">登陆到 SLS</h3>
+        <h3 class="form-title">Welcome to SLS</h3>
 
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">帐号</label>
@@ -53,7 +53,7 @@
             <h4>去首页看看</h4>
             <ul class="social-icons">
                 <li>
-                    <a class="facebook" data-original-title="facebook" onclick="window.location.href='/sls/'">
+                    <a class="socrm" data-original-title="socrm" onclick="window.location.href='/sls/'">
                     </a>
                 </li>
             </ul>

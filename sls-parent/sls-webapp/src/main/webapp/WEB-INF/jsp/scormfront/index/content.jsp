@@ -18,7 +18,7 @@
     <h2>HOT TOP</h2>
 
     <div class="top-news">
-        <a class="btn red" href="#">
+        <a class="btn red sliderbar-transparency" href="#">
             <span> TOP ONE</span>
             <em>书名</em>
             <em>
@@ -85,74 +85,23 @@
 </div>
 <div class="page-content" style="width: 87%;">
 <!-- BEGIN TWO PRODUCTS & PROMO -->
-<div class="row margin-bottom-35" style="margin-top: 50px;">
-    <!-- BEGIN PROMO -->
-    <div class="col-md-12">
-        <div class="content-slider">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <%--<ol class="carousel-indicators">--%>
-                <%--<li data-target="#myCarousel" data-slide-to="0" class="active"></li>--%>
-                <%--<li data-target="#myCarousel" data-slide-to="1"></li>--%>
-                <%--<li data-target="#myCarousel" data-slide-to="2"></li>--%>
-                <%--</ol>--%>
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <div class="ls-layer ls-layer1"
-                             style="slidedirection: right; transition2d: 24,25,27,28; ">
-                            <img src="<%=basePath%>ecommerce/assets/temp/sliders/slide1/bg.jpg" class="ls-bg"
-                                 alt="Slide background" style="margin-left: 4%; width: 92%">
-
-                            <div class="ls-s-1 title"
-                                 style=" top: 96px; left: 35%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
-                                Tones of <strong>shop UI features</strong> designed
-                            </div>
-                            <div class="ls-s-1 mini-text"
-                                 style=" top: 338px; left: 35%; slidedirection : fade; slideoutdirection : fade; durationout : 750; easingin : easeOutQuint; delayin : 300; showuntil : 4000; white-space: nowrap;">
-                                Lorem ipsum dolor sit amet constectetuer diam<br> adipiscing elit euismod ut
-                                laoreet dolore.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="ls-layer ls-layer1"
-                             style="slidedirection: right; transition2d: 24,25,27,28; ">
-                            <img src="<%=basePath%>ecommerce/assets/temp/sliders/slide2/bg.jpg" class="ls-bg"
-                                 alt="Slide background" style="margin-left: 4%; width: 92%">
-
-                            <div class="ls-s-1 title"
-                                 style=" top: 96px; left: 35%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
-                                Tones of <strong>shop UI features</strong> designed
-                            </div>
-                            <div class="ls-s-1 mini-text"
-                                 style=" top: 338px; left: 35%; slidedirection : fade; slideoutdirection : fade; durationout : 750; easingin : easeOutQuint; delayin : 300; showuntil : 4000; white-space: nowrap;">
-                                Lorem ipsum dolor sit amet constectetuer diam<br> adipiscing elit euismod ut
-                                laoreet dolore.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="ls-layer ls-layer1"
-                             style="slidedirection: right; transition2d: 24,25,27,28; ">
-                            <img src="<%=basePath%>ecommerce/assets/temp/sliders/slide3/bg.jpg" class="ls-bg"
-                                 alt="Slide background" style="margin-left: 4%; width: 92%">
-
-                            <div class="ls-s-1 title"
-                                 style=" top: 96px; left: 35%; slidedirection : fade; slideoutdirection : fade; durationin : 750; durationout : 750; easingin : easeOutQuint; rotatein : 90; rotateout : -90; scalein : .5; scaleout : .5; showuntil : 4000; white-space: nowrap;">
-                                Tones of <strong>shop UI features</strong> designed
-                            </div>
-                            <div class="ls-s-1 mini-text"
-                                 style=" top: 338px; left: 35%; slidedirection : fade; slideoutdirection : fade; durationout : 750; easingin : easeOutQuint; delayin : 300; showuntil : 4000; white-space: nowrap;">
-                                Lorem ipsum dolor sit amet constectetuer diam<br> adipiscing elit euismod ut
-                                laoreet dolore.
-                            </div>
-                        </div>
-                    </div>
+<div class="row margin-bottom-35" style="margin-top: 50px;float: left;">
+    <!--begin search-->
+    <div class="search-form" style="display: block;">
+        <form class="sidebar-search" method="POST" action="extra_search.html">
+            <div class="form-container">
+                <div class="input-box">
+                    <a class="remove" href="javascript:;"> </a>
+                    <input type="text" placeholder="Search...">
+                    <input class="submit" type="button" value=" ">
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-    <!-- END PROMO -->
+    <!--end search-->
+
+    <%@include file="../index/slider.jsp" %>
+
 </div>
 <!-- END TWO PRODUCTS & PROMO -->
 
@@ -167,7 +116,7 @@
                 <div class="col-md-2" style="margin-left: 5%">
                     <div class="booking-result">
                         <div class="booking-img">
-                            <div style="position:relative;z-index:2;">
+                            <div style="position:relative;z-index:2">
                                 <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="" class="img-responsive">
 
                                 <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
@@ -176,58 +125,7 @@
                                 <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-60px; top:120px;width: 60px;z-index:-1">
                                     隋朝文化
                                 </div>
-                                <ul class="list-inline">
-                                    <li>
-                                        <a href="#">书名</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" style="color:darkgray">
-                                            read more...
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2" style="margin-left: 8%">
-                    <div class="booking-result">
-                        <div class="booking-img">
-                            <div style="position:relative;z-index:2;">
-                                <img src="<%=basePath%>assets/img/gallery/image2.jpg" alt="">
 
-                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
-                                    4.9分
-                                </div>
-                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-60px; top:120px;width: 60px;z-index:-1">
-                                    近代史
-                                </div>
-                                <ul class="list-inline">
-                                    <li>
-                                        <a href="#">书名</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" style="color:darkgray">
-                                            read more...
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2" style="margin-left: 8%">
-                    <div class="booking-result">
-                        <div class="booking-img">
-                            <div style="position:relative;z-index:2;">
-                                <img src="<%=basePath%>assets/img/gallery/image3.jpg" alt="">
-
-                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
-                                    4.8分
-                                </div>
-                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-60px; top:120px;width: 60px;z-index:-1">
-                                    近代史
-                                </div>
                                 <ul class="list-inline">
                                     <li>
                                         <a href="#">书名</a>
@@ -248,12 +146,61 @@
                             <div style="position:relative;z-index:2;">
                                 <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="">
 
-                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
-                                    4.9
-                                </div>
-                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-60px; top:120px;width: 60px;z-index:-1">
-                                    大唐
-                                </div>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
+
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="#">书名</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" style="color:darkgray">
+                                            read more...
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2" style="margin-left: 8%">
+                    <div class="booking-result">
+                        <div class="booking-img">
+                            <div style="position:relative;z-index:2;">
+                                <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="">
+
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
+
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="#">书名</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" style="color:darkgray">
+                                            read more...
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2" style="margin-left: 8%">
+                    <div class="booking-result">
+                        <div class="booking-img">
+                            <div style="position:relative;z-index:2;">
+                                <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="">
+
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
+
                                 <ul class="list-inline">
                                     <li>
                                         <a href="#">书名</a>
@@ -282,40 +229,13 @@
                     <div class="booking-result">
                         <div class="booking-img">
                             <div style="position:relative;z-index:2;">
-                                <img src="<%=basePath%>assets/img/gallery/image4.jpg" alt="" class="img-responsive">
+                                <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="" class="img-responsive">
 
-                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
-                                    4.8分
-                                </div>
-                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-60px; top:120px;width: 60px;z-index:-1">
-                                    隋朝文化
-                                </div>
-                                <ul class="list-inline">
-                                    <li>
-                                        <a href="#">书名</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" style="color:darkgray">
-                                            read more...
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2" style="margin-left: 8%">
-                    <div class="booking-result">
-                        <div class="booking-img">
-                            <div style="position:relative;z-index:2;">
-                                <img src="<%=basePath%>assets/img/gallery/image3.jpg" alt="">
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
 
-                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
-                                    4.9分
-                                </div>
-                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-60px; top:120px;width: 60px;z-index:-1">
-                                    近代史
-                                </div>
                                 <ul class="list-inline">
                                     <li>
                                         <a href="#">书名</a>
@@ -336,12 +256,11 @@
                             <div style="position:relative;z-index:2;">
                                 <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="">
 
-                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
-                                    4.8分
-                                </div>
-                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-60px; top:120px;width: 60px;z-index:-1">
-                                    近代史
-                                </div>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
+
                                 <ul class="list-inline">
                                     <li>
                                         <a href="#">书名</a>
@@ -360,14 +279,38 @@
                     <div class="booking-result">
                         <div class="booking-img">
                             <div style="position:relative;z-index:2;">
-                                <img src="<%=basePath%>assets/img/gallery/image2.jpg" alt="">
+                                <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="">
 
-                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-40px; top:20px;width: 40px;z-index:-1">
-                                    4.9
-                                </div>
-                                <div style="background-image:url('<%=basePath%>/img/bookmarks/mark22.jpg');position:absolute; left:-60px; top:120px;width: 60px;z-index:-1">
-                                    大唐
-                                </div>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
+
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="#">书名</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" style="color:darkgray">
+                                            read more...
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2" style="margin-left: 8%">
+                    <div class="booking-result">
+                        <div class="booking-img">
+                            <div style="position:relative;z-index:2;">
+                                <img src="<%=basePath%>assets/img/gallery/image1.jpg" alt="">
+
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:20px;width: 40px;z-index:-1"/>
+                                <img src="<%=basePath%>img/bookmarks/mark22.jpg" alt=""
+                                     style="position:absolute; left:-40px; top:100px;width: 40px;z-index:-1"/>
+
                                 <ul class="list-inline">
                                     <li>
                                         <a href="#">书名</a>
