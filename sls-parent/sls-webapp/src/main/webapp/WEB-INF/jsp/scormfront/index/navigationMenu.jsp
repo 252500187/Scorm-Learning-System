@@ -15,13 +15,13 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                        data-close-others="true">
-                        <span class="username"><a href="login">登录</a></span>
+                        <span class="username"><a href="login">登陆</a></span>
                         <i class="icon-angle-down"></i>
                     </a>
                 </li>
             </c:if>
             <c:if test="${userId!=null&&userId!=''}">
-                <li class="dropdown user" style="margin-top: 10px">
+                <li class="dropdown user">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                        data-close-others="true">
                         <img alt="" id="userPhoto"/>
