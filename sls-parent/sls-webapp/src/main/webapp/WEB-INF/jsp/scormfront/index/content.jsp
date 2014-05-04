@@ -99,7 +99,6 @@
         </form>
     </div>
     <!--end search-->
-<div>
     <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
             <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                  aria-hidden="true">
@@ -124,15 +123,13 @@
             <!-- /.modal -->
             <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
             <!-- BEGIN PAGE CONTAINER-->
-            <div class="promo-page">
                 <!-- BEGIN PAGE CONTENT-->
-                <div class="block-carousel">
                     <div id="promo_carousel" class="carousel slide">
-                        <div class="container">
+                        <div class="container" style="width: 100%;">
                             <div class="carousel-inner">
                                 <div class="active item">
                                     <div class="row">
-                                        <div class="col-md-4 margin-bottom-20 margin-top-20 animated rotateInUpRight">
+                                        <div class="col-md-4 margin-bottom-20 margin-top-20 animated rotateInUpRight" style="margin-left: 15%">
                                             <h1>Welcome to Metronic..</h1>
 
                                             <p>
@@ -160,7 +157,7 @@
                                                 Take a tour <i class="m-icon-big-swapright m-icon-white"></i>
                                             </a>
                                         </div>
-                                        <div class="col-md-5 animated rotateInDownLeft">
+                                        <div class="col-md-5 animated rotateInDownLeft" style="padding-right: 15%">
                                             <a href="index.html">
                                                 <img src="assets/img/pages/img1.png" alt="" class="img-responsive">
                                             </a>
@@ -218,15 +215,13 @@
                             </ol>
                         </div>
                     </div>
-                </div>
                 <!-- END PAGE CONTENT-->
             </div>
-            <!-- BEGIN PAGE CONTAINER--></div>
-</div>
+            <!-- BEGIN PAGE CONTAINER-->
 <!-- END TWO PRODUCTS & PROMO -->
 
 <!-- BEGIN PAGE CONTENT-->
-<div class="row margin-bottom-40 ">
+<div>
 <div style="float: left;">
     <div>
         <h2 class="">文史</h2>
