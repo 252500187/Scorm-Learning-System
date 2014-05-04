@@ -268,47 +268,6 @@ var App = function () {
                 }
             });
         });
-        jQuery('.page-sidebar').on('click', ' li > a', function (e) {
-            e.preventDefault();
-            App.scrollTop();
-
-            var url = $(this).attr("href");
-            var menuContainer = jQuery('.page-sidebar ul');
-            var pageContent = $('.page-content');
-            var pageContentBody = $('.page-content .page-content-body');
-
-            menuContainer.children('li.active').removeClass('active');
-            menuContainer.children('arrow.open').removeClass('open');
-
-            $(this).parents('li').each(function () {
-                $(this).addClass('active');
-                $(this).children('a > span.arrow').addClass('open');
-            });
-            $(this).parents('li').addClass('active');
-
-            App.startPageLoading();
-
-            if ($(window).width() <= 991 && $('.page-sidebar').hasClass("in")) {
-                $('.navbar-toggle').click();
-            }
-
-            $.ajax({
-                type: "GET",
-                cache: false,
-                url: url,
-                dataType: "html",
-                success: function (res) {
-                    App.stopPageLoading();
-                    pageContentBody.html(res);
-                    App.fixContentHeight(); // fix content height
-                    App.initAjax(); // initialize core stuff
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    pageContentBody.html('<h4>Could not load the requested content.</h4>');
-                    App.stopPageLoading();
-                }
-            });
-        });
 
         // handle ajax link within main content
         jQuery('.page-content').on('click', '.ajaxify', function (e) {

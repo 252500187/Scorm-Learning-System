@@ -27,11 +27,11 @@ Fixed Footer
 Form Medium Devices Up To Large Devices
 ***/
 
-@media (min-width: 992px) and (max-width: 1200px) {  
+@media (min-width: 992px) and (max-width: 1200px) {
 
 	.page-boxed .header.navbar .dropdown .username {
 		display: none;
-	}	
+	}
 
 }
 
@@ -39,13 +39,13 @@ Form Medium Devices Up To Large Devices
 	.hidden-1024 {
 		display: none;
 	}
-} 
+}
 
 /***
 From Medium Devices Up To Larger Devices
 ***/
 
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
 
  	/***
  	Page sidebar
@@ -69,10 +69,10 @@ From Medium Devices Up To Larger Devices
 		width: 100%;
 	}
 
-  	.page-content { 
-  		margin-left: 0px;
+  	.page-content {
+  		margin-left: 225px;
 		margin-top: 0px;
-		min-height: 600px; 
+		min-height: 600px;
 		padding: 25px 20px 20px 20px;
 	}
 
@@ -91,7 +91,7 @@ From Medium Devices Up To Larger Devices
   	Fixed Sidebar
   	***/
 	.page-sidebar-fixed .page-content {
-		min-height: 600px; 
+		min-height: 600px;
 	}
 
 	.page-sidebar-fixed .page-sidebar {
@@ -105,8 +105,8 @@ From Medium Devices Up To Larger Devices
 	}
 
 	.page-sidebar-fixed.page-sidebar-hover-on .page-sidebar {
-		z-index: 10000;		
-		width: 35px;		
+		z-index: 10000;
+		width: 35px;
 	}
 
 	.page-sidebar-fixed.page-sidebar-hover-on .page-sidebar .selected {
@@ -144,7 +144,7 @@ From Medium Devices Up To Larger Devices
 	.page-sidebar-hovering .sub-menu,
 	.page-sidebar-hovering span.badge,
 	.page-sidebar-hovering span.title,
-	.page-sidebar-hovering span.arrow {		  
+	.page-sidebar-hovering span.arrow {
 		display: none !important;
 	}
 
@@ -153,7 +153,7 @@ From Medium Devices Up To Larger Devices
 		width: 0 !important;
 		height: 0 !important;
 	}
-	
+
 	/***
 	Fixed Sidebar
 	***/
@@ -172,7 +172,7 @@ From Medium Devices Up To Larger Devices
 	  margin-left: 35px;
 	}
 
-	.page-sidebar-fixed .footer .footer-tools .go-top { 
+	.page-sidebar-fixed .footer .footer-tools .go-top {
 	  background-color: #666;
 	}
 
@@ -198,14 +198,14 @@ From Medium Devices Up To Larger Devices
 	}
 
 	.page-boxed .footer {
-  		padding: 8px 0 5px 0; 
+  		padding: 8px 0 5px 0;
 	}
 
 	.page-boxed.page-sidebar-fixed .footer {
 		padding-right: 20px;
 		padding-left: 20px;
 	}
-	
+
 	/***
 	Sidebar Reversed
 	***/
@@ -233,12 +233,12 @@ From Medium Devices Up To Larger Devices
 	.page-sidebar-reversed.page-sidebar-fixed .footer {
 		margin-left: 0;
 		margin-right: 225px;
-		padding: 8px 20px 5px 20px; 
+		padding: 8px 20px 5px 20px;
 	}
 
 	.page-sidebar-reversed.page-sidebar-fixed.page-footer-fixed .footer {
 		margin-left: 0;
-		margin-right: 0; 
+		margin-right: 0;
 	}
 
 	.page-sidebar-reversed.page-sidebar-fixed.page-sidebar-hover-on .page-content {
@@ -254,16 +254,16 @@ From Medium Devices Up To Larger Devices
 	Sidebar Closed
 	***/
 
-	.page-sidebar-closed .page-sidebar .sidebar-toggler {  
+	.page-sidebar-closed .page-sidebar .sidebar-toggler {
   		margin-left: 3px;
 	}
 
-	.page-sidebar-closed .page-sidebar .sidebar-search .form-container {  
+	.page-sidebar-closed .page-sidebar .sidebar-search .form-container {
 	  width: 29px;
-	  margin-left: 3px; 
+	  margin-left: 3px;
 	}
 
-	.page-sidebar-closed .page-sidebar .sidebar-search .form-container .input-box {  
+	.page-sidebar-closed .page-sidebar .sidebar-search .form-container .input-box {
 	  border-bottom: 0 !important;
 	}
 
@@ -271,7 +271,7 @@ From Medium Devices Up To Larger Devices
 	  display: none;
 	}
 
-	.page-sidebar-closed .page-sidebar .sidebar-search .form-container .submit { 
+	.page-sidebar-closed .page-sidebar .sidebar-search .form-container .submit {
 	  margin-top: 5px !important;
 	  margin-left: 7px !important;
 	  margin-right: 7px !important;
@@ -285,7 +285,7 @@ From Medium Devices Up To Larger Devices
 	  padding-top: 0px;
 	}
 
-	.page-sidebar-closed .page-sidebar .sidebar-search.open .form-container input[type="text"] {  
+	.page-sidebar-closed .page-sidebar .sidebar-search.open .form-container input[type="text"] {
 	  margin-top: 7px;
 	  margin-left: 8px;
 	  padding-left: 10px;
@@ -383,7 +383,7 @@ From Medium Devices Up To Larger Devices
 	  display: none !important;
 	}
 
-	.page-sidebar-closed .page-sidebar-menu > li:hover > .sub-menu {  
+	.page-sidebar-closed .page-sidebar-menu > li:hover > .sub-menu {
 	  width: 200px;
 	  position: absolute;
 	  z-index: 2000;
@@ -404,17 +404,17 @@ From Medium Devices Up To Larger Devices
 	}
 
 	/* 3rd level sub menu*/
-	.page-sidebar-closed .page-sidebar-menu > li > ul.sub-menu > li > .sub-menu > li > a {  
+	.page-sidebar-closed .page-sidebar-menu > li > ul.sub-menu > li > .sub-menu > li > a {
 	  padding-left: 30px !important;
 	}
 
 	/* 4rd level sub menu*/
-	.page-sidebar-closed .page-sidebar-menu > li > ul.sub-menu > li > .sub-menu > li > .sub-menu > li > a {  
+	.page-sidebar-closed .page-sidebar-menu > li > ul.sub-menu > li > .sub-menu > li > .sub-menu > li > a {
 	  padding-left: 45px !important;
 	}
 
 	/* sidebar container */
-	 
+
 	.page-sidebar-closed  .page-sidebar {
 	  width: 35px;
 	}
@@ -423,7 +423,7 @@ From Medium Devices Up To Larger Devices
 	  margin-left: 35px !important;
 	}
 
-	/*** 
+	/***
 	Sidebar Reversed & Sidebar Closed
 	***/
 
@@ -460,7 +460,7 @@ From Medium Devices Up To Larger Devices
 	  float: right !important;
 	}
 
-	.page-sidebar-reversed.page-sidebar-closed .page-sidebar-menu > li:hover > .sub-menu {  
+	.page-sidebar-reversed.page-sidebar-closed .page-sidebar-menu > li:hover > .sub-menu {
 	  left:auto;
 	  right: 36px;
 	}
@@ -495,8 +495,8 @@ From Medium Devices Up To Larger Devices
 Up To Medium Devices
 ***/
 
-@media (max-width:991px) { 
-	
+@media (max-width:991px) {
+
 	/***
  	Page header
  	***/
@@ -522,7 +522,7 @@ Up To Medium Devices
 	    display: none !important;
 	}
 
-	.page-sidebar.navbar-collapse.in {	 	
+	.page-sidebar.navbar-collapse.in {
 	 	overflow: hidden !important;
 	 	overflow-y: auto !important;
 	 	display: block !important;
@@ -556,14 +556,14 @@ Up To Medium Devices
 		display: inline-block;
     	margin: 0 10px 0 0;
   	}
-  
+
  	.header.navbar .navbar-nav > li {
     	float: left;
   	}
 
 	.header.navbar .navbar-brand {
   		margin-left: 0px !important;
-  		padding-left: 0px !important; 
+  		padding-left: 0px !important;
 	}
 
 	.header.navbar .navbar-brand img {
@@ -572,9 +572,9 @@ Up To Medium Devices
 
 
 	/***
-	Header Search Box 
+	Header Search Box
 	***/
-	
+
 	.header.navbar .search-form {
 		display: none;
 	}
@@ -600,8 +600,8 @@ Up To Medium Devices
   	***/
   	.page-content {
   		margin: 0px !important;
-  		padding: 20px 20px 20px 20px !important;  		
-		min-height: 280px; 
+  		padding: 20px 20px 20px 20px !important;
+		min-height: 280px;
   	}
 
 	/***
@@ -661,8 +661,8 @@ Up To Medium Devices
 /***
 From Small Devices Up To Medium Devices
 ***/
- 
-@media (min-width: 768px) and (max-width: 991px) { 
+
+@media (min-width: 768px) and (max-width: 991px) {
 
 	/***
 	Body
@@ -674,19 +674,19 @@ From Small Devices Up To Medium Devices
 	/***
 	Page sidebar
 	***/
-	.page-sidebar .btn-navbar.collapsed .arrow { 
+	.page-sidebar .btn-navbar.collapsed .arrow {
 		display: none;
-	}	
+	}
 
 	.page-sidebar .btn-navbar .arrow {
 	  position: absolute;
 	  right: 25px;
-	  width: 0; 
+	  width: 0;
 	  height: 0;
 	  top:50px;
 	  border-bottom: 15px solid #5f646b;
-	  border-left: 15px solid transparent; 
-	  border-right: 15px solid transparent; 
+	  border-left: 15px solid transparent;
+	  border-right: 15px solid transparent;
 	}
 
 	/***
@@ -707,28 +707,28 @@ From Small Devices Up To Medium Devices
  		padding-right: 0;
  	}
 
-} 
- 
+}
+
 /***
 Extra Small Devices Only
 ***/
 
-@media (max-width: 767px) { 
-	
+@media (max-width: 767px) {
+
 	/***
 	Page header
 	***/
-	
+
 	.header.navbar {
  		padding: 0 10px 0 10px;
  	}
 
-	.header.navbar .top-nav .nav{  
+	.header.navbar .top-nav .nav{
 	 	margin-top: 0px;
 	 	margin-right: 5px;
 	}
 
-	.header.navbar .nav > li > .dropdown-menu.notification:after, 
+	.header.navbar .nav > li > .dropdown-menu.notification:after,
 	.header.navbar .nav > li > .dropdown-menu.notification:before {
 		margin-right: 160px;
 	}
@@ -737,7 +737,7 @@ Extra Small Devices Only
   		margin-right: -160px;
 	}
 
-	.header.navbar .nav > li > .dropdown-menu.inbox:after, 
+	.header.navbar .nav > li > .dropdown-menu.inbox:after,
 	.header.navbar .nav > li > .dropdown-menu.inbox:before {
 		margin-right: 110px;
 	}
@@ -746,7 +746,7 @@ Extra Small Devices Only
   		margin-right: -110px;
 	}
 
-	.header.navbar .nav > li > .dropdown-menu.tasks:after, 
+	.header.navbar .nav > li > .dropdown-menu.tasks:after,
 	.header.navbar .nav > li > .dropdown-menu.tasks:before {
 		margin-right: 60px;
 	}
@@ -781,14 +781,14 @@ Extra Small Devices Only
 		font-size: 13px;
 		padding-top: 3px;
 	}
-	
+
 	/***
 	Styler pagel
 	***/
 	.styler-panel {
 		top:58px;
 		right:12px;
-	}	
+	}
 
 	/***
 	Page breadcrumb
@@ -802,20 +802,20 @@ Extra Small Devices Only
 	Portlet form action
 	***/
 	.portlet-body.form .form-actions{
-	  padding-left: 15px;	
-	} 
+	  padding-left: 15px;
+	}
 
 
 	/***
 	Form input validation states
 	***/
-	.input-icon .input-error, 
-	.input-icon .input-warning, 
-	.input-icon .input-success { 
+	.input-icon .input-error,
+	.input-icon .input-warning,
+	.input-icon .input-success {
 		top:-27px;
 		float: right;
 		right:10px !important;
-	}	
+	}
 
 	/***
 	Advance tables
@@ -825,14 +825,14 @@ Extra Small Devices Only
 	}
 
 	/***
-	Footer	
-	***/	
+	Footer
+	***/
 	.footer {
 		padding-left: 10px;
-		padding-right: 10px;		
-	}	
-	
-	.footer .go-top {  
+		padding-right: 10px;
+	}
+
+	.footer .go-top {
 		float: right;
 		display: block;
 		margin-right: 0px;
@@ -849,11 +849,11 @@ Extra Small Devices Only
 	Form controls
 	***/
 	.form-horizontal .form-actions {
-  		padding-left: 180px; 	
+  		padding-left: 180px;
   	}
 
   	.portlet .form-horizontal .form-actions {
-  		padding-left: 190px; 	
+  		padding-left: 190px;
   	}
 }
 
@@ -930,7 +930,7 @@ The Most Extra Small Devices Landscape Mode Only
 	Forms
 	***/
   	.portlet .form-horizontal .form-actions {
-  		padding-left: 10px; 	
+  		padding-left: 10px;
   	}
 
 	/***
@@ -938,11 +938,11 @@ The Most Extra Small Devices Landscape Mode Only
 	***/
 	.page-content .breadcrumb .dashboard-date-range  {
 		padding-bottom: 8px;
-	} 
+	}
 
 	.page-content .breadcrumb .dashboard-date-range span {
 		display: none;
-	}	
+	}
 
   	.page-content .breadcrumb > .btn-group span {
   		display: none;
@@ -976,5 +976,5 @@ The Most Extra Small Devices Portrait Mode Only
 
 	.header.navbar .navbar-brand {
 		width: 100px;
-	}	
+	}
 }	

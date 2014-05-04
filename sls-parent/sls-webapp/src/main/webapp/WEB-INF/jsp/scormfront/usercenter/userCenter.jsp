@@ -12,10 +12,8 @@
 
 <%@include file="../index/navigationMenu.jsp" %>
 
-
-<%--主体--%>
 <!-- BEGIN CONTAINER -->
-<div class="page-container" style="margin-top: 42px">
+<div class="page-container">
     <!-- BEGIN SIDEBAR -->
     <div class="page-sidebar-wrapper">
         <div class="page-sidebar navbar-collapse collapse">
@@ -117,7 +115,7 @@
     <!-- END SIDEBAR -->
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
-        <div class="page-content" id="content" style="margin-left: 225px;padding:0 ">
+        <div class="page-content">
             <iframe id="ifra" style="width:100%; height:800px;border:0px" scroll="yes"
                     allowfullscreen>
             </iframe>
@@ -142,5 +140,4 @@
     $(function () {
         addTab('user/center/registeredScormDo');
     })
-
 </script>
