@@ -50,11 +50,14 @@
 <script src="<c:url value="/assets/plugins/jquery.blockui.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/jquery.cokie.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/uniform/jquery.uniform.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/data-tables/jquery.dataTables.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/data-tables/DT_bootstrap.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"/>" type="text/javascript"></script>
 
 <script src="<c:url value="/assets/plugins/jquery-validation/dist/jquery.validate.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/backstretch/jquery.backstretch.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/select2/select2.min.js"/>" type="text/javascript"></script>
-
+<script src="<c:url value="/assets/scripts/custom/ecommerce-orders-view.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/scripts/core/app.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/scripts/custom/login-soft.js"/>" type="text/javascript"></script>
 
