@@ -12,111 +12,119 @@
 
 <%@include file="../index/navigationMenu.jsp" %>
 
-</div>
 
 <%--主体--%>
 <!-- BEGIN CONTAINER -->
-<div class="page-container" style="margin-top: 60px">
-<!-- BEGIN SIDEBAR -->
-<div class="page-sidebar-wrapper">
-<div class="page-sidebar navbar-collapse collapse">
-<!-- BEGIN SIDEBAR MENU -->
-<ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
-<!-- 隐藏框 点击一下变成小图标 -->               <!--  -->
-<li class="sidebar-toggler-wrapper">
-    <div class="sidebar-toggler hidden-phone">
-    </div>
+<div class="page-container" style="margin-top: 42px">
+    <!-- BEGIN SIDEBAR -->
+    <div class="page-sidebar-wrapper">
+        <div class="page-sidebar navbar-collapse collapse">
+            <!-- BEGIN SIDEBAR MENU -->
+            <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+                <!-- 隐藏框 点击一下变成小图标 -->               <!--  -->
+                <li class="sidebar-toggler-wrapper">
+                    <div class="sidebar-toggler hidden-phone">
+                    </div>
 
-</li>
-<!-- 用户信息 -->
-<li class="sidebar-search-wrapper">
-    <div class="info-container" style="border: 4px">
-        用户资料
+                </li>
+                <!-- 用户信息 -->
+                <li>
+                    <a>
+                        <i class="fa fa-user"></i>
+                        <span class="title"> <big>用户名</big></span>
+                        <br/>
+                        <span class="title" style="margin-left: 30px">等级:牛刀小试 </span>
 
+                        <div class="info-container" align="center" style="margin-top:0px;">
 
-    </div>
-</li>
-<!-- 第一个菜单  个人资料-->
-<li>
-    <a onclick="addTab('user/center/personnelInfoDo')">
-        <i class="fa fa-user"></i>
+                            <img src="assets/img/blog/2.jpg" alt="用户头像" style="width:155px;height:100px"/>
+
+                        </div>
+
+                    </a>
+                </li>
+                <!-- 第一个菜单  个人资料-->
+                <li>
+                    <a onclick="addTab('user/center/personnelInfoDo')">
+                        <i class="fa fa-user"></i>
 						<span class="title">
 							个人资料
 						</span>
-    </a>
-</li>
-<!-- 第二个菜单  上传课件 -->
-<li>
-    <a onclick="addTab('user/center/upScormDo')">
-        <i class="fa fa-upload"></i>
+                    </a>
+                </li>
+                <!-- 第二个菜单  上传课件 -->
+                <li>
+                    <a onclick="addTab('user/center/upScormDo')">
+                        <i class="fa fa-upload"></i>
 						<span class="title">
 							上传课件
 						</span>
-    </a>
-</li>
-<!-- 第三个菜单  我的课件 -->
-<li>
-    <a href="javascript:;">
-        <i class="fa fa-file"></i>
+                    </a>
+                </li>
+                <!-- 第三个菜单  我的课件 -->
+                <li>
+
+                    <a href="javascript:;">
+                        <i class="fa fa-file"></i>
 						<span class="title">
 							我的课件
 						</span>
 						<span class="arrow">
 						</span>
-    </a>
-    <ul class="sub-menu">
-        <li class="tooltips" data-container="body" data-placement="right" data-html="true"
-            data-original-title="Complete E-Commerce Frontend Theme For Metronic Admin">
-            <a onclick="addTab('user/center/registeredScormDo')" target="_blank">
-								<span class="title">
-                                   已注册课件
-								</span>
-            </a>
-        </li>
-        <li class="tooltips" data-container="body" data-placement="right" data-html="true"
-            data-original-title="Complete Multipurpose Corporate Frontend Theme For Metronic Admin">
-            <a onclick="addTab('user/center/finishedScormDo')" target="_blank">
-								<span class="title">
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a onclick="addTab('user/center/registeredScormDo')">
+                                <i class="fa fa-bullhorn"></i>
+                                <span class="title">
+                                    已注册课件
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a onclick="addTab('user/center/finishedScormDo')">
+                                <i class="fa fa-bullhorn"></i>
+                                <span class="title">
 									已完成课件
 								</span>
-            </a>
-        </li>
-    </ul>
-</li>
-<!-- 第四个菜单  我的收藏 -->
-<li class="start ">
-    <a onclick="addTab('user/center/collectionDo')">
-        <i class="fa fa-star"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- 第四个菜单  我的收藏 -->
+                <li class="start ">
+                    <a onclick="addTab('user/center/collectionDo')">
+                        <i class="fa fa-star"></i>
 						<span class="title">
 							我的收藏
 						</span>
-    </a>
-</li>
-<!-- 第五个菜单  我的笔记本 -->
+                    </a>
+                </li>
+                <!-- 第五个菜单  我的笔记本 -->
 
-<li class="last ">
-    <a onclick="addTab('user/center/noteDo')">
-        <i class="fa fa-book"></i>
+                <li class="last ">
+                    <a onclick="addTab('user/center/noteDo')">
+                        <i class="fa fa-book"></i>
 						<span class="title">
 							我的笔记本
 						</span>
-    </a>
-</li>
-</ul>
-<!-- END SIDEBAR MENU -->
-</div>
-</div>
-<!-- END SIDEBAR -->
-<!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
-<div class="page-content" id="content" style="margin-left: 225px;padding:0 ">
-    <iframe id="ifra" style="width:100%; height:800px;border:0px" scroll="yes"
-            allowfullscreen>
-    </iframe>
+                    </a>
+                </li>
+            </ul>
+            <!-- END SIDEBAR MENU -->
+        </div>
+    </div>
+    <!-- END SIDEBAR -->
+    <!-- BEGIN CONTENT -->
+    <div class="page-content-wrapper">
+        <div class="page-content" id="content" style="margin-left: 225px;padding:0 ">
+            <iframe id="ifra" style="width:100%; height:800px;border:0px" scroll="yes"
+                    allowfullscreen>
+            </iframe>
 
-</div>
-</div>
-<!-- END CONTENT -->
+        </div>
+    </div>
+    <!-- END CONTENT -->
 </div>
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
@@ -140,7 +148,8 @@
         $("#ifra").attr("src", src);
 
     }
-    $(function (){
+    $(function () {
         addTab('user/center/registeredScormDo');
     })
+
 </script>
