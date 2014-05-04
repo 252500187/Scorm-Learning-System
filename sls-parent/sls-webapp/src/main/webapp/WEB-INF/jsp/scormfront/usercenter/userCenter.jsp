@@ -140,4 +140,8 @@
     $(function () {
         addTab('user/center/registeredScormDo');
     })
+    $("li").click(function () {
+        $("li").removeAttr("class");
+        $(this).attr("class", "active");
+    });
 </script>
