@@ -35,7 +35,7 @@
 
                         <div class="info-container" align="center" style="margin-top:0px;">
 
-                            <img src="assets/img/blog/2.jpg" alt="用户头像" style="width:155px;height:100px"/>
+                            <img src="assets/img/blog/2.jpg" class="avatar img-responsive" alt="用户头像" style="width:155px;height:100px"/>
 
                         </div>
 
@@ -44,7 +44,7 @@
                 <!-- 第一个菜单  个人资料-->
                 <li>
                     <a onclick="addTab('user/center/personnelInfoDo')">
-                        <i class="fa fa-user"></i>
+                        <i class="fa fa-italic"></i>
 						<span class="title">
 							个人资料
 						</span>
@@ -63,7 +63,7 @@
                 <li>
 
                     <a href="javascript:;">
-                        <i class="fa fa-file"></i>
+                        <i class="fa fa-briefcase"></i>
 						<span class="title">
 							我的课件
 						</span>
