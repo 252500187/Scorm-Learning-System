@@ -84,9 +84,9 @@
         </a>
     </div>
 </div>
-<div class="page-content" style="width: 87%;">
+<div class="page-content" style="width: 87%">
 <!--begin search-->
-<div class="search-form" style="display: block;margin-top: 50px">
+<div class="search-form" style="margin-top: 50px">
     <form class="sidebar-search" method="POST" action="">
         <div class="form-container">
             <div class="input-box">
@@ -174,8 +174,8 @@
     </div>
 </div>
 
-<div style="background-color: #ffffff">
-<div style="float: left;">
+<div>
+<div style="float: left;background-color: #ffffff">
     <div>
         <h2 class="">文史</h2>
 
@@ -276,7 +276,7 @@
         </div>
     </div>
 </div>
-<div style="float: left;">
+<div style="float: left;background-color: #ffffff">
     <div>
         <h2>文史</h2>
 
