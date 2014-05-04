@@ -8,14 +8,11 @@
     <meta content="" name="author"/>
     <%@include file="../../includes/common.jsp" %>
     <script src="<c:url value="/js/ScormAPI.js"/>" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css"
-          href="<c:url value="/js/common/zTree-v3.5.14/css/zTreeStyle/zTreeStyle.css"/>"/>
-    <script src="<c:url value="/js/common/zTree-v3.5.14/js/jquery.ztree.all-3.5.min.js"/>"
-            type="text/javascript"></script>
 </head>
 
 <body class="page-header-fixed page-sidebar-reversed">
 <%@include file="../index/navigationMenu.jsp" %>
+
 <div class="page-container">
 <div class="page-sidebar-wrapper">
     <div class="page-sidebar navbar-collapse collapse">
@@ -244,23 +241,11 @@
     </div>
 </div>
 </div>
+
 <%@include file="../index/footer.jsp" %>
 </body>
 </html>
 <script>
-    $(function () {
-        App.init();
-        $("li").click(function(){
-            $("li").removeAttr("class");
-            $(this).attr("class","active");
-        });
-        var i = Math.floor(Math.random() * 10);
-        $("#scormIframe").attr("src", basePath + "img/studyscormdefaultimg/" + i + ".jpg");
-        $("#scormLogo").attr("src", basePath + "${jpg}");
-        $.fn.zTree.init($("#menuTree"), settingMenu, zNodes);
-        $.fn.zTree.getZTreeObj("menuTree").expandAll(true);
-    });
-
     var settingMenu = {
         view: {
             expandSpeed: "fast"
@@ -308,4 +293,17 @@
         //todo 对应数据的id
         scoId = treeNode.id;
     }
+
+    $(function () {
+        App.init();
+        $("li").click(function () {
+            $("li").removeAttr("class");
+            $(this).attr("class", "active");
+        });
+        var i = Math.floor(Math.random() * 10);
+        $("#scormIframe").attr("src", basePath + "img/studyscormdefaultimg/" + i + ".jpg");
+        $("#scormLogo").attr("src", basePath + "${jpg}");
+        $.fn.zTree.init($("#menuTree"), settingMenu, zNodes);
+        $.fn.zTree.getZTreeObj("menuTree").expandAll(true);
+    });
 </script>
