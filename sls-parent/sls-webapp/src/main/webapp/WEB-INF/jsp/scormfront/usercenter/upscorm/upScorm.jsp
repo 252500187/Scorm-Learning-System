@@ -17,11 +17,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="portlet box blue">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                <i class="fa fa-reorder"></i>上传课件
-                            </div>
-                        </div>
+
                         <div class="portlet-body form">
                             <form class="form-horizontal form-bordered" id="fileGetUp" method="post"
                                   enctype="multipart/form-data">
