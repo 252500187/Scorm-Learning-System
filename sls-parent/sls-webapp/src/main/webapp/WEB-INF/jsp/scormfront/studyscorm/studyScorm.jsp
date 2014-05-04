@@ -26,7 +26,7 @@
             </li>
             <li>
                 <a>
-                    <img src="${jpg}" alt="软件工程">
+                    <img src="${jpg}" alt=" ">
                     <span class="title">
                         软件工程
                     </span>
