@@ -14,10 +14,10 @@
 </div>
 <!-- BEGIN CONTENT -->
 <div class="page-container">
-<div class="page-content-wrapper">
-<div class="sidebar col-md-3 col-sm-4" style="max-width: 13%;margin-top: 50px;">
-    <h2>HOT TOP</h2>
 
+<div class="page-sidebar-wrapper">
+<div class="page-sidebar navbar-collapse collapse">
+    <h2>HOT TOP</h2>
     <div class="top-news">
         <a class="btn red sliderbar-transparency" href="#">
             <span> TOP ONE</span>
@@ -84,7 +84,13 @@
         </a>
     </div>
 </div>
-<div class="page-content" style="width: 87%">
+</div>
+
+<div class="page-content-wrapper">
+<div class="page-content">
+
+<div class="row ">
+<%--<div class="col-md-12">--%>
 <!--begin search-->
 <div class="search-form" style="margin-top: 50px">
     <form class="sidebar-search" method="POST" action="">
@@ -97,7 +103,10 @@
         </div>
     </form>
 </div>
+<%--</div>--%>
+</div>
 <!--end search-->
+<div class="row ">
 <div class="promo-page">
 <!-- BEGIN PAGE CONTENT-->
 <div class="block-carousel">
@@ -381,11 +390,12 @@
 </div>
 
 </div>
+</div>
+</div>
+</div>
 
 </div>
-</div>
 <!-- END PAGE CONTENT-->
-</div>
 <!-- END CONTENT -->
 
 </body>
