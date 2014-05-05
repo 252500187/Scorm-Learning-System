@@ -7,13 +7,6 @@ import com.sls.admin.entity.DictValues;
 
 import java.util.List;
 
-/**
- * 字典dao接口
- *
- * @author chenl
- * @version 1.0.1
- */
-
 public interface DictDao {
 
     Page<DictDefine> findDictDefinePageList(PageParameter pageParameter, DictDefine dictDefine);

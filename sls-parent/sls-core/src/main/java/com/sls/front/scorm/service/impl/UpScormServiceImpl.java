@@ -32,7 +32,7 @@ public class UpScormServiceImpl implements UpScormService {
         try {
             FileUp fileUp = new FileUp();
             Date date = new Date();
-            String fileName = date.getTime() + userDao.findUserByLoginName(LoginUserUtil.findLoginUserName()).get(0).getId() + "";//todo 用户ID和日期
+            String fileName = date.getTime() + userDao.findUserByLoginName(LoginUserUtil.findLoginUserName()).get(0).getUserId() + "";//todo 用户ID和日期
             String imgPath = fileUp.upImg(request, DictConstant.TOP_SCORM_FILE_NAME + "/" + fileName, DictConstant.SCORM_IMG, upImg);
             request.setAttribute("jpg", imgPath);           //todo 存入数据库
             String scormPath = fileUp.upScorm(request, fileName, upFile);

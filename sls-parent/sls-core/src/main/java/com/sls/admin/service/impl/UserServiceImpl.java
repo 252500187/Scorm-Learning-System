@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
     public void editUser(User user) {
         UserRole userRole = new UserRole();
         userRole.setRoleId(user.getRoleId());
-        userRole.setUserId(user.getId());
+        userRole.setUserId(user.getUserId());
         userRoleDao.editRoleByUserId(userRole);
         userDao.editUser(user);
     }

@@ -1,10 +1,3 @@
-/*
-* UserDaoImpl.java
-* Created on  2013-9-26 下午10:03
-* 版本       修改时间          作者      修改内容
-* V1.0.1    2013-9-26       gaoxinyu    初始版本
-*
-*/
 package com.sls.admin.dao.impl;
 
 import com.core.page.dao.PageDao;
@@ -20,19 +13,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * 角色dao实现
- *
- * @author gaoxinyu
- * @version 1.0.1
- */
 @Repository("userDao")
 public class UserDaoImpl extends PageDao implements UserDao {
 
     private StringBuilder getUserSql() {
-        String sql = "SELECT a.*,b.role_id,c.role_name show_role_id" +
-                " FROM sys_user a,sys_user_role b,sys_role c" +
-                " WHERE a.id=b.user_id AND b.role_id=c.id";
+        String sql = "SELECT a.*, c.*,d.*, c.role_name show_role_id FROM us_user a,us_user_role b,us_role c,us_user_info d WHERE a.user_id=b.user_id AND b.role_id=c.role_id AND d.user_id=a.user_id ";
         return new StringBuilder(sql);
     }
 
@@ -44,9 +29,6 @@ public class UserDaoImpl extends PageDao implements UserDao {
         }
         if (!("").equals(user.getUserName())) {
             sql.append(" AND a.user_name like '%").append(user.getUserName().trim()).append("%'");
-        }
-        if (!("").equals(user.getShowRoleId())) {
-            sql.append(" AND b.role_id = ").append(user.getShowRoleId());
         }
         return queryForPage(pageParameter, sql.toString(), new BeanPropertySqlParameterSource(user), new BeanPropertyRowMapper<User>(User.class));
     }
@@ -98,11 +80,5 @@ public class UserDaoImpl extends PageDao implements UserDao {
     public int delUser(int id) {
         String sql = "DELETE FROM sys_user WHERE id = ?";
         return getJdbcTemplate().update(sql, id);
-    }
-
-    @Override
-    public List<String> findAllPermTokensByUserId(int userId) {
-        String sql = "SELECT p.permission_token FROM sys_user_permission up,sys_permission p WHERE p.id = up.permission_id and up.user_id = ?";
-        return getJdbcTemplate().queryForList(sql, String.class, userId);
     }
 }

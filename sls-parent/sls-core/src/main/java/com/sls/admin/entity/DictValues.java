@@ -1,15 +1,8 @@
 package com.sls.admin.entity;
 
-/**
- * 类的描述信息
- *
- * @author chenl
- * @version 1.0.1
- */
-
 public class DictValues {
     private String dictName;
-    private String dictCode;
+    private int dictCode;
     private String dictValue;
 
     public DictValues() {
@@ -23,11 +16,11 @@ public class DictValues {
         this.dictName = dictName;
     }
 
-    public String getDictCode() {
+    public int getDictCode() {
         return dictCode;
     }
 
-    public void setDictCode(String dictCode) {
+    public void setDictCode(int dictCode) {
         this.dictCode = dictCode;
     }
 

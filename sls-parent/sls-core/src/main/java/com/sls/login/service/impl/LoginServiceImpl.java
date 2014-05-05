@@ -30,7 +30,7 @@ public class LoginServiceImpl implements LoginService {
         String loginName = LoginUserUtil.findLoginUserName();
         List<User> user = userDao.findUserByLoginName(loginName);
         if (user.size() > 0) {
-            if (user.get(0).getRoleId() == roleDao.findRoleByRoleName(DictConstant.ADMIN).getId()) {
+            if (user.get(0).getRoleId() == roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_ADMIN).getRoleId()) {
                 return "/scormadmin/index";
             }
         }
@@ -51,9 +51,9 @@ public class LoginServiceImpl implements LoginService {
         }
         if (currentUser.isAuthenticated()) {
             List<User> userList = userDao.findUserByLoginName(LoginUserUtil.findLoginUserName());
-            session.setAttribute("userId", userList.get(0).getId());
+            session.setAttribute("userId", userList.get(0).getRoleId());
             modelView.setViewName("/scormadmin/index");
-            if (userList.get(0).getRoleId() == roleDao.findRoleByRoleName(DictConstant.USER).getId()) {
+            if (userList.get(0).getRoleId() == roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_USER).getRoleId()) {
                 setIndexInfo(request);
                 modelView.setViewName("/scormfront/index");
             }

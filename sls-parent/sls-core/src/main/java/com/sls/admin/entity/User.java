@@ -1,31 +1,19 @@
 package com.sls.admin.entity;
 
-/**
- * @author gaoxinyu
- * @version 1.0.1
- */
 public class User {
 
-    private int id;
+    private int userId;
     private String loginName;
     private String userName;
     private String password;
-    private int departmentId;
-    private String showDepartmentId;
+    private int inUse;
+    private String showInUse;
 
     private int roleId;
-    private String showRoleId;
-    private Boolean checked = false;
+    private String roleName;
+    private String authority;
 
     public User() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getLoginName() {
@@ -52,22 +40,6 @@ public class User {
         this.password = password;
     }
 
-    public int getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
-    }
-
-    public String getShowDepartmentId() {
-        return showDepartmentId;
-    }
-
-    public void setShowDepartmentId(String showDepartmentId) {
-        this.showDepartmentId = showDepartmentId;
-    }
-
     public int getRoleId() {
         return roleId;
     }
@@ -76,19 +48,43 @@ public class User {
         this.roleId = roleId;
     }
 
-    public String getShowRoleId() {
-        return showRoleId;
+    public int getInUse() {
+        return inUse;
     }
 
-    public void setShowRoleId(String showRoleId) {
-        this.showRoleId = showRoleId;
+    public void setInUse(int inUse) {
+        this.inUse = inUse;
     }
 
-    public Boolean getChecked() {
-        return checked;
+    public String getShowInUse() {
+        return showInUse;
     }
 
-    public void setChecked(Boolean checked) {
-        this.checked = checked;
+    public void setShowInUse(String showInUse) {
+        this.showInUse = showInUse;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
     }
 }

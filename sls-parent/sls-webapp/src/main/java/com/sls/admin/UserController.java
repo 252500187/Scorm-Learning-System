@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.security.GeneralSecurityException;
 
 @Controller
 @Transactional
@@ -27,7 +26,7 @@ public class UserController {
 
     @RequestMapping(value = "listAllUserDo", method = {RequestMethod.GET})
     public String listAllUserDo(HttpServletRequest request) {
-        request.setAttribute("myLoginId", userService.findUserByLoginName(LoginUserUtil.findLoginUserName()).get(0).getId());
+        request.setAttribute("myLoginId", userService.findUserByLoginName(LoginUserUtil.findLoginUserName()).get(0).getUserId());
         request.setAttribute("shield", DictConstant.SHIELD);
         return "scormadmin/user/listAllUserDo";
     }
@@ -37,9 +36,6 @@ public class UserController {
     public Page listAllUser(PageParameter pageParameter, User user) {
         return userService.findUserPageList(pageParameter, user);
     }
-
-
-
 
     @RequestMapping(value = "addUserDo", method = {RequestMethod.GET})
     public String addUserDo() {

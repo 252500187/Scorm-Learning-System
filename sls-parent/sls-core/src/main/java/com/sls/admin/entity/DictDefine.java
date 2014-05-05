@@ -1,12 +1,5 @@
 package com.sls.admin.entity;
 
-/**
- * 字典定义类
- *
- * @author chenl
- * @version 1.0.1
- */
-
 public class DictDefine {
     private String dictName;
     private String oldDictName;

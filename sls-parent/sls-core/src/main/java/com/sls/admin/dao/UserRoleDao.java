@@ -11,6 +11,4 @@ public interface UserRoleDao {
     int editRoleByUserId(UserRole userRole);
 
     int deleteUserRoleByUserId(String userId);
-
-    List<String> findRoleNamesByUserId(int userId);
 }

@@ -1,10 +1,3 @@
-/*
-* RoleDaoImpl.java
-* Created on  2013-9-26 下午10:03
-* 版本       修改时间          作者      修改内容
-* V1.0.1    2013-9-26       gaoxinyu    初始版本
-*
-*/
 package com.sls.admin.dao.impl;
 
 import com.core.page.dao.PageDao;
@@ -20,18 +13,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * 角色dao实现
- *
- * @author gaoxinyu
- * @version 1.0.1
- */
-
 @Repository("roleDao")
 public class RoleDaoImpl extends PageDao implements RoleDao {
 
     private StringBuilder getRoleSql() {
-        String roleSql = "SELECT * FROM sys_role where 1=1 ";
+        String roleSql = "SELECT * FROM us_role where 1=1 ";
         return new StringBuilder(roleSql);
     }
 
@@ -45,9 +31,9 @@ public class RoleDaoImpl extends PageDao implements RoleDao {
     }
 
     @Override
-    public Role findRoleByRoleName(String roleName) {
+    public Role findRoleByAuthority(String authority) {
         StringBuilder sql = getRoleSql();
-        sql.append(" AND role_name=?");
-        return getJdbcTemplate().queryForObject(sql.toString(), new BeanPropertyRowMapper<Role>(Role.class), roleName);
+        sql.append(" AND authority=?");
+        return getJdbcTemplate().queryForObject(sql.toString(), new BeanPropertyRowMapper<Role>(Role.class), authority);
     }
 }

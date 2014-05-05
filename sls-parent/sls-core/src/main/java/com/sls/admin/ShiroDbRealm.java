@@ -24,11 +24,9 @@ public class ShiroDbRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String loginName = (String) getAvailablePrincipal(principals);
         if (loginName != null) {
-            List<String> roles = accountService.getRolesByLoginName(loginName);
+            String role = accountService.getRoleAuthorityByLoginName(loginName);
             SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-            if (roles != null) {
-                info.addRoles(roles);
-            }
+            info.addRole(role);
             return info;
         }
         return null;
@@ -39,8 +37,8 @@ public class ShiroDbRealm extends AuthorizingRealm {
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
         String loginName = token.getUsername();
         if (loginName != null && !"".equals(loginName)) {
-            List<User> userList=accountService.findUserByLoginName(loginName);
-            if(userList.size()>0){
+            List<User> userList = accountService.findUserByLoginName(loginName);
+            if (userList.size() > 0) {
                 return new SimpleAuthenticationInfo(userList.get(0).getLoginName(), userList.get(0).getPassword(), getName());
             }
         }

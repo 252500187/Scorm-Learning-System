@@ -13,12 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * 字典service实现
- *
- * @author chenl
- * @version 1.0.1
- */
 @Transactional
 @Service("dictService")
 public class DictServiceImpl implements DictService {
@@ -117,7 +111,7 @@ public class DictServiceImpl implements DictService {
         }
         DictValues dictValues = new DictValues();
         dictValues.setDictName(dictName);
-        dictValues.setDictCode(Integer.toString(dictCode));
+        dictValues.setDictCode(dictCode);
         return dictDao.findDictValuesByNameAndCode(dictValues).getDictValue();
     }
 
@@ -128,6 +122,6 @@ public class DictServiceImpl implements DictService {
         DictValues dictValues = new DictValues();
         dictValues.setDictName(dictName);
         dictValues.setDictValue(dictValue);
-        return Integer.parseInt(dictDao.findDictValuesByNameAndValue(dictValues).getDictCode());
+        return dictDao.findDictValuesByNameAndValue(dictValues).getDictCode();
     }
 }

@@ -12,13 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * 字典dao实现
- *
- * @author chenl
- * @version 1.0.1
- */
-
 @Repository("dictDao")
 public class DictDaoImpl extends PageDao implements DictDao {
 

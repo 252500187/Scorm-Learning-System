@@ -8,5 +8,5 @@ public interface AccountService {
 
     List<User> findUserByLoginName(String username);
 
-    List<String> getRolesByLoginName(String loginName);
+    String getRoleAuthorityByLoginName(String loginName);
 }

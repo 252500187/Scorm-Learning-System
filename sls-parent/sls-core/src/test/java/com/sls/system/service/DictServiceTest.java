@@ -43,7 +43,7 @@ public class DictServiceTest extends SpringTransactionalTestCase {
     public DictValues getDictValues() {
         DictValues dictValues = new DictValues();
         dictValues.setDictName("dictName");
-        dictValues.setDictCode("0");
+        dictValues.setDictCode(0);
         dictValues.setDictValue("dictValue");
         return dictValues;
     }
