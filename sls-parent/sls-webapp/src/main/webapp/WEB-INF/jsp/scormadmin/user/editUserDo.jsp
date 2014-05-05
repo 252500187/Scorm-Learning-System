@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>用户编辑</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-    <%@include file="../../includes/common.jsp" %>
+    <%@include file="../../includes/adminCommon.jsp" %>
     <link rel="stylesheet" type="text/css"
           href="<c:url value="/js/common/zTree-v3.5.14/css/zTreeStyle/zTreeStyle.css"/>"/>
     <script src="<c:url value="/js/common/zTree-v3.5.14/js/jquery.ztree.all-3.5.min.js"/>"

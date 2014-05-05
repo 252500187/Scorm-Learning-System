@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-    <%@include file="../../includes/common.jsp" %>
+    <%@include file="../../includes/adminCommon.jsp" %>
     <title><spring:message code="dictValues"/></title>
 <body>
 <div id="mainContent">
