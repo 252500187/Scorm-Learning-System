@@ -140,8 +140,18 @@
     $(function () {
         addTab('user/center/registeredScormDo');
     })
-    $("li").click(function () {
-        $("li").removeAttr("class");
-        $(this).attr("class", "active");
+    $('.page-sidebar ul').on('click', ' li > a', function (e) {
+        var menuContainer = $('.page-sidebar ul');
+        menuContainer.children('li.active').removeClass('active');
+        menuContainer.children('arrow.open').removeClass('open');
+        $(this).parents('li').each(function () {
+            $(this).addClass('active');
+            $(this).children('a > span.arrow').addClass('open');
+        });
+        $(this).parents('li').addClass('active');
+
+
+        $('.selected').remove();
+        $(this).parents('li').find("a").append('<span class="selected" ></span>');
     });
 </script>
