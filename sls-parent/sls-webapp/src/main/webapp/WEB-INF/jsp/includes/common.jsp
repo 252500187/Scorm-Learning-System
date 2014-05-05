@@ -6,41 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
-<link rel="stylesheet" type="text/css" href="<c:url value="/js/common/bootstrap-2.3.2/css/bootstrap.min.css"/>"/>
-<link rel="stylesheet" type="text/css"
-      href="<c:url value="/js/common/bootstrap-2.3.2/css/bootstrap-datetimepicker.min.css"/>"/>
-<link rel="stylesheet" type="text/css"
-      href="<c:url value="/js/common/jquery-easyui-1.3.4/themes/bootstrap/easyui.css"/>"/>
-<link rel="stylesheet" type="text/css" href="<c:url value="/js/common/jquery-easyui-1.3.4/themes/icon.css"/>"/>
-<link rel="stylesheet" type="text/css" href="<c:url value="/js/common/cover/cover.css"/>"/>
-<link rel="stylesheet" type="text/css" href="<c:url value="/js/common/ccjcJS/validate.css"/>"/>
-<link rel="stylesheet" type="text/css" href="<c:url value="/js/common/autocomplete/autocomplete.css"/>"/>
-<link rel="stylesheet" type="text/css" href="<c:url value="/js/common/alertMsg/alertMsg.css"/>"/>
-
-<script src="<c:url value="/js/common/jquery/jquery-1.8.2.min.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/js/common/bootstrap-2.3.2/js/bootstrap.min.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/js/common/bootstrap-2.3.2/js/bootstrap-datetimepicker.min.js"/>"
-        type="text/javascript"></script>
-<script src="<c:url value="/js/common/autocomplete/autocomplete.min.js"/>" type=text/javascript></script>
-<script src="<c:url value="/js/common/jquery-easyui-1.3.4/jquery.easyui.min.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/js/common/jquery-easyui-1.3.4/locale/easyui-lang-zh_CN.js"/>"
-        type="text/javascript"></script>
-<script src="<c:url value="/js/common/jquery.tools.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jquery-1.10.2.min.js"/>"></script>
 <script src="<c:url value="/js/common/common.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/js/common/ccjcJS/ccjcJS.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/js/common/cover/cover.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/js/common/alertMsg/alertMsg.js"/>" type="text/javascript"></script>
 
 <base href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()%><c:url value="/"/>"/>
-<script>
-    $(function () {
-        JC.inputInit();
-    })
-</script>
 
-<%--这四个先后顺序不能变，会报错--%>
 
-<script src="<c:url value="/assets/plugins/jquery-1.10.2.min.js"/>"></script>
+<%--这三个先后顺序不能变，会报错--%>
+
 <script src="<c:url value="/assets/plugins/jquery-migrate-1.2.1.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/bootstrap/js/bootstrap.min.js"/>" type="text/javascript"></script>
@@ -100,8 +73,14 @@
 <script src="<c:url value="/assets/plugins/typeahead/typeahead.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/scripts/custom/components-form-tools.js"/>"></script>
 
+<script src="<c:url value="/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/flot/jquery.flot.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/flot/jquery.flot.resize.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/flot/jquery.flot.categories.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/scripts/custom/ecommerce-index.js"/>"></script>
 
-
+<script src="<c:url value="/assets/plugins/jquery-knob/js/jquery.knob.js"/>"></script>
+<script src="<c:url value="/assets/scripts/custom/components-knob-dials.js"/>"></script>
 
 
 <link href="<c:url value="/assets/plugins/dropzone/css/dropzone.css"/>" rel="stylesheet"/>
@@ -119,12 +98,6 @@
 <link href="<c:url value="/assets/css/plugins.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/css/themes/default.css"/>" rel="stylesheet" type="text/css" id="style_color"/>
 <link href="<c:url value="/assets/css/pages/login-soft.css"/>" rel="stylesheet" type="text/css"/>
-
-<script src="<c:url value="/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/assets/plugins/flot/jquery.flot.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/assets/plugins/flot/jquery.flot.resize.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/assets/plugins/flot/jquery.flot.categories.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/assets/scripts/custom/ecommerce-index.js"/>"></script>
 
 <link href="<c:url value="/assets/css/pages/tasks.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/css/print.css"/>" rel="stylesheet" type="text/css" media="print"/>
@@ -149,3 +122,8 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/typeahead/typeahead.css"/>">
 <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/promo.css"/>">
 <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/animate.css"/>">
+
+
+<%--ztree冲突，放最后别动--%>
+<link rel="stylesheet" type="text/css" href="<c:url value="/js/common/zTree-v3.5.14/css/zTreeStyle/zTreeStyle.css"/>"/>
+<script src="<c:url value="/js/common/zTree-v3.5.14/js/jquery.ztree.all-3.5.min.js"/>" type="text/javascript"></script>
