@@ -9,7 +9,7 @@ public class Sco {
     private String treeParentId;
     private String treeId;
     private String url;
-    private int isLastVisit;
+    private int lastVisit;
     private int studyState;
 
 
@@ -88,19 +88,19 @@ public class Sco {
         this.url = url;
     }
 
-    public int getLastVisit() {
-        return isLastVisit;
-    }
-
-    public void setLastVisit(int lastVisit) {
-        isLastVisit = lastVisit;
-    }
-
     public int getStudyState() {
         return studyState;
     }
 
     public void setStudyState(int studyState) {
         this.studyState = studyState;
+    }
+
+    public int getLastVisit() {
+        return lastVisit;
+    }
+
+    public void setLastVisit(int lastVisit) {
+        this.lastVisit = lastVisit;
     }
 }

@@ -40,10 +40,15 @@ public class ScormServiceImpl implements ScormService {
             scorm.setUploadUserId(userId);
             scorm.setInUse(DictConstant.NO_USE);
             //TODO CHUAN
-            String scormPath = fileUp.upScorm(request, fileName, upFile);
-            List<Sco> scoNodes = fileUp.analyzeXml(scormPath + DictConstant.IMSMANIFEST);
+            List<Sco> scoNodes = fileUp.analyzeXml(fileUp.upScorm(request, fileName, upFile) + DictConstant.IMSMANIFEST);
             scoNodes.add(new Sco(scorm.getName(), DictConstant.SCO_MAIN, "0", "1", ""));
-            request.setAttribute("scormNodes", scoNodes);      //todo 存入数据库
+            for (Sco scoNode : scoNodes) {
+                scoNode.setScormId(1);
+                scoNode.setUserId(userId);
+                scoNode.setLastVisit(DictConstant.LAST_VISIT);
+                scoNode.setStudyState(DictConstant.STUDY_STATE_0);
+                //todo 存入数据库
+            }
         } catch (Exception e) {
             request.setAttribute("result", "上传失败！");
         }
