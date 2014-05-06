@@ -1,11 +1,11 @@
-package com.sls.admin.dao.impl;
+package com.sls.system.dao.impl;
 
 import com.core.page.dao.PageDao;
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
-import com.sls.admin.dao.DictDao;
-import com.sls.admin.entity.DictDefine;
-import com.sls.admin.entity.DictValues;
+import com.sls.system.dao.DictDao;
+import com.sls.system.entity.DictDefine;
+import com.sls.system.entity.DictValues;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.stereotype.Repository;

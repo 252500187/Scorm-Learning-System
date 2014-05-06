@@ -1,11 +1,12 @@
-package com.sls.admin.service;
+package com.sls.user.dao;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
-import com.sls.admin.entity.Role;
+import com.sls.user.entity.Role;
 
-public interface RoleService {
+public interface RoleDao {
 
     Page<Role> findRolePageList(PageParameter pageParameter, Role role);
 
+    Role findRoleByAuthority(String authority);
 }

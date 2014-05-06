@@ -1,12 +1,12 @@
-package com.sls.admin.service.impl;
+package com.sls.system.service.impl;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.util.DictConstant;
-import com.sls.admin.dao.DictDao;
-import com.sls.admin.entity.DictDefine;
-import com.sls.admin.entity.DictValues;
-import com.sls.admin.service.DictService;
+import com.sls.system.dao.DictDao;
+import com.sls.system.entity.DictDefine;
+import com.sls.system.entity.DictValues;
+import com.sls.system.service.DictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,9 +1,9 @@
-package com.sls.admin.dao;
+package com.sls.system.dao;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
-import com.sls.admin.entity.DictDefine;
-import com.sls.admin.entity.DictValues;
+import com.sls.system.entity.DictDefine;
+import com.sls.system.entity.DictValues;
 
 import java.util.List;
 

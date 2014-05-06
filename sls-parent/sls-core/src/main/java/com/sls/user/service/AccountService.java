@@ -1,6 +1,6 @@
-package com.sls.admin.service;
+package com.sls.user.service;
 
-import com.sls.admin.entity.User;
+import com.sls.user.entity.User;
 
 import java.util.List;
 

@@ -1,12 +1,12 @@
-package com.sls.admin.service.impl;
+package com.sls.user.service.impl;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
-import com.sls.admin.dao.UserDao;
-import com.sls.admin.dao.UserRoleDao;
-import com.sls.admin.entity.User;
-import com.sls.admin.entity.UserRole;
-import com.sls.admin.service.UserService;
+import com.sls.user.dao.UserDao;
+import com.sls.user.dao.UserRoleDao;
+import com.sls.user.entity.User;
+import com.sls.user.entity.UserRole;
+import com.sls.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

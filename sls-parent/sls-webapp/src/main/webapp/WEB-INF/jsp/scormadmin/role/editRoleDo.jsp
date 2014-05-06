@@ -1,5 +1,5 @@
 <%--@elvariable id="permissionTokenValue" type="java.lang.String"--%>
-<%--@elvariable id="role" type="com.sls.admin.entity.Role"--%>
+<%--@elvariable id="role" type="com.sls.user.entity.Role"--%>
 <%--@elvariable id="menuPermList" type="java.util.List"--%>
 <%--
   Created by IntelliJ IDEA.

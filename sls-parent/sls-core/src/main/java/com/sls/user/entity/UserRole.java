@@ -1,4 +1,4 @@
-package com.sls.admin.entity;
+package com.sls.user.entity;
 
 public class UserRole {
     private int userId;

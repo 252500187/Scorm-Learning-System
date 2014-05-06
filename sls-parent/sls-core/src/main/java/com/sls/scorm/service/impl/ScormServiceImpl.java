@@ -3,7 +3,7 @@ package com.sls.scorm.service.impl;
 import com.sls.scorm.dao.ScoDao;
 import com.sls.scorm.dao.ScormDao;
 import com.sls.scorm.service.ScormService;
-import com.sls.admin.dao.UserDao;
+import com.sls.user.dao.UserDao;
 import com.sls.scorm.entity.Sco;
 import com.sls.scorm.entity.Scorm;
 import com.sls.util.BaseUtil;

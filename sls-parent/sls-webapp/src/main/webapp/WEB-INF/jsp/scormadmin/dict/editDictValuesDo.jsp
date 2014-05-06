@@ -1,4 +1,4 @@
-<%--@elvariable id="dictValuesTemp" type="com.sls.admin.entity.DictValues"--%>
+<%--@elvariable id="dictValuesTemp" type="com.sls.system.entity.DictValues"--%>
 <%--
   Created by IntelliJ IDEA.
   User: chenl

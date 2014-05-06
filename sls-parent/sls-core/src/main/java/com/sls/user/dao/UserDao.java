@@ -1,12 +1,12 @@
-package com.sls.admin.service;
+package com.sls.user.dao;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
-import com.sls.admin.entity.User;
+import com.sls.user.entity.User;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserDao {
 
     Page<User> findUserPageList(PageParameter pageParameter, User user);
 
@@ -14,13 +14,14 @@ public interface UserService {
 
     List<User> findUserByLoginName(String loginName);
 
-    Boolean checkRepeatLoginName(String loginName, String oldName);
+    Boolean checkRepeatLoginName(String loginName);
 
-    Boolean checkRepeatUserName(String userName, String oldName);
+    Boolean checkRepeatUserName(String userName);
 
-    void addUser(User user);
+    int addUser(User user);
 
     void editUser(User user);
 
-    void delUsers(String userIds[]);
+    int delUser(int id);
+
 }

@@ -1,8 +1,8 @@
-package com.sls.admin.dao.impl;
+package com.sls.user.dao.impl;
 
 import com.core.page.dao.PageDao;
-import com.sls.admin.dao.UserRoleDao;
-import com.sls.admin.entity.UserRole;
+import com.sls.user.dao.UserRoleDao;
+import com.sls.user.entity.UserRole;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.stereotype.Repository;
 

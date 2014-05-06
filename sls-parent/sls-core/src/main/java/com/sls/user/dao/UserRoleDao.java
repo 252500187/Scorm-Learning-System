@@ -1,6 +1,6 @@
-package com.sls.admin.dao;
+package com.sls.user.dao;
 
-import com.sls.admin.entity.UserRole;
+import com.sls.user.entity.UserRole;
 
 public interface UserRoleDao {
 

@@ -1,4 +1,4 @@
-package com.sls.admin.entity;
+package com.sls.system.entity;
 
 public class DictValues {
     private String dictName;

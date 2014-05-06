@@ -1,10 +1,10 @@
-package com.sls.admin.dao.impl;
+package com.sls.user.dao.impl;
 
 import com.core.page.dao.PageDao;
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
-import com.sls.admin.dao.UserDao;
-import com.sls.admin.entity.User;
+import com.sls.user.dao.UserDao;
+import com.sls.user.entity.User;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;

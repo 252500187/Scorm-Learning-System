@@ -1,4 +1,4 @@
-<%--@elvariable id="dictDefine" type="com.sls.admin.entity.DictDefine"--%>
+<%--@elvariable id="dictDefine" type="com.sls.system.entity.DictDefine"--%>
 <%--
   Created by IntelliJ IDEA.
   User: chenl
