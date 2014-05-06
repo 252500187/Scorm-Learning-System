@@ -20,11 +20,11 @@
 <div class="page-container">
 <div class="col-md-1"></div>
 <div class="col-md-11">
-<div class="col-md-3">
+<div class="col-md-2">
     <div class="row">
             <h2>HOT TOP</h2>
 
-            <div class="top-news col-md-11">
+            <div class="top-news col-md-12">
                 <a class="btn red sliderbar-transparency" href="#">
                     <span> TOP ONE</span>
                     <em>书名</em>
@@ -92,7 +92,7 @@
         </div>
     <div class="row">
             <ul class="timeline">
-                <li class="timeline-yellow">
+                <li class="timeline-yellow" style="max-width: 200px">
                     <div class="timeline-time">
         					<span class="time">
         						 2013.12.1
