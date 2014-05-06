@@ -2,11 +2,13 @@ package com.sls.user.service.impl;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
+import com.sls.system.service.DictService;
 import com.sls.user.dao.UserDao;
 import com.sls.user.dao.UserRoleDao;
 import com.sls.user.entity.User;
 import com.sls.user.entity.UserRole;
 import com.sls.user.service.UserService;
+import com.sls.util.DictConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRoleDao userRoleDao;
+
+    @Autowired
+    private DictService dictService;
 
     @Override
     public Page<User> findUserPageList(PageParameter pageParameter, User user) {
@@ -51,6 +56,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUser(User user) {
+        user.setInUse(DictConstant.IN_USE);
         int id = userDao.addUser(user);
         UserRole userRole = new UserRole();
         userRole.setRoleId(user.getRoleId());

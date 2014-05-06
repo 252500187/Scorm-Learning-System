@@ -61,8 +61,8 @@ public class UserDaoImpl extends PageDao implements UserDao {
 
     @Override
     public int addUser(User user) {
-        String sql = "INSERT INTO sys_user(login_name, user_name, password, department_id) " +
-                "VALUES(:loginName, :userName, :password, :departmentId)";
+        String sql = "INSERT INTO us_user(login_name, user_name, password, in_use) " +
+                "VALUES(:loginName, :userName, :password, :inUse)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(user), keyHolder);
         return keyHolder.getKey().intValue();

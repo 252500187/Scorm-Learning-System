@@ -7,13 +7,25 @@ public class User {
     private String userName;
     private String password;
     private int inUse;
+
+
+
     private String showInUse;
+    private String email;
 
     private int roleId;
     private String roleName;
     private String authority;
 
     public User() {
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getLoginName() {

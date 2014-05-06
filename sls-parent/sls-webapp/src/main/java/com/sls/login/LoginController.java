@@ -1,7 +1,8 @@
 package com.sls.login;
 
-import com.sls.user.entity.User;
 import com.sls.login.service.LoginService;
+import com.sls.user.entity.User;
+import com.sls.user.service.UserService;
 import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,9 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(value = "/login", method = {RequestMethod.GET})
     public String login(HttpServletRequest request) {
         WebUtils.getAndClearSavedRequest(request);
@@ -35,4 +39,6 @@ public class LoginController {
     public String toIndex(HttpServletRequest request) {
         return loginService.toIndex(request);
     }
+
+
 }

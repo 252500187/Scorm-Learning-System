@@ -105,7 +105,7 @@
     </form>
     <!-- END FORGOT PASSWORD FORM -->
     <!-- BEGIN REGISTRATION FORM -->
-    <form class="register-form">
+    <form id="registerInfo" class="register-form">
         <h3>注册</h3>
 
         <p>
@@ -117,8 +117,8 @@
 
             <div class="input-icon">
                 <i class="fa fa-font"></i>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="输入登陆帐号"
-                       name="register_loginName"/>
+                <input name="loginName" class="form-control placeholder-no-fix" type="text" placeholder="输入登陆帐号"
+                       />
             </div>
         </div>
 
@@ -127,8 +127,7 @@
 
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
-                <input class="form-control placeholder-no-fix" type="password" id="register_password"
-                       name="register_password"
+                <input  name="password" class="form-control placeholder-no-fix" type="password"
                        placeholder="输入登陆密码" name="password"/>
             </div>
         </div>
@@ -139,7 +138,7 @@
 
             <div class="input-icon">
                 <i class="fa fa-envelope"></i>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="输入Email（密码找回）" name="email"/>
+                <input id="email"class="form-control placeholder-no-fix" type="text" placeholder="输入Email（密码找回）" name="email"/>
             </div>
         </div>
         <div class="form-group">
@@ -147,8 +146,8 @@
 
             <div class="input-icon">
                 <i class="fa fa-user"></i>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="输入昵称"
-                       name="name"/>
+                <input name="userName" class="form-control placeholder-no-fix" type="text" placeholder="输入昵称"
+                      />
             </div>
         </div>
         <div class="form-group">
@@ -166,8 +165,8 @@
             <button id="register-back-btn" type="button" class="btn">
                 <i class="m-icon-swapleft"></i> 返回
             </button>
-            <button id="register-submit-btn" class="btn blue pull-right">
-                注册！ <i class="m-icon-swapright m-icon-white"></i>
+            <button id="register-submit-btn" class="btn blue pull-right" onclick=register() >
+                 <i class="m-icon-swapright m-icon-white"></i> 注册
             </button>
         </div>
     </form>
@@ -180,8 +179,28 @@
         Login.init();
     });
 
-    function registe() {
-        alert("有待完成");
+    function register() {
+        $("#registerInfo").attr("method","post").attr("action","tourist/register").submit();
+
+//        $.ajax({
+//            url: basePath + "/login/register",
+//            data: {
+//                loginName: $("#register_loginName").val().trim(),
+//                password: $("#register_password").val().trim(),
+//                email: $("#email").trim(),
+//                userName:$("#userName").trim()
+//            },
+//            dataType: "json",
+//            type: "POST",
+//            success: function () {
+//                $.messager.alert("提示", "注册成功", "", function () {
+//                    parent.$("#dataEdit").dialog('close');
+//                    parent.query();
+//                });
+//            },
+//            error: doError
+//        })
+
     }
 
     function findPassword() {
