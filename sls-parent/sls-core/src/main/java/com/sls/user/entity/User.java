@@ -4,13 +4,11 @@ public class User {
 
     private int userId;
     private String loginName;
-    private String userName;
     private String password;
+    private String showInUse;
     private int inUse;
 
-
-
-    private String showInUse;
+    private String userName;
     private String email;
 
     private int roleId;
