@@ -10,6 +10,6 @@ import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
 
 public interface ScormService {
-    void upScorm(HttpServletRequest request, String upFile, String upImg, Scorm scorm) throws ServletException, IOException, ParserConfigurationException, SAXException,
+    void upScorm(HttpServletRequest request, String upFile, String upImg, String scormName) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException;
 }

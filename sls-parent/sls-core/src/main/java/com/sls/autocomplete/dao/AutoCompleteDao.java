@@ -4,12 +4,6 @@ import com.core.autocomplete.entity.AutoCompleteVO;
 
 import java.util.List;
 
-/**
- * google框dao层接口
- *
- * @author gaoxinyu
- * @version 1.0.1
- */
 public interface AutoCompleteDao {
 
     List<AutoCompleteVO> getDictValues(String dictName);

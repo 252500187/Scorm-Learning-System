@@ -12,55 +12,38 @@
     <%@include file="../../../includes/common.jsp" %>
 </head>
 <body class="page-header-fixed">
-    <div class="page-content-wrapper">
-        <div class="page-content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="portlet box blue">
+<div class="page-content-wrapper">
+    <div class="page-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet box blue">
 
-                        <div class="portlet-body form">
-                            <form class="form-horizontal form-bordered" id="fileGetUp" method="post"
-                                  enctype="multipart/form-data">
-                                <div class="form-body">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">选择SCORM课件（仅支持1.2版本）</label>
+                    <div class="portlet-body form">
+                        <form class="form-horizontal form-bordered" id="fileGetUp" method="post"
+                              enctype="multipart/form-data">
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">课件名称</label>
 
-                                        <div class="col-md-9">
-                                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                <div class="input-group input-large">
-                                                    <div class="form-control uneditable-input span3"
-                                                         data-trigger="fileinput">
-                                                        <i class="fa fa-file fileinput-exists"></i>&nbsp;
-														<span class="fileinput-filename">
-														</span>
-                                                    </div>
-													<span class="input-group-addon btn default btn-file">
-														<span class="fileinput-new">
-															 选择
-														</span>
-														<span class="fileinput-exists">
-															 换一个
-														</span>
-														<input type="file" name="upScorm" id="upScorm"/>
-													</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-3">
+                                        <input class="form-control form-control-inline input-medium date-picker"
+                                               id="scormName" size="16" type="text" value=""/>
                                     </div>
-                                    <div class="form-group last">
-                                        <label class="control-label col-md-3">选择图片</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">选择图片</label>
 
-                                        <div class="col-md-9">
-                                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                <div class="fileinput-new thumbnail"
-                                                     style="width: 200px; height: 150px;">
-                                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image"
-                                                         alt=""/>
-                                                </div>
-                                                <div class="fileinput-preview fileinput-exists thumbnail"
-                                                     style="max-width: 200px; max-height: 150px;">
-                                                </div>
-                                                <div>
+                                    <div class="col-md-9">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                            <div class="fileinput-new thumbnail"
+                                                 style="width: 200px; height: 150px;">
+                                                <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image"
+                                                     alt=""/>
+                                            </div>
+                                            <div class="fileinput-preview fileinput-exists thumbnail"
+                                                 style="max-width: 200px; max-height: 150px;">
+                                            </div>
+                                            <div>
 													<span class="btn default btn-file">
 														<span class="fileinput-new">
 															 选择
@@ -70,37 +53,62 @@
 														</span>
 														<input type="file" name="upImg" id="upImg"/>
 													</span>
-                                                </div>
                                             </div>
-                                            <div class="clearfix margin-top-10">
+                                        </div>
+                                        <div class="clearfix margin-top-10">
 												<span class="label label-danger">
 													 提示!
 												</span>
-                                                图片预览只支持 IE10+, FF3.6+, Safari6.0+, Chrome6.0+ and
-                                                Opera11.1+.
+                                            图片预览只支持 IE10+, FF3.6+, Safari6.0+, Chrome6.0+ and
+                                            Opera11.1+.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group last">
+                                    <label class="control-label col-md-3">选择SCORM课件（仅支持1.2版本）</label>
+
+                                    <div class="col-md-9">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                            <div class="input-group input-large">
+                                                <div class="form-control uneditable-input span3"
+                                                     data-trigger="fileinput">
+                                                    <i class="fa fa-file fileinput-exists"></i>&nbsp;
+														<span class="fileinput-filename">
+														</span>
+                                                </div>
+													<span class="input-group-addon btn default btn-file">
+														<span class="fileinput-new">
+															 选择
+														</span>
+														<span class="fileinput-exists">
+															 换一个
+														</span>
+														<input type="file" name="upScorm" id="upScorm"/>
+													</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-actions fluid">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="col-md-offset-3 col-md-9">
-                                                <button onclick="fileUpAttachment()" class="btn purple"><i
-                                                        class="fa fa-check"></i>
-                                                    上传
-                                                </button>
-                                            </div>
+                            </div>
+                            <div class="form-actions fluid">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <button onclick="fileUpAttachment()" class="btn purple"><i
+                                                    class="fa fa-check"></i>
+                                                上传
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
 <script>
@@ -110,7 +118,6 @@
 
     function fileUpAttachment() {
         $("#fileGetUp").attr("action",
-                        basePath + "user/center/upScorm?upScorm=" + $("#upScorm").val() + "&upImg=" + $("#upImg").val())
-                .submit();
+                        basePath + "user/center/upScorm?scormName=" + $("#scormName").val()).submit();
     }
 </script>

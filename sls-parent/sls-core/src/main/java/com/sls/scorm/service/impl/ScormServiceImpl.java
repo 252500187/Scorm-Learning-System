@@ -1,5 +1,7 @@
 package com.sls.scorm.service.impl;
 
+import com.sls.scorm.dao.ScoDao;
+import com.sls.scorm.dao.ScormDao;
 import com.sls.scorm.service.ScormService;
 import com.sls.user.dao.UserDao;
 import com.sls.scorm.entity.Sco;
@@ -27,27 +29,35 @@ public class ScormServiceImpl implements ScormService {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private ScormDao scormDao;
+
+    @Autowired
+    private ScoDao scoDao;
+
     @Override
-    public void upScorm(HttpServletRequest request, String upFile, String upImg, Scorm scorm) throws ServletException, IOException, ParserConfigurationException, SAXException,
+    public void upScorm(HttpServletRequest request, String upFile, String upImg, String scormName) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
         try {
             FileUp fileUp = new FileUp();
             Date date = new Date();
             int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-            String fileName = date.getTime() + userId + "";//todo 用户ID和日期
+            String fileName = date.getTime() + userId + "";
+            Scorm scorm = new Scorm();
+            scorm.setScormName(scormName);
             scorm.setRecommendLevel(DictConstant.RECOMMEND_0);
             scorm.setImgPath(fileUp.upImg(request, DictConstant.TOP_SCORM_FILE_NAME + "/" + fileName, DictConstant.SCORM_IMG, upImg));
             scorm.setUploadUserId(userId);
             scorm.setInUse(DictConstant.NO_USE);
-            //TODO CHUAN
+            int scormId = scormDao.addScorm(scorm);
             List<Sco> scoNodes = fileUp.analyzeXml(fileUp.upScorm(request, fileName, upFile) + DictConstant.IMSMANIFEST);
-            scoNodes.add(new Sco(scorm.getName(), DictConstant.SCO_MAIN, "0", "1", ""));
+            scoNodes.add(new Sco(scorm.getScormName(), DictConstant.SCO_MAIN, "0", "1", ""));
             for (Sco scoNode : scoNodes) {
-                scoNode.setScormId(1);
+                scoNode.setScormId(scormId);
                 scoNode.setUserId(userId);
-                scoNode.setLastVisit(DictConstant.LAST_VISIT);
+                scoNode.setLastVisit(DictConstant.VOID_VALUE);
                 scoNode.setStudyState(DictConstant.STUDY_STATE_0);
-                //todo 存入数据库
+                scoDao.addSco(scoNode);
             }
         } catch (Exception e) {
             request.setAttribute("result", "上传失败！");

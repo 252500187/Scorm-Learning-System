@@ -7,12 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * google框dao实现层
- *
- * @author gaoxinyu
- * @version 1.0.1
- */
 @Repository("autoCompleteDao")
 public class AutoCompleteDaoImpl extends AutoCompleteBaseDao implements AutoCompleteDao {
     @Override

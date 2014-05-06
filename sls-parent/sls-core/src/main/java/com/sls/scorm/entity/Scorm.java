@@ -2,7 +2,7 @@ package com.sls.scorm.entity;
 
 public class Scorm {
     private int scormId;
-    private String name;
+    private String scormName;
     private int recommendLevel;
     private String imgPath;
     private int uploadUserId;
@@ -17,14 +17,6 @@ public class Scorm {
 
     public void setScormId(int scormId) {
         this.scormId = scormId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getImgPath() {
@@ -57,5 +49,13 @@ public class Scorm {
 
     public void setRecommendLevel(int recommendLevel) {
         this.recommendLevel = recommendLevel;
+    }
+
+    public String getScormName() {
+        return scormName;
+    }
+
+    public void setScormName(String scormName) {
+        this.scormName = scormName;
     }
 }

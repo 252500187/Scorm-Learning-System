@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.xml.sax.SAXException;
 
 import javax.servlet.ServletException;
@@ -40,9 +41,9 @@ public class UserCenterController {
     }
 
     @RequestMapping(value = "upScorm", method = {RequestMethod.POST})
-    public String upScorm(HttpServletRequest request, Scorm scorm) throws ServletException, IOException, ParserConfigurationException, SAXException,
+    public String upScorm(HttpServletRequest request, @RequestParam("scormName") String scormName) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
-        upScormService.upScorm(request, "upScorm", "upImg", scorm);
+        upScormService.upScorm(request, "upScorm", "upImg", scormName);
         return "scormfront/usercenter/upscorm/upResult";
     }
 

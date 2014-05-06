@@ -29,14 +29,14 @@ public class DictDaoImpl extends PageDao implements DictDao {
 
     @Override
     public void addDictDefine(DictDefine dictDefine) {
-        final String sql = "INSERT INTO dict_define(dict_name, dict_description) " +
+        String sql = "INSERT INTO dict_define(dict_name, dict_description) " +
                 "VALUES(:dictName, :dictDescription)";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(dictDefine));
     }
 
     @Override
     public void delDictDefine(String dictName) {
-        final String sql = "DELETE FROM dict_define WHERE dict_name = ?";
+        String sql = "DELETE FROM dict_define WHERE dict_name = ?";
         getJdbcTemplate().update(sql, dictName);
     }
 
@@ -63,20 +63,20 @@ public class DictDaoImpl extends PageDao implements DictDao {
 
     @Override
     public void addDictValues(DictValues dictValues) {
-        final String sql = "INSERT INTO dict_values(dict_name, dict_code, dict_value) " +
+        String sql = "INSERT INTO dict_values(dict_name, dict_code, dict_value) " +
                 "VALUES(:dictName, :dictCode, :dictValue)";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(dictValues));
     }
 
     @Override
     public void editDictValues(DictValues dictValues) {
-        final String sql = "UPDATE dict_values SET dict_value = :dictValue WHERE dict_name = :dictName and dict_code = :dictCode";
+        String sql = "UPDATE dict_values SET dict_value = :dictValue WHERE dict_name = :dictName and dict_code = :dictCode";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(dictValues));
     }
 
     @Override
     public void delDictValues(DictValues dictValues) {
-        final String sql = "DELETE FROM dict_values WHERE dict_name =:dictName and dict_code=:dictCode";
+        String sql = "DELETE FROM dict_values WHERE dict_name =:dictName and dict_code=:dictCode";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(dictValues));
     }
 
