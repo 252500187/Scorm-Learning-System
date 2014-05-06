@@ -1,7 +1,8 @@
 package com.sls.front;
 
-import com.sls.front.scorm.service.UpScormService;
-import com.sls.front.scorm.service.UserCenterService;
+import com.sls.scorm.entity.Scorm;
+import com.sls.scorm.service.ScormService;
+import com.sls.scorm.service.UserCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,14 +18,14 @@ import java.io.IOException;
 
 @Controller
 @Transactional
-@RequestMapping("/user/center")
+@RequestMapping("/user/center/")
 public class UserCenterController {
 
     @Autowired
     private UserCenterService userCenterService;
 
     @Autowired
-    private UpScormService upScormService;
+    private ScormService upScormService;
 
     @RequestMapping(value = "userCenterDo", method = {RequestMethod.GET})
     public String userCenter(HttpServletRequest request) {
@@ -32,54 +33,46 @@ public class UserCenterController {
         return "scormfront/usercenter/userCenter";
     }
 
+    //个人中心  上传课件
     @RequestMapping(value = "upScormDo", method = {RequestMethod.GET})
     public String upScormDo() {
         return "scormfront/usercenter/upscorm/upScorm";
     }
 
     @RequestMapping(value = "upScorm", method = {RequestMethod.POST})
-    public String upScorm(HttpServletRequest request) throws ServletException, IOException, ParserConfigurationException, SAXException,
+    public String upScorm(HttpServletRequest request, Scorm scorm) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
-        upScormService.upScorm(request, "upScorm", "upImg");
-//        return "scormfront/usercenter/upscorm/upResult";
-        return "scormfront/studyscorm/studyScorm";
+        upScormService.upScorm(request, "upScorm", "upImg", scorm);
+        return "scormfront/usercenter/upscorm/upResult";
     }
 
-    //个人中心  个人资料的页面跳转
-    @RequestMapping(value = "personnelInfoDo", method = {RequestMethod.GET})
-    public String personnelInfo() {
-        return "scormfront/usercenter/personnelInfo";
+    //个人中心  个人资料
+    @RequestMapping(value = "userInfoDo", method = {RequestMethod.GET})
+    public String userInfoDo() {
+        return "scormfront/usercenter/userInfo";
     }
 
-//    //个人中心  上传课件的页面跳转
-//    @RequestMapping(value = "upScormDo", method = {RequestMethod.GET})
-//    public String upScorm() {
-//        return "scormfront/usercenter/upscorm/upScorm";
-//    }
-
-    //个人中心  已注册课件的页面跳转
-    @RequestMapping(value = "registeredScormDo", method = {RequestMethod.GET})
-    public String registeredScorm() {
-        return "scormfront/usercenter/registeredScorm";
+    //个人中心  已注册课件
+    @RequestMapping(value = "registerScormDo", method = {RequestMethod.GET})
+    public String registerScormDo() {
+        return "scormfront/usercenter/registerScorm";
     }
 
-    //个人中心  已完成课件的页面跳转
-    @RequestMapping(value = "finishedScormDo", method = {RequestMethod.GET})
-    public String finishedScorm() {
-        return "scormfront/usercenter/finishedScorm";
+    //个人中心  已完成课件
+    @RequestMapping(value = "finishScormDo", method = {RequestMethod.GET})
+    public String finishScormDo() {
+        return "scormfront/usercenter/finishScorm";
     }
 
-    //个人中心  我的收藏的页面跳转
-    @RequestMapping(value = "collectionDo", method = {RequestMethod.GET})
-    public String collection() {
-        return "scormfront/usercenter/collection";
+    //个人中心  已收藏课件
+    @RequestMapping(value = "collectScormDo", method = {RequestMethod.GET})
+    public String collectScormDo() {
+        return "scormfront/usercenter/collectScorm";
     }
 
-    //个人中心  我的笔记本的页面跳转
-    @RequestMapping(value = "noteDo", method = {RequestMethod.GET})
-    public String note() {
-        return "scormfront/usercenter/note";
+    //个人中心  笔记本
+    @RequestMapping(value = "notesDo", method = {RequestMethod.GET})
+    public String notesDo() {
+        return "scormfront/usercenter/notes";
     }
-
-
 }

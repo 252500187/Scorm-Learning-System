@@ -1,8 +1,8 @@
 package com.sls.login.service.impl;
 
-import com.sls.admin.dao.RoleDao;
-import com.sls.admin.dao.UserDao;
-import com.sls.admin.entity.User;
+import com.sls.user.dao.RoleDao;
+import com.sls.user.dao.UserDao;
+import com.sls.user.entity.User;
 import com.sls.login.service.LoginService;
 import com.sls.util.DictConstant;
 import com.sls.util.LoginUserUtil;
@@ -27,7 +27,7 @@ public class LoginServiceImpl implements LoginService {
     private RoleDao roleDao;
 
     public String toIndex(HttpServletRequest request) {
-        String loginName = LoginUserUtil.findLoginUserName();
+        String loginName = LoginUserUtil.getLoginName();
         List<User> user = userDao.findUserByLoginName(loginName);
         if (user.size() > 0) {
             if (user.get(0).getRoleId() == roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_ADMIN).getRoleId()) {
@@ -50,7 +50,7 @@ public class LoginServiceImpl implements LoginService {
             modelView.setViewName("/scormfront/login");
         }
         if (currentUser.isAuthenticated()) {
-            List<User> userList = userDao.findUserByLoginName(LoginUserUtil.findLoginUserName());
+            List<User> userList = userDao.findUserByLoginName(LoginUserUtil.getLoginName());
             session.setAttribute("userId", userList.get(0).getRoleId());
             modelView.setViewName("/scormadmin/index");
             if (userList.get(0).getRoleId() == roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_USER).getRoleId()) {
@@ -65,7 +65,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     public void setIndexInfo(HttpServletRequest request) {
-        String userId = LoginUserUtil.findLoginUserName();
+        String userId = LoginUserUtil.getLoginName();
         if (userId != "") {
             //todo ,用户信息
         }

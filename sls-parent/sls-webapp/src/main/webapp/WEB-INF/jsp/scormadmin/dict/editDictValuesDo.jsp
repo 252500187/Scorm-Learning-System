@@ -1,4 +1,4 @@
-<%--@elvariable id="dictValuesTemp" type="com.sls.admin.entity.DictValues"--%>
+<%--@elvariable id="dictValuesTemp" type="com.sls.user.entity.DictValues"--%>
 <%--
   Created by IntelliJ IDEA.
   User: chenl
@@ -55,7 +55,7 @@
         if (!JC.validate(rules)) return;
         $("#saves").button('loading');
         $.ajax({
-            url: basePath + "admin/dict/editDictValues?dictName=${dictValuesTemp.dictName}" + "&dictCode=${dictValuesTemp.dictCode}",
+            url: basePath + "user/dict/editDictValues?dictName=${dictValuesTemp.dictName}" + "&dictCode=${dictValuesTemp.dictCode}",
             data: {
                 dictValue: $("#dictValue").val()
             },

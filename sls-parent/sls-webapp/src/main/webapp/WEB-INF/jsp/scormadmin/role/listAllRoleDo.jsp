@@ -27,7 +27,7 @@
 </html>
 <script type="text/javascript">
     function query() {
-        listOption.url = basePath + "admin/role/listAllRole";
+        listOption.url = basePath + "user/role/listAllRole";
         listOption.data = "roleName=" + $("#roleName").val();
         listOption.pageNumber = 1;
         loadData(listOption);

@@ -1,4 +1,4 @@
-<%@ page import="com.sls.admin.entity.User" %>
+<%@ page import="com.sls.user.entity.User" %>
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <%
     String path = request.getContextPath();

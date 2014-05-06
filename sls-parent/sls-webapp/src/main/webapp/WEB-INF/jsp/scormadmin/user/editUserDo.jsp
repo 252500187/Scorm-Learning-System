@@ -1,4 +1,4 @@
-<%--@elvariable id="user" type="com.sls.admin.entity.User"--%>
+<%--@elvariable id="user" type="com.sls.user.entity.User"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -81,12 +81,12 @@
             loginName: {
                 checkRegExp: ["loginName", "<spring:message code="accountId"/>", JCRegExp.letterNum],
                 checkEmpty: ["loginName", "<spring:message code="accountId"/>"],
-                ajax: [basePath + "admin/front/checkRepeatLoginName", {}, {loginName: "$('#loginName').val().trim()",oldName:"'${user.loginName}'"},
+                ajax: [basePath + "user/front/checkRepeatLoginName", {}, {loginName: "$('#loginName').val().trim()",oldName:"'${user.loginName}'"},
                     backFuncLoginName, "text", "POST"]
             },
             userName: {
                 checkEmpty: ["userName", "<spring:message code="name"/>"],
-                ajax: [basePath + "admin/front/checkRepeatUserName", {}, {userName: "$('#userName').val().trim()",oldName:"'${user.userName}'"},
+                ajax: [basePath + "user/front/checkRepeatUserName", {}, {userName: "$('#userName').val().trim()",oldName:"'${user.userName}'"},
                     backFuncUserName, "text", "POST"]
             },
             userPassword: {
@@ -131,7 +131,7 @@
         if (!JC.validate(rules)) return;
         $("#saves").button('loading');
         $.ajax({
-            url: basePath + "admin/front/editUser",
+            url: basePath + "user/front/editUser",
             data: {
                 id: '${user.id}',
                 oldLoginName: '${user.loginName}',

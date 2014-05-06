@@ -40,7 +40,7 @@
 
 <script type="text/javascript">
     function query() {
-        listOption.url = basePath + "admin/user/listAllUser";
+        listOption.url = basePath + "user/user/listAllUser";
         listOption.data = "loginName=" + $("#loginName").val().trim() + "&userName=" + $("#userName").val().trim()
                 + "&showRoleId=" + $("#roleId").val();
         listOption.pageNumber = 1;
@@ -52,7 +52,7 @@
         $.messager.confirm("提示", "确认" + operate + "屏蔽用户？", function (r) {
             if (r) {
                 $.ajax({
-                    url: basePath + "admin/user/shieldUser?id=" + id,
+                    url: basePath + "user/user/shieldUser?id=" + id,
                     dataType: "json",
                     type: "POST",
                     success: function () {
