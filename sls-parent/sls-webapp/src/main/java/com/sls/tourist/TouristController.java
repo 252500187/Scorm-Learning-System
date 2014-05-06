@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @Transactional
 @RequestMapping("/tourist/")
-public class registerController {
+public class TouristController {
     @Autowired
     private UserService userService;
 
