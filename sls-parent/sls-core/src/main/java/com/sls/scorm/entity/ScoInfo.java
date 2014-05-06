@@ -1,12 +1,5 @@
 package com.sls.scorm.entity;
 
-/**
- * Created with IntelliJ IDEA.
- * User: genghis4
- * Date: 14-4-27
- * Time: 下午12:34
- * To change this template use File | Settings | File Templates.
- */
 public class ScoInfo {
     private String id;
     private String coreStudentId;
