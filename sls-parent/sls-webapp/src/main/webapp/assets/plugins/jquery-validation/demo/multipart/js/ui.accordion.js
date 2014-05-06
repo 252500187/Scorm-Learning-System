@@ -19,7 +19,7 @@ $.widget("ui.accordion", {
 		var o = this.options, self = this;
 		this.running = 0;
 
-		// if the user set the alwaysOpen option on init
+		// if the admin set the alwaysOpen option on init
 		// then we need to set the collapsible option
 		// if they set both on init, collapsible will take priority
 		if (o.collapsible == $.ui.accordion.defaults.collapsible &&

@@ -1,6 +1,6 @@
 package com.sls.login.service;
 
-import com.sls.user.entity.User;
+import com.sls.admin.entity.User;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;

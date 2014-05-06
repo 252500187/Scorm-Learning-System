@@ -1502,7 +1502,7 @@ jQuery.extend({
 		thisCache = cache[ id ];
 
 		// Internal jQuery data is stored in a separate object inside the object's data
-		// cache in order to avoid key collisions between internal data and user-defined
+		// cache in order to avoid key collisions between internal data and admin-defined
 		// data
 		if ( pvt ) {
 			if ( !thisCache[ internalKey ] ) {
@@ -1611,7 +1611,7 @@ jQuery.extend({
 			cache[ id ] = null;
 		}
 
-		// We destroyed the entire user cache at once because it's faster than
+		// We destroyed the entire admin cache at once because it's faster than
 		// iterating through each key, but we need to continue to persist internal
 		// data if it existed
 		if ( internalCache ) {

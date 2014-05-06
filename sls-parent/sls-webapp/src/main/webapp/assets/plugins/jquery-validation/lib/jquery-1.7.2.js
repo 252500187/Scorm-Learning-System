@@ -1751,7 +1751,7 @@ jQuery.extend({
 		privateCache = thisCache = cache[ id ];
 
 		// jQuery data() is stored in a separate object inside the object's internal data
-		// cache in order to avoid key collisions between internal data and user-defined
+		// cache in order to avoid key collisions between internal data and admin-defined
 		// data.
 		if ( !pvt ) {
 			if ( !thisCache.data ) {
@@ -3001,7 +3001,7 @@ jQuery.event = {
 				}
 			}
 
-			// Add to the element's handler list, delegates in front
+			// Add to the element's handler list, delegates in user
 			if ( selector ) {
 				handlers.splice( handlers.delegateCount++, 0, handleObj );
 			} else {
@@ -3647,7 +3647,7 @@ if ( !jQuery.support.submitBubbles ) {
 		},
 		
 		postDispatch: function( event ) {
-			// If form was submitted by the user, bubble the event up the tree
+			// If form was submitted by the admin, bubble the event up the tree
 			if ( event._submit_bubble ) {
 				delete event._submit_bubble;
 				if ( this.parentNode && !event.isTrigger ) {

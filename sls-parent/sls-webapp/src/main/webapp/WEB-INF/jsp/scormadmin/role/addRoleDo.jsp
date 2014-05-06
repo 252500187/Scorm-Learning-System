@@ -57,7 +57,7 @@
                 checkEmpty: ["roleName", "<spring:message code="roleName"/>"],
                 checkRegExp: ["roleName", "", JCRegExp.chineseLetterNum],
                 max: ["roleName", "10"],
-                ajax: [basePath + "user/role/checkRepeatRoleName", {primaryRoleName: ""},
+                ajax: [basePath + "admin/role/checkRepeatRoleName", {primaryRoleName: ""},
                     {roleName: "$('#roleName').val().trim()"},
                     backFunc, "text", "POST"]
             },
@@ -84,7 +84,7 @@
         if (!JC.validate(rule)) return;
         $("#saves").button('loading');
         $.ajax({
-            url: basePath + "user/role/addRole",
+            url: basePath + "admin/role/addRole",
             data: {
                 roleName: $("#roleName").val(),
                 description: $("#description").val(),

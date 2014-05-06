@@ -45,7 +45,7 @@
             dictName: {
                 checkEmpty: ["dictName", "<spring:message code="dictName"/>"],
                 checkRegExp: ["dictName", "", JCRegExp.letterNum],
-                ajax: [basePath + "user/dict/checkRepeatDictDefineName", {}, {dictName: "$('#dictName').val().trim()"},
+                ajax: [basePath + "admin/dict/checkRepeatDictDefineName", {}, {dictName: "$('#dictName').val().trim()"},
                     backFunc, "text", "POST"]
             }
         }
@@ -68,7 +68,7 @@
         if (!JC.validate(rules)) return;
         $("#saves").button('loading');
         $.ajax({
-            url: basePath + "user/dict/addDictDefine",
+            url: basePath + "admin/dict/addDictDefine",
             data: {
                 dictName: $("#dictName").val(),
                 dictDescription: $("#dictDescription").val()

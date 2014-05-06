@@ -2658,7 +2658,7 @@ function BasicView(element, calendar, viewName) {
 
 
 	// makes sure height doesn't collapse while we destroy/render new cells
-	// (this causes a bad end-user scrollbar jump)
+	// (this causes a bad end-admin scrollbar jump)
 	// TODO: generalize this for all view rendering. (also in Calendar.js)
 
 	function lockHeight() {

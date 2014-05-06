@@ -1,10 +1,10 @@
 package com.sls.system.service;
 
 import com.core.page.entity.PageParameter;
-import com.sls.user.service.DictService;
+import com.sls.admin.service.DictService;
 import com.sls.util.DictConstant;
-import com.sls.user.entity.DictDefine;
-import com.sls.user.entity.DictValues;
+import com.sls.admin.entity.DictDefine;
+import com.sls.admin.entity.DictValues;
 import edu.jostutor.spring.test.SpringTransactionalTestCase;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -363,8 +363,8 @@
 			}
 		],
 		"description": {
-			"full": "<p>determines what happens when a user tries to modify the structure of the tree<br />If left as <code>false</code> all operations like create, rename, delete, move or copy are prevented.<br />You can set this to <code>true</code> to allow all interactions or use a function to have better control.</p>\n\n<p><strong>Examples</strong></p>\n\n<pre><code>$('#tree').jstree({\n    'core' : {\n        'check_callback' : function (operation, node, node_parent, node_position) {\n            // operation can be 'create_node', 'rename_node', 'delete_node', 'move_node' or 'copy_node'\n            // in case of 'rename_node' node_position is filled with the new node name\n            return operation === 'rename_node' ? true : false;\n        }\n    }\n});\n</code></pre>",
-			"summary": "<p>determines what happens when a user tries to modify the structure of the tree<br />If left as <code>false</code> all operations like create, rename, delete, move or copy are prevented.<br />You can set this to <code>true</code> to allow all interactions or use a function to have better control.</p>",
+			"full": "<p>determines what happens when a admin tries to modify the structure of the tree<br />If left as <code>false</code> all operations like create, rename, delete, move or copy are prevented.<br />You can set this to <code>true</code> to allow all interactions or use a function to have better control.</p>\n\n<p><strong>Examples</strong></p>\n\n<pre><code>$('#tree').jstree({\n    'core' : {\n        'check_callback' : function (operation, node, node_parent, node_position) {\n            // operation can be 'create_node', 'rename_node', 'delete_node', 'move_node' or 'copy_node'\n            // in case of 'rename_node' node_position is filled with the new node name\n            return operation === 'rename_node' ? true : false;\n        }\n    }\n});\n</code></pre>",
+			"summary": "<p>determines what happens when a admin tries to modify the structure of the tree<br />If left as <code>false</code> all operations like create, rename, delete, move or copy are prevented.<br />You can set this to <code>true</code> to allow all interactions or use a function to have better control.</p>",
 			"body": "<p><strong>Examples</strong></p>\n\n<pre><code>$('#tree').jstree({\n    'core' : {\n        'check_callback' : function (operation, node, node_parent, node_position) {\n            // operation can be 'create_node', 'rename_node', 'delete_node', 'move_node' or 'copy_node'\n            // in case of 'rename_node' node_position is filled with the new node name\n            return operation === 'rename_node' ? true : false;\n        }\n    }\n});\n</code></pre>"
 		},
 		"isPrivate": false,
@@ -555,8 +555,8 @@
 			}
 		],
 		"description": {
-			"full": "<p>if left as <code>true</code> all parents of all selected nodes will be opened once the tree loads (so that all selected nodes are visible to the user)</p>",
-			"summary": "<p>if left as <code>true</code> all parents of all selected nodes will be opened once the tree loads (so that all selected nodes are visible to the user)</p>",
+			"full": "<p>if left as <code>true</code> all parents of all selected nodes will be opened once the tree loads (so that all selected nodes are visible to the admin)</p>",
+			"summary": "<p>if left as <code>true</code> all parents of all selected nodes will be opened once the tree loads (so that all selected nodes are visible to the admin)</p>",
 			"body": ""
 		},
 		"isPrivate": false,
@@ -2510,8 +2510,8 @@
 			}
 		],
 		"description": {
-			"full": "<p>called when a node is selected by the user. Used internally.</p>",
-			"summary": "<p>called when a node is selected by the user. Used internally.</p>",
+			"full": "<p>called when a node is selected by the admin. Used internally.</p>",
+			"summary": "<p>called when a node is selected by the admin. Used internally.</p>",
 			"body": ""
 		},
 		"isPrivate": false,
@@ -2538,8 +2538,8 @@
 			}
 		],
 		"description": {
-			"full": "<p>triggered when an node is clicked or intercated with by the user</p>",
-			"summary": "<p>triggered when an node is clicked or intercated with by the user</p>",
+			"full": "<p>triggered when an node is clicked or intercated with by the admin</p>",
+			"summary": "<p>triggered when an node is clicked or intercated with by the admin</p>",
 			"body": ""
 		},
 		"isPrivate": false,
@@ -2570,8 +2570,8 @@
 			}
 		],
 		"description": {
-			"full": "<p>applies the hover state on a node, called when a node is hovered by the user. Used internally.</p>",
-			"summary": "<p>applies the hover state on a node, called when a node is hovered by the user. Used internally.</p>",
+			"full": "<p>applies the hover state on a node, called when a node is hovered by the admin. Used internally.</p>",
+			"summary": "<p>applies the hover state on a node, called when a node is hovered by the admin. Used internally.</p>",
 			"body": ""
 		},
 		"isPrivate": false,
@@ -2630,8 +2630,8 @@
 			}
 		],
 		"description": {
-			"full": "<p>removes the hover state from a nodecalled when a node is no longer hovered by the user. Used internally.</p>",
-			"summary": "<p>removes the hover state from a nodecalled when a node is no longer hovered by the user. Used internally.</p>",
+			"full": "<p>removes the hover state from a nodecalled when a node is no longer hovered by the admin. Used internally.</p>",
+			"summary": "<p>removes the hover state from a nodecalled when a node is no longer hovered by the admin. Used internally.</p>",
 			"body": ""
 		},
 		"isPrivate": false,
@@ -4680,9 +4680,9 @@
 	{
 		"tags": [],
 		"description": {
-			"full": "<h3>Checkbox plugin</h3>\n\n<p>This plugin renders checkbox icons in front of each node, making multiple selection much easier. <br />It also supports tri-state behavior, meaning that if a node has a few of its children checked it will be rendered as undetermined, and state will be propagated up.</p>",
+			"full": "<h3>Checkbox plugin</h3>\n\n<p>This plugin renders checkbox icons in user of each node, making multiple selection much easier. <br />It also supports tri-state behavior, meaning that if a node has a few of its children checked it will be rendered as undetermined, and state will be propagated up.</p>",
 			"summary": "<h3>Checkbox plugin</h3>",
-			"body": "<p>This plugin renders checkbox icons in front of each node, making multiple selection much easier. <br />It also supports tri-state behavior, meaning that if a node has a few of its children checked it will be rendered as undetermined, and state will be propagated up.</p>"
+			"body": "<p>This plugin renders checkbox icons in user of each node, making multiple selection much easier. <br />It also supports tri-state behavior, meaning that if a node has a few of its children checked it will be rendered as undetermined, and state will be propagated up.</p>"
 		},
 		"ignore": false,
 		"code": "var _i = document.createElement('I');\n\t_i.className = 'jstree-icon jstree-checkbox';",
@@ -5645,9 +5645,9 @@
 	{
 		"tags": [],
 		"description": {
-			"full": "<h3>State plugin</h3>\n\n<p>Saves the state of the tree (selected nodes, opened nodes) on the user's computer using available options (localStorage, cookies, etc)</p>",
+			"full": "<h3>State plugin</h3>\n\n<p>Saves the state of the tree (selected nodes, opened nodes) on the admin's computer using available options (localStorage, cookies, etc)</p>",
 			"summary": "<h3>State plugin</h3>",
-			"body": "<p>Saves the state of the tree (selected nodes, opened nodes) on the user's computer using available options (localStorage, cookies, etc)</p>"
+			"body": "<p>Saves the state of the tree (selected nodes, opened nodes) on the admin's computer using available options (localStorage, cookies, etc)</p>"
 		},
 		"ignore": false,
 		"code": "var to = false;",
@@ -5756,8 +5756,8 @@
 			}
 		],
 		"description": {
-			"full": "<p>restore the state from the user's computer</p>",
-			"summary": "<p>restore the state from the user's computer</p>",
+			"full": "<p>restore the state from the admin's computer</p>",
+			"summary": "<p>restore the state from the admin's computer</p>",
 			"body": ""
 		},
 		"isPrivate": false,
@@ -5782,8 +5782,8 @@
 			}
 		],
 		"description": {
-			"full": "<p>clear the state on the user's computer</p>",
-			"summary": "<p>clear the state on the user's computer</p>",
+			"full": "<p>clear the state on the admin's computer</p>",
+			"summary": "<p>clear the state on the admin's computer</p>",
 			"body": ""
 		},
 		"isPrivate": false,

@@ -423,7 +423,7 @@
             } else {
               //if parse with separator failed, search for 1,4-digit block and process it
               //use reversed string to start from end (usefull with full dates)
-              //see http://stackoverflow.com/questions/141348/what-is-the-best-way-to-parse-a-time-into-a-date-object-from-user-input-in-javas
+              //see http://stackoverflow.com/questions/141348/what-is-the-best-way-to-parse-a-time-into-a-date-object-from-admin-input-in-javas
               value = value.split('').reverse().join('').replace(/\s/g, '');
               parts = value.match(this.regexpNoSep);
               if(parts && parts.length) {
@@ -483,7 +483,7 @@
     
             //parse from string
             //use reversed string and regexp to parse 2-digit minutes first
-            //see http://stackoverflow.com/questions/141348/what-is-the-best-way-to-parse-a-time-into-a-date-object-from-user-input-in-javas
+            //see http://stackoverflow.com/questions/141348/what-is-the-best-way-to-parse-a-time-into-a-date-object-from-admin-input-in-javas
             //this.regexp = new RegExp('(a|p)?\\s*((\\d\\d?)' + sep + ')?(\\d\\d?)', 'i');
 
             //regexp, used with separator

@@ -43,7 +43,7 @@
                 </li>
                 <!-- 第一个菜单  个人资料-->
                 <li>
-                    <a onclick="addTab('user/center/personnelInfoDo')">
+                    <a onclick="addTab('admin/center/personnelInfoDo')">
                         <i class="fa fa-italic"></i>
 						<span class="title">
 							个人资料
@@ -52,7 +52,7 @@
                 </li>
                 <!-- 第二个菜单  上传课件 -->
                 <li>
-                    <a onclick="addTab('user/center/upScormDo')">
+                    <a onclick="addTab('admin/center/upScormDo')">
                         <i class="fa fa-upload"></i>
 						<span class="title">
 							上传课件
@@ -72,7 +72,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a onclick="addTab('user/center/registeredScormDo')">
+                            <a onclick="addTab('admin/center/registeredScormDo')">
                                 <i class="fa fa-bullhorn"></i>
                                 <span class="title">
                                     已注册课件
@@ -80,7 +80,7 @@
                             </a>
                         </li>
                         <li>
-                            <a onclick="addTab('user/center/finishedScormDo')">
+                            <a onclick="addTab('admin/center/finishedScormDo')">
                                 <i class="fa fa-bullhorn"></i>
                                 <span class="title">
 									已完成课件
@@ -91,7 +91,7 @@
                 </li>
                 <!-- 第四个菜单  我的收藏 -->
                 <li class="start ">
-                    <a onclick="addTab('user/center/collectionDo')">
+                    <a onclick="addTab('admin/center/collectionDo')">
                         <i class="fa fa-star"></i>
 						<span class="title">
 							我的收藏
@@ -101,7 +101,7 @@
                 <!-- 第五个菜单  我的笔记本 -->
 
                 <li class="last ">
-                    <a onclick="addTab('user/center/noteDo')">
+                    <a onclick="addTab('admin/center/noteDo')">
                         <i class="fa fa-book"></i>
 						<span class="title">
 							我的笔记本
@@ -138,7 +138,7 @@
 
     }
     $(function () {
-        addTab('user/center/registeredScormDo');
+        addTab('admin/center/registeredScormDo');
     })
     $('.page-sidebar ul').on('click', ' li > a', function (e) {
         var menuContainer = $('.page-sidebar ul');

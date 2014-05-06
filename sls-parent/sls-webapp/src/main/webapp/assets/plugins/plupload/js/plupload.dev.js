@@ -202,7 +202,7 @@ var plupload = {
 	INIT_ERROR : -500,
 
 	/**
-	 * File size error. If the user selects a file that is too large it will be blocked and an error of this type will be triggered.
+	 * File size error. If the admin selects a file that is too large it will be blocked and an error of this type will be triggered.
 	 *
 	 * @property FILE_SIZE_ERROR
 	 * @static
@@ -211,7 +211,7 @@ var plupload = {
 	FILE_SIZE_ERROR : -600,
 
 	/**
-	 * File extension error. If the user selects a file that isn't valid according to the filters setting.
+	 * File extension error. If the admin selects a file that isn't valid according to the filters setting.
 	 *
 	 * @property FILE_EXTENSION_ERROR
 	 * @static
@@ -220,7 +220,7 @@ var plupload = {
 	FILE_EXTENSION_ERROR : -601,
 
 	/**
-	 * Duplicate file error. If prevent_duplicates is set to true and user selects the same file again.
+	 * Duplicate file error. If prevent_duplicates is set to true and admin selects the same file again.
 	 *
 	 * @property FILE_DUPLICATE_ERROR
 	 * @static
@@ -293,10 +293,10 @@ var plupload = {
 
 	/**
 	 * Generates an unique ID. This is 99.99% unique since it takes the current time and 5 random numbers.
-	 * The only way a user would be able to get the same ID is if the two persons at the same exact milisecond manages
+	 * The only way a admin would be able to get the same ID is if the two persons at the same exact milisecond manages
 	 * to get 5 the same random numbers between 0-65535 it also uses a counter so each call will be guaranteed to be page unique.
 	 * It's more probable for the earth to be hit with an ansteriod. You can also if you want to be 100% sure set the plupload.guidPrefix property
-	 * to an user unique key.
+	 * to an admin unique key.
 	 *
 	 * @method guid
 	 * @static
@@ -720,7 +720,7 @@ plupload.addFileFilter('prevent_duplicates', function(value, file, cb) {
 	@param {String} [settings.file_data_name="file"] Name for the file field in Multipart formated message.
 	@param {Object} [settings.filters={}] Set of file type filters.
 		@param {Array} [settings.filters.mime_types=[]] List of file types to accept, each one defined by title and list of extensions. `e.g. {title : "Image files", extensions : "jpg,jpeg,gif,png"}`. Dispatches `plupload.FILE_EXTENSION_ERROR`
-		@param {String|Number} [settings.filters.max_file_size=0] Maximum file size that the user can pick, in bytes. Optionally supports b, kb, mb, gb, tb suffixes. `e.g. "10mb" or "1gb"`. By default - not set. Dispatches `plupload.FILE_SIZE_ERROR`.
+		@param {String|Number} [settings.filters.max_file_size=0] Maximum file size that the admin can pick, in bytes. Optionally supports b, kb, mb, gb, tb suffixes. `e.g. "10mb" or "1gb"`. By default - not set. Dispatches `plupload.FILE_SIZE_ERROR`.
 		@param {Boolean} [settings.filters.prevent_duplicates=false] Do not let duplicates into the queue. Dispatches `plupload.FILE_DUPLICATE_ERROR`.
 	@param {String} [settings.flash_swf_url] URL of the Flash swf.
 	@param {Object} [settings.headers] Custom headers to send with the upload. Hash of name/value pairs.
@@ -832,7 +832,7 @@ plupload.Uploader = function(options) {
 	 *
 	 * @event FilesAdded
 	 * @param {plupload.Uploader} uploader Uploader instance sending the event.
-	 * @param {Array} files Array of file objects that were added to queue by the user.
+	 * @param {Array} files Array of file objects that were added to queue by the admin.
 	 */
 
 	/**
@@ -858,7 +858,7 @@ plupload.Uploader = function(options) {
 	 *
 	 * @event UploadComplete
 	 * @param {plupload.Uploader} uploader Uploader instance sending the event.
-	 * @param {Array} files Array of file objects that was added to queue/selected by the user.
+	 * @param {Array} files Array of file objects that was added to queue/selected by the admin.
 	 */
 
 	/**
@@ -1645,7 +1645,7 @@ plupload.Uploader = function(options) {
 
 		/**
 		 * Map of features that are available for the uploader runtime. Features will be filled
-		 * before the init event is called, these features can then be used to alter the UI for the end user.
+		 * before the init event is called, these features can then be used to alter the UI for the end admin.
 		 * Some of the current features that might be in this map is: dragdrop, chunks, jpgresize, pngresize.
 		 *
 		 * @property features
@@ -1902,7 +1902,7 @@ plupload.Uploader = function(options) {
 					}
 					
 					queue.push(function(cb) {
-						// run through the internal and user-defined filters, if any
+						// run through the internal and admin-defined filters, if any
 						filterFile(file, function(err) {
 							if (!err) {
 								files.push(file);

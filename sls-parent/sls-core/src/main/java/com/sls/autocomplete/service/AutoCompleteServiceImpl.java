@@ -10,8 +10,8 @@ package com.sls.autocomplete.service;
 import com.core.autocomplete.entity.AutoCompleteVO;
 import com.core.autocomplete.service.AbstractAutoCompleteService;
 import com.sls.autocomplete.dao.AutoCompleteDao;
-import com.sls.user.dao.DictDao;
-import com.sls.user.entity.DictDefine;
+import com.sls.admin.dao.DictDao;
+import com.sls.admin.entity.DictDefine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

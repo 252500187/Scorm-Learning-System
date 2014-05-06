@@ -17,7 +17,7 @@
 	$.gritter = {};
 	
 	/**
-	* Set up global options that the user can over-ride
+	* Set up global options that the admin can over-ride
 	*/
 	$.gritter.options = {
 		position: '',

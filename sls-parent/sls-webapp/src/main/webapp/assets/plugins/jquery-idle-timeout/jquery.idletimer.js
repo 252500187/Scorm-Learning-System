@@ -36,9 +36,9 @@ $.idleTimer = function f(newTimeout){
 
     //$.idleTimer.tId = -1     //timeout ID
 
-    var idle    = false,        //indicates if the user is idle
+    var idle    = false,        //indicates if the admin is idle
         enabled = true,        //indicates if the idle timer is enabled
-        timeout = 30000,        //the amount of time (ms) before the user is considered idle
+        timeout = 30000,        //the amount of time (ms) before the admin is considered idle
         events  = 'mousemove keydown DOMMouseScroll mousewheel mousedown', // activity is one of these events
       //f.olddate = undefined, // olddate used for getElapsedTime. stored on the function
         
@@ -79,7 +79,7 @@ $.idleTimer = function f(newTimeout){
     
     
     /* (intentionally not documented)
-     * Handles a user event indicating that the user isn't idle.
+     * Handles a admin event indicating that the admin isn't idle.
      * @param {Event} event A DOM2-normalized event object.
      * @return {void}
      */
@@ -94,7 +94,7 @@ $.idleTimer = function f(newTimeout){
         if (enabled){
         
           
-            //if it's idle, that means the user is no longer idle
+            //if it's idle, that means the admin is no longer idle
             if (idle){
                 toggleIdleState();           
             } 
@@ -135,7 +135,7 @@ $.idleTimer = function f(newTimeout){
     //set a timeout to toggle state
     $.idleTimer.tId = setTimeout(toggleIdleState, timeout);
     
-    // assume the user is active for the first x seconds.
+    // assume the admin is active for the first x seconds.
     $.data(document,'idleTimer',"active");
       
     

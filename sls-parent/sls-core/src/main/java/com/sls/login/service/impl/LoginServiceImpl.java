@@ -1,8 +1,8 @@
 package com.sls.login.service.impl;
 
-import com.sls.user.dao.RoleDao;
-import com.sls.user.dao.UserDao;
-import com.sls.user.entity.User;
+import com.sls.admin.dao.RoleDao;
+import com.sls.admin.dao.UserDao;
+import com.sls.admin.entity.User;
 import com.sls.login.service.LoginService;
 import com.sls.util.DictConstant;
 import com.sls.util.LoginUserUtil;

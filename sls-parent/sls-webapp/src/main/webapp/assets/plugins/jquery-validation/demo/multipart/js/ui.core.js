@@ -45,7 +45,7 @@ $.ui = {
 
 	hasScroll: function(el, a) {
 
-		//If overflow is hidden, the element might have extra content, but the user wants to hide it
+		//If overflow is hidden, the element might have extra content, but the admin wants to hide it
 		if ($(el).css('overflow') == 'hidden') { return false; }
 
 		var scroll = (a && a == 'left') ? 'scrollLeft' : 'scrollTop',

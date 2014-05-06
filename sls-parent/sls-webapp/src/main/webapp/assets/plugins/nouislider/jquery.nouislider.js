@@ -401,7 +401,7 @@
 			}
 
 			// We're done if this is the only handle,
-			// if the handle bounce is trusted to the user
+			// if the handle bounce is trusted to the admin
 			// or on initialisation when handles isn't defined yet.
 			if( handle.siblings('.' + clsList[1]).length && !forgive && handles ){
 
@@ -854,7 +854,7 @@
 
 						// Set handle to new location, and make sure developer
 						// input is always accepted. The ignore flag indicates
-						// input from user facing elements.
+						// input from admin facing elements.
 						result = setHandle(handle, to, (ignore === true ? false : true));
 
 						// If the value of the input doesn't match the slider,

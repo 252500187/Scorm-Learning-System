@@ -349,7 +349,7 @@ define('moxie/core/utils/Basic', [], function() {
 			
 	/**
 	Generates an unique ID. This is 99.99% unique since it takes the current time and 5 random numbers.
-	The only way a user would be able to get the same ID is if the two persons at the same exact milisecond manages
+	The only way a admin would be able to get the same ID is if the two persons at the same exact milisecond manages
 	to get 5 the same random numbers between 0-65535 it also uses a counter so each call will be guaranteed to be page unique.
 	It's more probable for the earth to be hit with an ansteriod. Y
 	
@@ -1111,7 +1111,7 @@ define("moxie/core/utils/Env", [
 
 	function version_compare(v1, v2, operator) {
 	  // From: http://phpjs.org/functions
-	  // +      original by: Philippe Jausions (http://pear.php.net/user/jausions)
+	  // +      original by: Philippe Jausions (http://pear.php.net/admin/jausions)
 	  // +      original by: Aidan Lister (http://aidanlister.com/)
 	  // + reimplemented by: Kankrelune (http://www.webfaktory.info/)
 	  // +      improved by: Brett Zamir (http://brett-zamir.me)
@@ -4020,7 +4020,7 @@ define('moxie/core/utils/Url', [], function() {
 	@return {Object} Hash containing extracted uri components
 	*/
 	var parseUrl = function(url, currentUrl) {
-		var key = ['source', 'scheme', 'authority', 'userInfo', 'user', 'pass', 'host', 'port', 'relative', 'path', 'directory', 'file', 'query', 'fragment']
+		var key = ['source', 'scheme', 'authority', 'userInfo', 'admin', 'pass', 'host', 'port', 'relative', 'path', 'directory', 'file', 'query', 'fragment']
 		, i = key.length
 		, ports = {
 			http: 80,
@@ -4142,7 +4142,7 @@ define('moxie/file/FileReaderSync', [
 	/**
 	Synchronous FileReader implementation. Something like this is available in WebWorkers environment, here
 	it can be used to read only preloaded blobs/files and only below certain size (not yet sure what that'd be,
-	but probably < 1mb). Not meant to be used directly by user.
+	but probably < 1mb). Not meant to be used directly by admin.
 
 	@class FileReaderSync
 	@private
@@ -4453,7 +4453,7 @@ define("moxie/xhr/XMLHttpRequest", [
 				readyState: XMLHttpRequest.UNSENT,
 
 				/**
-				True when user credentials are to be included in a cross-origin request. False when they are to be excluded
+				True when admin credentials are to be included in a cross-origin request. False when they are to be excluded
 				in a cross-origin request and when cookies are to be ignored in its response. Initially false.
 
 				@property withCredentials
@@ -4574,12 +4574,12 @@ define("moxie/xhr/XMLHttpRequest", [
 
 			method is not a valid HTTP method.
 			url cannot be resolved.
-			url contains the "user:password" format in the userinfo production.
+			url contains the "admin:password" format in the userinfo production.
 			Throws a "SecurityError" exception if method is a case-insensitive match for CONNECT, TRACE or TRACK.
 
 			Throws an "InvalidAccessError" exception if one of the following is true:
 
-			Either user or password is passed as argument and the origin of url does not match the XMLHttpRequest origin.
+			Either admin or password is passed as argument and the origin of url does not match the XMLHttpRequest origin.
 			There is an associated XMLHttpRequest document and either the timeout attribute is not zero,
 			the withCredentials attribute is true, or the responseType attribute is not the empty string.
 
@@ -4672,7 +4672,7 @@ define("moxie/xhr/XMLHttpRequest", [
 			@param {String|Number} value
 			*/
 			setRequestHeader: function(header, value) {
-				var uaHeaders = [ // these headers are controlled by the user agent
+				var uaHeaders = [ // these headers are controlled by the admin agent
 						"accept-charset",
 						"accept-encoding",
 						"access-control-request-headers",
@@ -4692,7 +4692,7 @@ define("moxie/xhr/XMLHttpRequest", [
 						"trailer",
 						"transfer-encoding",
 						"upgrade",
-						"user-agent",
+						"admin-agent",
 						"via"
 					];
 				
@@ -6450,7 +6450,7 @@ define("moxie/runtime/html5/file/FileInput", [
 						_files = [].slice.call(this.files);
 					}
 
-					// clearing the value enables the user to select the same file again if they want to
+					// clearing the value enables the admin to select the same file again if they want to
 					if (Env.browser !== 'IE') {
 						this.value = '';
 					} else {

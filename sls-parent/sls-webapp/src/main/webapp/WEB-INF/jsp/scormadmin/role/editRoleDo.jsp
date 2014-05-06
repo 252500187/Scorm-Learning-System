@@ -1,5 +1,5 @@
 <%--@elvariable id="permissionTokenValue" type="java.lang.String"--%>
-<%--@elvariable id="role" type="com.sls.user.entity.Role"--%>
+<%--@elvariable id="role" type="com.sls.admin.entity.Role"--%>
 <%--@elvariable id="menuPermList" type="java.util.List"--%>
 <%--
   Created by IntelliJ IDEA.
@@ -62,7 +62,7 @@
                 checkEmpty: ["roleName", "<spring:message code="roleName"/>"],
                 checkRegExp: ["roleName", "", JCRegExp.chineseLetterNum],
                 max: ["roleName", "10"],
-                ajax: [basePath + "user/role/checkRepeatRoleName", {primaryRoleName: "${role.roleName}"},
+                ajax: [basePath + "admin/role/checkRepeatRoleName", {primaryRoleName: "${role.roleName}"},
                     {roleName: "$('#roleName').val().trim()"},
                     backFunc, "text", "POST"]
             },
@@ -79,7 +79,7 @@
         $("#saves").button('loading');
 
         $.ajax({
-            url: basePath + "user/role/editRole",
+            url: basePath + "admin/role/editRole",
             data: {
                 id: ${role.id},
                 roleName: $("#roleName").val(),

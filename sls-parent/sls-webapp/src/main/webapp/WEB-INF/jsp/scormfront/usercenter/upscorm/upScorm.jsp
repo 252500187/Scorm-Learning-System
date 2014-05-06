@@ -127,6 +127,6 @@
             return;
         }
         $("#fileGetUp").attr("action",
-                basePath + "user/center/upScorm?scormName=" + $("#scormName").val()).submit();
+                basePath + "admin/center/upScorm?scormName=" + $("#scormName").val()).submit();
     }
 </script>

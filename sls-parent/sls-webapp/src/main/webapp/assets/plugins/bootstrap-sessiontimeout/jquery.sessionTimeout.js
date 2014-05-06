@@ -3,7 +3,7 @@
 //
 // jquery.sessionTimeout.js
 //
-// After a set amount of time, a dialog is shown to the user with the option
+// After a set amount of time, a dialog is shown to the admin with the option
 // to either log out now, or stay connected. If log out now is selected,
 // the page is redirected to a logout URL. If stay connected is selected,
 // a keep-alive URL is requested through AJAX. If no options is selected
@@ -22,7 +22,7 @@
 // OPTIONS
 //
 //   message
-//     Text shown to user in dialog after warning period.
+//     Text shown to admin in dialog after warning period.
 //     Default: 'Your session is about to expire.'
 //
 //   keepAliveUrl
@@ -34,7 +34,7 @@
 //     Default: '/timed-out'
 //
 //   logoutUrl
-//     URL to take browser to if user clicks "Log Out Now"
+//     URL to take browser to if admin clicks "Log Out Now"
 //     Default: '/log-out'
 //
 //   warnAfter
@@ -57,7 +57,7 @@
 			redirAfter   : 1200000 // 20 minutes
 		};
 
-		// Extend user-set options over defaults
+		// Extend admin-set options over defaults
 		var o = defaults,
 				dialogTimer,
 				redirTimer;

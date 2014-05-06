@@ -314,7 +314,7 @@
 		 */
 		strings			: false,
 		/**
-		 * determines what happens when a user tries to modify the structure of the tree
+		 * determines what happens when a admin tries to modify the structure of the tree
 		 * If left as `false` all operations like create, rename, delete, move or copy are prevented.
 		 * You can set this to `true` to allow all interactions or use a function to have better control.
 		 *
@@ -390,7 +390,7 @@
 			responsive		: true
 		},
 		/**
-		 * if left as `true` all parents of all selected nodes will be opened once the tree loads (so that all selected nodes are visible to the user)
+		 * if left as `true` all parents of all selected nodes will be opened once the tree loads (so that all selected nodes are visible to the admin)
 		 * @name $.jstree.defaults.core.expand_selected_onload
 		 */
 		expand_selected_onload : true
@@ -2002,7 +2002,7 @@
 			this.trigger('disable_node', { 'node' : obj });
 		},
 		/**
-		 * called when a node is selected by the user. Used internally.
+		 * called when a node is selected by the admin. Used internally.
 		 * @private
 		 * @name activate_node(obj, e)
 		 * @param {mixed} obj the node
@@ -2051,7 +2051,7 @@
 				}
 			}
 			/**
-			 * triggered when an node is clicked or intercated with by the user
+			 * triggered when an node is clicked or intercated with by the admin
 			 * @event
 			 * @name activate_node.jstree
 			 * @param {Object} node
@@ -2059,7 +2059,7 @@
 			this.trigger('activate_node', { 'node' : this.get_node(obj) });
 		},
 		/**
-		 * applies the hover state on a node, called when a node is hovered by the user. Used internally.
+		 * applies the hover state on a node, called when a node is hovered by the admin. Used internally.
 		 * @private
 		 * @name hover_node(obj)
 		 * @param {mixed} obj
@@ -2080,7 +2080,7 @@
 			this.trigger('hover_node', { 'node' : this.get_node(obj) });
 		},
 		/**
-		 * removes the hover state from a nodecalled when a node is no longer hovered by the user. Used internally.
+		 * removes the hover state from a nodecalled when a node is no longer hovered by the admin. Used internally.
 		 * @private
 		 * @name dehover_node(obj)
 		 * @param {mixed} obj
@@ -3506,7 +3506,7 @@
 /**
  * ### Checkbox plugin
  *
- * This plugin renders checkbox icons in front of each node, making multiple selection much easier. 
+ * This plugin renders checkbox icons in user of each node, making multiple selection much easier.
  * It also supports tri-state behavior, meaning that if a node has a few of its children checked it will be rendered as undetermined, and state will be propagated up.
  */
 
@@ -5108,7 +5108,7 @@
 /**
  * ### State plugin
  *
- * Saves the state of the tree (selected nodes, opened nodes) on the user's computer using available options (localStorage, cookies, etc)
+ * Saves the state of the tree (selected nodes, opened nodes) on the admin's computer using available options (localStorage, cookies, etc)
  */
 
 	var to = false;
@@ -5156,7 +5156,7 @@
 			$.vakata.storage.set(this.settings.state.key, this.get_state(), this.settings.state.ttl);
 		};
 		/**
-		 * restore the state from the user's computer
+		 * restore the state from the admin's computer
 		 * @name restore_state()
 		 * @plugin state
 		 */
@@ -5167,7 +5167,7 @@
 			this.trigger('restore_state', { 'state' : k });
 		};
 		/**
-		 * clear the state on the user's computer
+		 * clear the state on the admin's computer
 		 * @name clear_state()
 		 * @plugin state
 		 */

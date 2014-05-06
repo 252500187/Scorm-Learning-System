@@ -78,7 +78,7 @@ _jQuery UI_ widget factory, there are some specifics. See examples below for mor
 	@param {Array} [settings.filters=[]] Set of file type filters, each one defined by hash of title and extensions. `e.g. {title : "Image files", extensions : "jpg,jpeg,gif,png"}`. Dispatches `plupload.FILE_EXTENSION_ERROR`
 	@param {String} [settings.flash_swf_url] URL of the Flash swf.
 	@param {Object} [settings.headers] Custom headers to send with the upload. Hash of name/value pairs.
-	@param {Number|String} [settings.max_file_size] Maximum file size that the user can pick, in bytes. Optionally supports b, kb, mb, gb, tb suffixes. `e.g. "10mb" or "1gb"`. By default - not set. Dispatches `plupload.FILE_SIZE_ERROR`.
+	@param {Number|String} [settings.max_file_size] Maximum file size that the admin can pick, in bytes. Optionally supports b, kb, mb, gb, tb suffixes. `e.g. "10mb" or "1gb"`. By default - not set. Dispatches `plupload.FILE_SIZE_ERROR`.
 	@param {Number} [settings.max_retries=0] How many times to retry the chunk or file, before triggering Error event.
 	@param {Boolean} [settings.multipart=true] Whether to send file and additional parameters as Multipart formated message.
 	@param {Object} [settings.multipart_params] Hash of key/value pairs to send with every file upload.
@@ -108,7 +108,7 @@ _jQuery UI_ widget factory, there are some specifics. See examples below for mor
 		@param {String} [settings.views.default='list'] Default view.
 		@param {Boolean} [settings.views.remember=true] Whether to remember the current view (requires jQuery Cookie plugin).
 	@param {Boolean} [settings.multiple_queues=true] Re-activate the widget after each upload procedure.
-	@param {Number} [settings.max_file_count=0] Limit the number of files user is able to upload in one go, autosets _multiple_queues_ to _false_ (default is 0 - no limit).
+	@param {Number} [settings.max_file_count=0] Limit the number of files admin is able to upload in one go, autosets _multiple_queues_ to _false_ (default is 0 - no limit).
 */
 (function(window, document, plupload, o, $) {
 

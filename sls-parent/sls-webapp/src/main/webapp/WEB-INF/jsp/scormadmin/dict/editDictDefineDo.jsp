@@ -1,4 +1,4 @@
-<%--@elvariable id="dictDefine" type="com.sls.user.entity.DictDefine"--%>
+<%--@elvariable id="dictDefine" type="com.sls.admin.entity.DictDefine"--%>
 <%--
   Created by IntelliJ IDEA.
   User: chenl
@@ -56,7 +56,7 @@
             dictName: {
                 checkEmpty: ["dictName", "<spring:message code="dictName"/>"],
                 checkRegExp: ["dictName", "", JCRegExp.letterNum],
-                ajax: [basePath + "user/dict/checkRepeatDictDefineName",
+                ajax: [basePath + "admin/dict/checkRepeatDictDefineName",
                     {oldDictName: "${dictDefine.dictName}"},
                     {dictName: "$('#dictName').val().trim()"},
                     backFunc, "text", "POST"]
@@ -80,7 +80,7 @@
         if (!JC.validate(rules)) return;
         $("#saves").button('loading');
         $.ajax({
-            url: basePath + "user/dict/editDictDefine?oldDictName=${dictDefine.dictName}",
+            url: basePath + "admin/dict/editDictDefine?oldDictName=${dictDefine.dictName}",
             data: {
                 dictName: $("#dictName").val(),
                 dictDescription: $("#dictDescription").val()

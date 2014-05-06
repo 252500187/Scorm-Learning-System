@@ -34,10 +34,10 @@
 			// start the idle timer
 			$.idleTimer(options.idleAfter * 1000);
 			
-			// once the user becomes idle
+			// once the admin becomes idle
 			$(document).bind("idle.idleTimer", function(){
 				
-				// if the user is idle and a countdown isn't already running
+				// if the admin is idle and a countdown isn't already running
 				if( $.data(document, 'idleTimer') === 'idle' && !self.countdownOpen ){
 					self._stopTimer();
 					self.countdownOpen = true;
@@ -142,16 +142,16 @@
 	
 	// options
 	$.idleTimeout.options = {
-		// number of seconds after user is idle to show the warning
+		// number of seconds after admin is idle to show the warning
 		warningLength: 30,
 		
-		// url to call to keep the session alive while the user is active
+		// url to call to keep the session alive while the admin is active
 		keepAliveURL: "",
 		
 		// the response from keepAliveURL must equal this text:
 		serverResponseEquals: "OK",
 		
-		// user is considered idle after this many seconds.  10 minutes default
+		// admin is considered idle after this many seconds.  10 minutes default
 		idleAfter: 600,
 		
 		// a polling request will be sent to the server every X seconds
@@ -173,13 +173,13 @@
 		// callback to fire when the session times out
 		onTimeout: $.noop,
 		
-		// fires when the user becomes idle
+		// fires when the admin becomes idle
 		onIdle: $.noop,
 		
 		// fires during each second of warningLength
 		onCountdown: $.noop,
 		
-		// fires when the user resumes the session
+		// fires when the admin resumes the session
 		onResume: $.noop,
 		
 		// callback to fire when the script is aborted due to too many failed requests
