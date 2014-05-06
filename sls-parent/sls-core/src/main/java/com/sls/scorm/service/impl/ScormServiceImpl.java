@@ -6,6 +6,7 @@ import com.sls.scorm.service.ScormService;
 import com.sls.user.dao.UserDao;
 import com.sls.scorm.entity.Sco;
 import com.sls.scorm.entity.Scorm;
+import com.sls.util.BaseUtil;
 import com.sls.util.DictConstant;
 import com.sls.util.FileUp;
 import com.sls.util.LoginUserUtil;
@@ -44,7 +45,7 @@ public class ScormServiceImpl implements ScormService {
             int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
             String fileName = date.getTime() + userId + "";
             Scorm scorm = new Scorm();
-            scorm.setScormName(scormName);
+            scorm.setScormName(BaseUtil.iso2utf(scormName));
             scorm.setRecommendLevel(DictConstant.RECOMMEND_0);
             scorm.setImgPath(fileUp.upImg(request, DictConstant.TOP_SCORM_FILE_NAME + "/" + fileName, DictConstant.SCORM_IMG, upImg));
             scorm.setUploadUserId(userId);
@@ -60,7 +61,7 @@ public class ScormServiceImpl implements ScormService {
                 scoDao.addSco(scoNode);
             }
         } catch (Exception e) {
-            request.setAttribute("result", "上传失败！");
+            request.setAttribute("result", DictConstant.NO_SUCCESS);
         }
     }
 }

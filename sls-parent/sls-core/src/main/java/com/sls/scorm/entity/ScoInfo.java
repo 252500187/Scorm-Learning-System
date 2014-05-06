@@ -1,4 +1,4 @@
-package com.sls.util;
+package com.sls.scorm.entity;
 
 /**
  * Created with IntelliJ IDEA.

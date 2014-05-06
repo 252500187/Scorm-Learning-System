@@ -8,7 +8,7 @@
     <%@include file="../../../includes/common.jsp" %>
 </head>
 <body>
-${result}
+${result==success}
 </body>
 </html>
 <script>

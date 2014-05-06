@@ -1,18 +1,14 @@
 package com.sls.util;
 
-/**
- * 公共常量
- *
- * @author chenl
- * @version 1.0.1
- */
-
 public class DictConstant {
     private DictConstant() {
     }
 
     //空值
     public static final int VOID_VALUE = -1;
+
+    //操作未成功
+    public static final String NO_SUCCESS = "noSuccess";
 
     //状态 0 无效
     public static final int NO_USE = 0;

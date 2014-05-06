@@ -5,13 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-/**
- * 获取时间公共方法
- *
- * @author chenl
- * @version 1.0.1
- */
-
 public class DateUtil {
 
     public static final String yyyy = "yyyy";

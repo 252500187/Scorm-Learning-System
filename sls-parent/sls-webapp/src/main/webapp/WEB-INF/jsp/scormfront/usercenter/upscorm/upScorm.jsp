@@ -27,7 +27,7 @@
 
                                     <div class="col-md-3">
                                         <input class="form-control form-control-inline input-medium date-picker"
-                                               id="scormName" size="16" type="text" value=""/>
+                                               id="scormName" type="text" value=""/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -94,10 +94,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="col-md-offset-3 col-md-9">
-                                            <button onclick="fileUpAttachment()" class="btn purple"><i
+                                            <a onclick="fileUpAttachment()" class="btn purple"><i
                                                     class="fa fa-check"></i>
                                                 上传
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -117,7 +117,16 @@
     });
 
     function fileUpAttachment() {
+        var imgType = $("#upImg").val().substr($("#upImg").val().length - 3, 3);
+        if ((imgType != "jpg") && (imgType != "png") && (imgType != "gif")) {
+            alert("ddd");
+            return;
+        }
+        if ($("#upScorm").val().substr($("#upScorm").val().length - 3, 3) != "zip") {
+            alert("sss");
+            return;
+        }
         $("#fileGetUp").attr("action",
-                        basePath + "user/center/upScorm?scormName=" + $("#scormName").val()).submit();
+                basePath + "user/center/upScorm?scormName=" + $("#scormName").val()).submit();
     }
 </script>
