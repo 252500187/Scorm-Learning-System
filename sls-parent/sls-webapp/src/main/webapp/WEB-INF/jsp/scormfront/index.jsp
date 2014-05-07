@@ -22,103 +22,120 @@
 <div class="col-md-11">
 <div class="col-md-2">
     <div class="row">
-            <h2>HOT TOP</h2>
+        <h2>HOT TOP</h2>
 
-            <div class="top-news col-md-12">
-                <a class="btn red sliderbar-transparency" href="#">
-                    <span> TOP ONE</span>
-                    <em>书名</em>
-                    <em>
-                        <i class="fa fa-tags"></i>
-                        还有 100,000人在看
-                    </em>
-                    <i class="fa fa-briefcase top-news-icon"></i>
-                </a>
-                <a class="btn green" href="#">
-                    <span> TOP TWO</span>
-                    <em>书名</em>
-                    <em>
-                        <i class="fa fa-tags"></i>
-                        还有 100,000人在看
-                    </em>
-                    <i class="fa fa-briefcase top-news-icon"></i>
-                </a>
-                <a class="btn blue" href="#">
-                    <span> TOP THREE</span>
-                    <em>书名</em>
-                    <em>
-                        <i class="fa fa-tags"></i>
-                        还有 100,000人在看
-                    </em>
-                    <i class="fa fa-briefcase top-news-icon"></i>
-                </a>
-                <a class="btn yellow" href="#">
-                    <span> TOP FOUR</span>
-                    <em>书名</em>
-                    <em>
-                        <i class="fa fa-tags"></i>
-                        还有 100,000人在看
-                    </em>
-                    <i class="fa fa-briefcase top-news-icon"></i>
-                </a>
-                <a class="btn purple" href="#">
-                    <span> TOP FIVE</span>
-                    <em>书名</em>
-                    <em>
-                        <i class="fa fa-tags"></i>
-                        还有 100,000人在看
-                    </em>
-                    <i class="fa fa-briefcase top-news-icon"></i>
-                </a>
-                <a class="btn red" href="#">
-                    <span> TOP ONE</span>
-                    <em>书名</em>
-                    <em>
-                        <i class="fa fa-tags"></i>
-                        还有 100,000人在看
-                    </em>
-                    <i class="fa fa-briefcase top-news-icon"></i>
-                </a>
-                <a class="btn green" href="#">
-                    <span> TOP TWO</span>
-                    <em>书名</em>
-                    <em>
-                        <i class="fa fa-tags"></i>
-                        还有 100,000人在看
-                    </em>
-                    <i class="fa fa-briefcase top-news-icon"></i>
-                </a>
-            </div>
+        <div class="top-news col-md-12">
+            <a class="btn red sliderbar-transparency" href="#">
+                <span> TOP ONE</span>
+                <em>书名</em>
+                <em>
+                    <i class="fa fa-tags"></i>
+                    还有 100,000人在看
+                </em>
+                <i class="fa fa-briefcase top-news-icon"></i>
+            </a>
+            <a class="btn green" href="#">
+                <span> TOP TWO</span>
+                <em>书名</em>
+                <em>
+                    <i class="fa fa-tags"></i>
+                    还有 100,000人在看
+                </em>
+                <i class="fa fa-briefcase top-news-icon"></i>
+            </a>
+            <a class="btn blue" href="#">
+                <span> TOP THREE</span>
+                <em>书名</em>
+                <em>
+                    <i class="fa fa-tags"></i>
+                    还有 100,000人在看
+                </em>
+                <i class="fa fa-briefcase top-news-icon"></i>
+            </a>
+            <a class="btn yellow" href="#">
+                <span> TOP FOUR</span>
+                <em>书名</em>
+                <em>
+                    <i class="fa fa-tags"></i>
+                    还有 100,000人在看
+                </em>
+                <i class="fa fa-briefcase top-news-icon"></i>
+            </a>
+            <a class="btn purple" href="#">
+                <span> TOP FIVE</span>
+                <em>书名</em>
+                <em>
+                    <i class="fa fa-tags"></i>
+                    还有 100,000人在看
+                </em>
+                <i class="fa fa-briefcase top-news-icon"></i>
+            </a>
+            <a class="btn red" href="#">
+                <span> TOP ONE</span>
+                <em>书名</em>
+                <em>
+                    <i class="fa fa-tags"></i>
+                    还有 100,000人在看
+                </em>
+                <i class="fa fa-briefcase top-news-icon"></i>
+            </a>
+            <a class="btn green" href="#">
+                <span> TOP TWO</span>
+                <em>书名</em>
+                <em>
+                    <i class="fa fa-tags"></i>
+                    还有 100,000人在看
+                </em>
+                <i class="fa fa-briefcase top-news-icon"></i>
+            </a>
         </div>
-    <div class="row">
-            <ul class="timeline">
-                <li class="timeline-yellow" style="max-width: 200px">
-                    <div class="timeline-time">
-        					<span class="time">
-        						 2013.12.1
-        					</span>
-                    </div>
-                    <div class="timeline-icon">
-                        <i class="fa fa-video-camera"></i>
-                    </div>
-                    <div class="timeline-body">
-                        <h2>书名</h2>
+    </div>
+    <div class="row col-md-12" style="padding-right: 0px; margin-right: 0px; margin-left: 0px; padding-left: 0px;">
+        <ul class="timeline">
+            <li class="timeline-yellow" style="min-width: 140px">
+                <div class="timeline-icon" style="font-size:10px">
+                    12.01
+                </div>
+                <div class="timeline-body">
+                    <h2>书名</h2>
 
-                        <div class="timeline-content">
-                            <img class="timeline-img pull-left" src="assets/img/blog/2.jpg" alt="">
-                        </div>
+                    <div class="timeline-content">
+                        <img class="timeline-img pull-left" src="assets/img/blog/2.jpg" alt="">
+                        作者
                     </div>
-                </li>
-            </ul>
+                </div>
+            </li>
+            <li class="timeline-blue" style="min-width: 140px">
+                <div class="timeline-icon" style="font-size:10px">
+                    12.01
+                </div>
+                <div class="timeline-body">
+                    <h2>书名</h2>
+
+                    <div class="timeline-content">
+                        <img class="timeline-img pull-left" src="assets/img/blog/2.jpg" alt="">
+                        作者
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-green" style="min-width: 140px">
+                <div class="timeline-icon" style="font-size:10px">
+                    12.01
+                </div>
+                <div class="timeline-body">
+                    <h2>书名</h2>
+
+                    <div class="timeline-content">
+                        <img class="timeline-img pull-left" src="assets/img/blog/2.jpg" alt="">
+                        作者
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
 <div class="col-md-8">
 <div class="page-content-wrapper">
-<%--<div style="--%>
-  		<%--margin-left: 225px;--%>
-		<%--margin-top: 0px;--%>
-		<%--min-height: 600px;--%>
-		<%--padding: 25px 20px 20px 20px;">--%>
 <div class="row" style="margin-left: 0;margin-right: 0;">
     <div class="col-md-1"></div>
     <div class="col-md-10" style="margin-top: 5px">
@@ -244,209 +261,209 @@
 
 <div class="col-md-12 article-block">
 
-    <div class="row blog-page" style="margin-left: 0;margin-right: 0;">
-        <div class="headline">
-            <h3>文史</h3>
+<div class="row blog-page" style="margin-left: 0;margin-right: 0;">
+    <div class="headline">
+        <h3>文史</h3>
+    </div>
+    <div class="row thumbnails" style="margin-left: 0px;margin-right: 0px;">
+        <div class="col-md-3" style="min-width: 100px">
+            <div class="meet-our-team">
+                <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">书名</a>
+                    </li>
+                    <li>
+                        <a href="#" style="color:darkgray">
+                            read more...
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="row thumbnails" style="margin-left: 0px;margin-right: 0px;">
-            <div class="col-md-3" style="min-width: 100px">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="col-md-3" style="min-width: 100px">
+            <div class="meet-our-team">
+                <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">书名</a>
+                    </li>
+                    <li>
+                        <a href="#" style="color:darkgray">
+                            read more...
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-md-3" style="min-width: 100px">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        </div>
+        <div class="col-md-3" style="min-width: 100px">
+            <div class="meet-our-team">
+                <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">书名</a>
+                    </li>
+                    <li>
+                        <a href="#" style="color:darkgray">
+                            read more...
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-md-3" style="min-width: 100px">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3" style="min-width: 100px">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        </div>
+        <div class="col-md-3" style="min-width: 100px">
+            <div class="meet-our-team">
+                <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">书名</a>
+                    </li>
+                    <li>
+                        <a href="#" style="color:darkgray">
+                            read more...
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="eow blog-page" style="margin-left: 0;margin-right: 0;">
-        <div class="headline">
-            <h3>教育</h3>
+<div class="eow blog-page" style="margin-left: 0;margin-right: 0;">
+    <div class="headline">
+        <h3>教育</h3>
+    </div>
+    <div class="row thumbnails" style="margin-left: 0px;margin-right: 0px;">
+        <div class="col-md-3" style="min-width: 100px">
+            <div class="meet-our-team">
+                <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">书名</a>
+                    </li>
+                    <li>
+                        <a href="#" style="color:darkgray">
+                            read more...
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="row thumbnails" style="margin-left: 0px;margin-right: 0px;">
-            <div class="col-md-3" style="min-width: 100px">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="col-md-3" style="min-width: 100px">
+            <div class="meet-our-team">
+                <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">书名</a>
+                    </li>
+                    <li>
+                        <a href="#" style="color:darkgray">
+                            read more...
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-md-3" style="min-width: 100px">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        </div>
+        <div class="col-md-3" style="min-width: 100px">
+            <div class="meet-our-team">
+                <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">书名</a>
+                    </li>
+                    <li>
+                        <a href="#" style="color:darkgray">
+                            read more...
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-md-3" style="min-width: 100px">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3" style="min-width: 100px">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        </div>
+        <div class="col-md-3" style="min-width: 100px">
+            <div class="meet-our-team">
+                <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">书名</a>
+                    </li>
+                    <li>
+                        <a href="#" style="color:darkgray">
+                            read more...
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="eow blog-page" style="margin-left: 0;margin-right: 0;">
-        <div class="headline">
-            <h3>艺术</h3>
+<div class="eow blog-page" style="margin-left: 0;margin-right: 0;">
+    <div class="headline">
+        <h3>艺术</h3>
+    </div>
+    <div class="row thumbnails" style="margin-left: 0px;margin-right: 0px;">
+        <div class="col-md-3" style="min-width: 100px">
+            <div class="meet-our-team">
+                <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">书名</a>
+                    </li>
+                    <li>
+                        <a href="#" style="color:darkgray">
+                            read more...
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="row thumbnails" style="margin-left: 0px;margin-right: 0px;">
-            <div class="col-md-3" style="min-width: 100px">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="col-md-3" style="min-width: 100px">
+            <div class="meet-our-team">
+                <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">书名</a>
+                    </li>
+                    <li>
+                        <a href="#" style="color:darkgray">
+                            read more...
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-md-3" style="min-width: 100px">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        </div>
+        <div class="col-md-3" style="min-width: 100px">
+            <div class="meet-our-team">
+                <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">书名</a>
+                    </li>
+                    <li>
+                        <a href="#" style="color:darkgray">
+                            read more...
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-md-3" style="min-width: 100px">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3" style="min-width: 100px">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        </div>
+        <div class="col-md-3" style="min-width: 100px">
+            <div class="meet-our-team">
+                <img class="img-responsive" alt="" src="assets/img/pages/2.jpg">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#">书名</a>
+                    </li>
+                    <li>
+                        <a href="#" style="color:darkgray">
+                            read more...
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>
 </div>
