@@ -8,7 +8,7 @@
     <%@include file="../../../includes/common.jsp" %>
 </head>
 <body>
-${result==success}
+ 我是上传结果啊:${result==success}
 </body>
 </html>
 <script>

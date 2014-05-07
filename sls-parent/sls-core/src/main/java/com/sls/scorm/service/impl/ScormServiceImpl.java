@@ -64,7 +64,7 @@ public class ScormServiceImpl implements ScormService {
                 scoDao.addSco(scoNode);
             }
         } catch (Exception e) {
-            request.setAttribute("result", DictConstant.NO_SUCCESS);
+            request.setAttribute("result", "上传失败");
         }
     }
 

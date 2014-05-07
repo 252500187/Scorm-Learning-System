@@ -21,7 +21,6 @@ public class ScormController {
     private ScormService scormService;
 
     @RequestMapping(value = "registerScorm", method = {RequestMethod.GET})
-    @ResponseBody
     public void registerScorm(HttpServletRequest request, @RequestParam("scormId") String scormId) {
         scormService.registerScorm(scormId, request);
     }

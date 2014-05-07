@@ -11,6 +11,9 @@
     <title></title>
 </head>
 <body>
-我 是 我的收藏
+我 是 我的收藏 </br><a onclick="window.location.href=basePath+'/user/scorm/registerScorm?scormId=3'">点我注册课件？</a>
 </body>
 </html>
+<script>
+
+</script>

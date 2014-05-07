@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.xml.sax.SAXException;
 
 import javax.servlet.ServletException;
@@ -44,7 +45,6 @@ public class UserCenterController {
     public String upScorm(HttpServletRequest request, @RequestParam("scormName") String scormName) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
         upScormService.upScorm(request, "upScorm", "upImg", scormName);
-        request.setAttribute("noSuccess", DictConstant.NO_SUCCESS);
         return "scormfront/usercenter/upscorm/upResult";
     }
 
