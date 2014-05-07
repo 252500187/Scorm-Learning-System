@@ -69,9 +69,14 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void registerScorm(String scormId) {
+    public void registerScorm(String id, HttpServletRequest request) {
+        int scormId = Integer.parseInt(id);
         int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-        List<Sco> scoList = scoDao.findScosByScormIdAndUserId(Integer.parseInt(scormId), DictConstant.VOID_VALUE);
+        if (scoDao.findScosByScormIdAndUserId(scormId, userId).size() > 0) {
+            request.setAttribute("result","您已经注册了该课件！");
+            return;
+        }
+        List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
         ScoInfo scoInfo = new ScoInfo();
         for (Sco sco : scoList) {
             sco.setUserId(userId);
@@ -80,11 +85,12 @@ public class ScormServiceImpl implements ScormService {
         }
         ScormSummarize scormSummarize = new ScormSummarize();
         scormSummarize.setUserId(userId);
-        scormSummarize.setScormId(Integer.parseInt(scormId));
+        scormSummarize.setScormId(scormId);
         scormSummarize.setScore("");
         scormSummarize.setDiscuss("");
         scormSummarize.setGrade("");
         scormDao.addScormSummarize(scormSummarize);
-        scormDao.addVisitSum(Integer.parseInt(scormId));
+        scormDao.addVisitSum(scormId);
+        request.setAttribute("result","注册成功！");
     }
 }

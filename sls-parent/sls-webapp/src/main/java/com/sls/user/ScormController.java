@@ -22,8 +22,7 @@ public class ScormController {
 
     @RequestMapping(value = "registerScorm", method = {RequestMethod.GET})
     @ResponseBody
-    public String registerScorm(HttpServletRequest request, @RequestParam("scormId") String scormId) {
-        scormService.registerScorm(scormId);
-        return "success";
+    public void registerScorm(HttpServletRequest request, @RequestParam("scormId") String scormId) {
+        scormService.registerScorm(scormId, request);
     }
 }
