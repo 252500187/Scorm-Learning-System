@@ -134,7 +134,7 @@
         </ul>
     </div>
 </div>
-<div class="col-md-8">
+<div class="col-md-9">
 <div class="page-content-wrapper">
 <div class="row" style="margin-left: 0;margin-right: 0;">
     <div class="col-md-1"></div>
@@ -467,8 +467,6 @@
 </div>
 </div>
 </div>
-</div>
-<div class="col-md-1">
 </div>
 </div>
 </body>
