@@ -73,7 +73,6 @@ public class ScormServiceImpl implements ScormService {
         int scormId = Integer.parseInt(id);
         int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         if (scoDao.findScosByScormIdAndUserId(scormId, userId).size() > 0) {
-            request.setAttribute("result","您已经注册了该课件！");
             return;
         }
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
@@ -91,6 +90,5 @@ public class ScormServiceImpl implements ScormService {
         scormSummarize.setGrade("");
         scormDao.addScormSummarize(scormSummarize);
         scormDao.addVisitSum(scormId);
-        request.setAttribute("result","注册成功！");
     }
 }

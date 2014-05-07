@@ -14,19 +14,18 @@ $(function(){
 });
 
 function doError(data){
-    top.hideCover();
     if(data.status==404){
-        $.messager.alert("错误","未找到请求地址","error");
+        alert("错误","未找到请求地址","error");
         return
     }
     if(data.statusText.indexOf("Failure")!=-1){
-        $.messager.alert("错误","操作超时，请检查网络连接","error");
+        alert("错误","操作超时，请检查网络连接","error");
         return
     }
     if(data.statusText=="timeout"){
-        $.messager.alert("错误","操作超时，请检查网络连接","error");
+        alert("错误","操作超时，请检查网络连接","error");
     }else{
-        $.messager.alert("错误",eval("("+data.responseText+")").message,"error");
+        alert("错误","error","error");
     }
 }
 var listOption = {

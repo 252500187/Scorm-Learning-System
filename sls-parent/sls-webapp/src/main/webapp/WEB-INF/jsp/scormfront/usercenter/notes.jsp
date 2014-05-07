@@ -9,6 +9,7 @@
 <html>
 <head>
     <title></title>
+    <%@include file="../../includes/common.jsp" %>
 </head>
 <body>
 我 是 我的笔记
