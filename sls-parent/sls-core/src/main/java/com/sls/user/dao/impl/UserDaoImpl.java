@@ -61,8 +61,8 @@ public class UserDaoImpl extends PageDao implements UserDao {
 
     @Override
     public int addUser(User user) {
-        String sql = "INSERT INTO us_user(login_name, user_name, password, in_use) " +
-                "VALUES(:loginName, :userName, :password, :inUse)";
+        String sql = "INSERT INTO us_user(login_name, password, in_use) " +
+                "VALUES(:userName, :password, :inUse)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(user), keyHolder);
         return keyHolder.getKey().intValue();
@@ -81,4 +81,10 @@ public class UserDaoImpl extends PageDao implements UserDao {
         String sql = "DELETE FROM sys_user WHERE id = ?";
         return getJdbcTemplate().update(sql, id);
     }
+
+    @Override
+    public void addUserInfo(User user) {
+        String sql = "INSERT INTO us_user_info(user_id, user_name, registe_date, email ) " +
+                "VALUES(:userId, :loginName, :registerDate, :email)";
+        getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(user));    }
 }

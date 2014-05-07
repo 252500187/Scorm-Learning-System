@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @Transactional
@@ -17,6 +18,7 @@ public class TouristController {
     private UserService userService;
 
     @RequestMapping(value = "register", method = {RequestMethod.POST})
+    @ResponseBody
     public void register(User user) {
         userService.addUser(user);
     }

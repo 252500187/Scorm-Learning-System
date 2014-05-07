@@ -11,7 +11,7 @@ public class UserRoleDaoImpl extends PageDao implements UserRoleDao {
 
     @Override
     public int addUserRole(UserRole userRole) {
-        final String sql = "INSERT INTO sys_user_role(user_id, role_id) VALUES(:userId, :roleId)";
+        final String sql = "INSERT INTO us_user_role(user_id, role_id) VALUES(:userId, :roleId)";
         return getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(userRole));
     }
 
