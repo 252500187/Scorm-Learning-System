@@ -69,11 +69,14 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void registerScorm(int scormId, HttpServletRequest request) {
+    public String registerScorm(int scormId, HttpServletRequest request) {
         int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         int scormState = scormDao.findScormInfoByScormId(scormId).getInUse();
-        if (scoDao.findScosByScormIdAndUserId(scormId, userId).size() > 0 || scormState == DictConstant.NO_USE) {
-            return;
+        if (scoDao.findScosByScormIdAndUserId(scormId, userId).size() > 0) {
+            return "对不起，您已注册。";
+        }
+        if (scormState == DictConstant.NO_USE) {
+            return "此课件不可注册。";
         }
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
         ScoInfo scoInfo = new ScoInfo();
@@ -90,6 +93,7 @@ public class ScormServiceImpl implements ScormService {
         scormSummarize.setGrade("");
         scormDao.addScormSummarize(scormSummarize);
         scormDao.addVisitSum(scormId);
+        return "注册成功。";
     }
 
     @Override
@@ -98,7 +102,7 @@ public class ScormServiceImpl implements ScormService {
         if (scorm.getInUse() == DictConstant.NO_USE) {
             return;
         }
-
+//        List<>
     }
 
     @Override
