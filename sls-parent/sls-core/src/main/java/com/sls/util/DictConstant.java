@@ -36,6 +36,7 @@ public class DictConstant {
     public static final int LAST_VISIT = 1;
 
     //SCO学习状态
+    public static final String STUDY_STATE = "studyState";
     //未看
     public static final int STUDY_STATE_0 = 0;
     //已看

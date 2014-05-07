@@ -5,6 +5,7 @@ import com.sls.scorm.dao.ScormDao;
 import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.ScormSummarize;
 import com.sls.scorm.service.ScormService;
+import com.sls.system.service.DictService;
 import com.sls.user.dao.UserDao;
 import com.sls.scorm.entity.Sco;
 import com.sls.scorm.entity.Scorm;
@@ -37,6 +38,9 @@ public class ScormServiceImpl implements ScormService {
 
     @Autowired
     private ScoDao scoDao;
+
+    @Autowired
+    private DictService dictService;
 
     @Override
     public void upScorm(HttpServletRequest request, String upFile, String upImg, String scormName) throws ServletException, IOException, ParserConfigurationException, SAXException,
@@ -102,7 +106,13 @@ public class ScormServiceImpl implements ScormService {
         if (scorm.getInUse() == DictConstant.NO_USE) {
             return;
         }
-//        List<>
+        request.setAttribute("scorm", scorm);
+        int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, userId);
+        for (Sco sco : scoList) {
+            sco.setShowStudyState(dictService.changeDictCodeToValue(sco.getStudyState(), DictConstant.STUDY_STATE));
+        }
+        request.setAttribute("scoList", scoList);
     }
 
     @Override

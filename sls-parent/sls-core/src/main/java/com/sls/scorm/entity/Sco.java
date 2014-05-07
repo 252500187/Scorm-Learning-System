@@ -11,6 +11,7 @@ public class Sco {
     private String url;
     private int lastVisit;
     private int studyState;
+    private String showStudyState;
 
 
     public Sco() {
@@ -102,5 +103,13 @@ public class Sco {
 
     public void setLastVisit(int lastVisit) {
         this.lastVisit = lastVisit;
+    }
+
+    public String getShowStudyState() {
+        return showStudyState;
+    }
+
+    public void setShowStudyState(String showStudyState) {
+        this.showStudyState = showStudyState;
     }
 }

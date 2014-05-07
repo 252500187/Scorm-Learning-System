@@ -24,6 +24,8 @@
                        data-close-others="true">
                         <img alt="" id="userPhoto"/>
                         <span class="username">注册用户</span>
+                        <a onclick="studyScorm('9')">学习ID为9的课件</a>
+                        <a onclick="registerScorm('9')">点我注册ID为9的课件</a>
                         <i class="icon-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu">
@@ -41,4 +43,20 @@
 
 <script>
     $("#userPhoto").attr("src", basePath + "assets/img/avatar1_small.jpg");
+
+    function studyScorm(id) {
+        window.location.href = basePath + "user/scorm/studyScorm?scormId=" + id;
+    }
+
+    function registerScorm(id) {
+        $.ajax({
+            url: basePath + "user/scorm/registerScorm?scormId=" + id,
+            dataType: "json",
+            type: "GET",
+            success: function (message) {
+                alert(message);
+            },
+            error: doError
+        })
+    }
 </script>
