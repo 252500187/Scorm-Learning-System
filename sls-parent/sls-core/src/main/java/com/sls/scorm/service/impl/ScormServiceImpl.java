@@ -106,12 +106,6 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public Boolean checkIsLoginUser() {
-        String userName = LoginUserUtil.getLoginName();
-        return !("".equals(userName));
-    }
-
-    @Override
     public Scorm findScormInfoByScormId(int scormId, HttpServletRequest request) {
         //todo 查询课件信息
         return scormDao.findScormInfoByScormId(scormId);
