@@ -3,8 +3,10 @@ package com.sls.user.service.impl;
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.system.service.DictService;
+import com.sls.user.dao.RoleDao;
 import com.sls.user.dao.UserDao;
 import com.sls.user.dao.UserRoleDao;
+import com.sls.user.entity.Role;
 import com.sls.user.entity.User;
 import com.sls.user.entity.UserRole;
 import com.sls.user.service.UserService;
@@ -17,6 +19,9 @@ import java.util.List;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private RoleDao roleDao;
 
     @Autowired
     private UserDao userDao;
@@ -58,7 +63,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void addUser(User user) {
         user.setInUse(DictConstant.IN_USE);
-        user.setRoleId(2);                          //todo 去权限表中找用户的对应ID
+        roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_USER);
+        user.setRoleId(roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_USER).getRoleId());
         user.setRegisterDate(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
         int id = userDao.addUser(user);
         user.setUserId(id);
