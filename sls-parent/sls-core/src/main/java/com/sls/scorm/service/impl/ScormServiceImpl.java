@@ -55,7 +55,7 @@ public class ScormServiceImpl implements ScormService {
             scoNodes.add(new Sco(scorm.getScormName(), DictConstant.SCO_MAIN, "0", "1", ""));
             for (Sco scoNode : scoNodes) {
                 scoNode.setScormId(scormId);
-                scoNode.setUserId(userId);
+                scoNode.setUserId(DictConstant.VOID_VALUE);
                 scoNode.setLastVisit(DictConstant.VOID_VALUE);
                 scoNode.setStudyState(DictConstant.STUDY_STATE_0);
                 scoDao.addSco(scoNode);
@@ -63,5 +63,10 @@ public class ScormServiceImpl implements ScormService {
         } catch (Exception e) {
             request.setAttribute("result", DictConstant.NO_SUCCESS);
         }
+    }
+
+    @Override
+    public void registerScorm(String scormId){
+        int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
     }
 }
