@@ -13,6 +13,7 @@ import com.sls.util.BaseUtil;
 import com.sls.util.DictConstant;
 import com.sls.util.FileUp;
 import com.sls.util.LoginUserUtil;
+import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -113,6 +114,7 @@ public class ScormServiceImpl implements ScormService {
             sco.setShowStudyState(dictService.changeDictCodeToValue(sco.getStudyState(), DictConstant.STUDY_STATE));
         }
         request.setAttribute("scoList", scoList);
+        request.setAttribute("isLast", DictConstant.LAST_VISIT);
     }
 
     @Override
@@ -120,4 +122,20 @@ public class ScormServiceImpl implements ScormService {
         //todo 查询课件信息
         return scormDao.findScormInfoByScormId(scormId);
     }
+
+    @Override
+    public void changeScoState(int scormId, int scoId) {
+//        int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+//        List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, userId);
+//        for (Sco sco : scoList) {
+//            if (sco.getScoId() == scoId) {
+//                sco.getTreeId()
+//                sco.getTreeParentId()
+//            }
+//        }
+    }
+//
+//    public void changeState(int  ) {
+//
+//    }
 }

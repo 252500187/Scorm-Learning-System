@@ -18,4 +18,6 @@ public interface ScormService {
     void studyScorm(int scormId, HttpServletRequest request);
 
     Scorm findScormInfoByScormId(int scormId, HttpServletRequest request);
+
+    void changeScoState(int scormId, int scoId);
 }

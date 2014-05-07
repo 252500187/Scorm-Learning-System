@@ -32,4 +32,12 @@ public class ScormController {
         scormService.studyScorm(Integer.parseInt(scormId), request);
         return "scormfront/scorm/studyScorm";
     }
+
+
+    @RequestMapping(value = "changeScoState", method = {RequestMethod.GET})
+    @ResponseBody
+    public int changeScoState(@RequestParam("scormId") String scormId, @RequestParam("scoId") String scoId) {
+        scormService.changeScoState(Integer.parseInt(scormId), Integer.parseInt(scoId));
+        return 2;
+    }
 }

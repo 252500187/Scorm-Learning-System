@@ -16,31 +16,40 @@ function API_functions() {
 }
 
 function LMSInitialize(parameter) {
-    //todo AJAX 通过scoId，获取所有信息到变量scoInfo
-    scoInfo['cmi._version'] = "1.2";
-    scoInfo['cmi.core._children'] = "cmi.core.student_id;cmi.core.student_name;cmi.core.lesson_location;cmi.core.credit;" +
-        "cmi.core.lesson_status;cmi.core.entry;cmi.core.score;cmi.core.score.raw;cmi.core.total_time;" +
-        "cmi.core.lesson_mode;cmi.core.exit;cmi.core.session_time;";
-    scoInfo['cmi.suspend_data._children'] = "";
-    scoInfo['cmi.core._count'] = "12";
-    scoInfo['cmi.suspend_data._count'] = "0";
+//    $.ajax({
+//        url: basePath + "user/center/upScoInfo?id=" + scoId,
+//        dataType: "json",
+//        type: "GET",
+//        success: function () {
+            scoInfo['cmi._version'] = "1.2";
+            scoInfo['cmi.core._children'] = "cmi.core.student_id;cmi.core.student_name;cmi.core.lesson_location;cmi.core.credit;" +
+                "cmi.core.lesson_status;cmi.core.entry;cmi.core.score;cmi.core.score.raw;cmi.core.total_time;" +
+                "cmi.core.lesson_mode;cmi.core.exit;cmi.core.session_time;";
+            scoInfo['cmi.suspend_data._children'] = "";
+            scoInfo['cmi.core._count'] = "12";
+            scoInfo['cmi.suspend_data._count'] = "0";
 
-    scoInfo['cmi.core.student_id'] = "";
-    scoInfo['cmi.core.student_name'] = "";
-    scoInfo['cmi.core.lesson_location'] = "";
-    scoInfo['cmi.core.credit'] = "";
-    scoInfo['cmi.core.lesson_status'] = "";
-    scoInfo['cmi.core.entry'] = "";
-    scoInfo['cmi.core.score'] = "";
-    scoInfo['cmi.core.score.raw'] = "";
-    scoInfo['cmi.core.total_time'] = "";
-    scoInfo['cmi.core.lesson_mode'] = "";
-    scoInfo['cmi.core.exit'] = "";
-    scoInfo['cmi.core.session_time'] = "";
+            scoInfo['cmi.core.student_id'] = "";
+            scoInfo['cmi.core.student_name'] = "";
+            scoInfo['cmi.core.lesson_location'] = "";
+            scoInfo['cmi.core.credit'] = "";
+            scoInfo['cmi.core.lesson_status'] = "";
+            scoInfo['cmi.core.entry'] = "";
+            scoInfo['cmi.core.score'] = "";
+            scoInfo['cmi.core.score.raw'] = "";
+            scoInfo['cmi.core.total_time'] = "";
+            scoInfo['cmi.core.lesson_mode'] = "";
+            scoInfo['cmi.core.exit'] = "";
+            scoInfo['cmi.core.session_time'] = "";
 
-    scoInfo['cmi.suspend_data'] = "";
-    iniFlag = true;
-    return "true";
+            scoInfo['cmi.suspend_data'] = "";
+            iniFlag = true;
+            return "true";
+//        },
+//        error: function () {
+//            return "false";
+//        }
+//    })
 }
 
 function LMSSetValue(key, value) {

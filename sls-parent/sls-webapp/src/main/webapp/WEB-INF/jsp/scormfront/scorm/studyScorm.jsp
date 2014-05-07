@@ -23,9 +23,9 @@
             </li>
             <li>
                 <a>
-                    <img src="${jpg}" alt=" ">
+                    <img id="scormLogo" alt="scorm" style="height: 100px">
                     <span class="title">
-                        软件工程
+                        ${scorm.scormName}
                     </span>
                 </a>
             </li>
@@ -152,7 +152,7 @@
 <div class="page-content-wrapper">
     <div class="page-content">
         <div class="row">
-            <iframe id="scormIframe" style="width:100%; height:800px;border:0px"
+            <iframe id="scormIframe" style="width:98%; height:800px;border:0px"
                     allowfullscreen>
             </iframe>
         </div>
@@ -246,14 +246,18 @@
 </body>
 </html>
 <script>
+    var scoId = "";
+    <c:forEach var="scoNode" items="${scoList}">
+    <c:if test="${scoNode.lastVisit==isLast}">
+    scoId = "${scoNode.scoId}";
+    </c:if>
+    </c:forEach>
     var settingMenu = {
         view: {
             expandSpeed: "fast"
         },
         check: {
-            enable: true,
-            chkStyle: "checkbox",
-            chkboxType: { "Y": "p", "N": "s" }
+            enable: false
         },
         data: {
             simpleData: {
@@ -274,36 +278,51 @@
     };
 
     var zNodes = [
-        <c:forEach var="scormNode" items="${scormNodes}">
-        {id: "${scormNode.xmalId}",
-            pId: "${scormNode.parentId}",
-            name: "${scormNode.title} type:${scormNode.type}",
-            type: "${scormNode.type}",
-            src: "${scormNode.url}"},
+        <c:forEach var="scoNode" items="${scoList}">
+        {id: "${scoNode.treeId}",
+            pId: "${scoNode.treeParentId}",
+            name: "${scoNode.title}(${scoNode.showStudyState})",
+            src: "${scoNode.url}",
+            scoId: "${scoNode.scoId}"},
         </c:forEach>
     ];
-
-    var scoId;
 
     function zTreeOnClick(event, treeId, treeNode) {
         if (treeNode.src.trim() == "") {
             return;
         }
-        $("#scormIframe").attr("src", treeNode.src);
-        //todo 对应数据的id
         scoId = treeNode.id;
+        $("#scormIframe").attr("src", treeNode.src);
+        $.ajax({
+            url: basePath + "user/scorm/changeScoState?scormId=${scorm.scormId}&scoId=" + scoId,
+            dataType: "json",
+            type: "get",
+            success: function (sss) {
+
+            },
+            error: doError
+        })
     }
 
     $(function () {
         App.init();
-        $("li").click(function () {
-            $("li").removeAttr("class");
-            $(this).attr("class", "active");
-        });
         var i = Math.floor(Math.random() * 10);
         $("#scormIframe").attr("src", basePath + "img/studyscormdefaultimg/" + i + ".jpg");
-        $("#scormLogo").attr("src", basePath + "${jpg}");
+        $("#scormLogo").attr("src", basePath + "${scorm.imgPath}");
         $.fn.zTree.init($("#menuTree"), settingMenu, zNodes);
         $.fn.zTree.getZTreeObj("menuTree").expandAll(true);
+    });
+
+    $('.page-sidebar ul').on('click', ' li > a', function (e) {
+        var menuContainer = $('.page-sidebar ul');
+        menuContainer.children('li.active').removeClass('active');
+        menuContainer.children('arrow.open').removeClass('open');
+        $(this).parents('li').each(function () {
+            $(this).addClass('active');
+            $(this).children('a > span.arrow').addClass('open');
+        });
+        $(this).parents('li').addClass('active');
+        $('.selected').remove();
+        $(this).parents('li').find("a").append('<span class="selected" ></span>');
     });
 </script>

@@ -10,6 +10,8 @@
                 <img src="img/logo/logo-small.png" alt="SLS" class="img-responsive"/>
             </a>
         </div>
+        <a onclick="studyScorm('9')">学习ID为9的课件</a>
+        <a onclick="registerScorm('9')">点我注册ID为9的课件</a>
         <ul class="nav navbar-nav pull-right">
             <c:if test="${userId==null||userId==''}">
                 <li class="dropdown">
@@ -24,8 +26,6 @@
                        data-close-others="true">
                         <img alt="" id="userPhoto"/>
                         <span class="username">注册用户</span>
-                        <a onclick="studyScorm('9')">学习ID为9的课件</a>
-                        <a onclick="registerScorm('9')">点我注册ID为9的课件</a>
                         <i class="icon-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu">
