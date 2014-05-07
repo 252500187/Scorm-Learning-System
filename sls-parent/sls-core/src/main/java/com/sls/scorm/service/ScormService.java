@@ -1,5 +1,6 @@
 package com.sls.scorm.service;
 
+import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.Scorm;
 import org.xml.sax.SAXException;
 
@@ -14,4 +15,8 @@ public interface ScormService {
             XPathExpressionException;
 
     void registerScorm(String id, HttpServletRequest request);
+
+    ScoInfo findScormInfoByScormId(int scormId);
+
+    Boolean checkIsLoginUser();
 }

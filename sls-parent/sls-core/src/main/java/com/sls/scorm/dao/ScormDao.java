@@ -1,5 +1,6 @@
 package com.sls.scorm.dao;
 
+import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.entity.ScormSummarize;
 
@@ -10,4 +11,6 @@ public interface ScormDao {
     void addScormSummarize(ScormSummarize scormSummarize);
 
     void addVisitSum(int scormId);
+
+    ScoInfo findScormInfoByScormId(int scormId);
 }

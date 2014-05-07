@@ -2,8 +2,10 @@ package com.sls.scorm.dao.impl;
 
 import com.core.page.dao.PageDao;
 import com.sls.scorm.dao.ScormDao;
+import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.entity.ScormSummarize;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -32,5 +34,11 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
     public void addVisitSum(int scormId) {
         String sql = "UPDATE ss_scorm SET register_sum=register_sum+1 WHERE scorm_id=?";
         getJdbcTemplate().update(sql, scormId);
+    }
+
+    @Override
+    public ScoInfo findScormInfoByScormId(int scormId) {
+        String sql = "SELECT * FROM ss_scorm WHERE scorm_id = ?";
+        return getJdbcTemplate().queryForObject(sql, new BeanPropertyRowMapper<ScoInfo>(ScoInfo.class), scormId);
     }
 }

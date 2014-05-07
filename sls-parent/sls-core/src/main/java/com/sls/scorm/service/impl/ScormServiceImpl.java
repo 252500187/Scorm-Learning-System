@@ -91,4 +91,15 @@ public class ScormServiceImpl implements ScormService {
         scormDao.addScormSummarize(scormSummarize);
         scormDao.addVisitSum(scormId);
     }
+
+    @Override
+    public Boolean checkIsLoginUser() {
+        String userName = LoginUserUtil.getLoginName();
+        return !("".equals(userName));
+    }
+
+    @Override
+    public ScoInfo findScormInfoByScormId(int scormId) {
+        return scormDao.findScormInfoByScormId(scormId);
+    }
 }
