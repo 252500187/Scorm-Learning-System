@@ -1,7 +1,7 @@
 package com.sls.scorm.entity;
 
 public class ScoInfo {
-    private String id;
+    private int scoId;
     private String coreStudentId;
     private String coreStudentName;
     private String coreLessonLocation;
@@ -17,14 +17,19 @@ public class ScoInfo {
     private String suspendData;
 
     public ScoInfo() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        coreStudentId = "";
+        coreStudentName = "";
+        coreLessonLocation = "";
+        coreCredit = "";
+        coreLessonStatus = "";
+        coreEntry = "";
+        coreScore = "";
+        coreScoreRaw = "";
+        coreTotalTime = "";
+        coreLessonMode = "";
+        coreExit = "";
+        coreSessionTime = "";
+        suspendData = "";
     }
 
     public String getCoreStudentId() {
@@ -129,5 +134,13 @@ public class ScoInfo {
 
     public void setSuspendData(String suspendData) {
         this.suspendData = suspendData;
+    }
+
+    public int getScoId() {
+        return scoId;
+    }
+
+    public void setScoId(int scoId) {
+        this.scoId = scoId;
     }
 }

@@ -9,8 +9,9 @@
 <html>
 <head>
     <title>个人资料</title>
+    <%@include file="../../includes/common.jsp" %>
 </head>
 <body>
-我 是 个 人 资 料
+我 是 个 人 资 料    </br><a onclick="window.location.href=basePath+'/user/scorm/registerScorm?scormId=3'">点我注册课件？</a>
 </body>
 </html>

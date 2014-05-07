@@ -2,6 +2,8 @@ package com.sls.scorm.service.impl;
 
 import com.sls.scorm.dao.ScoDao;
 import com.sls.scorm.dao.ScormDao;
+import com.sls.scorm.entity.ScoInfo;
+import com.sls.scorm.entity.ScormSummarize;
 import com.sls.scorm.service.ScormService;
 import com.sls.user.dao.UserDao;
 import com.sls.scorm.entity.Sco;
@@ -46,6 +48,7 @@ public class ScormServiceImpl implements ScormService {
             String fileName = date.getTime() + userId + "";
             Scorm scorm = new Scorm();
             scorm.setScormName(BaseUtil.iso2utf(scormName));
+            scorm.setRegisterSum(0);
             scorm.setRecommendLevel(DictConstant.RECOMMEND_0);
             scorm.setImgPath(fileUp.upImg(request, DictConstant.TOP_SCORM_FILE_NAME + "/" + fileName, DictConstant.SCORM_IMG, upImg));
             scorm.setUploadUserId(userId);
@@ -66,7 +69,22 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void registerScorm(String scormId){
+    public void registerScorm(String scormId) {
         int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        List<Sco> scoList = scoDao.findScosByScormIdAndUserId(Integer.parseInt(scormId), DictConstant.VOID_VALUE);
+        ScoInfo scoInfo = new ScoInfo();
+        for (Sco sco : scoList) {
+            sco.setUserId(userId);
+            scoInfo.setScoId(scoDao.addSco(sco));
+            scoDao.addScoInfo(scoInfo);
+        }
+        ScormSummarize scormSummarize = new ScormSummarize();
+        scormSummarize.setUserId(userId);
+        scormSummarize.setScormId(Integer.parseInt(scormId));
+        scormSummarize.setScore("");
+        scormSummarize.setDiscuss("");
+        scormSummarize.setGrade("");
+        scormDao.addScormSummarize(scormSummarize);
+        scormDao.addVisitSum(Integer.parseInt(scormId));
     }
 }

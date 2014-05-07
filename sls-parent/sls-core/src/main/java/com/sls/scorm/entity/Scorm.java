@@ -3,6 +3,7 @@ package com.sls.scorm.entity;
 public class Scorm {
     private int scormId;
     private String scormName;
+    private int registerSum;
     private int recommendLevel;
     private String imgPath;
     private int uploadUserId;
@@ -57,5 +58,13 @@ public class Scorm {
 
     public void setScormName(String scormName) {
         this.scormName = scormName;
+    }
+
+    public int getRegisterSum() {
+        return registerSum;
+    }
+
+    public void setRegisterSum(int registerSum) {
+        this.registerSum = registerSum;
     }
 }

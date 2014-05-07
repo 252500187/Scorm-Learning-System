@@ -152,7 +152,7 @@
 <div class="page-content-wrapper">
     <div class="page-content">
         <div class="row">
-            <iframe id="scormIframe" style="width:100%; height:800px;border:0px" scroll="yes"
+            <iframe id="scormIframe" style="width:100%; height:800px;border:0px"
                     allowfullscreen>
             </iframe>
         </div>

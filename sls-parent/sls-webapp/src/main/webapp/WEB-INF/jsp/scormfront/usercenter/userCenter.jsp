@@ -35,7 +35,8 @@
 
                         <div class="info-container" align="center" style="margin-top:0px;">
 
-                            <img src="assets/img/blog/2.jpg" class="avatar img-responsive" alt="用户头像" style="width:155px;height:100px"/>
+                            <img src="assets/img/blog/2.jpg" class="avatar img-responsive" alt="用户头像"
+                                 style="width:155px;height:100px"/>
 
                         </div>
 
@@ -116,10 +117,11 @@
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
         <div class="page-content">
-            <iframe id="ifra" style="width:100%; height:800px;border:0px" scroll="yes"
-                    allowfullscreen>
-            </iframe>
-
+            <div class="row">
+                <iframe id="ifra" style="width:100%; height:800px;border:0px"
+                        allowfullscreen>
+                </iframe>
+            </div>
         </div>
     </div>
     <!-- END CONTENT -->

@@ -118,7 +118,7 @@ public class DictDaoImpl extends PageDao implements DictDao {
 
     @Override
     public void changeDictNameOfDictValues(DictDefine dictDefine) {
-        final String sql = "UPDATE dict_values SET dict_name=:dictName WHERE dict_name=:oldDictName";
+        String sql = "UPDATE dict_values SET dict_name=:dictName WHERE dict_name=:oldDictName";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(dictDefine));
     }
 }

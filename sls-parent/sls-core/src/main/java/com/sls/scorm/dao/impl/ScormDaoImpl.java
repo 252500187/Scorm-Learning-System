@@ -3,6 +3,7 @@ package com.sls.scorm.dao.impl;
 import com.core.page.dao.PageDao;
 import com.sls.scorm.dao.ScormDao;
 import com.sls.scorm.entity.Scorm;
+import com.sls.scorm.entity.ScormSummarize;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -18,5 +19,18 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(scorm), keyHolder);
         return keyHolder.getKey().intValue();
+    }
+
+    @Override
+    public void addScormSummarize(ScormSummarize scormSummarize) {
+        String sql = "INSERT INTO luss_scorm_summarize(user_id,scorm_id,score,discuss,grade) " +
+                "VALUES(:userId, :scormId, :score, :discuss, :grade)";
+        getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(scormSummarize));
+    }
+
+    @Override
+    public void addVisitSum(int scormId) {
+        String sql = "UPDATE ss_scorm SET register_sum=register_sum+1 WHERE scorm_id=?";
+        getJdbcTemplate().update(sql, scormId);
     }
 }
