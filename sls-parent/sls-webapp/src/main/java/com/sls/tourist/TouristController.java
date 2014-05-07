@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @Transactional
 @RequestMapping("/tourist/")
@@ -30,8 +32,8 @@ public class TouristController {
     }
 
     @RequestMapping(value = "scormInfo", method = {RequestMethod.GET})
-    public String scormInfo(@RequestParam("scormId") String scormId) {
-        scormService.findScormInfoByScormId(Integer.parseInt(scormId));
+    public String scormInfo(@RequestParam("scormId") String scormId, HttpServletRequest request) {
+        scormService.findScormInfoByScormId(Integer.parseInt(scormId), request);
         return "scormfront/scorm/scormInfo";
     }
 }

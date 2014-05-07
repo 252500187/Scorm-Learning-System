@@ -12,5 +12,5 @@ public interface ScormDao {
 
     void addVisitSum(int scormId);
 
-    ScoInfo findScormInfoByScormId(int scormId);
+    Scorm findScormInfoByScormId(int scormId);
 }

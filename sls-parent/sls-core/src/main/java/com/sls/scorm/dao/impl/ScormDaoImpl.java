@@ -37,8 +37,8 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
     }
 
     @Override
-    public ScoInfo findScormInfoByScormId(int scormId) {
+    public Scorm findScormInfoByScormId(int scormId) {
         String sql = "SELECT * FROM ss_scorm WHERE scorm_id = ?";
-        return getJdbcTemplate().queryForObject(sql, new BeanPropertyRowMapper<ScoInfo>(ScoInfo.class), scormId);
+        return getJdbcTemplate().queryForObject(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), scormId);
     }
 }

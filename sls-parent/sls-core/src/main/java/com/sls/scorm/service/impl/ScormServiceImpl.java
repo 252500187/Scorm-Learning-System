@@ -69,9 +69,9 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void registerScorm(String id, HttpServletRequest request) {
-        int scormId = Integer.parseInt(id);
+    public void registerScorm(int scormId, HttpServletRequest request) {
         int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        //todo 判断课件是否可以使用
         if (scoDao.findScosByScormIdAndUserId(scormId, userId).size() > 0) {
             return;
         }
@@ -93,13 +93,19 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
+    public void studyScorm(int scormId, HttpServletRequest request) {
+
+    }
+
+    @Override
     public Boolean checkIsLoginUser() {
         String userName = LoginUserUtil.getLoginName();
         return !("".equals(userName));
     }
 
     @Override
-    public ScoInfo findScormInfoByScormId(int scormId) {
+    public Scorm findScormInfoByScormId(int scormId, HttpServletRequest request) {
+        //todo 查询课件信息
         return scormDao.findScormInfoByScormId(scormId);
     }
 }

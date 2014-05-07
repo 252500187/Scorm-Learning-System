@@ -1,6 +1,5 @@
 package com.sls.scorm.service;
 
-import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.Scorm;
 import org.xml.sax.SAXException;
 
@@ -14,9 +13,11 @@ public interface ScormService {
     void upScorm(HttpServletRequest request, String upFile, String upImg, String scormName) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException;
 
-    void registerScorm(String id, HttpServletRequest request);
+    void registerScorm(int scormId, HttpServletRequest request);
 
-    ScoInfo findScormInfoByScormId(int scormId);
+    void studyScorm(int scormId, HttpServletRequest request);
+
+    Scorm findScormInfoByScormId(int scormId, HttpServletRequest request);
 
     Boolean checkIsLoginUser();
 }

@@ -20,6 +20,13 @@ public class ScormController {
     @RequestMapping(value = "registerScorm", method = {RequestMethod.GET})
     @ResponseBody
     public void registerScorm(HttpServletRequest request, @RequestParam("scormId") String scormId) {
-        scormService.registerScorm(scormId, request);
+        scormService.registerScorm(Integer.parseInt(scormId), request);
+    }
+
+
+    @RequestMapping(value = "studyScorm", method = {RequestMethod.GET})
+    public String studyScorm(HttpServletRequest request, @RequestParam("scormId") String scormId) {
+        scormService.studyScorm(Integer.parseInt(scormId), request);
+        return "scormfront/scorm/studyScorm";
     }
 }
