@@ -11,6 +11,8 @@ public class User {
     private String userName;
     private String email;
 
+    private String registerDate;
+
     private int roleId;
     private String roleName;
     private String authority;
@@ -96,5 +98,14 @@ public class User {
 
     public void setAuthority(String authority) {
         this.authority = authority;
+    }
+
+
+    public String getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(String registerDate) {
+        this.registerDate = registerDate;
     }
 }

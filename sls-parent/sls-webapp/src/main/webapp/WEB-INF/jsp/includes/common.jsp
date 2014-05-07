@@ -8,9 +8,13 @@
 
 <script src="<c:url value="/assets/plugins/jquery-1.10.2.min.js"/>"></script>
 <script src="<c:url value="/js/common/common.js"/>" type="text/javascript"></script>
-
+<script src="<c:url value="/js/common/ccjcJS/ccjcJS.js"/>" type="text/javascript"></script>
 <base href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()%><c:url value="/"/>"/>
-
+<script>
+    $(function () {
+        JC.inputInit();
+    })
+</script>
 
 <%--这三个先后顺序不能变，会报错--%>
 

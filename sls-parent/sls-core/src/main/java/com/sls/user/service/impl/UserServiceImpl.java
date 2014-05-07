@@ -8,6 +8,7 @@ import com.sls.user.dao.UserRoleDao;
 import com.sls.user.entity.User;
 import com.sls.user.entity.UserRole;
 import com.sls.user.service.UserService;
+import com.sls.util.DateUtil;
 import com.sls.util.DictConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,7 +58,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void addUser(User user) {
         user.setInUse(DictConstant.IN_USE);
+        user.setRoleId(2);                          //todo 去权限表中找用户的对应ID
+        user.setRegisterDate(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
         int id = userDao.addUser(user);
+        user.setUserId(id);
+        userDao.addUserInfo(user);
         UserRole userRole = new UserRole();
         userRole.setRoleId(user.getRoleId());
         userRole.setUserId(id);

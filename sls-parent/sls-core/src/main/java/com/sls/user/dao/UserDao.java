@@ -24,4 +24,5 @@ public interface UserDao {
 
     int delUser(int id);
 
+    void addUserInfo(User user);
 }

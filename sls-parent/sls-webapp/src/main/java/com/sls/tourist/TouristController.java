@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -27,6 +28,7 @@ public class TouristController {
     private ScormService scormService;
 
     @RequestMapping(value = "register", method = {RequestMethod.POST})
+    @ResponseBody
     public void register(User user) {
         userService.addUser(user);
     }
