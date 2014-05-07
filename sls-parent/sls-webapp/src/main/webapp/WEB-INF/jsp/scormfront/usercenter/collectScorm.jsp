@@ -9,11 +9,26 @@
 <html>
 <head>
     <title></title>
+    <%@include file="../../includes/common.jsp" %>
 </head>
 <body>
-我 是 我的收藏 </br><a onclick="window.location.href=basePath+'/user/scorm/registerScorm?scormId=3'">点我注册课件？</a>
+我 是 我的收藏 <a onclick="registerScorm('9')">点我注册ID为9的课件</a>
+<a onclick="studyScorm('9')">点我学习ID为9的课件</a>
 </body>
 </html>
 <script>
-
+    function registerScorm(id) {
+        $.ajax({
+            url: basePath + "user/scorm/registerScorm?scormId=" + id,
+            dataType: "json",
+            type: "GET",
+            success: function (message) {
+                alert(message);
+            },
+            error: doError
+        })
+    }
+    function studyScorm(id) {
+        window.location.href = basePath + "user/scorm/studyScorm?scormId=" + id;
+    }
 </script>

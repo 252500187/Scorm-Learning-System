@@ -69,12 +69,14 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void registerScorm(String id, HttpServletRequest request) {
-        int scormId = Integer.parseInt(id);
+    public String registerScorm(int scormId, HttpServletRequest request) {
         int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        int scormState = scormDao.findScormInfoByScormId(scormId).getInUse();
         if (scoDao.findScosByScormIdAndUserId(scormId, userId).size() > 0) {
-            request.setAttribute("result","您已经注册了该课件！");
-            return;
+            return "对不起，您已注册。";
+        }
+        if (scormState == DictConstant.NO_USE) {
+            return "此课件不可注册。";
         }
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
         ScoInfo scoInfo = new ScoInfo();
@@ -91,6 +93,21 @@ public class ScormServiceImpl implements ScormService {
         scormSummarize.setGrade("");
         scormDao.addScormSummarize(scormSummarize);
         scormDao.addVisitSum(scormId);
-        request.setAttribute("result","注册成功！");
+        return "注册成功。";
+    }
+
+    @Override
+    public void studyScorm(int scormId, HttpServletRequest request) {
+        Scorm scorm = scormDao.findScormInfoByScormId(scormId);
+        if (scorm.getInUse() == DictConstant.NO_USE) {
+            return;
+        }
+//        List<>
+    }
+
+    @Override
+    public Scorm findScormInfoByScormId(int scormId, HttpServletRequest request) {
+        //todo 查询课件信息
+        return scormDao.findScormInfoByScormId(scormId);
     }
 }

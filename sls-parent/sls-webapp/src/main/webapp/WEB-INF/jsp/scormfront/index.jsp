@@ -25,7 +25,7 @@
         <h2>HOT TOP</h2>
 
         <div class="top-news col-md-12">
-            <a class="btn red sliderbar-transparency" href="#">
+            <a class="btn red sliderbar-transparency" onclick="linkScormInfo(6)">
                 <span> TOP ONE</span>
                 <em>书名</em>
                 <em>
@@ -34,7 +34,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn green" href="#">
+            <a class="btn green" onclick="linkScormInfo(6)">
                 <span> TOP TWO</span>
                 <em>书名</em>
                 <em>
@@ -43,7 +43,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn blue" href="#">
+            <a class="btn blue" onclick="linkScormInfo(6)">
                 <span> TOP THREE</span>
                 <em>书名</em>
                 <em>
@@ -52,7 +52,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn yellow" href="#">
+            <a class="btn yellow" onclick="linkScormInfo(6)">
                 <span> TOP FOUR</span>
                 <em>书名</em>
                 <em>
@@ -61,7 +61,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn purple" href="#">
+            <a class="btn purple" onclick="linkScormInfo(6)">
                 <span> TOP FIVE</span>
                 <em>书名</em>
                 <em>
@@ -70,7 +70,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn red" href="#">
+            <a class="btn red" onclick="linkScormInfo(6)">
                 <span> TOP ONE</span>
                 <em>书名</em>
                 <em>
@@ -79,7 +79,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn green" href="#">
+            <a class="btn green" onclick="linkScormInfo(6)">
                 <span> TOP TWO</span>
                 <em>书名</em>
                 <em>
@@ -471,4 +471,9 @@
 </div>
 </body>
 </html>
+<script type="text/javascript">
+function linkScormInfo(scormId) {
+    window.location.href=basePath + "tourist/scormInfo?scormId=" + scormId;
+}
+</script>
 

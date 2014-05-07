@@ -13,5 +13,9 @@ public interface ScormService {
     void upScorm(HttpServletRequest request, String upFile, String upImg, String scormName) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException;
 
-    void registerScorm(String id, HttpServletRequest request);
+    String registerScorm(int scormId, HttpServletRequest request);
+
+    void studyScorm(int scormId, HttpServletRequest request);
+
+    Scorm findScormInfoByScormId(int scormId, HttpServletRequest request);
 }
