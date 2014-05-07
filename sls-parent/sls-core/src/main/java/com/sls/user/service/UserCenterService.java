@@ -1,4 +1,4 @@
-package com.sls.scorm.service;
+package com.sls.user.service;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -1,4 +1,4 @@
-package com.sls.user.service;
+package com.sls.system.service;
 
 import com.sls.user.entity.User;
 

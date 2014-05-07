@@ -1,6 +1,6 @@
-package com.sls.scorm.service.impl;
+package com.sls.user.service.impl;
 
-import com.sls.scorm.service.UserCenterService;
+import com.sls.user.service.UserCenterService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

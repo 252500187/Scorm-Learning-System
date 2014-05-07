@@ -1,8 +1,8 @@
-package com.sls.user.service.impl;
+package com.sls.system.service.impl;
 
 import com.sls.user.dao.UserDao;
 import com.sls.user.entity.User;
-import com.sls.user.service.AccountService;
+import com.sls.system.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

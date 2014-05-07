@@ -1,7 +1,7 @@
 package com.sls.user;
 
 import com.sls.scorm.service.ScormService;
-import com.sls.scorm.service.UserCenterService;
+import com.sls.user.service.UserCenterService;
 import com.sls.util.DictConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

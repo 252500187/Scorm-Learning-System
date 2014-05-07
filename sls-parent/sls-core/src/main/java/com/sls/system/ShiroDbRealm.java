@@ -1,7 +1,7 @@
 package com.sls.system;
 
 import com.sls.user.entity.User;
-import com.sls.user.service.AccountService;
+import com.sls.system.service.AccountService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
