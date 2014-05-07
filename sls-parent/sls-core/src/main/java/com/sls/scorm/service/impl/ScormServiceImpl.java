@@ -71,8 +71,8 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void registerScorm(int scormId, HttpServletRequest request) {
         int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-        //todo 判断课件是否可以使用
-        if (scoDao.findScosByScormIdAndUserId(scormId, userId).size() > 0) {
+        int scormState = scormDao.findScormInfoByScormId(scormId).getInUse();
+        if (scoDao.findScosByScormIdAndUserId(scormId, userId).size() > 0 || scormState == DictConstant.NO_USE) {
             return;
         }
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
@@ -94,6 +94,10 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void studyScorm(int scormId, HttpServletRequest request) {
+        Scorm scorm = scormDao.findScormInfoByScormId(scormId);
+        if (scorm.getInUse() == DictConstant.NO_USE) {
+            return;
+        }
 
     }
 
