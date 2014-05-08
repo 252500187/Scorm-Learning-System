@@ -83,9 +83,6 @@ public class ScormServiceImpl implements ScormService {
         ScormSummarize scormSummarize = new ScormSummarize();
         scormSummarize.setUserId(userId);
         scormSummarize.setScormId(scormId);
-        scormSummarize.setScore("");
-        scormSummarize.setDiscuss("");
-        scormSummarize.setGrade("");
         scormDao.addScormSummarize(scormSummarize);
         scormDao.addVisitSum(scormId);
         return "注册成功。";

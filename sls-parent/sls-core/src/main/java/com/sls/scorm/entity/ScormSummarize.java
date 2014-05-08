@@ -6,8 +6,15 @@ public class ScormSummarize {
     private String score;
     private String discuss;
     private String grade;
+    private String discussDate;
+    private String completeDate;
 
     public ScormSummarize() {
+        score = "";
+        discuss = "";
+        grade = "";
+        discussDate = "";
+        completeDate = "";
     }
 
     public int getUserId() {
@@ -48,5 +55,21 @@ public class ScormSummarize {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    public String getCompleteDate() {
+        return completeDate;
+    }
+
+    public void setCompleteDate(String completeDate) {
+        this.completeDate = completeDate;
+    }
+
+    public String getDiscussDate() {
+        return discussDate;
+    }
+
+    public void setDiscussDate(String discussDate) {
+        this.discussDate = discussDate;
     }
 }

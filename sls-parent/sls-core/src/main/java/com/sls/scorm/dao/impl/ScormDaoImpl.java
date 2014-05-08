@@ -25,8 +25,8 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
 
     @Override
     public void addScormSummarize(ScormSummarize scormSummarize) {
-        String sql = "INSERT INTO luss_scorm_summarize(user_id,scorm_id,score,discuss,grade) " +
-                "VALUES(:userId, :scormId, :score, :discuss, :grade)";
+        String sql = "INSERT INTO luss_scorm_summarize(user_id,scorm_id,score,discuss,grade,discuss_date,complete_date) " +
+                "VALUES(:userId, :scormId, :score, :discuss, :grade, :discussDate, :completeDate)";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(scormSummarize));
     }
 
