@@ -113,6 +113,7 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void changeScoState(int scormId, int scoId) {
         int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        scoDao.setLastVisitScoByScoId(scoId,DictConstant.LAST_VISIT);
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, userId);
         for (Sco sco : scoList) {
             if (sco.getScoId() == scoId) {

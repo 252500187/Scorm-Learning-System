@@ -325,4 +325,10 @@
         $('.selected').remove();
         $(this).parents('li').find("a").append('<span class="selected" ></span>');
     });
+
+    if (scoId != "") {
+        if (confirm("是否继续上次学习进度")) {
+
+        }
+    }
 </script>

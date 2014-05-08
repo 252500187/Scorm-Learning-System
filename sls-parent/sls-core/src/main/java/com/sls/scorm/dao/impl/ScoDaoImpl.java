@@ -101,4 +101,10 @@ public class ScoDaoImpl extends PageDao implements ScoDao {
         String mainSql = "UPDATE luss_scorm_sco_api_info SET " + findSql.substring(0, findSql.length() - 1) + " WHERE sco_id=?";
         getJdbcTemplate().update(mainSql, scoInfo.getScoId());
     }
+
+    @Override
+    public void setLastVisitScoByScoId(int ScoId, int state) {
+        String sql = "UPDATE luss_scorm_sco SET last_visit=? WHERE sco_id=?";
+        getJdbcTemplate().update(sql, state, ScoId);
+    }
 }
