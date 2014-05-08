@@ -11,6 +11,8 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository("scormDao")
 public class ScormDaoImpl extends PageDao implements ScormDao {
 
@@ -40,5 +42,13 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
     public Scorm findScormInfoByScormId(int scormId) {
         String sql = "SELECT * FROM ss_scorm WHERE scorm_id = ?";
         return getJdbcTemplate().queryForObject(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), scormId);
+    }
+
+    @Override
+    public List<ScormSummarize> getAllCommentsByScormId(int scormId) {
+        String sql = " SELECT lss.*,uu.`login_name` FROM luss_scorm_summarize lss " +
+                " JOIN us_user uu ON lss.`user_id` = uu.user_id " +
+                " WHERE uu.`in_use`='1' AND scorm_id = ?";
+        return getJdbcTemplate().query(sql,new BeanPropertyRowMapper<ScormSummarize>(ScormSummarize.class), scormId);
     }
 }

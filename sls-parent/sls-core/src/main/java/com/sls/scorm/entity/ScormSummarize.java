@@ -8,6 +8,7 @@ public class ScormSummarize {
     private String grade;
     private String discussDate;
     private String completeDate;
+    private String loginName;
 
     public ScormSummarize() {
         score = "";
@@ -55,6 +56,14 @@ public class ScormSummarize {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    public String getLoginName() {
+        return loginName;
+    }
+
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
     }
 
     public String getCompleteDate() {
