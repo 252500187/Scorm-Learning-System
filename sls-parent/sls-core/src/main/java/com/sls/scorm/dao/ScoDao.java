@@ -17,4 +17,6 @@ public interface ScoDao {
     List<ScoInfo> getScoApiInfoByScoId(int scoId);
 
     void changeScoInfoByScoId(ScoInfo scoInfo);
+
+    void setLastVisitScoByScoId(int ScoId,int state);
 }

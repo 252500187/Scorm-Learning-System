@@ -31,6 +31,7 @@ public class ScoInfo {
         coreExit = "";
         coreSessionTime = "";
         suspendData = "";
+        launchData="";
     }
 
     public String getCoreStudentId() {
