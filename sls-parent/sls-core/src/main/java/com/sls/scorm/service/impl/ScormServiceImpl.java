@@ -107,7 +107,7 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void findScormInfoByScormId(int scormId, HttpServletRequest request) {
         //todo 查询课件信息
-        request.setAttribute("scormInfo", scormDao.findScormInfoByScormId(scormId));
+        request.setAttribute("scormInfo",scormDao.findScormInfoByScormId(scormId));
     }
 
     @Override
@@ -142,5 +142,25 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void changeScoInfoByScoId(ScoInfo scoInfo) {
         scoDao.changeScoInfoByScoId(scoInfo);
+    }
+
+    @Override
+    public void getScormInfoAndChapterInfo(int scormId, HttpServletRequest request) {
+        Scorm scormInfo = scormDao.findScormInfoByScormId(scormId);
+        if (scormInfo.getInUse() == DictConstant.NO_USE) {
+            return;
+        }
+        request.setAttribute("scormInfo", scormInfo);
+        List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
+        for (Sco sco : scoList) {
+            sco.setShowStudyState(dictService.changeDictCodeToValue(sco.getStudyState(), DictConstant.STUDY_STATE));
+        }
+        request.setAttribute("scoList", scoList);
+        request.setAttribute("isLast", DictConstant.LAST_VISIT);
+    }
+
+    @Override
+    public void getAllCommentsByScormId(int scormId, HttpServletRequest request) {
+        request.setAttribute("allComments",scormDao.getAllCommentsByScormId(scormId));
     }
 }

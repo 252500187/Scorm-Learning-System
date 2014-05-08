@@ -4,6 +4,8 @@ import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.entity.ScormSummarize;
 
+import java.util.List;
+
 public interface ScormDao {
 
     int addScorm(Scorm scorm);
@@ -13,4 +15,6 @@ public interface ScormDao {
     void addVisitSum(int scormId);
 
     Scorm findScormInfoByScormId(int scormId);
+
+    List<ScormSummarize> getAllCommentsByScormId(int scormId);
 }

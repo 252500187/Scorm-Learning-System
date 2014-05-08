@@ -1,4 +1,6 @@
 <%--@elvariable id="scormInfo" type="com.sls.scorm.entity.Scorm"--%>
+<%--@elvariable id="scoList" type="java.util.List"--%>
+<%--@elvariable id="allComments" type="java.util.List"--%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -46,11 +48,8 @@
                                                 <div class="col-md-2"><a class="btn blue">注册</a></div>
                                             </div>
                                             <ul class="list-inline">
-                                                <%--<li>时长:</li>--%>
-                                                <%--<li>${scormInfo.}</li>--%>
                                                 <li>发布时间:</li>
-                                                    <%--todo--%>
-                                                <%--<li>${scormInfo.}</li>--%>
+                                                <li>${scormInfo.uploadDate}</li>
                                             </ul>
                                             <ul class="list-inline">
                                                 <li>评分:</li>
@@ -61,12 +60,12 @@
                                             </ul>
                                             <ul class="list-inline">
                                                 <li>简介:</li>
-                                                <li>简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
+                                                <li>${scormInfo.description}
                                                 </li>
                                             </ul>
                                             <ul class="list-inline">
                                                 <li>
-                                                点击量:${scormInfo.registerSum}
+                                                    点击量:${scormInfo.registerSum}
                                                 </li>
                                                 <li>
                                                     <i class="fa fa-heart"></i> 收藏
@@ -77,7 +76,7 @@
 
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" style="min-height: 500px">
                                 <div class="col-md-1"></div>
                                 <div class="col-md-9">
                                     <div class="tabbable tabbable-custom tabbable-custom-profile">
@@ -105,22 +104,31 @@
                                                          data-rail-visible1="1" id="comments">
                                                         <!--评论列表-->
                                                         <ul class="feeds">
-                                                            <li>
-                                                                <div class="col1">
-                                                                    <div class="cont">
-                                                                        <div class="cont-col2">
-                                                                            <div class="desc">
-                                                                                一条评论
+                                                            <c:forEach var="comment" items="${allComments}">
+
+                                                                <li>
+                                                                    <div class="col1">
+                                                                        <div class="cont">
+                                                                            <div class="cont-col2">
+                                                                                <div class="desc">
+                                                                                        ${comment.discuss}
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="col2" id="commentUser">
-                                                                    <div class="date">
-                                                                        某个用户
+                                                                    <div class="col2" style="margin-left: -150px">
+                                                                        <div class="date">
+                                                                                ${comment.discussDate}
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </li>
+                                                                    <div class="col2">
+                                                                        <div class="date" style="color: #000">
+                                                                                ${comment.loginName}
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </c:forEach>
+
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -145,68 +153,48 @@
 </html>
 
 <script type="text/javascript">
-    var scoId = "";
-        <c:forEach var="scoNode" items="${scoList}">
-        <c:if test="${scoNode.lastVisit==isLast}">
-        scoId = "${scoNode.scoId}";
-        </c:if>
-        </c:forEach>
-        var settingMenu = {
-            view: {
-                expandSpeed: "fast"
+    var settingMenu = {
+        view: {
+            showLine: false,
+            showIcon: false,
+            selectedMulti: false,
+            dblClickExpand: false,
+            expandSpeed: "fast"
+        },
+        check: {
+            enable: false
+        },
+        data: {
+            simpleData: {
+                enable: true,
+                idKey: "id",
+                pIdKey: "pId"
             },
-            check: {
-                enable: false
+            key: {
+                name: "name"
             },
-            data: {
-                simpleData: {
-                    enable: true,
-                    idKey: "id",
-                    pIdKey: "pId"
-                },
-                key: {
-                    name: "name"
-                },
-                keep: {
-                    parent: true
-                }
-            },
-            callback: {
-                onClick: zTreeOnClick
+            keep: {
+                parent: true
             }
-        };
-
-        var zNodes = [
-            <c:forEach var="scoNode" items="${scoList}">
-            {id: "${scoNode.treeId}",
-                pId: "${scoNode.treeParentId}",
-                name: "(${scoNode.showStudyState})${scoNode.title}",
-                src: "${scoNode.url}",
-                scoId: "${scoNode.scoId}"},
-            </c:forEach>
-        ];
-
-        function zTreeOnClick(event, treeId, treeNode) {
-            if (treeNode.src.trim() == "") {
-                return;
-            }
-            scoId = treeNode.scoId;
-            $("#scormIframe").attr("src", treeNode.src);
-            $.ajax({
-                url: basePath + "user/scorm/changeScoState?scormId=${scorm.scormId}&scoId=" + scoId,
-                dataType: "json",
-                type: "get",
-                success: function () {
-
-                },
-                error: doError
-            })
+        },
+        callback: {
         }
+    };
 
-        $(function () {
-            $("#scormImg").attr("src",basePath+"${scormInfo.imgPath}")
-            App.init();
-            $.fn.zTree.init($("#chapterList"), settingMenu, zNodes);
-            $.fn.zTree.getZTreeObj("chapterList").expandAll(true);
-        });
+    var zNodes = [
+        <c:forEach var="scoNode" items="${scoList}">
+        {id: "${scoNode.treeId}",
+            pId: "${scoNode.treeParentId}",
+            name: "${scoNode.title}",
+            src: "${scoNode.url}",
+            scoId: "${scoNode.scoId}"},
+        </c:forEach>
+    ];
+
+    $(function () {
+        $("#scormImg").attr("src", basePath + "${scormInfo.imgPath}")
+        App.init();
+        $.fn.zTree.init($("#chapterList"), settingMenu, zNodes);
+        $.fn.zTree.getZTreeObj("chapterList").expandAll(true);
+    });
 </script>
