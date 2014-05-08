@@ -48,7 +48,7 @@
                 </a>
                 <ul class="sub-menu">
                     <div id="menuTree" class="ztree"
-                         style="width:190px; height:600px; border: 1px solid; float: left; overflow-x:auto; overflow-y:auto ">
+                         style="width:100%; height:600px; border: 1px solid; float: left; overflow-x:auto; overflow-y:auto ">
                     </div>
                     <div class="chat-form">
                     </div>
@@ -281,7 +281,7 @@
         <c:forEach var="scoNode" items="${scoList}">
         {id: "${scoNode.treeId}",
             pId: "${scoNode.treeParentId}",
-            name: "${scoNode.title}(${scoNode.showStudyState})",
+            name: "(${scoNode.showStudyState})${scoNode.title}",
             src: "${scoNode.url}",
             scoId: "${scoNode.scoId}"},
         </c:forEach>
@@ -291,13 +291,13 @@
         if (treeNode.src.trim() == "") {
             return;
         }
-        scoId = treeNode.id;
+        scoId = treeNode.scoId;
         $("#scormIframe").attr("src", treeNode.src);
         $.ajax({
             url: basePath + "user/scorm/changeScoState?scormId=${scorm.scormId}&scoId=" + scoId,
             dataType: "json",
             type: "get",
-            success: function (sss) {
+            success: function () {
 
             },
             error: doError

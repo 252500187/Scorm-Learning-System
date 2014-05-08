@@ -125,17 +125,30 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void changeScoState(int scormId, int scoId) {
-//        int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-//        List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, userId);
-//        for (Sco sco : scoList) {
-//            if (sco.getScoId() == scoId) {
-//                sco.getTreeId()
-//                sco.getTreeParentId()
-//            }
-//        }
+        int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, userId);
+        for (Sco sco : scoList) {
+            if (sco.getScoId() == scoId) {
+                changeState(sco, scoList);
+                break;
+            }
+        }
     }
-//
-//    public void changeState(int  ) {
-//
-//    }
+
+    public void changeState(Sco sco, List<Sco> scoList) {
+        if (sco.getStudyState() != DictConstant.STUDY_STATE_1) {
+            scoDao.changeStudyStateByScoId(sco.getScoId(), DictConstant.STUDY_STATE_1);
+            for (Sco onesco : scoList) {
+                if (onesco.getTreeId().equals(sco.getTreeParentId())) {
+                    changeState(onesco, scoList);
+                    break;
+                }
+            }
+        }
+    }
+
+    @Override
+    public List<ScoInfo> getScoApiInfo(int scoId){
+        return scoDao.getScoApiInfoByScoId(scoId);
+    }
 }

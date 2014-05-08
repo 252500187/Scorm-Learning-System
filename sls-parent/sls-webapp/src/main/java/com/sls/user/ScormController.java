@@ -1,6 +1,7 @@
 package com.sls.user;
 
 
+import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.service.ScormService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,8 +37,13 @@ public class ScormController {
 
     @RequestMapping(value = "changeScoState", method = {RequestMethod.GET})
     @ResponseBody
-    public int changeScoState(@RequestParam("scormId") String scormId, @RequestParam("scoId") String scoId) {
+    public void changeScoState(@RequestParam("scormId") String scormId, @RequestParam("scoId") String scoId) {
         scormService.changeScoState(Integer.parseInt(scormId), Integer.parseInt(scoId));
-        return 2;
+    }
+
+    @RequestMapping(value = "getScoApiInfo", method = {RequestMethod.GET})
+    @ResponseBody
+    public List<ScoInfo> getScoApiInfo(@RequestParam("scoId") String scoId) {
+        return scormService.getScoApiInfo(Integer.parseInt(scoId));
     }
 }

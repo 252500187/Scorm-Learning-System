@@ -37,4 +37,16 @@ public class ScoDaoImpl extends PageDao implements ScoDao {
         String sql = "SELECT * FROM luss_scorm_sco WHERE scorm_id=? AND user_id=?";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Sco>(Sco.class), scormId, userId);
     }
+
+    @Override
+    public void changeStudyStateByScoId(int scoId, int studyState) {
+        String sql = "UPDATE luss_scorm_sco SET study_state=? WHERE sco_id=?";
+        getJdbcTemplate().update(sql, studyState, scoId);
+    }
+
+    @Override
+    public List<ScoInfo> getScoApiInfoByScoId(int scoId) {
+        String sql = "SELECT * FROM luss_scorm_sco_api_info WHERE sco_id=?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<ScoInfo>(ScoInfo.class), scoId);
+    }
 }

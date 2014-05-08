@@ -1,5 +1,6 @@
 package com.sls.scorm.service;
 
+import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.Scorm;
 import org.xml.sax.SAXException;
 
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
+import java.util.List;
 
 public interface ScormService {
     void upScorm(HttpServletRequest request, String upFile, String upImg, String scormName) throws ServletException, IOException, ParserConfigurationException, SAXException,
@@ -20,4 +22,6 @@ public interface ScormService {
     Scorm findScormInfoByScormId(int scormId, HttpServletRequest request);
 
     void changeScoState(int scormId, int scoId);
+
+    List<ScoInfo> getScoApiInfo(int scoId);
 }
