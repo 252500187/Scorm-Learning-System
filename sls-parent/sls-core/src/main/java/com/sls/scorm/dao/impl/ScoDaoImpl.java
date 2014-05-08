@@ -53,54 +53,52 @@ public class ScoDaoImpl extends PageDao implements ScoDao {
     @Override
     public void changeScoInfoByScoId(ScoInfo scoInfo) {
         StringBuilder findSql = new StringBuilder("");
-        if (("").equals(scoInfo.getCoreStudentId())) {
-            findSql.append(" coreStudentId=" + scoInfo.getCoreStudentId());
+        if (!("").equals(scoInfo.getCoreStudentId())) {
+            findSql.append(" coreStudentId='" + scoInfo.getCoreStudentId() + "',");
         }
-        if (("").equals(scoInfo.getCoreStudentName())) {
-            findSql.append(" coreStudentName=" + scoInfo.getCoreStudentName());
+        if (!("").equals(scoInfo.getCoreStudentName())) {
+            findSql.append(" coreStudentName='" + scoInfo.getCoreStudentName() + "',");
         }
-        if (("").equals(scoInfo.getCoreLessonLocation())) {
-            findSql.append(" coreLessonLocation=" + scoInfo.getCoreLessonLocation());
+        if (!("").equals(scoInfo.getCoreLessonLocation())) {
+            findSql.append(" coreLessonLocation='" + scoInfo.getCoreLessonLocation() + "',");
         }
-        if (("").equals(scoInfo.getCoreCredit())) {
-            findSql.append(" coreCredit=" + scoInfo.getCoreCredit());
+        if (!("").equals(scoInfo.getCoreCredit())) {
+            findSql.append(" coreCredit='" + scoInfo.getCoreCredit() + "',");
         }
-        if (("").equals(scoInfo.getCoreLessonStatus())) {
-            findSql.append(" coreLessonStatus=" + scoInfo.getCoreLessonStatus());
+        if (!("").equals(scoInfo.getCoreLessonStatus())) {
+            findSql.append(" coreLessonStatus='" + scoInfo.getCoreLessonStatus() + "',");
         }
-        if (("").equals(scoInfo.getCoreEntry())) {
-            findSql.append(" coreEntry=" + scoInfo.getCoreEntry());
+        if (!("").equals(scoInfo.getCoreEntry())) {
+            findSql.append(" coreEntry='" + scoInfo.getCoreEntry() + "',");
         }
-        if (("").equals(scoInfo.getCoreScore())) {
-            findSql.append(" coreScore=" + scoInfo.getCoreScore());
+        if (!("").equals(scoInfo.getCoreScore())) {
+            findSql.append(" coreScore='" + scoInfo.getCoreScore() + "',");
         }
-        if (("").equals(scoInfo.getCoreScoreRaw())) {
-            findSql.append(" coreScoreRaw=" + scoInfo.getCoreScoreRaw());
+        if (!("").equals(scoInfo.getCoreScoreRaw())) {
+            findSql.append(" coreScoreRaw='" + scoInfo.getCoreScoreRaw() + "',");
         }
-        if (("").equals(scoInfo.getCoreTotalTime())) {
-            findSql.append(" coreTotalTime=" + scoInfo.getCoreTotalTime());
+        if (!("").equals(scoInfo.getCoreTotalTime())) {
+            findSql.append(" coreTotalTime='" + scoInfo.getCoreTotalTime() + "',");
         }
-        if (("").equals(scoInfo.getCoreLessonMode())) {
-            findSql.append(" coreLessonMode=" + scoInfo.getCoreLessonMode());
+        if (!("").equals(scoInfo.getCoreLessonMode())) {
+            findSql.append(" coreLessonMode='" + scoInfo.getCoreLessonMode() + "',");
         }
-        if (("").equals(scoInfo.getCoreExit())) {
-            findSql.append(" coreExit=" + scoInfo.getCoreExit());
+        if (!("").equals(scoInfo.getCoreExit())) {
+            findSql.append(" coreExit='" + scoInfo.getCoreExit() + "',");
         }
-        if (("").equals(scoInfo.getCoreSessionTime())) {
-            findSql.append(" coreSessionTime=" + scoInfo.getCoreSessionTime());
+        if (!("").equals(scoInfo.getCoreSessionTime())) {
+            findSql.append(" coreSessionTime='" + scoInfo.getCoreSessionTime() + "',");
         }
-        if (("").equals(scoInfo.getSuspendData())) {
-            findSql.append(" suspendData=" + scoInfo.getSuspendData());
+        if (!("").equals(scoInfo.getSuspendData())) {
+            findSql.append(" suspendData='" + scoInfo.getSuspendData() + "',");
         }
-        if (("").equals(scoInfo.getLaunchData())) {
-            findSql.append(" launchData=" + scoInfo.getLaunchData());
+        if (!("").equals(scoInfo.getLaunchData())) {
+            findSql.append(" launchData='" + scoInfo.getLaunchData() + "',");
         }
         if (findSql.equals("")) {
             return;
         }
-        String mainSql = "UPDATE luss_scorm_sco_api_info SET " + findSql + " WHERE sco_id=?";
+        String mainSql = "UPDATE luss_scorm_sco_api_info SET " + findSql.substring(0, findSql.length() - 1) + " WHERE sco_id=?";
         getJdbcTemplate().update(mainSql, scoInfo.getScoId());
-        int a = 5;
-        a++;
     }
 }
