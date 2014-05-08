@@ -13,6 +13,7 @@
         String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
     %>
 </head>
+<%--<%@include file="index/test.jsp"%>--%>
 <body class="page-header-fixed">
 <%@include file="index/navigationMenu.jsp" %>
 

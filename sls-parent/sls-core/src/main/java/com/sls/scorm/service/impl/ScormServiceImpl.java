@@ -119,9 +119,9 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public Scorm findScormInfoByScormId(int scormId, HttpServletRequest request) {
+    public void findScormInfoByScormId(int scormId, HttpServletRequest request) {
         //todo 查询课件信息
-        return scormDao.findScormInfoByScormId(scormId);
+        request.setAttribute("scormInfo",scormDao.findScormInfoByScormId(scormId));
     }
 
     @Override
