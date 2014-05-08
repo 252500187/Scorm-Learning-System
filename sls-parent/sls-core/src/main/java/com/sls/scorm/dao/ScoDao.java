@@ -15,4 +15,6 @@ public interface ScoDao {
     void changeStudyStateByScoId(int scoId, int studyState);
 
     List<ScoInfo> getScoApiInfoByScoId(int scoId);
+
+    void changeScoInfoByScoId(ScoInfo scoInfo);
 }

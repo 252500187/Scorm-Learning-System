@@ -6,6 +6,7 @@ public class Scorm {
     private int registerSum;
     private int recommendLevel;
     private String imgPath;
+    private String uploadDate;
     private int uploadUserId;
     private int inUse;
 
@@ -66,5 +67,13 @@ public class Scorm {
 
     public void setRegisterSum(int registerSum) {
         this.registerSum = registerSum;
+    }
+
+    public String getUploadDate() {
+        return uploadDate;
+    }
+
+    public void setUploadDate(String uploadDate) {
+        this.uploadDate = uploadDate;
     }
 }

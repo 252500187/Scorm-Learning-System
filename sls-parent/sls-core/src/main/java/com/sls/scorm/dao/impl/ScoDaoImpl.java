@@ -49,4 +49,56 @@ public class ScoDaoImpl extends PageDao implements ScoDao {
         String sql = "SELECT * FROM luss_scorm_sco_api_info WHERE sco_id=?";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<ScoInfo>(ScoInfo.class), scoId);
     }
+
+    @Override
+    public void changeScoInfoByScoId(ScoInfo scoInfo) {
+        StringBuilder findSql = new StringBuilder("");
+        if (("").equals(scoInfo.getCoreStudentId())) {
+
+        }
+        if (("").equals(scoInfo.getCoreStudentName())) {
+
+        }
+        if (("").equals(scoInfo.getCoreLessonLocation())) {
+
+        }
+        if (("").equals(scoInfo.getCoreCredit())) {
+
+        }
+        if (("").equals(scoInfo.getCoreLessonStatus())) {
+
+        }
+        if (("").equals(scoInfo.getCoreEntry())) {
+
+        }
+        if (("").equals(scoInfo.getCoreScore())) {
+
+        }
+        if (("").equals(scoInfo.getCoreScoreRaw())) {
+
+        }
+        if (("").equals(scoInfo.getCoreTotalTime())) {
+
+        }
+        if (("").equals(scoInfo.getCoreLessonMode())) {
+
+        }
+        if (("").equals(scoInfo.getCoreExit())) {
+
+        }
+        if (("").equals(scoInfo.getCoreSessionTime())) {
+
+        }
+        if (("").equals(scoInfo.getSuspendData())) {
+
+        }
+        if (("").equals(scoInfo.getLaunchData())) {
+
+        }
+        if (findSql.equals("")) {
+            return;
+        }
+        String mainSql = "UPDATE luss_scorm_sco_api_info SET " + findSql + " WHERE sco_id=?";
+        getJdbcTemplate().update(mainSql, scoInfo.getScoId());
+    }
 }

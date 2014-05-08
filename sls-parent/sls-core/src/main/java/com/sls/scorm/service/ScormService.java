@@ -24,4 +24,6 @@ public interface ScormService {
     void changeScoState(int scormId, int scoId);
 
     List<ScoInfo> getScoApiInfo(int scoId);
+
+    void changeScoInfoByScoId(ScoInfo scoInfo);
 }

@@ -15,6 +15,7 @@ public class ScoInfo {
     private String coreExit;
     private String coreSessionTime;
     private String suspendData;
+    private String launchData;
 
     public ScoInfo() {
         coreStudentId = "";
@@ -142,5 +143,13 @@ public class ScoInfo {
 
     public void setScoId(int scoId) {
         this.scoId = scoId;
+    }
+
+    public String getLaunchData() {
+        return launchData;
+    }
+
+    public void setLaunchData(String launchData) {
+        this.launchData = launchData;
     }
 }

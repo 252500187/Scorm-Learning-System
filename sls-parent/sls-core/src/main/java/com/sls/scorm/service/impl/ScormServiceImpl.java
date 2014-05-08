@@ -57,6 +57,7 @@ public class ScormServiceImpl implements ScormService {
             scorm.setRecommendLevel(DictConstant.RECOMMEND_0);
             scorm.setImgPath(fileUp.upImg(request, DictConstant.TOP_SCORM_FILE_NAME + "/" + fileName, DictConstant.SCORM_IMG, upImg));
             scorm.setUploadUserId(userId);
+            scorm.setUploadDate(new Date().toString());
             scorm.setInUse(DictConstant.NO_USE);
             int scormId = scormDao.addScorm(scorm);
             List<Sco> scoNodes = fileUp.analyzeXml(fileUp.upScorm(request, fileName, upFile) + DictConstant.IMSMANIFEST);
@@ -148,7 +149,12 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public List<ScoInfo> getScoApiInfo(int scoId){
+    public List<ScoInfo> getScoApiInfo(int scoId) {
         return scoDao.getScoApiInfoByScoId(scoId);
+    }
+
+    @Override
+    public void changeScoInfoByScoId(ScoInfo scoInfo) {
+        scoDao.changeScoInfoByScoId(scoInfo);
     }
 }

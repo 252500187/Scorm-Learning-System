@@ -39,40 +39,37 @@ function LMSInitialize(parameter) {
     scoInfo['cmi.core.session_time'] = "";
 
     scoInfo['cmi.suspend_data'] = "";
-
     scoInfo['cmi.launch_data'] = "";
-
+    var ajaxResult = "";
     $.ajax({
-        url: basePath + "user/scorm/getScoApiInfo?scoId=" + scoId,
         async: false,
+        url: basePath + "user/scorm/getScoApiInfo?scoId=" + scoId,
         dataType: "json",
         type: "GET",
         success: function (info) {
-//            var data = $.parseJSON(info);
-            scoInfo['cmi.core.student_id'] = "";
-            scoInfo['cmi.core.student_name'] = "";
-            scoInfo['cmi.core.lesson_location'] = "";
-            scoInfo['cmi.core.credit'] = "";
-            scoInfo['cmi.core.lesson_status'] = "";
-            scoInfo['cmi.core.entry'] = "";
-            scoInfo['cmi.core.score'] = "";
-            scoInfo['cmi.core.score.raw'] = "";
-            scoInfo['cmi.core.total_time'] = "";
-            scoInfo['cmi.core.lesson_mode'] = "";
-            scoInfo['cmi.core.exit'] = "";
-            scoInfo['cmi.core.session_time'] = "";
+            scoInfo['cmi.core.student_id'] = info[0].coreStudentId;
+            scoInfo['cmi.core.student_name'] = info[0].coreStudentName;
+            scoInfo['cmi.core.lesson_location'] = info[0].coreLessonLocation;
+            scoInfo['cmi.core.credit'] = info[0].coreCredit;
+            scoInfo['cmi.core.lesson_status'] = info[0].coreLessonStatus;
+            scoInfo['cmi.core.entry'] = info[0].coreEntry;
+            scoInfo['cmi.core.score'] = info[0].coreScore;
+            scoInfo['cmi.core.score.raw'] = info[0].coreScoreRaw;
+            scoInfo['cmi.core.total_time'] = info[0].coreTotalTime;
+            scoInfo['cmi.core.lesson_mode'] = info[0].coreLessonMode;
+            scoInfo['cmi.core.exit'] = info[0].coreExit;
+            scoInfo['cmi.core.session_time'] = info[0].coreSessionTime;
 
-            scoInfo['cmi.suspend_data'] = "";
-
-            scoInfo['cmi.launch_data'] = "";
+            scoInfo['cmi.suspend_data'] = info[0].suspendData;
+            scoInfo['cmi.launch_data'] = info[0].launchData;
             iniFlag = true;
-            return "true";
+            ajaxResult = "true";
         },
         error: function () {
-            return "false";
+            ajaxResult = "false";
         }
-    })
-    alert("2");
+    });
+    return ajaxResult;
 }
 
 function LMSSetValue(key, value) {
@@ -124,34 +121,37 @@ function LMSCommit(parameter) {
         errorCode = "301";
         return "false";
     }
-    //todo ajax传入数据库 通过scoId
-//    $.ajax({
-//        url: basePath + "admin/center/upScoInfo",
-//        data: {
-//            id: scoId,
-//            coreStudentId: scoInfo['cmi.core.student_id'],
-//            coreStudentName: scoInfo['cmi.core.student_name'],
-//            coreLessonLocation: scoInfo['cmi.core.lesson_location'],
-//            coreCredit: scoInfo['cmi.core.credit'],
-//            coreLessonStatus: scoInfo['cmi.core.lesson_status'],
-//            coreEntry: scoInfo['cmi.core.entry'],
-//            coreScore: scoInfo['cmi.core.score'],
-//            coreScoreRaw: scoInfo['cmi.core.score.raw'],
-//            coreTotalTime: scoInfo['cmi.core.total_time'],
-//            coreLessonMode: scoInfo['cmi.core.lesson_mode'],
-//            coreExit: scoInfo['cmi.core.exit'],
-//            coreSessionTime: scoInfo['cmi.core.session_time'],
-//            suspendData: scoInfo['cmi.suspend_data'],
-//            cmiLaunchData: scoInfo['cmi.launch_data']
-//        },
-//        dataType: "json",
-//        type: "POST",
-//        success: function () {
-//        },
-//        error: function () {
-//        }
-//    })
-    return "true";
+    var ajaxResult = "";
+    $.ajax({
+        url: basePath + "user/scorm/commitScoApiInfo",
+        async: false,
+        data: {
+            scoId: scoId,
+            coreStudentId: scoInfo['cmi.core.student_id'].trim(),
+            coreStudentName: scoInfo['cmi.core.student_name'].trim(),
+            coreLessonLocation: scoInfo['cmi.core.lesson_location'].trim(),
+            coreCredit: scoInfo['cmi.core.credit'].trim(),
+            coreLessonStatus: scoInfo['cmi.core.lesson_status'].trim(),
+            coreEntry: scoInfo['cmi.core.entry'].trim(),
+            coreScore: scoInfo['cmi.core.score'].trim(),
+            coreScoreRaw: scoInfo['cmi.core.score.raw'].trim(),
+            coreTotalTime: scoInfo['cmi.core.total_time'].trim(),
+            coreLessonMode: scoInfo['cmi.core.lesson_mode'].trim(),
+            coreExit: scoInfo['cmi.core.exit'].trim(),
+            coreSessionTime: scoInfo['cmi.core.session_time'].trim(),
+            suspendData: scoInfo['cmi.suspend_data'].trim(),
+            launchData: scoInfo['cmi.launch_data'].trim()
+        },
+        dataType: "json",
+        type: "POST",
+        success: function () {
+            ajaxResult = "true";
+        },
+        error: function () {
+            ajaxResult = "false";
+        }
+    })
+    return ajaxResult;
 }
 
 function LMSFinish(parameter) {
