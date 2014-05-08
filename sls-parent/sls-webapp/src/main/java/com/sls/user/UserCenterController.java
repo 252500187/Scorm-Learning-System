@@ -1,5 +1,6 @@
 package com.sls.user;
 
+import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.service.ScormService;
 import com.sls.user.service.UserCenterService;
 import com.sls.util.DictConstant;
@@ -42,9 +43,9 @@ public class UserCenterController {
     }
 
     @RequestMapping(value = "upScorm", method = {RequestMethod.POST})
-    public String upScorm(HttpServletRequest request, @RequestParam("scormName") String scormName) throws ServletException, IOException, ParserConfigurationException, SAXException,
+    public String upScorm(HttpServletRequest request, Scorm scorm) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
-        upScormService.upScorm(request, "upScorm", "upImg", scormName);
+        upScormService.upScorm(request, "upScorm", "upImg", scorm);
         return "scormfront/usercenter/upscorm/upResult";
     }
 

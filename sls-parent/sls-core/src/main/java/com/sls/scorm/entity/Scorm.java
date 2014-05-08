@@ -1,16 +1,24 @@
 package com.sls.scorm.entity;
 
+import com.sls.util.DateUtil;
+import com.sls.util.DictConstant;
+
 public class Scorm {
     private int scormId;
     private String scormName;
     private int registerSum;
     private int recommendLevel;
     private String imgPath;
+    private String description;
     private String uploadDate;
     private int uploadUserId;
     private int inUse;
 
     public Scorm() {
+        registerSum = 0;
+        recommendLevel = DictConstant.RECOMMEND_0;
+        uploadDate = DateUtil.getCurrentTimestamp().toString().substring(0, 16);
+        inUse = DictConstant.NO_USE;
     }
 
     public int getScormId() {
@@ -75,5 +83,13 @@ public class Scorm {
 
     public void setUploadDate(String uploadDate) {
         this.uploadDate = uploadDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

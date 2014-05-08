@@ -89,6 +89,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">课件简介</label>
+
+                            <div class="col-md-3">
+                                <textarea class="form-control"
+                                          name="description" value=""/></textarea>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-actions fluid">
                         <div class="row">
@@ -117,13 +125,17 @@
     });
 
     function fileUpAttachment() {
+        if ($("#scormName").val().trim() == "") {
+            alert("请输入名称！");
+            return;
+        }
         var imgType = $("#upImg").val().substr($("#upImg").val().length - 3, 3);
         if ((imgType != "jpg") && (imgType != "png") && (imgType != "gif")) {
-            alert("ddd");
+            alert("必须是图片格式！");
             return;
         }
         if ($("#upScorm").val().substr($("#upScorm").val().length - 3, 3) != "zip") {
-            alert("sss");
+            alert("必须是zip格式!");
             return;
         }
         $("#fileGetUp").attr("action",

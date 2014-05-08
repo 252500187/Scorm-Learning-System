@@ -41,29 +41,21 @@ public class ScormServiceImpl implements ScormService {
     private DictService dictService;
 
     @Override
-    public void upScorm(HttpServletRequest request, String upFile, String upImg, String scormName) throws ServletException, IOException, ParserConfigurationException, SAXException,
+    public void upScorm(HttpServletRequest request, String upFile, String upImg, Scorm scorm) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
         try {
             FileUp fileUp = new FileUp();
             Date date = new Date();
             int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
             String fileName = date.getTime() + userId + "";
-            Scorm scorm = new Scorm();
-            scorm.setScormName(BaseUtil.iso2utf(scormName));
-            scorm.setRegisterSum(0);
-            scorm.setRecommendLevel(DictConstant.RECOMMEND_0);
+            scorm.setScormName(BaseUtil.iso2utf(scorm.getScormName()));
             scorm.setImgPath(fileUp.upImg(request, DictConstant.TOP_SCORM_FILE_NAME + "/" + fileName, DictConstant.SCORM_IMG, upImg));
             scorm.setUploadUserId(userId);
-            scorm.setUploadDate(DateUtil.getCurrentTimestamp().toString().substring(0,16));
-            scorm.setInUse(DictConstant.NO_USE);
             int scormId = scormDao.addScorm(scorm);
             List<Sco> scoNodes = fileUp.analyzeXml(fileUp.upScorm(request, fileName, upFile) + DictConstant.IMSMANIFEST);
             scoNodes.add(new Sco(scorm.getScormName(), DictConstant.SCO_MAIN, "0", "1", ""));
             for (Sco scoNode : scoNodes) {
                 scoNode.setScormId(scormId);
-                scoNode.setUserId(DictConstant.VOID_VALUE);
-                scoNode.setLastVisit(DictConstant.VOID_VALUE);
-                scoNode.setStudyState(DictConstant.STUDY_STATE_0);
                 scoDao.addSco(scoNode);
             }
         } catch (Exception e) {
@@ -118,7 +110,7 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void findScormInfoByScormId(int scormId, HttpServletRequest request) {
         //todo 查询课件信息
-        request.setAttribute("scormInfo",scormDao.findScormInfoByScormId(scormId));
+        request.setAttribute("scormInfo", scormDao.findScormInfoByScormId(scormId));
     }
 
     @Override

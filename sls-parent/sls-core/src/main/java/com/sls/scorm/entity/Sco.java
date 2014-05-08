@@ -1,5 +1,7 @@
 package com.sls.scorm.entity;
 
+import com.sls.util.DictConstant;
+
 public class Sco {
     private int scoId;
     private int scormId;
@@ -13,11 +15,13 @@ public class Sco {
     private int studyState;
     private String showStudyState;
 
-
     public Sco() {
     }
 
     public Sco(String title, String type, String treeParentId, String treeId, String url) {
+        this.userId = DictConstant.VOID_VALUE;
+        this.lastVisit = DictConstant.VOID_VALUE;
+        this.studyState = DictConstant.STUDY_STATE_0;
         this.title = title;
         this.type = type;
         this.treeParentId = treeParentId;
