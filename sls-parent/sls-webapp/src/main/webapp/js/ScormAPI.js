@@ -48,8 +48,7 @@ function LMSInitialize(parameter) {
         dataType: "json",
         type: "GET",
         success: function (info) {
-            var ontScoInfo = eval('(' + info + ')');
-            alert(ontScoInfo);
+//            var data = $.parseJSON(info);
             scoInfo['cmi.core.student_id'] = "";
             scoInfo['cmi.core.student_name'] = "";
             scoInfo['cmi.core.lesson_location'] = "";
