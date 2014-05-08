@@ -5,6 +5,7 @@ import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.user.dao.UserDao;
 import com.sls.user.entity.User;
+import com.sls.user.entity.UserLevel;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -84,8 +85,14 @@ public class UserDaoImpl extends PageDao implements UserDao {
 
     @Override
     public void addUserInfo(User user) {
-        String sql = "INSERT INTO us_user_info(user_id, user_name, register_date, email ) " +
-                "VALUES(:userId, :loginName, :registerDate, :email)";
+        String sql = "INSERT INTO us_user_info(user_id, user_name, register_date, email, score ) " +
+                "VALUES(:userId, :loginName, :registerDate, :email, :score)";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(user));
+    }
+
+    @Override
+    public UserLevel findUserLevelNameByScore(int score) {
+        String sql = "SELECT level_name FROM us_level WHERE score = (SELECT MAX(score)  FROM us_level WHERE score<=?)";
+        return getJdbcTemplate().queryForObject(sql, new BeanPropertyRowMapper<UserLevel>(UserLevel.class), score);
     }
 }

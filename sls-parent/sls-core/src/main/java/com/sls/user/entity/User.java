@@ -7,6 +7,8 @@ public class User {
     private String password;
     private String showInUse;
     private int inUse;
+    private int score;
+    private String levelName;
 
     private String userName;
     private String email;
@@ -107,5 +109,21 @@ public class User {
 
     public void setRegisterDate(String registerDate) {
         this.registerDate = registerDate;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public String getLevelName() {
+        return levelName;
+    }
+
+    public void setLevelName(String levelName) {
+        this.levelName = levelName;
     }
 }

@@ -52,6 +52,7 @@ public class UserCenterController {
     //个人中心  个人资料
     @RequestMapping(value = "userInfoDo", method = {RequestMethod.GET})
     public String userInfoDo() {
+
         return "scormfront/usercenter/userInfo";
     }
 

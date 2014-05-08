@@ -63,4 +63,8 @@ public class DictConstant {
     // 用户角色
     public static final String ROLE_AUTHORITY_USER = "user";
 
+    //用户初始化分数0
+    public static final int SCORE_0 = 0;
+
+
 }

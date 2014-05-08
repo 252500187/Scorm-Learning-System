@@ -65,7 +65,10 @@ public class UserServiceImpl implements UserService {
         user.setInUse(DictConstant.IN_USE);
         roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_USER);
         user.setRoleId(roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_USER).getRoleId());
-        user.setRegisterDate(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
+        user.setRegisterDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
+        user.setScore(DictConstant.SCORE_0);
+        user.setLevelName(userDao.findUserLevelNameByScore(user.getScore()).getLevelName());
+
         int id = userDao.addUser(user);
         user.setUserId(id);
         userDao.addUserInfo(user);

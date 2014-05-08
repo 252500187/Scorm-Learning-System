@@ -1,3 +1,4 @@
+<%--@elvariable id="user" type="com.sls.util.LoginUserUtil"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -29,7 +30,7 @@
                 <li>
                     <a>
                         <i class="fa fa-user"></i>
-                        <span class="title"> <big>用户名</big></span>
+                        <span class="title"> <big>${user.loginName}</big></span>
                         <br/>
                         <span class="title" style="margin-left: 30px">等级:牛刀小试 </span>
 

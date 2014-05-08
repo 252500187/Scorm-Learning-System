@@ -1,16 +1,27 @@
 package com.sls.user.service.impl;
 
+import com.sls.user.dao.UserDao;
+import com.sls.user.entity.User;
 import com.sls.user.service.UserCenterService;
+import com.sls.util.LoginUserUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Transactional
 @Service("userCenterService")
 public class UserCenterServiceImpl implements UserCenterService {
+    @Autowired
+    private UserDao userDao;
+
     @Override
     public void toUserCenter(HttpServletRequest request) {
+        List<User> userList = userDao.findUserByLoginName(LoginUserUtil.getLoginName());
+        User user = userList.get(0);
+        request.setAttribute("user",user);
          //todo 传递个人中心需要的数据
     }
 }
