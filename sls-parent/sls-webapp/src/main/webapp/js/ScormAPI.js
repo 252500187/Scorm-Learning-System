@@ -87,9 +87,12 @@ function LMSGetValue(key) {
         errorCode = "404";
         return "";
     }
-    if ((scoInfo[key] == null) || (scoInfo[key] == "")) {
+    if (scoInfo[key] == null) {
         errorCode = "401";
         return "";
+    }
+    if(scoInfo[key] == ""){
+        errorCode="0";
     }
     return scoInfo[key];
 }
@@ -171,6 +174,8 @@ function LMSGetErrorString(error) {
             return "元素属性只写";
         case "405":
             return "错误的数据类型";
+        case "1111":
+            return "Sorry:暂时没有学习过程对其赋值！";
         case "1112":
             return "Sorry:结束的时候信息没存进我的脑子里。亲！";
         case "1115":
@@ -210,6 +215,8 @@ function LMSGetDiagnostic(error) {
             return "元素属性只写";
         case "405":
             return "错误的数据类型";
+        case "1111":
+            return "下次再来学习或许就有值了。";
         case "1112":
             return "麻烦您再进行一次学习尝试，刚才我走神了，我这次努力记住。";
         case "1115":

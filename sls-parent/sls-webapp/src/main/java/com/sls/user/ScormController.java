@@ -50,7 +50,8 @@ public class ScormController {
     @RequestMapping(value = "getScoApiInfo", method = {RequestMethod.GET})
     @ResponseBody
     public List<ScoInfo> getScoApiInfo(@RequestParam("scoId") String scoId) {
-        return scormService.getScoApiInfo(Integer.parseInt(scoId));
+        List<ScoInfo>a= scormService.getScoApiInfo(Integer.parseInt(scoId));
+        return a;
     }
 
     @RequestMapping(value = "commitScoApiInfo", method = {RequestMethod.POST})
