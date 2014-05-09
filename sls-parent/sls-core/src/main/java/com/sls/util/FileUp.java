@@ -45,9 +45,9 @@ public class FileUp {
         return file.getInputStream();
     }
 
-    public String upImg(HttpServletRequest request, String imgPath, String imgName, String upImg) throws ServletException, IOException {
+    public String upImg(HttpServletRequest request, String mainPath, String imgPath, String imgName, String upImg) throws ServletException, IOException {
         String path = request.getSession().getServletContext().getRealPath("");
-        path = path + "/" + imgPath + "/";
+        path = path + "/" + mainPath + imgPath + "/";
         //创建文件，防文件夹不存在
         File file = new File(path);
         file.mkdirs();
@@ -57,7 +57,7 @@ public class FileUp {
         //返回路径 0图片引用路径 1文件路径
         path = path.replace("\"", "/");
         String filePath = path + imgName;
-        return filePath.substring(filePath.indexOf(DictConstant.SCORM_FILE_NAME));
+        return filePath.substring(filePath.indexOf(mainPath));
     }
 
     public String upScorm(HttpServletRequest request, String scormPath, String upFile) throws ServletException, IOException {

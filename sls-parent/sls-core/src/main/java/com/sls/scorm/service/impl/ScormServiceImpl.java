@@ -50,7 +50,7 @@ public class ScormServiceImpl implements ScormService {
             int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
             String fileName = date.getTime() + userId + "";
             scorm.setScormName(BaseUtil.iso2utf(scorm.getScormName()));
-            scorm.setImgPath(fileUp.upImg(request, DictConstant.TOP_SCORM_FILE_NAME + "/" + fileName, DictConstant.SCORM_IMG, upImg));
+            scorm.setImgPath(fileUp.upImg(request, DictConstant.TOP_SCORM_FILE_NAME, "/" + fileName, DictConstant.SCORM_IMG, upImg));
             scorm.setUploadUserId(userId);
             int scormId = scormDao.addScorm(scorm);
             List<Sco> scoNodes = fileUp.analyzeXml(fileUp.upScorm(request, fileName, upFile) + DictConstant.IMSMANIFEST);
@@ -146,7 +146,7 @@ public class ScormServiceImpl implements ScormService {
         scoInfo.setCoreEntry(DictConstant.ENTRY_RE);
         scoDao.changeScoInfoByScoId(scoInfo);
         //改变最后访问SCO
-        Sco oneSco=new Sco();
+        Sco oneSco = new Sco();
         oneSco.setUserId(userId);
         oneSco.setScormId(scormId);
         oneSco.setScoId(scoId);
@@ -181,9 +181,9 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void changeScoInfoByScoId(ScoInfo scoInfo) {
         String sessionTime = scoInfo.getCoreSessionTime();
-        //TODO 时间计算
-        String totalTime = scoDao.getScoApiInfoByScoId(scoInfo.getScoId()).get(0).getCoreTotalTime()+sessionTime;
-        scoInfo.setCoreTotalTime(totalTime);
+        if (!("".equals(sessionTime))) {
+            scoInfo.setCoreTotalTime(DateUtil.getTotalTime(sessionTime, scoDao.getScoApiInfoByScoId(scoInfo.getScoId()).get(0).getCoreTotalTime()));
+        }
         scoDao.changeScoInfoByScoId(scoInfo);
     }
 

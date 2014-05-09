@@ -2,6 +2,7 @@ var API = new API_functions();
 //自定义1000到65535
 var errorCode = "0";
 var iniFlag = "false";
+var totalTime = "false";
 var scoInfo = {};
 
 function API_functions() {
@@ -45,7 +46,7 @@ function LMSInitialize(parameter) {
             scoInfo['cmi.core.session_time'] = info[0].coreSessionTime;                //Write
             scoInfo['cmi.suspend_data'] = info[0].suspendData;
             scoInfo['cmi.launch_data'] = info[0].launchData;          //Read
-            iniFlag = true;
+            iniFlag = "true";
             ajaxResult = "true";
         },
         error: function () {
@@ -91,8 +92,8 @@ function LMSGetValue(key) {
         errorCode = "401";
         return "";
     }
-    if(scoInfo[key] == ""){
-        errorCode="0";
+    if (scoInfo[key] == "") {
+        errorCode = "0";
     }
     return scoInfo[key];
 }
@@ -113,7 +114,7 @@ function LMSCommit(parameter) {
             coreScore: scoInfo['cmi.core.score'].trim(),
             coreScoreRaw: scoInfo['cmi.core.score.raw'].trim(),
             coreExit: scoInfo['cmi.core.exit'].trim(),
-            coreSessionTime: scoInfo['cmi.core.session_time'].trim(),
+            coreSessionTime: totalTime == "false" ? "" : scoInfo['cmi.core.session_time'].trim(),
             suspendData: scoInfo['cmi.suspend_data'].trim()
         },
         dataType: "json",
@@ -129,15 +130,18 @@ function LMSCommit(parameter) {
 }
 
 function LMSFinish(parameter) {
+    totalTime = "true";
     if (iniFlag == "false") {
         errorCode = "301";
         return "false";
     }
     if (LMSCommit() == "false") {
         errorCode = "1112";
+        totalTime = "false";
         return "false";
     }
-    flag = "false";
+    totalTime = "false";
+    iniFlag = "false";
     return "true";
 }
 

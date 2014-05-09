@@ -25,6 +25,20 @@ public class DateUtil {
     }
 
     /**
+     * SCORM 用于计算两个时间和
+     * 0000：00：00.00
+     * 时：分：秒.毫秒
+     */
+    public static String getTotalTime(String sessionTime, String totalTime) {
+        if (("").equals(totalTime)) {
+            return sessionTime;
+        }
+        String[] sessionTimes = sessionTime.split(".");
+        String[] totalTimes = totalTime.split(".");
+        return "";
+    }
+
+    /**
      * 获取当前系统时间
      * Param：时间格式
      */
@@ -40,20 +54,6 @@ public class DateUtil {
     public static Timestamp getCurrentTimestamp() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String nowTime = dateFormat.format(new Date());
-        return Timestamp.valueOf(nowTime);
-    }
-
-    /**
-     * 获取当前系统时间加一个小时的时间戳
-     * Param：时间格式
-     */
-    public static Timestamp getCurrentTimestampAddOneHours() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date data = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(data);
-        cal.add(Calendar.HOUR, 1);
-        String nowTime = dateFormat.format(cal.getTime());
         return Timestamp.valueOf(nowTime);
     }
 
