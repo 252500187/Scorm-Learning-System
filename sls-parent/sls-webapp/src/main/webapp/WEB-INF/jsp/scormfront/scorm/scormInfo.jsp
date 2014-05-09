@@ -49,7 +49,7 @@
                                                 <!--已注册-->
                                                 <c:if test="${true == registerScorm}">
                                                     <div class="col-md-2"><a class="btn default" onclick="return false"
-                                                                             style="">注册</a></div>
+                                                                             style="color:#aaa">注册</a></div>
                                                 </c:if>
                                                 <!--未注册-->
                                                 <c:if test="${false == registerScorm}">
@@ -77,7 +77,15 @@
                                                     点击量:${scormInfo.registerSum}
                                                 </li>
                                                 <li>
-                                                    <i class="fa fa-heart"></i> <a class="name">收藏</a>
+                                                    <i class="fa fa-heart"></i>
+                                                    <!--已收藏-->
+                                                    <c:if test="${true == registerScorm}">
+                                                        <a style="color:#aaa">收藏</a>
+                                                    </c:if>
+                                                    <!--为收藏-->
+                                                    <c:if test="${false == registerScorm}">
+                                                        <a style="color:#666">收藏</a>
+                                                    </c:if>
                                                 </li>
                                             </ul>
                                         </div>
