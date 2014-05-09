@@ -2,6 +2,7 @@
 <%--@elvariable id="scoList" type="java.util.List"--%>
 <%--@elvariable id="allComments" type="java.util.List"--%>
 <%--@elvariable id="registerScorm" type="java.lang.Boolean"--%>
+<%--@elvariable id="collectScorm" type="java.lang.Boolean"--%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -13,6 +14,7 @@
     <title>我是课件详情页</title>
     <%@include file="../../includes/common.jsp" %>
     <link rel="stylesheet" type="text/css" href="assets/css/pages/profile.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/ztreeStyle/ztreeStyle.css"/>
 </head>
 
 <body class="page-header-fixed">
@@ -53,7 +55,9 @@
                                                 </c:if>
                                                 <!--未注册-->
                                                 <c:if test="${false == registerScorm}">
-                                                    <div class="col-md-2"><a class="btn blue" onclick="registerScorm(${scormInfo.scormId})">注册</a></div>
+                                                    <div class="col-md-2"><a class="btn blue"
+                                                                             onclick="registerScorm(${scormInfo.scormId})">注册</a>
+                                                    </div>
                                                 </c:if>
                                             </div>
                                             <ul class="list-inline">
@@ -79,12 +83,13 @@
                                                 <li>
                                                     <i class="fa fa-heart"></i>
                                                     <!--已收藏-->
-                                                    <c:if test="${true == registerScorm}">
+                                                    <c:if test="${true == collectScorm}">
                                                         <a style="color:#aaa" onclick="return false">收藏</a>
                                                     </c:if>
                                                     <!--未收藏-->
-                                                    <c:if test="${false == registerScorm}">
-                                                        <a style="color:#666" onclick="collectScorm(${scormInfo.scormId})">收藏</a>
+                                                    <c:if test="${false == collectScorm}">
+                                                        <a style="color:#666"
+                                                           onclick="collectScorm(${scormInfo.scormId})">收藏</a>
                                                     </c:if>
                                                 </li>
                                             </ul>
@@ -111,7 +116,8 @@
                                         </ul>
                                         <div class="tab-content">
                                             <div class="tab-pane active" id="tab_1_11">
-                                                <div class="portlet-body" id="chapterList">
+                                                <div class="portlet-body">
+                                                    <ul class="ztreeStyle" id="chapterList"></ul>
                                                 </div>
                                             </div>
                                             <!--tab-pane-->
@@ -221,6 +227,7 @@
             dataType: "json",
             type: "GET",
             success: function (message) {
+                alert(message);
                 window.location.href = basePath + "tourist/scormInfo?scormId=" + ${scormInfo.scormId};
             },
             error: doError
@@ -233,6 +240,7 @@
             dataType: "json",
             type: "GET",
             success: function (message) {
+                alert(message);
                 window.location.href = basePath + "tourist/scormInfo?scormId=" + ${scormInfo.scormId};
             },
             error: doError

@@ -187,8 +187,8 @@ public class ScormServiceImpl implements ScormService {
     public void judgeDemonstrationStatus(int scormId, HttpServletRequest request) {
         boolean collectScorm = true;
         boolean registerScorm = true;
-        boolean isUser = "".equals(LoginUserUtil.getLoginName());
-        if (!isUser) {
+        boolean isTourist = "".equals(LoginUserUtil.getLoginName());
+        if (!isTourist) {
             int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
             if (scormDao.checkNotHasCollected(scormId, userId)) {
                 collectScorm = false;
