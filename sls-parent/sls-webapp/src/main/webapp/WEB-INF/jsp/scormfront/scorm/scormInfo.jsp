@@ -1,6 +1,7 @@
 <%--@elvariable id="scormInfo" type="com.sls.scorm.entity.Scorm"--%>
 <%--@elvariable id="scoList" type="java.util.List"--%>
 <%--@elvariable id="allComments" type="java.util.List"--%>
+<%--@elvariable id="registerScorm" type="java.lang.Boolean"--%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -45,7 +46,15 @@
                                                 <div class="col-md-10">
                                                     <h1>${scormInfo.scormName}</h1>
                                                 </div>
-                                                <div class="col-md-2"><a class="btn blue">注册</a></div>
+                                                <!--已注册-->
+                                                <c:if test="${true == registerScorm}">
+                                                    <div class="col-md-2"><a class="btn default" onclick="return false"
+                                                                             style="">注册</a></div>
+                                                </c:if>
+                                                <!--未注册-->
+                                                <c:if test="${false == registerScorm}">
+                                                    <div class="col-md-2"><a class="btn blue">注册</a></div>
+                                                </c:if>
                                             </div>
                                             <ul class="list-inline">
                                                 <li>发布时间:</li>
@@ -68,7 +77,7 @@
                                                     点击量:${scormInfo.registerSum}
                                                 </li>
                                                 <li>
-                                                    <i class="fa fa-heart"></i> 收藏
+                                                    <i class="fa fa-heart"></i> <a class="name">收藏</a>
                                                 </li>
                                             </ul>
                                         </div>

@@ -473,8 +473,18 @@
 </body>
 </html>
 <script type="text/javascript">
-function linkScormInfo(scormId) {
-    window.location.href=basePath + "tourist/scormInfo?scormId=" + scormId;
-}
+    function linkScormInfo(scormId) {
+        window.location.href = basePath + "tourist/scormInfo?scormId=" + scormId;
+    }
+
+//    $(function () {
+//        $(window).bind('beforeunload', function () {
+//                alert('您输入的内容尚未保存，确定离开此页面吗？');
+//        });
+//    });
+
+    //$(window).onunload(function () {window.location.href=basePath+"/logout";});
+    //$("body").bind("onUnload",window.location.href=basePath+"/logout");
+
 </script>
 

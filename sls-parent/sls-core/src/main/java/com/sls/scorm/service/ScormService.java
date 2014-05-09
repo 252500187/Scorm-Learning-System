@@ -30,4 +30,6 @@ public interface ScormService {
     void getScormInfoAndChapterInfo(int scormId, HttpServletRequest request);
 
     void getAllCommentsByScormId(int scormId, HttpServletRequest request);
+
+    void judgeDemonstrationStatus(int scormId, HttpServletRequest request);
 }

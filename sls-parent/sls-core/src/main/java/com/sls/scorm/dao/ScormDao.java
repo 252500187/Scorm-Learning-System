@@ -17,4 +17,8 @@ public interface ScormDao {
     Scorm findScormInfoByScormId(int scormId);
 
     List<ScormSummarize> getAllCommentsByScormId(int scormId);
+
+    boolean checkNotHasCollected(int scormId, int userId);
+
+    boolean checkNotHasRegister(int scormId, int userId);
 }

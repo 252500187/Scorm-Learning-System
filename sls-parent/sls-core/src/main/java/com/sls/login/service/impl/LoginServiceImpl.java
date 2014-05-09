@@ -51,7 +51,7 @@ public class LoginServiceImpl implements LoginService {
         }
         if (currentUser.isAuthenticated()) {
             List<User> userList = userDao.findUserByLoginName(LoginUserUtil.getLoginName());
-            session.setAttribute("userId", userList.get(0).getRoleId());
+            session.setAttribute("userId", userList.get(0).getUserId());
             modelView.setViewName("/scormadmin/index");
             if (userList.get(0).getRoleId() == roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_USER).getRoleId()) {
                 setIndexInfo(request);

@@ -2,9 +2,9 @@ package com.sls.scorm.dao.impl;
 
 import com.core.page.dao.PageDao;
 import com.sls.scorm.dao.ScormDao;
-import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.entity.ScormSummarize;
+import com.sls.util.DictConstant;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -50,5 +50,17 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
                 " JOIN us_user uu ON lss.`user_id` = uu.user_id " +
                 " WHERE uu.`in_use`='1' AND scorm_id = ?";
         return getJdbcTemplate().query(sql,new BeanPropertyRowMapper<ScormSummarize>(ScormSummarize.class), scormId);
+    }
+
+    @Override
+    public boolean checkNotHasCollected(int scormId, int userId) {
+        String sql = "SELECT * FROM luss_user_collect WHERE scorm_id = " + scormId + " AND user_id = ? ";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Boolean>(Boolean.class), userId).isEmpty();
+    }
+
+    @Override
+    public boolean checkNotHasRegister(int scormId, int userId) {
+        String sql = "SELECT * FROM luss_scorm_sco WHERE scorm_id = " + scormId + " AND user_id = ? ";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Boolean>(Boolean.class), userId).isEmpty();
     }
 }

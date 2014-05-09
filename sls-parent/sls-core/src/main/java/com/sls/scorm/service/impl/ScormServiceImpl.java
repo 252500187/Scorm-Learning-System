@@ -107,13 +107,13 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void findScormInfoByScormId(int scormId, HttpServletRequest request) {
         //todo 查询课件信息
-        request.setAttribute("scormInfo",scormDao.findScormInfoByScormId(scormId));
+        request.setAttribute("scormInfo", scormDao.findScormInfoByScormId(scormId));
     }
 
     @Override
     public void changeScoState(int scormId, int scoId) {
         int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-        scoDao.setLastVisitScoByScoId(scoId,DictConstant.LAST_VISIT);
+        scoDao.setLastVisitScoByScoId(scoId, DictConstant.LAST_VISIT);
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, userId);
         for (Sco sco : scoList) {
             if (sco.getScoId() == scoId) {
@@ -162,6 +162,24 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void getAllCommentsByScormId(int scormId, HttpServletRequest request) {
-        request.setAttribute("allComments",scormDao.getAllCommentsByScormId(scormId));
+        request.setAttribute("allComments", scormDao.getAllCommentsByScormId(scormId));
+    }
+
+    @Override
+    public void judgeDemonstrationStatus(int scormId, HttpServletRequest request) {
+        boolean collectScorm = true;
+        boolean registerScorm = true;
+        boolean isUser = "".equals(LoginUserUtil.getLoginName());
+        if (!isUser) {
+            int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+            if (scormDao.checkNotHasCollected(scormId, userId)) {
+                collectScorm = false;
+            }
+            if (scormDao.checkNotHasRegister(scormId, userId)) {
+                registerScorm = false;
+            }
+        }
+        request.setAttribute("collectScorm", collectScorm);
+        request.setAttribute("registerScorm", registerScorm);
     }
 }

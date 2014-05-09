@@ -19,14 +19,14 @@
         <a onclick="registerScorm('16')">点我注册ID为16的课件</a>
         <a onclick="registerScorm('17')">点我注册ID为17的课件</a>
         <ul class="nav navbar-nav pull-right">
-            <c:if test="${userId==null||userId==''}">
+            <c:if test="${sessionScope.userId==null||sessionScope.userId==''}">
                 <li class="dropdown">
                     <a href="login">登陆</a>
                         <i class="icon-angle-down"></i>
                     </a>
                 </li>
             </c:if>
-            <c:if test="${userId!=null&&userId!=''}">
+            <c:if test="${sessionScope.userId!=null&&sessionScope.userId!=''}">
                 <li class="dropdown user">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                        data-close-others="true">
