@@ -19,7 +19,7 @@ public class DateUtil {
     public static final String yyyy_MM_dd_HH_mm = "yyyy-MM-dd HH:mm";
     public static final String yyyy_MM_dd_hh_mm_ss_SSS = "yyyy-MM-dd HH:mm:ss.SSS";
 
-    public static final String defaultDate = "1900-01-31 00:00:00";
+    public static final String defaultDate = "2014-05-01 00:00:00";
 
     private DateUtil() {
     }

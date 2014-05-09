@@ -44,6 +44,29 @@ public class DictConstant {
     //完成
     public static final int STUDY_STATE_2 = 2;
 
+    //scorm 数据模型对应值
+    //通过
+    public static final String LESSON_STATUS_PASS = "passed";
+    //已完成
+    public static final String LESSON_STATUS_COMPLETED = "completed";
+    //浏览
+    public static final String LESSON_STATUS_BROWSED = "browsed";
+    //非完成
+    public static final String LESSON_STATUS_INCOMPLETE = "incomplete";
+    //失败
+    public static final String LESSON_STATUS_FAILED = "failed";
+    //未尝试
+    public static final String LESSON_STATUS_NOT_ATTEMPTED = "not attempted";
+    //首次学习
+    public static final String ENTRY_INI = "ab-initio";
+    //再次学习
+    public static final String ENTRY_RE = "resume";
+    //重点
+    public static final String CREDIT_IM = "credit";
+    //非重点
+    public static final String CREDIT_NO = "no-credit";
+
+
     //管理员推荐级别
     //无级别
     public static final int RECOMMEND_0 = 0;

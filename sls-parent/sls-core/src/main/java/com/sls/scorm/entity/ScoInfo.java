@@ -1,5 +1,7 @@
 package com.sls.scorm.entity;
 
+import com.sls.util.DictConstant;
+
 public class ScoInfo {
     private int scoId;
     private String coreStudentId;
@@ -11,23 +13,21 @@ public class ScoInfo {
     private String coreScore;
     private String coreScoreRaw;
     private String coreTotalTime;
-    private String coreLessonMode;
     private String coreExit;
     private String coreSessionTime;
     private String suspendData;
     private String launchData;
 
     public ScoInfo() {
-        coreStudentId = "";
-        coreStudentName = "";
+        coreStudentId="";
+        coreStudentName="";
         coreLessonLocation = "";
-        coreCredit = "";
-        coreLessonStatus = "";
-        coreEntry = "";
+        coreCredit = DictConstant.CREDIT_NO;
+        coreLessonStatus = DictConstant.LESSON_STATUS_NOT_ATTEMPTED;
+        coreEntry = DictConstant.ENTRY_INI;
         coreScore = "";
         coreScoreRaw = "";
-        coreTotalTime = "";
-        coreLessonMode = "";
+        coreTotalTime = "0";
         coreExit = "";
         coreSessionTime = "";
         suspendData = "";
@@ -104,14 +104,6 @@ public class ScoInfo {
 
     public void setCoreTotalTime(String coreTotalTime) {
         this.coreTotalTime = coreTotalTime;
-    }
-
-    public String getCoreLessonMode() {
-        return coreLessonMode;
-    }
-
-    public void setCoreLessonMode(String coreLessonMode) {
-        this.coreLessonMode = coreLessonMode;
     }
 
     public String getCoreExit() {

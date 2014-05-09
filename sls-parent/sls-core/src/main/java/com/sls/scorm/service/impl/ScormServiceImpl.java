@@ -9,8 +9,8 @@ import com.sls.system.service.DictService;
 import com.sls.user.dao.UserDao;
 import com.sls.scorm.entity.Sco;
 import com.sls.scorm.entity.Scorm;
+import com.sls.user.entity.User;
 import com.sls.util.*;
-import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -53,10 +54,13 @@ public class ScormServiceImpl implements ScormService {
             scorm.setUploadUserId(userId);
             int scormId = scormDao.addScorm(scorm);
             List<Sco> scoNodes = fileUp.analyzeXml(fileUp.upScorm(request, fileName, upFile) + DictConstant.IMSMANIFEST);
-            scoNodes.add(new Sco(scorm.getScormName(), DictConstant.SCO_MAIN, "0", "1", ""));
+            scoNodes.add(new Sco(scorm.getScormName(), DictConstant.SCO_MAIN, "0", "1", "", ""));
+            ScoInfo scoInfo = new ScoInfo();
             for (Sco scoNode : scoNodes) {
                 scoNode.setScormId(scormId);
-                scoDao.addSco(scoNode);
+                scoInfo.setScoId(scoDao.addSco(scoNode));
+                scoInfo.setLaunchData(scoNode.getLaunchData());
+                scoDao.addScoInfo(scoInfo);
             }
         } catch (Exception e) {
             request.setAttribute("result", "上传失败");
@@ -65,23 +69,27 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public String registerScorm(int scormId, HttpServletRequest request) {
-        int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        User user = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0);
         int scormState = scormDao.findScormInfoByScormId(scormId).getInUse();
-        if (scoDao.findScosByScormIdAndUserId(scormId, userId).size() > 0) {
+        if (scoDao.findScosByScormIdAndUserId(scormId, user.getUserId()).size() > 0) {
             return "对不起，您已注册。";
         }
         if (scormState == DictConstant.NO_USE) {
             return "此课件不可注册。";
         }
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
-        ScoInfo scoInfo = new ScoInfo();
+        ScoInfo scoInfo;
         for (Sco sco : scoList) {
-            sco.setUserId(userId);
+            sco.setUserId(user.getUserId());
+            scoInfo = scoDao.getScoApiInfoByScoId(sco.getScoId()).get(0);
             scoInfo.setScoId(scoDao.addSco(sco));
+            //TOdo 找到用户级别名称
+            scoInfo.setCoreStudentId(user.getLevelName());
+            scoInfo.setCoreStudentName(user.getUserName());
             scoDao.addScoInfo(scoInfo);
         }
         ScormSummarize scormSummarize = new ScormSummarize();
-        scormSummarize.setUserId(userId);
+        scormSummarize.setUserId(user.getUserId());
         scormSummarize.setScormId(scormId);
         scormDao.addScormSummarize(scormSummarize);
         scormDao.addVisitSum(scormId);
@@ -126,11 +134,17 @@ public class ScormServiceImpl implements ScormService {
     public void findScormInfoByScormId(int scormId, HttpServletRequest request) {
         //todo 查询课件信息
         request.setAttribute("scormInfo", scormDao.findScormInfoByScormId(scormId));
+        request.setAttribute("scormInfo", scormDao.findScormInfoByScormId(scormId));
     }
 
     @Override
     public void changeScoState(int scormId, int scoId) {
         int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        scoDao.setLastVisitScoByScoId(scoId, DictConstant.LAST_VISIT);
+        ScoInfo scoInfo = new ScoInfo();
+        scoInfo.setScoId(scoId);
+        scoInfo.setCoreEntry(DictConstant.ENTRY_RE);
+        scoDao.changeScoInfoByScoId(scoInfo);
         scoDao.setLastVisitScoByScoId(scoId, DictConstant.LAST_VISIT);
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, userId);
         for (Sco sco : scoList) {
@@ -160,6 +174,11 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void changeScoInfoByScoId(ScoInfo scoInfo) {
+        String sessionTime = scoInfo.getCoreSessionTime();
+        String totalTime = scoDao.getScoApiInfoByScoId(scoInfo.getScoId()).get(0).getCoreTotalTime();
+
+        Timestamp totalDateTime = new Timestamp(DateUtil.convertStringToDate(sessionTime, "HH:mm:ss.SSS").getTime() + DateUtil.convertStringToDate(totalTime, "HH:mm:ss.SSS").getTime());
+        scoInfo.setCoreTotalTime(DateUtil.convertDateToString(totalDateTime, "HH:mm:ss.SSS"));
         scoDao.changeScoInfoByScoId(scoInfo);
     }
 

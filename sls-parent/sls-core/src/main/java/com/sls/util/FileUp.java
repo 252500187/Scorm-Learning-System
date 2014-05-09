@@ -120,7 +120,7 @@ public class FileUp {
         NodeList nodeList;
         String scoPath = url.substring(url.indexOf(DictConstant.TOP_SCORM_FILE_NAME));
         scoPath = scoPath.substring(0, scoPath.indexOf(DictConstant.IMSMANIFEST));
-        List<Sco> scoInfos = new LinkedList<Sco>();
+        List<Sco> scos = new LinkedList<Sco>();
 //        //处理没有organization的情况
 //        if (nodeChapterList.getLength() < 1) {
 //            expression = xpath.compile("/manifest/resources/resource");
@@ -141,29 +141,31 @@ public class FileUp {
         for (int i = 0; i < nodeChapterList.getLength(); i++) {
             element = (Element) nodeChapterList.item(i);
             nodeList = element.getElementsByTagName("title");
-            scoInfos.add(new Sco(nodeList.item(0) == null ? "" : nodeList.item(0).getTextContent(),
+            scos.add(new Sco(nodeList.item(0) == null ? "" : nodeList.item(0).getTextContent(),
                     element.getTagName(),
                     "1",
                     element.getAttribute("identifier"),
-                    element.getAttribute("identifierref") == "" ? "" : scoPath + getUrl(element.getAttribute("identifierref"), document)
+                    element.getAttribute("identifierref") == "" ? "" : scoPath + getUrl(element.getAttribute("identifierref"), document),
+                    element.getAttribute("identifierref") == "" ? "" : getLaunchData(element.getAttribute("identifierref"), document)
             ));
-            getElement(element, scoInfos, url, scoPath, document);
+            getElement(element, scos, url, scoPath, document);
         }
-        return scoInfos;
+        return scos;
     }
 
-    private void getElement(Element element, List<Sco> scoInfos, String url, String scoPath, Document document) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
+    private void getElement(Element element, List<Sco> scos, String url, String scoPath, Document document) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
         NodeList nodes = element.getChildNodes();
         Element elementNew;
         for (int i = 0; i < nodes.getLength(); i++) {
             if (nodes.item(i).getNodeName().equals("item")) {
-                getElement((Element) nodes.item(i), scoInfos, url, scoPath, document);
+                getElement((Element) nodes.item(i), scos, url, scoPath, document);
                 elementNew = (Element) nodes.item(i);
                 NodeList nodeList = elementNew.getElementsByTagName("title");
-                scoInfos.add(new Sco(nodeList.item(0) == null ? "" : nodeList.item(0).getTextContent(),
+                scos.add(new Sco(nodeList.item(0) == null ? "" : nodeList.item(0).getTextContent(),
                         elementNew.getTagName(),
                         element.getAttribute("identifier"), elementNew.getAttribute("identifier"),
-                        elementNew.getAttribute("identifierref") == "" ? "" : scoPath + getUrl(elementNew.getAttribute("identifierref"), document)
+                        elementNew.getAttribute("identifierref") == "" ? "" : scoPath + getUrl(elementNew.getAttribute("identifierref"), document),
+                        elementNew.getAttribute("identifierref") == "" ? "" : getLaunchData(element.getAttribute("identifierref"), document)
                 ));
 
             }
@@ -176,5 +178,17 @@ public class FileUp {
         XPathExpression expression = xpath.compile("/manifest/resources/resource[@identifier='" + identifier + "']");
         Element element = (Element) expression.evaluate(document, XPathConstants.NODE);
         return element.getAttribute("href");
+    }
+
+    private String getLaunchData(String identifier, Document document) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
+        XPathFactory factory = XPathFactory.newInstance();
+        XPath xpath = factory.newXPath();
+        XPathExpression expression = xpath.compile("/manifest/resources/resource[@identifier='" + identifier + "']");
+        Element element = (Element) expression.evaluate(document, XPathConstants.NODE);
+        try {
+            return element.getAttribute("datafromlms");
+        } catch (Exception e) {
+            return "";
+        }
     }
 }

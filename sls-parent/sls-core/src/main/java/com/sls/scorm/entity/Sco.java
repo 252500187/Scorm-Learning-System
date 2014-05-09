@@ -15,10 +15,12 @@ public class Sco {
     private int studyState;
     private String showStudyState;
 
+    private String launchData;
+
     public Sco() {
     }
 
-    public Sco(String title, String type, String treeParentId, String treeId, String url) {
+    public Sco(String title, String type, String treeParentId, String treeId, String url, String launchData) {
         this.userId = DictConstant.VOID_VALUE;
         this.lastVisit = DictConstant.VOID_VALUE;
         this.studyState = DictConstant.STUDY_STATE_0;
@@ -27,6 +29,7 @@ public class Sco {
         this.treeParentId = treeParentId;
         this.treeId = treeId;
         this.url = url;
+        this.launchData = launchData;
     }
 
     public int getScoId() {
@@ -115,5 +118,13 @@ public class Sco {
 
     public void setShowStudyState(String showStudyState) {
         this.showStudyState = showStudyState;
+    }
+
+    public String getLaunchData() {
+        return launchData;
+    }
+
+    public void setLaunchData(String launchData) {
+        this.launchData = launchData;
     }
 }
