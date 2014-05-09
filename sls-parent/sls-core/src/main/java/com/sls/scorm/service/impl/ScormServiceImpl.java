@@ -2,13 +2,10 @@ package com.sls.scorm.service.impl;
 
 import com.sls.scorm.dao.ScoDao;
 import com.sls.scorm.dao.ScormDao;
-import com.sls.scorm.entity.ScoInfo;
-import com.sls.scorm.entity.ScormSummarize;
+import com.sls.scorm.entity.*;
 import com.sls.scorm.service.ScormService;
 import com.sls.system.service.DictService;
 import com.sls.user.dao.UserDao;
-import com.sls.scorm.entity.Sco;
-import com.sls.scorm.entity.Scorm;
 import com.sls.user.entity.User;
 import com.sls.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,6 +110,13 @@ public class ScormServiceImpl implements ScormService {
         scorm.setCollectDate(DateUtil.getSystemDate("yyyy-MM-dd"));
         scormDao.addCollectScorm(scorm);
         return "收藏成功。";
+    }
+
+    @Override
+    public void addStudyNote(StudyNote studyNote) {
+        studyNote.setDate(DateUtil.getSystemDate("yyyy-MM-dd"));
+        studyNote.setUserId(userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        scormDao.addStudyNote(studyNote);
     }
 
     @Override

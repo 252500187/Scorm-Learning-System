@@ -309,15 +309,16 @@
 
     function takeNote() {
         $.ajax({
-            url: basePath + "user/scorm/takeNote?scormId=${scorm.scormId}&scoId=" + scoId,
+            url: basePath + "user/scorm/takeNote",
                    data: {
-                       note: $("#takeNotes").val().trim()
+                       note: $("#takeNotes").val().trim(),
+                       scormId:${scorm.scormId},
+                       scoId: scoId
                    },
                    dataType: "json",
-                   type: "GET",
+                   type: "POST",
                    success: function () {
-                           parent.$("#dataEdit").dialog('close');
-                           parent.query();
+                          alert("hahahahah");
                    },
                    error: doError
                })
