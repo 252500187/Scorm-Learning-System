@@ -3,6 +3,7 @@ package com.sls.scorm.dao;
 import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.entity.ScormSummarize;
+import com.sls.scorm.entity.StudyNote;
 
 import java.util.List;
 
@@ -25,4 +26,6 @@ public interface ScormDao {
     void addCollectScorm(Scorm scorm);
 
     List<Scorm> findCollectScormByScormIdAndUserId(int scormId, int userId);
+
+    int addStudyNote(StudyNote studyNote);
 }

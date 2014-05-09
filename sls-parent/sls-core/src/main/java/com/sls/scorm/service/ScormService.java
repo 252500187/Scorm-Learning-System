@@ -2,6 +2,7 @@ package com.sls.scorm.service;
 
 import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.Scorm;
+import com.sls.scorm.entity.StudyNote;
 import org.xml.sax.SAXException;
 
 import javax.servlet.ServletException;
@@ -34,4 +35,6 @@ public interface ScormService {
     void judgeDemonstrationStatus(int scormId, HttpServletRequest request);
 
     String collectScorm(int scormId, HttpServletRequest request);
+
+    void addStudyNote(StudyNote studyNote);
 }
