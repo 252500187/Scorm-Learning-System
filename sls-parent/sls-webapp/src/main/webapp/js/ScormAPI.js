@@ -32,17 +32,19 @@ function LMSInitialize(parameter) {
         dataType: "json",
         type: "GET",
         success: function (info) {
-            scoInfo['cmi.core.student_id'] = info[0].coreStudentId;
-            scoInfo['cmi.core.student_name'] = info[0].coreStudentName;
+            scoInfo['cmi.core.student_id'] = info[0].coreStudentId;       //Read
+            scoInfo['cmi.core.student_name'] = info[0].coreStudentName;     //Read
             scoInfo['cmi.core.lesson_location'] = info[0].coreLessonLocation;
-            scoInfo['cmi.core.credit'] = info[0].coreCredit;
+            scoInfo['cmi.core.credit'] = info[0].coreCredit;              //Read
             scoInfo['cmi.core.lesson_status'] = info[0].coreLessonStatus;
-            scoInfo['cmi.core.entry'] = info[0].coreEntry;
+            scoInfo['cmi.core.entry'] = info[0].coreEntry;                 //Read
             scoInfo['cmi.core.score'] = info[0].coreScore;
             scoInfo['cmi.core.score.raw'] = info[0].coreScoreRaw;
-            scoInfo['cmi.core.total_time'] = info[0].coreTotalTime;
+            scoInfo['cmi.core.total_time'] = info[0].coreTotalTime;      //Read
+            scoInfo['cmi.core.exit'] = info[0].coreExit;                        //Write
+            scoInfo['cmi.core.session_time'] = info[0].coreSessionTime;                //Write
             scoInfo['cmi.suspend_data'] = info[0].suspendData;
-            scoInfo['cmi.launch_data'] = info[0].launchData;
+            scoInfo['cmi.launch_data'] = info[0].launchData;          //Read
             iniFlag = true;
             ajaxResult = "true";
         },
@@ -65,10 +67,10 @@ function LMSSetValue(key, value) {
         errorCode = "403";
         return "false";
     }
-    if(key=="cmi.core.student_id"||key=="cmi.core.student_name"
-        ||key=="cmi.core.credit"||key=="cmi.core.entry"
-        ||key=="cmi.core.total_time"||key=="cmi.launch_data") {
-        errorCode="403";
+    if (key == "cmi.core.student_id" || key == "cmi.core.student_name"
+        || key == "cmi.core.credit" || key == "cmi.core.entry"
+        || key == "cmi.core.total_time" || key == "cmi.launch_data") {
+        errorCode = "403";
         return "false";
     }
     scoInfo[key] = value;
@@ -81,8 +83,8 @@ function LMSGetValue(key) {
         errorCode = "301";
         return "";
     }
-    if(key=="cmi.core.exit"||key=="cmi.core.session_time") {
-        errorCode="404";
+    if (key == "cmi.core.exit" || key == "cmi.core.session_time") {
+        errorCode = "404";
         return "";
     }
     if ((scoInfo[key] == null) || (scoInfo[key] == "")) {

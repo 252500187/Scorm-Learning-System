@@ -141,12 +141,17 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void changeScoState(int scormId, int scoId) {
         int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-        scoDao.setLastVisitScoByScoId(scoId, DictConstant.LAST_VISIT);
         ScoInfo scoInfo = new ScoInfo();
         scoInfo.setScoId(scoId);
         scoInfo.setCoreEntry(DictConstant.ENTRY_RE);
         scoDao.changeScoInfoByScoId(scoInfo);
-        scoDao.setLastVisitScoByScoId(scoId, DictConstant.LAST_VISIT);
+        //改变最后访问SCO
+        Sco oneSco=new Sco();
+        oneSco.setUserId(userId);
+        oneSco.setScormId(scormId);
+        oneSco.setScoId(scoId);
+        scoDao.setLastVisitScoByScoId(oneSco);
+        //将所有父节点变为已看
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, userId);
         for (Sco sco : scoList) {
             if (sco.getScoId() == scoId) {
@@ -176,10 +181,9 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void changeScoInfoByScoId(ScoInfo scoInfo) {
         String sessionTime = scoInfo.getCoreSessionTime();
-        String totalTime = scoDao.getScoApiInfoByScoId(scoInfo.getScoId()).get(0).getCoreTotalTime();
-
-        Timestamp totalDateTime = new Timestamp(DateUtil.convertStringToDate(sessionTime, "HH:mm:ss.SSS").getTime() + DateUtil.convertStringToDate(totalTime, "HH:mm:ss.SSS").getTime());
-        scoInfo.setCoreTotalTime(DateUtil.convertDateToString(totalDateTime, "HH:mm:ss.SSS"));
+        //TODO 时间计算
+        String totalTime = scoDao.getScoApiInfoByScoId(scoInfo.getScoId()).get(0).getCoreTotalTime()+sessionTime;
+        scoInfo.setCoreTotalTime(totalTime);
         scoDao.changeScoInfoByScoId(scoInfo);
     }
 

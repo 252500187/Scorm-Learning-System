@@ -18,5 +18,5 @@ public interface ScoDao {
 
     void changeScoInfoByScoId(ScoInfo scoInfo);
 
-    void setLastVisitScoByScoId(int ScoId,int state);
+    void setLastVisitScoByScoId(Sco sco);
 }

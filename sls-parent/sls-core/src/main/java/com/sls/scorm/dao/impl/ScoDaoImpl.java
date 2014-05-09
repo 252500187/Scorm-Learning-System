@@ -5,6 +5,7 @@ import com.sls.scorm.dao.ScoDao;
 import com.sls.scorm.dao.ScormDao;
 import com.sls.scorm.entity.Sco;
 import com.sls.scorm.entity.ScoInfo;
+import com.sls.util.DictConstant;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -94,8 +95,10 @@ public class ScoDaoImpl extends PageDao implements ScoDao {
     }
 
     @Override
-    public void setLastVisitScoByScoId(int ScoId, int state) {
-        String sql = "UPDATE luss_scorm_sco SET last_visit=? WHERE sco_id=?";
-        getJdbcTemplate().update(sql, state, ScoId);
+    public void setLastVisitScoByScoId(Sco sco) {
+        String voidSql = "UPDATE luss_scorm_sco SET last_visit=? WHERE scorm_id=? AND user_id=?";
+        getJdbcTemplate().update(voidSql, DictConstant.VOID_VALUE, sco.getScormId(), sco.getUserId());
+        String setLastSql = "UPDATE luss_scorm_sco SET last_visit=? WHERE sco_id=?";
+        getJdbcTemplate().update(setLastSql, DictConstant.LAST_VISIT, sco.getScoId());
     }
 }
