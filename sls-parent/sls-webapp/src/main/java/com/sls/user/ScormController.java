@@ -27,6 +27,12 @@ public class ScormController {
         return str;
     }
 
+    @RequestMapping(value = "collectScorm", method = {RequestMethod.GET})
+    @ResponseBody
+    public String[] collectScorm(HttpServletRequest request, @RequestParam("scormId") String scormId) {
+        String str[] = {scormService.collectScorm(Integer.parseInt(scormId), request)};
+        return str;
+    }
 
     @RequestMapping(value = "studyScorm", method = {RequestMethod.GET})
     public String studyScorm(HttpServletRequest request, @RequestParam("scormId") String scormId) {

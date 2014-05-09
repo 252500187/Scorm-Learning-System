@@ -13,6 +13,8 @@ public class Scorm {
     private String uploadDate;
     private int uploadUserId;
     private int inUse;
+    private String collectDate;
+    private int userId;
 
     public Scorm() {
         registerSum = 0;
@@ -91,5 +93,21 @@ public class Scorm {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getCollectDate() {
+        return collectDate;
+    }
+
+    public void setCollectDate(String collectDate) {
+        this.collectDate = collectDate;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

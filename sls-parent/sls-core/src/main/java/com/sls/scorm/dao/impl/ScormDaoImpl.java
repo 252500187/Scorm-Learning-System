@@ -50,18 +50,30 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
         String sql = " SELECT lss.*,uu.`login_name` FROM luss_scorm_summarize lss " +
                 " JOIN us_user uu ON lss.`user_id` = uu.user_id " +
                 " WHERE uu.`in_use`='1' AND scorm_id = ?";
-        return getJdbcTemplate().query(sql,new BeanPropertyRowMapper<ScormSummarize>(ScormSummarize.class), scormId);
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<ScormSummarize>(ScormSummarize.class), scormId);
     }
 
     @Override
     public boolean checkNotHasCollected(int scormId, int userId) {
         String sql = "SELECT * FROM luss_user_collect WHERE scorm_id = " + scormId + " AND user_id = ? ";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Boolean>(Boolean.class), userId).isEmpty();
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId).isEmpty();
     }
 
     @Override
     public boolean checkNotHasRegister(int scormId, int userId) {
         String sql = "SELECT * FROM luss_scorm_sco WHERE scorm_id = " + scormId + " AND user_id = ? ";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Sco>(Sco.class), userId).isEmpty();
+    }
+
+    @Override
+    public void addCollectScorm(Scorm scorm) {
+        String sql = "INSERT INTO luss_user_collect (user_id, scorm_id, collect_date)VALUES (:userId, :scormId, :collectDate)";
+        getJdbcTemplate().update(sql, scorm);
+    }
+
+    @Override
+    public List<Scorm> findCollectScormByScormIdAndUserId(int scormId, int userId) {
+        String sql = "SELECT * FROM luss_user_collect WHERE user_id = " + userId + " AND scorm_id = ?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), scormId);
     }
 }

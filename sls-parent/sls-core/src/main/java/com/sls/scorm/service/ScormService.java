@@ -32,4 +32,6 @@ public interface ScormService {
     void getAllCommentsByScormId(int scormId, HttpServletRequest request);
 
     void judgeDemonstrationStatus(int scormId, HttpServletRequest request);
+
+    String collectScorm(int scormId, HttpServletRequest request);
 }

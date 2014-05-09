@@ -80,11 +80,11 @@
                                                     <i class="fa fa-heart"></i>
                                                     <!--已收藏-->
                                                     <c:if test="${true == registerScorm}">
-                                                        <a style="color:#aaa">收藏</a>
+                                                        <a style="color:#aaa" onclick="return false">收藏</a>
                                                     </c:if>
-                                                    <!--为收藏-->
+                                                    <!--未收藏-->
                                                     <c:if test="${false == registerScorm}">
-                                                        <a style="color:#666">收藏</a>
+                                                        <a style="color:#666" onclick="collectScorm(${scormInfo.scormId})">收藏</a>
                                                     </c:if>
                                                 </li>
                                             </ul>
@@ -216,6 +216,18 @@
     });
 
     <%--function registerScorm(id) {--%>
+        <%--$.ajax({--%>
+            <%--url: basePath + "user/scorm/registerScorm?scormId=" + id,--%>
+            <%--dataType: "json",--%>
+            <%--type: "GET",--%>
+            <%--success: function (message) {--%>
+                <%--window.location.href = basePath + "tourist/scormInfo?scormId=" + ${scormInfo.scormId};--%>
+            <%--},--%>
+            <%--error: doError--%>
+        <%--})--%>
+    <%--}--%>
+
+    <%--function collectScorm(id) {--%>
         <%--$.ajax({--%>
             <%--url: basePath + "user/scorm/registerScorm?scormId=" + id,--%>
             <%--dataType: "json",--%>

@@ -21,4 +21,8 @@ public interface ScormDao {
     boolean checkNotHasCollected(int scormId, int userId);
 
     boolean checkNotHasRegister(int scormId, int userId);
+
+    void addCollectScorm(Scorm scorm);
+
+    List<Scorm> findCollectScormByScormIdAndUserId(int scormId, int userId);
 }

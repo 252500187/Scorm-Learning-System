@@ -89,6 +89,24 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
+    public String collectScorm(int scormId, HttpServletRequest request) {
+        int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        int scormState = scormDao.findScormInfoByScormId(scormId).getInUse();
+        if (scormDao.findCollectScormByScormIdAndUserId(scormId, userId).size() > 0) {
+            return "对不起，您已收藏。";
+        }
+        if (scormState == DictConstant.NO_USE) {
+            return "此课件不可收藏。";
+        }
+        Scorm scorm = new Scorm();
+        scorm.setScormId(scormId);
+        scorm.setUserId(userId);
+        scorm.setCollectDate(DateUtil.getSystemDate("yyyy-MM-dd"));
+        scormDao.addCollectScorm(scorm);
+        return "收藏成功。";
+    }
+
+    @Override
     public void studyScorm(int scormId, HttpServletRequest request) {
         Scorm scorm = scormDao.findScormInfoByScormId(scormId);
         if (scorm.getInUse() == DictConstant.NO_USE) {
