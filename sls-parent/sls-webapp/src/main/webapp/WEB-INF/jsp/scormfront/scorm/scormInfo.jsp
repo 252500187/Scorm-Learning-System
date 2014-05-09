@@ -14,7 +14,6 @@
     <title>我是课件详情页</title>
     <%@include file="../../includes/common.jsp" %>
     <link rel="stylesheet" type="text/css" href="assets/css/pages/profile.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/ztreeStyle/ztreeStyle.css"/>
 </head>
 
 <body class="page-header-fixed">
