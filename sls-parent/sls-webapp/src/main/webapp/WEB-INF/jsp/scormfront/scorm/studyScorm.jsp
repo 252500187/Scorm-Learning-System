@@ -247,9 +247,11 @@
 </html>
 <script>
     var scoId = "";
+    var scoSrc = "";
     <c:forEach var="scoNode" items="${scoList}">
     <c:if test="${scoNode.lastVisit==isLast}">
     scoId = "${scoNode.scoId}";
+    scoSrc = "${scoNode.url}";
     </c:if>
     </c:forEach>
     var settingMenu = {
@@ -306,11 +308,16 @@
 
     $(function () {
         App.init();
-        var i = Math.floor(Math.random() * 10);
-        $("#scormIframe").attr("src", basePath + "img/studyscormdefaultimg/" + i + ".jpg");
         $("#scormLogo").attr("src", basePath + "${scorm.imgPath}");
         $.fn.zTree.init($("#menuTree"), settingMenu, zNodes);
         $.fn.zTree.getZTreeObj("menuTree").expandAll(true);
+        var i = Math.floor(Math.random() * 10);
+        $("#scormIframe").attr("src", basePath + "img/studyscormdefaultimg/" + i + ".jpg");
+        if (scoId != "") {
+            if (confirm("是否继续上次学习进度")) {
+                $("#scormIframe").attr("src", scoSrc);
+            }
+        }
     });
 
     $('.page-sidebar ul').on('click', ' li > a', function (e) {
@@ -325,10 +332,4 @@
         $('.selected').remove();
         $(this).parents('li').find("a").append('<span class="selected" ></span>');
     });
-
-    if (scoId != "") {
-        if (confirm("是否继续上次学习进度")) {
-
-        }
-    }
 </script>
