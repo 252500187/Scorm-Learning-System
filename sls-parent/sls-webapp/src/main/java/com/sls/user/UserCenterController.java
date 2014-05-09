@@ -2,7 +2,9 @@ package com.sls.user;
 
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.service.ScormService;
+import com.sls.user.entity.User;
 import com.sls.user.service.UserCenterService;
+import com.sls.user.service.UserService;
 import com.sls.util.DictConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,9 @@ public class UserCenterController {
     @Autowired
     private ScormService upScormService;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(value = "userCenterDo", method = {RequestMethod.GET})
     public String userCenter(HttpServletRequest request) {
         userCenterService.toUserCenter(request);
@@ -51,10 +56,17 @@ public class UserCenterController {
 
     //个人中心  个人资料
     @RequestMapping(value = "userInfoDo", method = {RequestMethod.GET})
-    public String userInfoDo() {
-
+    public String userInfoDo(HttpServletRequest request) {
+        userCenterService.toUserInfo(request);
         return "scormfront/usercenter/userInfo";
     }
+
+    @RequestMapping(value = "changeUserInfo", method = {RequestMethod.POST})
+    @ResponseBody
+    public void changeUserInfo(User user) {
+        userService.editUser(user);
+    }
+
 
     //个人中心  已注册课件
     @RequestMapping(value = "registerScormDo", method = {RequestMethod.GET})

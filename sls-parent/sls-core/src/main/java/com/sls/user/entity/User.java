@@ -1,5 +1,7 @@
 package com.sls.user.entity;
 
+import com.sls.util.DictConstant;
+
 public class User {
 
     private int userId;
@@ -7,11 +9,13 @@ public class User {
     private String password;
     private String showInUse;
     private int inUse;
-    private int score;
-    private String levelName;
 
     private String userName;
     private String email;
+    private int score;
+    private String levelName;
+    private int sex;
+    private String showSex;
 
     private String registerDate;
 
@@ -20,6 +24,7 @@ public class User {
     private String authority;
 
     public User() {
+        this.sex = DictConstant.VOID_SEX;
     }
 
     public String getEmail() {
@@ -125,5 +130,21 @@ public class User {
 
     public void setLevelName(String levelName) {
         this.levelName = levelName;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
+
+    public String getShowSex() {
+        return showSex;
+    }
+
+    public void setShowSex(String showSex) {
+        this.showSex = showSex;
     }
 }

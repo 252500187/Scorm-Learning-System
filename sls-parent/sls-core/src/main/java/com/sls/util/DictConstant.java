@@ -7,6 +7,10 @@ public class DictConstant {
     //空值
     public static final int VOID_VALUE = -1;
 
+    //用户初始化性别
+    public static final int VOID_SEX = -1;
+
+
     //操作未成功
     public static final String NO_SUCCESS = "noSuccess";
 

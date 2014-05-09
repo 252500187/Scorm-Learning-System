@@ -30,7 +30,7 @@
                 <li>
                     <a>
                         <i class="fa fa-user"></i>
-                        <span class="title"> <big>用户名:${user.loginName}</big></span>
+                        <span class="title"> <big>昵称:${user.userName}</big></span>
                         <br/>
                         <span class="title" style="margin-left: 30px">等级:&nbsp;&nbsp;${user.levelName} </span>
 
