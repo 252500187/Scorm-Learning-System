@@ -53,7 +53,7 @@
                                                 </c:if>
                                                 <!--未注册-->
                                                 <c:if test="${false == registerScorm}">
-                                                    <div class="col-md-2"><a class="btn blue">注册</a></div>
+                                                    <div class="col-md-2"><a class="btn blue" onclick="registerScorm(${scormInfo.scormId})">注册</a></div>
                                                 </c:if>
                                             </div>
                                             <ul class="list-inline">
@@ -214,4 +214,16 @@
         $.fn.zTree.init($("#chapterList"), settingMenu, zNodes);
         $.fn.zTree.getZTreeObj("chapterList").expandAll(true);
     });
+
+    <%--function registerScorm(id) {--%>
+        <%--$.ajax({--%>
+            <%--url: basePath + "user/scorm/registerScorm?scormId=" + id,--%>
+            <%--dataType: "json",--%>
+            <%--type: "GET",--%>
+            <%--success: function (message) {--%>
+                <%--window.location.href = basePath + "tourist/scormInfo?scormId=" + ${scormInfo.scormId};--%>
+            <%--},--%>
+            <%--error: doError--%>
+        <%--})--%>
+    <%--}--%>
 </script>

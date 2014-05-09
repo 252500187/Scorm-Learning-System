@@ -2,6 +2,7 @@ package com.sls.scorm.dao.impl;
 
 import com.core.page.dao.PageDao;
 import com.sls.scorm.dao.ScormDao;
+import com.sls.scorm.entity.Sco;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.entity.ScormSummarize;
 import com.sls.util.DictConstant;
@@ -61,6 +62,6 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
     @Override
     public boolean checkNotHasRegister(int scormId, int userId) {
         String sql = "SELECT * FROM luss_scorm_sco WHERE scorm_id = " + scormId + " AND user_id = ? ";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Boolean>(Boolean.class), userId).isEmpty();
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Sco>(Sco.class), userId).isEmpty();
     }
 }
