@@ -1,3 +1,4 @@
+<%--@elvariable id="user" type="com.sls.scorm.entity.ScormSummarize"--%>
 <%--
   Created by IntelliJ IDEA.
   User: zhangtq
@@ -13,15 +14,17 @@
 </head>
 <body>
     <div class="portlet-body form">
-        <form class="form-body">
+        <form class="form-body" id="userInfo">
             <div class="form-group">
                 <label class="control-label col-md-2">
-                    <h2></h2>
+                    <h3></h3>
                 </label>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-2">昵称</label>
-                <input id="nickName" class="form-control form-control-inline input-medium date-picker" type="text" value="">
+                <input id="nickName" class="form-control form-control-inline input-medium date-picker" type="text"
+                       value="${user.userName}" >
+
             </div>
 
             <div class="form-group">
@@ -52,8 +55,55 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label class="control-label col-md-2">性别</label>
+                <div class="col-md-9">
+                    <input type="radio" name="sex" id="sexMale" value="male">男&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="sex" id="sexFemale" value="female">女
+                </div>
+            </div>
+
+            <div class="form-actions fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-offset-3 col-md-9">
+                            <a onclick="changeUserInfo()" class="btn purple"><i
+                                    class="fa fa-check"></i>
+                                确定修改
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </form>
 
     </div>
 </body>
 </html>
+<script>
+    $(function(){
+        $("#sexMale").attr("checked", true);
+        if ("${staffBase.sex}" == "female") {
+            $("#sexFemale").attr("checked", true);
+        }
+
+    });
+    function changeUserInfo(){
+        $.ajax({
+            url: basePath + "user/center/changeUserInfo",
+            data: {
+                userId: ${user.userId},
+                userName: $("#nickName").val().trim()
+//              showSex: $("input[name=sex]:checked").val()
+            },
+            dataType: "json",
+            type: "POST",
+            success: function () {
+                alert("修改资料成功");
+            },
+            error: doError
+        })
+    }
+</script>

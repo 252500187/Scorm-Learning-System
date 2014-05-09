@@ -24,7 +24,7 @@
 <div class="page-container">
     <div class="page-content-wrapper">
         <div class="row profile">
-            <div class="col-md-12">
+            <div class="col-md-12">0
                 <div class="tabbable tabbable-custom tabbable-full-width">
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1_1">
