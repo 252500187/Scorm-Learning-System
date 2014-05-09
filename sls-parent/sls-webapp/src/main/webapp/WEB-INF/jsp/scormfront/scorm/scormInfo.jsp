@@ -215,27 +215,27 @@
         $.fn.zTree.getZTreeObj("chapterList").expandAll(true);
     });
 
-    <%--function registerScorm(id) {--%>
-        <%--$.ajax({--%>
-            <%--url: basePath + "user/scorm/registerScorm?scormId=" + id,--%>
-            <%--dataType: "json",--%>
-            <%--type: "GET",--%>
-            <%--success: function (message) {--%>
-                <%--window.location.href = basePath + "tourist/scormInfo?scormId=" + ${scormInfo.scormId};--%>
-            <%--},--%>
-            <%--error: doError--%>
-        <%--})--%>
-    <%--}--%>
+    function registerScorm(id) {
+        $.ajax({
+            url: basePath + "user/scorm/registerScorm?scormId=" + id,
+            dataType: "json",
+            type: "GET",
+            success: function (message) {
+                window.location.href = basePath + "tourist/scormInfo?scormId=" + ${scormInfo.scormId};
+            },
+            error: doError
+        })
+    }
 
-    <%--function collectScorm(id) {--%>
-        <%--$.ajax({--%>
-            <%--url: basePath + "user/scorm/registerScorm?scormId=" + id,--%>
-            <%--dataType: "json",--%>
-            <%--type: "GET",--%>
-            <%--success: function (message) {--%>
-                <%--window.location.href = basePath + "tourist/scormInfo?scormId=" + ${scormInfo.scormId};--%>
-            <%--},--%>
-            <%--error: doError--%>
-        <%--})--%>
-    <%--}--%>
+    function collectScorm(id) {
+        $.ajax({
+            url: basePath + "user/scorm/collectScorm?scormId=" + id,
+            dataType: "json",
+            type: "GET",
+            success: function (message) {
+                window.location.href = basePath + "tourist/scormInfo?scormId=" + ${scormInfo.scormId};
+            },
+            error: doError
+        })
+    }
 </script>

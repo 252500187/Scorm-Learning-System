@@ -68,7 +68,7 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
     @Override
     public void addCollectScorm(Scorm scorm) {
         String sql = "INSERT INTO luss_user_collect (user_id, scorm_id, collect_date)VALUES (:userId, :scormId, :collectDate)";
-        getJdbcTemplate().update(sql, scorm);
+        getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(scorm));
     }
 
     @Override
