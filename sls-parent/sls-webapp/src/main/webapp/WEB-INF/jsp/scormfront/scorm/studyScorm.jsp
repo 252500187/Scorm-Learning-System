@@ -1,3 +1,4 @@
+<%--@elvariable id="scorm" type="com.sls.scorm.entity.Scorm"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml">
@@ -98,12 +99,12 @@
 
                     <div class="chat-form">
                         <div class="input-cont">
-                            <input class="form-control" type="text" placeholder="记点什么？"/>
+                            <input class="form-control" type="text" placeholder="记点什么？" id="takeNotes"/>
                         </div>
                         <div class="btn-cont">
 									<span class="arrow">
 									</span>
-                            <a onclick="alert('youdai')" class="btn blue icn-only">
+                            <a onclick="takeNote()" class="btn blue icn-only">
                                 <i class="fa fa-check icon-white"></i>
                             </a>
                         </div>
@@ -304,6 +305,22 @@
             },
             error: doError
         })
+    }
+
+    function takeNote() {
+        $.ajax({
+            url: basePath + "user/scorm/takeNote?scormId=${scorm.scormId}&scoId=" + scoId,
+                   data: {
+                       note: $("#takeNotes").val().trim()
+                   },
+                   dataType: "json",
+                   type: "GET",
+                   success: function () {
+                           parent.$("#dataEdit").dialog('close');
+                           parent.query();
+                   },
+                   error: doError
+               })
     }
 
     $(function () {
