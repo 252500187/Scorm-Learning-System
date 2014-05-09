@@ -26,7 +26,7 @@
         <h2>HOT TOP</h2>
 
         <div class="top-news col-md-12">
-            <a class="btn red sliderbar-transparency" onclick="linkScormInfo(35)">
+            <a class="btn red sliderbar-transparency" onclick="linkScormInfo(43)">
                 <span> TOP ONE</span>
                 <em>书名</em>
                 <em>
@@ -35,7 +35,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn green" onclick="linkScormInfo(35)">
+            <a class="btn green" onclick="linkScormInfo(43)">
                 <span> TOP TWO</span>
                 <em>书名</em>
                 <em>
@@ -44,7 +44,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn blue" onclick="linkScormInfo(35)">
+            <a class="btn blue" onclick="linkScormInfo(43)">
                 <span> TOP THREE</span>
                 <em>书名</em>
                 <em>
@@ -53,7 +53,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn yellow" onclick="linkScormInfo(35)">
+            <a class="btn yellow" onclick="linkScormInfo(43)">
                 <span> TOP FOUR</span>
                 <em>书名</em>
                 <em>
@@ -62,7 +62,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn purple" onclick="linkScormInfo(35)">
+            <a class="btn purple" onclick="linkScormInfo(43)">
                 <span> TOP FIVE</span>
                 <em>书名</em>
                 <em>
@@ -71,7 +71,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn red" onclick="linkScormInfo(35)">
+            <a class="btn red" onclick="linkScormInfo(43)">
                 <span> TOP ONE</span>
                 <em>书名</em>
                 <em>
@@ -80,7 +80,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn green" onclick="linkScormInfo(35)">
+            <a class="btn green" onclick="linkScormInfo(43)">
                 <span> TOP TWO</span>
                 <em>书名</em>
                 <em>
