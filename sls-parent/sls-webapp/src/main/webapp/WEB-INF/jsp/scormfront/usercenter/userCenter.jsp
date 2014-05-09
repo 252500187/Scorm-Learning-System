@@ -30,9 +30,9 @@
                 <li>
                     <a>
                         <i class="fa fa-user"></i>
-                        <span class="title"> <big>${user.loginName}</big></span>
+                        <span class="title"> <big>用户名:${user.loginName}</big></span>
                         <br/>
-                        <span class="title" style="margin-left: 30px">等级:牛刀小试 </span>
+                        <span class="title" style="margin-left: 30px">等级:&nbsp;&nbsp;${user.levelName} </span>
 
                         <div class="info-container" align="center" style="margin-top:0px;">
 
