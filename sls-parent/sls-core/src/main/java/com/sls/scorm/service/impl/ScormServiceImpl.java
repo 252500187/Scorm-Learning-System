@@ -84,7 +84,8 @@ public class ScormServiceImpl implements ScormService {
             scoInfo = scoDao.getScoApiInfoByScoId(sco.getScoId()).get(0);
             scoInfo.setScoId(scoDao.addSco(sco));
             //TOdo 找到用户级别名称
-            scoInfo.setCoreStudentId(user.getLevelName());
+            user.getLevelName();
+            scoInfo.setCoreStudentId("");
             scoInfo.setCoreStudentName(user.getUserName());
             scoDao.addScoInfo(scoInfo);
         }

@@ -10,14 +10,8 @@
                 <img src="img/logo/logo-small.png" alt="SLS" class="img-responsive"/>
             </a>
         </div>
-        <a onclick="studyScorm('9')">学习ID为9的课件</a>
-        <a onclick="studyScorm('15')">学习ID为15的课件</a>
-        <a onclick="studyScorm('16')">学习ID为16的课件</a>
-        <a onclick="studyScorm('17')">学习ID为17的课件</a>
-        <a onclick="registerScorm('9')">点我注册ID为9的课件</a>
-        <a onclick="registerScorm('15')">点我注册ID为15的课件</a>
-        <a onclick="registerScorm('16')">点我注册ID为16的课件</a>
-        <a onclick="registerScorm('17')">点我注册ID为17的课件</a>
+        <a onclick="studyScorm('43')">学习ID为9的课件</a>
+        <a onclick="registerScorm('43')">点我注册ID为9的课件</a>
         <ul class="nav navbar-nav pull-right">
             <c:if test="${sessionScope.userId==null||sessionScope.userId==''}">
                 <li class="dropdown">
