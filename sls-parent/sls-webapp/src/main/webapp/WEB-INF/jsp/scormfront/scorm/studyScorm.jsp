@@ -212,7 +212,23 @@
                         </div>
                     </div>
                     <div class="portlet-body">
-                        <%--TODO 课件信息--%>
+                        <div class="caption"><h4>${scorm.scormName}</h4></div>
+                        <div class="slimScrollDiv"
+                             style="position: relative; overflow: hidden; width: auto; height: 300px;">
+                            <div class="scroller" data-rail-visible="0" data-always-visible="1"
+                                 style="height: 300px; overflow: hidden; width: auto;">
+                                <ul class="feeds">
+                                    <li>
+                                        <div class="row col-md-2">上传日期:</div>
+                                        <div class="row col-md-10">${scorm.uploadDate}</div>
+                                    </li>
+                                    <li>
+                                        <div class="row col-md-2">课件简介:</div>
+                                        <div class="row col-md-10">${scorm.description}</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
