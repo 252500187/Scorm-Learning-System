@@ -1,4 +1,5 @@
 <%--@elvariable id="scorm" type="com.sls.scorm.entity.Scorm"--%>
+<%--@elvariable id="noteList" type="java.util.List"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml">
@@ -111,38 +112,15 @@
                     </div>
 
                     <div class="portlet-body">
-                        <div class="note note-success">
-                            <h4 class="block">时间</h4>
+                        <c:forEach var="note" items="${noteList}">
+                            <div class="note note-success">
+                                <h4 class="block">${note.date}</h4>
 
-                            <p>
-                                啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈
-                            </p>
-                        </div>
-                        <div class="note note-info">
-                            <h4 class="block">时间</h4>
-
-                            <p>
-                                啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈
-                            </p>
-                        </div>
-                        <div class="note note-danger">
-                            <h4 class="block">Danger! Some Header Goes Here</h4>
-
-                            <p>
-                                Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio
-                                sem nec elit mattis consectetur purus sit amet.\ Cras mattis consectetur purus sit
-                                amet fermentum.
-                            </p>
-                        </div>
-                        <div class="note note-warning">
-                            <h4 class="block">Warning! Some Header Goes Here</h4>
-
-                            <p>
-                                Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio
-                                sem nec elit mattis consectetur purus sit amet. Cras mattis consectetur purus sit
-                                amet fermentum.
-                            </p>
-                        </div>
+                                <p>
+                                        ${note.note}
+                                </p>
+                            </div>
+                        </c:forEach>
                     </div>
                 </ul>
             </li>
@@ -247,6 +225,7 @@
 </body>
 </html>
 <script>
+    var noteStyles = ["note note-success", "note note-note-info", "note note-danger", "note note-warning"];
     var scoId = "";
     var scoSrc = "";
     <c:forEach var="scoNode" items="${scoList}">
@@ -310,18 +289,23 @@
     function takeNote() {
         $.ajax({
             url: basePath + "user/scorm/takeNote",
-                   data: {
-                       note: $("#takeNotes").val().trim(),
-                       scormId:${scorm.scormId},
-                       scoId: scoId
-                   },
-                   dataType: "json",
-                   type: "POST",
-                   success: function () {
-                          alert("hahahahah");
-                   },
-                   error: doError
-               })
+            data: {
+                note: $("#takeNotes").val().trim(),
+                scormId:${scorm.scormId},
+                scoId: scoId
+            },
+            dataType: "json",
+            type: "POST",
+            success: function () {
+                alert("hahahahah");
+            },
+            error: doError
+        })
+    }
+
+    function getRandom() {
+        var noteIndex = Math.floor(Math.random() * 5);
+        return noteStyles[noteIndex];
     }
 
     $(function () {

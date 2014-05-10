@@ -38,6 +38,7 @@ public class ScormController {
     @RequestMapping(value = "studyScorm", method = {RequestMethod.GET})
     public String studyScorm(HttpServletRequest request, @RequestParam("scormId") String scormId) {
         scormService.studyScorm(Integer.parseInt(scormId), request);
+        scormService.getAllStudyNotesByScormIdAndUserId(Integer.parseInt(scormId),request);
         return "scormfront/scorm/studyScorm";
     }
 
