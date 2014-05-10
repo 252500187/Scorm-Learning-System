@@ -23,6 +23,8 @@ public interface UserDao {
 
     void editUser(User user);
 
+    void upUserPhoto(User user);
+
     int delUser(int id);
 
     void addUserInfo(User user);

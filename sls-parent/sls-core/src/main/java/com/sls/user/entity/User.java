@@ -16,6 +16,7 @@ public class User {
     private String levelName;
     private int sex;
     private String showSex;
+    private String imgUrl;
 
     private String registerDate;
 
@@ -146,5 +147,13 @@ public class User {
 
     public void setShowSex(String showSex) {
         this.showSex = showSex;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

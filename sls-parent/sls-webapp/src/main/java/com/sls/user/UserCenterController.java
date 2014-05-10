@@ -67,6 +67,13 @@ public class UserCenterController {
         userService.editUser(user);
     }
 
+    @RequestMapping(value = "upHeadImgDo", method = {RequestMethod.POST})
+    public String upHeadImgDo(HttpServletRequest request) throws ServletException, IOException, ParserConfigurationException, SAXException,
+            XPathExpressionException {
+        userService.upHeadImg(request, "upImg");
+        userCenterService.toUserInfo(request);
+        return "scormfront/usercenter/userInfo";
+    }
 
     //个人中心  已注册课件
     @RequestMapping(value = "registerScormDo", method = {RequestMethod.GET})

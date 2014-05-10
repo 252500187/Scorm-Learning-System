@@ -4,6 +4,9 @@ import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.user.entity.User;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 
 public interface UserService {
@@ -23,4 +26,6 @@ public interface UserService {
     void editUser(User user);
 
     void delUsers(String userIds[]);
+
+    void upHeadImg(HttpServletRequest request, String upImg) throws ServletException, IOException;
 }

@@ -72,8 +72,14 @@ public class UserDaoImpl extends PageDao implements UserDao {
     @Override
     public void editUser(User user) {
         String sql = "UPDATE us_user_info " +
-                "SET user_name = :userName  " +
+                "SET user_name = :userName, sex = :sex  " +
                 "WHERE user_id = :userId";
+        getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(user));
+    }
+
+    @Override
+    public void upUserPhoto(User user) {
+        String sql = "UPDATE us_user_info SET img_url = :imgUrl WHERE user_id = :userId";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(user));
     }
 
