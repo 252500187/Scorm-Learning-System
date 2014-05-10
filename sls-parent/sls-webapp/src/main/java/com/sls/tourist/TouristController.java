@@ -30,11 +30,17 @@ public class TouristController {
         userService.addUser(user);
     }
 
+    @RequestMapping(value = "checkRepeatLoginName", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean checkRepeatLoginName(@RequestParam("loginName") String loginName) {
+        return userService.checkRepeatLoginName(loginName);
+    }
+
     @RequestMapping(value = "scormInfo", method = {RequestMethod.GET})
     public String scormInfo(@RequestParam("scormId") String scormId, HttpServletRequest request) {
         scormService.getScormInfoAndChapterInfo(Integer.parseInt(scormId), request);
-        scormService.getAllCommentsByScormId(Integer.parseInt(scormId),request);
-        scormService.judgeDemonstrationStatus(Integer.parseInt(scormId),request);
+        scormService.getAllCommentsByScormId(Integer.parseInt(scormId), request);
+        scormService.judgeDemonstrationStatus(Integer.parseInt(scormId), request);
         return "scormfront/scorm/scormInfo";
     }
 }

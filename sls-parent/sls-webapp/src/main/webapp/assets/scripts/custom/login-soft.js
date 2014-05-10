@@ -158,11 +158,22 @@ var Login = function () {
                 ignore: "",
                 rules: {
                     register_loginName: {
-                        required: true
+                        required: true,
+                        minlength: 6,
+                        maxlength: 20,
+                        remote: {
+                            url: basePath + "tourist/checkRepeatLoginName",
+                            type: "POST",
+                            dataType: "json",
+                            data: {
+                                loginName: $("#register_loginName").val().trim()
+                            }
+                        }
                     },
                     register_password: {
                         required: true,
-                        minlength:6
+                        minlength: 6,
+                        maxlength: 20
                     },
                     email: {
                         required: true,
@@ -176,19 +187,21 @@ var Login = function () {
                     }
                 },
 
-                messages: { // custom messages for radio buttons and checkboxes                    messages: {
+                messages: { // custom messages for radio buttons and checkboxes
                     register_loginName: {
-                        required: "请输入帐号"
+                        required: "帐号为必填项",
+                        minlength: "账号的长度最小为6位",
+                        maxlength: "账号的长度最大为20位",
+                        remote: "账号已存在"
                     },
                     register_password: {
                         required: "请输入密码",
-                        minlength:"密码最小长度为6"
+                        minlength: "密码最小长度为6位",
+                        maxlength: "密码最大长度为20位"
                     },
                     email: {
-                        required: "请输入邮箱"
-                    },
-                    name: {
-                        required: "请输入昵称"
+                        required: "请输入邮箱",
+                        email: "请输入正确的邮箱"
                     },
                     tnc: {
                         required: "您确定加入我们么？"
@@ -220,7 +233,8 @@ var Login = function () {
                 },
 
                 submitHandler: function (form) {
-                    findPassword();
+
+                    register();
                 }
             }
         )

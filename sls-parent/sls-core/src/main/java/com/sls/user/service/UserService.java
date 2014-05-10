@@ -28,4 +28,6 @@ public interface UserService {
     void delUsers(String userIds[]);
 
     void upHeadImg(HttpServletRequest request, String upImg) throws ServletException, IOException;
+
+    boolean checkRepeatLoginName(String loginName);
 }

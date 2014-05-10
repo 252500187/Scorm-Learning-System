@@ -71,6 +71,7 @@ public class UserServiceImpl implements UserService {
         roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_USER);
         user.setRoleId(roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_USER).getRoleId());
         user.setRegisterDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
+        user.setUserName("懒人");
         user.setScore(DictConstant.SCORE_0);
         user.setLevelName(userDao.findUserLevelNameByScore(user.getScore()).getLevelName());
 
@@ -105,5 +106,11 @@ public class UserServiceImpl implements UserService {
         user.setImgUrl(fileUp.upImg(request, DictConstant.USER_PHOTO_NAME, "", userId + DictConstant.PHOTO_FORM, upImg));
         userDao.upUserPhoto(user);
 
+    }
+
+    @Override
+    public boolean checkRepeatLoginName(String loginName) {
+        Boolean hasRepeatLoginName = userDao.checkRepeatLoginName(loginName);
+        return hasRepeatLoginName;
     }
 }

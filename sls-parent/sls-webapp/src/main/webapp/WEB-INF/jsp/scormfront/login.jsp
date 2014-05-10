@@ -118,8 +118,7 @@
             <div class="input-icon">
                 <i class="fa fa-font"></i>
                 <input id="register_loginName" name="register_loginName" class="form-control placeholder-no-fix"
-                       type="text" placeholder="输入登陆帐号"
-                        />
+                       type="text" placeholder="输入登陆帐号"/>
             </div>
         </div>
 
@@ -145,15 +144,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">昵称</label>
-
-            <div class="input-icon">
-                <i class="fa fa-user"></i>
-                <input id="register_userName" name="register_userName" class="form-control placeholder-no-fix"
-                       type="text" placeholder="输入昵称"/>
-            </div>
-        </div>
-        <div class="form-group">
             <label>
                 <input type="checkbox" name="tnc"/> 我同意加入
                 <a href="#">
@@ -168,8 +158,8 @@
             <button id="register-back-btn" type="button" class="btn">
                 <i class="m-icon-swapleft"></i> 返回
             </button>
-            <button type="submit" id="register-submit-btn" class="btn blue pull-right">
-                注册<i class="m-icon-swapright m-icon-white"></i>
+            <button id="register-submit-btn" class="btn blue pull-right" type="submit" >
+                <i class="m-icon-swapright m-icon-white"></i> 注册
             </button>
         </div>
     </form>
@@ -182,16 +172,19 @@
         Login.init();
     });
 
-    function register() {
-//        $("#registerInfo").attr("method","post").attr("action","tourist/register").submit();
+//    $().ready(function() {
+//        $("#registerInfo").validate({
+//            debug:true
+//        });
+//    });
 
+    function register() {
         $.ajax({
             url: basePath + "tourist/register",
             data: {
                 loginName: $("#register_loginName").val().trim(),
                 password: $("#register_password").val().md5(),
-                email: $("#email").val().trim(),
-                userName: $("#register_userName").val().trim()
+                email: $("#email").val().trim()
             },
             dataType: "json",
             type: "POST",
