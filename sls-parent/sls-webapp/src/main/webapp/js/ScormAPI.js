@@ -109,6 +109,7 @@ function LMSCommit(parameter) {
         async: false,
         data: {
             scoId: scoId,
+            scormId:scormId,
             coreLessonLocation: scoInfo['cmi.core.lesson_location'].trim(),
             coreLessonStatus: scoInfo['cmi.core.lesson_status'].trim(),
             coreScore: scoInfo['cmi.core.score'].trim(),

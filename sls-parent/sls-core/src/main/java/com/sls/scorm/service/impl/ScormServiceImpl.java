@@ -127,7 +127,7 @@ public class ScormServiceImpl implements ScormService {
         studyNote.setScormId(i);
         studyNote.setUserId(userId);
         List<StudyNote> studyNoteList = scormDao.getAllStudyNotesByScormIdAndUserId(studyNote);
-        request.setAttribute("noteList",studyNoteList.size() == 0 ? new LinkedList<StudyNote>() : studyNoteList);
+        request.setAttribute("noteList", studyNoteList.size() == 0 ? new LinkedList<StudyNote>() : studyNoteList);
     }
 
     @Override
@@ -194,10 +194,11 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void changeScoInfoByScoId(ScoInfo scoInfo) {
+    public void changeScoInfoByScoId(ScoInfo scoInfo, int scormId) {
         String sessionTime = scoInfo.getCoreSessionTime();
         if (!("".equals(sessionTime))) {
             scoInfo.setCoreTotalTime(DateUtil.getTotalTime(sessionTime, scoDao.getScoApiInfoByScoId(scoInfo.getScoId()).get(0).getCoreTotalTime()));
+            scormDao.changeTotalTimeByScormId(scormId, DateUtil.getTotalTime(sessionTime, scormDao.findScormInfoByScormId(scormId).getTotalTime()));
         }
         scoDao.changeScoInfoByScoId(scoInfo);
     }

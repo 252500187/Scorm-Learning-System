@@ -20,8 +20,8 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
 
     @Override
     public int addScorm(Scorm scorm) {
-        String sql = "INSERT INTO ss_scorm(scorm_id,scorm_name,register_sum,recommend_level,img_path, description, upload_user_id, upload_date,in_use) " +
-                "VALUES(:scormId, :scormName, :registerSum,:recommendLevel, :imgPath,:description, :uploadUserId, :uploadDate,:inUse)";
+        String sql = "INSERT INTO ss_scorm(scorm_id,scorm_name,register_sum,recommend_level,total_time,img_path,description,upload_user_id,upload_date,in_use) " +
+                "VALUES(:scormId,:scormName,:registerSum,:recommendLevel,:total_time,:imgPath,:description,:uploadUserId,:uploadDate,:inUse)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(scorm), keyHolder);
         return keyHolder.getKey().intValue();
@@ -89,7 +89,13 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
 
     @Override
     public List<StudyNote> getAllStudyNotesByScormIdAndUserId(StudyNote studyNote) {
-        String sql = "SELECT * FROM luss_study_note WHERE user_id = " + studyNote.getUserId() +" AND scorm_id = " + studyNote.getScormId();
+        String sql = "SELECT * FROM luss_study_note WHERE user_id = " + studyNote.getUserId() + " AND scorm_id = " + studyNote.getScormId();
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<StudyNote>(StudyNote.class));
+    }
+
+    @Override
+    public void changeTotalTimeByScormId(int scormId, String totalTime) {
+        String sql = "UPDATE ss_scorm SET total_time=? WHERE scorm_id=?";
+        getJdbcTemplate().update(sql, totalTime, scormId);
     }
 }

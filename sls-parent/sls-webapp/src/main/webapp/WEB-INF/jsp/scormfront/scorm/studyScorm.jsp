@@ -242,6 +242,7 @@
 </html>
 <script>
     var noteStyles = ["note note-success", "note note-note-info", "note note-danger", "note note-warning"];
+    var scormId="${scorm.scormId}";
     var scoId = "";
     var scoSrc = "";
     <c:forEach var="scoNode" items="${scoList}">
@@ -250,6 +251,7 @@
     scoSrc = "${scoNode.url}";
     </c:if>
     </c:forEach>
+
     var settingMenu = {
         view: {
             expandSpeed: "fast"

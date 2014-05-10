@@ -30,4 +30,6 @@ public interface ScormDao {
     int addStudyNote(StudyNote studyNote);
 
     List<StudyNote> getAllStudyNotesByScormIdAndUserId(StudyNote studyNote);
+
+    void changeTotalTimeByScormId(int scormId, String totalTime);
 }

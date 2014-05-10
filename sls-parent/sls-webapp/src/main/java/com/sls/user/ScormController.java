@@ -38,7 +38,7 @@ public class ScormController {
     @RequestMapping(value = "studyScorm", method = {RequestMethod.GET})
     public String studyScorm(HttpServletRequest request, @RequestParam("scormId") String scormId) {
         scormService.studyScorm(Integer.parseInt(scormId), request);
-        scormService.getAllStudyNotesByScormIdAndUserId(Integer.parseInt(scormId),request);
+        scormService.getAllStudyNotesByScormIdAndUserId(Integer.parseInt(scormId), request);
         return "scormfront/scorm/studyScorm";
     }
 
@@ -63,7 +63,7 @@ public class ScormController {
 
     @RequestMapping(value = "commitScoApiInfo", method = {RequestMethod.POST})
     @ResponseBody
-    public void commitScoApiInfo(ScoInfo scoInfo) {
-        scormService.changeScoInfoByScoId(scoInfo);
+    public void commitScoApiInfo(ScoInfo scoInfo, @RequestParam("scormId") String scormId) {
+        scormService.changeScoInfoByScoId(scoInfo, Integer.parseInt(scormId));
     }
 }

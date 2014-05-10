@@ -26,7 +26,7 @@ public interface ScormService {
 
     List<ScoInfo> getScoApiInfo(int scoId);
 
-    void changeScoInfoByScoId(ScoInfo scoInfo);
+    void changeScoInfoByScoId(ScoInfo scoInfo, int scormId);
 
     void getScormInfoAndChapterInfo(int scormId, HttpServletRequest request);
 

@@ -15,12 +15,14 @@ public class Scorm {
     private int inUse;
     private String collectDate;
     private int userId;
+    private String totalTime;
 
     public Scorm() {
         registerSum = 0;
         recommendLevel = DictConstant.RECOMMEND_0;
         uploadDate = DateUtil.getCurrentTimestamp().toString().substring(0, 16);
         inUse = DictConstant.NO_USE;
+        totalTime="";
     }
 
     public int getScormId() {
@@ -109,5 +111,13 @@ public class Scorm {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getTotalTime() {
+        return totalTime;
+    }
+
+    public void setTotalTime(String totalTime) {
+        this.totalTime = totalTime;
     }
 }
