@@ -74,6 +74,13 @@ function LMSSetValue(key, value) {
         errorCode = "403";
         return "false";
     }
+    if (key == "cmi.core.score.raw") {
+        value = parseFloat(value);
+        if (value == NaN || value < 0 || value > 100) {
+            errorCode = "405"
+            return "false";
+        }
+    }
     scoInfo[key] = value;
     return "true";
 }
@@ -109,7 +116,7 @@ function LMSCommit(parameter) {
         async: false,
         data: {
             scoId: scoId,
-            scormId:scormId,
+            scormId: scormId,
             coreLessonLocation: scoInfo['cmi.core.lesson_location'].trim(),
             coreLessonStatus: scoInfo['cmi.core.lesson_status'].trim(),
             coreScore: scoInfo['cmi.core.score'].trim(),
