@@ -13,34 +13,39 @@
     <%@include file="../../includes/common.jsp" %>
 </head>
 <body>
-    <div class="portlet-body form">
-        <form class="form-body" id="userInfo">
-            <div class="form-group">
-                <label class="control-label col-md-2">
-                    <h3></h3>
-                </label>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-md-2">昵称</label>
-                <input id="nickName" class="form-control form-control-inline input-medium date-picker" type="text"
-                       value="${user.userName}" >
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet box">
+            <div class="portlet-body form">
+                <div class="portlet-body form">
+                    <form class="form-horizontal" id="userInfo" enctype="multipart/form-data">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="control-label col-md-2"><h3></h3></label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">昵称</label>
 
-            </div>
+                                <div class="col-md-9">
+                                    <input id="nickName"
+                                           class="form-control form-control-inline input-medium date-picker"
+                                           type="text"
+                                           value="${user.userName}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">头像</label>
 
-            <div class="form-group">
-                <label class="control-label col-md-2">头像</label>
-
-                <div class="col-md-9">
-                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                        <div class="fileinput-new thumbnail"
-                             style="width: 200px; height: 150px;">
-                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image"
-                                 alt=""/>
-                        </div>
-                        <div class="fileinput-preview fileinput-exists thumbnail"
-                             style="max-width: 200px; max-height: 150px;">
-                        </div>
-                        <div>
+                                <div class="col-md-9">
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-new thumbnail"
+                                             style="width: 200px; height: 150px;">
+                                            <img id="userPhoto" alt="用户头像"/>
+                                        </div>
+                                        <div class="fileinput-preview fileinput-exists thumbnail"
+                                             style="max-width: 200px; max-height: 150px;">
+                                        </div>
+                                        <div>
 													<span class="btn default btn-file">
 														<span class="fileinput-new">
 															 选择
@@ -50,53 +55,66 @@
 														</span>
 														<input type="file" name="upImg" id="upImg"/>
 													</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">性别</label>
+
+                                <div class="col-md-9">
+                                    <input type="radio" name="sex" id="sexMale" value="1">男&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="sex" id="sexFemale" value="0">女
+                                </div>
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-md-2">性别</label>
-                <div class="col-md-9">
-                    <input type="radio" name="sex" id="sexMale" value="male">男&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="sex" id="sexFemale" value="female">女
-                </div>
-            </div>
-
-            <div class="form-actions fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-offset-3 col-md-9">
-                            <a onclick="changeUserInfo()" class="btn purple"><i
-                                    class="fa fa-check"></i>
-                                确定修改
-                            </a>
+                        <div class="form-actions fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <a onclick="changeUserInfo()" class="btn purple"><i
+                                                class="fa fa-check"></i>
+                                            确定修改
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+
+
+                    </form>
                 </div>
             </div>
-
-
-        </form>
-
+        </div>
     </div>
+</div>
+
 </body>
 </html>
 <script>
-    $(function(){
+    $(function () {
+
         $("#sexMale").attr("checked", true);
-        if ("${staffBase.sex}" == "female") {
+        if ("${user.sex}" == "0") {
             $("#sexFemale").attr("checked", true);
         }
+        $("#userPhoto").attr("src", "http://www.placehold.it/200x150/EFEFEF/AAAAAA &amp;text=no+image");
+        if ("${user.imgUrl}" != "") {
+            $("#userPhoto").attr("src", basePath + "${user.imgUrl}");
+        }
+
 
     });
-    function changeUserInfo(){
+    function changeUserInfo() {
         $.ajax({
+            async: false,
             url: basePath + "user/center/changeUserInfo",
             data: {
                 userId: ${user.userId},
-                userName: $("#nickName").val().trim()
-//              showSex: $("input[name=sex]:checked").val()
+                userName: $("#nickName").val().trim(),
+                sex: $("input[name=sex]:checked").val()
             },
             dataType: "json",
             type: "POST",
@@ -105,5 +123,7 @@
             },
             error: doError
         })
+        $("#userInfo").attr("method", "post").attr("action",
+                basePath + "user/center/upHeadImgDo").submit();
     }
 </script>

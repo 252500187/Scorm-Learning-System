@@ -29,6 +29,11 @@ public class DictConstant {
     public static final String SCORM_NAME = "scorm.zip";
     // SCORM课件XML名
     public static final String IMSMANIFEST = "imsmanifest.xml";
+    //上传用户头像的地址
+    public static final String USER_PHOTO_NAME = "users/userphoto";
+    //图片格式
+    public static final String PHOTO_FORM = ".jpg";
+
 
     // SCO节点TYPE
     //根节点

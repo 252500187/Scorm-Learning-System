@@ -12,9 +12,14 @@ import com.sls.user.entity.UserRole;
 import com.sls.user.service.UserService;
 import com.sls.util.DateUtil;
 import com.sls.util.DictConstant;
+import com.sls.util.FileUp;
+import com.sls.util.LoginUserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 
 @Service("userService")
@@ -89,5 +94,16 @@ public class UserServiceImpl implements UserService {
             userDao.delUser(Integer.parseInt(userId));
             userRoleDao.deleteUserRoleByUserId(userId);
         }
+    }
+
+    @Override
+    public void upHeadImg(HttpServletRequest request, String upImg) throws ServletException, IOException {
+        FileUp fileUp = new FileUp();
+        User user = new User();
+        int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        user.setUserId(userId);
+        user.setImgUrl(fileUp.upImg(request, DictConstant.USER_PHOTO_NAME, "", userId + DictConstant.PHOTO_FORM, upImg));
+        userDao.upUserPhoto(user);
+
     }
 }

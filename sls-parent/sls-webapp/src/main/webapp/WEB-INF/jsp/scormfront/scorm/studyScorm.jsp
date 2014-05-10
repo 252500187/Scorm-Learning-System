@@ -69,30 +69,31 @@
 
                     <div class="chat-form">
                         传张图片？
-                        <div class="form-group">
-                            <div class="col-md-9">
-                                <div class="fileinput fileinput-new" data-provides="fileinput">
-												<span class="btn default btn-file">
-													<span class="fileinput-new">
-														 选图
-													</span>
-													<span class="fileinput-exists">
-														 换一个
-													</span>
-													<input type="file" name="..." id="noteImg">
-												</span>
-												<span class="fileinput-filename">
-												</span>
-                                    <a href="#" class="close fileinput-exists" data-dismiss="fileinput"
-                                       style="float: none">
-                                    </a>
+                        <iframe style="border: 0">
+                            <div class="form-group">
+                                <div class="col-md-9">
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <span class="btn default btn-file">
+                                            <span class="fileinput-new">
+                                                 选图
+                                            </span>
+                                            <span class="fileinput-exists">
+                                                 换一个
+                                            </span>
+                                            <input type="file" name="..." id="noteImg">
+                                        </span>
+                                        <span class="row fileinput-filename"></span>
+                                        <a href="#" class="close fileinput-exists" data-dismiss="fileinput"
+                                           style="float: none">
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </iframe>
                         <div class="btn-cont">
 									<span class="arrow">
 									</span>
-                            <a onclick="alert('youdai')" class="btn blue icn-only">
+                            <a onclick="uploadImg()" class="btn blue icn-only">
                                 <i class="fa fa-check icon-white"></i>
                             </a>
                         </div>
@@ -309,7 +310,7 @@
             url: basePath + "user/scorm/takeNote",
             data: {
                 note: $("#takeNotes").val().trim(),
-                scormId:${scorm.scormId},
+                scormId:"${scorm.scormId}",
                 scoId: scoId
             },
             dataType: "json",
@@ -319,6 +320,10 @@
             },
             error: doError
         })
+    }
+
+    function uploadImg() {
+        alert($("#upImgName").val());
     }
 
     function getRandom() {
