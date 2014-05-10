@@ -81,7 +81,7 @@
                             </div>
                         </div>
 
-                        <div class="portlet-body">
+                        <div class="portlet-body" id="noteList">
                             <c:forEach var="note" items="${noteList}">
                                 <div class="note note-success">
                                     <h4 class="block">${note.date}</h4>

@@ -80,8 +80,8 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
 
     @Override
     public int addStudyNote(StudyNote studyNote) {
-        String sql = "INSERT INTO luss_study_note(user_id,scorm_id,sco_id, `date`, note) " +
-                "VALUES(:userId, :scormId, :scoId,:date, :note)";
+        String sql = "INSERT INTO luss_study_note(user_id,scorm_id,sco_id, `date`, note, note_type, img_path) " +
+                "VALUES(:userId, :scormId, :scoId,:date, :note, :noteType, :imgPath)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(studyNote), keyHolder);
         return keyHolder.getKey().intValue();
