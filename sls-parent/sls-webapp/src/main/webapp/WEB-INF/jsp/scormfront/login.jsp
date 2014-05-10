@@ -117,8 +117,9 @@
 
             <div class="input-icon">
                 <i class="fa fa-font"></i>
-                <input id="register_loginName"name="register_loginName" class="form-control placeholder-no-fix" type="text" placeholder="输入登陆帐号"
-                       />
+                <input id="register_loginName" name="register_loginName" class="form-control placeholder-no-fix"
+                       type="text" placeholder="输入登陆帐号"
+                        />
             </div>
         </div>
 
@@ -127,7 +128,8 @@
 
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
-                <input id="register_password" name="register_password" class="form-control placeholder-no-fix" type="password"
+                <input id="register_password" name="register_password" class="form-control placeholder-no-fix"
+                       type="password"
                        placeholder="输入登陆密码" name="password"/>
             </div>
         </div>
@@ -138,7 +140,8 @@
 
             <div class="input-icon">
                 <i class="fa fa-envelope"></i>
-                <input id="email"class="form-control placeholder-no-fix" type="text" placeholder="输入Email（密码找回）" name="email"/>
+                <input id="email" class="form-control placeholder-no-fix" type="text" placeholder="输入Email（密码找回）"
+                       name="email"/>
             </div>
         </div>
         <div class="form-group">
@@ -146,8 +149,8 @@
 
             <div class="input-icon">
                 <i class="fa fa-user"></i>
-                <input id="register_userName"name="register_userName" class="form-control placeholder-no-fix" type="text" placeholder="输入昵称"
-                      />
+                <input id="register_userName" name="register_userName" class="form-control placeholder-no-fix"
+                       type="text" placeholder="输入昵称"/>
             </div>
         </div>
         <div class="form-group">
@@ -165,9 +168,9 @@
             <button id="register-back-btn" type="button" class="btn">
                 <i class="m-icon-swapleft"></i> 返回
             </button>
-            <a id="register-submit-btn" class="btn blue pull-right" onclick=register() >
-                 <i class="m-icon-swapright m-icon-white"></i> 注册
-            </a>
+            <button type="submit" id="register-submit-btn" class="btn blue pull-right">
+                注册<i class="m-icon-swapright m-icon-white"></i>
+            </button>
         </div>
     </form>
 </div>
@@ -188,7 +191,7 @@
                 loginName: $("#register_loginName").val().trim(),
                 password: $("#register_password").val().md5(),
                 email: $("#email").val().trim(),
-                userName:$("#register_userName").val().trim()
+                userName: $("#register_userName").val().trim()
             },
             dataType: "json",
             type: "POST",

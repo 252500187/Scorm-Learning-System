@@ -161,7 +161,8 @@ var Login = function () {
                         required: true
                     },
                     register_password: {
-                        required: true
+                        required: true,
+                        minlength:6
                     },
                     email: {
                         required: true,
@@ -180,7 +181,8 @@ var Login = function () {
                         required: "请输入帐号"
                     },
                     register_password: {
-                        required: "请输入密码"
+                        required: "请输入密码",
+                        minlength:"密码最小长度为6"
                     },
                     email: {
                         required: "请输入邮箱"
@@ -218,7 +220,7 @@ var Login = function () {
                 },
 
                 submitHandler: function (form) {
-                    registe();
+                    findPassword();
                 }
             }
         )
@@ -227,7 +229,7 @@ var Login = function () {
         $('.register-form input').keypress(function (e) {
             if (e.which == 13) {
                 if ($('.register-form').validate().form()) {
-                    registe();
+                    findPassword();
                 }
                 return false;
             }
