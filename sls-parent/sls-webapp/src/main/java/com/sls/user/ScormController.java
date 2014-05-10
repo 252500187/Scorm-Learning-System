@@ -4,6 +4,7 @@ package com.sls.user;
 import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.StudyNote;
 import com.sls.scorm.service.ScormService;
+import com.sls.util.DictConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -57,6 +58,8 @@ public class ScormController {
     @RequestMapping(value = "takeNote", method = {RequestMethod.POST})
     @ResponseBody
     public void takeNote(StudyNote studyNote) {
+        studyNote.setNoteType(DictConstant.TEXT_TYPE);
+        studyNote.setImgPath("");
         scormService.addStudyNote(studyNote);
     }
 
@@ -82,6 +85,7 @@ public class ScormController {
     @RequestMapping(value = "upStudyImg", method = {RequestMethod.POST})
     public String upStudyImg(HttpServletRequest request, StudyNote studyNote) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
+        studyNote.setNoteType(DictConstant.IMG);
         scormService.upStudyImg(request, "noteImg", studyNote);
         request.setAttribute("close", "close");
         return "scormfront/scorm/studyNoteUpImg";

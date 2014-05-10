@@ -59,6 +59,16 @@
 </body>
 </html>
 <script>
+    function getNowDate() {
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = d.getMonth() + 1;
+        month = month < 10 ? ("0"+month) : month;
+        var day = date.getDate();
+        day = day <10 ? ("0"+day):day;
+        date = year + "-" + month + "-" + day;
+        return date;
+    }
     $(function (){
         if("${close}"!=""){
             window.close();
@@ -70,8 +80,11 @@
             alert("必须是图片格式！");
             return;
         }
-        alert("${scormId}+=${scoId}");
         $("#upImgForm").attr("method", "post").attr("action",
                 basePath + "user/scorm/upStudyImg?scormId=${scormId}&scoId=${scoId}").submit();
+//        $("#portlet-body",parent.document).prepend("<div class='note note-success'>" +
+//                "<h4 class='block'>"+getNowDate()+"</h4>"+
+//                "<img src='"+d+"'></img> </div>");
+//        parent.document.getElementById("noteList").append("aadhfdafsdgagdas");
     }
 </script>
