@@ -7,6 +7,8 @@ public class StudyNote {
     private int scoId;
     private String date;
     private String note;
+    private int noteType;
+    private String imgPath;
 
     public StudyNote() {
         date = "";
@@ -59,5 +61,21 @@ public class StudyNote {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public int getNoteType() {
+        return noteType;
+    }
+
+    public void setNoteType(int noteType) {
+        this.noteType = noteType;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
 }

@@ -33,7 +33,8 @@ public class DictConstant {
     public static final String USER_PHOTO_NAME = "users/userphoto";
     //图片格式
     public static final String PHOTO_FORM = ".jpg";
-
+    //笔记图片地址
+    public static final String STUDY_IMG = "scorms/studyImg";
 
     // SCO节点TYPE
     //根节点
