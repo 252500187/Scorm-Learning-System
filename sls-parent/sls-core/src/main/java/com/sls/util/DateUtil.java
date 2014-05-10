@@ -30,12 +30,52 @@ public class DateUtil {
      * 时：分：秒.毫秒
      */
     public static String getTotalTime(String sessionTime, String totalTime) {
-        if (("").equals(totalTime)) {
+        if (("").equals(totalTime.trim())) {
             return sessionTime;
         }
-        String[] sessionTimes = sessionTime.split(".");
-        String[] totalTimes = totalTime.split(".");
-        return "";
+        int[] sessionTimes = splitScormTime(sessionTime);
+        int[] totalTimes = splitScormTime(totalTime);
+        return calScormTimeSum(sessionTimes, totalTimes);
+    }
+
+    public static int[] splitScormTime(String time) {
+        int[] times = new int[4];
+        String[] secTimes = time.split(":");
+        String[] tsTime = secTimes[2].split("\\.");
+        //时
+        times[0] = Integer.parseInt(secTimes[0]);
+        //分
+        times[1] = Integer.parseInt(secTimes[1]);
+        //秒
+        times[2] = Integer.parseInt(tsTime[0]);
+        //毫秒
+        if (tsTime.length == 1) {
+            times[3] = 0;
+        } else {
+            times[3] = Integer.parseInt(tsTime[1]);
+        }
+        return times;
+    }
+
+    public static String calScormTimeSum(int[] oneTime, int[] timeTwo) {
+        int sumTime[] = new int[4];
+        sumTime[0] = oneTime[0] + timeTwo[0];
+        sumTime[1] = oneTime[1] + timeTwo[1];
+        sumTime[2] = oneTime[2] + timeTwo[2];
+        sumTime[3] = oneTime[3] + timeTwo[3];
+        if (sumTime[3] / 1000 > 0) {
+            sumTime[2]++;
+            sumTime[3] = sumTime[3] % 1000;
+        }
+        if (sumTime[2] / 60 > 0) {
+            sumTime[1]++;
+            sumTime[2] = sumTime[2] % 60;
+        }
+        if (sumTime[1] / 60 > 0) {
+            sumTime[0]++;
+            sumTime[1] = sumTime[1] % 60;
+        }
+        return sumTime[0] + ":" + sumTime[1] + ":" + sumTime[2] + "." + sumTime[3];
     }
 
     /**

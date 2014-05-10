@@ -27,7 +27,7 @@ public class ScoInfo {
         coreEntry = DictConstant.ENTRY_INI;
         coreScore = "";
         coreScoreRaw = "";
-        coreTotalTime = "0";
+        coreTotalTime = "";
         coreExit = "";
         coreSessionTime = "";
         suspendData = "";
