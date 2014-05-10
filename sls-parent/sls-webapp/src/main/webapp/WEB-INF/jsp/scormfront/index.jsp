@@ -475,6 +475,7 @@
 </div>
 </div>
 </div>
+<%@include file="index/footer.jsp" %>
 </body>
 </html>
 <script type="text/javascript">
@@ -482,11 +483,14 @@
         window.location.href = basePath + "tourist/scormInfo?scormId=" + scormId;
     }
 
-//    $(function () {
-//        $(window).bind('beforeunload', function () {
-//                alert('您输入的内容尚未保存，确定离开此页面吗？');
-//        });
-//    });
+    $(function () {
+        App.init();
+    })
+    //    $(function () {
+    //        $(window).bind('beforeunload', function () {
+    //                alert('您输入的内容尚未保存，确定离开此页面吗？');
+    //        });
+    //    });
 
     //$(window).onunload(function () {window.location.href=basePath+"/logout";});
     //$("body").bind("onUnload",window.location.href=basePath+"/logout");
