@@ -117,7 +117,7 @@
 
             <div class="input-icon">
                 <i class="fa fa-font"></i>
-                <input id="register_loginName" name="register_loginName" class="form-control placeholder-no-fix"
+                <input id="registerLoginName" name="registerLoginName" class="form-control placeholder-no-fix"
                        type="text" placeholder="输入登陆帐号"/>
             </div>
         </div>
@@ -127,7 +127,7 @@
 
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
-                <input id="register_password" name="register_password" class="form-control placeholder-no-fix"
+                <input id="registerPassword" name="registerPassword" class="form-control placeholder-no-fix"
                        type="password"
                        placeholder="输入登陆密码" name="password"/>
             </div>
@@ -158,7 +158,7 @@
             <button id="register-back-btn" type="button" class="btn">
                 <i class="m-icon-swapleft"></i> 返回
             </button>
-            <button id="register-submit-btn" class="btn blue pull-right" type="submit" >
+            <button id="register-submit-btn" class="btn blue pull-right" type="submit">
                 <i class="m-icon-swapright m-icon-white"></i> 注册
             </button>
         </div>
@@ -171,19 +171,18 @@
         App.init();
         Login.init();
     });
-
-//    $().ready(function() {
-//        $("#registerInfo").validate({
-//            debug:true
-//        });
-//    });
+    //    $().ready(function() {
+    //        $("#registerInfo").validate({
+    //            debug:true
+    //        });
+    //    });
 
     function register() {
         $.ajax({
             url: basePath + "tourist/register",
             data: {
-                loginName: $("#register_loginName").val().trim(),
-                password: $("#register_password").val().md5(),
+                loginName: $("#registerLoginName").val().trim(),
+                password: $("#registerPassword").val().md5(),
                 email: $("#email").val().trim()
             },
             dataType: "json",

@@ -157,20 +157,21 @@ var Login = function () {
                 focusInvalid: false, // do not focus the last invalid input
                 ignore: "",
                 rules: {
-                    register_loginName: {
+                    registerLoginName: {
                         required: true,
                         minlength: 6,
-                        maxlength: 20,
+                        maxlength: 50,
                         remote: {
                             url: basePath + "tourist/checkRepeatLoginName",
-                            type: "POST",
+                            type: "post",
                             dataType: "json",
                             data: {
-                                loginName: $("#register_loginName").val().trim()
-                            }
+                                registerLoginName: function () {
+                                    return $("#registerLoginName").val().trim();
+                                }}
                         }
                     },
-                    register_password: {
+                    registerPassword: {
                         required: true,
                         minlength: 6,
                         maxlength: 20
@@ -188,13 +189,13 @@ var Login = function () {
                 },
 
                 messages: { // custom messages for radio buttons and checkboxes
-                    register_loginName: {
+                    registerLoginName: {
                         required: "帐号为必填项",
                         minlength: "账号的长度最小为6位",
                         maxlength: "账号的长度最大为20位",
                         remote: "账号已存在"
                     },
-                    register_password: {
+                    registerPassword: {
                         required: "请输入密码",
                         minlength: "密码最小长度为6位",
                         maxlength: "密码最大长度为20位"
@@ -233,7 +234,6 @@ var Login = function () {
                 },
 
                 submitHandler: function (form) {
-
                     register();
                 }
             }

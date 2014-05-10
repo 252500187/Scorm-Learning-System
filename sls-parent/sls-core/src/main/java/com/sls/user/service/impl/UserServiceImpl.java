@@ -110,7 +110,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean checkRepeatLoginName(String loginName) {
-        Boolean hasRepeatLoginName = userDao.checkRepeatLoginName(loginName);
-        return hasRepeatLoginName;
+        return !userDao.checkRepeatLoginName(loginName);
     }
 }

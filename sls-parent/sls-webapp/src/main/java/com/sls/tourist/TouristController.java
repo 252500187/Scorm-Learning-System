@@ -32,7 +32,7 @@ public class TouristController {
 
     @RequestMapping(value = "checkRepeatLoginName", method = RequestMethod.POST)
     @ResponseBody
-    public boolean checkRepeatLoginName(@RequestParam("loginName") String loginName) {
+    public boolean checkRepeatLoginName(@RequestParam("registerLoginName") String loginName) {
         return userService.checkRepeatLoginName(loginName);
     }
 
