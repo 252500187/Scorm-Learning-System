@@ -86,4 +86,10 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(studyNote), keyHolder);
         return keyHolder.getKey().intValue();
     }
+
+    @Override
+    public List<StudyNote> getAllStudyNotesByScormIdAndUserId(StudyNote studyNote) {
+        String sql = "SELECT * FROM luss_study_note WHERE user_id = " + studyNote.getUserId() +" AND scorm_id = " + studyNote.getScormId();
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<StudyNote>(StudyNote.class));
+    }
 }

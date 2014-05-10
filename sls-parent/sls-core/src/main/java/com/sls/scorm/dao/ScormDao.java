@@ -28,4 +28,6 @@ public interface ScormDao {
     List<Scorm> findCollectScormByScormIdAndUserId(int scormId, int userId);
 
     int addStudyNote(StudyNote studyNote);
+
+    List<StudyNote> getAllStudyNotesByScormIdAndUserId(StudyNote studyNote);
 }

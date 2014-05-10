@@ -37,4 +37,6 @@ public interface ScormService {
     String collectScorm(int scormId, HttpServletRequest request);
 
     void addStudyNote(StudyNote studyNote);
+
+    void getAllStudyNotesByScormIdAndUserId(int i, HttpServletRequest request);
 }

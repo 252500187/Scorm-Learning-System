@@ -20,6 +20,7 @@ import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 @Transactional
@@ -117,6 +118,16 @@ public class ScormServiceImpl implements ScormService {
         studyNote.setDate(DateUtil.getSystemDate("yyyy-MM-dd"));
         studyNote.setUserId(userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
         scormDao.addStudyNote(studyNote);
+    }
+
+    @Override
+    public void getAllStudyNotesByScormIdAndUserId(int i, HttpServletRequest request) {
+        int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        StudyNote studyNote = new StudyNote();
+        studyNote.setScormId(i);
+        studyNote.setUserId(userId);
+        List<StudyNote> studyNoteList = scormDao.getAllStudyNotesByScormIdAndUserId(studyNote);
+        request.setAttribute("noteList",studyNoteList.size() == 0 ? new LinkedList<StudyNote>() : studyNoteList);
     }
 
     @Override
