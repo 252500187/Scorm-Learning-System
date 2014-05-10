@@ -131,6 +131,17 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
+    public void upStudyImg(HttpServletRequest request, String upImg, StudyNote studyNote) throws ServletException, IOException {
+        FileUp fileUp = new FileUp();
+        Date date = new Date();
+        int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        studyNote.setUserId(userId);
+        studyNote.setDate(DateUtil.getSystemDate("yyyy-MM-dd"));
+        studyNote.setImgPath(fileUp.upImg(request, DictConstant.STUDY_IMG, "/" + userId, studyNote.getScormId() + date.getTime() + DictConstant.PHOTO_FORM, upImg));
+        scormDao.addStudyNote(studyNote);
+    }
+
+    @Override
     public void studyScorm(int scormId, HttpServletRequest request) {
         Scorm scorm = scormDao.findScormInfoByScormId(scormId);
         if (scorm.getInUse() == DictConstant.NO_USE) {

@@ -8,8 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.xml.sax.SAXException;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPathExpressionException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,4 +71,20 @@ public class ScormController {
     public void commitScoApiInfo(ScoInfo scoInfo, @RequestParam("scormId") String scormId) {
         scormService.changeScoInfoByScoId(scoInfo, Integer.parseInt(scormId));
     }
+
+    @RequestMapping(value = "upStudyImgDo", method = {RequestMethod.GET})
+    public String upStudyImgDo(HttpServletRequest request, @RequestParam("scormId") String scormId, @RequestParam("scoId") String scoId) {
+        request.setAttribute("scormId", scormId);
+        request.setAttribute("scoId", scoId);
+        return "scormfront/scorm/studyNoteUpImg";
+    }
+
+    @RequestMapping(value = "upStudyImg", method = {RequestMethod.POST})
+    public String upStudyImg(HttpServletRequest request, StudyNote studyNote) throws ServletException, IOException, ParserConfigurationException, SAXException,
+            XPathExpressionException {
+        scormService.upStudyImg(request, "noteImg", studyNote);
+        request.setAttribute("close", "close");
+        return "scormfront/scorm/studyNoteUpImg";
+    }
+
 }
