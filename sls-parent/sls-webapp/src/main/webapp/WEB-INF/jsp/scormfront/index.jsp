@@ -31,7 +31,7 @@
         <h2>HOT TOP</h2>
 
         <div class="top-news col-md-12">
-            <a class="btn red sliderbar-transparency" onclick="showScormInfo(43)">
+            <a class="btn red sliderbar-transparency" onclick="showScormInfo(66)">
                 <span> TOP ONE</span>
                 <em>书名</em>
                 <em>
@@ -40,7 +40,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn green" onclick="showScormInfo(43)">
+            <a class="btn green" onclick="showScormInfo(66)">
                 <span> TOP TWO</span>
                 <em>书名</em>
                 <em>
@@ -49,7 +49,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn blue" onclick="showScormInfo(43)">
+            <a class="btn blue" onclick="showScormInfo(66)">
                 <span> TOP THREE</span>
                 <em>书名</em>
                 <em>
@@ -58,7 +58,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn yellow" onclick="showScormInfo(43)">
+            <a class="btn yellow" onclick="showScormInfo(66)">
                 <span> TOP FOUR</span>
                 <em>书名</em>
                 <em>
@@ -67,7 +67,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn purple" onclick="showScormInfo(43)">
+            <a class="btn purple" onclick="showScormInfo(66)">
                 <span> TOP FIVE</span>
                 <em>书名</em>
                 <em>
@@ -76,7 +76,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn red" onclick="showScormInfo(43)">
+            <a class="btn red" onclick="showScormInfo(66)">
                 <span> TOP ONE</span>
                 <em>书名</em>
                 <em>
@@ -85,7 +85,7 @@
                 </em>
                 <i class="fa fa-briefcase top-news-icon"></i>
             </a>
-            <a class="btn green" onclick="showScormInfo(43)">
+            <a class="btn green" onclick="showScormInfo(66)">
                 <span> TOP TWO</span>
                 <em>书名</em>
                 <em>
@@ -140,7 +140,7 @@
         </ul>
     </div>
 </div>
-<div id="showInfo" closed="true" modal="true" style="display: none;">
+<div id="showInfo" closed="true" modal="true" style="display: none;" class="ui">
     <iframe style="width: 100%;height: 100%"
             id="contentList"
             name="contentList"
@@ -494,9 +494,8 @@
         $("#contentList").attr("src", "tourist/scormInfo?scormId=" + scormId);
         $("#showInfo").attr("display","");
         $('#showInfo').dialog({
-            title: '兑现申请',
             height: 400,
-            width: 600
+            width: 800
         }).dialog('open');
     }
 

@@ -16,23 +16,23 @@
     <link rel="stylesheet" type="text/css" href="assets/css/pages/profile.css"/>
 </head>
 
-<body class="page-header-fixed">
+<body class="page-header-fixed" style="background-color: transparent">
 
-<%@include file="../index/navigationMenu.jsp" %>
+<%--<%@include file="../index/navigationMenu.jsp" %>--%>
 
-<div class="page-container">
-    <div class="page-content-wrapper">
-        <div class="row profile">
+<%--<div class="page-container">--%>
+    <%--<div class="page-content-wrapper">--%>
+        <%--<div class="row profile">--%>
             <div class="col-md-12">
                 <div class="tabbable tabbable-custom tabbable-full-width">
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1_1">
-                            <div class="row">
+                            <div class="row col-md-12" style="margin-left: 5px">
                                 <div class="col-md-2"></div>
-                                <div class="col-md-2">
+                                <div class="col-md-2" style="float: left;">
                                     <ul class="list-unstyled profile-nav">
                                         <li>
-                                            <img id="scormImg" class="img-responsive"
+                                            <img id="scormImg" class="img-responsive" style="max-width: 150px;max-height: 100px"
                                                  alt=""/>
                                             <i href="#" class="profile-edit">
 
@@ -44,7 +44,7 @@
                                     <div class="row">
                                         <div class="col-md-8 profile-info">
                                             <div class="row">
-                                                <div class="col-md-10">
+                                                <div style="width:60%;float: left">
                                                     <h1>${scormInfo.scormName}</h1>
                                                 </div>
                                                 <!--已注册-->
@@ -97,7 +97,7 @@
 
                                 </div>
                             </div>
-                            <div class="row" style="min-height: 500px">
+                            <div class="row" style="margin-left: 5px">
                                 <div class="col-md-1"></div>
                                 <div class="col-md-9">
                                     <div class="tabbable tabbable-custom tabbable-custom-profile">
@@ -164,12 +164,11 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-</div>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
 
-<%@include file="../index/footer.jsp" %>
+<%--<%@include file="../index/footer.jsp" %>--%>
 </body>
 <!-- END BODY -->
 </html>
