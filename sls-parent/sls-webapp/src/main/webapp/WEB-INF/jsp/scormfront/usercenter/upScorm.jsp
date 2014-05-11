@@ -96,7 +96,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-actions fluid">
+                    <div class="form-actions">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="col-md-offset-3 col-md-9">
@@ -113,16 +113,14 @@
         </div>
     </div>
 </div>
-
-
 </body>
 </html>
 <script>
     jQuery(document).ready(function () {
         App.init();
-        App.unblockUI();
         if ("${result}" != "") {
-            alert("${result}");
+            parent.$("#alertMessage").html("${result}");
+            parent.$("#alertButton").click();
         }
     });
 

@@ -41,16 +41,20 @@
 <script src="<c:url value="/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/bootstrap/js/bootstrap.min.js"/>" type="text/javascript"></script>
 
-<script src="<c:url value="/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"/>"
+        type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"/>"
+        type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/jquery.blockui.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/jquery.cokie.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/uniform/jquery.uniform.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/data-tables/jquery.dataTables.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/data-tables/DT_bootstrap.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"/>"
+        type="text/javascript"></script>
 
-<script src="<c:url value="/assets/plugins/jquery-validation/dist/jquery.validate.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jquery-validation/dist/jquery.validate.min.js"/>"
+        type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/backstretch/jquery.backstretch.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/select2/select2.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/scripts/custom/ecommerce-orders-view.js"/>" type="text/javascript"></script>
@@ -64,18 +68,23 @@
 <script src="<c:url value="/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js"/>"
+        type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/assets/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js"/>"
+        type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/flot/jquery.flot.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/flot/jquery.flot.resize.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/flot/jquery.flot.categories.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/jquery.pulsate.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/bootstrap-daterangepicker/moment.min.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap-daterangepicker/daterangepicker.js"/>"
+        type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/gritter/js/jquery.gritter.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/assets/plugins/fullcalendar/fullcalendar/fullcalendar.min.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/assets/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/fullcalendar/fullcalendar/fullcalendar.min.js"/>"
+        type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.js"/>"
+        type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/jquery.sparkline.min.js"/>" type="text/javascript"></script>
 
 <script src="<c:url value="/assets/scripts/custom/index.js"/>" type="text/javascript"></script>
@@ -84,14 +93,22 @@
 <script src="<c:url value="/assets/plugins/dropzone/dropzone.js"/>"></script>
 <script src="<c:url value="/assets/scripts/custom/form-dropzone.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/assets/plugins/fuelux/js/spinner.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/assets/plugins/bootstrap-fileinput/bootstrap-fileinput.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/assets/plugins/jquery.input-ip-address-control-1.0.min.js"/>"></script>
-<script src="<c:url value="/assets/plugins/jquery.pwstrength.bootstrap/src/pwstrength.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/assets/plugins/jquery-tags-input/jquery.tagsinput.min.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js"/>" type="text/javascript"></script>
+<script type="text/javascript"
+        src="<c:url value="/assets/plugins/bootstrap-fileinput/bootstrap-fileinput.js"/>"></script>
+<script type="text/javascript"
+        src="<c:url value="/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"/>"></script>
+<script type="text/javascript"
+        src="<c:url value="/assets/plugins/jquery.input-ip-address-control-1.0.min.js"/>"></script>
+<script src="<c:url value="/assets/plugins/jquery.pwstrength.bootstrap/src/pwstrength.js"/>"
+        type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js"/>"
+        type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/jquery-tags-input/jquery.tagsinput.min.js"/>"
+        type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js"/>"
+        type="text/javascript"></script>
+<script src="<c:url value="/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js"/>"
+        type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/typeahead/handlebars.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/typeahead/typeahead.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/scripts/custom/components-form-tools.js"/>"></script>
@@ -104,10 +121,12 @@
 
 <script src="<c:url value="/assets/plugins/jquery-knob/js/jquery.knob.js"/>"></script>
 <script src="<c:url value="/assets/scripts/custom/components-knob-dials.js"/>"></script>
-
+<script src="<c:url value="/assets/scripts/custom/ui-general.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/assets/plugins/jquery-bootpag/jquery.bootpag.min.js"/>"></script>
 
 <link href="<c:url value="/assets/plugins/dropzone/css/dropzone.css"/>" rel="stylesheet"/>
-<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
+      type="text/css"/>
 <link href="<c:url value="/assets/plugins/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/uniform/css/uniform.default.css"/>" rel="stylesheet" type="text/css"/>
@@ -138,10 +157,13 @@
 <link href="<c:url value="/assets/plugins/bootstrap-datepicker/css/datepicker.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/assets/plugins/jquery-file-upload/server/gae-go/static/favicon.ico"/>" rel="shortcut icon"/>
 
-<link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/bootstrap-fileinput/bootstrap-fileinput.css"/>"/>
-<link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/bootstrap-switch/css/bootstrap-switch.min.css"/>"/>
+<link rel="stylesheet" type="text/css"
+      href="<c:url value="/assets/plugins/bootstrap-fileinput/bootstrap-fileinput.css"/>"/>
+<link rel="stylesheet" type="text/css"
+      href="<c:url value="/assets/plugins/bootstrap-switch/css/bootstrap-switch.min.css"/>"/>
 <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/jquery-tags-input/jquery.tagsinput.css"/>"/>
-<link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css"/>">
+<link rel="stylesheet" type="text/css"
+      href="<c:url value="/assets/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css"/>">
 <link rel="stylesheet" type="text/css" href="<c:url value="/assets/plugins/typeahead/typeahead.css"/>">
 <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/pages/promo.css"/>">
 <link rel="stylesheet" type="text/css" href="<c:url value="/assets/css/animate.css"/>">

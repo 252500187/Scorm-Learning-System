@@ -95,9 +95,10 @@
 </html>
 <script>
     $(function () {
-        if ("${result}" != "") {
-            alert("${result}");
-            parent.window.location.href = basePath + "user/center/userCenterDo";
+        if ("${photoUrl}" != "") {
+            parent.$("#userHeadPhoto").attr("src", basePath + "${photoUrl}");
+            parent.$("#alertMessage").html("修改成功");
+            parent.$("#alertButton").click();
         }
         $("#sexMale").attr("checked", true);
         if ("${user.sex}" == "0") {
@@ -110,8 +111,7 @@
     });
     function changeUserInfo() {
         $.ajax({
-            async: false,
-            url: basePath + "user/center/changeUserInfo",
+            url: basePath + "user/center/editUserInfo",
             data: {
                 userId: ${user.userId},
                 userName: $("#nickName").val().trim(),
@@ -120,12 +120,13 @@
             dataType: "json",
             type: "POST",
             success: function () {
+                parent.$("#userName").html($("#nickName").val().trim());
                 if ($("#upImg").val() != "") {
                     $("#userInfo").attr("method", "post").attr("action",
                             basePath + "user/center/upHeadImg").submit();
                 } else {
-                    alert("修改成功");
-                    parent.location.reload();
+                    parent.$("#alertMessage").html("修改成功");
+                    parent.$("#alertButton").click();
                 }
             },
             error: doError

@@ -13,6 +13,8 @@
 
 <%@include file="../index/navigationMenu.jsp" %>
 
+<div class="clearfix">
+</div>
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
     <!-- BEGIN SIDEBAR -->
@@ -29,18 +31,14 @@
                 <!-- 用户信息 -->
                 <li>
                     <a>
-                        <i class="fa fa-user"></i>
-                        <span class="title"> <big>昵称:${user.userName}</big></span>
-                        <br/>
-                        <span class="title" style="margin-left: 30px">等级:&nbsp;&nbsp;${user.levelName} </span>
+                        <i class="fa fa-user"></i><br/>
+                        <span class="title"><big id="userName">昵称:<br/>${user.userName}</big></span><br/>
+                        <span class="title" style="margin-left: 30px">等级:&nbsp;&nbsp;${user.levelName}</span>
 
                         <div class="info-container" align="center" style="margin-top:0px;">
-
                             <img id="userHeadPhoto" class="avatar img-responsive" alt="用户头像"
                                  style="width:155px;height:100px"/>
-
                         </div>
-
                     </a>
                 </li>
                 <!-- 第一个菜单  个人资料-->
@@ -120,7 +118,7 @@
         <div class="page-content">
             <div class="row">
                 <div class="col-md-12">
-                    <iframe id="ifra" style="width:100%; height:800px;border:0px" frameborder=no scrolling="no"
+                    <iframe id="ifra" style="width:100%; height:800px;border:0px;padding-left: 6px" frameborder=no scrolling="no"
                             allowfullscreen>
                     </iframe>
                 </div>
@@ -132,6 +130,25 @@
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
 <%@include file="../index/footer.jsp" %>
+
+<div id="alertModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p id="alertMessage">
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn blue" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="#alertModel" data-toggle="modal" id="alertButton"/>
 </body>
 </html>
 <script>

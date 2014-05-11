@@ -61,9 +61,9 @@ public class UserCenterController {
         return "scormfront/usercenter/userInfo";
     }
 
-    @RequestMapping(value = "changeUserInfo", method = {RequestMethod.POST})
+    @RequestMapping(value = "editUserInfo", method = {RequestMethod.POST})
     @ResponseBody
-    public void changeUserInfo(User user) {
+    public void editUserInfo(User user) {
         userService.editUser(user);
     }
 
@@ -72,7 +72,6 @@ public class UserCenterController {
             XPathExpressionException {
         userService.upHeadImg(request, "upImg");
         userCenterService.toUserInfo(request);
-        request.setAttribute("result","修改成功");
         return "scormfront/usercenter/userInfo";
     }
 
