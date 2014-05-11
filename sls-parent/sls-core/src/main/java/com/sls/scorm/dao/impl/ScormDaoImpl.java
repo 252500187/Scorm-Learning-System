@@ -89,7 +89,7 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
 
     @Override
     public List<StudyNote> getAllStudyNotesByScormIdAndUserId(StudyNote studyNote) {
-        String sql = "SELECT * FROM luss_study_note WHERE user_id =? AND scorm_id = ? ORDER BY DATE DESC ";
+        String sql = "SELECT * FROM luss_study_note WHERE user_id =? AND scorm_id = ? ORDER BY note_id DESC ";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<StudyNote>(StudyNote.class), studyNote.getUserId(), studyNote.getScormId());
     }
 

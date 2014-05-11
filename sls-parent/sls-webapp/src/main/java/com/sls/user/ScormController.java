@@ -83,12 +83,12 @@ public class ScormController {
     }
 
     @RequestMapping(value = "upStudyImg", method = {RequestMethod.POST})
-    public String upStudyImg(HttpServletRequest request, StudyNote studyNote) throws ServletException, IOException, ParserConfigurationException, SAXException,
+    public void upStudyImg(HttpServletRequest request, StudyNote studyNote) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
         studyNote.setNoteType(DictConstant.IMG);
         scormService.upStudyImg(request, "noteImg", studyNote);
-        request.setAttribute("close", "close");
-        return "scormfront/scorm/studyNoteUpImg";
+//        request.setAttribute("close", "close");
+//        return "scormfront/scorm/studyNoteUpImg";
     }
 
 }
