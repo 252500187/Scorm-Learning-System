@@ -24,7 +24,7 @@
                     redirUrl: 'logout',
                     logoutUrl: 'logout',
                     warnAfter: 3600000,
-                    redirAfter: 3605000
+                    redirAfter: 3610000
                 });
             });
         })
