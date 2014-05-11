@@ -58,8 +58,9 @@
 	<bean class="com.core.web.handler.CustomSimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
-				<!--<prop key="org.apache.shiro.authz.UnauthorizedException">/</prop>-->
+				<prop key="org.apache.shiro.authz.UnauthorizedException">scormfront/login</prop>
 				<prop key="java.lang.Throwable">includes/error500</prop>
+                <prop key="java.lang.Exception">includes/error500</prop>
             </props>
 		</property>
     </bean>

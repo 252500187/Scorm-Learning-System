@@ -142,6 +142,12 @@
 <script src="<c:url value="/assets/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>"
         type="text/javascript"></script>
 
+<script src="<c:url value="/assets/scripts/custom/charts.js"/>"></script>
+<script src="<c:url value="/assets/plugins/flot/jquery.flot.pie.min.js"/>"></script>
+<script src="<c:url value="/assets/plugins/flot/jquery.flot.stack.min.js"/>"></script>
+<script src="<c:url value="/assets/plugins/flot/jquery.flot.crosshair.min.js"/>"></script>
+
+
 <link href="<c:url value="/assets/plugins/dropzone/css/dropzone.css"/>" rel="stylesheet"/>
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
       type="text/css"/>
