@@ -9,7 +9,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta content="" name="description"/>
     <meta content="" name="author"/>
-    <%@include file="../../../includes/common.jsp" %>
+    <%@include file="../../includes/common.jsp" %>
 </head>
 <body>
 <div class="row">
@@ -118,9 +118,12 @@
 </body>
 </html>
 <script>
-
     jQuery(document).ready(function () {
         App.init();
+        App.unblockUI();
+        if ("${result}" != "") {
+            alert("${result}");
+        }
     });
 
     $('#fileGetUp').validate({
@@ -137,7 +140,7 @@
                     },
                     upScorm: {
                         required: true,
-                        isZip:true
+                        isZip: true
                     },
                     description: {
                         required: true

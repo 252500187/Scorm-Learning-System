@@ -119,9 +119,11 @@
     <div class="page-content-wrapper">
         <div class="page-content">
             <div class="row">
-                <iframe id="ifra" style="width:100%; height:800px;border:0px" frameborder=no scrolling="no"
-                        allowfullscreen>
-                </iframe>
+                <div class="col-md-12">
+                    <iframe id="ifra" style="width:100%; height:800px;border:0px" frameborder=no scrolling="no"
+                            allowfullscreen>
+                    </iframe>
+                </div>
             </div>
         </div>
     </div>
@@ -143,7 +145,7 @@
 
     $(function () {
         addTab('user/center/userInfoDo');
-        $("#userHeadPhoto").attr("src","http://www.placehold.it/200x150/EFEFEF/AAAAAA &amp;text=no+image");
+        $("#userHeadPhoto").attr("src", "http://www.placehold.it/200x150/EFEFEF/AAAAAA &amp;text=no+image");
         if ("${user.imgUrl}" != "") {
             $("#userHeadPhoto").attr("src", basePath + "${user.imgUrl}");
         }

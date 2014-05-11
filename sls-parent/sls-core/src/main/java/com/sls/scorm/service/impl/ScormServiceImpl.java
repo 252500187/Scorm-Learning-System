@@ -60,6 +60,7 @@ public class ScormServiceImpl implements ScormService {
                 scoInfo.setLaunchData(scoNode.getLaunchData());
                 scoDao.addScoInfo(scoInfo);
             }
+            request.setAttribute("result", "上传成功");
         } catch (Exception e) {
             request.setAttribute("result", "上传失败");
         }

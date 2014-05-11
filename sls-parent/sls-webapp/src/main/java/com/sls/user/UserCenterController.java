@@ -44,14 +44,14 @@ public class UserCenterController {
     //个人中心  上传课件
     @RequestMapping(value = "upScormDo", method = {RequestMethod.GET})
     public String upScormDo() {
-        return "scormfront/usercenter/upscorm/upScorm";
+        return "scormfront/usercenter/upScorm";
     }
 
     @RequestMapping(value = "upScorm", method = {RequestMethod.POST})
     public String upScorm(HttpServletRequest request, Scorm scorm) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
         upScormService.upScorm(request, "upScorm", "upImg", scorm);
-        return "scormfront/usercenter/upscorm/upScorm";
+        return "scormfront/usercenter/upScorm";
     }
 
     //个人中心  个人资料
@@ -67,11 +67,12 @@ public class UserCenterController {
         userService.editUser(user);
     }
 
-    @RequestMapping(value = "upHeadImgDo", method = {RequestMethod.POST})
-    public String upHeadImgDo(HttpServletRequest request) throws ServletException, IOException, ParserConfigurationException, SAXException,
+    @RequestMapping(value = "upHeadImg", method = {RequestMethod.POST})
+    public String upHeadImg(HttpServletRequest request) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
         userService.upHeadImg(request, "upImg");
         userCenterService.toUserInfo(request);
+        request.setAttribute("result","修改成功");
         return "scormfront/usercenter/userInfo";
     }
 

@@ -56,6 +56,7 @@
                                     <input id="nickName"
                                            class="form-control form-control-inline input-medium date-picker"
                                            type="text"
+                                           maxlength="20"
                                            value="${user.userName}">
                                 </div>
                             </div>
@@ -75,7 +76,7 @@
                                     <div class="col-md-offset-3 col-md-9">
                                         <a onclick="changeUserInfo()" class="btn purple"><i
                                                 class="fa fa-check"></i>
-                                            确定修改
+                                            修改
                                         </a>
                                     </div>
                                 </div>
@@ -94,7 +95,10 @@
 </html>
 <script>
     $(function () {
-
+        if ("${result}" != "") {
+            alert("${result}");
+            parent.window.location.href = basePath + "user/center/userCenterDo";
+        }
         $("#sexMale").attr("checked", true);
         if ("${user.sex}" == "0") {
             $("#sexFemale").attr("checked", true);
@@ -103,8 +107,6 @@
         if ("${user.imgUrl}" != "") {
             $("#userPhoto").attr("src", basePath + "${user.imgUrl}");
         }
-
-
     });
     function changeUserInfo() {
         $.ajax({
@@ -118,12 +120,15 @@
             dataType: "json",
             type: "POST",
             success: function () {
-                alert("修改资料成功");
-                parent.location.reload();
+                if ($("#upImg").val() != "") {
+                    $("#userInfo").attr("method", "post").attr("action",
+                            basePath + "user/center/upHeadImg").submit();
+                } else {
+                    alert("修改成功");
+                    parent.location.reload();
+                }
             },
             error: doError
         })
-        $("#userInfo").attr("method", "post").attr("action",
-                basePath + "user/center/upHeadImgDo").submit();
     }
 </script>
