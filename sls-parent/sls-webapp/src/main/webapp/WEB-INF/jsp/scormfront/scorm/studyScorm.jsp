@@ -336,7 +336,7 @@
             data: {
                 note: $("#takeNotes").val().trim(),
                 scormId: "${scorm.scormId}",
-                scoId: scoId
+                scoId: nowScoId
             },
             dataType: "json",
             type: "POST",
