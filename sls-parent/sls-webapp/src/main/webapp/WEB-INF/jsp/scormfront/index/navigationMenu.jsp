@@ -7,7 +7,7 @@
     <div class="header navbar navbar-inverse navbar-fixed-top">
         <div class="header-inner">
             <a class="navbar-brand" style="padding-top: 0" href="">
-                <img src="img/logo/logo-small.png" alt="SLS" class="img-responsive"/>
+                <img src="img/logo/logoSmall.png" alt="SLS" class="img-responsive"/>
             </a>
         </div>
         <a onclick="studyScorm('43')">学习ID为9的课件</a>
