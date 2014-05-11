@@ -51,7 +51,7 @@ public class UserCenterController {
     public String upScorm(HttpServletRequest request, Scorm scorm) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
         upScormService.upScorm(request, "upScorm", "upImg", scorm);
-        return "scormfront/usercenter/upscorm/upResult";
+        return "scormfront/usercenter/upscorm/upScorm";
     }
 
     //个人中心  个人资料

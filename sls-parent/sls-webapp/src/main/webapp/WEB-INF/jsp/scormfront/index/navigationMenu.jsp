@@ -10,8 +10,8 @@
                 <img src="img/logo/logoSmall.png" alt="SLS" class="img-responsive"/>
             </a>
         </div>
-        <a onclick="studyScorm('43')">学习ID为9的课件</a>
-        <a onclick="registerScorm('43')">点我注册ID为9的课件</a>
+        <a onclick="studyScorm('66')">学习ID为9的课件</a>
+        <a onclick="registerScorm('66')">点我注册ID为9的课件</a>
         <ul class="nav navbar-nav pull-right">
             <c:if test="${sessionScope.userId==null||sessionScope.userId==''}">
                 <li class="dropdown">
