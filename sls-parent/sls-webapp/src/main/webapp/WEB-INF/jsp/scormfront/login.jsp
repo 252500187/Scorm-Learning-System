@@ -188,7 +188,8 @@
             dataType: "json",
             type: "POST",
             success: function () {
-                alert("注册成功");
+                jQuery('.register-form').hide();
+                jQuery('.login-form').show();
             },
             error: doError
         })

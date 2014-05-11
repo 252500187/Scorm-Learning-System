@@ -23,7 +23,6 @@ public class UserCenterServiceImpl implements UserCenterService {
         User user = userList.get(0);
         user.setLevelName(userDao.findUserLevelNameByScore(user.getScore()).getLevelName());
         request.setAttribute("user",user);
-         //todo 传递个人中心需要的数据
     }
 
     @Override
