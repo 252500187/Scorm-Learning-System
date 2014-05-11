@@ -47,7 +47,7 @@ public class ScormServiceImpl implements ScormService {
             Date date = new Date();
             int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
             String fileName = date.getTime() + userId + "";
-            scorm.setScormName(BaseUtil.iso2utf(scorm.getScormName()));
+//            scorm.setScormName(BaseUtil.iso2utf(scorm.getScormName()));
             scorm.setImgPath(fileUp.upImg(request, DictConstant.TOP_SCORM_FILE_NAME, "/" + fileName, DictConstant.SCORM_IMG, upImg));
             scorm.setUploadUserId(userId);
             int scormId = scormDao.addScorm(scorm);
