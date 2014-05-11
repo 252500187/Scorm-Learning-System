@@ -358,7 +358,10 @@
         }
         $("#upImgForm").attr("method", "post").attr("action",
                 basePath + "user/scorm/upStudyImg?scormId=" + scormId + "&scoId=" + scoId).submit();
-        $(span.fileinput - filename).html("");
+        $("#noteList").prepend("<div class='note note-success'>" +
+                                " <h4 class='block'>"+getNowDate()+"</h4><p>图片" + $("#noteImg").val() + "上传成功！</p></div>"
+                        )
+//        $(span.(fileinput - filename)).attr("value","");
     }
 
     function getRandom() {
@@ -373,7 +376,6 @@
         $.fn.zTree.getZTreeObj("menuTree").expandAll(true);
         var i = Math.floor(Math.random() * 10);
         $("#scormIframe").attr("src", basePath + "img/studyscormdefaultimg/" + i + ".jpg");
-//        $("#upImgIframe").attr("src", basePath + "user/scorm/upStudyImgDo?scormId=" + scormId + "&scoId="+nowScoId);
         if (scoId != "") {
             if (confirm("是否继续上次学习进度")) {
                 $("#scormIframe").attr("src", scoSrc);
