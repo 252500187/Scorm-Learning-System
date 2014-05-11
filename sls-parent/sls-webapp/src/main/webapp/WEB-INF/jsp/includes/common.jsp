@@ -14,6 +14,21 @@
     $(function () {
         JC.inputInit();
 
+        $(function () {
+            jQuery(document).ready(function () {
+                App.init();
+                $.sessionTimeout({
+                    title: '提示',
+                    message: '您已经学习很久了（60分钟），要不要出去溜达溜达？',
+                    keepAliveUrl: '',
+                    redirUrl: 'logout',
+                    logoutUrl: 'logout',
+                    warnAfter: 3600000,
+                    redirAfter: 3605000
+                });
+            });
+        })
+
         jQuery.validator.addMethod("isImg", function (value, element, param) {
             if (param) {
                 var imgType = value.substr(value.length - 3, 3);
@@ -123,6 +138,9 @@
 <script src="<c:url value="/assets/scripts/custom/components-knob-dials.js"/>"></script>
 <script src="<c:url value="/assets/scripts/custom/ui-general.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/assets/plugins/jquery-bootpag/jquery.bootpag.min.js"/>"></script>
+
+<script src="<c:url value="/assets/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>"
+        type="text/javascript"></script>
 
 <link href="<c:url value="/assets/plugins/dropzone/css/dropzone.css"/>" rel="stylesheet"/>
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"

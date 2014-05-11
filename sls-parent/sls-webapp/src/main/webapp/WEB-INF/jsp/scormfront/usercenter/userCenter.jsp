@@ -30,7 +30,7 @@
                 </li>
                 <!-- 用户信息 -->
                 <li>
-                    <a>
+                    <a onclick="addTab('user/center/userCenterInfo')">
                         <i class="fa fa-user"></i><br/>
                         <span class="title"><big id="userName">昵称:<br/>${user.userName}</big></span><br/>
                         <span class="title" style="margin-left: 30px">等级:&nbsp;&nbsp;${user.levelName}</span>
