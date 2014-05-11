@@ -13,6 +13,25 @@
 <script>
     $(function () {
         JC.inputInit();
+
+        jQuery.validator.addMethod("isImg", function (value, element, param) {
+            if (param) {
+                var imgType = value.substr(value.length - 3, 3);
+                if ((imgType != "jpg") && (imgType != "png") && (imgType != "gif")) {
+                    return false;
+                }
+                return true;
+            }
+        }, "请选择图片文件");
+
+        jQuery.validator.addMethod("isZip", function (value, element, param) {
+            if (param) {
+                if (value.substr(value.length - 3, 3) != "zip") {
+                    return false;
+                }
+                return true;
+            }
+        }, "请选择Zip文件");
     })
 </script>
 

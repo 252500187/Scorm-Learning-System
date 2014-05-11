@@ -27,7 +27,7 @@
 
                             <div class="col-md-3">
                                 <input class="form-control form-control-inline input-medium date-picker"
-                                       id="scormName" type="text" value=""/>
+                                       id="scormName" name="scormName" type="text" value=""/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -44,15 +44,15 @@
                                          style="max-width: 200px; max-height: 150px;">
                                     </div>
                                     <div>
-													<span class="btn default btn-file">
-														<span class="fileinput-new">
-															 选择
-														</span>
-														<span class="fileinput-exists">
-															 换一个
-														</span>
-														<input type="file" name="upImg" id="upImg"/>
-													</span>
+                                        <span class="btn default btn-file">
+                                            <span class="fileinput-new">
+                                                 选择
+                                            </span>
+                                            <span class="fileinput-exists">
+                                                 换一个
+                                            </span>
+                                            <input type="file" name="upImg" id="upImg"/>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="clearfix margin-top-10">
@@ -70,21 +70,19 @@
                             <div class="col-md-9">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="input-group input-large">
-                                        <div class="form-control uneditable-input span3"
-                                             data-trigger="fileinput">
+                                        <div class="form-control uneditable-input span3" data-trigger="fileinput">
                                             <i class="fa fa-file fileinput-exists"></i>&nbsp;
-														<span class="fileinput-filename">
-														</span>
+                                            <span class="fileinput-filename"></span>
                                         </div>
-													<span class="input-group-addon btn default btn-file">
-														<span class="fileinput-new">
-															 选择
-														</span>
-														<span class="fileinput-exists">
-															 换一个
-														</span>
-														<input type="file" name="upScorm" id="upScorm"/>
-													</span>
+                                        <span class="input-group-addon btn default btn-file">
+                                            <span class="fileinput-new">
+                                                 选择
+                                            </span>
+                                            <span class="fileinput-exists">
+                                                 换一个
+                                            </span>
+                                            <input type="file" name="upScorm" id="upScorm"/>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -102,10 +100,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="col-md-offset-3 col-md-9">
-                                    <a onclick="fileUpAttachment()" class="btn purple"><i
+                                    <button class="btn purple" type="submit"><i
                                             class="fa fa-check"></i>
                                         上传
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -124,21 +122,59 @@
         App.init();
     });
 
-    function fileUpAttachment() {
-        if ($("#scormName").val().trim() == "") {
-            alert("请输入名称！");
-            return;
-        }
-        var imgType = $("#upImg").val().substr($("#upImg").val().length - 3, 3);
-        if ((imgType != "jpg") && (imgType != "png") && (imgType != "gif")) {
-            alert("必须是图片格式！");
-            return;
-        }
-        if ($("#upScorm").val().substr($("#upScorm").val().length - 3, 3) != "zip") {
-            alert("必须是zip格式!");
-            return;
-        }
-        $("#fileGetUp").attr("action",
-                basePath + "user/center/upScorm?scormName=" + $("#scormName").val()).submit();
-    }
+    $('#fileGetUp').validate({
+                errorElement: 'span',
+                errorClass: 'help-block',
+                focusInvalid: false,
+                rules: {
+                    scormName: {
+                        required: true
+                    },
+                    upImg: {
+                        required: true,
+                        isImg: true
+                    },
+                    upScorm: {
+                        required: true,
+                        isZip:true
+                    },
+                    description: {
+                        required: true
+                    }
+                },
+
+                messages: {
+                    scormName: {
+                        required: "请输入课件名称"
+                    },
+                    upImg: {
+                        required: "请选择图片"
+                    },
+                    upScorm: {
+                        required: "请选择课件"
+                    },
+                    description: {
+                        required: "请输入课件简介"
+                    }
+                },
+                highlight: function (element) {
+                    $(element).closest('.form-group').addClass('has-error');
+                },
+                success: function (label) {
+                    label.closest('.form-group').removeClass('has-error');
+                    label.remove();
+                },
+                errorPlacement: function (error, element) {
+                    if (element.attr("name") == "upImg" || element.attr("name") == "upScorm") {
+                        error.insertAfter(element.parent().parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                },
+                submitHandler: function () {
+                    $("#fileGetUp").attr("action",
+                            basePath + "user/center/upScorm?scormName=" + $("#scormName").val()).submit();
+                }
+            }
+    );
 </script>
