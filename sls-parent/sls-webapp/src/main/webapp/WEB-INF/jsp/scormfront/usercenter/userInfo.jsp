@@ -24,16 +24,6 @@
                                 <label class="control-label col-md-2"><h3></h3></label>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-2">昵称</label>
-
-                                <div class="col-md-9">
-                                    <input id="nickName"
-                                           class="form-control form-control-inline input-medium date-picker"
-                                           type="text"
-                                           value="${user.userName}">
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label class="control-label col-md-2">头像</label>
 
                                 <div class="col-md-9">
@@ -59,7 +49,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">昵称</label>
 
+                                <div class="col-md-9">
+                                    <input id="nickName"
+                                           class="form-control form-control-inline input-medium date-picker"
+                                           type="text"
+                                           value="${user.userName}">
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="control-label col-md-2">性别</label>
 
