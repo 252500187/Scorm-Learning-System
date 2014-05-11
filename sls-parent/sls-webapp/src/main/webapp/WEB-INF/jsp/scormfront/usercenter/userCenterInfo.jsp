@@ -1,16 +1,19 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: genghis4
-  Date: 14-5-11
-  Time: 下午6:11
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title></title>
+    <%@include file="../../includes/common.jsp" %>
 </head>
 <body>
+<h3>Animated</h3>
 
+<div class="progress progress-striped active">
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+         aria-valuemax="100" style="width: 40%">
+									<span class="sr-only">
+										 40% Complete (success)
+									</span>
+    </div>
+</div>
 </body>
 </html>
