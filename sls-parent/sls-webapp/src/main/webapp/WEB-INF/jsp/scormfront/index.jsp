@@ -140,16 +140,6 @@
         </ul>
     </div>
 </div>
-<div id="showInfo" closed="true" modal="true" style="display: none;" class="ui">
-    <iframe style="width: 100%;height: 100%"
-            id="contentList"
-            name="contentList"
-            marginheight="0"
-            marginwidth="0"
-            frameborder="0" src=""
-            allowTransparency="true">
-    </iframe>
-</div>
 <div class="col-md-9">
 <div class="page-content-wrapper">
 <div class="row" style="margin-left: 0;margin-right: 0;">
@@ -486,22 +476,34 @@
 </div>
 </div>
 <%@include file="index/footer.jsp" %>
+
+<div id="alertModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">课件信息</h4>
+            </div>
+            <div class="modal-body">
+                <iframe id="scormInfo" style="width:100%; height:500px;border:0px;" frameborder=no allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="#alertModel" data-toggle="modal" id="alertButton"/>
+
 </body>
 </html>
 <script type="text/javascript">
     function showScormInfo(scormId) {
-        $("#contentList")[0].contentWindow.document.write("");
-        $("#contentList").attr("src", "tourist/scormInfo?scormId=" + scormId);
-        $("#showInfo").attr("display","");
-        $('#showInfo').dialog({
-            height: 400,
-            width: 800
-        }).dialog('open');
+        $("#alertButton").click();
+        $("#scormInfo").attr("src", "tourist/scormInfo?scormId=" + scormId);
     }
 
-//    function linkScormInfo(scormId) {
-//        window.location.href = basePath + "tourist/scormInfo?scormId=" + scormId;
-//    }
+    //    function linkScormInfo(scormId) {
+    //        window.location.href = basePath + "tourist/scormInfo?scormId=" + scormId;
+    //    }
 
     $(function () {
         App.init();
