@@ -119,6 +119,7 @@
             type: "POST",
             success: function () {
                 alert("修改资料成功");
+                parent.location.reload();
             },
             error: doError
         })
