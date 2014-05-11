@@ -103,5 +103,7 @@ public class DictConstant {
     //用户初始化分数0
     public static final int SCORE_0 = 0;
 
+    //用户默认头像
+    public static final String DEFAULT_USER_PHOTO = "img/defaultImg/userDefaultImg.jpg";
 
 }

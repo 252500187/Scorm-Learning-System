@@ -91,8 +91,8 @@ public class UserDaoImpl extends PageDao implements UserDao {
 
     @Override
     public void addUserInfo(User user) {
-        String sql = "INSERT INTO us_user_info(user_id, user_name, register_date, email, score, sex ) " +
-                "VALUES(:userId, :userName, :registerDate, :email, :score, :sex)";
+        String sql = "INSERT INTO us_user_info(user_id, user_name, register_date, email, score,img_url, sex ) " +
+                "VALUES(:userId, :userName, :registerDate, :email, :score,:imgUrl, :sex)";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(user));
     }
 

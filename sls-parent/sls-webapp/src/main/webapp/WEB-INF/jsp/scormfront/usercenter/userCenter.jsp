@@ -37,7 +37,7 @@
 
                         <div class="info-container" align="center" style="margin-top:0px;">
                             <img id="userHeadPhoto" class="avatar img-responsive" alt="用户头像"
-                                 style="width:155px;height:100px"/>
+                                 style="width:100px;height:100px"/>
                         </div>
                     </a>
                 </li>
@@ -161,11 +161,8 @@
     }
 
     $(function () {
-        addTab('user/center/userInfoDo');
-        $("#userHeadPhoto").attr("src", "http://www.placehold.it/200x150/EFEFEF/AAAAAA &amp;text=no+image");
-        if ("${user.imgUrl}" != "") {
-            $("#userHeadPhoto").attr("src", basePath + "${user.imgUrl}");
-        }
+        addTab('user/center/userCenterInfo');
+        $("#userHeadPhoto").attr("src", basePath + "${user.imgUrl}");
     })
 
     $('.page-sidebar ul').on('click', ' li > a', function (e) {

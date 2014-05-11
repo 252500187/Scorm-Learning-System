@@ -41,6 +41,12 @@ public class UserCenterController {
         return "scormfront/usercenter/userCenter";
     }
 
+    //个人中心  首页
+    @RequestMapping(value = "userCenterInfo", method = {RequestMethod.GET})
+    public String userCenterInfo() {
+        return "scormfront/usercenter/userCenterInfo";
+    }
+
     //个人中心  上传课件
     @RequestMapping(value = "upScormDo", method = {RequestMethod.GET})
     public String upScormDo() {

@@ -68,7 +68,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void addUser(User user) {
         user.setInUse(DictConstant.IN_USE);
-        roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_USER);
         user.setRoleId(roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_USER).getRoleId());
         user.setRegisterDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
         user.setUserName("懒人");
@@ -77,6 +76,7 @@ public class UserServiceImpl implements UserService {
 
         int id = userDao.addUser(user);
         user.setUserId(id);
+        user.setImgUrl(DictConstant.DEFAULT_USER_PHOTO);
         userDao.addUserInfo(user);
         UserRole userRole = new UserRole();
         userRole.setRoleId(user.getRoleId());
@@ -104,7 +104,7 @@ public class UserServiceImpl implements UserService {
         int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         user.setUserId(userId);
         user.setImgUrl(fileUp.upImg(request, DictConstant.USER_PHOTO_NAME, "", userId + DictConstant.PHOTO_FORM, upImg));
-        request.setAttribute("photoUrl",user.getImgUrl());
+        request.setAttribute("photoUrl", user.getImgUrl());
         userDao.upUserPhoto(user);
     }
 
