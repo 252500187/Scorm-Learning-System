@@ -15,6 +15,10 @@
                     <a href="#" id="drop8" role="button" class="dropdown-toggle" data-toggle="dropdown"
                        onclick=" addTab('字典管理','admin/dict/listAllDictDefineDo')">字典管理</a>
                 </li>
+                <li class="dropdown">
+                    <a href="#" id="drop9" role="button" class="dropdown-toggle" data-toggle="dropdown"
+                       onclick=" addTab('课件信息','admin/statistics/listAllScormInfoDo')">课件信息</a>
+                </li>
             </ul>
         </div>
     </div>
