@@ -152,15 +152,12 @@
 </body>
 </html>
 <script>
-    jQuery(document).ready(function () {
-        App.init();
-    });
-
     function addTab(src) {
         $("#ifra").attr("src", src);
     }
 
     $(function () {
+        App.init();
         addTab('user/center/userCenterInfo');
         $("#userHeadPhoto").attr("src", basePath + "${user.imgUrl}");
     })
