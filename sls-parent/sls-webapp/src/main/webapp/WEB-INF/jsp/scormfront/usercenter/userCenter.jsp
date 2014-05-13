@@ -1,7 +1,7 @@
 <%--@elvariable id="user" type="com.sls.util.LoginUserUtil"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -21,15 +21,13 @@
     <div class="page-sidebar-wrapper">
         <div class="page-sidebar navbar-collapse collapse">
             <!-- BEGIN SIDEBAR MENU -->
-            <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+            <ul class="page-sidebar-menu" data-auto-scroll="false" data-auto-speed="200">
                 <!-- 隐藏框 点击一下变成小图标 -->               <!--  -->
                 <li class="sidebar-toggler-wrapper">
-                    <div class="sidebar-toggler hidden-phone">
-                    </div>
-
+                    <div class="sidebar-toggler"></div>
                 </li>
                 <!-- 用户信息 -->
-                <li>
+                <li class="start">
                     <a onclick="changeIframe('user/center/userCenterInfo')">
                         <i class="fa fa-user"></i><br/>
                         <span class="title"><big id="userName">昵称:<br/>${user.userName}</big></span><br/>
@@ -90,7 +88,7 @@
                     </ul>
                 </li>
                 <!-- 第四个菜单  我的收藏 -->
-                <li class="start ">
+                <li>
                     <a onclick="changeIframe('user/center/collectScormDo')">
                         <i class="fa fa-star"></i>
 						<span class="title">
@@ -118,10 +116,10 @@
         <div class="page-content">
             <div class="row">
                 <div class="col-md-12">
-                        <iframe id="iframe" style="width:100%; height:800px;padding-left: 6px" frameborder=no
-                                scrolling="no"
-                                allowfullscreen>
-                        </iframe>
+                    <iframe id="iframe" style="width:100%; height:800px;padding-left: 6px" frameborder=no
+                            scrolling="no"
+                            allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </div>
@@ -154,7 +152,17 @@
 </html>
 <script>
     $(function () {
-        App.init();
+        Metronic.init(); // init metronic core componets
+        Layout.init(); // init layout
+        Index.init();
+        Index.initDashboardDaterange();
+        Index.initJQVMAP(); // init index page's custom scripts
+        Index.initCalendar(); // init index page's custom scripts
+        Index.initCharts(); // init index page's custom scripts
+        Index.initChat();
+        Index.initMiniCharts();
+        Index.initIntro();
+        Tasks.initDashboardWidget();
         $("#userHeadPhoto").attr("src", basePath + "${user.imgUrl}");
         changeIframe('user/center/userCenterInfo');
     })
@@ -163,8 +171,8 @@
         $("#iframe").attr("src", src);
     }
 
-    $('.page-sidebar ul').on('click', ' li > a', function (e) {
-        var menuContainer = $('.page-sidebar ul');
+    $('ul.page-sidebar-menu ').on('click', ' li > a', function (e) {
+        var menuContainer = $('ul.page-sidebar-menu ');
         menuContainer.children('li.active').removeClass('active');
         menuContainer.children('arrow.open').removeClass('open');
         $(this).parents('li').each(function () {
@@ -175,4 +183,5 @@
         $('.selected').remove();
         $(this).parents('li').find("a").append('<span class="selected" ></span>');
     });
+
 </script>
