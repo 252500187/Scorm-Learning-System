@@ -35,6 +35,9 @@ public class UserCenterController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ScormService scormService;
+
     @RequestMapping(value = "userCenterDo", method = {RequestMethod.GET})
     public String userCenter(HttpServletRequest request) {
         userCenterService.toUserCenter(request);
@@ -101,7 +104,8 @@ public class UserCenterController {
 
     //个人中心  笔记本
     @RequestMapping(value = "notesDo", method = {RequestMethod.GET})
-    public String notesDo() {
+    public String notesDo(HttpServletRequest request) {
+        scormService.getAllStudyNotesByScormIdAndUserId(DictConstant.VOID_VALUE,request);
         return "scormfront/usercenter/notes";
     }
 }
