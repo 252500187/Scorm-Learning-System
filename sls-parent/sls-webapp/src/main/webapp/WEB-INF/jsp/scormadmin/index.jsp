@@ -13,59 +13,45 @@
     <div class="row-fluid">
         <div class="row" style="margin-left: 0">
             <div class="span12">
-                <div style="padding: 0 20px; height:70px; background:url('img/defaultImg/userDefaultImg.jpg') repeat-x scroll 0px 0px;">
+                <%--<div style="padding: 0 20px; height:70px; background:url('img/defaultImg/userDefaultImg.jpg') repeat-x scroll 0px 0px;">--%>
                     <img src="img/logo/logo.gif"/>
-                    <ul class="nav pull-right" style="margin-top: 40px;">
-                        <li>
-                            <a href="logout">退出</a>
-                        </li>
-                    </ul>
-                </div>
+                <%--</div>--%>
             </div>
         </div>
         <div class="row-fluid">
-            <div class="span2">
-                <div class="navbar" style="margin-bottom: 0">
-                    <div class="navbar-inner">
-                        <ul class="nav" role="navigation">
-                            <li class="dropdown">
-                                <a href="#" id="drop6" role="button" class="dropdown-toggle" data-toggle="dropdown"
-                                   onclick=" changeIframe('admin/admin/listAllUserDo')">用户管理</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" id="drop7" role="button" class="dropdown-toggle" data-toggle="dropdown"
-                                   onclick=" changeIframe('admin/role/listAllRoleDo')">角色管理</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" id="drop8" role="button" class="dropdown-toggle" data-toggle="dropdown"
-                                   onclick=" changeIframe('admin/dict/listAllDictDefineDo')">字典管理</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" id="drop9" role="button" class="dropdown-toggle" data-toggle="dropdown"
-                                   onclick=" changeIframe('admin/statistics/listAllScormInfoDo')">课件信息</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="span12">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-toggle="tab" onclick="changeIframe('admin/user/indexDo')">首页</a></li>
+                    <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllUserDo')">用户管理</a></li>
+                    <li><a data-toggle="tab" onclick="changeIframe('admin/role/listAllRoleDo')">角色管理</a></li>
+                    <li><a data-toggle="tab" onclick="changeIframe('admin/dict/listAllDictDefineDo')">字典管理</a></li>
+                    <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listAllScormInfoDo')">课件信息</a>
+                    </li>
+                    <li class="pull-right"><a data-toggle="tab" onclick="window.location.href='logout'">退出</a>
+                </ul>
             </div>
-            <div class="span10">
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
                 <div id="mainDiv">
                     <iframe frameborder="no" id="iframe" style="width:100%;height:100%;overflow:auto;"></iframe>
                 </div>
             </div>
         </div>
-        <div class="row" style="margin-left: 0">
-            <div style="font-size:15px;width: 100%; height: 30px; text-align: center;">
-                SCORM LEARNING OF SEEK
-            </div>
+    </div>
+    <div class="row" style="margin-left: 0">
+        <div style="font-size:15px;width: 100%; height: 30px; text-align: center;">
+            SCORM LEARNING OF SEEK
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>
 <script type="text/javascript">
     $(function () {
-        $('#mainDiv').height(document.documentElement.clientHeight - 100);
+        $('#mainDiv').height(document.documentElement.clientHeight - 150);
     });
 
     function changeIframe(src) {

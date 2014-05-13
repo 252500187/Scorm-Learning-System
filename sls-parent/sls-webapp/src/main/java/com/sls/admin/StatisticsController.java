@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @Transactional
-@RequestMapping("/admin/statistics/")
+@RequestMapping("/admin/scorm/")
 public class StatisticsController {
     @RequestMapping(value = "listAllScormInfoDo", method = {RequestMethod.GET})
     public String listAllScormInfoDo(){
