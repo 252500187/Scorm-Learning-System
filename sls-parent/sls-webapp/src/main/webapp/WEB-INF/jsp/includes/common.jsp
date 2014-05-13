@@ -65,15 +65,39 @@
 <script src="<c:url value="/metronic/assets/global/plugins/excanvas.min.js"/>"></script>
 <%--<![endif]-->--%>
 <script src="<c:url value="/metronic/assets/global/plugins/jquery-migrate-1.2.1.min.js"/>" type="text/javascript"></script>
+<!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+<script src="<c:url value="/metronic/assets/global/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/bootstrap/js/bootstrap.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/jquery.blockui.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/jquery.cokie.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/uniform/jquery.uniform.min.js"/>" type="text/javascript"></script>
+
+
+
 <%--<!-- END CORE PLUGINS -->--%>
 
 <%--<!-- BEGIN PAGE LEVEL PLUGINS -->--%>
+<script src="<c:url value="/metronic/assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/flot/jquery.flot.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/flot/jquery.flot.resize.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/flot/jquery.flot.categories.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/jquery.pulsate.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-daterangepicker/moment.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.js"/>" type="text/javascript"></script>
+<!-- IMPORTANT! fullcalendar depends on jquery-ui-1.10.3.custom.min.js for drag & drop support -->
+<script src="<c:url value="/metronic/assets/global/plugins/fullcalendar/fullcalendar/fullcalendar.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/jquery.sparkline.min.js"/>" type="text/javascript"></script>
+
 <script src="<c:url value="/metronic/assets/global/plugins/jquery-validation/js/jquery.validate.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/backstretch/jquery.backstretch.min.js"/>" type="text/javascript"></script>
 <script type="text/javascript" src="<c:url value="/metronic/assets/global/plugins/select2/select2.min.js"/>"></script>
@@ -82,6 +106,8 @@
 <%--<!-- BEGIN PAGE LEVEL SCRIPTS -->--%>
 <script src="<c:url value="/metronic/assets/global/scripts/metronic.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/admin/layout/scripts/layout.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/admin/pages/scripts/index.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/admin/pages/scripts/tasks.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/admin/pages/scripts/login-soft.js"/>" type="text/javascript"></script>
 <%--<!-- END PAGE LEVEL SCRIPTS -->--%>
 
