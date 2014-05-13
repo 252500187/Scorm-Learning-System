@@ -160,7 +160,7 @@
                                     </div>
                                 </div>
                                 <div class="item" style="margin-left: 150px; margin-right: 150px;">
-                                    <img src="img/bookmarks/book1.jpg" style="height: 200px;width: 20%;">
+                                    <img src="img/bookmarks/book2.jpg" style="height: 200px;width: 20%;">
 
                                     <div class="carousel-caption" style="color: #000">
                                         <h4>Second Thumbnail label</h4>
@@ -171,7 +171,7 @@
                                     </div>
                                 </div>
                                 <div class="item" style="margin-left: 150px; margin-right: 150px;">
-                                    <img src="img/bookmarks/book1.jpg" style="height: 200px;width: 20%;">
+                                    <img src="img/bookmarks/book3.jpg" style="height: 200px;width: 20%;">
 
                                     <div class="carousel-caption" style="color: #000">
                                         <h4>Third Thumbnail label</h4>
