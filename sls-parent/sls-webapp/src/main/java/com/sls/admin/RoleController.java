@@ -20,9 +20,6 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
-    @Autowired
-    private AutoCompleteService autoCompleteService;
-
     @RequestMapping(value = "listAllRoleDo", method = {RequestMethod.GET, RequestMethod.POST})
     public String listAllRoleDo() {
         return "scormadmin/role/listAllRoleDo";

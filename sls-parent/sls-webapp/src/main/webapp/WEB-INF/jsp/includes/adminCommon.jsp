@@ -16,6 +16,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/js/common/ccjcJS/validate.css"/>"/>
 <link rel="stylesheet" type="text/css" href="<c:url value="/js/common/autocomplete/autocomplete.css"/>"/>
 <link rel="stylesheet" type="text/css" href="<c:url value="/js/common/alertMsg/alertMsg.css"/>"/>
+<link rel="stylesheet" type="text/css" href="<c:url value="/js/common/bootstrap-2.3.2/css/bootstrap-responsive.min.css"/>"/>
 
 <script src="<c:url value="/js/common/jquery/jquery-1.8.2.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/js/common/bootstrap-2.3.2/js/bootstrap.min.js"/>" type="text/javascript"></script>

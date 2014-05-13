@@ -41,7 +41,7 @@
             columns: [
                 [
                     {field: 'roleName', title: '角色名', sortable: true, align: 'center', width: 200},
-                    {field: 'operate', title: '操作', align: 'center', width: 200}
+                    {field: 'authority', title: '权限', align: 'center', width: 200}
                 ]
             ],
             sortName: "",
@@ -57,18 +57,6 @@
                 break;
         }
         onSortColumnDefault(sortColumn, sortDirection);
-    }
-
-    function format(data) {
-        data.resultList = queryFormat(data.resultList);
-        return data;
-    }
-
-    function queryFormat(temp) {
-        for (var i in temp) {
-            temp[i].operate = "";
-        }
-        return temp;
     }
 
     $(function () {

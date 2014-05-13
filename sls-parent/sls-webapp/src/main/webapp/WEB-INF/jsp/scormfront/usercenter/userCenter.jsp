@@ -30,7 +30,7 @@
                 </li>
                 <!-- 用户信息 -->
                 <li>
-                    <a onclick="addTab('user/center/userCenterInfo')">
+                    <a onclick="changeIframe('user/center/userCenterInfo')">
                         <i class="fa fa-user"></i><br/>
                         <span class="title"><big id="userName">昵称:<br/>${user.userName}</big></span><br/>
                         <span class="title" style="margin-left: 30px">等级:&nbsp;&nbsp;${user.levelName}</span>
@@ -43,7 +43,7 @@
                 </li>
                 <!-- 第一个菜单  个人资料-->
                 <li>
-                    <a onclick="addTab('user/center/userInfoDo')">
+                    <a onclick="changeIframe('user/center/userInfoDo')">
                         <i class="fa fa-italic"></i>
 						<span class="title">
 							个人资料
@@ -52,7 +52,7 @@
                 </li>
                 <!-- 第二个菜单  上传课件 -->
                 <li>
-                    <a onclick="addTab('user/center/upScormDo')">
+                    <a onclick="changeIframe('user/center/upScormDo')">
                         <i class="fa fa-upload"></i>
 						<span class="title">
 							上传课件
@@ -72,7 +72,7 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a onclick="addTab('user/center/registerScormDo')">
+                            <a onclick="changeIframe('user/center/registerScormDo')">
                                 <i class="fa fa-bullhorn"></i>
                                 <span class="title">
                                     已注册课件
@@ -80,7 +80,7 @@
                             </a>
                         </li>
                         <li>
-                            <a onclick="addTab('user/center/finishScormDo')">
+                            <a onclick="changeIframe('user/center/finishScormDo')">
                                 <i class="fa fa-bullhorn"></i>
                                 <span class="title">
 									已完成课件
@@ -91,7 +91,7 @@
                 </li>
                 <!-- 第四个菜单  我的收藏 -->
                 <li class="start ">
-                    <a onclick="addTab('user/center/collectScormDo')">
+                    <a onclick="changeIframe('user/center/collectScormDo')">
                         <i class="fa fa-star"></i>
 						<span class="title">
 							我的收藏
@@ -101,7 +101,7 @@
                 <!-- 第五个菜单  我的笔记本 -->
 
                 <li class="last ">
-                    <a onclick="addTab('user/center/notesDo')">
+                    <a onclick="changeIframe('user/center/notesDo')">
                         <i class="fa fa-book"></i>
 						<span class="title">
 							我的笔记本
@@ -118,9 +118,10 @@
         <div class="page-content">
             <div class="row">
                 <div class="col-md-12">
-                    <iframe id="ifra" style="width:100%; height:800px;border:0px;padding-left: 6px" frameborder=no scrolling="no"
-                            allowfullscreen>
-                    </iframe>
+                        <iframe id="iframe" style="width:100%; height:800px;padding-left: 6px" frameborder=no
+                                scrolling="no"
+                                allowfullscreen>
+                        </iframe>
                 </div>
             </div>
         </div>
@@ -152,18 +153,15 @@
 </body>
 </html>
 <script>
-    jQuery(document).ready(function () {
-        App.init();
-    });
-
-    function addTab(src) {
-        $("#ifra").attr("src", src);
-    }
-
     $(function () {
-        addTab('user/center/userCenterInfo');
+        App.init();
         $("#userHeadPhoto").attr("src", basePath + "${user.imgUrl}");
+        changeIframe('user/center/userCenterInfo');
     })
+
+    function changeIframe(src) {
+        $("#iframe").attr("src", src);
+    }
 
     $('.page-sidebar ul').on('click', ' li > a', function (e) {
         var menuContainer = $('.page-sidebar ul');

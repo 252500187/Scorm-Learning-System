@@ -14,6 +14,9 @@ public class DictConstant {
     //操作未成功
     public static final String NO_SUCCESS = "noSuccess";
 
+    //暂无记录
+    public static final String NO_LOG = "暂无记录";
+
     //状态 0 无效
     public static final int NO_USE = 0;
     // 1 有效

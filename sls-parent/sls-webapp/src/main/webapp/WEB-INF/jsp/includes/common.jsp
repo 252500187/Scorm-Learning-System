@@ -9,25 +9,24 @@
 <script src="<c:url value="/assets/plugins/jquery-1.10.2.min.js"/>"></script>
 <script src="<c:url value="/js/common/common.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/js/common/ccjcJS/ccjcJS.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/assets/scripts/core/app.js"/>" type="text/javascript"></script>
 <base href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()%><c:url value="/"/>"/>
 <script>
     $(function () {
         JC.inputInit();
 
+
         $(function () {
-            jQuery(document).ready(function () {
-                App.init();
-                $.sessionTimeout({
-                    title: '提示',
-                    message: '您已经学习很久了（60分钟），要不要出去溜达溜达？',
-                    keepAliveUrl: '',
-                    redirUrl: 'logout',
-                    logoutUrl: 'logout',
-                    warnAfter: 3600000,
-                    redirAfter: 3610000
-                });
+            $.sessionTimeout({
+                title: '提示',
+                message: '您已经学习很久了（60分钟），要不要出去溜达溜达？',
+                keepAliveUrl: '',
+                redirUrl: 'logout',
+                logoutUrl: 'logout',
+                warnAfter: 3600000,
+                redirAfter: 3610000
             });
-        })
+        });
 
         jQuery.validator.addMethod("isImg", function (value, element, param) {
             if (param) {
@@ -73,7 +72,6 @@
 <script src="<c:url value="/assets/plugins/backstretch/jquery.backstretch.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/plugins/select2/select2.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/scripts/custom/ecommerce-orders-view.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/assets/scripts/core/app.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/assets/scripts/custom/login-soft.js"/>" type="text/javascript"></script>
 
 
