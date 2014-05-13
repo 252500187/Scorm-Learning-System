@@ -45,6 +45,7 @@
 	-moz-box-align: center;
 	-webkit-align-items: center;
 	align-items: center;
+    border-bottom:1px solid lightgray;
 }
 
 .bb-custom-firstpage h1 {
@@ -63,10 +64,11 @@
 
 .bb-custom-firstpage {
 	text-align: center;
-	padding-top: 15%;
+	padding-top: 23%;
 	width: 50%;
 	float: left;
 	height: 100%;
+    border-bottom:1px solid lightgray;
 }
 
 .bb-custom-side p {

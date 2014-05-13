@@ -49,6 +49,7 @@ a img {
 
 .container {
 	height: 100%;
+    background-color: #c8e5bc;
 }
 
 .container > header {
