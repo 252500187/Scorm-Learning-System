@@ -1,5 +1,7 @@
 package com.sls.scorm.dao;
 
+import com.core.page.entity.Page;
+import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.entity.ScormSummarize;
@@ -32,4 +34,8 @@ public interface ScormDao {
     List<StudyNote> getAllStudyNotesByScormIdAndUserId(StudyNote studyNote);
 
     void changeTotalTimeByScormId(int scormId, String totalTime);
+
+    Page<Scorm> listNotAuditScormPageList(PageParameter pageParameter,Scorm scorm);
+
+    Page<Scorm> listAuditScormPageList(PageParameter pageParameter,Scorm scorm);
 }

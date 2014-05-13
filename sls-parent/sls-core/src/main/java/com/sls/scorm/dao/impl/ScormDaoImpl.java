@@ -1,6 +1,8 @@
 package com.sls.scorm.dao.impl;
 
 import com.core.page.dao.PageDao;
+import com.core.page.entity.Page;
+import com.core.page.entity.PageParameter;
 import com.sls.scorm.dao.ScormDao;
 import com.sls.scorm.entity.Sco;
 import com.sls.scorm.entity.Scorm;
@@ -97,5 +99,26 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
     public void changeTotalTimeByScormId(int scormId, String totalTime) {
         String sql = "UPDATE ss_scorm SET total_time=? WHERE scorm_id=?";
         getJdbcTemplate().update(sql, totalTime, scormId);
+    }
+
+    @Override
+    public Page<Scorm> listNotAuditScormPageList(PageParameter pageParameter, Scorm scorm) {
+        StringBuilder sql = new StringBuilder("SELECT ss_scorm.*,us_user_info.user_name AS showUploadUserId FROM ss_scorm ,us_user_info WHERE us_user_info.user_id=ss_scorm.upload_user_id AND ss_scorm.in_use=" + DictConstant.NO_USE);
+        if (scorm.getScormName() != null && !scorm.getScormName().equals("")) {
+            sql.append(" AND ss_scorm.scorm_name like '%").append(scorm.getScormName()).append("%'");
+        }
+        if (scorm.getShowUploadUserId() != null && !scorm.getShowUploadUserId().equals("")) {
+            sql.append(" AND us_user_info.user_name like '%").append(scorm.getShowUploadUserId()).append("%'");
+        }
+        return queryForPage(pageParameter, sql.toString(), new BeanPropertySqlParameterSource(scorm), new BeanPropertyRowMapper<Scorm>(Scorm.class));
+    }
+
+    @Override
+    public Page<Scorm> listAuditScormPageList(PageParameter pageParameter, Scorm scorm) {
+        StringBuilder sql = new StringBuilder("SELECT * FROM ss_scorm WHERE in_use =" + DictConstant.IN_USE);
+        if (scorm.getScormName() != null && !scorm.getScormName().equals("")) {
+            sql.append(" AND scorm_name like '%").append(scorm.getScormName()).append("%'");
+        }
+        return queryForPage(pageParameter, sql.toString(), new BeanPropertySqlParameterSource(scorm), new BeanPropertyRowMapper<Scorm>(Scorm.class));
     }
 }

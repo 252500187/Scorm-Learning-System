@@ -12,10 +12,12 @@ public class Scorm {
     private String description;
     private String uploadDate;
     private int uploadUserId;
+    private String showUploadUserId;
     private int inUse;
+    private String totalTime;
+
     private String collectDate;
     private int userId;
-    private String totalTime;
 
     public Scorm() {
         registerSum = 0;
@@ -119,5 +121,13 @@ public class Scorm {
 
     public void setTotalTime(String totalTime) {
         this.totalTime = totalTime;
+    }
+
+    public String getShowUploadUserId() {
+        return showUploadUserId;
+    }
+
+    public void setShowUploadUserId(String showUploadUserId) {
+        this.showUploadUserId = showUploadUserId;
     }
 }

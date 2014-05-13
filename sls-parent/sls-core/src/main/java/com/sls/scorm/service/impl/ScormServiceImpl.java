@@ -1,5 +1,7 @@
 package com.sls.scorm.service.impl;
 
+import com.core.page.entity.Page;
+import com.core.page.entity.PageParameter;
 import com.sls.scorm.dao.ScoDao;
 import com.sls.scorm.dao.ScormDao;
 import com.sls.scorm.entity.*;
@@ -116,6 +118,8 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void addStudyNote(StudyNote studyNote) {
+        studyNote.setNoteType(DictConstant.TEXT_TYPE);
+        studyNote.setImgPath("");
         studyNote.setDate(DateUtil.getSystemDate("yyyy-MM-dd"));
         studyNote.setUserId(userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
         scormDao.addStudyNote(studyNote);
@@ -136,6 +140,7 @@ public class ScormServiceImpl implements ScormService {
         FileUp fileUp = new FileUp();
         Date date = new Date();
         int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        studyNote.setNoteType(DictConstant.IMG);
         studyNote.setUserId(userId);
         studyNote.setDate(DateUtil.getSystemDate("yyyy-MM-dd"));
         studyNote.setImgPath(fileUp.upImg(request, DictConstant.STUDY_IMG, "/" + userId, studyNote.getScormId() + date.getTime() + DictConstant.PHOTO_FORM, upImg));
@@ -156,13 +161,6 @@ public class ScormServiceImpl implements ScormService {
         }
         request.setAttribute("scoList", scoList);
         request.setAttribute("isLast", DictConstant.LAST_VISIT);
-    }
-
-    @Override
-    public void findScormInfoByScormId(int scormId, HttpServletRequest request) {
-        //todo 查询课件信息
-        request.setAttribute("scormInfo", scormDao.findScormInfoByScormId(scormId));
-        request.setAttribute("scormInfo", scormDao.findScormInfoByScormId(scormId));
     }
 
     @Override
@@ -251,5 +249,27 @@ public class ScormServiceImpl implements ScormService {
         }
         request.setAttribute("collectScorm", collectScorm);
         request.setAttribute("registerScorm", registerScorm);
+    }
+
+    @Override
+    public Page<Scorm> listNotAuditScormPageList(PageParameter pageParameter, Scorm scorm) {
+        return scormDao.listNotAuditScormPageList(pageParameter, scorm);
+    }
+
+    @Override
+    public Page<Scorm> listAuditScormPageList(PageParameter pageParameter, Scorm scorm) {
+        Page<Scorm> scormPage = scormDao.listAuditScormPageList(pageParameter, scorm);
+        String totalTime;
+        int[] splitTime;
+        for (Scorm oneScorm : scormPage.getResultList()) {
+            totalTime = oneScorm.getTotalTime();
+            if (("").equals(totalTime)) {
+                oneScorm.setTotalTime(DictConstant.NO_LOG);
+            } else {
+                splitTime = DateUtil.splitScormTime(totalTime);
+                oneScorm.setTotalTime(splitTime[0] + "小时" + splitTime[1] + "分钟" + splitTime[2] + "秒" + splitTime[3] + "毫秒");
+            }
+        }
+        return scormPage;
     }
 }

@@ -1,5 +1,7 @@
 package com.sls.scorm.service;
 
+import com.core.page.entity.Page;
+import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.entity.StudyNote;
@@ -20,8 +22,6 @@ public interface ScormService {
 
     void studyScorm(int scormId, HttpServletRequest request);
 
-    void findScormInfoByScormId(int scormId, HttpServletRequest request);
-
     void changeScoState(int scormId, int scoId);
 
     List<ScoInfo> getScoApiInfo(int scoId);
@@ -41,4 +41,8 @@ public interface ScormService {
     void getAllStudyNotesByScormIdAndUserId(int i, HttpServletRequest request);
 
     void upStudyImg(HttpServletRequest request, String upImg, StudyNote studyNote) throws ServletException, IOException;
+
+    Page<Scorm> listNotAuditScormPageList(PageParameter pageParameter,Scorm scorm);
+
+    Page<Scorm> listAuditScormPageList(PageParameter pageParameter,Scorm scorm);
 }

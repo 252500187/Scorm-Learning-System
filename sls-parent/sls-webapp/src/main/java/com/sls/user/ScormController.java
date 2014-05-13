@@ -58,8 +58,6 @@ public class ScormController {
     @RequestMapping(value = "takeNote", method = {RequestMethod.POST})
     @ResponseBody
     public void takeNote(StudyNote studyNote) {
-        studyNote.setNoteType(DictConstant.TEXT_TYPE);
-        studyNote.setImgPath("");
         scormService.addStudyNote(studyNote);
     }
 
@@ -85,10 +83,7 @@ public class ScormController {
     @RequestMapping(value = "upStudyImg", method = {RequestMethod.POST})
     public void upStudyImg(HttpServletRequest request, StudyNote studyNote) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
-        studyNote.setNoteType(DictConstant.IMG);
         scormService.upStudyImg(request, "noteImg", studyNote);
-//        request.setAttribute("close", "close");
-//        return "scormfront/scorm/studyNoteUpImg";
     }
 
 }
