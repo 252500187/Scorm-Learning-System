@@ -49,6 +49,16 @@
     </div>
 </div>
 </div>
+<div id="dataEdit" closed="true" modal="true" style="overflow: hidden">
+    <iframe style="width: 100%;height: 100%"
+            id="contentFrame"
+            name="contentFrame"
+            marginheight="0"
+            marginwidth="0"
+            frameborder="0" src=""
+            allowTransparency="true">
+    </iframe>
+</div>
 </body>
 </html>
 <script type="text/javascript">

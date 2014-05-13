@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -19,7 +20,7 @@ public class ScormManageController {
     private ScormService scormService;
 
     @RequestMapping(value = "listNotAuditScormInfoDo", method = {RequestMethod.GET})
-    public String listAllScormInfoDo(){
+    public String listAllScormInfoDo() {
         return "scormadmin/scorm/listNotAuditScormInfoDo";
     }
 
@@ -30,7 +31,7 @@ public class ScormManageController {
     }
 
     @RequestMapping(value = "listAuditScormInfoDo", method = {RequestMethod.GET})
-    public String listAuditScormInfoDo(){
+    public String listAuditScormInfoDo() {
         return "scormadmin/scorm/listAuditScormInfoDo";
     }
 
@@ -38,5 +39,10 @@ public class ScormManageController {
     @ResponseBody
     public Page<Scorm> listAuditScormInfo(PageParameter pageParameter, Scorm scorm) {
         return scormService.listAuditScormPageList(pageParameter, scorm);
+    }
+
+    @RequestMapping(value = "scormInfo", method = {RequestMethod.GET})
+    public String scormInfo(@RequestParam("scormId") String scormId) {
+        return "scormadmin/scorm/scormInfo";
     }
 }

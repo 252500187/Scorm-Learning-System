@@ -13,16 +13,6 @@
         <a class="btn btn-primary" onclick="query()">查询</a>
     </form>
     <table id="dataTable"></table>
-    <div id="dataEdit" closed="true" modal="true" style="overflow: hidden">
-        <iframe style="width: 100%;height: 100%"
-                id="contentFrame"
-                name="contentFrame"
-                marginheight="0"
-                marginwidth="0"
-                frameborder="0" src=""
-                allowTransparency="true">
-        </iframe>
-    </div>
 </div>
 </body>
 </html>
@@ -43,7 +33,7 @@
                 [
                     {field: 'scormName', title: '课件名', sortable: true, align: 'center', width: 100},
                     {field: 'description', title: '课件描述', align: 'center', width: 300},
-                    {field: 'uploadDate', title: '上传日期',  sortable: true, align: 'center', width: 150},
+                    {field: 'uploadDate', title: '上传日期', sortable: true, align: 'center', width: 150},
                     {field: 'showUploadUserId', title: '上传用户昵称', align: 'center', width: 100},
                     {field: 'operate', title: '操作', align: 'center', width: 100}
                 ]
@@ -79,8 +69,8 @@
     }
 
     function scormInfo(scormId) {
-        var contentFrame = $("#contentFrame");
-        var dataEdit = $('#dataEdit');
+        var contentFrame = parent.$("#contentFrame");
+        var dataEdit = parent.$('#dataEdit');
         contentFrame[0].contentWindow.document.write("");
         contentFrame.attr("src", basePath + "admin/scorm/scormInfo?scormId=" + scormId);
         dataEdit.dialog({

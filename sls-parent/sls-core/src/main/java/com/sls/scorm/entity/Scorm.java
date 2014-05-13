@@ -15,6 +15,7 @@ public class Scorm {
     private String showUploadUserId;
     private int inUse;
     private String totalTime;
+    private String score;
 
     private String collectDate;
     private int userId;
@@ -24,7 +25,8 @@ public class Scorm {
         recommendLevel = DictConstant.RECOMMEND_0;
         uploadDate = DateUtil.getCurrentTimestamp().toString().substring(0, 16);
         inUse = DictConstant.NO_USE;
-        totalTime="";
+        totalTime = "";
+        score = "";
     }
 
     public int getScormId() {
@@ -129,5 +131,13 @@ public class Scorm {
 
     public void setShowUploadUserId(String showUploadUserId) {
         this.showUploadUserId = showUploadUserId;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
     }
 }

@@ -12,16 +12,6 @@
         <a class="btn btn-primary" onclick="query()">查询</a>
     </form>
     <table id="dataTable"></table>
-    <div id="dataEdit" closed="true" modal="true" style="overflow: hidden">
-        <iframe style="width: 100%;height: 100%"
-                id="contentFrame"
-                name="contentFrame"
-                marginheight="0"
-                marginwidth="0"
-                frameborder="0" src=""
-                allowTransparency="true">
-        </iframe>
-    </div>
 </div>
 </body>
 </html>
@@ -86,8 +76,8 @@
     }
 
     function scormInfo(scormId) {
-        var contentFrame = $("#contentFrame");
-        var dataEdit = $('#dataEdit');
+        var contentFrame = parent.$("#contentFrame");
+        var dataEdit = parent.$('#dataEdit');
         contentFrame[0].contentWindow.document.write("");
         contentFrame.attr("src", basePath + "admin/scorm/scormInfo?scormId=" + scormId);
         dataEdit.dialog({
