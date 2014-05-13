@@ -29,7 +29,7 @@
                     </nav>
                 </div>
                 <div class="bb-custom-side">
-                    <p></p>
+                    <p>${noteList[0].note}</p>
                 </div>
             </div>
             <c:forEach  begin="0" step="2" items="${noteList}" varStatus="status">
