@@ -21,6 +21,9 @@
     </a>
 </div>
 
+<div class="menu-toggler sidebar-toggler">
+</div>
+
 <div class="content">
 
     <form class="login-form" action="loginResult" method="post" id="login">
@@ -168,14 +171,10 @@
 </html>
 <script>
     jQuery(document).ready(function () {
-        App.init();
+        Metronic.init();
+        Layout.init();
         Login.init();
     });
-    //    $().ready(function() {
-    //        $("#registerInfo").validate({
-    //            debug:true
-    //        });
-    //    });
 
     function register() {
         $.ajax({
