@@ -12,7 +12,7 @@
     <script src="booknote/js/modernizr.custom.js"></script>
 </head>
 <body>
-<div class="container" style="border-bottom: ">
+<div class="container">
     <div class="bb-custom-wrapper">
 
         <div id="bb-bookblock" class="bb-bookblock">
