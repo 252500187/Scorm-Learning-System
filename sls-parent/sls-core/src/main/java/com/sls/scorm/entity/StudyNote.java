@@ -9,6 +9,7 @@ public class StudyNote {
     private String note;
     private int noteType;
     private String imgPath;
+    private String scormName;
 
     public StudyNote() {
         date = "";
@@ -77,5 +78,13 @@ public class StudyNote {
 
     public void setImgPath(String imgPath) {
         this.imgPath = imgPath;
+    }
+
+    public String getScormName() {
+        return scormName;
+    }
+
+    public void setScormName(String scormName) {
+        this.scormName = scormName;
     }
 }

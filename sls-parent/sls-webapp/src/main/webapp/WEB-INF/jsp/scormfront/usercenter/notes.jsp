@@ -1,4 +1,4 @@
-<%--@elvariable id="noteList" type="java.util.List"--%>
+<%--@elvariable id="noteList" type="java.util.List<com.sls.scorm.entity.StudyNote>"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -18,31 +18,31 @@
         <div id="bb-bookblock" class="bb-bookblock">
             <div class="bb-item">
                 <div class="bb-custom-firstpage">
-                    <nav><ul style="list-style-type:none">
-                        <li><h1>我</h1></li>
-                        <li><h1>的</h1></li>
-                        <li><h1>笔</h1></li>
-                        <li><h1>记</h1></li>
-                        <li><h1>本</h1></li>
-                    </ul></nav>
+                    <nav>
+                        <ul style="list-style-type:none">
+                            <li><h1>我</h1></li>
+                            <li><h1>的</h1></li>
+                            <li><h1>笔</h1></li>
+                            <li><h1>记</h1></li>
+                            <li><h1>本</h1></li>
+                        </ul>
+                    </nav>
                 </div>
                 <div class="bb-custom-side">
-                    <p>Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder
-                        pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish
-                        brownie.</p>
+                    <p></p>
                 </div>
             </div>
-            <div class="bb-item">
-                <div class="bb-custom-side">
-                    <p>Soufflé tootsie roll jelly beans. Sweet icing croissant dessert bear claw. Brownie dessert
-                        cheesecake danish jelly pudding bear claw soufflé.</p>
+            <c:forEach  begin="0" step="2" items="${noteList}" varStatus="status">
+                <div class="bb-item">
+                    <div class="bb-custom-side">
+                        <p>${noteList[status.index].note}</p>
+                    </div>
+                    <div class="bb-custom-side">
+                        <p>${noteList[status.index+1].note}</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="bb-custom-side">
-                    <p>Candy canes lollipop macaroon marshmallow gummi bears tiramisu. Dessert croissant cupcake candy
-                        canes. Bear claw faworki faworki lemon drops. Faworki marzipan sugar plum jelly-o marzipan
-                        jelly-o.</p>
-                </div>
-            </div>
+            </c:forEach>
         </div>
 
         <nav>
