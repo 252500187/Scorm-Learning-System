@@ -171,8 +171,8 @@
         $("#iframe").attr("src", src);
     }
 
-    $('.page-sidebar ul').on('click', ' li > a', function (e) {
-        var menuContainer = $('.page-sidebar ul');
+    $('ul.page-sidebar-menu ').on('click', ' li > a', function (e) {
+        var menuContainer = $('ul.page-sidebar-menu ');
         menuContainer.children('li.active').removeClass('active');
         menuContainer.children('arrow.open').removeClass('open');
         $(this).parents('li').each(function () {
