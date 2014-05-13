@@ -13,22 +13,50 @@
     <div class="row-fluid">
         <div class="row" style="margin-left: 0">
             <div class="span12">
-                <%@include file="top.jsp" %>
+                <div style="padding: 0 20px; height:70px; background:url('img/defaultImg/userDefaultImg.jpg') repeat-x scroll 0px 0px;">
+                    <img src="img/logo/logo.gif"/>
+                    <ul class="nav pull-right" style="margin-top: 40px;">
+                        <li>
+                            <a href="logout">退出</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span2">
+                <div class="navbar" style="margin-bottom: 0">
+                    <div class="navbar-inner">
+                        <ul class="nav" role="navigation">
+                            <li class="dropdown">
+                                <a href="#" id="drop6" role="button" class="dropdown-toggle" data-toggle="dropdown"
+                                   onclick=" changeIframe('admin/admin/listAllUserDo')">用户管理</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" id="drop7" role="button" class="dropdown-toggle" data-toggle="dropdown"
+                                   onclick=" changeIframe('admin/role/listAllRoleDo')">角色管理</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" id="drop8" role="button" class="dropdown-toggle" data-toggle="dropdown"
+                                   onclick=" changeIframe('admin/dict/listAllDictDefineDo')">字典管理</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" id="drop9" role="button" class="dropdown-toggle" data-toggle="dropdown"
+                                   onclick=" changeIframe('admin/statistics/listAllScormInfoDo')">课件信息</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="span10">
+                <div id="mainDiv">
+                    <iframe frameborder="no" id="iframe" style="width:100%;height:100%;overflow:auto;"></iframe>
+                </div>
             </div>
         </div>
         <div class="row" style="margin-left: 0">
-            <div class="span12">
-                <%@include file="menu.jsp" %>
-            </div>
-        </div>
-        <div class="row" style="margin-left: 0">
-            <div id="mainDiv" style="height: 453px;">
-                <div id="tabDiv"></div>
-            </div>
-        </div>
-        <div class="row" style="margin-left: 0">
-            <div style="font-size:14px;width: 100%; height: 30px; text-align: center;">
-                CN_SOFT
+            <div style="font-size:15px;width: 100%; height: 30px; text-align: center;">
+                SCORM LEARNING OF SEEK
             </div>
         </div>
     </div>
@@ -37,28 +65,10 @@
 </html>
 <script type="text/javascript">
     $(function () {
-        browserSizeDeal();
-        var sizeTimer;
-        $(window).bind("resize", function () {
-            sizeTimer != undefined && sizeTimer != null && clearTimeout(sizeTimer);
-            sizeTimer = setTimeout("browserSizeDeal()", 100);
-        });
+        $('#mainDiv').height(document.documentElement.clientHeight - 100);
     });
 
-    function browserSizeDeal() {
-        $('#mainDiv').height(document.documentElement.clientHeight - 143);
-    }
-
-    function initTab() {
-        $('#tabDiv').tabs({
-            fit: true,
-            border: true
-        });
-    }
-
-    function addTab(title,src) {
-        initTab();
-        var contents = '<iframe frameborder="no" id="ifrm" style="width:100%;height:100%;overflow:auto;" src="' + src + '"></iframe>';
-        document.getElementById("tabDiv").innerHTML = contents;
+    function changeIframe(src) {
+        $("#iframe").attr("src", src);
     }
 </script>
