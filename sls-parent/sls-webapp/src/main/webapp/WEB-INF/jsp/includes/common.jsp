@@ -23,8 +23,8 @@
                 keepAliveUrl: '',
                 redirUrl: 'logout',
                 logoutUrl: 'logout',
-                warnAfter: 3600000,
-                redirAfter: 3610000
+                warnAfter: 5000,
+                redirAfter: 10000
             });
         });
 
