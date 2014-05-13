@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @Transactional
 @RequestMapping("/admin/scorm/")
@@ -42,7 +44,8 @@ public class ScormManageController {
     }
 
     @RequestMapping(value = "scormInfo", method = {RequestMethod.GET})
-    public String scormInfo(@RequestParam("scormId") String scormId) {
+    public String scormInfo(HttpServletRequest request, @RequestParam("scormId") String scormId) {
+        scormService.checkScormInfo(request, Integer.parseInt(scormId));
         return "scormadmin/scorm/scormInfo";
     }
 }

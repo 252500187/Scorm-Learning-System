@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <%@include file="../../includes/adminCommon.jsp" %>
-    <title>已审核课件列表</title>
+    <title>SLS | 已审核课件列表</title>
 </head>
 <body>
 <div id="mainContent" class="easyui-panel" data-options="fit:true" style="padding: 10px">
@@ -82,8 +82,8 @@
         contentFrame.attr("src", basePath + "admin/scorm/scormInfo?scormId=" + scormId);
         dataEdit.dialog({
             title: '课件信息',
-            height: 400,
-            width: 600
+            height: document.documentElement.clientHeight + 100,
+            width: document.documentElement.clientWidth - 100
         });
         dataEdit.dialog('open');
     }

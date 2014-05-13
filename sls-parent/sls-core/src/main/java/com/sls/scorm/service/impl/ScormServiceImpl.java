@@ -272,4 +272,13 @@ public class ScormServiceImpl implements ScormService {
         }
         return scormPage;
     }
+
+    @Override
+    public void checkScormInfo(HttpServletRequest request, int scormId) {
+        Scorm scorm = scormDao.findScormInfoByScormId(scormId);
+        List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
+        request.setAttribute("scorm", scorm);
+        request.setAttribute("scoList", scoList);
+
+    }
 }

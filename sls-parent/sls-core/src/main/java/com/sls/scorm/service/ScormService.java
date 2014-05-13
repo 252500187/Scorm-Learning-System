@@ -45,4 +45,6 @@ public interface ScormService {
     Page<Scorm> listNotAuditScormPageList(PageParameter pageParameter,Scorm scorm);
 
     Page<Scorm> listAuditScormPageList(PageParameter pageParameter,Scorm scorm);
+
+    void checkScormInfo(HttpServletRequest request,int scormId);
 }
