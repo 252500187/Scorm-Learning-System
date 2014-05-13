@@ -2,47 +2,71 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@include file="../../includes/common.jsp" %>
 
-<div class="header navbar navbar-inverse navbar-fixed-top">
-
-    <div class="header navbar navbar-inverse navbar-fixed-top">
-        <div class="header-inner">
-            <a class="navbar-brand" style="padding-top: 0" href="">
-                <img src="img/logo/logoSmall.png" alt="SLS" class="img-responsive"/>
+<div class="page-header navbar navbar-fixed-top">
+    <!-- BEGIN HEADER INNER -->
+    <div class="page-header-inner">
+        <!-- BEGIN LOGO -->
+        <div class="page-logo">
+            <a href="">
+                <img src="img/logo/logoSmall.png" alt="logo" class="logo-default"/>
             </a>
+            <%--<div class="menu-toggler sidebar-toggler">--%>
+            <%--<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->--%>
+            <%--</div>--%>
         </div>
-        <a onclick="studyScorm('66')">学习ID为9的课件</a>
-        <a onclick="registerScorm('66')">点我注册ID为9的课件</a>
-        <ul class="nav navbar-nav pull-right">
-            <c:if test="${sessionScope.userId==null||sessionScope.userId==''}">
-                <li class="dropdown">
-                    <a href="login">登陆</a>
-                        <i class="icon-angle-down"></i>
-                    </a>
-                </li>
-            </c:if>
-            <c:if test="${sessionScope.userId!=null&&sessionScope.userId!=''}">
-                <li class="dropdown user">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                       data-close-others="true">
-                        <img alt="" id="userPhoto"/>
-                        <span class="username">注册用户</span>
-                        <i class="icon-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="user/center/userCenterDo"><i class="icon-user"></i> 个人中心</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="logout"><i class="icon-key"></i> 退出</a>
-                        </li>
-                    </ul>
-                </li>
-            </c:if>
-        </ul>
+        <!-- END LOGO -->
+        <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+        <div class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+        </div>
+        <!-- END RESPONSIVE MENU TOGGLER -->
+        <!-- BEGIN TOP NAVIGATION MENU -->
+        <div class="top-menu">
+            <ul class="nav navbar-nav pull-right">
+                <c:if test="${sessionScope.userId==null||sessionScope.userId==''}">
+                    <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
+                        <a href="login">
+                            <i class="fa  fa-play"></i>登陆
+                        </a>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.userId!=null&&sessionScope.userId!=''}">
+                    <!-- BEGIN USER LOGIN DROPDOWN -->
+                    <li class="dropdown dropdown-user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                           data-close-others="true">
+                            <img alt="Hello" class="img-circle"
+                                 src="metronic/assets/admin/layout/img/avatar3_small.jpg"/>
+					<span class="username">
+					角色名 </span>
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="user/center/userCenterDo">
+                                    <i class="fa fa-user"></i> 个人中心 </a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="logout">
+                                    <i class="fa fa-key"></i> 退出 </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- END USER LOGIN DROPDOWN -->
+                </c:if>
+            </ul>
+        </div>
+        <!-- END TOP NAVIGATION MENU -->
     </div>
+    <!-- END HEADER INNER -->
+</div>
+<!-- END HEADER -->
+<div class="clearfix">
 </div>
 
 <script>
-    $("#userPhoto").attr("src", basePath + "assets/img/avatar1_small.jpg");
+    $("#userPhoto").attr("src", "metronic/assets/admin/layout/img/avatar3_small.jpg");
 
     function studyScorm(id) {
         window.location.href = basePath + "user/scorm/studyScorm?scormId=" + id;
