@@ -14,20 +14,20 @@
     $(function () {
         JC.inputInit();
 
-        $(function () {
-            jQuery(document).ready(function () {
-                App.init();
-                $.sessionTimeout({
-                    title: '提示',
-                    message: '您已经学习很久了（60分钟），要不要出去溜达溜达？',
-                    keepAliveUrl: '',
-                    redirUrl: 'logout',
-                    logoutUrl: 'logout',
-                    warnAfter: 3600000,
-                    redirAfter: 3610000
-                });
-            });
-        })
+//        $(function () {
+//            jQuery(document).ready(function () {
+//                App.init();
+//                $.sessionTimeout({
+//                    title: '提示',
+//                    message: '您已经学习很久了（60分钟），要不要出去溜达溜达？',
+//                    keepAliveUrl: '',
+//                    redirUrl: 'logout',
+//                    logoutUrl: 'logout',
+//                    warnAfter: 3600000,
+//                    redirAfter: 3610000
+//                });
+//            });
+//        })
 
         jQuery.validator.addMethod("isImg", function (value, element, param) {
             if (param) {
