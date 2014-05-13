@@ -30,12 +30,25 @@
                 <li class="start">
                     <a onclick="changeIframe('user/center/userCenterInfo')">
                         <i class="fa fa-user"></i><br/>
-                        <span class="title"><big id="userName">昵称:<br/>${user.userName}</big></span><br/>
-                        <span class="title" style="margin-left: 30px">等级:&nbsp;&nbsp;${user.levelName}</span>
+                        <span class="title" style="margin-left: 30px">
+                            <big id="userName">昵称:&nbsp;&nbsp;${user.userName}</big></span><br/>
+                        <span class="title" style="margin-left: 30px">
+                            <big id="userLevel">等级:&nbsp;&nbsp;${user.levelName}</big></span>
 
                         <div class="info-container" align="center" style="margin-top:0px;">
-                            <img id="userHeadPhoto" class="avatar img-responsive" alt="用户头像"
-                                 style="width:100px;height:100px"/>
+                            <table>
+                                <tr>
+                                    <td align="top"><span class="title">
+                                        <big id="userPhoto">头像:&nbsp;&nbsp;</big></span>
+                                    </td>
+
+                                    <td>
+                                        <img id="userHeadPhoto" class="img-polaroid" alt="用户头像"
+                                             style="width:100px;height:100px"/>
+                                    <td>
+                                </tr>
+                            </table>
+
                         </div>
                     </a>
                 </li>
