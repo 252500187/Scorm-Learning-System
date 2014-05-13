@@ -29,6 +29,12 @@
     <form class="login-form" action="loginResult" method="post" id="login">
         <h3 class="form-title">Welcome to SLS</h3>
 
+        <div class="alert alert-danger display-hide">
+            <button class="close" data-close="alert"></button>
+			<span>
+			注册成功！ </span>
+        </div>
+
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">帐号</label>
 
@@ -56,14 +62,13 @@
             <h4>去首页看看</h4>
             <ul class="social-icons">
                 <li>
-                    <a class="socrm" data-original-title="socrm" onclick="window.location.href='/sls/'">
+                    <a class="scorm" data-original-title="scorm" onclick="window.location.href='/sls/'">
                     </a>
                 </li>
             </ul>
         </div>
         <div class="forget-password">
             <h4>忘记密码?</h4>
-
             <p>
                 <a href="javascript:;" id="forget-password">
                     重置
@@ -80,8 +85,7 @@
             </p>
         </div>
     </form>
-    <!-- END LOGIN FORM -->
-    <!-- BEGIN FORGOT PASSWORD FORM -->
+
     <form class="forget-form">
         <h3>忘记密码 ?</h3>
 
@@ -101,20 +105,13 @@
                 <i class="m-icon-swapleft"></i> 返回
             </button>
             <button class="btn blue pull-right">
-                <%--todo 重置密码--%>
                 发送 <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
     </form>
-    <!-- END FORGOT PASSWORD FORM -->
-    <!-- BEGIN REGISTRATION FORM -->
+
     <form id="registerInfo" class="register-form">
         <h3>注册</h3>
-
-        <p>
-            快来填注册信息吧:
-        </p>
-
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">登陆帐号</label>
 
@@ -127,7 +124,6 @@
 
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">登陆密码</label>
-
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
                 <input id="registerPassword" name="registerPassword" class="form-control placeholder-no-fix"
@@ -135,11 +131,8 @@
                        placeholder="输入登陆密码" name="password"/>
             </div>
         </div>
-
         <div class="form-group">
-            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
             <label class="control-label visible-ie8 visible-ie9">Email</label>
-
             <div class="input-icon">
                 <i class="fa fa-envelope"></i>
                 <input id="email" class="form-control placeholder-no-fix" type="text" placeholder="输入Email（密码找回）"
@@ -148,12 +141,8 @@
         </div>
         <div class="form-group">
             <label>
-                <input type="checkbox" name="tnc"/> 我同意加入
-                <a href="#">
-                    SLS大家庭
-                </a>
+                <input type="checkbox" name="tnc"/> 我同意加入SLS大家庭
             </label>
-
             <div id="register_tnc_error">
             </div>
         </div>

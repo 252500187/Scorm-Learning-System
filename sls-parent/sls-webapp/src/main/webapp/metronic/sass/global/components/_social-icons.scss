@@ -46,6 +46,7 @@ Social Icons
         .forrst {background: url(../img/social/forrst.png) no-repeat;}
         .github {background: url(../img/social/github.png) no-repeat;}
         .googleplus {background: url(../img/social/googleplus.png) no-repeat;}
+        .scorm {background: url(../img/social/scorm.png) no-repeat;}
         .jolicloud {background: url(../img/social/jolicloud.png) no-repeat;}
         .last-fm {background: url(../img/social/last-fm.png) no-repeat;}
         .linkedin {background: url(../img/social/linkedin.png) no-repeat;}
@@ -118,6 +119,7 @@ Inline Social Icons
     &.forrst {background: url(../img/social/forrst.png) no-repeat;}
     &.github {background: url(../img/social/github.png) no-repeat;}
     &.googleplus {background: url(../img/social/googleplus.png) no-repeat;}
+    &.scorm {background: url(../img/social/scorm.png) no-repeat;}
     &.jolicloud {background: url(../img/social/jolicloud.png) no-repeat;}
     &.last-fm {background: url(../img/social/last-fm.png) no-repeat;}
     &.linkedin {background: url(../img/social/linkedin.png) no-repeat;}
@@ -153,7 +155,7 @@ Inline Social Icons
 .social-icon-color {
     opacity: 0.7;
     background-position:0 -38px !important;
-    
+
     &:hover {
         opacity: 1;
     }
