@@ -15,6 +15,10 @@
             <%--</div>--%>
         </div>
         <!-- END LOGO -->
+
+        <a onclick="studyScorm('66')">
+            studyScorm
+        </a>
         <!-- BEGIN RESPONSIVE MENU TOGGLER -->
         <div class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
         </div>
