@@ -1,143 +1,184 @@
+<%--@elvariable id="noteList" type="java.util.List"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>笔记</title>
     <%@include file="../../includes/common.jsp" %>
-    <script type="text/javascript">
-        var Book_Image_Width = 600;
-        var Book_Image_Height = 800;
-        var Book_Border = true;
-        var Book_Border_Color = "gray";
-        var Book_Speed = 15;
-        var Book_NextPage_Delay = 1500; //1 second=1000
-        var Book_Vertical_Turn = 0;
-
-
-        Book_Image_Sources = new Array(
-                "img/bookmarks/book1.jpg", "http://www.smallrain.net.net",
-                "img/bookmarks/book2.jpg", "http://www.jingran.org",
-                "img/bookmarks/book3.jpg", "", //this slide isn't linked
-                "img/bookmarks/book4.jpg", "http://www.b2bsky.com" // NOTE No comma after last line
-        );
-
-
-        var B_LI, B_MI, B_RI, B_TI, B_Angle = 0, B_CrImg = 6, B_MaxW, B_Direction = 1;
-        var B_MSz, B_Stppd = false;
-        B_Pre_Img = new Array(Book_Image_Sources.length);
-
-        function ImageBook() {
-            if (document.getElementById) {
-                for (i = 0; i < Book_Image_Sources.length; i += 2) {
-                    B_Pre_Img[i] = new Image();
-                    B_Pre_Img[i].src = Book_Image_Sources[i]
-                }
-                Book_Div = document.getElementById("Book");
-                B_LI = document.createElement("img");
-                Book_Div.appendChild(B_LI);
-                B_RI = document.createElement("img");
-                Book_Div.appendChild(B_RI);
-                B_MI = document.createElement("img");
-                Book_Div.appendChild(B_MI);
-                B_LI.style.position = B_MI.style.position = B_RI.style.position = "absolute";
-                B_LI.style.zIndex = B_RI.style.zIndex = 0;
-                B_MI.style.zIndex = 1;
-                B_LI.style.top = (Book_Vertical_Turn ? Book_Image_Height + 1 : 0) + "px";
-                B_LI.style.left = 0 + "px";
-                B_MI.style.top = 0 + "px";
-                B_MI.style.left = (Book_Vertical_Turn ? 0 : Book_Image_Width + 1) + "px";
-                B_RI.style.top = 0 + "px";
-                B_RI.style.left = (Book_Vertical_Turn ? 0 : Book_Image_Width + 1) + "px";
-                B_LI.style.height = Book_Image_Height + "px";
-                B_MI.style.height = Book_Image_Height + "px";
-                B_RI.style.height = Book_Image_Height + "px";
-                B_LI.style.width = Book_Image_Width + "px";
-                B_MI.style.width = Book_Image_Width + "px";
-                B_RI.style.width = Book_Image_Width + "px";
-                if (Book_Border) {
-                    B_LI.style.borderStyle = B_MI.style.borderStyle = B_RI.style.borderStyle = "solid";
-                    B_LI.style.borderWidth = 1 + "px";
-                    B_MI.style.borderWidth = 1 + "px";
-                    B_RI.style.borderWidth = 1 + "px";
-                    B_LI.style.borderColor = B_MI.style.borderColor = B_RI.style.borderColor = Book_Border_Color
-                }
-                B_LI.src = B_Pre_Img[0].src;
-                B_LI.lnk = Book_Image_Sources[1];
-                B_MI.src = B_Pre_Img[2].src;
-                B_MI.lnk = Book_Image_Sources[3];
-                B_RI.src = B_Pre_Img[4].src;
-                B_RI.lnk = Book_Image_Sources[5];
-                B_LI.onclick = B_MI.onclick = B_RI.onclick = B_LdLnk;
-                B_LI.onmouseover = B_MI.onmouseover = B_RI.onmouseover = B_Stp;
-                B_LI.onmouseout = B_MI.onmouseout = B_RI.onmouseout = B_Rstrt;
-                BookImages()
-            }
-        }
-
-        function BookImages() {
-            if (!B_Stppd) {
-                if (Book_Vertical_Turn) {
-                    B_MSz = Math.abs(Math.round(Math.cos(B_Angle) * Book_Image_Height));
-                    MidOffset = !B_Direction ? Book_Image_Height + 1 : Book_Image_Height - B_MSz;
-                    B_MI.style.top = MidOffset + "px";
-                    B_MI.style.height = B_MSz + "px"
-                }
-                else {
-                    B_MSz = Math.abs(Math.round(Math.cos(B_Angle) * Book_Image_Width));
-                    MidOffset = B_Direction ? Book_Image_Width + 1 : Book_Image_Width - B_MSz;
-                    B_MI.style.left = MidOffset + "px";
-                    B_MI.style.width = B_MSz + "px"
-                }
-                B_Angle += Book_Speed / 720 * Math.PI;
-                if (B_Angle >= Math.PI / 2 && B_Direction) {
-                    B_Direction = 0;
-                    if (B_CrImg == Book_Image_Sources.length)B_CrImg = 0;
-                    B_MI.src = B_Pre_Img[B_CrImg].src;
-                    B_MI.lnk = Book_Image_Sources[B_CrImg + 1];
-                    B_CrImg += 2
-                }
-                if (B_Angle >= Math.PI) {
-                    B_Direction = 1;
-                    B_TI = B_LI;
-                    B_LI = B_MI;
-                    B_MI = B_TI;
-                    if (Book_Vertical_Turn)B_MI.style.top = 0 + "px";
-                    else B_MI.style.left = Book_Image_Width + 1 + "px";
-                    B_MI.src = B_RI.src;
-                    B_MI.lnk = B_RI.lnk;
-
-                    setTimeout("Book_Next_Delay()", Book_NextPage_Delay)
-                }
-                else setTimeout("BookImages()", 50)
-            }
-            else setTimeout("BookImages()", 50)
-        }
-
-        function Book_Next_Delay() {
-            if (B_CrImg == Book_Image_Sources.length)B_CrImg = 0;
-            B_RI.src = B_Pre_Img[B_CrImg].src;
-            B_RI.lnk = Book_Image_Sources[B_CrImg + 1];
-            B_MI.style.zIndex = 2;
-            B_LI.style.zIndex = 1;
-            B_Angle = 0;
-            B_CrImg += 2;
-            setTimeout("BookImages()", 50)
-        }
-
-        function B_LdLnk() {
-            if (this.lnk)window.location.href = this.lnk
-        }
-        function B_Stp() {
-            B_Stppd = true;
-            this.style.cursor = this.lnk ? "pointer" : "default"
-        }
-        function B_Rstrt() {
-            B_Stppd = false
-        }
-    </script>
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="booknote/css/default.css"/>
+    <link rel="stylesheet" type="text/css" href="booknote/css/bookblock.css"/>
+    <!-- custom demo style -->
+    <link rel="stylesheet" type="text/css" href="booknote/css/demo4.css"/>
+    <script src="booknote/js/modernizr.custom.js"></script>
 </head>
-<body onload="ImageBook()">
-<div id="Book" style="position:relative">
-    <img src="img/bookmarks/book3.jpg" width="144" height="227">
+<body>
+<div class="container">
+    <div class="bb-custom-wrapper">
+
+        <div id="bb-bookblock" class="bb-bookblock">
+            <div class="bb-item">
+                <div class="bb-custom-firstpage">
+                    <h1>BookBlock <span>A Content Flip Plugin</span></h1>
+                    <nav class="codrops-demos">
+                        <a href="index.html">Demo 1</a>
+                        <a href="index2.html">Demo 2</a>
+                        <a href="index3.html">Demo 3</a>
+                        <a class="current-demo" href="index4.html">Demo 4</a>
+                        <a href="index5.html">Demo 5</a>
+                    </nav>
+                    <nav class="codrops-nav">
+                        <a class="codrops-icon codrops-icon-prev"
+                           href="http://tympanus.net/codrops/2012/08/29/multiple-area-charts-with-d3-js/"><span>Previous Demo</span></a>
+                        <a class="codrops-icon codrops-icon-drop"
+                           href="http://tympanus.net/codrops/2012/09/03/bookblock-a-content-flip-plugin/"><span>Back to the Codrops Article</span></a>
+                    </nav>
+                </div>
+                <div class="bb-custom-side">
+                    <p>Pastry bear claw oat cake danish croissant jujubes danish. Wypas soufflé muffin. Liquorice powder
+                        pastry danish. Candy toffee gummi bears chocolate bar lollipop applicake chocolate cake danish
+                        brownie.</p>
+                </div>
+            </div>
+            <div class="bb-item">
+                <div class="bb-custom-side">
+                    <p>Soufflé tootsie roll jelly beans. Sweet icing croissant dessert bear claw. Brownie dessert
+                        cheesecake danish jelly pudding bear claw soufflé.</p>
+                </div>
+                <div class="bb-custom-side">
+                    <p>Candy canes lollipop macaroon marshmallow gummi bears tiramisu. Dessert croissant cupcake candy
+                        canes. Bear claw faworki faworki lemon drops. Faworki marzipan sugar plum jelly-o marzipan
+                        jelly-o.</p>
+                </div>
+            </div>
+            <div class="bb-item">
+                <div class="bb-custom-side">
+                    <p>Croissant pudding gingerbread gummi bears marshmallow halvah. Wafer donut croissant. Cookie
+                        muffin jelly beans pie croissant croissant candy canes jelly marshmallow.</p>
+                </div>
+                <div class="bb-custom-side">
+                    <p>Wafer donut caramels chocolate caramels sweet roll. Gummi bears powder candy chocolate cake gummi
+                        bears icing wafer cupcake. Brownie cotton candy pastry chocolate wypas.</p>
+                </div>
+            </div>
+            <div class="bb-item">
+                <div class="bb-custom-side">
+                    <p>Marzipan dragée candy canes chocolate cake. Soufflé faworki jelly gingerbread cupcake. Powder
+                        gummies applicake.</p>
+                </div>
+                <div class="bb-custom-side">
+                    <p>Cotton candy caramels tootsie roll soufflé powder lemon drops carrot cake danish. Cotton candy
+                        candy canes fruitcake muffin gingerbread. Jujubes soufflé gingerbread donut donut.</p>
+                </div>
+            </div>
+            <div class="bb-item">
+                <div class="bb-custom-side">
+                    <p>Jujubes fruitcake tiramisu liquorice chocolate cake. Carrot cake faworki donut soufflé oat cake
+                        tootsie roll. Fruitcake fruitcake cake sweet pie jelly beans. Chocolate cake candy jujubes oat
+                        cake toffee croissant muffin.</p>
+                </div>
+                <div class="bb-custom-side">
+                    <p>Chocolate bar tiramisu marzipan. Croissant soufflé croissant lollipop liquorice dragée chupa
+                        chups carrot cake. Liquorice lollipop halvah toffee lollipop.</p>
+                </div>
+            </div>
+        </div>
+
+        <nav>
+            <a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">First page</a>
+            <a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Previous</a>
+            <a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Next</a>
+            <a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Last page</a>
+        </nav>
+
+    </div>
+
 </div>
+<!-- /container -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="booknote/js/jquerypp.custom.js"></script>
+<script src="booknote/js/jquery.bookblock.js"></script>
+<script>
+    var Page = (function () {
+
+        var config = {
+                    $bookBlock: $('#bb-bookblock'),
+                    $navNext: $('#bb-nav-next'),
+                    $navPrev: $('#bb-nav-prev'),
+                    $navFirst: $('#bb-nav-first'),
+                    $navLast: $('#bb-nav-last')
+                },
+                init = function () {
+                    config.$bookBlock.bookblock({
+                        speed: 1000,
+                        shadowSides: 0.8,
+                        shadowFlip: 0.4
+                    });
+                    initEvents();
+                },
+                initEvents = function () {
+
+                    var $slides = config.$bookBlock.children();
+
+                    // add navigation events
+                    config.$navNext.on('click touchstart', function () {
+                        config.$bookBlock.bookblock('next');
+                        return false;
+                    });
+
+                    config.$navPrev.on('click touchstart', function () {
+                        config.$bookBlock.bookblock('prev');
+                        return false;
+                    });
+
+                    config.$navFirst.on('click touchstart', function () {
+                        config.$bookBlock.bookblock('first');
+                        return false;
+                    });
+
+                    config.$navLast.on('click touchstart', function () {
+                        config.$bookBlock.bookblock('last');
+                        return false;
+                    });
+
+                    // add swipe events
+                    $slides.on({
+                        'swipeleft': function (event) {
+                            config.$bookBlock.bookblock('next');
+                            return false;
+                        },
+                        'swiperight': function (event) {
+                            config.$bookBlock.bookblock('prev');
+                            return false;
+                        }
+                    });
+
+                    // add keyboard events
+                    $(document).keydown(function (e) {
+                        var keyCode = e.keyCode || e.which,
+                                arrow = {
+                                    left: 37,
+                                    up: 38,
+                                    right: 39,
+                                    down: 40
+                                };
+
+                        switch (keyCode) {
+                            case arrow.left:
+                                config.$bookBlock.bookblock('prev');
+                                break;
+                            case arrow.right:
+                                config.$bookBlock.bookblock('next');
+                                break;
+                        }
+                    });
+                };
+
+        return { init: init };
+
+    })();
+</script>
+<script>
+    Page.init();
+</script>
 </body>
 </html>
