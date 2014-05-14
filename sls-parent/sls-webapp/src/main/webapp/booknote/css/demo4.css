@@ -24,7 +24,8 @@
 }
 
 .bb-custom-side {
-	width: 50%;
+    margin-top: -10%;
+    width: 50%;
 	float: left;
 	height: 100%;
 	overflow: hidden;
@@ -139,6 +140,12 @@
 	-moz-transform: rotate(180deg);
 	-ms-transform: rotate(180deg);
 	transform: rotate(180deg);
+}
+
+.head-Info {
+    width: 50%;
+    float: left;
+    padding-top: 5%;
 }
 
 /* No JS */
