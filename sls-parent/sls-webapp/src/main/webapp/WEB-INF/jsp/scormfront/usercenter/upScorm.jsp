@@ -12,7 +12,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
 </head>
-<body>
+<body class="page-header-fixed ">
 <div class="row">
     <div class="col-md-12">
         <div class="portlet box">
@@ -20,9 +20,6 @@
                 <form class="form-horizontal" id="fileGetUp" method="post"
                       enctype="multipart/form-data">
                     <div class="form-body">
-                        <div class="form-group">
-                            <label class="control-label col-md-2"><h3></h3></label>
-                        </div>
                         <div class="form-group">
                             <label class="control-label col-md-2">课件名称</label>
 
@@ -36,33 +33,24 @@
 
                             <div class="col-md-9">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <div class="fileinput-new thumbnail"
-                                         style="width: 200px; height: 150px;">
-                                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image"
-                                             alt=""/>
-                                    </div>
+                                    <%--<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">--%>
+                                        <%--<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt=""/>--%>
+                                    <%--</div>--%>
                                     <div class="fileinput-preview fileinput-exists thumbnail"
                                          style="max-width: 200px; max-height: 150px;">
                                     </div>
                                     <div>
                                         <span class="btn default btn-file">
-                                            <span class="fileinput-new">
-                                                 选择
-                                            </span>
-                                            <span class="fileinput-exists">
-                                                 换一个
-                                            </span>
+                                            <%--<span class="fileinput-new">选择</span>--%>
+                                            <%--<span class="fileinput-exists">换一个 </span>--%>
                                             <input type="file" name="upImg" id="upImg"/>
                                         </span>
                                     </div>
                                 </div>
-                                <div class="clearfix margin-top-10">
-												<span class="label label-danger">
-													 提示!
-												</span>
-                                    图片预览只支持 IE10+, FF3.6+, Safari6.0+, Chrome6.0+ and
-                                    Opera11.1+.
-                                </div>
+                                <%--<div class="clearfix margin-top-10">--%>
+                                    <%--<span class="label label-danger">提示! </span>--%>
+                                    <%--<span>图片预览只支持 IE10+, FF3.6+, Safari6.0+, Chrome6.0+, Opera11.1+.</span>--%>
+                                <%--</div>--%>
                             </div>
                         </div>
                         <div class="form-group">
@@ -71,17 +59,17 @@
                             <div class="col-md-9">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="input-group input-large">
-                                        <div class="form-control uneditable-input span3" data-trigger="fileinput">
-                                            <i class="fa fa-file fileinput-exists"></i>&nbsp;
-                                            <span class="fileinput-filename"></span>
-                                        </div>
+                                        <%--<div class="form-control uneditable-input span3" data-trigger="fileinput">--%>
+                                            <%--<i class="fa fa-file fileinput-exists"></i>&nbsp;--%>
+                                            <%--<span class="fileinput-filename"></span>--%>
+                                        <%--</div>--%>
                                         <span class="input-group-addon btn default btn-file">
-                                            <span class="fileinput-new">
-                                                 选择
-                                            </span>
-                                            <span class="fileinput-exists">
-                                                 换一个
-                                            </span>
+                                            <%--<span class="fileinput-new">--%>
+                                                 <%--选择--%>
+                                            <%--</span>--%>
+                                            <%--<span class="fileinput-exists">--%>
+                                                 <%--换一个--%>
+                                            <%--</span>--%>
                                             <input type="file" name="upScorm" id="upScorm"/>
                                         </span>
                                     </div>
@@ -118,7 +106,8 @@
 </html>
 <script>
     jQuery(document).ready(function () {
-        App.init();
+        Metronic.init();
+        Layout.init();
         if ("${result}" != "") {
             parent.$("#alertMessage").html("${result}");
             parent.$("#alertButton").click();
