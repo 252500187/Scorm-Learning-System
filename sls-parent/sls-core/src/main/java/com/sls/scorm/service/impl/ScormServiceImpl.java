@@ -134,7 +134,7 @@ public class ScormServiceImpl implements ScormService {
         List<StudyNote> studyNoteList = scormDao.getAllStudyNotesByScormIdAndUserId(studyNote);
         for (StudyNote studyNote1 : studyNoteList) {
             studyNote1.setTime(studyNote1.getDate().substring(10));
-            studyNote1.setDate(studyNote1.getDate().substring(0,10));
+            studyNote1.setDate(studyNote1.getDate().substring(0, 10));
         }
         request.setAttribute("noteList", studyNoteList.size() == 0 ? new LinkedList<StudyNote>() : studyNoteList);
     }
@@ -284,9 +284,27 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void checkScormInfo(HttpServletRequest request, int scormId) {
         Scorm scorm = scormDao.findScormInfoByScormId(scormId);
+        scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
+        scorm.setShowUploadUserId(userDao.findUserAllInfoById(scorm.getUploadUserId()).getUserName());
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
         request.setAttribute("scorm", scorm);
         request.setAttribute("scoList", scoList);
+        request.setAttribute("inUse", DictConstant.IN_USE);
+        request.setAttribute("levelOne", DictConstant.RECOMMEND_1);
+        request.setAttribute("levelTwo", DictConstant.RECOMMEND_2);
+        request.setAttribute("levelThree", DictConstant.RECOMMEND_3);
+        request.setAttribute("levelFour", DictConstant.RECOMMEND_4);
+        request.setAttribute("levelFive", DictConstant.RECOMMEND_5);
+    }
 
+    @Override
+    public void changeScormInUse(int scormId, int isUse) {
+        scormDao.changeScormInUse(scormId, isUse);
+    }
+
+    @Override
+    public String changeScormRecommend(int scormId, int recommend) {
+        scormDao.changeScormRecommend(scormId, recommend);
+        return dictService.changeDictCodeToValue(recommend, DictConstant.RECOMMEND);
     }
 }

@@ -93,7 +93,7 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
     public List<StudyNote> getAllStudyNotesByScormIdAndUserId(StudyNote studyNote) {
         String sql = "SELECT lsn.*,ss.`scorm_name` FROM luss_study_note  lsn JOIN ss_scorm ss ON lsn.`scorm_id` = ss.`scorm_id` WHERE user_id = ? ";
         if (studyNote.getScormId() != DictConstant.VOID_VALUE) {
-            sql +=( " AND lsn.scorm_id = " + studyNote.getScormId());
+            sql += (" AND lsn.scorm_id = " + studyNote.getScormId());
         }
         sql += " ORDER BY note_id DESC ";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<StudyNote>(StudyNote.class), studyNote.getUserId());
@@ -124,5 +124,17 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
             sql.append(" AND scorm_name like '%").append(scorm.getScormName()).append("%'");
         }
         return queryForPage(pageParameter, sql.toString(), new BeanPropertySqlParameterSource(scorm), new BeanPropertyRowMapper<Scorm>(Scorm.class));
+    }
+
+    @Override
+    public void changeScormInUse(int scormId, int isUse) {
+        String sql = "UPDATE ss_scorm SET in_use=? WHERE scorm_id=?";
+        getJdbcTemplate().update(sql, isUse, scormId);
+    }
+
+    @Override
+    public void changeScormRecommend(int scormId, int recommend) {
+        String sql = "UPDATE ss_scorm SET recommend_level=? WHERE scorm_id=?";
+        getJdbcTemplate().update(sql, recommend, scormId);
     }
 }

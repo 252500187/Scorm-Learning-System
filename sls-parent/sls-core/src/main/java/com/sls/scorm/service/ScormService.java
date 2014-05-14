@@ -22,7 +22,7 @@ public interface ScormService {
 
     void studyScorm(int scormId, HttpServletRequest request);
 
-    void studyScormZtree(int scormId,HttpServletRequest request);
+    void studyScormZtree(int scormId, HttpServletRequest request);
 
     void changeScoState(int scormId, int scoId);
 
@@ -44,9 +44,13 @@ public interface ScormService {
 
     void upStudyImg(HttpServletRequest request, String upImg, StudyNote studyNote) throws ServletException, IOException;
 
-    Page<Scorm> listNotAuditScormPageList(PageParameter pageParameter,Scorm scorm);
+    Page<Scorm> listNotAuditScormPageList(PageParameter pageParameter, Scorm scorm);
 
-    Page<Scorm> listAuditScormPageList(PageParameter pageParameter,Scorm scorm);
+    Page<Scorm> listAuditScormPageList(PageParameter pageParameter, Scorm scorm);
 
-    void checkScormInfo(HttpServletRequest request,int scormId);
+    void checkScormInfo(HttpServletRequest request, int scormId);
+
+    void changeScormInUse(int scormId, int isUse);
+
+    String changeScormRecommend(int scormId, int recommend);
 }

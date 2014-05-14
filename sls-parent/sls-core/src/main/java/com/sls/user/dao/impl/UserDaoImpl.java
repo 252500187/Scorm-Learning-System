@@ -37,7 +37,7 @@ public class UserDaoImpl extends PageDao implements UserDao {
     @Override
     public User findUserAllInfoById(int id) {
         StringBuilder sql = getUserSql();
-        sql.append(" AND a.id=?");
+        sql.append(" AND a.user_id=?");
         return getJdbcTemplate().queryForObject(sql.toString(), new BeanPropertyRowMapper<User>(User.class), id);
     }
 

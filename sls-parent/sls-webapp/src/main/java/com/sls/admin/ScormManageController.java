@@ -4,6 +4,7 @@ import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.service.ScormService;
+import com.sls.util.DictConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,5 +48,24 @@ public class ScormManageController {
     public String scormInfo(HttpServletRequest request, @RequestParam("scormId") String scormId) {
         scormService.checkScormInfo(request, Integer.parseInt(scormId));
         return "scormadmin/scorm/scormInfo";
+    }
+
+    @RequestMapping(value = "approveScorm", method = {RequestMethod.POST})
+    @ResponseBody
+    public void approveScorm(@RequestParam("scormId") String scormId) {
+        scormService.changeScormInUse(Integer.parseInt(scormId), DictConstant.IN_USE);
+    }
+
+    @RequestMapping(value = "forbiddenScorm", method = {RequestMethod.POST})
+    @ResponseBody
+    public void forbiddenScorm(@RequestParam("scormId") String scormId) {
+        scormService.changeScormInUse(Integer.parseInt(scormId), DictConstant.NO_USE);
+    }
+
+    @RequestMapping(value = "changScormRecommend", method = {RequestMethod.POST})
+    @ResponseBody
+    public String[] changScormRecommend(@RequestParam("scormId") String scormId, @RequestParam("level") String level) {
+        String str[] = {scormService.changeScormRecommend(Integer.parseInt(scormId), Integer.parseInt(level))};
+        return str;
     }
 }

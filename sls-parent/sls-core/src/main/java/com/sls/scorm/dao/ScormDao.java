@@ -35,7 +35,11 @@ public interface ScormDao {
 
     void changeTotalTimeByScormId(int scormId, String totalTime);
 
-    Page<Scorm> listNotAuditScormPageList(PageParameter pageParameter,Scorm scorm);
+    Page<Scorm> listNotAuditScormPageList(PageParameter pageParameter, Scorm scorm);
 
-    Page<Scorm> listAuditScormPageList(PageParameter pageParameter,Scorm scorm);
+    Page<Scorm> listAuditScormPageList(PageParameter pageParameter, Scorm scorm);
+
+    void changeScormInUse(int scormId, int isUse);
+
+    void changeScormRecommend(int scormId, int recommend);
 }

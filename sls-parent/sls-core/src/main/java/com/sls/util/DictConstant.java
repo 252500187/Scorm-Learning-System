@@ -85,6 +85,7 @@ public class DictConstant {
 
 
     //管理员推荐级别
+    public static final String RECOMMEND = "recommend";
     //无级别
     public static final int RECOMMEND_0 = 0;
     //级别1

@@ -8,6 +8,7 @@ public class Scorm {
     private String scormName;
     private int registerSum;
     private int recommendLevel;
+    private String showRecommendLevel;
     private String imgPath;
     private String description;
     private String uploadDate;
@@ -139,5 +140,13 @@ public class Scorm {
 
     public void setScore(String score) {
         this.score = score;
+    }
+
+    public String getShowRecommendLevel() {
+        return showRecommendLevel;
+    }
+
+    public void setShowRecommendLevel(String showRecommendLevel) {
+        this.showRecommendLevel = showRecommendLevel;
     }
 }
