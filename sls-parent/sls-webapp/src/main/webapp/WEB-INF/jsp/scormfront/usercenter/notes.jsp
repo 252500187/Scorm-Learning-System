@@ -46,12 +46,12 @@
             <c:forEach begin="0" step="2" items="${noteList}" varStatus="status">
                 <div class="bb-item">
                     <div class="head-Info" style="padding-left: 5%">
-                            ${noteList[status.index].date}<br/>
-                            ${noteList[status.index].scormName}
+                            <small>${noteList[status.index].date}</small><br/>
+                            <h3 class="page-title">${noteList[status.index].scormName}</h3>
                     </div>
                     <div class="head-Info" style="text-align: right;padding-right: 5%;">
-                            ${noteList[status.index+1].date}<br/>
-                            ${noteList[status.index+1].scormName}
+                            <small>${noteList[status.index+1].date}</small><br/>
+                            <h3 class="page-title">${noteList[status.index+1].scormName}</h3>
                     </div>
                     <div class="bb-custom-side">
                         <c:if test="${noteList[status.index].noteType == -1 }">
