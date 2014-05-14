@@ -139,12 +139,17 @@
                     allowfullscreen>
             </iframe>
         </div>
+        <br/>
         <div class="row ">
-            <div class="col-md-6 col-sm-6">
+            <div class="col-md-6">
                 <div class="portlet box blue">
                     <div class="portlet-title">
                         <div class="caption">
                             <i class="fa fa-calendar"></i>课件信息
+                        </div>
+                        <div class="tools">
+                            <a href="" class="collapse">
+                            </a>
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -168,7 +173,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6">
+        </div>
+        <div class="row ">
+            <div class="col-md-12">
                 <div class="portlet">
                     <div class="portlet-title line">
                         <div class="caption">
@@ -177,10 +184,21 @@
                         <div class="tools">
                             <a href="" class="collapse">
                             </a>
-                            <a href="" class="reload">
+                        </div>
+                    </div>
+                    <div class="chat-form">
+                        <div class="input-cont">
+                            <input class="form-control" type="text" placeholder="说点什么？"/>
+                        </div>
+                        <div class="btn-cont">
+									<span class="arrow">
+									</span>
+                            <a href="" class="btn blue icn-only">
+                                <i class="fa fa-check icon-white"></i>
                             </a>
                         </div>
                     </div>
+                    <br/>
                     <div class="portlet-body" id="chats">
                         <div class="scroller" style="height: 435px;" data-always-visible="1" data-rail-visible1="1">
                             <ul class="chats">
@@ -219,18 +237,6 @@
                                     </div>
                                 </li>
                             </ul>
-                        </div>
-                        <div class="chat-form">
-                            <div class="input-cont">
-                                <input class="form-control" type="text" placeholder="说点什么？"/>
-                            </div>
-                            <div class="btn-cont">
-									<span class="arrow">
-									</span>
-                                <a href="" class="btn blue icn-only">
-                                    <i class="fa fa-check icon-white"></i>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
