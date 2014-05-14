@@ -18,7 +18,7 @@
         <a class="btn btn-primary" onclick="addDictDefine()"><spring:message code="add"/></a>
     </form>
     <table id="dataTable"></table>
-    <div id="dataEdit" closed="true" modal="true" style="overflow: hidden">
+    <div id="dataEdit" closed="true" modal="true" style="overflow: hidden" closable="true">
         <iframe style="width: 100%;height: 100%"
                 id="contentList"
                 name="contentList"

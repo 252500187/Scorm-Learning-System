@@ -49,7 +49,7 @@
     </div>
 </div>
 </div>
-<div id="dataEdit" closed="true" modal="true" style="overflow: hidden">
+<div id="dataEdit" closed="true" modal="true" style="overflow: hidden" closable="true">
     <iframe style="width: 100%;height: 100%"
             id="contentFrame"
             name="contentFrame"

@@ -75,7 +75,7 @@
         contentFrame.attr("src", basePath + "admin/scorm/scormInfo?scormId=" + scormId);
         dataEdit.dialog({
             title: '课件信息',
-            height: document.documentElement.clientHeight + 100,
+            height: document.documentElement.clientHeight,
             width: document.documentElement.clientWidth - 100
         });
         dataEdit.dialog('open');
