@@ -6,6 +6,7 @@ import com.core.page.entity.PageParameter;
 import com.sls.user.dao.UserDao;
 import com.sls.user.entity.User;
 import com.sls.user.entity.UserLevel;
+import com.sls.util.DictConstant;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -18,7 +19,7 @@ import java.util.List;
 public class UserDaoImpl extends PageDao implements UserDao {
 
     private StringBuilder getUserSql() {
-        String sql = "SELECT a.*, c.*,d.*, c.role_name show_role_id FROM us_user a,us_user_role b,us_role c,us_user_info d WHERE a.user_id=b.user_id AND b.role_id=c.role_id AND d.user_id=a.user_id ";
+        String sql = "SELECT a.*, c.*,d.*, c.role_name show_role_id FROM us_user a,us_user_role b,us_role c,us_user_info d WHERE a.user_id=b.user_id AND b.role_id=c.role_id AND d.user_id=a.user_id AND a.in_use="+ DictConstant.IN_USE;
         return new StringBuilder(sql);
     }
 
@@ -57,7 +58,7 @@ public class UserDaoImpl extends PageDao implements UserDao {
     }
 
     @Override
-    public List<User> findUserByLoginName(String loginName) {
+    public List<User> findInUseUserByLoginName(String loginName) {
         StringBuilder sql = getUserSql();
         sql.append(" AND a.login_name=?");
         return getJdbcTemplate().query(sql.toString(), new BeanPropertyRowMapper<User>(User.class), loginName);

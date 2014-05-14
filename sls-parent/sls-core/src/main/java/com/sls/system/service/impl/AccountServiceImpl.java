@@ -16,11 +16,11 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public List<User> findUserByLoginName(String loginName) {
-        return userDao.findUserByLoginName(loginName);
+        return userDao.findInUseUserByLoginName(loginName);
     }
 
     @Override
     public String getRoleAuthorityByLoginName(String loginName) {
-        return userDao.findUserByLoginName(loginName).get(0).getAuthority();
+        return userDao.findInUseUserByLoginName(loginName).get(0).getAuthority();
     }
 }

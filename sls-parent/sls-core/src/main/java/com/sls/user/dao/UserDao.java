@@ -13,7 +13,7 @@ public interface UserDao {
 
     User findUserAllInfoById(int id);
 
-    List<User> findUserByLoginName(String loginName);
+    List<User> findInUseUserByLoginName(String loginName);
 
     Boolean checkRepeatLoginName(String loginName);
 

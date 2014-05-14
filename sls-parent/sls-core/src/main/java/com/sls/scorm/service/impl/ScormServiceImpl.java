@@ -47,7 +47,7 @@ public class ScormServiceImpl implements ScormService {
         try {
             FileUp fileUp = new FileUp();
             Date date = new Date();
-            int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+            int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
             String fileName = date.getTime() + userId + "";
 //            scorm.setScormName(BaseUtil.iso2utf(scorm.getScormName()));
             scorm.setImgPath(fileUp.upImg(request, DictConstant.TOP_SCORM_FILE_NAME, "/" + fileName, DictConstant.SCORM_IMG, upImg));
@@ -70,7 +70,7 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public String registerScorm(int scormId, HttpServletRequest request) {
-        User user = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0);
+        User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
         int scormState = scormDao.findScormInfoByScormId(scormId).getInUse();
         if (scoDao.findScosByScormIdAndUserId(scormId, user.getUserId()).size() > 0) {
             return "对不起，您已注册。";
@@ -100,7 +100,7 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public String collectScorm(int scormId, HttpServletRequest request) {
-        int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         int scormState = scormDao.findScormInfoByScormId(scormId).getInUse();
         if (scormDao.findCollectScormByScormIdAndUserId(scormId, userId).size() > 0) {
             return "对不起，您已收藏。";
@@ -121,13 +121,13 @@ public class ScormServiceImpl implements ScormService {
         studyNote.setNoteType(DictConstant.TEXT_TYPE);
         studyNote.setImgPath("");
         studyNote.setDate(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
-        studyNote.setUserId(userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        studyNote.setUserId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
         scormDao.addStudyNote(studyNote);
     }
 
     @Override
     public void getAllStudyNotesByScormIdAndUserId(int i, HttpServletRequest request) {
-        int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         StudyNote studyNote = new StudyNote();
         studyNote.setScormId(i);
         studyNote.setUserId(userId);
@@ -143,7 +143,7 @@ public class ScormServiceImpl implements ScormService {
     public void upStudyImg(HttpServletRequest request, String upImg, StudyNote studyNote) throws ServletException, IOException {
         FileUp fileUp = new FileUp();
         Date date = new Date();
-        int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         studyNote.setNoteType(DictConstant.IMG);
         studyNote.setUserId(userId);
         studyNote.setDate(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
@@ -162,7 +162,7 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void studyScormZtree(int scormId, HttpServletRequest request) {
-        int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, userId);
         for (Sco sco : scoList) {
             sco.setShowStudyState(dictService.changeDictCodeToValue(sco.getStudyState(), DictConstant.STUDY_STATE));
@@ -173,7 +173,7 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void changeScoState(int scormId, int scoId) {
-        int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         ScoInfo scoInfo = new ScoInfo();
         scoInfo.setScoId(scoId);
         scoInfo.setCoreEntry(DictConstant.ENTRY_RE);
@@ -247,7 +247,7 @@ public class ScormServiceImpl implements ScormService {
         boolean registerScorm = true;
         boolean isTourist = "".equals(LoginUserUtil.getLoginName());
         if (!isTourist) {
-            int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+            int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
             if (scormDao.checkNotHasCollected(scormId, userId)) {
                 collectScorm = false;
             }

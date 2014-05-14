@@ -108,6 +108,15 @@
         if ("${user.imgUrl}" != "") {
             $("#userPhoto").attr("src", basePath + "${user.imgUrl}");
         }
+        jQuery.validator.addMethod("isImg", function (value, element, param) {
+            if (param) {
+                var imgType = value.substr(value.length - 3, 3);
+                if ((imgType != "jpg") && (imgType != "png") && (imgType != "gif")) {
+                    return false;
+                }
+                return true;
+            }
+        }, "请选择图片文件");
     });
     function changeUserInfo() {
         $.ajax({

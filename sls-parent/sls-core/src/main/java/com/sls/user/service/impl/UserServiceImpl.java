@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findUserByLoginName(String loginName) {
-        return userDao.findUserByLoginName(loginName);
+        return userDao.findInUseUserByLoginName(loginName);
     }
 
     @Override
@@ -106,7 +106,7 @@ public class UserServiceImpl implements UserService {
     public void upHeadImg(HttpServletRequest request, String upImg) throws ServletException, IOException {
         FileUp fileUp = new FileUp();
         User user = new User();
-        int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         user.setUserId(userId);
         user.setImgUrl(fileUp.upImg(request, DictConstant.USER_PHOTO_NAME, "", userId + DictConstant.PHOTO_FORM, upImg));
         request.setAttribute("photoUrl", user.getImgUrl());
