@@ -171,14 +171,6 @@
     $(function () {
         Metronic.init(); // init metronic core componets
         Layout.init(); // init layout
-        Index.init();
-        Index.initDashboardDaterange();
-        Index.initJQVMAP(); // init index page's custom scripts
-        Index.initCalendar(); // init index page's custom scripts
-        Index.initCharts(); // init index page's custom scripts
-        Index.initChat();
-        Index.initMiniCharts();
-        Index.initIntro();
         Tasks.initDashboardWidget();
         $("#userHeadPhoto").attr("src", basePath + "${user.imgUrl}");
         changeIframe('user/center/userCenterInfo');
