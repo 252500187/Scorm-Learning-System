@@ -280,9 +280,6 @@
 </html>
 <script>
     jQuery(document).ready(function () {
-        // initiate layout and plugins
-        App.init();
-        Charts.init();
-        Charts.initPieCharts();
+        Metronic.init();
     });
 </script>
