@@ -60,15 +60,15 @@
                             <p>${noteList[status.index].note}</p>
                         </c:if>
                         <c:if test="${noteList[status.index].noteType == 1 }">
-                            <img style="max-height: 250px;max-width: 350px" src="${noteList[status.index].imgPath}"/>
+                            <img style="max-height: 250px;max-width: 350px" src="${noteList[status.index].imgPath}" alt=""/>
                         </c:if>
                     </div>
                     <div class="bb-custom-side">
                         <c:if test="${noteList[status.index+1].noteType == -1 }">
-                            <p>${noteList[status.index].note}</p>
+                            <p>${noteList[status.index+1].note}</p>
                         </c:if>
                         <c:if test="${noteList[status.index+1].noteType == 1 }">
-                            <img style="max-height: 250px;max-width: 350px" src="${noteList[status.index].imgPath}"/>
+                            <img style="max-height: 250px;max-width: 350px" src="${noteList[status.index+1].imgPath}" alt=""/>
                         </c:if>
                     </div>
                 </div>
