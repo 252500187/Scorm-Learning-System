@@ -1,13 +1,17 @@
 <%--@elvariable id="scorm" type="com.sls.scorm.entity.Scorm"--%>
 <%--@elvariable id="noteList" type="java.util.List"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
 <head>
-    <title>SLS | Study</title>
-    <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <meta content="" name="description"/>
-    <meta content="" name="author"/>
+    <meta charset="utf-8"/>
+    <title>SLS | WELCOME to SLS</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
     <script src="<c:url value="/js/ScormAPI.js"/>" type="text/javascript"></script>
 </head>
@@ -113,7 +117,9 @@
                     <div class="portlet-body" id="noteList">
                         <c:forEach var="note" items="${noteList}">
                             <div class="note note-success">
-                                <h4 class="caption" style="color: #6b7582">${note.date}</h4><small style="color: #6b7582">${note.time}</small><br/>
+                                <h4 class="caption" style="color: #6b7582">${note.date}</h4>
+                                <small style="color: #6b7582">${note.time}</small>
+                                <br/>
                                 <c:if test="${note.noteType == -1 }">
                                     <p>${note.note}</p>
                                 </c:if>
