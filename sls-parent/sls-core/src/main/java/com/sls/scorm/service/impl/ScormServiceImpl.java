@@ -120,7 +120,7 @@ public class ScormServiceImpl implements ScormService {
     public void addStudyNote(StudyNote studyNote) {
         studyNote.setNoteType(DictConstant.TEXT_TYPE);
         studyNote.setImgPath("");
-        studyNote.setDate(DateUtil.getSystemDate("yyyy-MM-dd"));
+        studyNote.setDate(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
         studyNote.setUserId(userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
         scormDao.addStudyNote(studyNote);
     }
@@ -142,7 +142,7 @@ public class ScormServiceImpl implements ScormService {
         int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         studyNote.setNoteType(DictConstant.IMG);
         studyNote.setUserId(userId);
-        studyNote.setDate(DateUtil.getSystemDate("yyyy-MM-dd"));
+        studyNote.setDate(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
         studyNote.setImgPath(fileUp.upImg(request, DictConstant.STUDY_IMG, "/" + userId, studyNote.getScormId() + date.getTime() + DictConstant.PHOTO_FORM, upImg));
         scormDao.addStudyNote(studyNote);
     }

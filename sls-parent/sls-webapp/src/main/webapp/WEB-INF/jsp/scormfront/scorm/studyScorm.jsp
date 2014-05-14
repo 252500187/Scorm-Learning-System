@@ -140,6 +140,7 @@
             </iframe>
         </div>
         <br/>
+
         <div class="row ">
             <div class="col-md-6">
                 <div class="portlet box blue">
@@ -199,6 +200,7 @@
                         </div>
                     </div>
                     <br/>
+
                     <div class="portlet-body" id="chats">
                         <div class="scroller" style="height: 435px;" data-always-visible="1" data-rail-visible1="1">
                             <ul class="chats">
