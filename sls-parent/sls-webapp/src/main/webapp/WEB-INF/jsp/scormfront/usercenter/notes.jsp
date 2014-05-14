@@ -14,6 +14,11 @@
 </head>
 <body>
 <div class="container">
+    <div class="alert alert-success margin-bottom-10" style="text-align: center">
+        <button class="close" aria-hidden="true" data-dismiss="alert" type="button"></button>
+        <i class="fa fa-warning fa-lg"></i>
+        试试按住鼠标后向左滑动吧
+    </div>
     <div class="bb-custom-wrapper">
 
         <div id="bb-bookblock" class="bb-bookblock">
@@ -53,7 +58,7 @@
                             <p>${noteList[status.index].note}</p>
                         </c:if>
                         <c:if test="${noteList[status.index].noteType == 1 }">
-                            <img style="max-height: 150px;max-width: 250px" src="${noteList[status.index].imgPath}"/>
+                            <img style="max-height: 250px;max-width: 350px" src="${noteList[status.index].imgPath}"/>
                         </c:if>
                     </div>
                     <div class="bb-custom-side">
@@ -61,7 +66,7 @@
                             <p>${noteList[status.index].note}</p>
                         </c:if>
                         <c:if test="${noteList[status.index+1].noteType == 1 }">
-                            <img style="max-height: 150px;max-width: 250px" src="${noteList[status.index].imgPath}"/>
+                            <img style="max-height: 250px;max-width: 350px" src="${noteList[status.index].imgPath}"/>
                         </c:if>
                     </div>
                 </div>
@@ -105,7 +110,8 @@
                     var $slides = config.$bookBlock.children();
 
                     // add navigation events
-                    config.$navNext.on('click touchstart', function () {
+                    config.$navNext.on('click t' +
+                            'ouchstart', function () {
                         config.$bookBlock.bookblock('next');
                         return false;
                     });
