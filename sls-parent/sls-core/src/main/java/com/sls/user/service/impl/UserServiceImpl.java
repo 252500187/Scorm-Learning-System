@@ -117,4 +117,10 @@ public class UserServiceImpl implements UserService {
     public boolean checkRepeatLoginName(String loginName) {
         return !userDao.checkRepeatLoginName(loginName);
     }
+
+    @Override
+    public void shieldUser(int userId) {
+        User user = userDao.findUserAllInfoById(userId);
+        int a= 1;
+    }
 }

@@ -30,4 +30,6 @@ public interface UserService {
     void upHeadImg(HttpServletRequest request, String upImg) throws ServletException, IOException;
 
     boolean checkRepeatLoginName(String loginName);
+
+    void shieldUser(int userId);
 }

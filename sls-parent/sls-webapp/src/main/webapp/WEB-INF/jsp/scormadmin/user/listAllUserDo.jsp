@@ -39,7 +39,7 @@
 <script type="text/javascript">
     function query() {
         listOption.url = basePath + "admin/user/listAllUser";
-        listOption.data = "userName=" + $("#userName").val().trim()+ "&loginName=" + $("#loginName").val().trim();
+        listOption.data = "userName=" + $("#userName").val().trim() + "&loginName=" + $("#loginName").val().trim();
         listOption.pageNumber = 1;
         loadData(listOption);
     }
@@ -49,7 +49,7 @@
         $.messager.confirm("提示", "确认" + operate + "屏蔽用户？", function (r) {
             if (r) {
                 $.ajax({
-                    url: basePath + "admin/admin/shieldUser?id=" + id,
+                    url: basePath + "admin/user/shieldUser?id=" + id,
                     dataType: "json",
                     type: "POST",
                     success: function () {
@@ -109,11 +109,11 @@
         var operate = "";
         for (var i in temp) {
             operate = "";
-            if (temp[i].state == "${shield}") {
+            if (temp[i].inUse == "${shield}") {
                 operate = "取消";
             }
-            editBtn = "&nbsp;<a onclick=shieldUser(" + temp[i].id + ",'" + operate + "')>" + operate + "屏蔽</a>&nbsp;";
-            temp[i].edit = editBtn;
+
+            temp[i].edit = "&nbsp;<a onclick=shieldUser(" + temp[i].id + ",'" + operate + "')>" + operate + "屏蔽</a>&nbsp;";
             rowDataList.push(temp[i]);
         }
         return rowDataList;

@@ -31,6 +31,12 @@ public class UserController {
         return "scormadmin/user/listAllUserDo";
     }
 
+    @RequestMapping(value = "shieldUser", method = RequestMethod.POST)
+    @ResponseBody
+    public void shieldUser(int userId) {
+         userService.shieldUser(userId);
+    }
+
     @RequestMapping(value = "listAllUser", method = RequestMethod.POST)
     @ResponseBody
     public Page listAllUser(PageParameter pageParameter, User user) {
