@@ -8,6 +8,7 @@
           href="<c:url value="/js/common/zTree-v3.5.14/css/zTreeStyle/zTreeStyle.css"/>"/>
     <script src="<c:url value="/js/common/zTree-v3.5.14/js/jquery.ztree.all-3.5.min.js"/>"
             type="text/javascript"></script>
+    <script src="<c:url value="/js/auditScormAPI.js"/>" type="text/javascript"></script>
 </head>
 
 <body>
