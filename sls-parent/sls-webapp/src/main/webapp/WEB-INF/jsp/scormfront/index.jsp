@@ -610,7 +610,7 @@
         Metronic.init();
         Layout.init();
         $('.carousel').carousel({
-            interval: 20000
+            interval: 6000
         })
     });
 </script>
