@@ -1,9 +1,16 @@
 <%--@elvariable id="noteList" type="java.util.List<com.sls.scorm.entity.StudyNote>"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
 <head>
-    <title>SLS | Study</title>
+    <meta charset="utf-8"/>
+    <title>SLS | WELCOME to SLS</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" type="text/css" href="booknote/css/default.css"/>
@@ -46,21 +53,27 @@
             <c:forEach begin="0" step="2" items="${noteList}" varStatus="status">
                 <div class="bb-item">
                     <div class="head-Info" style="padding-left: 5%">
-                            ${noteList[status.index].date}<br/>
-                            <small>${noteList[status.index].time}</small><br/>
-                            <h3 class="page-title">${noteList[status.index].scormName}</h3>
+                        ${noteList[status.index].date}<br/>
+                        <small>${noteList[status.index].time}</small>
+                        <br/>
+
+                        <h3 class="page-title">${noteList[status.index].scormName}</h3>
                     </div>
                     <div class="head-Info" style="text-align: right;padding-right: 5%;">
-                            ${noteList[status.index+1].date}<br/>
-                            &nbsp;&nbsp;<small>${noteList[status.index+1].time}</small><br/>
-                            <h3 class="page-title">${noteList[status.index+1].scormName}</h3>
+                        ${noteList[status.index+1].date}<br/>
+                        &nbsp;&nbsp;
+                        <small>${noteList[status.index+1].time}</small>
+                        <br/>
+
+                        <h3 class="page-title">${noteList[status.index+1].scormName}</h3>
                     </div>
                     <div class="bb-custom-side">
                         <c:if test="${noteList[status.index].noteType == -1 }">
                             <p>${noteList[status.index].note}</p>
                         </c:if>
                         <c:if test="${noteList[status.index].noteType == 1 }">
-                            <img style="max-height: 250px;max-width: 350px" src="${noteList[status.index].imgPath}" alt=""/>
+                            <img style="max-height: 250px;max-width: 350px" src="${noteList[status.index].imgPath}"
+                                 alt=""/>
                         </c:if>
                     </div>
                     <div class="bb-custom-side">
@@ -68,7 +81,8 @@
                             <p>${noteList[status.index+1].note}</p>
                         </c:if>
                         <c:if test="${noteList[status.index+1].noteType == 1 }">
-                            <img style="max-height: 250px;max-width: 350px" src="${noteList[status.index+1].imgPath}" alt=""/>
+                            <img style="max-height: 250px;max-width: 350px" src="${noteList[status.index+1].imgPath}"
+                                 alt=""/>
                         </c:if>
                     </div>
                 </div>

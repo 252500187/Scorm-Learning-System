@@ -46,6 +46,7 @@
 <%--<!-- BEGIN PAGE LEVEL STYLES -->--%>
 <link href="<c:url value="/metronic/assets/global/plugins/select2/select2.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/metronic/assets/admin/pages/css/login-soft.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/metronic/assets/admin/pages/css/error.css"/>" rel="stylesheet" type="text/css"/>
 <%--<!-- END PAGE LEVEL SCRIPTS -->--%>
 
 <%--<!-- BEGIN THEME STYLES -->--%>
@@ -99,6 +100,8 @@
 <script src="<c:url value="/metronic/assets/global/plugins/jquery-validation/js/jquery.validate.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/backstretch/jquery.backstretch.min.js"/>" type="text/javascript"></script>
 <script type="text/javascript" src="<c:url value="/metronic/assets/global/plugins/select2/select2.min.js"/>"></script>
+
+<script type="text/javascript" src="<c:url value="/metronic/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"/>"></script>
 <%--<!-- END PAGE LEVEL PLUGINS -->--%>
 
 <%--<!-- BEGIN PAGE LEVEL SCRIPTS -->--%>

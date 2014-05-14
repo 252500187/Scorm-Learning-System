@@ -1,17 +1,16 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html lang="en" class="ie8 no-js">
-<html lang="en" class="ie9 no-js">
-<html lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml">
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>SLS | Come on - Login</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-    <%@include file="../includes/common.jsp" %>
+    <meta charset="utf-8"/>
+    <title>SLS | SLS Login</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <meta content="" name="description"/>
-    <meta content="" name="author"/>
+    <%@include file="../includes/common.jsp" %>
 </head>
 
 <body class="login">

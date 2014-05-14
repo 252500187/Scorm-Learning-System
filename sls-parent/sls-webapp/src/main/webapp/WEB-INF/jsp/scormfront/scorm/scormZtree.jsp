@@ -3,12 +3,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
 <head>
+    <meta charset="utf-8"/>
     <title>课程</title>
     <link rel="stylesheet" type="text/css"
           href="<c:url value="/js/common/zTree-v3.5.14/css/zTreeStyle/zTreeStyle.css"/>"/>
