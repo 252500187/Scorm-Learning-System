@@ -18,24 +18,24 @@
 <div class="page-container">
 <div class="page-sidebar-wrapper">
     <div class="page-sidebar navbar-collapse collapse">
-        <ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200">
+        <ul class="page-sidebar-menu" data-auto-scroll="false" data-slide-speed="200">
             <li class="sidebar-toggler-wrapper">
-                <div class="sidebar-toggler hidden-phone">
+                <div class="sidebar-toggler">
                 </div>
             </li>
-            <li>
+            <li class="start">
                 <a>
-                    <img id="scormLogo" alt="scorm" style="height: 100px">
                     <span class="title">
-                        ${scorm.scormName}
-                    </span>
+                        课件名称：${scorm.scormName}
+                    </span><br/>
+                    <img id="scormLogo" alt="scorm" style="height: 100px">
                 </a>
             </li>
             <li>
                 <a onclick="">
                     <i class="fa fa-gift"></i>
                     <span class="title">
-                        Protect you eyes
+                        开启护眼
                     </span>
                 </a>
             </li>
@@ -49,9 +49,9 @@
 						</span>
                 </a>
                 <ul class="sub-menu">
-                    <div id="menuTree" class="ztree"
-                         style="width:100%; height:600px; border: 1px solid; float: left; overflow-x:auto; overflow-y:auto ">
-                    </div>
+                    <iframe id="ztree" style="width:100%; height:600px;border:0px"
+                            allowfullscreen>
+                    </iframe>
                     <div class="chat-form">
                     </div>
                 </ul>
@@ -67,7 +67,6 @@
                 </a>
                 <ul class="sub-menu">
                     <iframe style="border: 0;display: none;" id="upImgIframe" name="upImgIframe"></iframe>
-
                     <div class="chat-form">
                         传张图片？
                         <form target="upImgIframe" id="upImgForm" enctype="multipart/form-data">
@@ -99,7 +98,6 @@
                             </div>
                         </form>
                     </div>
-
                     <div class="chat-form">
                         <div class="input-cont">
                             <input class="form-control" type="text" placeholder="记点什么？" id="takeNotes"/>
@@ -112,25 +110,20 @@
                             </a>
                         </div>
                     </div>
-
                     <div class="portlet-body" id="noteList">
                         <c:forEach var="note" items="${noteList}">
                             <c:if test="${note.noteType == -1 }">
                                 <div class="note note-success">
                                     <h4 class="block">${note.date}</h4>
 
-                                    <p>
-                                            ${note.note}
-                                    </p>
+                                    <p>${note.note}</p>
                                 </div>
                             </c:if>
                             <c:if test="${note.noteType == 1 }">
                                 <div class="note note-success">
                                     <h4 class="block">${note.date}</h4>
-
                                     <img style="max-height: 100px;max-width: 100px" src="${note.imgPath}"/>
                                 </div>
-
                             </c:if>
                         </c:forEach>
                     </div>
@@ -139,7 +132,6 @@
         </ul>
     </div>
 </div>
-
 <div class="page-content-wrapper">
     <div class="page-content">
         <div class="row">
@@ -149,7 +141,34 @@
         </div>
         <div class="row ">
             <div class="col-md-6 col-sm-6">
-                <!-- BEGIN PORTLET-->
+                <div class="portlet box blue">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-calendar"></i>课件信息
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="caption"><h4>${scorm.scormName}</h4></div>
+                        <div class="slimScrollDiv"
+                             style="position: relative; overflow: hidden; width: auto; height: 300px;">
+                            <div class="scroller" data-rail-visible="0" data-always-visible="1"
+                                 style="height: 300px; overflow: hidden; width: auto;">
+                                <ul class="feeds">
+                                    <li>
+                                        <div class="row col-md-2">上传日期:</div>
+                                        <div class="row col-md-10">${scorm.uploadDate}</div>
+                                    </li>
+                                    <li>
+                                        <div class="row col-md-2">课件简介:</div>
+                                        <div class="row col-md-10">${scorm.description}</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
                 <div class="portlet">
                     <div class="portlet-title line">
                         <div class="caption">
@@ -216,39 +235,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6">
-                <div class="portlet box blue">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fa fa-calendar"></i>课件信息
-                        </div>
-                    </div>
-                    <div class="portlet-body">
-                        <div class="caption"><h4>${scorm.scormName}</h4></div>
-                        <div class="slimScrollDiv"
-                             style="position: relative; overflow: hidden; width: auto; height: 300px;">
-                            <div class="scroller" data-rail-visible="0" data-always-visible="1"
-                                 style="height: 300px; overflow: hidden; width: auto;">
-                                <ul class="feeds">
-                                    <li>
-                                        <div class="row col-md-2">上传日期:</div>
-                                        <div class="row col-md-10">${scorm.uploadDate}</div>
-                                    </li>
-                                    <li>
-                                        <div class="row col-md-2">课件简介:</div>
-                                        <div class="row col-md-10">${scorm.description}</div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
 </div>
-
 <%@include file="../index/footer.jsp" %>
 </body>
 </html>
@@ -257,67 +247,14 @@
     var scormId = "${scorm.scormId}";
     var scoId = "";
     var nowScoId = "-1";
-    var scoSrc = "";
-    <c:forEach var="scoNode" items="${scoList}">
-    <c:if test="${scoNode.lastVisit==isLast}">
-    scoId = "${scoNode.scoId}";
-    scoSrc = "${scoNode.url}";
-    </c:if>
-    </c:forEach>
 
-    var settingMenu = {
-        view: {
-            expandSpeed: "fast"
-        },
-        check: {
-            enable: false
-        },
-        data: {
-            simpleData: {
-                enable: true,
-                idKey: "id",
-                pIdKey: "pId"
-            },
-            key: {
-                name: "name"
-            },
-            keep: {
-                parent: true
-            }
-        },
-        callback: {
-            onClick: zTreeOnClick
-        }
-    };
-
-    var zNodes = [
-        <c:forEach var="scoNode" items="${scoList}">
-        {id: "${scoNode.treeId}",
-            pId: "${scoNode.treeParentId}",
-            name: "(${scoNode.showStudyState})${scoNode.title}",
-            src: "${scoNode.url}",
-            scoId: "${scoNode.scoId}"},
-        </c:forEach>
-    ];
-
-    function zTreeOnClick(event, treeId, treeNode) {
-        if (treeNode.src.trim() == "") {
-            return;
-        }
-        scoId = treeNode.scoId;
-        nowScoId = scoId;
-        $("#scormIframe").attr("src", treeNode.src);
-        $("#upImgIframe").attr("src", basePath + "user/scorm/upStudyImgDo?scormId=" + scormId + "&scoId=" + nowScoId);
-        $.ajax({
-            url: basePath + "user/scorm/changeScoState?scormId=${scorm.scormId}&scoId=" + scoId,
-            dataType: "json",
-            type: "get",
-            success: function () {
-
-            },
-            error: doError
-        })
-    }
+    $(function () {
+        Metronic.init();
+        Layout.init();
+        $("#ztree").attr("src", basePath + "user/scorm/studyScormZtree?scormId=${scorm.scormId}");
+        $("#scormLogo").attr("src", basePath + "${scorm.imgPath}");
+        $("#scormIframe").attr("src", basePath + "img/studyscormdefaultimg/" + Math.floor(Math.random() * 10) + ".jpg");
+    });
 
     function getNowDate() {
         var date = new Date();
@@ -342,7 +279,7 @@
             type: "POST",
             success: function () {
                 $("#noteList").prepend("<div class='note note-success'>" +
-                        " <h4 class='block'>"+getNowDate()+"</h4><p>" + $("#takeNotes").val().trim() + "</p></div>"
+                        " <h4 class='block'>" + getNowDate() + "</h4><p>" + $("#takeNotes").val().trim() + "</p></div>"
                 )
                 $("#takeNotes").attr("value", "");
             },
@@ -359,29 +296,9 @@
         $("#upImgForm").attr("method", "post").attr("action",
                 basePath + "user/scorm/upStudyImg?scormId=" + scormId + "&scoId=" + scoId).submit();
         $("#noteList").prepend("<div class='note note-success'>" +
-                                " <h4 class='block'>"+getNowDate()+"</h4><p>图片" + $("#noteImg").val() + "上传成功！</p></div>"
-                        )
-//        $(span.(fileinput - filename)).attr("value","");
+                " <h4 class='block'>" + getNowDate() + "</h4><p>图片" + $("#noteImg").val() + "上传成功！</p></div>"
+        )
     }
-
-    function getRandom() {
-        var noteIndex = Math.floor(Math.random() * 5);
-        return noteStyles[noteIndex];
-    }
-
-    $(function () {
-        App.init();
-        $("#scormLogo").attr("src", basePath + "${scorm.imgPath}");
-        $.fn.zTree.init($("#menuTree"), settingMenu, zNodes);
-        $.fn.zTree.getZTreeObj("menuTree").expandAll(true);
-        var i = Math.floor(Math.random() * 10);
-        $("#scormIframe").attr("src", basePath + "img/studyscormdefaultimg/" + i + ".jpg");
-        if (scoId != "") {
-            if (confirm("是否继续上次学习进度")) {
-                $("#scormIframe").attr("src", scoSrc);
-            }
-        }
-    });
 
     $('.page-sidebar ul').on('click', ' li > a', function (e) {
         var menuContainer = $('.page-sidebar ul');

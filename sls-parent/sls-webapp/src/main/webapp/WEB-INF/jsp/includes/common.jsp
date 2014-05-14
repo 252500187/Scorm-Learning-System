@@ -35,8 +35,6 @@
     })
 </script>
 
-
-
 <%--<!-- BEGIN GLOBAL MANDATORY STYLES -->--%>
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/metronic/assets/global/plugins/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet" type="text/css"/>
@@ -110,7 +108,3 @@
 <script src="<c:url value="/metronic/assets/admin/pages/scripts/tasks.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/admin/pages/scripts/login-soft.js"/>" type="text/javascript"></script>
 <%--<!-- END PAGE LEVEL SCRIPTS -->--%>
-
-<%--ztree冲突，放最后别动--%>
-<link rel="stylesheet" type="text/css" href="<c:url value="/js/common/zTree-v3.5.14/css/zTreeStyle/zTreeStyle.css"/>"/>
-<script src="<c:url value="/js/common/zTree-v3.5.14/js/jquery.ztree.all-3.5.min.js"/>" type="text/javascript"></script>

@@ -154,6 +154,10 @@ public class ScormServiceImpl implements ScormService {
             return;
         }
         request.setAttribute("scorm", scorm);
+    }
+
+    @Override
+    public void studyScormZtree(int scormId, HttpServletRequest request) {
         int userId = userDao.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, userId);
         for (Sco sco : scoList) {

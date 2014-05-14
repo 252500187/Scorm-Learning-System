@@ -48,6 +48,12 @@ public class ScormController {
         return "scormfront/scorm/studyScorm";
     }
 
+    @RequestMapping(value = "studyScormZtree", method = {RequestMethod.GET})
+    public String studyScormZtree(HttpServletRequest request, @RequestParam("scormId") String scormId) {
+        scormService.studyScormZtree(Integer.parseInt(scormId), request);
+        return "scormfront/scorm/scormZtree";
+    }
+
 
     @RequestMapping(value = "changeScoState", method = {RequestMethod.GET})
     @ResponseBody
@@ -71,13 +77,6 @@ public class ScormController {
     @ResponseBody
     public void commitScoApiInfo(ScoInfo scoInfo, @RequestParam("scormId") String scormId) {
         scormService.changeScoInfoByScoId(scoInfo, Integer.parseInt(scormId));
-    }
-
-    @RequestMapping(value = "upStudyImgDo", method = {RequestMethod.GET})
-    public String upStudyImgDo(HttpServletRequest request, @RequestParam("scormId") String scormId, @RequestParam("scoId") String scoId) {
-        request.setAttribute("scormId", scormId);
-        request.setAttribute("scoId", scoId);
-        return "scormfront/scorm/studyNoteUpImg";
     }
 
     @RequestMapping(value = "upStudyImg", method = {RequestMethod.POST})

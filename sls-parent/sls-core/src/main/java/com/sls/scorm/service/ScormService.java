@@ -22,6 +22,8 @@ public interface ScormService {
 
     void studyScorm(int scormId, HttpServletRequest request);
 
+    void studyScormZtree(int scormId,HttpServletRequest request);
+
     void changeScoState(int scormId, int scoId);
 
     List<ScoInfo> getScoApiInfo(int scoId);
