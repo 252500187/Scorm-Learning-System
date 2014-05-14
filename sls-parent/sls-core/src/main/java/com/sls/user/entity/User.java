@@ -17,6 +17,7 @@ public class User {
     private int sex;
     private String showSex;
     private String imgUrl;
+    private int upLoadScormNum;
 
     private String registerDate;
 
@@ -155,5 +156,13 @@ public class User {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public int getUpLoadScormNum() {
+        return upLoadScormNum;
+    }
+
+    public void setUpLoadScormNum(int upLoadScormNum) {
+        this.upLoadScormNum = upLoadScormNum;
     }
 }

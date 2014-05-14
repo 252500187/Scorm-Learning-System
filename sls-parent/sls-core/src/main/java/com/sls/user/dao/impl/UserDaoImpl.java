@@ -22,14 +22,29 @@ public class UserDaoImpl extends PageDao implements UserDao {
         return new StringBuilder(sql);
     }
 
+    private StringBuilder getUserManageSql() {
+        String sql = "SELECT " +
+                "  a.`user_id`,a.`login_name`,d.`user_name`,c.role_name,d.register_date,a.`in_use`," +
+                "  d.`email`,d.`score`" +
+                "FROM" +
+                "  us_user a," +
+                "  us_user_role b," +
+                "  us_role c," +
+                "  us_user_info d " +
+                "WHERE a.user_id = b.user_id " +
+                "  AND b.role_id = c.role_id " +
+                "  AND d.user_id = a.user_id";
+        return new StringBuilder(sql);
+    }
+
     @Override
     public Page<User> findUserPageList(PageParameter pageParameter, User user) {
-        StringBuilder sql = getUserSql();
+        StringBuilder sql = getUserManageSql();
         if (!("").equals(user.getLoginName())) {
             sql.append(" AND a.login_name like '%").append(user.getLoginName().trim()).append("%'");
         }
         if (!("").equals(user.getUserName())) {
-            sql.append(" AND a.user_name like '%").append(user.getUserName().trim()).append("%'");
+            sql.append(" AND d.user_name like '%").append(user.getUserName().trim()).append("%'");
         }
         return queryForPage(pageParameter, sql.toString(), new BeanPropertySqlParameterSource(user), new BeanPropertyRowMapper<User>(User.class));
     }
@@ -100,5 +115,11 @@ public class UserDaoImpl extends PageDao implements UserDao {
     public UserLevel findUserLevelNameByScore(int score) {
         String sql = "SELECT level_name FROM us_level WHERE score = (SELECT MAX(score)  FROM us_level WHERE score<=?)";
         return getJdbcTemplate().queryForObject(sql, new BeanPropertyRowMapper<UserLevel>(UserLevel.class), score);
+    }
+
+    @Override
+    public int findUploadScormNumByUserId(int userId) {
+        String sql = "SELECT COUNT(*) AS a FROM ss_scorm WHERE upload_user_id = "+userId;
+        return getJdbcTemplate().queryForInt(sql);
     }
 }

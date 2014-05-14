@@ -4,23 +4,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <%@include file="../../includes/adminCommon.jsp" %>
-    <title>用户表</title>
+    <title>用户管理</title>
 </head>
 <body>
 <div id="mainContent" class="easyui-panel" data-options="fit:true" style="padding: 10px">
     <form class="form-inline">
         帐号<input type="text" class="input-medium" name="loginName" id="loginName" value=""/>
         用户名<input type="text" class="input-medium" name="userName" id="userName" value=""/>
-        <span>
-            角色<input type="text" name="roleName" id="roleName" value="" class="input-medium"
-                     flag="allRoles" autocomplete="off"/>
-            <input type="hidden" name="roleId" id="roleId" value="" autoHidden="autoHidden">
-        </span>
-        <span>
-            状态<input type="text" name="stateName" id="stateName" value="" class="input-medium"
-                     flag="allRoles" autocomplete="off"/>
-            <input type="hidden" name="stateId" id="stateId" value="" autoHidden="autoHidden">
-        </span>
         <a class="btn btn-primary" onclick="query()"><spring:message code="query"/></a>
     </form>
     <table id="dataTable"></table>
@@ -40,9 +30,8 @@
 
 <script type="text/javascript">
     function query() {
-        listOption.url = basePath + "admin/admin/listAllUser";
-        listOption.data = "loginName=" + $("#loginName").val().trim() + "&userName=" + $("#userName").val().trim()
-                + "&showRoleId=" + $("#roleId").val();
+        listOption.url = basePath + "admin/user/listAllUser";
+        listOption.data = "userName=" + $("#userName").val().trim()+ "&loginName=" + $("#loginName").val().trim();
         listOption.pageNumber = 1;
         loadData(listOption);
     }
@@ -73,10 +62,14 @@
             fitColumns: true,
             columns: [
                 [
-                    {field: 'loginName', title: '帐号', sortable: true, align: 'center', width: 300},
-                    {field: 'userName', title: '用户名', sortable: true, align: 'center', width: 100},
-                    {field: 'showRoleId', title: '角色', align: 'center', width: 200},
-                    {field: 'state', title: '状态', align: 'center', width: 200},
+                    {field: 'loginName', title: '账号', sortable: true, align: 'center', width: 200},
+                    {field: 'userName', title: '用户名', sortable: true, align: 'center', width: 200},
+                    {field: 'roleName', title: '角色', align: 'center', width: 100},
+                    {field: 'registerDate', title: '注册日期', align: 'center', width: 200},
+                    {field: 'upLoadScormNum', title: '上传课件数', align: 'center', width: 100},
+                    {field: 'score', title: '得分', align: 'center', width: 200},
+                    {field: 'email', title: 'email', align: 'center', width: 200},
+                    {field: 'showInUse', title: '状态', align: 'center', width: 200},
                     {field: 'edit', title: '操作', align: 'center', width: 200}
                 ]
             ],

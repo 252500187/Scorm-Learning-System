@@ -31,4 +31,6 @@ public interface UserDao {
 
     UserLevel findUserLevelNameByScore(int score);
 
+    int findUploadScormNumByUserId(int userId);
+
 }

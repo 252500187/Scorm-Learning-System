@@ -39,7 +39,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Page<User> findUserPageList(PageParameter pageParameter, User user) {
-        return userDao.findUserPageList(pageParameter, user);
+        Page<User> userPage = userDao.findUserPageList(pageParameter, user);
+        for(User user1 : userPage.getResultList()){
+            user1.setShowInUse(dictService.changeDictCodeToValue(user1.getInUse(),DictConstant.STATE));
+            user1.setUpLoadScormNum(userDao.findUploadScormNumByUserId(user1.getUserId()));
+        }
+        return userPage;
     }
 
     @Override

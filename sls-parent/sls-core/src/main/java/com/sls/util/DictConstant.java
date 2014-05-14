@@ -17,7 +17,11 @@ public class DictConstant {
     //暂无记录
     public static final String NO_LOG = "暂无记录";
 
-    //状态 0 无效
+
+    //状态
+    public static final String STATE = "state";
+
+    // 0 无效
     public static final int NO_USE = 0;
     // 1 有效
     public static final int IN_USE = 1;
