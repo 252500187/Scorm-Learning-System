@@ -132,6 +132,10 @@ public class ScormServiceImpl implements ScormService {
         studyNote.setScormId(i);
         studyNote.setUserId(userId);
         List<StudyNote> studyNoteList = scormDao.getAllStudyNotesByScormIdAndUserId(studyNote);
+        for (StudyNote studyNote1 : studyNoteList) {
+            studyNote1.setTime(studyNote1.getDate().substring(10));
+            studyNote1.setDate(studyNote1.getDate().substring(0,10));
+        }
         request.setAttribute("noteList", studyNoteList.size() == 0 ? new LinkedList<StudyNote>() : studyNoteList);
     }
 

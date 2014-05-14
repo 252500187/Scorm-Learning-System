@@ -6,6 +6,7 @@ public class StudyNote {
     private int scormId;
     private int scoId;
     private String date;
+    private String time;
     private String note;
     private int noteType;
     private String imgPath;
@@ -86,5 +87,13 @@ public class StudyNote {
 
     public void setScormName(String scormName) {
         this.scormName = scormName;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

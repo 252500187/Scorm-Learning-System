@@ -112,19 +112,15 @@
                     </div>
                     <div class="portlet-body" id="noteList">
                         <c:forEach var="note" items="${noteList}">
-                            <c:if test="${note.noteType == -1 }">
-                                <div class="note note-success">
-                                    <h4 class="block">${note.date}</h4>
-
+                            <div class="note note-success">
+                                <h4 class="caption">${note.date}</h4><small>${note.time}</small><br/>
+                                <c:if test="${note.noteType == -1 }">
                                     <p>${note.note}</p>
-                                </div>
-                            </c:if>
-                            <c:if test="${note.noteType == 1 }">
-                                <div class="note note-success">
-                                    <h4 class="block">${note.date}</h4>
+                                </c:if>
+                                <c:if test="${note.noteType == 1 }">
                                     <img style="max-height: 100px;max-width: 100px" src="${note.imgPath}"/>
-                                </div>
-                            </c:if>
+                                </c:if>
+                            </div>
                         </c:forEach>
                     </div>
                 </ul>
