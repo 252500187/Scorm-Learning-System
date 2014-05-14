@@ -18,7 +18,7 @@
 </head>
 <body>
 <div id="scoTree" class="ztree"
-     style="width:100%; height:100%; border: 0px solid; float: left; overflow-x:auto; overflow-y:auto ">
+     style="width:100%; height:100%; border: 0px solid; float: left; overflow-x:auto; overflow-y:auto">
 </div>
 </body>
 </html>
