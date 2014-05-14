@@ -113,7 +113,7 @@
                     <div class="portlet-body" id="noteList">
                         <c:forEach var="note" items="${noteList}">
                             <div class="note note-success">
-                                <h4 class="caption">${note.date}</h4><small>${note.time}</small><br/>
+                                <h4 class="caption" style="color: #6b7582">${note.date}</h4><small style="color: #6b7582">${note.time}</small><br/>
                                 <c:if test="${note.noteType == -1 }">
                                     <p>${note.note}</p>
                                 </c:if>
