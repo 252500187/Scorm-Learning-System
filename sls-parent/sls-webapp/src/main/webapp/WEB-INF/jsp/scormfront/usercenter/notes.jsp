@@ -1,15 +1,16 @@
 <%--@elvariable id="noteList" type="java.util.List<com.sls.scorm.entity.StudyNote>"--%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>笔记</title>
+    <title>SLS | Study</title>
     <%@include file="../../includes/common.jsp" %>
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" type="text/css" href="booknote/css/default.css"/>
     <link rel="stylesheet" type="text/css" href="booknote/css/bookblock.css"/>
     <!-- custom demo style -->
     <link rel="stylesheet" type="text/css" href="booknote/css/demo4.css"/>
-    <script src="booknote/js/modernizr.custom.js"></script>
+    <script src="booknote/js/modernizr.custom.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="container">
@@ -28,29 +29,51 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="bb-custom-side">
-                    <p>${noteList[0].note}</p>
-                </div>
+                <%--<div class="bb-custom-side">--%>
+                <%--<c:if test="${noteList[0].noteType == -1 }">--%>
+                <%--<p>${noteList[0].note}</p>--%>
+                <%--</c:if>--%>
+                <%--<c:if test="${noteList[0].noteType == 1 }">--%>
+                <%--<img style="max-height: 150px;max-width: 250px" src="${noteList[0].imgPath}"/>--%>
+                <%--</c:if>--%>
+                <%--</div>--%>
             </div>
-            <c:forEach  begin="0" step="2" items="${noteList}" varStatus="status">
+            <c:forEach begin="0" step="2" items="${noteList}" varStatus="status">
                 <div class="bb-item">
-                    <div class="bb-custom-side">
-                        <p>${noteList[status.index].note}</p>
+                    <div class="head-Info" style="padding-left: 5%">
+                            ${noteList[status.index].date}<br/>
+                            ${noteList[status.index].scormName}
+                    </div>
+                    <div class="head-Info" style="text-align: right;padding-right: 5%;">
+                            ${noteList[status.index+1].date}<br/>
+                            ${noteList[status.index+1].scormName}
                     </div>
                     <div class="bb-custom-side">
-                        <p>${noteList[status.index+1].note}</p>
-                        </div>
+                        <c:if test="${noteList[status.index].noteType == -1 }">
+                            <p>${noteList[status.index].note}</p>
+                        </c:if>
+                        <c:if test="${noteList[status.index].noteType == 1 }">
+                            <img style="max-height: 150px;max-width: 250px" src="${noteList[status.index].imgPath}"/>
+                        </c:if>
+                    </div>
+                    <div class="bb-custom-side">
+                        <c:if test="${noteList[status.index+1].noteType == -1 }">
+                            <p>${noteList[status.index].note}</p>
+                        </c:if>
+                        <c:if test="${noteList[status.index+1].noteType == 1 }">
+                            <img style="max-height: 150px;max-width: 250px" src="${noteList[status.index].imgPath}"/>
+                        </c:if>
                     </div>
                 </div>
             </c:forEach>
         </div>
 
-        <%--<nav>--%>
-            <%--<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">First page</a>--%>
-            <%--<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Previous</a>--%>
-            <%--<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Next</a>--%>
-            <%--<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Last page</a>--%>
-        <%--</nav>--%>
+        <nav>
+            <a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">First page</a>
+            <a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Previous</a>
+            <a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Next</a>
+            <a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Last page</a>
+        </nav>
 
     </div>
 
@@ -59,7 +82,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="booknote/js/jquerypp.custom.js"></script>
 <script src="booknote/js/jquery.bookblock.js"></script>
-<script>
+<script type="text/javascript">
     var Page = (function () {
 
         var config = {
