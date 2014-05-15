@@ -19,4 +19,8 @@ public interface ScoDao {
     void changeScoInfoByScoId(ScoInfo scoInfo);
 
     void setLastVisitScoByScoId(Sco sco);
+
+    Boolean isAllScoClick(int scormId, int userId);
+
+    Integer allScoRaw(int scormId, int userId);
 }

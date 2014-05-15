@@ -137,4 +137,16 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
         String sql = "UPDATE ss_scorm SET recommend_level=? WHERE scorm_id=?";
         getJdbcTemplate().update(sql, recommend, scormId);
     }
+
+    @Override
+    public ScormSummarize findScormSummarizeByUserIdAndScormId(int userId, int scormId) {
+        String sql = "SELECT * FROM luss_scorm_summarize WHERE user_id=? AND scorm_id=?";
+        return getJdbcTemplate().queryForObject(sql, new BeanPropertyRowMapper<ScormSummarize>(ScormSummarize.class), userId, scormId);
+    }
+
+    @Override
+    public void changeCompleteInfoByScormIdAndUserId(ScormSummarize scormSummarize) {
+        String sql = "UPDATE luss_scorm_summarize SET grade=?, complete_date=? WHERE scorm_id=? AND user_id=?";
+        getJdbcTemplate().update(sql, scormSummarize.getGrade(), scormSummarize.getCompleteDate(), scormSummarize.getScormId(), scormSummarize.getUserId());
+    }
 }

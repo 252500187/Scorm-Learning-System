@@ -101,4 +101,18 @@ public class ScoDaoImpl extends PageDao implements ScoDao {
         String setLastSql = "UPDATE luss_scorm_sco SET last_visit=? WHERE sco_id=?";
         getJdbcTemplate().update(setLastSql, DictConstant.LAST_VISIT, sco.getScoId());
     }
+
+    @Override
+    public Boolean isAllScoClick(int scormId, int userId) {
+        String sql = "SELECT COUNT(*)=(SELECT COUNT(*) FROM luss_scorm_sco WHERE study_state!=? AND scorm_id=? AND user_id=?) AS result " +
+                "FROM luss_scorm_sco WHERE scorm_id=? AND user_id=?";
+        return getJdbcTemplate().queryForObject(sql, Boolean.class, DictConstant.STUDY_STATE_0, scormId, userId, scormId, userId);
+    }
+
+    @Override
+    public Integer allScoRaw(int scormId, int userId) {
+        String sql = "SELECT AVG(coreScoreRaw) AS raw FROM luss_scorm_sco_api_info WHERE sco_id IN " +
+                "(SELECT sco_id FROM luss_scorm_sco WHERE scorm_id = ? AND user_id = ?) AND coreScoreRaw!=''";
+        return getJdbcTemplate().queryForObject(sql, Integer.class, scormId, userId);
+    }
 }

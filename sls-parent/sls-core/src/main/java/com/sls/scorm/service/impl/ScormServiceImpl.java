@@ -219,6 +219,23 @@ public class ScormServiceImpl implements ScormService {
             scormDao.changeTotalTimeByScormId(scormId, DateUtil.getTotalTime(sessionTime, scormDao.findScormInfoByScormId(scormId).getTotalTime()));
         }
         scoDao.changeScoInfoByScoId(scoInfo);
+        //判断是否通过课程
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        Integer raw = scoDao.allScoRaw(scormId, userId);
+        if (scoDao.isAllScoClick(scormId, userId) && (raw == null || raw >= 60)) {
+            ScormSummarize scormSummarize = scormDao.findScormSummarizeByUserIdAndScormId(userId, scormId);
+            if (("").equals(scormSummarize.getCompleteDate())) {
+                scormSummarize.setGrade(raw == null ? "" : raw.toString());
+                scormSummarize.setCompleteDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
+                scormDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
+                return;
+            }
+            if (raw != null && raw >= 60 && raw > Integer.parseInt(scormSummarize.getGrade())) {
+                scormSummarize.setGrade(raw.toString());
+                scormSummarize.setCompleteDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
+                scormDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
+            }
+        }
     }
 
     @Override

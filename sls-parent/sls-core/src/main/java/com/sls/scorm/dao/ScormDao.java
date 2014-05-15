@@ -42,4 +42,8 @@ public interface ScormDao {
     void changeScormInUse(int scormId, int isUse);
 
     void changeScormRecommend(int scormId, int recommend);
+
+    ScormSummarize findScormSummarizeByUserIdAndScormId(int userId, int scormId);
+
+    void changeCompleteInfoByScormIdAndUserId(ScormSummarize scormSummarize);
 }

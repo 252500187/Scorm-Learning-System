@@ -5,9 +5,10 @@ public class ScormSummarize {
     private int scormId;
     private String score;
     private String discuss;
-    private String grade;
     private String discussDate;
+    private String grade;
     private String completeDate;
+
     private String loginName;
 
     public ScormSummarize() {
