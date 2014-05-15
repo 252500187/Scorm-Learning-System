@@ -38,9 +38,9 @@ public class TouristController {
 
     @RequestMapping(value = "scormInfo", method = {RequestMethod.GET})
     public String scormInfo(@RequestParam("scormId") String scormId, HttpServletRequest request) {
-        scormService.getScormInfoAndChapterInfo(Integer.parseInt(scormId), request);
-        scormService.getAllCommentsByScormId(Integer.parseInt(scormId), request);
-        scormService.judgeDemonstrationStatus(Integer.parseInt(scormId), request);
+//        scormService.getScormInfoAndChapterInfo(Integer.parseInt(scormId), request);
+//        scormService.getAllCommentsByScormId(Integer.parseInt(scormId), request);
+//        scormService.judgeDemonstrationStatus(Integer.parseInt(scormId), request);
         return "scormfront/scorm/scormInfo";
     }
 }
