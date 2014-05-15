@@ -149,4 +149,13 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
         String sql = "UPDATE luss_scorm_summarize SET grade=?, complete_date=? WHERE scorm_id=? AND user_id=?";
         getJdbcTemplate().update(sql, scormSummarize.getGrade(), scormSummarize.getCompleteDate(), scormSummarize.getScormId(), scormSummarize.getUserId());
     }
+
+    @Override
+    public boolean getCompleteInfo(int scormId, int userId) {
+        String sql = "SELECT * " +
+                "FROM luss_scorm_summarize " +
+                " WHERE complete_date <> '' " +
+                " AND scorm_id = " + scormId + " AND user_id = ? ";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId).isEmpty();
+    }
 }
