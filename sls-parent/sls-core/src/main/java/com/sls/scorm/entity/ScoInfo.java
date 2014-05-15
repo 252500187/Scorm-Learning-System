@@ -18,11 +18,13 @@ public class ScoInfo {
     private String suspendData;
     private String launchData;
 
+    private String passRaw;
+
     public ScoInfo() {
         coreStudentId="";
         coreStudentName="";
         coreLessonLocation = "";
-        coreCredit = DictConstant.CREDIT_NO;
+        coreCredit = "";
         coreLessonStatus = DictConstant.LESSON_STATUS_NOT_ATTEMPTED;
         coreEntry = DictConstant.ENTRY_INI;
         coreScore = "";
@@ -32,6 +34,7 @@ public class ScoInfo {
         coreSessionTime = "";
         suspendData = "";
         launchData="";
+        passRaw="";
     }
 
     public String getCoreStudentId() {
@@ -144,5 +147,13 @@ public class ScoInfo {
 
     public void setLaunchData(String launchData) {
         this.launchData = launchData;
+    }
+
+    public String getPassRaw() {
+        return passRaw;
+    }
+
+    public void setPassRaw(String passRaw) {
+        this.passRaw = passRaw;
     }
 }

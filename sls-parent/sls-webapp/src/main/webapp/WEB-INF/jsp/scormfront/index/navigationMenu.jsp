@@ -20,8 +20,11 @@
         </div>
         <!-- END LOGO -->
 
-        <a onclick="studyScorm('66')">
+        <a onclick="studyScorm('78')">
             studyScorm
+        </a>
+        <a onclick="registerScorm('78')">
+            注册课件
         </a>
         <!-- BEGIN RESPONSIVE MENU TOGGLER -->
         <div class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">

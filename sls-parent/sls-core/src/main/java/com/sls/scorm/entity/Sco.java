@@ -16,6 +16,8 @@ public class Sco {
     private String showStudyState;
 
     private String launchData;
+    private String coreCredit;
+    private String passRaw;
 
     public Sco() {
     }
@@ -24,6 +26,8 @@ public class Sco {
         this.userId = DictConstant.VOID_VALUE;
         this.lastVisit = DictConstant.VOID_VALUE;
         this.studyState = DictConstant.STUDY_STATE_0;
+        this.coreCredit = "";
+        this.passRaw = "";
         this.title = title;
         this.type = type;
         this.treeParentId = treeParentId;
@@ -126,5 +130,21 @@ public class Sco {
 
     public void setLaunchData(String launchData) {
         this.launchData = launchData;
+    }
+
+    public String getCoreCredit() {
+        return coreCredit;
+    }
+
+    public void setCoreCredit(String coreCredit) {
+        this.coreCredit = coreCredit;
+    }
+
+    public String getPassRaw() {
+        return passRaw;
+    }
+
+    public void setPassRaw(String passRaw) {
+        this.passRaw = passRaw;
     }
 }

@@ -70,8 +70,8 @@ public class DictConstant {
     public static final String LESSON_STATUS_PASS = "passed";
     //已完成
     public static final String LESSON_STATUS_COMPLETED = "completed";
-    //浏览
-    public static final String LESSON_STATUS_BROWSED = "browsed";
+    //浏览 （无lesson_mode，则不会出现浏览状态）
+//    public static final String LESSON_STATUS_BROWSED = "browsed";
     //非完成
     public static final String LESSON_STATUS_INCOMPLETE = "incomplete";
     //失败

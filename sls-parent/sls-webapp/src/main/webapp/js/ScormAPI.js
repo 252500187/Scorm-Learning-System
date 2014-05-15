@@ -3,6 +3,7 @@ var API = new API_functions();
 var errorCode = "0";
 var iniFlag = "false";
 var totalTime = "false";
+var passRaw = "";
 var scoInfo = {};
 
 function API_functions() {
@@ -42,10 +43,12 @@ function LMSInitialize(parameter) {
             scoInfo['cmi.core.score'] = info[0].coreScore;
             scoInfo['cmi.core.score.raw'] = info[0].coreScoreRaw;
             scoInfo['cmi.core.total_time'] = info[0].coreTotalTime;      //Read
+//            scoInfo['cmi.core.lesson_mode'] = info[0].coreLessonMode;
             scoInfo['cmi.core.exit'] = info[0].coreExit;                        //Write
             scoInfo['cmi.core.session_time'] = info[0].coreSessionTime;                //Write
             scoInfo['cmi.suspend_data'] = info[0].suspendData;
             scoInfo['cmi.launch_data'] = info[0].launchData;          //Read
+            passRaw = info[0].passRaw;
             iniFlag = "true";
             ajaxResult = "true";
         },
@@ -77,6 +80,12 @@ function LMSSetValue(key, value) {
     if (key == "cmi.core.score.raw") {
         value = parseFloat(value);
         if (value == NaN || value < 0 || value > 100) {
+            errorCode = "405"
+            return "false";
+        }
+    }
+    if (key == "cmi.core.lesson_status") {
+        if (value != "passed" && value != "completed" && value != "browsed" && value != "incomplete" && value != "failed" && value != "not attempted") {
             errorCode = "405"
             return "false";
         }
@@ -123,7 +132,10 @@ function LMSCommit(parameter) {
             coreScoreRaw: scoInfo['cmi.core.score.raw'].trim(),
             coreExit: scoInfo['cmi.core.exit'].trim(),
             coreSessionTime: totalTime == "false" ? "" : scoInfo['cmi.core.session_time'].trim(),
-            suspendData: scoInfo['cmi.suspend_data'].trim()
+            suspendData: scoInfo['cmi.suspend_data'].trim(),
+//            需要判断的信息
+            passRaw: passRaw,
+            coreCredit: scoInfo['cmi.core.credit'].trim()
         },
         dataType: "json",
         type: "POST",

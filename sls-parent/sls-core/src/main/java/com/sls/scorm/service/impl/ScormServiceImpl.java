@@ -60,6 +60,8 @@ public class ScormServiceImpl implements ScormService {
                 scoNode.setScormId(scormId);
                 scoInfo.setScoId(scoDao.addSco(scoNode));
                 scoInfo.setLaunchData(scoNode.getLaunchData());
+                scoInfo.setPassRaw(scoNode.getPassRaw());
+                scoInfo.setCoreCredit(scoNode.getCoreCredit());
                 scoDao.addScoInfo(scoInfo);
             }
             request.setAttribute("result", "上传成功");
@@ -213,29 +215,63 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void changeScoInfoByScoId(ScoInfo scoInfo, int scormId) {
+        //获取本次学习时间，分别加入课件总学习时间和这个SCO总学习时间
         String sessionTime = scoInfo.getCoreSessionTime();
         if (!("".equals(sessionTime))) {
             scoInfo.setCoreTotalTime(DateUtil.getTotalTime(sessionTime, scoDao.getScoApiInfoByScoId(scoInfo.getScoId()).get(0).getCoreTotalTime()));
             scormDao.changeTotalTimeByScormId(scormId, DateUtil.getTotalTime(sessionTime, scormDao.findScormInfoByScormId(scormId).getTotalTime()));
         }
-        scoDao.changeScoInfoByScoId(scoInfo);
-        //判断是否通过课程
-        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-        Integer raw = scoDao.allScoRaw(scormId, userId);
-        if (scoDao.isAllScoClick(scormId, userId) && (raw == null || raw >= 60)) {
-            ScormSummarize scormSummarize = scormDao.findScormSummarizeByUserIdAndScormId(userId, scormId);
-            if (("").equals(scormSummarize.getCompleteDate())) {
-                scormSummarize.setGrade(raw == null ? "" : raw.toString());
-                scormSummarize.setCompleteDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
-                scormDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
-                return;
+        //处理SCO的学习状态,带测试和不带测试
+        if (scoInfo.getCoreCredit() == DictConstant.CREDIT_IM) {
+            if (("").equals(scoInfo.getCoreLessonStatus())) {
+                scoInfo.setCoreLessonStatus(DictConstant.LESSON_STATUS_FAILED);
+                if (Integer.parseInt(scoInfo.getCoreScoreRaw()) >= Integer.parseInt(scoInfo.getPassRaw())) {
+                    scoInfo.setCoreLessonStatus(DictConstant.LESSON_STATUS_PASS);
+                }
             }
-            if (raw != null && raw >= 60 && raw > Integer.parseInt(scormSummarize.getGrade())) {
-                scormSummarize.setGrade(raw.toString());
-                scormSummarize.setCompleteDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
-                scormDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
+        } else {
+            if (("").equals(scoInfo.getCoreLessonStatus())) {
+                scoInfo.setCoreLessonStatus(DictConstant.LESSON_STATUS_COMPLETED);
             }
         }
+        //删除不该修改项目（置为空串）
+        scoInfo = changeScoInfoFromRead(scoInfo);
+        scoDao.changeScoInfoByScoId(scoInfo);
+        //判断是否通过整个课程
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        if (scoDao.isAllScoClick(scormId, userId)) {
+            //不带测试的课件
+            List<ScoInfo> scoInfoList = scoDao.findScosByCreditAndScormIdAndUserId(DictConstant.CREDIT_NO, scormId, userId);
+            for (ScoInfo oneScoInfo : scoInfoList) {
+                if (!oneScoInfo.getCoreLessonStatus().equals(DictConstant.LESSON_STATUS_COMPLETED)) {
+                    return;
+                }
+            }
+            //带测试的课件
+            scoInfoList = scoDao.findScosByCreditAndScormIdAndUserId(DictConstant.CREDIT_IM, scormId, userId);
+            int i = 0, sum = 0;
+            for (ScoInfo oneScoInfo : scoInfoList) {
+                if ((!oneScoInfo.getCoreLessonStatus().equals(DictConstant.LESSON_STATUS_PASS))
+                        || (Integer.parseInt(oneScoInfo.getCoreScoreRaw()) < Integer.parseInt(oneScoInfo.getPassRaw()))) {
+                    return;
+                }
+                i++;
+                sum += Integer.parseInt(oneScoInfo.getCoreScoreRaw());
+            }
+            ScormSummarize scormSummarize = scormDao.findScormSummarizeByUserIdAndScormId(userId, scormId);
+            scormSummarize.setGrade(i == 0 ? "" : (sum / i) + "");
+            scormSummarize.setCompleteDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
+            scormDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
+        }
+    }
+
+    public ScoInfo changeScoInfoFromRead(ScoInfo scoInfo) {
+        scoInfo.setCoreStudentId("");
+        scoInfo.setCoreStudentName("");
+        scoInfo.setCoreCredit("");
+        scoInfo.setCoreEntry("");
+        scoInfo.setLaunchData("");
+        return scoInfo;
     }
 
     @Override

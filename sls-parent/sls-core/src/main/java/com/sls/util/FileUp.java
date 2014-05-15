@@ -141,13 +141,22 @@ public class FileUp {
         for (int i = 0; i < nodeChapterList.getLength(); i++) {
             element = (Element) nodeChapterList.item(i);
             nodeList = element.getElementsByTagName("title");
-            scos.add(new Sco(nodeList.item(0) == null ? "" : nodeList.item(0).getTextContent(),
+            Sco sco = new Sco(nodeList.item(0) == null ? "" : nodeList.item(0).getTextContent(),
                     element.getTagName(),
                     "1",
                     element.getAttribute("identifier"),
                     element.getAttribute("identifierref") == "" ? "" : scoPath + getUrl(element.getAttribute("identifierref"), document),
                     element.getAttribute("identifierref") == "" ? "" : getLaunchData(element.getAttribute("identifierref"), document)
-            ));
+            );
+            sco.setPassRaw(getCoreCredit(element.getAttribute("identifierref"), document));
+            sco.setCoreCredit(DictConstant.CREDIT_IM);
+            if (("").equals(sco.getPassRaw())) {
+                sco.setCoreCredit(DictConstant.CREDIT_NO);
+            }
+            if (("").equals(sco.getUrl().trim())) {
+                sco.setCoreCredit("");
+            }
+            scos.add(sco);
             getElement(element, scos, url, scoPath, document);
         }
         return scos;
@@ -161,13 +170,18 @@ public class FileUp {
                 getElement((Element) nodes.item(i), scos, url, scoPath, document);
                 elementNew = (Element) nodes.item(i);
                 NodeList nodeList = elementNew.getElementsByTagName("title");
-                scos.add(new Sco(nodeList.item(0) == null ? "" : nodeList.item(0).getTextContent(),
+                Sco sco = new Sco(nodeList.item(0) == null ? "" : nodeList.item(0).getTextContent(),
                         elementNew.getTagName(),
                         element.getAttribute("identifier"), elementNew.getAttribute("identifier"),
                         elementNew.getAttribute("identifierref") == "" ? "" : scoPath + getUrl(elementNew.getAttribute("identifierref"), document),
-                        elementNew.getAttribute("identifierref") == "" ? "" : getLaunchData(element.getAttribute("identifierref"), document)
-                ));
-
+                        elementNew.getAttribute("identifierref") == "" ? "" : getLaunchData(elementNew.getAttribute("identifierref"), document)
+                );
+                sco.setPassRaw(getCoreCredit(elementNew.getAttribute("identifierref"), document));
+                sco.setCoreCredit(DictConstant.CREDIT_IM);
+                if (("").equals(sco.getPassRaw())) {
+                    sco.setCoreCredit(DictConstant.CREDIT_NO);
+                }
+                scos.add(sco);
             }
         }
     }
@@ -187,6 +201,18 @@ public class FileUp {
         Element element = (Element) expression.evaluate(document, XPathConstants.NODE);
         try {
             return element.getAttribute("datafromlms");
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    private String getCoreCredit(String identifier, Document document) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
+        XPathFactory factory = XPathFactory.newInstance();
+        XPath xpath = factory.newXPath();
+        XPathExpression expression = xpath.compile("/manifest/resources/resource[@identifier='" + identifier + "']");
+        Element element = (Element) expression.evaluate(document, XPathConstants.NODE);
+        try {
+            return element.getAttribute("masteryscore");
         } catch (Exception e) {
             return "";
         }
