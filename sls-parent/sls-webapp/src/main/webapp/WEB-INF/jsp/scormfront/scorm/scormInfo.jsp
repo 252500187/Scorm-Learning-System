@@ -42,7 +42,7 @@
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-8 profile-info">
-                                <div class="row">
+                                <div class="row col-md-12">
                                     <div class="col-md-6" style="float: left">
                                         <h1 style="margin-top: 0px;">${scormInfo.scormName}</h1>
                                     </div>
@@ -67,52 +67,50 @@
                                                onclick="registerScorm(${scormInfo.scormId})">注册</a>
                                         </div>
                                     </c:if>
-
-                                    <div class="row col-md-12">
-                                        <div class="row col-md-6" style="float: left">
-                                            <ul class="list-inline">
-                                                <li>发布时间:</li>
-                                                <li>${scormInfo.uploadDate}</li>
-                                            </ul>
-                                            <ul class="list-inline">
-                                                <li>评分:</li>
-                                                <li><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                                        class="fa fa-star"></i><i
-                                                        class="fa fa-star"></i><i
-                                                        class="fa fa-star"></i></li>
-                                            </ul>
-                                            <ul class="list-inline">
-                                                <li>简介:</li>
-                                                <li>${scormInfo.description}
-                                                </li>
-                                            </ul>
-                                            <ul class="list-inline">
-                                                <li>
-                                                    点击量:${scormInfo.registerSum}
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-heart"></i>
-                                                    <!--已收藏-->
-                                                    <c:if test="${true == collectScorm}">
-                                                        <a style="color:#aaa" onclick="return false">收藏</a>
-                                                    </c:if>
-                                                    <!--未收藏-->
-                                                    <c:if test="${false == collectScorm}">
-                                                        <a style="color:#666"
-                                                           onclick="collectScorm(${scormInfo.scormId})">收藏</a>
-                                                    </c:if>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="row col-md-6" style="float: left;margin-left: 0">
-                                            <ul class="list-inline">
-                                                <li>发布时间:</li>
-                                                <li>${scormInfo.uploadDate}</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
                                 </div>
+                                <div class="row col-md-12">
+                                    <ul class="list-inline">
+                                        <li>发布时间:</li>
+                                        <li>${scormInfo.uploadDate}</li>
+                                    </ul>
+                                    <ul class="list-inline">
+                                        <li>总评分:</li>
+                                        <li><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                class="fa fa-star"></i><i
+                                                class="fa fa-star"></i><i
+                                                class="fa fa-star"></i></li>
+                                        <li>${scormInfo.score}</li>
+                                        <li>
+                                            <a onclick="toMarkScore()"><small style="color: #aaa">你还未进行评分哦</small></a>
+                                        </li>
+                                    </ul>
+                                    <ul class="list-inline">
+                                        <li>简介:</li>
+                                        <li>${scormInfo.description}
+                                        </li>
+                                    </ul>
+                                    <ul class="list-inline">
+                                        <li>
+                                            点击量:${scormInfo.registerSum}
+                                        </li>
+                                        <li>
+                                            评论(${fn:length(allComments)})
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-heart"></i>
+                                            <!--已收藏-->
+                                            <c:if test="${true == collectScorm}">
+                                                <a style="color:#aaa" onclick="return false">收藏</a>
+                                            </c:if>
+                                            <!--未收藏-->
+                                            <c:if test="${false == collectScorm}">
+                                                <a style="color:#666"
+                                                   onclick="collectScorm(${scormInfo.scormId})">收藏</a>
+                                            </c:if>
+                                        </li>
+                                    </ul>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -128,7 +126,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#tab_1_22" data-toggle="tab">
+                                    <a href="#tab_1_22" data-toggle="tab" id="commentsTab">
                                         评论
                                     </a>
                                 </li>
@@ -144,10 +142,12 @@
                                     <div class="tab-pane active" id="tab_1_1_1">
                                         <div class="scroller" data-height="290px" data-always-visible="1"
                                              data-rail-visible1="1" id="comments">
+                                            <div class="input-group">
+                                                <input id="markScore" class="form-control" type="text" placeholder="输入评论 ..." value="">
+                                                <span class="input-group-addon btn blue">评论</span></div>
                                             <!--评论列表-->
                                             <ul class="feeds">
                                                 <c:forEach var="comment" items="${allComments}">
-
                                                     <li>
                                                         <div class="col1">
                                                             <div class="cont">
@@ -262,5 +262,10 @@
             },
             error: doError
         })
+    }
+
+    function toMarkScore() {
+        $("#commentsTab").click();
+        $("#markScore").focus();
     }
 </script>
