@@ -113,7 +113,7 @@
                 operate = "取消";
             }
 
-            temp[i].edit = "&nbsp;<a onclick=shieldUser(" + temp[i].id + ",'" + operate + "')>" + operate + "屏蔽</a>&nbsp;";
+            temp[i].edit = "&nbsp;<a onclick=shieldUser(" + temp[i].userId + ",'" + operate + "')>" + operate + "屏蔽</a>&nbsp;";
             rowDataList.push(temp[i]);
         }
         return rowDataList;

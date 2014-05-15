@@ -34,26 +34,20 @@
                 <li class="start">
                     <a onclick="changeIframe('user/center/userCenterInfo')">
                         <i class="fa fa-user"></i><br/>
-                        <span class="title" style="margin-left: 30px">
-                            <big id="userName">昵称:&nbsp;&nbsp;${user.userName}</big></span><br/>
-                        <span class="title" style="margin-left: 30px">
-                            <big id="userLevel">等级:&nbsp;&nbsp;${user.levelName}</big></span>
-
-                        <div class="info-container" align="center" style="margin-top:0px;">
-                            <table>
-                                <tr>
-                                    <td align="top"><span class="title">
-                                        <big id="userPhoto">头像:&nbsp;&nbsp;</big></span>
-                                    </td>
-
-                                    <td>
-                                        <img id="userHeadPhoto" class="img-polaroid" alt="用户头像"
-                                             style="width:100px;height:100px"/>
-                                    <td>
-                                </tr>
-                            </table>
-
-                        </div>
+                        <span class="title">
+                        <table>
+                            <tr>
+                                <td>
+                                    &nbsp;<img id="userHeadPhoto" class="img-polaroid" alt="用户头像"
+                                         style="width:100px;height:100px"/>
+                                </td>
+                                <td>
+                                    <span style="margin-left:10px">昵称</span>:&nbsp;&nbsp;${user.userName}<br/><br/>
+                                    <span style="margin-left:10px">等级</span>:&nbsp;&nbsp;${user.levelName}<br/>
+                                </td>
+                            </tr>
+                        </table>
+                        </span>
                     </a>
                 </li>
                 <!-- 第一个菜单  个人资料-->
