@@ -40,8 +40,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public Page<User> findUserPageList(PageParameter pageParameter, User user) {
         Page<User> userPage = userDao.findUserPageList(pageParameter, user);
-        for(User user1 : userPage.getResultList()){
-            user1.setShowInUse(dictService.changeDictCodeToValue(user1.getInUse(),DictConstant.STATE));
+        for (User user1 : userPage.getResultList()) {
+            user1.setShowInUse(dictService.changeDictCodeToValue(user1.getInUse(), DictConstant.STATE));
             user1.setUpLoadScormNum(userDao.findUploadScormNumByUserId(user1.getUserId()));
         }
         return userPage;
@@ -121,6 +121,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void shieldUser(int userId) {
         User user = userDao.findUserAllInfoById(userId);
-        int a= 1;
+        if (user.getInUse() == DictConstant.NO_USE) {
+            user.setInUse(DictConstant.IN_USE);
+        } else {
+            user.setInUse(DictConstant.NO_USE);
+        }
+        userDao.editUseState(user);
     }
 }

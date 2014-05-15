@@ -33,8 +33,8 @@ public class UserController {
 
     @RequestMapping(value = "shieldUser", method = RequestMethod.POST)
     @ResponseBody
-    public void shieldUser(int userId) {
-         userService.shieldUser(userId);
+    public void shieldUser(@RequestParam("id") int id) {
+        userService.shieldUser(id);
     }
 
     @RequestMapping(value = "listAllUser", method = RequestMethod.POST)

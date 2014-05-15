@@ -19,7 +19,7 @@ import java.util.List;
 public class UserDaoImpl extends PageDao implements UserDao {
 
     private StringBuilder getUserSql() {
-        String sql = "SELECT a.*, c.*,d.*, c.role_name show_role_id FROM us_user a,us_user_role b,us_role c,us_user_info d WHERE a.user_id=b.user_id AND b.role_id=c.role_id AND d.user_id=a.user_id AND a.in_use="+ DictConstant.IN_USE;
+        String sql = "SELECT a.*, c.*,d.*, c.role_name show_role_id FROM us_user a,us_user_role b,us_role c,us_user_info d WHERE a.user_id=b.user_id AND b.role_id=c.role_id AND d.user_id=a.user_id ";
         return new StringBuilder(sql);
     }
 
@@ -60,8 +60,8 @@ public class UserDaoImpl extends PageDao implements UserDao {
     @Override
     public List<User> findInUseUserByLoginName(String loginName) {
         StringBuilder sql = getUserSql();
-        sql.append(" AND a.login_name=?");
-        return getJdbcTemplate().query(sql.toString(), new BeanPropertyRowMapper<User>(User.class), loginName);
+        sql.append(" AND a.in_use = ? AND a.login_name=? ");
+        return getJdbcTemplate().query(sql.toString(), new BeanPropertyRowMapper<User>(User.class), DictConstant.IN_USE, loginName);
     }
 
     @Override
@@ -120,7 +120,16 @@ public class UserDaoImpl extends PageDao implements UserDao {
 
     @Override
     public int findUploadScormNumByUserId(int userId) {
-        String sql = "SELECT COUNT(*) AS a FROM ss_scorm WHERE upload_user_id = "+userId;
+        String sql = "SELECT COUNT(*) AS a FROM ss_scorm WHERE upload_user_id = " + userId;
         return getJdbcTemplate().queryForInt(sql);
+    }
+
+    @Override
+    public void editUseState(User user) {
+        String sql = "UPDATE us_user " +
+                "SET in_use = :inUse " +
+                "WHERE user_id = :userId";
+        getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(user));
+
     }
 }
