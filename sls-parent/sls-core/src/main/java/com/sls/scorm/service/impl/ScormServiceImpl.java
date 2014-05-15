@@ -238,6 +238,10 @@ public class ScormServiceImpl implements ScormService {
         scoInfo = changeScoInfoFromRead(scoInfo);
         scoDao.changeScoInfoByScoId(scoInfo);
         //判断是否通过整个课程
+        checkIsPassAllSco(scormId);
+    }
+
+    public void checkIsPassAllSco(int scormId) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         if (scoDao.isAllScoClick(scormId, userId)) {
             //不带测试的课件
@@ -267,24 +271,24 @@ public class ScormServiceImpl implements ScormService {
                 if (!scormSummarize.getCompleteDate().equals("")) {
                     if (!scormSummarize.getGrade().equals("")) {
                         if ((sum / i) > Integer.parseInt(scormSummarize.getGrade())) {
-                            scormSummarize.setGrade(sum / i + "");
-                            scormSummarize.setCompleteDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
-                            scormDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
+                            changeSummarize(scormSummarize, sum / i + "");
                         }
                     }
                 } else {
-                    scormSummarize.setGrade(sum / i + "");
-                    scormSummarize.setCompleteDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
-                    scormDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
+                    changeSummarize(scormSummarize, sum / i + "");
                 }
             } else {
                 if (scormSummarize.getCompleteDate().equals("")) {
-                    scormSummarize.setGrade("");
-                    scormSummarize.setCompleteDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
-                    scormDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
+                    changeSummarize(scormSummarize, "");
                 }
             }
         }
+    }
+
+    public void changeSummarize(ScormSummarize scormSummarize, String grade) {
+        scormSummarize.setGrade(grade);
+        scormSummarize.setCompleteDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
+        scormDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
     }
 
     public ScoInfo changeScoInfoFromRead(ScoInfo scoInfo) {
