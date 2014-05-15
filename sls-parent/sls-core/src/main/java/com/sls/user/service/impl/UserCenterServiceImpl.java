@@ -1,5 +1,6 @@
 package com.sls.user.service.impl;
 
+import com.sls.scorm.entity.Scorm;
 import com.sls.user.dao.UserDao;
 import com.sls.user.entity.User;
 import com.sls.user.service.UserCenterService;
@@ -32,5 +33,13 @@ public class UserCenterServiceImpl implements UserCenterService {
         user.setLevelName(userDao.findUserLevelNameByScore(user.getScore()).getLevelName());
         request.setAttribute("user",user);
 
+    }
+
+    @Override
+    public void getAllRegisterScormInfo(HttpServletRequest request) {
+        List<User> userList = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName());
+        User user = userList.get(0);
+        List<Scorm> scormList = userDao.getAllRegisterScormInfoByUserId(user.getUserId());
+        request.setAttribute("allScorm",scormList);
     }
 }

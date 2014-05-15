@@ -2,6 +2,7 @@ package com.sls.user.dao;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
+import com.sls.scorm.entity.Scorm;
 import com.sls.user.entity.User;
 import com.sls.user.entity.UserLevel;
 
@@ -34,4 +35,6 @@ public interface UserDao {
     int findUploadScormNumByUserId(int userId);
 
     void editUseState(User user);
+
+    List<Scorm> getAllRegisterScormInfoByUserId(int userId);
 }
