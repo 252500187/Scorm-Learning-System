@@ -120,8 +120,8 @@ public class UserDaoImpl extends PageDao implements UserDao {
 
     @Override
     public int findUploadScormNumByUserId(int userId) {
-        String sql = "SELECT COUNT(*) AS a FROM ss_scorm WHERE upload_user_id = " + userId;
-        return getJdbcTemplate().queryForInt(sql);
+        String sql = "SELECT COUNT(*) AS a FROM ss_scorm WHERE upload_user_id = ? " ;
+        return getJdbcTemplate().queryForObject(sql, Integer.class, userId);
     }
 
     @Override
