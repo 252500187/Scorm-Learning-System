@@ -40,7 +40,6 @@ function LMSInitialize(parameter) {
             scoInfo['cmi.core.credit'] = info[0].coreCredit;              //Read
             scoInfo['cmi.core.lesson_status'] = info[0].coreLessonStatus;
             scoInfo['cmi.core.entry'] = info[0].coreEntry;                 //Read
-            scoInfo['cmi.core.score'] = info[0].coreScore;
             scoInfo['cmi.core.score.raw'] = info[0].coreScoreRaw;
             scoInfo['cmi.core.total_time'] = info[0].coreTotalTime;      //Read
 //            scoInfo['cmi.core.lesson_mode'] = info[0].coreLessonMode;
@@ -128,7 +127,6 @@ function LMSCommit(parameter) {
             scormId: scormId,
             coreLessonLocation: scoInfo['cmi.core.lesson_location'].trim(),
             coreLessonStatus: scoInfo['cmi.core.lesson_status'].trim(),
-            coreScore: scoInfo['cmi.core.score'].trim(),
             coreScoreRaw: scoInfo['cmi.core.score.raw'].trim(),
             coreExit: scoInfo['cmi.core.exit'].trim(),
             coreSessionTime: totalTime == "false" ? "" : scoInfo['cmi.core.session_time'].trim(),

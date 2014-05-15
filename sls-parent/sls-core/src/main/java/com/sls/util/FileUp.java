@@ -200,7 +200,7 @@ public class FileUp {
         XPathExpression expression = xpath.compile("/manifest/resources/resource[@identifier='" + identifier + "']");
         Element element = (Element) expression.evaluate(document, XPathConstants.NODE);
         try {
-            return element.getAttribute("datafromlms");
+            return element.getAttribute("adlcp:datafromlms");
         } catch (Exception e) {
             return "";
         }
@@ -212,7 +212,7 @@ public class FileUp {
         XPathExpression expression = xpath.compile("/manifest/resources/resource[@identifier='" + identifier + "']");
         Element element = (Element) expression.evaluate(document, XPathConstants.NODE);
         try {
-            return element.getAttribute("masteryscore");
+            return element.getAttribute("adlcp:masteryscore");
         } catch (Exception e) {
             return "";
         }

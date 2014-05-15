@@ -28,8 +28,8 @@ public class ScoDaoImpl extends PageDao implements ScoDao {
 
     @Override
     public void addScoInfo(ScoInfo scoInfo) {
-        String sql = "INSERT INTO luss_scorm_sco_api_info(sco_id,coreStudentId,coreStudentName,coreLessonLocation,coreCredit,coreLessonStatus,coreEntry,coreScore,coreScoreRaw,coreTotalTime,coreExit,coreSessionTime,suspendData,launchData,pass_raw) " +
-                "VALUES(:scoId, :coreStudentId, :coreStudentName, :coreLessonLocation, :coreCredit, :coreLessonStatus,:coreEntry,:coreScore,:coreScoreRaw,:coreTotalTime,:coreExit,:coreSessionTime,:suspendData,:launchData,:passRaw)";
+        String sql = "INSERT INTO luss_scorm_sco_api_info(sco_id,coreStudentId,coreStudentName,coreLessonLocation,coreCredit,coreLessonStatus,coreEntry,coreScoreRaw,coreTotalTime,coreExit,coreSessionTime,suspendData,launchData,pass_raw) " +
+                "VALUES(:scoId, :coreStudentId, :coreStudentName, :coreLessonLocation, :coreCredit, :coreLessonStatus,:coreEntry,:coreScoreRaw,:coreTotalTime,:coreExit,:coreSessionTime,:suspendData,:launchData,:passRaw)";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(scoInfo));
     }
 
@@ -65,9 +65,6 @@ public class ScoDaoImpl extends PageDao implements ScoDao {
         }
         if (!("").equals(scoInfo.getCoreEntry())) {
             findSql.append(" coreEntry='" + scoInfo.getCoreEntry() + "',");
-        }
-        if (!("").equals(scoInfo.getCoreScore())) {
-            findSql.append(" coreScore='" + scoInfo.getCoreScore() + "',");
         }
         if (!("").equals(scoInfo.getCoreScoreRaw())) {
             findSql.append(" coreScoreRaw='" + scoInfo.getCoreScoreRaw() + "',");

@@ -10,7 +10,6 @@ public class ScoInfo {
     private String coreCredit;
     private String coreLessonStatus;
     private String coreEntry;
-    private String coreScore;
     private String coreScoreRaw;
     private String coreTotalTime;
     private String coreExit;
@@ -27,7 +26,6 @@ public class ScoInfo {
         coreCredit = "";
         coreLessonStatus = DictConstant.LESSON_STATUS_NOT_ATTEMPTED;
         coreEntry = DictConstant.ENTRY_INI;
-        coreScore = "";
         coreScoreRaw = "";
         coreTotalTime = "";
         coreExit = "";
@@ -83,14 +81,6 @@ public class ScoInfo {
 
     public void setCoreEntry(String coreEntry) {
         this.coreEntry = coreEntry;
-    }
-
-    public String getCoreScore() {
-        return coreScore;
-    }
-
-    public void setCoreScore(String coreScore) {
-        this.coreScore = coreScore;
     }
 
     public String getCoreScoreRaw() {

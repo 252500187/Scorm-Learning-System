@@ -52,8 +52,8 @@ public class ScormServiceImpl implements ScormService {
 //            scorm.setScormName(BaseUtil.iso2utf(scorm.getScormName()));
             scorm.setImgPath(fileUp.upImg(request, DictConstant.TOP_SCORM_FILE_NAME, "/" + fileName, DictConstant.SCORM_IMG, upImg));
             scorm.setUploadUserId(userId);
-            int scormId = scormDao.addScorm(scorm);
             List<Sco> scoNodes = fileUp.analyzeXml(fileUp.upScorm(request, fileName, upFile) + DictConstant.IMSMANIFEST);
+            int scormId = scormDao.addScorm(scorm);
             scoNodes.add(new Sco(scorm.getScormName(), DictConstant.SCO_MAIN, "0", "1", "", ""));
             ScoInfo scoInfo = new ScoInfo();
             for (Sco scoNode : scoNodes) {
@@ -249,19 +249,41 @@ public class ScormServiceImpl implements ScormService {
             }
             //带测试的课件
             scoInfoList = scoDao.findScosByCreditAndScormIdAndUserId(DictConstant.CREDIT_IM, scormId, userId);
-            int i = 0, sum = 0;
+            int i = 0, sum = 0, flag = 0;
             for (ScoInfo oneScoInfo : scoInfoList) {
                 if ((!oneScoInfo.getCoreLessonStatus().equals(DictConstant.LESSON_STATUS_PASS))
+                        || oneScoInfo.getCoreScoreRaw().equals("")
                         || (Integer.parseInt(oneScoInfo.getCoreScoreRaw()) < Integer.parseInt(oneScoInfo.getPassRaw()))) {
                     return;
                 }
                 i++;
-                sum += Integer.parseInt(oneScoInfo.getCoreScoreRaw());
+                if (!oneScoInfo.getCoreScoreRaw().equals("")) {
+                    sum += Integer.parseInt(oneScoInfo.getCoreScoreRaw());
+                    flag = 1;
+                }
             }
             ScormSummarize scormSummarize = scormDao.findScormSummarizeByUserIdAndScormId(userId, scormId);
-            scormSummarize.setGrade(i == 0 ? "" : (sum / i) + "");
-            scormSummarize.setCompleteDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
-            scormDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
+            if (flag == 1) {
+                if (!scormSummarize.getCompleteDate().equals("")) {
+                    if (!scormSummarize.getGrade().equals("")) {
+                        if ((sum / i) > Integer.parseInt(scormSummarize.getGrade())) {
+                            scormSummarize.setGrade(sum / i + "");
+                            scormSummarize.setCompleteDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
+                            scormDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
+                        }
+                    }
+                } else {
+                    scormSummarize.setGrade(sum / i + "");
+                    scormSummarize.setCompleteDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
+                    scormDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
+                }
+            } else {
+                if (scormSummarize.getCompleteDate().equals("")) {
+                    scormSummarize.setGrade("");
+                    scormSummarize.setCompleteDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
+                    scormDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
+                }
+            }
         }
     }
 
