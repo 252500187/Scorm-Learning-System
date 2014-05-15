@@ -262,6 +262,7 @@ public class ScormServiceImpl implements ScormService {
     public void judgeDemonstrationStatus(int scormId, HttpServletRequest request) {
         boolean collectScorm = true;
         boolean registerScorm = true;
+        boolean complete = true;
         boolean isTourist = "".equals(LoginUserUtil.getLoginName());
         if (!isTourist) {
             int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
@@ -271,9 +272,13 @@ public class ScormServiceImpl implements ScormService {
             if (scormDao.checkNotHasRegister(scormId, userId)) {
                 registerScorm = false;
             }
+            if (scormDao.getCompleteInfo(scormId, userId)) {
+                complete = false;
+            }
         }
         request.setAttribute("collectScorm", collectScorm);
         request.setAttribute("registerScorm", registerScorm);
+        request.setAttribute("complete", complete);
     }
 
     @Override

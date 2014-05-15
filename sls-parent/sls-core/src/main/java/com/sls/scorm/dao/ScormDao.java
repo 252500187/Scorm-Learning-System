@@ -46,4 +46,6 @@ public interface ScormDao {
     ScormSummarize findScormSummarizeByUserIdAndScormId(int userId, int scormId);
 
     void changeCompleteInfoByScormIdAndUserId(ScormSummarize scormSummarize);
+
+    boolean getCompleteInfo(int scormId, int userId);
 }

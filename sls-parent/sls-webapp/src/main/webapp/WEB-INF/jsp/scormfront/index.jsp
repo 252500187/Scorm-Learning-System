@@ -48,7 +48,7 @@
         <h2>HOT TOP</h2>
 
         <div class="top-news col-md-12">
-            <a class="btn red sliderbar-transparency" onclick="showScormInfo(66)">
+            <a class="btn red sliderbar-transparency" onclick="toScormInfo(66)">
                 <span> TOP ONE</span>
                 <em>书名</em>
                 <em>
@@ -603,7 +603,7 @@
     }
 
     function toScormInfo(scormId) {
-        window.location.href = "tourist/scormInfo?scormId=" + scormId + "&type=1";
+        window.location.href = "tourist/scormInfo?scormId=" + scormId;
     }
 
     $(function () {
