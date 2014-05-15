@@ -22,22 +22,16 @@
 </head>
 
 <body class="page-header-fixed" style="background-color: transparent">
-
-<%--<%@include file="../index/navigationMenu.jsp" %>--%>
-
-<%--<div class="page-container">--%>
-<%--<div class="page-content-wrapper">--%>
-<%--<div class="row profile">--%>
 <div class="col-md-12">
     <div class="tabbable tabbable-custom tabbable-full-width">
         <div class="tab-content">
             <div class="tab-pane active" id="tab_1_1">
-                <div class="row col-md-12" style="margin-left: 5px">
+                <div class="row col-md-12">
                     <div class="col-md-2"></div>
                     <div class="col-md-2" style="float: left;">
                         <ul class="list-unstyled profile-nav">
                             <li>
-                                <img id="scormImg" class="img-responsive" style="width: 250px;height: 150px"
+                                <img id="scormImg" class="img-responsive" style="width: 200px;height: 150px"
                                      alt=""/>
                                 <i href="#" class="profile-edit">
 
@@ -49,7 +43,7 @@
                         <div class="row">
                             <div class="col-md-8 profile-info">
                                 <div class="row">
-                                    <div class="col-md-8" style="float: left">
+                                    <div class="col-md-6" style="float: left">
                                         <h1 style="margin-top: 0px;">${scormInfo.scormName}</h1>
                                     </div>
                                     <!--已注册未完成-->
@@ -68,52 +62,64 @@
                                     </c:if>
                                     <!--未注册-->
                                     <c:if test="${!registerScorm}">
-                                        <div class="col-md-2" style="float: left"><a class="btn blue"
-                                                                                     onclick="registerScorm(${scormInfo.scormId})">注册</a>
+                                        <div class="col-md-2" style="float: left">
+                                            <a class="btn blue"
+                                               onclick="registerScorm(${scormInfo.scormId})">注册</a>
                                         </div>
                                     </c:if>
+
+                                    <div class="row col-md-12">
+                                        <div class="row col-md-6" style="float: left">
+                                            <ul class="list-inline">
+                                                <li>发布时间:</li>
+                                                <li>${scormInfo.uploadDate}</li>
+                                            </ul>
+                                            <ul class="list-inline">
+                                                <li>评分:</li>
+                                                <li><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                        class="fa fa-star"></i><i
+                                                        class="fa fa-star"></i><i
+                                                        class="fa fa-star"></i></li>
+                                            </ul>
+                                            <ul class="list-inline">
+                                                <li>简介:</li>
+                                                <li>${scormInfo.description}
+                                                </li>
+                                            </ul>
+                                            <ul class="list-inline">
+                                                <li>
+                                                    点击量:${scormInfo.registerSum}
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-heart"></i>
+                                                    <!--已收藏-->
+                                                    <c:if test="${true == collectScorm}">
+                                                        <a style="color:#aaa" onclick="return false">收藏</a>
+                                                    </c:if>
+                                                    <!--未收藏-->
+                                                    <c:if test="${false == collectScorm}">
+                                                        <a style="color:#666"
+                                                           onclick="collectScorm(${scormInfo.scormId})">收藏</a>
+                                                    </c:if>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="row col-md-6" style="float: left;margin-left: 0">
+                                            <ul class="list-inline">
+                                                <li>发布时间:</li>
+                                                <li>${scormInfo.uploadDate}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <ul class="list-inline">
-                                    <li>发布时间:</li>
-                                    <li>${scormInfo.uploadDate}</li>
-                                </ul>
-                                <ul class="list-inline">
-                                    <li>评分:</li>
-                                    <li><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i
-                                            class="fa fa-star"></i><i
-                                            class="fa fa-star"></i></li>
-                                </ul>
-                                <ul class="list-inline">
-                                    <li>简介:</li>
-                                    <li>${scormInfo.description}
-                                    </li>
-                                </ul>
-                                <ul class="list-inline">
-                                    <li>
-                                        点击量:${scormInfo.registerSum}
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-heart"></i>
-                                        <!--已收藏-->
-                                        <c:if test="${true == collectScorm}">
-                                            <a style="color:#aaa" onclick="return false">收藏</a>
-                                        </c:if>
-                                        <!--未收藏-->
-                                        <c:if test="${false == collectScorm}">
-                                            <a style="color:#666"
-                                               onclick="collectScorm(${scormInfo.scormId})">收藏</a>
-                                        </c:if>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <div class="row" style="margin-left: 5px">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
                         <div class="tabbable tabbable-custom tabbable-custom-profile">
                             <ul class="nav nav-tabs">
                                 <li class="active">
