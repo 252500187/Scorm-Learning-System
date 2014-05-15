@@ -3,6 +3,7 @@ package com.sls.user.dao.impl;
 import com.core.page.dao.PageDao;
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
+import com.sls.scorm.entity.Scorm;
 import com.sls.user.dao.UserDao;
 import com.sls.user.entity.User;
 import com.sls.user.entity.UserLevel;
@@ -131,5 +132,11 @@ public class UserDaoImpl extends PageDao implements UserDao {
                 "WHERE user_id = :userId";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(user));
 
+    }
+
+    @Override
+    public List<Scorm> getAllRegisterScormInfoByUserId(int userId) {
+        String sql = "SELECT * FROM ss_scorm WHERE scorm_id IN (SELECT scorm_id FROM luss_user_collect WHERE user_id = ?)";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId);
     }
 }

@@ -86,9 +86,12 @@ public class UserCenterController {
 
     //个人中心  已注册课件
     @RequestMapping(value = "registerScormDo", method = {RequestMethod.GET})
-    public String registerScormDo() {
+    public String registerScormDo(HttpServletRequest request) {
+        userCenterService.getAllRegisterScormInfo(request);
         return "scormfront/usercenter/myscorm/registerScorm";
     }
+
+
 
     //个人中心  已完成课件
     @RequestMapping(value = "finishScormDo", method = {RequestMethod.GET})
