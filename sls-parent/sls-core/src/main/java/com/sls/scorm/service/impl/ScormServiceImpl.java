@@ -244,14 +244,14 @@ public class ScormServiceImpl implements ScormService {
     public void checkIsPassAllSco(int scormId) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         if (scoDao.isAllScoClick(scormId, userId)) {
-            //不带测试的课件
+            //1不带测试的课件
             List<ScoInfo> scoInfoList = scoDao.findScosByCreditAndScormIdAndUserId(DictConstant.CREDIT_NO, scormId, userId);
             for (ScoInfo oneScoInfo : scoInfoList) {
                 if (!oneScoInfo.getCoreLessonStatus().equals(DictConstant.LESSON_STATUS_COMPLETED)) {
                     return;
                 }
             }
-            //带测试的课件
+            //2带测试的课件
             scoInfoList = scoDao.findScosByCreditAndScormIdAndUserId(DictConstant.CREDIT_IM, scormId, userId);
             int i = 0, sum = 0, flag = 0;
             for (ScoInfo oneScoInfo : scoInfoList) {
@@ -266,8 +266,10 @@ public class ScormServiceImpl implements ScormService {
                     flag = 1;
                 }
             }
+            //2.1处理若带测试是否更新原有成绩
             ScormSummarize scormSummarize = scormDao.findScormSummarizeByUserIdAndScormId(userId, scormId);
             if (flag == 1) {
+                //2.1.1带测试时，若原来有成绩，则比较成绩，只有大于原有成绩才更新
                 if (!scormSummarize.getCompleteDate().equals("")) {
                     if (!scormSummarize.getGrade().equals("")) {
                         if ((sum / i) > Integer.parseInt(scormSummarize.getGrade())) {
@@ -278,6 +280,7 @@ public class ScormServiceImpl implements ScormService {
                     changeSummarize(scormSummarize, sum / i + "");
                 }
             } else {
+                //2.1.2不带测试时，若原来没有成绩，则更新成绩
                 if (scormSummarize.getCompleteDate().equals("")) {
                     changeSummarize(scormSummarize, "");
                 }
