@@ -18,64 +18,113 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
+    <link rel="stylesheet" type="text/css" href="metronic/assets/admin/pages/css/profile.css"/>
 </head>
 
 <body class="page-header-fixed" style="background-color: transparent">
 <%--<%@include file="../index/navigationMenu.jsp" %>--%>
-<div class="page-container">
-    <div class="page-content-wrapper">
-        <div class="page-content" style="min-height:783px">
-            <div class="row">
-                <div class="col-md-12 blog-page">
-                    <div class="row col-md-10">
-                        <div>
-                            <div>
-                                <div style="border: 1px dotted #DDDDDD;float: left;width: 30%;padding: 10px">
-                                    <img src="img/bookmarks/book4.jpg" alt="" style="width: 150px;height: 230px;display:block; margin:0 auto;">
+
+<%--<div class="page-container">--%>
+<%--<div class="page-content-wrapper">--%>
+<%--<div class="row profile">--%>
+
+<div class="col-md-12">
+    <div class="tabbable tabbable-custom tabbable-full-width">
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab_1_1">
+                <div class="row col-md-12">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2" style="float: left;">
+                        <ul class="list-unstyled profile-nav">
+                            <li>
+                                <img id="scormImg" class="img-responsive" style="width: 150px;height: 200px"
+                                     alt=""/>
+                                <%--<img src="img/bookmarks/book4.jpg" style="width: 150px;height: 200px;">--%>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-8" style="float: left">
+                        <div class="row">
+                            <div class="col-md-8 profile-info">
+                                <div class="row col-md-12">
+                                    <div class="col-md-8" style="float: left">
+                                        <h1 style="padding-top: 5px">${scormInfo.scormName}</h1>
+                                    </div>
+                                    <!--已注册未完成-->
+                                    <c:if test="${registerScorm && !complete}">
+                                        <div class="col-md-2" style="float: left">
+                                            <a class="btn green m-icon" onclick="return false">
+                                                去学习<i class="m-icon-swapright m-icon-white"></i>
+                                            </a></div>
+                                    </c:if>
+                                    <!--已注册已完成-->
+                                    <c:if test="${registerScorm && complete}">
+                                        <div class="col-md-2" style="float: left">
+                                            <a class="btn default m-icon" onclick="return false"
+                                               style="color: #aaa">
+                                                已完成
+                                            </a></div>
+                                    </c:if>
+                                    <!--未注册-->
+                                    <c:if test="${!registerScorm}">
+                                        <div class="col-md-2" style="float: left">
+                                            <a class="btn blue"
+                                               onclick="registerScorm(${scormInfo.scormId})">注册</a>
+                                        </div>
+                                    </c:if>
                                 </div>
-                                <div style="float: left;width: 70%;padding-left: 20px">
+                                <div class="row col-md-12">
                                     <ul class="list-inline">
-                                        <li><h3>课件名</h3></li>
-                                        <li style="margin-left: 15%"><a class="btn blue">注册</a></li>
+                                        <li>发布时间:</li>
+                                        <li>${scormInfo.uploadDate}</li>
+                                    </ul>
+                                    <ul class="list-inline">
+                                        <li>总评分:</li>
+                                        <li><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                class="fa fa-star"></i><i
+                                                class="fa fa-star"></i><i
+                                                class="fa fa-star"></i></li>
+                                        <li>${scormInfo.score}</li>
+                                        <li>
+                                            <a>
+                                                <small style="color: #aaa">你还未进行评分哦</small>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="list-inline">
+                                        <li>简介:</li>
+                                        <li>${scormInfo.description}
+                                        </li>
                                     </ul>
                                     <ul class="list-inline">
                                         <li>
-                                            <i class="fa fa-calendar"></i>
-                                            <a href="#"> 2013-10-11 14:15:20 </a>
-                                        </li>
-                                    </ul><br/>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <a href="#"> 简介 </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <a href="#"> 简介简介简介简介简介简介简介简介简介简介简介简
-                                                介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介 </a>
-                                        </li>
-                                    </ul><br/>
-                                    <ul class="list-inline blog-tags">
-                                        <li>
-                                            <i class="fa fa-comments"></i>
-                                            <a href="#"> 评论(3) </a>
+                                            点击量:${scormInfo.registerSum}
                                         </li>
                                         <li>
-                                            <i class="fa fa-tags"></i>
-                                            <a href="#"> 计算机科学 </a>
+                                            <a onclick="toMarkScore()">评论(${fn:length(allComments)})</a>
                                         </li>
                                         <li>
-                                            <i class="fa fa-pencil"></i>
-                                            <a href="#"> 去评分吧 </a>
+                                            <i class="fa fa-heart"></i>
+                                            <!--已收藏-->
+                                            <c:if test="${true == collectScorm}">
+                                                <a style="color:#aaa" onclick="return false">收藏</a>
+                                            </c:if>
+                                            <!--未收藏-->
+                                            <c:if test="${false == collectScorm}">
+                                                <a style="color:#666"
+                                                   onclick="collectScorm(${scormInfo.scormId})">收藏</a>
+                                            </c:if>
                                         </li>
                                     </ul>
                                 </div>
+
                             </div>
                         </div>
-                        <!--end col-md-9-->
                     </div>
-<br>
-                    <div class="row col-md-10">
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
                         <div class="tabbable tabbable-custom tabbable-custom-profile">
                             <ul class="nav nav-tabs">
                                 <li class="active">
@@ -101,7 +150,7 @@
                                         <div class="scroller" data-height="290px" data-always-visible="1"
                                              data-rail-visible1="1" id="comments">
                                             <div class="input-group">
-                                                <input id="markScore" class="form-control" type="text"
+                                                <input id="markScore" name="markScore" class="form-control" type="text"
                                                        placeholder="输入评论 ..." value="">
                                                 <span class="input-group-addon btn blue">评论</span></div>
                                             <br/>
@@ -139,14 +188,14 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
+<%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
 <%--<%@include file="../index/footer.jsp" %>--%>
 </body>
 <!-- END BODY -->

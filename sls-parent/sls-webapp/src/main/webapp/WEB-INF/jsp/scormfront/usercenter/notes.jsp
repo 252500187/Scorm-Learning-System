@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
-    <link rel="shortcut icon" href="../favicon.ico">
+    <%--<link rel="shortcut icon" href="../favicon.ico">--%>
     <link rel="stylesheet" type="text/css" href="booknote/css/default.css"/>
     <link rel="stylesheet" type="text/css" href="booknote/css/bookblock.css"/>
     <!-- custom demo style -->
@@ -90,10 +90,10 @@
         </div>
 
         <nav>
-            <a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">First page</a>
-            <a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Previous</a>
-            <a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Next</a>
-            <a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Last page</a>
+            <a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">首页</a>
+            <a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">前页</a>
+            <a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">后页</a>
+            <a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">尾页</a>
         </nav>
 
     </div>

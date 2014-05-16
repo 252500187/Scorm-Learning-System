@@ -77,15 +77,15 @@
                             <div class="form-group">
                                 <div class="col-md-9">
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                           <span class="btn default btn-file">
-                                                               <span class="fileinput-new">
-                                                                    选图
-                                                               </span>
-                                                               <span class="fileinput-exists">
-                                                                    换一个
-                                                               </span>
-                                                               <input type="file" id="noteImg" name="noteImg">
-                                                           </span>
+                                       <span class="btn default btn-file">
+                                           <span class="fileinput-new">
+                                                选图
+                                           </span>
+                                           <span class="fileinput-exists">
+                                                换一个
+                                           </span>
+                                           <input type="file" id="noteImg" name="noteImg">
+                                       </span>
                                         <span class="row fileinput-filename"></span>
                                         <a href="#" class="close fileinput-exists" data-dismiss="fileinput"
                                            style="float: none">
@@ -94,8 +94,8 @@
                                 </div>
                             </div>
                             <div class="btn-cont">
-                    								<span class="arrow">
-                    								</span>
+                                <span class="arrow">
+                                </span>
                                 <a onclick="upStudyImg()" class="btn blue icn-only">
                                     <i class="fa fa-check icon-white"></i>
                                 </a>
