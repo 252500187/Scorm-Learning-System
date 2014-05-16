@@ -19,7 +19,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
     <link rel="stylesheet" type="text/css" href="metronic/assets/admin/pages/css/profile.css"/>
-    <script src="metronic/assets/global/plugins/holder.js" type="text/javascript"></script>
+    <%--<script src="metronic/assets/global/plugins/holder.js" type="text/javascript"></script>--%>
     <style type="text/css">
         .img-polaroid {
             padding: 4px;
@@ -54,9 +54,9 @@
     <div class="col-md-2" style="float: left;">
         <ul class="list-unstyled profile-nav">
             <li>
-                <img id="scormImg" class="img-polaroid" style="max-width: 150px;max-height: 200px"
-                     alt=""/>
-                <%--<img src="img/bookmarks/book4.jpg" class="img-polaroid" style="max-width: 150px;max-height: 200px">--%>
+                <%--<img id="scormImg" class="img-polaroid" style="max-width: 150px;max-height: 200px"--%>
+                     <%--alt=""/>--%>
+                <img src="img/bookmarks/book4.jpg" class="img-polaroid" style="max-width: 150px;max-height: 200px">
             </li>
         </ul>
     </div>
@@ -220,7 +220,7 @@
                                              src="${scormInfo.imgPath}" alt="管理员推荐">
 
                                         <div class="media-body">
-                                            <div><p class="md-height">注册日期：${scormInfo.re}</p>
+                                            <div><p class="md-height">注册日期：</p>
                                             </div>
                                             <div class="media">
                                                 <a class="pull-left" href="#">

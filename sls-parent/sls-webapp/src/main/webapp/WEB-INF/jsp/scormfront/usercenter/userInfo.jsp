@@ -69,6 +69,16 @@
                                 </div>
                                 </label>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">标签</label>
+
+                                <div class="col-md-9">
+                                        <span class="label label-info"><i class="fa fa-tag"></i>计算机</span>
+                                        <span class="label label-info"><i class="fa fa-tag"></i>生物</span>
+                                        <span class="label label-info"><i class="fa fa-tag"></i>化学</span>
+                                        <span class="label label-info"><i class="fa fa-tag"></i>历史</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-actions fluid">
                             <div class="row">
