@@ -41,7 +41,7 @@ public interface ScormService {
 
     void addStudyNote(StudyNote studyNote);
 
-    void getAllStudyNotesByScormIdAndUserId(int i, HttpServletRequest request);
+    void getAllStudyNotesByScormIdAndUserId(int scormId, HttpServletRequest request);
 
     void upStudyImg(HttpServletRequest request, String upImg, StudyNote studyNote) throws ServletException, IOException;
 

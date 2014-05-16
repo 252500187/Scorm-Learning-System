@@ -1,3 +1,4 @@
+<%--@elvariable id="labelList" type="java.util.List<com.sls.system.entity.Label>"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -69,14 +70,20 @@
                                 </div>
                                 </label>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group select2-container select2-container-multi form-control select2_sample3">
                                 <label class="control-label col-md-2">标签</label>
 
                                 <div class="col-md-9">
-                                        <span class="label label-info"><i class="fa fa-tag"></i>计算机</span>
-                                        <span class="label label-info"><i class="fa fa-tag"></i>生物</span>
-                                        <span class="label label-info"><i class="fa fa-tag"></i>化学</span>
-                                        <span class="label label-info"><i class="fa fa-tag"></i>历史</span>
+                                    <div>
+                                        <ul class="select2-choices" style="border-width: 0px;" id="labelList">
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <c:forEach var="label" items="${labelList}">
+                                            <span class="label label-info" style="cursor: pointer"
+                                                  onclick="addToMine('${label.labelName}')">${label.labelName}</span>
+                                        </c:forEach>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -150,5 +157,14 @@
             },
             error: doError
         })
+    }
+
+    function addToMine(labelName) {
+        $("#labelList").append("<li class='select2-search-choice'>" +
+                "<div>" + labelName + "</div> <a class='select2-search-choice-close' tabindex='-1' onclick='removeLabel()'></a></li>")
+    }
+
+    function removeLabel() {
+        alert("sdfakfsda");
     }
 </script>

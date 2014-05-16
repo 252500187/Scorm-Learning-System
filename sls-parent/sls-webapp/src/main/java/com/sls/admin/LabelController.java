@@ -1,11 +1,9 @@
 package com.sls.admin;
 
-import com.sls.system.service.DictService;
-import com.sls.system.service.TagService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,14 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/admin/label/")
 public class LabelController {
 
-    @Autowired
-    TagService tagService;
-
-    @Autowired
-    DictService dictService;
-
     @RequestMapping(value = "listAllLabelTreeDo", method = RequestMethod.GET)
     public String listAllLabelTreeDo(HttpServletRequest request) {
         return "scormadmin/label/listAllLabelTreeDo";
+    }
+
+    @RequestMapping(value = "listAllLabelDo", method = RequestMethod.GET)
+    @ResponseBody
+    public void listAllLabelDo(HttpServletRequest request) {
+//        tagService.getAllLabel(request);
     }
 }
