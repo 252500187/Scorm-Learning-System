@@ -38,19 +38,20 @@
     </style>
 </head>
 
-<body class="page-header-fixed" style="background-color: transparent">
+<body class="page-boxed page-header-fixed" style="background-color: transparent">
 <%--<%@include file="../index/navigationMenu.jsp" %>--%>
 
-<%--<div class="page-container">--%>
-<%--<div class="page-content-wrapper">--%>
-<%--<div class="row profile">--%>
+<div class="page-container">
+<div class="page-content-wrapper">
+<div class="page-content">
+<div class="row profile">
 
 <div class="col-md-12">
 <div class="tabbable tabbable-custom tabbable-full-width">
 <div class="tab-content">
 <div class="tab-pane active" id="tab_1_1">
 <div class="row col-md-12">
-    <div class="col-md-2"></div>
+    <%--<div class="col-md-2"></div>--%>
     <div class="col-md-2" style="float: left;">
         <ul class="list-unstyled profile-nav">
             <li>
@@ -140,7 +141,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-2"></div>
+    <%--<div class="col-md-2"></div>--%>
     <div class="col-md-8">
         <div class="tabbable tabbable-custom tabbable-custom-profile">
             <ul class="nav nav-tabs">
@@ -260,9 +261,10 @@
 </div>
 </div>
 </div>
-<%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
+</div>
+</div>
+</div>
+</div>
 <%--<%@include file="../index/footer.jsp" %>--%>
 </body>
 <!-- END BODY -->
