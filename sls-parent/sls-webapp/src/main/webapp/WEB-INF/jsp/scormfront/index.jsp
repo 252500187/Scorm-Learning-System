@@ -21,6 +21,7 @@
             float: left;
             width: 20%;
         }
+
         .page-content {
             min-height: 300px !important;
             padding: 0px 20px 20px !important;
@@ -580,9 +581,11 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                 <h4 class="modal-title">课件信息</h4>
             </div>
-            <div class="modal-body">
-                <iframe id="scormInfo" style="width:100%; height:500px;border:0px;" frameborder=no allowfullscreen>
+            <div>
+                <iframe id="scormInfo" style="width:100%; height:500px;border:1px;" frameborder=no allowfullscreen>
                 </iframe>
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
     </div>
