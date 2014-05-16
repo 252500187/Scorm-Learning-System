@@ -161,6 +161,10 @@
 
     function addToMine(labelName) {
         $("#labelList").append("<li class='select2-search-choice'>" +
-                "<div>" + labelName + "</div> <a class='select2-search-choice-close' tabindex='-1' href='#'></a></li>")
+                "<div>" + labelName + "</div> <a class='select2-search-choice-close' tabindex='-1' onclick='removeLabel()'></a></li>")
+    }
+
+    function removeLabel() {
+        alert("sdfakfsda");
     }
 </script>
