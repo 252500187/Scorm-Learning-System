@@ -2,6 +2,7 @@ package com.sls.user;
 
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.service.ScormService;
+import com.sls.system.service.LabelService;
 import com.sls.user.entity.User;
 import com.sls.user.service.UserCenterService;
 import com.sls.user.service.UserService;
@@ -38,6 +39,9 @@ public class UserCenterController {
     @Autowired
     private ScormService scormService;
 
+    @Autowired
+    private LabelService labelService;
+
     @RequestMapping(value = "userCenterDo", method = {RequestMethod.GET})
     public String userCenter(HttpServletRequest request) {
         userCenterService.toUserCenter(request);
@@ -67,6 +71,7 @@ public class UserCenterController {
     @RequestMapping(value = "userInfoDo", method = {RequestMethod.GET})
     public String userInfoDo(HttpServletRequest request) {
         userCenterService.toUserInfo(request);
+        labelService.getAllUserLabel(request);
         return "scormfront/usercenter/userInfo";
     }
 
