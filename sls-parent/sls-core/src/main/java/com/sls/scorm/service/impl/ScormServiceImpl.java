@@ -2,6 +2,7 @@ package com.sls.scorm.service.impl;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
+import com.sls.scorm.dao.NoteCollectDao;
 import com.sls.scorm.dao.ScoDao;
 import com.sls.scorm.dao.ScormDao;
 import com.sls.scorm.dao.SummarizeDao;
@@ -40,6 +41,9 @@ public class ScormServiceImpl implements ScormService {
 
     @Autowired
     private SummarizeDao summarizeDao;
+
+    @Autowired
+    private NoteCollectDao noteCollectDao;
 
     @Autowired
     private DictService dictService;
@@ -98,7 +102,7 @@ public class ScormServiceImpl implements ScormService {
         ScormSummarize scormSummarize = new ScormSummarize();
         scormSummarize.setUserId(user.getUserId());
         scormSummarize.setScormId(scormId);
-        scormDao.addScormSummarize(scormSummarize);
+        summarizeDao.addScormSummarize(scormSummarize);
         scormDao.addVisitSum(scormId);
         return "注册成功。";
     }
@@ -107,7 +111,7 @@ public class ScormServiceImpl implements ScormService {
     public String collectScorm(int scormId, HttpServletRequest request) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         int scormState = scormDao.findScormInfoByScormId(scormId).getInUse();
-        if (scormDao.findCollectScormByScormIdAndUserId(scormId, userId).size() > 0) {
+        if (noteCollectDao.findCollectScormByScormIdAndUserId(scormId, userId).size() > 0) {
             return "对不起，您已收藏。";
         }
         if (scormState == DictConstant.NO_USE) {
@@ -117,7 +121,7 @@ public class ScormServiceImpl implements ScormService {
         scorm.setScormId(scormId);
         scorm.setUserId(userId);
         scorm.setCollectDate(DateUtil.getSystemDate("yyyy-MM-dd"));
-        scormDao.addCollectScorm(scorm);
+        noteCollectDao.addCollectScorm(scorm);
         return "收藏成功。";
     }
 
@@ -127,7 +131,7 @@ public class ScormServiceImpl implements ScormService {
         studyNote.setImgPath("");
         studyNote.setDate(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
         studyNote.setUserId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
-        scormDao.addStudyNote(studyNote);
+        noteCollectDao.addStudyNote(studyNote);
     }
 
     @Override
@@ -136,7 +140,7 @@ public class ScormServiceImpl implements ScormService {
         StudyNote studyNote = new StudyNote();
         studyNote.setScormId(i);
         studyNote.setUserId(userId);
-        List<StudyNote> studyNoteList = scormDao.getAllStudyNotesByScormIdAndUserId(studyNote);
+        List<StudyNote> studyNoteList = noteCollectDao.getAllStudyNotesByScormIdAndUserId(studyNote);
         for (StudyNote studyNote1 : studyNoteList) {
             studyNote1.setTime(studyNote1.getDate().substring(10));
             studyNote1.setDate(studyNote1.getDate().substring(0, 10));
@@ -153,7 +157,7 @@ public class ScormServiceImpl implements ScormService {
         studyNote.setUserId(userId);
         studyNote.setDate(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
         studyNote.setImgPath(fileUp.upImg(request, DictConstant.STUDY_IMG, "/" + userId, studyNote.getScormId() + date.getTime() + DictConstant.PHOTO_FORM, upImg));
-        scormDao.addStudyNote(studyNote);
+        noteCollectDao.addStudyNote(studyNote);
     }
 
     @Override
@@ -246,7 +250,7 @@ public class ScormServiceImpl implements ScormService {
 
     public void checkAllSco(int scormId) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-        ScormSummarize scormSummarize = scormDao.findScormSummarizeByUserIdAndScormId(userId, scormId);
+        ScormSummarize scormSummarize = summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormId);
         if (scoDao.isAllScoClick(scormId, userId)) {
             //课件完成方式为浏览即可完成时,判断通过并处理
             if (scormDao.findScormInfoByScormId(scormId).getCompleteWay() != DictConstant.VOID_VALUE) {
@@ -309,7 +313,7 @@ public class ScormServiceImpl implements ScormService {
     public void changeSummarize(ScormSummarize scormSummarize, String grade) {
         scormSummarize.setGrade(grade);
         scormSummarize.setCompleteDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
-        scormDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
+        summarizeDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
     }
 
     public ScoInfo changeScoInfoFromRead(ScoInfo scoInfo) {
@@ -338,7 +342,7 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void getAllCommentsByScormId(int scormId, HttpServletRequest request) {
-        request.setAttribute("allComments", scormDao.getAllCommentsByScormId(scormId));
+        request.setAttribute("allComments", summarizeDao.getAllCommentsByScormId(scormId));
     }
 
     @Override
@@ -349,13 +353,13 @@ public class ScormServiceImpl implements ScormService {
         boolean isTourist = "".equals(LoginUserUtil.getLoginName());
         if (!isTourist) {
             int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-            if (scormDao.checkNotHasCollected(scormId, userId)) {
+            if (noteCollectDao.checkNotHasCollected(scormId, userId)) {
                 collectScorm = false;
             }
             if (scormDao.checkNotHasRegister(scormId, userId)) {
                 registerScorm = false;
             }
-            if (scormDao.getCompleteInfo(scormId, userId)) {
+            if (summarizeDao.getCompleteInfo(scormId, userId)) {
                 complete = false;
             }
         }
