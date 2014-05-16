@@ -40,10 +40,10 @@
 
 
 <%--<!-- BEGIN CORE PLUGINS -->--%>
-<%--<!--[if lt IE 9]>--%>
+<!--[if lt IE 9]>
 <script src="<c:url value="/metronic/assets/global/plugins/respond.min.js"/>"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/excanvas.min.js"/>"></script>
-<%--<![endif]-->--%>
+<![endif]-->
 <script src="<c:url value="/metronic/assets/global/plugins/jquery-migrate-1.2.1.min.js"/>" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
 <script src="<c:url value="/metronic/assets/global/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js"/>" type="text/javascript"></script>
@@ -54,9 +54,6 @@
 <script src="<c:url value="/metronic/assets/global/plugins/jquery.blockui.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/jquery.cokie.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/uniform/jquery.uniform.min.js"/>" type="text/javascript"></script>
-
-
-
 <%--<!-- END CORE PLUGINS -->--%>
 
 <%--<!-- BEGIN PAGE LEVEL PLUGINS -->--%>
@@ -81,8 +78,14 @@
 <script src="<c:url value="/metronic/assets/global/plugins/jquery-validation/js/jquery.validate.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/backstretch/jquery.backstretch.min.js"/>" type="text/javascript"></script>
 <script type="text/javascript" src="<c:url value="/metronic/assets/global/plugins/select2/select2.min.js"/>"></script>
-
 <script type="text/javascript" src="<c:url value="/metronic/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js"/>"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/flot/jquery.flot.min.js"/>"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/flot/jquery.flot.resize.min.js"/>"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/flot/jquery.flot.pie.min.js"/>"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/flot/jquery.flot.stack.min.js"/>"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/flot/jquery.flot.crosshair.min.js"/>"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/flot/jquery.flot.categories.min.js"/>" type="text/javascript"></script>
+
 <%--<!-- END PAGE LEVEL PLUGINS -->--%>
 
 <%--<!-- BEGIN PAGE LEVEL SCRIPTS -->--%>
@@ -91,4 +94,5 @@
 <script src="<c:url value="/metronic/assets/admin/pages/scripts/index.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/admin/pages/scripts/tasks.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/admin/pages/scripts/login-soft.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/admin/pages/scripts/charts.js"/>"></script>
 <%--<!-- END PAGE LEVEL SCRIPTS -->--%>
