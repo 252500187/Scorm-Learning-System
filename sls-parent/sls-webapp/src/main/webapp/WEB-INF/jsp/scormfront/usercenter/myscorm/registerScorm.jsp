@@ -20,8 +20,8 @@
         <div class="col-md-2" style="float: left;">
             <ul class="list-unstyled profile-nav">
                 <li>
-                    <img id="scormImg" class="img-responsive" style="width: 200px;height: 150px"
-                         alt=""/>
+                    <img id="${scormInfo.scormId}" class="img-responsive" style="width: 200px;height: 150px"
+                         alt="${scorm.scormName}"/>
                     <i href="#" class="profile-edit">
                     </i>
                 </li>
@@ -72,3 +72,10 @@
 
 </body>
 </html>
+<script type="text/javascript">
+    <c:forEach var="scormInfo" items="${allScorm}">
+
+        $("#"+ "${scormInfo.scormId}").attr("scr",basePath + "${scormInfo.imgPath}");
+
+    </c:forEach>
+</script>
