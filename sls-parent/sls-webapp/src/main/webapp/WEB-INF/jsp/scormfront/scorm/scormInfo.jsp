@@ -54,13 +54,13 @@
     <div class="col-md-2" style="float: left;">
         <ul class="list-unstyled profile-nav">
             <li>
-                <%--<img id="scormImg" class="img-polaroid" style="max-width: 150px;max-height: 200px"--%>
-                     <%--alt=""/>--%>
-                <img src="img/bookmarks/book4.jpg" class="img-polaroid" style="max-width: 150px;max-height: 200px">
+                <img id="scormImg" class="img-polaroid" style="max-width: 150px;max-height: 200px"
+                     alt=""/>
+                <%--<img src="img/bookmarks/book4.jpg" class="img-polaroid" style="max-width: 150px;max-height: 200px">--%>
             </li>
         </ul>
     </div>
-    <div class="col-md-8" style="float: left">
+    <div style="float: left">
         <div class="row">
             <div class="col-md-8 profile-info">
                 <div class="row col-md-12">
@@ -108,7 +108,7 @@
                             </a>
                         </li>
                     </ul>
-                    <ul class="list-inline">
+                    <ul class="list-inline" style="max-width: 250px;">
                         <li>简介:</li>
                         <li>${scormInfo.description}
                         </li>
