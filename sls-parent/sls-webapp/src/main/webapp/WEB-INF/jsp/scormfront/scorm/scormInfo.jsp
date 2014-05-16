@@ -154,11 +154,13 @@
                         评论
                     </a>
                 </li>
-                <li>
-                    <a href="#tab_1_33" data-toggle="tab" id="scheduleTab">
-                        进度
-                    </a>
-                </li>
+                <c:if test="${registerScorm}">
+                    <li>
+                        <a href="#tab_1_33" data-toggle="tab" id="scheduleTab">
+                            进度
+                        </a>
+                    </li>
+                </c:if>
             </ul>
             <div class="tab-content" style="min-height: 200px">
                 <div class="tab-pane active" id="tab_1_11">
@@ -218,7 +220,7 @@
                                              src="${scormInfo.imgPath}" alt="管理员推荐">
 
                                         <div class="media-body">
-                                            <div><p class="md-height">注册日期：2012-11-11 18：23：12</p>
+                                            <div><p class="md-height">注册日期：${scormInfo.re}</p>
                                             </div>
                                             <div class="media">
                                                 <a class="pull-left" href="#">
@@ -230,6 +232,7 @@
                                             </div>
                                             <div class="media">
                                                 <h4 class="pull-left" style="display: block">评分:</h4>
+
                                                 <div class="media-body">
                                                     <ul class="list-inline">
                                                         <li><i class="fa fa-star"></i><i class="fa fa-star"></i><i
