@@ -91,18 +91,10 @@ public class UserCenterController {
         return "scormfront/usercenter/myscorm/registerScorm";
     }
 
-
-
-    //个人中心  已完成课件
-    @RequestMapping(value = "finishScormDo", method = {RequestMethod.GET})
-    public String finishScormDo() {
-        return "scormfront/usercenter/myscorm/finishScorm";
-    }
-
     //个人中心  已收藏课件
     @RequestMapping(value = "collectScormDo", method = {RequestMethod.GET})
     public String collectScormDo() {
-        return "scormfront/usercenter/collectScorm";
+        return "scormfront/usercenter/myscorm/collectScorm";
     }
 
     //个人中心  笔记本

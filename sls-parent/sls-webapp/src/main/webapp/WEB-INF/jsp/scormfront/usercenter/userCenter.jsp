@@ -89,25 +89,16 @@
                             </a>
                         </li>
                         <li>
-                            <a onclick="changeIframe('user/center/finishScormDo')">
+                            <a onclick="changeIframe('user/center/collectScormDo')">
                                 <i class="fa fa-bullhorn"></i>
                                 <span class="title">
-									已完成课件
+									我的收藏
 								</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <!-- 第四个菜单  我的收藏 -->
-                <li>
-                    <a onclick="changeIframe('user/center/collectScormDo')">
-                        <i class="fa fa-star"></i>
-						<span class="title">
-							我的收藏
-						</span>
-                    </a>
-                </li>
-                <!-- 第五个菜单  我的笔记本 -->
+                <!-- 第四个菜单  我的笔记本 -->
 
                 <li class="last ">
                     <a onclick="changeIframe('user/center/notesDo')">
