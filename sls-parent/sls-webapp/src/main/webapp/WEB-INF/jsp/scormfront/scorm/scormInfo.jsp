@@ -19,6 +19,17 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
     <link rel="stylesheet" type="text/css" href="metronic/assets/admin/pages/css/profile.css"/>
+    <style type="text/css">
+        .img-polaroid {
+            padding: 4px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 
 <body class="page-header-fixed" style="background-color: transparent">
@@ -37,9 +48,9 @@
                     <div class="col-md-2" style="float: left;">
                         <ul class="list-unstyled profile-nav">
                             <li>
-                                <img id="scormImg" class="img-responsive" style="max-width: 150px;max-height: 200px"
+                                <img id="scormImg" class="img-polaroid" style="max-width: 150px;max-height: 200px"
                                      alt=""/>
-                                <%--<img src="img/bookmarks/book4.jpg" style="width: 150px;height: 200px;">--%>
+                                <%--<img src="img/bookmarks/book4.jpg" class="img-polaroid" style="max-width: 150px;max-height: 200px">--%>
                             </li>
                         </ul>
                     </div>
