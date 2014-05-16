@@ -13,7 +13,6 @@
     <%@include file="../includes/common.jsp" %>
     <link rel="stylesheet" type="text/css" href="metronic/assets/admin/pages/css/timeline.css"/>
     <style type="text/css">
-        <!--
         .col-index-page {
             position: relative;
             min-height: 1px;
@@ -22,7 +21,6 @@
             float: left;
             width: 20%;
         }
-
         .page-content {
             min-height: 300px !important;
             padding: 0px 20px 20px !important;
@@ -31,11 +29,8 @@
             padding: 0px;
             background-color: #fff;
         }
-
-        -->
     </style>
 </head>
-<%--<%@include file="index/test.jsp"%>--%>
 <body class="page-header-fixed">
 <%@include file="index/navigationMenu.jsp" %>
 
