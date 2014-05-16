@@ -12,7 +12,7 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8"/>
-    <title>课程</title>
+    <title>SLS | ScormTree</title>
     <link rel="stylesheet" type="text/css"
           href="<c:url value="/js/common/zTree-v3.5.14/css/zTreeStyle/zTreeStyle.css"/>"/>
     <script src="<c:url value="/metronic/assets/global/plugins/jquery-1.11.0.min.js"/>" type="text/javascript"></script>

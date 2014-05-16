@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../../includes/common.jsp" %>
-    <title>已注册课件</title>
+    <title>SLS | Register</title>
 </head>
 <body class="page-header-fixed" style="background-color: transparent">
 <div class="row">
