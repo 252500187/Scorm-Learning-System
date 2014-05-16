@@ -40,10 +40,10 @@
 
 
 <%--<!-- BEGIN CORE PLUGINS -->--%>
-<!--[if lt IE 9]>
+<%--<!--[if lt IE 9]>--%>
 <script src="<c:url value="/metronic/assets/global/plugins/respond.min.js"/>"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/excanvas.min.js"/>"></script>
-<![endif]-->
+<%--<![endif]-->--%>
 <script src="<c:url value="/metronic/assets/global/plugins/jquery-migrate-1.2.1.min.js"/>" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui-1.10.3.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
 <script src="<c:url value="/metronic/assets/global/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js"/>" type="text/javascript"></script>
@@ -85,7 +85,8 @@
 <script src="<c:url value="/metronic/assets/global/plugins/flot/jquery.flot.stack.min.js"/>"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/flot/jquery.flot.crosshair.min.js"/>"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/flot/jquery.flot.categories.min.js"/>" type="text/javascript"></script>
-
+<script type="text/javascript" src="<c:url value="/metronic/assets/global/plugins/jquery-mixitup/jquery.mixitup.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/metronic/assets/global/plugins/fancybox/source/jquery.fancybox.pack.js"/>"></script>
 <%--<!-- END PAGE LEVEL PLUGINS -->--%>
 
 <%--<!-- BEGIN PAGE LEVEL SCRIPTS -->--%>
@@ -95,4 +96,5 @@
 <script src="<c:url value="/metronic/assets/admin/pages/scripts/tasks.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/admin/pages/scripts/login-soft.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/admin/pages/scripts/charts.js"/>"></script>
+<script src="<c:url value="/metronic/assets/admin/pages/scripts/portfolio.js"/>"></script>
 <%--<!-- END PAGE LEVEL SCRIPTS -->--%>

@@ -39,7 +39,7 @@
                             <tr>
                                 <td>
                                     &nbsp;<img id="userHeadPhoto" class="img-polaroid" alt="用户头像"
-                                         style="width:100px;height:100px"/>
+                                               style="width:100px;height:100px"/>
                                 </td>
                                 <td>
                                     <span style="margin-left:10px">昵称</span>:&nbsp;&nbsp;${user.userName}<br/><br/>
@@ -127,7 +127,8 @@
         <div class="page-content">
             <div class="row">
                 <div class="col-md-12">
-                    <iframe id="iframe" style="width:100%; height:800px;padding-left: 6px" frameborder=no
+                    <iframe id="iframe" style="min-height: 800px;width:100%; height:100%;padding-left: 6px;"
+                            frameborder=no
                             scrolling="no"
                             allowfullscreen>
                     </iframe>
