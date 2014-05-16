@@ -2,6 +2,7 @@ package com.sls.scorm.dao.impl;
 
 import com.core.page.dao.PageDao;
 import com.sls.scorm.dao.NoteCollectDao;
+import com.sls.scorm.entity.Collect;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.entity.StudyNote;
 import com.sls.util.DictConstant;
@@ -22,9 +23,9 @@ public class NoteCollectDaoImpl extends PageDao implements NoteCollectDao {
     }
 
     @Override
-    public void addCollectScorm(Scorm scorm) {
+    public void addCollectScorm(Collect collect) {
         String sql = "INSERT INTO luss_user_collect (user_id, scorm_id, collect_date)VALUES (:userId, :scormId, :collectDate)";
-        getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(scorm));
+        getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(collect));
     }
 
     @Override

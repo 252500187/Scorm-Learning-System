@@ -117,11 +117,11 @@ public class ScormServiceImpl implements ScormService {
         if (scormState == DictConstant.NO_USE) {
             return "此课件不可收藏。";
         }
-        Scorm scorm = new Scorm();
-        scorm.setScormId(scormId);
-        scorm.setUserId(userId);
-        scorm.setCollectDate(DateUtil.getSystemDate("yyyy-MM-dd"));
-        noteCollectDao.addCollectScorm(scorm);
+        Collect collect = new Collect();
+        collect.setScormId(scormId);
+        collect.setUserId(userId);
+        collect.setCollectDate(DateUtil.getSystemDate("yyyy-MM-dd"));
+        noteCollectDao.addCollectScorm(collect);
         return "收藏成功。";
     }
 

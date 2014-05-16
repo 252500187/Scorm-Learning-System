@@ -19,7 +19,6 @@ public class Scorm {
     private String score;
     private int completeWay;
 
-    private String collectDate;
     private int userId;
 
     public Scorm() {
@@ -102,14 +101,6 @@ public class Scorm {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getCollectDate() {
-        return collectDate;
-    }
-
-    public void setCollectDate(String collectDate) {
-        this.collectDate = collectDate;
     }
 
     public int getUserId() {
