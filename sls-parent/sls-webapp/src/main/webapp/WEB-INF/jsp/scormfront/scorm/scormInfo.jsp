@@ -30,6 +30,11 @@
             -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
+
+        .md-height {
+            height: 64px;
+            line-height: 64px;
+        }
     </style>
 </head>
 
@@ -155,7 +160,7 @@
                     </a>
                 </li>
             </ul>
-            <div class="tab-content" style="min-height: 400px">
+            <div class="tab-content" style="min-height: 200px">
                 <div class="tab-pane active" id="tab_1_11">
                     <div class="portlet-body">
                         <ul class="ztreeStyle" id="chapterList"></ul>
@@ -208,19 +213,12 @@
                             <div class="portlet-body">
                                 <ul class="media-list">
                                     <li class="media">
-                                        <img class="pull-left media-object" style="max-width: 64px;max-height: 64px"
+                                        <img class="pull-left media-object"
+                                             style="max-width: 64px;max-height: 64px"
                                              src="${scormInfo.imgPath}" alt="管理员推荐">
 
                                         <div class="media-body">
-                                            <div style="height: 64px;line-height: 64px"><p>注册日期：2012-11-11 18：23：12</p>
-                                            </div>
-                                            <div class="media">
-                                                <%--todo 完成度的图片--%>
-                                                <img class="media-object" src="complete.jpg" alt="">
-
-                                                <div class="media-body">
-                                                    <p></p>
-                                                </div>
+                                            <div><p class="md-height">注册日期：2012-11-11 18：23：12</p>
                                             </div>
                                             <div class="media">
                                                 <a class="pull-left" href="#">
@@ -228,10 +226,18 @@
                                                 </a>
 
                                                 <div class="media-body">
-                                                    <h4 class="media-heading">Nested media heading</h4>
-                                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-                                                    scelerisque ante sollicitudin commodo. Cras purus odio,
-                                                    vestibulum in vulputate at, tempus viverra turpis.
+                                                    <p class="md-height">您还没有注册</p></div>
+                                            </div>
+                                            <div class="media">
+                                                <h4 class="pull-left" style="display: block">评分:</h4>
+                                                <div class="media-body">
+                                                    <ul class="list-inline">
+                                                        <li><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                                class="fa fa-star"></i><i
+                                                                class="fa fa-star"></i><i
+                                                                class="fa fa-star"></i></li>
+                                                        <li><span class="btn blue">评论</span></li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
