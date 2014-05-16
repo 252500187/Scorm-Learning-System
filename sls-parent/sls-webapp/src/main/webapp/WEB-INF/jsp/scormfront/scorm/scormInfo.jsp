@@ -1,9 +1,3 @@
-<%--@elvariable id="scormInfo" type="com.sls.scorm.entity.Scorm"--%>
-<%--@elvariable id="scoList" type="java.util.List"--%>
-<%--@elvariable id="allComments" type="java.util.List"--%>
-<%--@elvariable id="registerScorm" type="java.lang.Boolean"--%>
-<%--@elvariable id="collectScorm" type="java.lang.Boolean"--%>
-<%--@elvariable id="complete" type="java.lang.Boolean"--%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
@@ -14,28 +8,15 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8"/>
-    <title>SLS | WELCOME to SLS</title>
+    <title>SLS | ScormInfo</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
-    <link rel="stylesheet" type="text/css" href="metronic/assets/admin/pages/css/profile.css"/>
-    <%--<script src="metronic/assets/global/plugins/holder.js" type="text/javascript"></script>--%>
-    <style type="text/css">
-        .img-polaroid {
-            padding: 4px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .md-height {
-            height: 64px;
-            line-height: 64px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/metronic/assets/admin/pages/css/profile.css"/>"/>
+    <link rel="stylesheet" type="text/css"
+          href="<c:url value="/js/common/zTree-v3.5.14/css/zTreeStyle/zTreeStyle.css"/>"/>
+    <script src="<c:url value="/js/common/zTree-v3.5.14/js/jquery.ztree.all-3.5.min.js"/>"
+            type="text/javascript"></script>
 </head>
 <body class="page-boxed page-header-fixed">
 <div class="page-container">
@@ -67,6 +48,7 @@
                                                 <a class="btn blue" onclick="registerScorm(${scormInfo.scormId})">注册</a>
                                             </c:if>
                                         </h3>
+
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group profile-info">
