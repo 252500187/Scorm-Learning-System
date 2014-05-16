@@ -35,97 +35,42 @@
                                 </li>
                             </ul>
                             <div class="row mix-grid">
-                                <div class="col-md-3 col-sm-4 mix mix_all category_1 "
-                                     style=" display: block; opacity: 1;">
-                                    <div class="mix-inner">
-                                        <img class="img-responsive"
-                                             src="metronic/assets/admin/pages/media/works/img1.jpg"
-                                             alt="">
-
-                                        <div class="mix-details">
-                                            <h4>Cascusamus et iusto odio</h4>
-                                            <a class="mix-link">
-                                                <i class="fa fa-link"></i>
-                                            </a>
-                                            <a class="mix-preview fancybox-button"
-                                               href="metronic/assets/admin/pages/media/works/img1.jpg"
-                                               title="Project Name"
-                                               data-rel="fancybox-button">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-4 mix mix_all category_2"
-                                     style=" display: block; opacity: 1;">
-                                    <div class="mix-inner">
-                                        <img class="img-responsive"
-                                             src="metronic/assets/admin/pages/media/works/img2.jpg"
-                                             alt="">
-
-                                        <div class="mix-details">
-                                            <h4>Cascusamus et iusto accusamus</h4>
-                                            <a class="mix-link">
-                                                <i class="fa fa-link"></i>
-                                            </a>
-                                            <a class="mix-preview fancybox-button"
-                                               href="metronic/assets/admin/pages/media/works/img2.jpg"
-                                               title="Project Name"
-                                               data-rel="fancybox-button">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-4 mix mix_all category_1"
-                                     style=" display: block; opacity: 1;">
-                                    <div class="mix-inner">
-                                        <img class="img-responsive"
-                                             src="metronic/assets/admin/pages/media/works/img3.jpg"
-                                             alt="">
-
-                                        <div class="mix-details">
-                                            <h4>Cascusamus et iusto accusamus</h4>
-                                            <a class="mix-link">
-                                                <i class="fa fa-link"></i>
-                                            </a>
-                                            <a class="mix-preview fancybox-button"
-                                               href="metronic/assets/admin/pages/media/works/img3.jpg"
-                                               title="Project Name"
-                                               data-rel="fancybox-button">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <c:forEach var="scormInfo" items="${allScorm}">
-                                    <div class="col-md-3 col-sm-4 mix mix_all
-                                    <c:if test="${scormInfo.completeDate==''}">
-                                        category_1
-                                    </c:if>
-                                    <c:if test="${scormInfo.completeDate != ''}">
-                                        category_2
-                                    </c:if>
-                                    "
-                                     style=" display: block; opacity: 1;">
-                                        <div class="mix-inner">
-                                            <img id="${scormInfo.scormId}" class="img-responsive" alt="${scormInfo.scormId}">
-
-                                            <div class="mix-details">
-                                                <h4>${scormInfo.scormName}</h4>
-                                                <h4>${scormInfo.imgPath}</h4>
-                                                <a class="mix-link">
-                                                    <i class="fa fa-link"></i>
-                                                </a>
-                                                    <%--<a class="mix-preview fancybox-button"--%>
-                                                    <%--href="metronic/assets/admin/pages/media/works/img1.jpg" title="Project Name"--%>
-                                                    <%--data-rel="fancybox-button">--%>
-                                                    <%--<i class="fa fa-search"></i>--%>
-                                                    <%--</a>--%>
+                                    <c:if test="${scormInfo.completeDate == ''}">
+                                        <div class="col-md-3 col-sm-4 mix mix_all category_1" style=" display: block; opacity: 1;">
+                                            <div class="mix-inner">
+                                                <img id="${scormInfo.scormId}" class="img-responsive" alt="${scormInfo.scormId}">
+                                                <div class="mix-details">
+                                                    <h4 style="margin-bottom: 0px;padding-bottom: 3px">课件名称:&nbsp;${scormInfo.scormName}</h4>
+                                                    <h4 style="margin-top:0px;padding-top:3px">状态:进行中</h4>
+                                                    <a class="mix-link" onclick="viewMore()">
+                                                        <i class="fa fa-search"></i>
+                                                    </a>
+                                                    <a class="mix-preview" onclick="viewMore()">
+                                                        <i class="fa fa-file"></i>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+
+                                    </c:if>
+                                    <c:if test="${scormInfo.completeDate != ''}">
+                                        <div class="col-md-3 col-sm-4 mix mix_all category_2" style=" display: block; opacity: 1;">
+                                            <div class="mix-inner">
+                                                <img id="${scormInfo.scormId}" class="img-responsive" alt="${scormInfo.scormId}">
+                                                <div class="mix-details">
+                                                    <h4 style="margin-bottom: 0px;padding-bottom: 3px">课件名称:&nbsp;${scormInfo.scormName}</h4>
+                                                    <h4 style="margin-top:0px;padding-top:3px;margin-bottom: 0px;padding-bottom: 3px">状态:已完成</h4>
+                                                    <h4 style="margin-top:0px;padding-top:3px">完成时间:&nbsp;${scormInfo.completeDate}</h4>
+                                                   <a class="mix-link" onclick="viewMore()">
+                                                        <i class="fa fa-search"></i>
+                                                    </a></span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:if>
+
                                 </c:forEach>
                             </div>
                         </div>
@@ -145,4 +90,11 @@
         </c:forEach>
         Portfolio.init();
     })
+    function study(){
+
+    }
+
+    function viewMore(){
+
+    }
 </script>
