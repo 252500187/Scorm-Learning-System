@@ -38,6 +38,8 @@
 <link href="<c:url value="/metronic/assets/global/plugins/select2/select2.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/metronic/assets/admin/pages/css/login-soft.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/metronic/assets/admin/pages/css/error.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/metronic/assets/global/plugins/fancybox/source/jquery.fancybox.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/metronic/assets/admin/pages/css/portfolio.css"/>" rel="stylesheet" type="text/css"/>
 <%--<!-- END PAGE LEVEL SCRIPTS -->--%>
 
 <%--<!-- BEGIN THEME STYLES -->--%>
