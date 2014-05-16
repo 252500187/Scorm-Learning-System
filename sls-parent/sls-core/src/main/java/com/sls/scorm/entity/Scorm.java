@@ -17,6 +17,7 @@ public class Scorm {
     private int inUse;
     private String totalTime;
     private String score;
+    private int completeWay;
 
     private String collectDate;
     private int userId;
@@ -28,6 +29,7 @@ public class Scorm {
         inUse = DictConstant.NO_USE;
         totalTime = "";
         score = "";
+        completeWay=DictConstant.VOID_VALUE;
     }
 
     public int getScormId() {
@@ -148,5 +150,13 @@ public class Scorm {
 
     public void setShowRecommendLevel(String showRecommendLevel) {
         this.showRecommendLevel = showRecommendLevel;
+    }
+
+    public int getCompleteWay() {
+        return completeWay;
+    }
+
+    public void setCompleteWay(int completeWay) {
+        this.completeWay = completeWay;
     }
 }

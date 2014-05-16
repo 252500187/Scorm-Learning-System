@@ -48,4 +48,6 @@ public interface ScormDao {
     void changeCompleteInfoByScormIdAndUserId(ScormSummarize scormSummarize);
 
     boolean getCompleteInfo(int scormId, int userId);
+
+    void changScormCompleteWayByScormId(int scormId, int completeWay);
 }

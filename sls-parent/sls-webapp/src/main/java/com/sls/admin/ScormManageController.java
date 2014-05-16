@@ -68,4 +68,10 @@ public class ScormManageController {
         String str[] = {scormService.changeScormRecommend(Integer.parseInt(scormId), Integer.parseInt(level))};
         return str;
     }
+
+    @RequestMapping(value = "changScormCompleteWay", method = {RequestMethod.POST})
+    @ResponseBody
+    public void changScormCompleteWay(@RequestParam("scormId") String scormId,@RequestParam("completeWay") String completeWay) {
+        scormService.changScormCompleteWay(Integer.parseInt(scormId),Integer.parseInt(completeWay));
+    }
 }

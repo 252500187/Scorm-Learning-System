@@ -22,8 +22,8 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
 
     @Override
     public int addScorm(Scorm scorm) {
-        String sql = "INSERT INTO ss_scorm(scorm_name,register_sum,score,recommend_level,total_time,img_path,description,upload_user_id,upload_date,in_use) " +
-                "VALUES(:scormName,:registerSum,:score,:recommendLevel,:totalTime,:imgPath,:description,:uploadUserId,:uploadDate,:inUse)";
+        String sql = "INSERT INTO ss_scorm(scorm_name,register_sum,score,recommend_level,total_time,img_path,description,upload_user_id,upload_date,in_use,complete_way) " +
+                "VALUES(:scormName,:registerSum,:score,:recommendLevel,:totalTime,:imgPath,:description,:uploadUserId,:uploadDate,:inUse,:completeWay)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(scorm), keyHolder);
         return keyHolder.getKey().intValue();
@@ -157,5 +157,11 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
                 " WHERE complete_date <> '' " +
                 " AND scorm_id = " + scormId + " AND user_id = ? ";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId).isEmpty();
+    }
+
+    @Override
+    public void changScormCompleteWayByScormId(int scormId, int completeWay) {
+        String sql = "UPDATE ss_scorm SET complete_way=? WHERE scorm_id=?";
+        getJdbcTemplate().update(sql, completeWay, scormId);
     }
 }

@@ -10,17 +10,14 @@ public class DictConstant {
     //用户初始化性别
     public static final int VOID_SEX = -1;
 
-
-    //操作未成功
-    public static final String NO_SUCCESS = "noSuccess";
-
     //暂无记录
     public static final String NO_LOG = "暂无记录";
 
+    //课件完成方式  浏览完成
+    public static final int COMPLETE_WAY_1 = 1;
 
     //状态
     public static final String STATE = "state";
-
     // 0 无效
     public static final int NO_USE = 0;
     // 1 有效
@@ -62,18 +59,16 @@ public class DictConstant {
     public static final int STUDY_STATE_0 = 0;
     //已看
     public static final int STUDY_STATE_1 = 1;
-    //完成
-    public static final int STUDY_STATE_2 = 2;
 
     //scorm 数据模型对应值
     //通过
     public static final String LESSON_STATUS_PASS = "passed";
     //已完成
     public static final String LESSON_STATUS_COMPLETED = "completed";
-    //浏览 （无lesson_mode，则不会出现浏览状态）
+//浏览 （无lesson_mode，则不会出现浏览状态）
 //    public static final String LESSON_STATUS_BROWSED = "browsed";
-    //非完成
-    public static final String LESSON_STATUS_INCOMPLETE = "incomplete";
+//非完成（课件赋值）
+//    public static final String LESSON_STATUS_INCOMPLETE = "incomplete";
     //失败
     public static final String LESSON_STATUS_FAILED = "failed";
     //未尝试
@@ -113,5 +108,6 @@ public class DictConstant {
 
     //用户默认头像
     public static final String DEFAULT_USER_PHOTO = "img/defaultImg/userDefaultImg.jpg";
+
 
 }

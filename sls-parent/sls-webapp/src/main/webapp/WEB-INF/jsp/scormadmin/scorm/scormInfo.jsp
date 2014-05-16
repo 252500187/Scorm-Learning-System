@@ -34,6 +34,13 @@
                 </tr>
                 <tr>
                     <td>
+                        课件完成方式：
+                        <button class="btn btn-success" onclick="changeCompleteWay('${completeWay1}')">浏览完成</button>
+                        <button class="btn btn-success" onclick="changeCompleteWay('${completeWay0}')">默认</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <button class="btn btn-primary" onclick="changLevel('${levelOne}')">1级推荐</button>
                         <button class="btn btn-info" onclick="changLevel('${levelTwo}')">2级推荐</button>
                         <br/>
@@ -205,6 +212,22 @@
             type: "POST",
             success: function (src) {
                 $("#recommend").attr("src", basePath + src);
+                alert("操作成功!");
+            },
+            error: doError
+        })
+    }
+
+    function changeCompleteWay(way) {
+        $.ajax({
+            url: basePath + "admin/scorm/changScormCompleteWay",
+            data: {
+                scormId: "${scorm.scormId}",
+                completeWay: way
+            },
+            dataType: "json",
+            type: "POST",
+            success: function () {
                 alert("操作成功!");
             },
             error: doError

@@ -53,4 +53,6 @@ public interface ScormService {
     void changeScormInUse(int scormId, int isUse);
 
     String changeScormRecommend(int scormId, int recommend);
+
+    void changScormCompleteWay(int scormId,int completeWay);
 }
