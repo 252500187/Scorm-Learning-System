@@ -592,13 +592,11 @@
         </div>
     </div>
 </div>
-<a href="#alertModel" data-toggle="modal" id="alertButton"/>
-
 </body>
 </html>
 <script type="text/javascript">
     function showScormInfo(scormId) {
-        $("#alertButton").click();
+        $('#alertModel').modal('show');
         $("#scormInfo").attr("src", "tourist/scormInfo?scormId=" + scormId + "&type=-1");
     }
 

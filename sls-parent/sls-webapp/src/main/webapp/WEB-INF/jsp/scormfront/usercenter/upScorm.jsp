@@ -110,7 +110,7 @@
         Layout.init();
         if ("${result}" != "") {
             parent.$("#alertMessage").html("${result}");
-            parent.$("#alertButton").click();
+            parent.$("#alertModel").modal("show");
         }
         jQuery.validator.addMethod("isImg", function (value, element, param) {
             if (param) {

@@ -29,7 +29,7 @@
                                 <div class="col-md-9">
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                         <div class="fileinput-new thumbnail"
-                                             style="width: 200px; height: 150px;">
+                                             style="max-width: 200px; max-height: 150px;">
                                             <img id="userPhoto" alt="用户头像"/>
                                         </div>
                                         <div class="fileinput-preview fileinput-exists thumbnail"
@@ -98,7 +98,7 @@
         if ("${photoUrl}" != "") {
             parent.$("#userHeadPhoto").attr("src", basePath + "${photoUrl}");
             parent.$("#alertMessage").html("修改成功");
-            parent.$("#alertButton").click();
+            parent.$("#alertModel").modal("show");
         }
         $("#sexMale").attr("checked", true);
         if ("${user.sex}" == "0") {

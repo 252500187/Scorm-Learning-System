@@ -32,7 +32,13 @@
                     <span class="title">
                         课件名称：${scorm.scormName}
                     </span><br/>
-                    <img id="scormLogo" alt="scorm" style="height: 100px">
+                    <table>
+                        <tr>
+                            <td>
+                        <img id="scormLogo" alt="scorm" style="max-height: 100px;max-width: 200px"></td>
+                        </tr>
+
+                    </table>
                 </a>
             </li>
             <li>

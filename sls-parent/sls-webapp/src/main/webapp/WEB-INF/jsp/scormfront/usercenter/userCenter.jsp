@@ -39,7 +39,7 @@
                             <tr>
                                 <td>
                                     &nbsp;<img id="userHeadPhoto" class="img-polaroid" alt="用户头像"
-                                               style="width:100px;height:100px"/>
+                                               style="max-width:100px;max-height:100px"/>
                                 </td>
                                 <td>
                                     <span style="margin-left:10px">昵称</span>:&nbsp;&nbsp;${user.userName}<br/><br/>
@@ -159,7 +159,6 @@
         </div>
     </div>
 </div>
-<a href="#alertModel" data-toggle="modal" id="alertButton"/>
 </body>
 </html>
 <script>

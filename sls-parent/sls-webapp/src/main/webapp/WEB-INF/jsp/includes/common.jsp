@@ -9,11 +9,21 @@
 <script src="<c:url value="/metronic/assets/global/plugins/jquery-1.11.0.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/js/common/common.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/js/common/ccjcJS/ccjcJS.js"/>" type="text/javascript"></script>
+<%--<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>" type="text/javascript"></script>--%>
 <base href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()%><c:url value="/"/>"/>
 <script>
     $(function () {
         JC.inputInit();
     })
+//    $.sessionTimeout({
+//        title: '提示',
+//        message: '您已经学习很久了（60分钟），要不要出去溜达溜达？',
+//        keepAliveUrl: '',
+//        redirUrl: '',
+//        logoutUrl: '',
+//        warnAfter: 10000,
+//        redirAfter: 5000
+//    });
 </script>
 
 <%--<!-- BEGIN GLOBAL MANDATORY STYLES -->--%>
