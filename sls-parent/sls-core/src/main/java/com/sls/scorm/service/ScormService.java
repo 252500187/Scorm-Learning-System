@@ -4,6 +4,7 @@ import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.Scorm;
+import com.sls.scorm.entity.ScormSummarize;
 import com.sls.scorm.entity.StudyNote;
 import org.xml.sax.SAXException;
 
@@ -55,4 +56,6 @@ public interface ScormService {
     String changeScormRecommend(int scormId, int recommend);
 
     void changScormCompleteWay(int scormId,int completeWay);
+
+    void evaluateScorm(ScormSummarize scormSummarize);
 }

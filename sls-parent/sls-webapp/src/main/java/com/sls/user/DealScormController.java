@@ -1,5 +1,6 @@
 package com.sls.user;
 
+import com.sls.scorm.entity.ScormSummarize;
 import com.sls.scorm.service.ScormService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,10 +20,10 @@ public class DealScormController {
     @Autowired
     private ScormService scormService;
 
-    @RequestMapping(value = "registerScorm", method = {RequestMethod.GET})
+    @RequestMapping(value = "evaluateScorm", method = {RequestMethod.GET})
     @ResponseBody
-    public String[] registerScorm(HttpServletRequest request, @RequestParam("scormId") String scormId) {
-        String str[] = {scormService.registerScorm(Integer.parseInt(scormId), request)};
-        return str;
+    public void evaluateScorm(ScormSummarize scormSummarize) {
+        //todo 写完了别忘删注释，我要分数score和课件scormId
+        scormService.evaluateScorm(scormSummarize);
     }
 }

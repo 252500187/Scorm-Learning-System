@@ -4,6 +4,7 @@ import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.scorm.dao.ScoDao;
 import com.sls.scorm.dao.ScormDao;
+import com.sls.scorm.dao.SummarizeDao;
 import com.sls.scorm.entity.*;
 import com.sls.scorm.service.ScormService;
 import com.sls.system.service.DictService;
@@ -20,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -37,6 +37,9 @@ public class ScormServiceImpl implements ScormService {
 
     @Autowired
     private ScoDao scoDao;
+
+    @Autowired
+    private SummarizeDao summarizeDao;
 
     @Autowired
     private DictService dictService;
@@ -415,5 +418,13 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void changScormCompleteWay(int scormId, int completeWay) {
         scormDao.changScormCompleteWayByScormId(scormId, completeWay);
+    }
+
+    @Override
+    public void evaluateScorm(ScormSummarize scormSummarize) {
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        scormSummarize.setUserId(userId);
+        summarizeDao.changeSummarizeScoreByUserIdAndScormId(scormSummarize);
+        scormDao.updateScormScoreByScormId(scormSummarize.getScormId());
     }
 }
