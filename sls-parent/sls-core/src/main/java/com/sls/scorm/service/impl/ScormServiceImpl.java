@@ -135,10 +135,10 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void getAllStudyNotesByScormIdAndUserId(int i, HttpServletRequest request) {
+    public void getAllStudyNotesByScormIdAndUserId(int scormId, HttpServletRequest request) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         StudyNote studyNote = new StudyNote();
-        studyNote.setScormId(i);
+        studyNote.setScormId(scormId);
         studyNote.setUserId(userId);
         List<StudyNote> studyNoteList = noteCollectDao.getAllStudyNotesByScormIdAndUserId(studyNote);
         for (StudyNote studyNote1 : studyNoteList) {
