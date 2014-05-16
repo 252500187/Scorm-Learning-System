@@ -1,6 +1,5 @@
 package com.sls.user;
 
-
 import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.StudyNote;
 import com.sls.scorm.service.ScormService;
@@ -22,7 +21,7 @@ import java.util.List;
 @Controller
 @Transactional
 @RequestMapping("/user/scorm/")
-public class ScormController {
+public class StudyScormController {
 
     @Autowired
     private ScormService scormService;
@@ -84,5 +83,4 @@ public class ScormController {
             XPathExpressionException {
         scormService.upStudyImg(request, "noteImg", studyNote);
     }
-
 }
