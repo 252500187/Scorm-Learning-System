@@ -19,6 +19,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
     <link rel="stylesheet" type="text/css" href="metronic/assets/admin/pages/css/profile.css"/>
+    <script src="metronic/assets/global/plugins/holder.js" type="text/javascript"></script>
     <style type="text/css">
         .img-polaroid {
             padding: 4px;
@@ -40,169 +41,215 @@
 <%--<div class="row profile">--%>
 
 <div class="col-md-12">
-    <div class="tabbable tabbable-custom tabbable-full-width">
-        <div class="tab-content">
-            <div class="tab-pane active" id="tab_1_1">
+<div class="tabbable tabbable-custom tabbable-full-width">
+<div class="tab-content">
+<div class="tab-pane active" id="tab_1_1">
+<div class="row col-md-12">
+    <div class="col-md-2"></div>
+    <div class="col-md-2" style="float: left;">
+        <ul class="list-unstyled profile-nav">
+            <li>
+                <img id="scormImg" class="img-polaroid" style="max-width: 150px;max-height: 200px"
+                     alt=""/>
+                <%--<img src="img/bookmarks/book4.jpg" class="img-polaroid" style="max-width: 150px;max-height: 200px">--%>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-8" style="float: left">
+        <div class="row">
+            <div class="col-md-8 profile-info">
                 <div class="row col-md-12">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-2" style="float: left;">
-                        <ul class="list-unstyled profile-nav">
-                            <li>
-                                <img id="scormImg" class="img-polaroid" style="max-width: 150px;max-height: 200px"
-                                     alt=""/>
-                                <%--<img src="img/bookmarks/book4.jpg" class="img-polaroid" style="max-width: 150px;max-height: 200px">--%>
-                            </li>
-                        </ul>
-                    </div>
                     <div class="col-md-8" style="float: left">
-                        <div class="row">
-                            <div class="col-md-8 profile-info">
-                                <div class="row col-md-12">
-                                    <div class="col-md-8" style="float: left">
-                                        <h1 style="padding-top: 5px">${scormInfo.scormName}</h1>
-                                    </div>
-                                    <!--已注册未完成-->
-                                    <c:if test="${registerScorm && !complete}">
-                                        <div class="col-md-2" style="float: left">
-                                            <a class="btn green m-icon" onclick="return false">
-                                                去学习<i class="m-icon-swapright m-icon-white"></i>
-                                            </a></div>
-                                    </c:if>
-                                    <!--已注册已完成-->
-                                    <c:if test="${registerScorm && complete}">
-                                        <div class="col-md-2" style="float: left">
-                                            <a class="btn default m-icon" onclick="return false"
-                                               style="color: #aaa">
-                                                已完成
-                                            </a></div>
-                                    </c:if>
-                                    <!--未注册-->
-                                    <c:if test="${!registerScorm}">
-                                        <div class="col-md-2" style="float: left">
-                                            <a class="btn blue"
-                                               onclick="registerScorm(${scormInfo.scormId})">注册</a>
-                                        </div>
-                                    </c:if>
-                                </div>
-                                <div class="row col-md-12">
-                                    <ul class="list-inline">
-                                        <li>发布时间:</li>
-                                        <li>${scormInfo.uploadDate}</li>
-                                    </ul>
-                                    <ul class="list-inline">
-                                        <li>总评分:</li>
-                                        <li><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                                                class="fa fa-star"></i><i
-                                                class="fa fa-star"></i><i
-                                                class="fa fa-star"></i></li>
-                                        <li>${scormInfo.score}</li>
-                                        <li>
-                                            <a>
-                                                <small style="color: #aaa">你还未进行评分哦</small>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul class="list-inline">
-                                        <li>简介:</li>
-                                        <li>${scormInfo.description}
-                                        </li>
-                                    </ul>
-                                    <ul class="list-inline">
-                                        <li>
-                                            点击量:${scormInfo.registerSum}
-                                        </li>
-                                        <li>
-                                            <a onclick="toMarkScore()">评论(${fn:length(allComments)})</a>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-heart"></i>
-                                            <!--已收藏-->
-                                            <c:if test="${true == collectScorm}">
-                                                <a style="color:#aaa" onclick="return false">收藏</a>
-                                            </c:if>
-                                            <!--未收藏-->
-                                            <c:if test="${false == collectScorm}">
-                                                <a style="color:#666"
-                                                   onclick="collectScorm(${scormInfo.scormId})">收藏</a>
-                                            </c:if>
-                                        </li>
-                                    </ul>
-                                </div>
+                        <h1 style="padding-top: 5px">${scormInfo.scormName}</h1>
+                    </div>
+                    <!--已注册未完成-->
+                    <c:if test="${registerScorm && !complete}">
+                        <div class="col-md-2" style="float: left">
+                            <a class="btn green m-icon" onclick="return false">
+                                去学习<i class="m-icon-swapright m-icon-white"></i>
+                            </a></div>
+                    </c:if>
+                    <!--已注册已完成-->
+                    <c:if test="${registerScorm && complete}">
+                        <div class="col-md-2" style="float: left">
+                            <a class="btn default m-icon" onclick="return false"
+                               style="color: #aaa">
+                                已完成
+                            </a></div>
+                    </c:if>
+                    <!--未注册-->
+                    <c:if test="${!registerScorm}">
+                        <div class="col-md-2" style="float: left">
+                            <a class="btn blue"
+                               onclick="registerScorm(${scormInfo.scormId})">注册</a>
+                        </div>
+                    </c:if>
+                </div>
+                <div class="row col-md-12">
+                    <ul class="list-inline">
+                        <li>发布时间:</li>
+                        <li>${scormInfo.uploadDate}</li>
+                    </ul>
+                    <ul class="list-inline">
+                        <li>总评分:</li>
+                        <li><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                class="fa fa-star"></i><i
+                                class="fa fa-star"></i><i
+                                class="fa fa-star"></i></li>
+                        <li>${scormInfo.score}</li>
+                        <li>
+                            <a>
+                                <small style="color: #aaa">你还未进行评分哦</small>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="list-inline">
+                        <li>简介:</li>
+                        <li>${scormInfo.description}
+                        </li>
+                    </ul>
+                    <ul class="list-inline">
+                        <li>
+                            点击量:${scormInfo.registerSum}
+                        </li>
+                        <li>
+                            <a onclick="toMarkScore()">评论(${fn:length(allComments)})</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-heart"></i>
+                            <!--已收藏-->
+                            <c:if test="${true == collectScorm}">
+                                <a style="color:#aaa" onclick="return false">收藏</a>
+                            </c:if>
+                            <!--未收藏-->
+                            <c:if test="${false == collectScorm}">
+                                <a style="color:#666"
+                                   onclick="collectScorm(${scormInfo.scormId})">收藏</a>
+                            </c:if>
+                        </li>
+                    </ul>
+                </div>
 
-                            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="tabbable tabbable-custom tabbable-custom-profile">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#tab_1_11" data-toggle="tab">
+                        章节列表
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab_1_22" data-toggle="tab" id="commentsTab">
+                        评论
+                    </a>
+                </li>
+                <li>
+                    <a href="#tab_1_33" data-toggle="tab" id="scheduleTab">
+                        进度
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content" style="min-height: 400px">
+                <div class="tab-pane active" id="tab_1_11">
+                    <div class="portlet-body">
+                        <ul class="ztreeStyle" id="chapterList"></ul>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab_1_22">
+                    <div class="tab-pane active" id="tab_1_1_2">
+                        <div class="scroller" data-height="290px" data-always-visible="1"
+                             data-rail-visible1="1" id="comments">
+                            <div class="input-group">
+                                <input id="markScore" name="markScore" class="form-control" type="text"
+                                       placeholder="输入评论 ..." value="">
+                                <span class="input-group-addon btn blue">评论</span></div>
+                            <br/>
+                            <!--评论列表-->
+                            <ul class="feeds">
+                                <c:forEach var="comment" items="${allComments}">
+                                    <li>
+                                        <div class="col1">
+                                            <div class="cont">
+                                                <div class="cont-col2">
+                                                    <div class="desc">
+                                                            ${comment.discuss}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col2" style="margin-left: -150px">
+                                            <div class="date">
+                                                    ${comment.discussDate}
+                                            </div>
+                                        </div>
+                                        <div class="col2">
+                                            <div class="date" style="color: #000">
+                                                    ${comment.loginName}
+                                            </div>
+                                        </div>
+                                    </li>
+                                </c:forEach>
+
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        <div class="tabbable tabbable-custom tabbable-custom-profile">
-                            <ul class="nav nav-tabs">
-                                <li class="active">
-                                    <a href="#tab_1_11" data-toggle="tab">
-                                        章节列表
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#tab_1_22" data-toggle="tab" id="commentsTab">
-                                        评论
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" style="min-height: 400px">
-                                <div class="tab-pane active" id="tab_1_11">
-                                    <div class="portlet-body">
-                                        <ul class="ztreeStyle" id="chapterList"></ul>
-                                    </div>
-                                </div>
-                                <!--tab-pane-->
-                                <div class="tab-pane" id="tab_1_22">
-                                    <div class="tab-pane active" id="tab_1_1_1">
-                                        <div class="scroller" data-height="290px" data-always-visible="1"
-                                             data-rail-visible1="1" id="comments">
-                                            <div class="input-group">
-                                                <input id="markScore" name="markScore" class="form-control" type="text"
-                                                       placeholder="输入评论 ..." value="">
-                                                <span class="input-group-addon btn blue">评论</span></div>
-                                            <br/>
-                                            <!--评论列表-->
-                                            <ul class="feeds">
-                                                <c:forEach var="comment" items="${allComments}">
-                                                    <li>
-                                                        <div class="col1">
-                                                            <div class="cont">
-                                                                <div class="cont-col2">
-                                                                    <div class="desc">
-                                                                            ${comment.discuss}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col2" style="margin-left: -150px">
-                                                            <div class="date">
-                                                                    ${comment.discussDate}
-                                                            </div>
-                                                        </div>
-                                                        <div class="col2">
-                                                            <div class="date" style="color: #000">
-                                                                    ${comment.loginName}
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </c:forEach>
+                <div class="tab-pane" id="tab_1_33">
+                    <div class="tab-pane active" id="tab_1_1_3">
+                        <div class="scroller" data-height="290px" data-always-visible="1"
+                             data-rail-visible1="1" id="schedule">
 
-                                            </ul>
+                            <div class="portlet-body">
+                                <ul class="media-list">
+                                    <li class="media">
+                                        <img class="pull-left media-object" style="max-width: 64px;max-height: 64px"
+                                             src="${scormInfo.imgPath}" alt="管理员推荐">
+
+                                        <div class="media-body">
+                                            <div style="height: 64px;line-height: 64px"><p>注册日期：2012-11-11 18：23：12</p>
+                                            </div>
+                                            <div class="media">
+                                                <%--todo 完成度的图片--%>
+                                                <img class="media-object" src="complete.jpg" alt="">
+
+                                                <div class="media-body">
+                                                    <p></p>
+                                                </div>
+                                            </div>
+                                            <div class="media">
+                                                <a class="pull-left" href="#">
+                                                    <img class="media-object" src="holder.js/64x64" alt="">
+                                                </a>
+
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">Nested media heading</h4>
+                                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+                                                    scelerisque ante sollicitudin commodo. Cras purus odio,
+                                                    vestibulum in vulputate at, tempus viverra turpis.
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <!--tab-pane-->
+                                    </li>
+                                </ul>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <%--</div>--%>
 <%--</div>--%>
