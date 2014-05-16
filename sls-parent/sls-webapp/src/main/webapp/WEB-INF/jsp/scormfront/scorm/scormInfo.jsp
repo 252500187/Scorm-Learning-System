@@ -37,7 +37,7 @@
                     <div class="col-md-2" style="float: left;">
                         <ul class="list-unstyled profile-nav">
                             <li>
-                                <img id="scormImg" class="img-responsive" style="width: 150px;height: 200px"
+                                <img id="scormImg" class="img-responsive" style="max-width: 150px;max-height: 200px"
                                      alt=""/>
                                 <%--<img src="img/bookmarks/book4.jpg" style="width: 150px;height: 200px;">--%>
                             </li>
