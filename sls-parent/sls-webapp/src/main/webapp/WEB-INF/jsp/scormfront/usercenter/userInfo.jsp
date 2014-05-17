@@ -80,31 +80,36 @@
                                 </div>
                                 </label>
                             </div>
-                            <div class="form-group select2-container select2-container-multi form-control select2_sample3">
-                                <label class="control-label col-md-2">标签</label>
+                            <div class="form-group">
+                                <div class="select2-container select2-container-multi form-control select2_sample3">
+                                    <label class="control-label col-md-2">标签</label>
 
-                                <div class="col-md-9">
-                                    <div>
-                                        <ul class="select2-choices" style="border-width: 0;" id="myLabelList">
-                                            <c:forEach var="label" items="${myLabelList}" varStatus="status">
-                                                <li class='select2-search-choice myLabel' style="border-width: 0;">
-                                                    <div class="label label-info" style="cursor: pointer"
-                                                         id="${label.labelId}">${label.labelName}</div>
-                                                    <a class='select2-search-choice-close visible-a' tabindex='-1'></a>
-                                                </li>
-                                            </c:forEach>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <ul class='select2-choices' style="border-width: 0;" id="labelList">
-                                            <c:forEach var="label" items="${labelList}" varStatus="status">
-                                                <li class='select2-search-choice allLabels' style="border-width: 0;">
-                                                    <div class="label label-info" style="cursor: pointer"
-                                                         id="${label.labelId}">${label.labelName}</div>
-                                                    <a class='select2-search-choice-close hidden-a' tabindex='-1'></a>
-                                                </li>
-                                            </c:forEach>
-                                        </ul>
+                                    <div class="col-md-9">
+                                        <div>
+                                            <ul class="select2-choices" style="border-width: 0;" id="myLabelList">
+                                                <c:forEach var="label" items="${myLabelList}" varStatus="status">
+                                                    <li class='select2-search-choice myLabel' style="border-width: 0;">
+                                                        <div class="label label-success" style="cursor: pointer"
+                                                             id="${label.labelId}">${label.labelName}</div>
+                                                        <a class='select2-search-choice-close visible-a'
+                                                           tabindex='-1'></a>
+                                                    </li>
+                                                </c:forEach>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul class='select2-choices' style="border-width: 0;" id="labelList">
+                                                <c:forEach var="label" items="${labelList}" varStatus="status">
+                                                    <li class='select2-search-choice allLabels'
+                                                        style="border-width: 0;">
+                                                        <div class="label label-info" style="cursor: pointer"
+                                                             id="${label.labelId}">${label.labelName}</div>
+                                                        <a class='select2-search-choice-close hidden-a'
+                                                           tabindex='-1'></a>
+                                                    </li>
+                                                </c:forEach>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -191,6 +196,7 @@
         $("#myLabelList").append(addLabelObj);
         addLabelObj.attr("class", "select2-search-choice myLabel");
         addLabelObj.find("a").attr('class', 'select2-search-choice-close visible-a');
+        addLabelObj.find("div").attr('class',"label label-success");
         addLabelObj.unbind("click");
     });
 
@@ -199,6 +205,7 @@
         $("#labelList").append(removeLabelObj.parent("li"));
         removeLabelObj.parent("li").attr("class", "select2-search-choice allLabels");
         removeLabelObj.parent("li").find("a").attr("class", "select2-search-choice-close hidden-a");
+        removeLabelObj.parent("li").find("div").attr('class',"label label-info");
         removeLabelObj.unbind("click");
     })
 
