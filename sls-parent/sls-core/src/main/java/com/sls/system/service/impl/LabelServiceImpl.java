@@ -1,5 +1,7 @@
 package com.sls.system.service.impl;
 
+import com.core.page.entity.Page;
+import com.core.page.entity.PageParameter;
 import com.sls.system.dao.LabelDao;
 import com.sls.system.entity.Label;
 import com.sls.system.service.DictService;
@@ -68,5 +70,10 @@ public class LabelServiceImpl implements LabelService {
             label.setLabelId(Integer.parseInt(labelId));
             labelDao.addScormLabel(label);
         }
+    }
+
+    @Override
+    public Page<Label> getAllLabelPageList(PageParameter pageParameter, Label label) {
+        return labelDao.getAllLabelPageList(pageParameter, label);
     }
 }
