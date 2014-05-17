@@ -37,16 +37,20 @@
                             <div class="row mix-grid">
                                 <c:forEach var="scormInfo" items="${allScorm}">
                                     <c:if test="${scormInfo.completeDate == ''}">
-                                        <div class="col-md-3 col-sm-4 mix mix_all category_1" style=" display: block; opacity: 1;">
+                                        <div class="col-md-3 col-sm-4 mix mix_all category_1"
+                                             style=" display: block; opacity: 1;">
                                             <div class="mix-inner">
-                                                <img id="${scormInfo.scormId}" class="img-responsive" alt="${scormInfo.scormId}">
+                                                <img id="${scormInfo.scormId}" class="img-responsive"
+                                                     alt="${scormInfo.scormId}">
+
                                                 <div class="mix-details">
-                                                    <h4 style="margin-bottom: 0px;padding-bottom: 3px">课件名称:&nbsp;${scormInfo.scormName}</h4>
+                                                    <h4 style="margin-bottom: 0px;padding-bottom: 3px">
+                                                        课件名称:&nbsp;${scormInfo.scormName}</h4>
                                                     <h4 style="margin-top:0px;padding-top:3px">状态:进行中</h4>
-                                                    <a class="mix-link" onclick="viewMore()">
+                                                    <a class="mix-link" onclick="viewMore('${scormInfo.scormId}')">
                                                         <i class="fa fa-search"></i>
                                                     </a>
-                                                    <a class="mix-preview" onclick="viewMore()">
+                                                    <a class="mix-preview" onclick="study('${scormInfo.scormId}')">
                                                         <i class="fa fa-file"></i>
                                                     </a>
                                                 </div>
@@ -55,14 +59,21 @@
 
                                     </c:if>
                                     <c:if test="${scormInfo.completeDate != ''}">
-                                        <div class="col-md-3 col-sm-4 mix mix_all category_2" style=" display: block; opacity: 1;">
+                                        <div class="col-md-3 col-sm-4 mix mix_all category_2"
+                                             style=" display: block; opacity: 1;">
                                             <div class="mix-inner">
-                                                <img id="${scormInfo.scormId}" class="img-responsive" alt="${scormInfo.scormId}">
+                                                <img id="${scormInfo.scormId}" class="img-responsive"
+                                                     alt="${scormInfo.scormId}">
+
                                                 <div class="mix-details">
-                                                    <h4 style="margin-bottom: 0px;padding-bottom: 3px">课件名称:&nbsp;${scormInfo.scormName}</h4>
-                                                    <h4 style="margin-top:0px;padding-top:3px;margin-bottom: 0px;padding-bottom: 3px">状态:已完成</h4>
-                                                    <h4 style="margin-top:0px;padding-top:3px">完成时间:&nbsp;${scormInfo.completeDate}</h4>
-                                                   <a class="mix-link" onclick="viewMore()">
+                                                    <h4 style="margin-bottom: 0px;padding-bottom: 3px">
+                                                        课件名称:&nbsp;${scormInfo.scormName}</h4>
+                                                    <h4 style="margin-top:0px;padding-top:3px;margin-bottom: 0px;padding-bottom: 3px">
+                                                        状态:已完成</h4>
+                                                    <h4 style="margin-top:0px;padding-top:3px">
+                                                        完成时间:&nbsp;${scormInfo.completeDate}</h4>
+                                                    <a class="mix-link" onclick="viewMore('${scormInfo.scormId}')"
+                                                       target="_blank">
                                                         <i class="fa fa-search"></i>
                                                     </a></span>
 
@@ -86,15 +97,17 @@
 <script type="text/javascript">
     $(function () {
         <c:forEach var="scormInfo" items="${allScorm}">
-             $("#" + "${scormInfo.scormId}").attr("src", basePath + "${scormInfo.imgPath}");
+        $("#" + "${scormInfo.scormId}").attr("src", basePath + "${scormInfo.imgPath}");
         </c:forEach>
         Portfolio.init();
     })
-    function study(){
-
+    function study(scormId) {
+        parent.window.open(basePath + "user/scorm/studyScorm?scormId=" + scormId);
     }
 
-    function viewMore(){
+    function viewMore(scormId) {
+        parent.$('#alertScormInfo').modal('show');
+        parent.$("#scormInfo").attr("src", "tourist/scormInfo?scormId=" + scormId + "&type=-1");
 
     }
 </script>
