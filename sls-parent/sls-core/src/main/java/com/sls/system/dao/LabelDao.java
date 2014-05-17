@@ -12,4 +12,8 @@ public interface LabelDao {
     void addUserLabel(Label label);
 
     List<Label> getLabelsByUserId(int userId);
+
+    List<Label> getAllLabel();
+
+    void addScormLabel(Label label);
 }

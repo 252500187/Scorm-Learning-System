@@ -56,14 +56,16 @@ public class UserCenterController {
 
     //个人中心  上传课件
     @RequestMapping(value = "upScormDo", method = {RequestMethod.GET})
-    public String upScormDo() {
+    public String upScormDo(HttpServletRequest request) {
+        labelService.getAllLabel(request);
         return "scormfront/usercenter/upScorm";
     }
 
     @RequestMapping(value = "upScorm", method = {RequestMethod.POST})
-    public String upScorm(HttpServletRequest request, Scorm scorm) throws ServletException, IOException, ParserConfigurationException, SAXException,
+    public String upScorm(HttpServletRequest request, Scorm scorm,@RequestParam("scormLabelList") String scormLabelList) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
-        upScormService.upScorm(request, "upScorm", "upImg", scorm);
+        int scormId = upScormService.upScorm(request, "upScorm", "upImg", scorm);
+        labelService.editScormLabelList(scormLabelList,scormId);
         return "scormfront/usercenter/upScorm";
     }
 
@@ -80,7 +82,7 @@ public class UserCenterController {
     @ResponseBody
     public void editUserInfo(User user, @RequestParam("myLabelList") String myLabelList) {
         userService.editUser(user);
-        labelService.editMyLabelList(myLabelList);
+        labelService.editUserLabelList(myLabelList);
     }
 
     @RequestMapping(value = "upHeadImg", method = {RequestMethod.POST})

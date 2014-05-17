@@ -11,6 +11,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
+    <style type="text/css">
+        .visible-a {
+            visibility: visible;
+        }
+
+        .hidden-a {
+            visibility: hidden;
+        }
+    </style>
 </head>
 <body class="page-header-fixed ">
 <div class="row">
@@ -34,7 +43,7 @@
                             <div class="col-md-9">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <%--<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">--%>
-                                        <%--<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt=""/>--%>
+                                    <%--<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt=""/>--%>
                                     <%--</div>--%>
                                     <div class="fileinput-preview fileinput-exists thumbnail"
                                          style="max-width: 200px; max-height: 150px;">
@@ -48,8 +57,8 @@
                                     </div>
                                 </div>
                                 <%--<div class="clearfix margin-top-10">--%>
-                                    <%--<span class="label label-danger">提示! </span>--%>
-                                    <%--<span>图片预览只支持 IE10+, FF3.6+, Safari6.0+, Chrome6.0+, Opera11.1+.</span>--%>
+                                <%--<span class="label label-danger">提示! </span>--%>
+                                <%--<span>图片预览只支持 IE10+, FF3.6+, Safari6.0+, Chrome6.0+, Opera11.1+.</span>--%>
                                 <%--</div>--%>
                             </div>
                         </div>
@@ -60,8 +69,8 @@
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="input-group input-large">
                                         <%--<div class="form-control uneditable-input span3" data-trigger="fileinput">--%>
-                                            <%--<i class="fa fa-file fileinput-exists"></i>&nbsp;--%>
-                                            <%--<span class="fileinput-filename"></span>--%>
+                                        <%--<i class="fa fa-file fileinput-exists"></i>&nbsp;--%>
+                                        <%--<span class="fileinput-filename"></span>--%>
                                         <%--</div>--%>
                                         <span class="input-group-addon btn default btn-file">
                                             <%--<span class="fileinput-new">--%>
@@ -84,6 +93,31 @@
                                           name="description" value=""/></textarea>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="select2-container select2-container-multi form-control select2_sample3">
+                                <label class="control-label col-md-2">标签</label>
+
+                                <div class="col-md-9">
+                                    <div>
+                                        <ul class="select2-choices" style="border-width: 0;" id="myLabelList"></ul>
+                                    </div>
+                                    <div>
+                                        <ul class='select2-choices' style="border-width: 0;" id="labelList">
+                                            <c:forEach var="label" items="${labelList}" varStatus="status">
+                                                <li class='select2-search-choice allLabels'
+                                                    style="border-width: 0;">
+                                                    <div class="label label-info" style="cursor: pointer"
+                                                         id="${label.labelId}">${label.labelName}</div>
+                                                    <a class='select2-search-choice-close hidden-a'
+                                                       tabindex='-1'></a>
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="form-actions">
                         <div class="row">
@@ -182,9 +216,31 @@
                     }
                 },
                 submitHandler: function () {
+                    var scormLabelList = "";
+                    $("#myLabelList").find("div").each(function () {
+                        scormLabelList += $(this).attr("id") + ",";
+                    });
                     $("#fileGetUp").attr("action",
-                            basePath + "user/center/upScorm?scormName=" + $("#scormName").val()).submit();
+                            basePath + "user/center/upScorm?scormName=" + $("#scormName").val() + "&scormLabelList=" + scormLabelList).submit();
                 }
             }
     );
+
+    $(".allLabels").live("click", function () {
+        var addLabelObj = $(this);
+        $("#myLabelList").append(addLabelObj);
+        addLabelObj.attr("class", "select2-search-choice myLabel");
+        addLabelObj.find("a").attr('class', 'select2-search-choice-close visible-a');
+        addLabelObj.find("div").attr('class', "label label-success");
+        addLabelObj.unbind("click");
+    });
+
+    $(".visible-a").live("click", function () {
+        var removeLabelObj = $(this);
+        $("#labelList").append(removeLabelObj.parent("li"));
+        removeLabelObj.parent("li").attr("class", "select2-search-choice allLabels");
+        removeLabelObj.parent("li").find("a").attr("class", "select2-search-choice-close hidden-a");
+        removeLabelObj.parent("li").find("div").attr('class', "label label-info");
+        removeLabelObj.unbind("click");
+    })
 </script>

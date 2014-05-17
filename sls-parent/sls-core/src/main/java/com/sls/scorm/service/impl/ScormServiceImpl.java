@@ -49,7 +49,7 @@ public class ScormServiceImpl implements ScormService {
     private DictService dictService;
 
     @Override
-    public void upScorm(HttpServletRequest request, String upFile, String upImg, Scorm scorm) throws ServletException, IOException, ParserConfigurationException, SAXException,
+    public int upScorm(HttpServletRequest request, String upFile, String upImg, Scorm scorm) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
         try {
             FileUp fileUp = new FileUp();
@@ -72,8 +72,10 @@ public class ScormServiceImpl implements ScormService {
                 scoDao.addScoInfo(scoInfo);
             }
             request.setAttribute("result", "上传成功");
+            return scormId;
         } catch (Exception e) {
             request.setAttribute("result", "上传失败");
+            return DictConstant.VOID_VALUE;
         }
     }
 

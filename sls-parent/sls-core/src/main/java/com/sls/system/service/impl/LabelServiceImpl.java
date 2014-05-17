@@ -5,6 +5,7 @@ import com.sls.system.entity.Label;
 import com.sls.system.service.DictService;
 import com.sls.system.service.LabelService;
 import com.sls.user.dao.UserDao;
+import com.sls.util.DictConstant;
 import com.sls.util.LoginUserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class LabelServiceImpl implements LabelService {
     }
 
     @Override
-    public void editMyLabelList(String myLabelList) {
+    public void editUserLabelList(String myLabelList) {
         int userId = getUserId();
         Label label = new Label();
         label.setUserId(userId);
@@ -48,5 +49,24 @@ public class LabelServiceImpl implements LabelService {
     public void getLabelsByUserId(HttpServletRequest request) {
         List<Label> myLabelList = labelDao.getLabelsByUserId(getUserId());
         request.setAttribute("myLabelList", myLabelList.size() == 0 ? new LinkedList<Label>() : myLabelList);
+    }
+
+    @Override
+    public void getAllLabel(HttpServletRequest request) {
+        request.setAttribute("labelList", labelDao.getAllLabel());
+    }
+
+    @Override
+    public void editScormLabelList(String scormLabelList, int scormId) {
+        if (scormId == DictConstant.VOID_VALUE) {
+            return;
+        }
+        Label label = new Label();
+        label.setScormId(scormId);
+        String labelIdList[] = scormLabelList.split(",");
+        for (String labelId : labelIdList) {
+            label.setLabelId(Integer.parseInt(labelId));
+            labelDao.addScormLabel(label);
+        }
     }
 }

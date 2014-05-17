@@ -40,4 +40,17 @@ public class LabelDaoImpl extends PageDao implements LabelDao {
         String sql = "SELECT uul.*,ul.`label_name` FROM us_user_label uul JOIN us_label ul ON uul.`label_id` = ul.`label_id` WHERE user_id = ?";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Label>(Label.class), userId);
     }
+
+    @Override
+    public List<Label> getAllLabel() {
+        String sql = "SELECT  *  FROM  us_label ";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Label>(Label.class));
+    }
+
+    @Override
+    public void addScormLabel(Label label) {
+        String sql = "INSERT INTO ss_scorm_label(scorm_id, label_id)" +
+                "VALUES(:scormId, :labelId)";
+        getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(label));
+    }
 }
