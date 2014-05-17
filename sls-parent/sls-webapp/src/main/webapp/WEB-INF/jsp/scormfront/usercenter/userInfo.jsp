@@ -12,6 +12,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
+    <style type="text/css">
+        .visible-a {
+           visibility:visible;
+        }
+        .hidden-a {
+            visibility: hidden;
+        }
+    </style>
 </head>
 <body>
 <div class="row">
@@ -75,14 +83,17 @@
 
                                 <div class="col-md-9">
                                     <div>
-                                        <ul class="select2-choices" style="border-width: 0px;" id="labelList">
-                                        </ul>
+                                        <ul class="select2-choices" style="border-width: 0;" id="labelList"></ul>
                                     </div>
                                     <div>
-                                        <c:forEach var="label" items="${labelList}">
-                                            <span class="label label-info" style="cursor: pointer"
-                                                  onclick="addToMine('${label.labelName}')">${label.labelName}</span>
-                                        </c:forEach>
+                                        <ul class='select2-choices' style="border-width: 0;" id="myLabelList">
+                                            <c:forEach var="label" items="${labelList}" varStatus="status">
+                                                <li class='select2-search-choice allLabels' style="border-width: 0;">
+                                                    <div class="label label-info"style="cursor: pointer">${label.labelName}</div>
+                                                    <a class='select2-search-choice-close hidden-a' tabindex='-1'></a>
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -159,12 +170,20 @@
         })
     }
 
-    function addToMine(labelName) {
-        $("#labelList").append("<li class='select2-search-choice'>" +
-                "<div>" + labelName + "</div> <a class='select2-search-choice-close' tabindex='-1' onclick='removeLabel()'></a></li>")
-    }
+    $(".allLabels").live("click", function () {
+        var addLabelObj = $(this);
+        $("#labelList").append(addLabelObj);
+        addLabelObj.attr("class", "select2-search-choice myLabel");
+        addLabelObj.find("a").attr('class','select2-search-choice-close visible-a');
+        addLabelObj.unbind("click");
+    });
 
-    function removeLabel() {
-        alert("sdfakfsda");
-    }
+    $(".visible-a").live("click", function () {
+        var removeLabelObj = $(this);
+        $("#myLabelList").append(removeLabelObj.parent("li"));
+        removeLabelObj.parent("li").attr("class", "select2-search-choice allLabels");
+        removeLabelObj.parent("li").find("a").attr("class","select2-search-choice-close hidden-a");
+        removeLabelObj.unbind("click");
+    })
+
 </script>
