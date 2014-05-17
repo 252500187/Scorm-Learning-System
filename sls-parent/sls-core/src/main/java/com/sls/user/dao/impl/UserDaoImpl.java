@@ -133,10 +133,4 @@ public class UserDaoImpl extends PageDao implements UserDao {
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(user));
 
     }
-
-    @Override
-    public List<Scorm> getAllRegisterScormInfoByUserId(int userId) {
-        String sql = "SELECT b.* , a.`complete_date` FROM luss_scorm_summarize a, ss_scorm b WHERE a.`scorm_id`=b.`scorm_id` AND a.`user_id` = ? ";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId);
-    }
 }

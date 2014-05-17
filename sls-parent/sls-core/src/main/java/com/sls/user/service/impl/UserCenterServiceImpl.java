@@ -1,5 +1,6 @@
 package com.sls.user.service.impl;
 
+import com.sls.scorm.dao.SummarizeDao;
 import com.sls.scorm.entity.Scorm;
 import com.sls.user.dao.UserDao;
 import com.sls.user.entity.User;
@@ -17,6 +18,9 @@ import java.util.List;
 public class UserCenterServiceImpl implements UserCenterService {
     @Autowired
     private UserDao userDao;
+
+    @Autowired
+    private SummarizeDao summarizeDao;
 
     @Override
     public void toUserCenter(HttpServletRequest request) {
@@ -39,7 +43,7 @@ public class UserCenterServiceImpl implements UserCenterService {
     public void getAllRegisterScormInfo(HttpServletRequest request) {
         List<User> userList = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName());
         User user = userList.get(0);
-        List<Scorm> scormList = userDao.getAllRegisterScormInfoByUserId(user.getUserId());
+        List<Scorm> scormList = summarizeDao.getAllRegisterScormInfoByUserId(user.getUserId());
         request.setAttribute("allScorm",scormList);
     }
 }
