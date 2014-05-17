@@ -14,9 +14,6 @@
             <a href="">
                 <img src="img/logo/logoSmall.png" alt="logo" class="logo-default"/>
             </a>
-            <%--<div class="menu-toggler sidebar-toggler">--%>
-            <%--<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->--%>
-            <%--</div>--%>
         </div>
         <!-- END LOGO -->
 

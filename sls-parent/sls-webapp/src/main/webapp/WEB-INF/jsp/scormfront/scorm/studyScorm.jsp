@@ -18,7 +18,6 @@
 
 <body class="page-header-fixed page-sidebar-reversed">
 <%@include file="../index/navigationMenu.jsp" %>
-
 <div class="page-container">
 <div class="page-sidebar-wrapper">
     <div class="page-sidebar navbar-collapse collapse">

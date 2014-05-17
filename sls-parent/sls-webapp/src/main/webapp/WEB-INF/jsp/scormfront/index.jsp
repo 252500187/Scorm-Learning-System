@@ -7,332 +7,34 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8"/>
-    <title>SLS | WELCOME to SLS</title>
+    <title>SLS | Welcome to SLS</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../includes/common.jsp" %>
-    <link rel="stylesheet" type="text/css" href="metronic/assets/admin/pages/css/timeline.css"/>
 </head>
 <body class="page-header-fixed">
 <%@include file="index/navigationMenu.jsp" %>
 <div class="page-container">
-<div class="page-content">
+    <div class="page-content">
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-9">
+                <img src="img/index/2.jpg" style="max-height:600px ">
+            </div>
+            <div class="col-md-2"><br/>
 
-<%--搜索部分--%>
-<div class="row">
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-8">
-        <h2>搜索方面</h2>
-    </div>
-    <div class="col-md-2">
-    </div>
-</div>
-
-<%--轮播部分--%>
-<div class="row">
-    <div class="col-md-12">
-        <div id="myCarousel" class="carousel slide">
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="active item">
-                    <img src="img/bookmarks/book5.jpg">
-
-                    <div class="carousel-caption">
-                        <h4>First Thumbnail label</h4>
-
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id
-                            elit
-                            non mi porta gravida
-                            at eget metus. Nullam id dolor id nibh ultricies vehicula ut id
-                            elit.
-                        </p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="img/bookmarks/book2.jpg">
-
-                    <div class="carousel-caption">
-                        <h4>Second Thumbnail label</h4>
-
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id
-                            elit
-                            non mi porta gravida
-                            at eget metus. Nullam id dolor id nibh ultricies vehicula ut id
-                            elit.
-                        </p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="img/bookmarks/book3.jpg">
-
-                    <div class="carousel-caption">
-                        <h4>Third Thumbnail label</h4>
-
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id
-                            elit
-                            non mi porta gravida
-                            at eget metus. Nullam id dolor id nibh ultricies vehicula ut id
-                            elit.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-            <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-        </div>
-    </div>
-</div>
-
-<%--下方部分--%>
-<div class="row">
-<div class="col-md-1">
-</div>
-<div class="col-md-2">
-    <div class="row">
-        <div class="col-md-12">
-            <h2>左下偏上方</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <a class="btn red sliderbar-transparency" onclick="toScormInfo(78)">
-                <span> TOP ONE</span>
-                <em>书名</em>
-                <em>
-                    <i class="fa fa-tags"></i>
-                    还有 100,000人在看
-                </em>
-                <i class="fa fa-briefcase top-news-icon"></i>
-            </a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <a class="btn green" onclick="showScormInfo(78)">
-                <span> TOP TWO</span>
-                <em>书名</em>
-                <em>
-                    <i class="fa fa-tags"></i>
-                    还有 100,000人在看
-                </em>
-                <i class="fa fa-briefcase top-news-icon"></i>
-            </a>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-md-12">
-            <h2>左下方</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <%--todo左下方--%>
-        </div>
-    </div>
-</div>
-<div class="col-md-1">
-</div>
-<div class="col-md-8">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="headline">
-                <h2>右下方</h2>
-
-                <h3>文史</h3>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <div class="col-index-page">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="img/bookmarks/book1.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray" onclick="toScormInfo(66)">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn"><a class="btn default blue-stripe" href="#">查询</a></span>
                 </div>
             </div>
         </div>
-        <div class="col-md-2">
-            <div class="col-index-page">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="img/bookmarks/book1.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray" onclick="toScormInfo(66)">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="col-index-page">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="img/bookmarks/book1.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray" onclick="toScormInfo(66)">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="col-index-page">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="img/bookmarks/book1.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray" onclick="toScormInfo(66)">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="col-index-page">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="img/bookmarks/book1.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray" onclick="toScormInfo(66)">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <HR>
+        <div class="row">
+            <%--补下半身--%>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="headline">
-                <h3>文史</h3>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <div class="col-index-page">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="img/bookmarks/book1.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray" onclick="toScormInfo(66)">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="col-index-page">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="img/bookmarks/book1.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray" onclick="toScormInfo(66)">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="col-index-page">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="img/bookmarks/book1.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray" onclick="toScormInfo(66)">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="col-index-page">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="img/bookmarks/book1.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray" onclick="toScormInfo(66)">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="col-index-page">
-                <div class="meet-our-team">
-                    <img class="img-responsive" alt="" src="img/bookmarks/book1.jpg">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">书名</a>
-                        </li>
-                        <li>
-                            <a href="#" style="color:darkgray" onclick="toScormInfo(66)">
-                                read more...
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-</div>
 </div>
 <%@include file="index/footer.jsp" %>
 <div id="alertModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
@@ -366,9 +68,6 @@
     $(function () {
         Metronic.init();
         Layout.init();
-        $('.carousel').carousel({
-            interval: 6000
-        })
     });
 </script>
 
