@@ -32,7 +32,76 @@
         </div>
         <HR>
         <div class="row">
-            <%--补下半身--%>
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <img src="img/bookmarks/book1.jpg" alt="" style="max-height: 200px;">
+
+                    <div class="caption">
+                        <h3>课件1</h3>
+
+                        <p>
+                            课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介
+                        </p>
+
+                        <p>
+                            <a onclick="showScormInfo('92')" class="btn blue">
+                                查看 </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <img src="img/bookmarks/book1.jpg" alt="" style="max-height: 200px;">
+
+                    <div class="caption">
+                        <h3>课件1</h3>
+
+                        <p>
+                            课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介
+                        </p>
+
+                        <p>
+                            <a onclick="showScormInfo('91')" class="btn purple">
+                                查看 </a>
+                        </p>
+                    </div>
+                </div>
+            </div><div class="col-md-3">
+            <div class="thumbnail">
+                <img src="img/bookmarks/book1.jpg" alt="" style="max-height: 200px;">
+
+                <div class="caption">
+                    <h3>课件1</h3>
+
+                    <p>
+                        课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介
+                    </p>
+
+                    <p>
+                        <a onclick="showScormInfo('90')" class="btn red">
+                            查看 </a>
+                    </p>
+                </div>
+            </div>
+        </div><div class="col-md-3">
+            <div class="thumbnail">
+                <img src="img/bookmarks/book1.jpg" alt="" style="max-height: 200px;">
+
+                <div class="caption">
+                    <h3>课件1</h3>
+
+                    <p>
+                        课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介
+                    </p>
+
+                    <p>
+                        <a onclick="showScormInfo('78')" class="btn yellow">
+                            查看 </a>
+                    </p>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </div>

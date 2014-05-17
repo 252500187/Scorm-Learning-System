@@ -164,10 +164,6 @@
                                                 <div><p class="md-height">注册日期：</p>
                                                 </div>
                                                 <div class="media">
-                                                    <a class="pull-left" href="#">
-                                                        <img class="media-object" src="holder.js/64x64" alt="">
-                                                    </a>
-
                                                     <div class="media-body">
                                                         <p class="md-height">您还没有注册</p></div>
                                                 </div>
