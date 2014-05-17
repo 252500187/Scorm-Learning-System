@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface LabelDao {
     List<Label> getAllUserLabel();
+
+    void delAllUserLabelsByUserId(int userId);
+
+    void addUserLabel(Label label);
 }

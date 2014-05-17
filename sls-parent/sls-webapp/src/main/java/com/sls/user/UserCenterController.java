@@ -77,8 +77,9 @@ public class UserCenterController {
 
     @RequestMapping(value = "editUserInfo", method = {RequestMethod.POST})
     @ResponseBody
-    public void editUserInfo(User user) {
+    public void editUserInfo(User user, @RequestParam("myLabelList") String myLabelList) {
         userService.editUser(user);
+        labelService.editMyLabelList(myLabelList);
     }
 
     @RequestMapping(value = "upHeadImg", method = {RequestMethod.POST})

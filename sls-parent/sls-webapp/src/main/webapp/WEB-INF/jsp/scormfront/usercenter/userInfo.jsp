@@ -14,8 +14,9 @@
     <%@include file="../../includes/common.jsp" %>
     <style type="text/css">
         .visible-a {
-           visibility:visible;
+            visibility: visible;
         }
+
         .hidden-a {
             visibility: hidden;
         }
@@ -83,13 +84,14 @@
 
                                 <div class="col-md-9">
                                     <div>
-                                        <ul class="select2-choices" style="border-width: 0;" id="labelList"></ul>
+                                        <ul class="select2-choices" style="border-width: 0;" id="myLabelList"></ul>
                                     </div>
                                     <div>
-                                        <ul class='select2-choices' style="border-width: 0;" id="myLabelList">
+                                        <ul class='select2-choices' style="border-width: 0;" id="labelList">
                                             <c:forEach var="label" items="${labelList}" varStatus="status">
                                                 <li class='select2-search-choice allLabels' style="border-width: 0;">
-                                                    <div class="label label-info"style="cursor: pointer">${label.labelName}</div>
+                                                    <div class="label label-info" style="cursor: pointer"
+                                                         id="${label.labelId}">${label.labelName}</div>
                                                     <a class='select2-search-choice-close hidden-a' tabindex='-1'></a>
                                                 </li>
                                             </c:forEach>
@@ -147,12 +149,17 @@
         }, "请选择图片文件");
     });
     function changeUserInfo() {
+        var myLabelList ="";
+        $("#myLabelList").find("div").each(function(){
+            myLabelList += $(this).attr("id")+",";
+        });
         $.ajax({
             url: basePath + "user/center/editUserInfo",
             data: {
                 userId: ${user.userId},
                 userName: $("#nickName").val().trim(),
-                sex: $("input[name=sex]:checked").val()
+                sex: $("input[name=sex]:checked").val(),
+                myLabelList: myLabelList
             },
             dataType: "json",
             type: "POST",
@@ -172,17 +179,17 @@
 
     $(".allLabels").live("click", function () {
         var addLabelObj = $(this);
-        $("#labelList").append(addLabelObj);
+        $("#myLabelList").append(addLabelObj);
         addLabelObj.attr("class", "select2-search-choice myLabel");
-        addLabelObj.find("a").attr('class','select2-search-choice-close visible-a');
+        addLabelObj.find("a").attr('class', 'select2-search-choice-close visible-a');
         addLabelObj.unbind("click");
     });
 
     $(".visible-a").live("click", function () {
         var removeLabelObj = $(this);
-        $("#myLabelList").append(removeLabelObj.parent("li"));
+        $("#labelList").append(removeLabelObj.parent("li"));
         removeLabelObj.parent("li").attr("class", "select2-search-choice allLabels");
-        removeLabelObj.parent("li").find("a").attr("class","select2-search-choice-close hidden-a");
+        removeLabelObj.parent("li").find("a").attr("class", "select2-search-choice-close hidden-a");
         removeLabelObj.unbind("click");
     })
 
