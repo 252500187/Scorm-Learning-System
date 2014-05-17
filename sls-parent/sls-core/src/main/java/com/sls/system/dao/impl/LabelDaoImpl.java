@@ -29,4 +29,10 @@ public class LabelDaoImpl extends PageDao implements LabelDao {
                 "VALUES(:userId, :labelId)";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(label));
     }
+
+    @Override
+    public List<Label> getLabelsByUserId(int userId) {
+        String sql = "SELECT uul.*,ul.`label_name` FROM us_user_label uul JOIN us_label ul ON uul.`user_id` = ul.`label_id` WHERE user_id = ?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Label>(Label.class), userId);
+    }
 }

@@ -6,4 +6,6 @@ public interface LabelService {
     void getAllUserLabel(HttpServletRequest request);
 
     void editMyLabelList(String myLabelList);
+
+    void getLabelsByUserId(HttpServletRequest request);
 }

@@ -72,6 +72,7 @@ public class UserCenterController {
     public String userInfoDo(HttpServletRequest request) {
         userCenterService.toUserInfo(request);
         labelService.getAllUserLabel(request);
+        labelService.getLabelsByUserId(request);
         return "scormfront/usercenter/userInfo";
     }
 

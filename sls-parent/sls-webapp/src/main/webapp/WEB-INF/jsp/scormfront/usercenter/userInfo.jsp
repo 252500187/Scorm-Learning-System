@@ -1,4 +1,5 @@
 <%--@elvariable id="labelList" type="java.util.List<com.sls.system.entity.Label>"--%>
+<%--@elvariable id="myLabelList" type="java.util.List<com.sls.system.entity.Label>"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -84,7 +85,15 @@
 
                                 <div class="col-md-9">
                                     <div>
-                                        <ul class="select2-choices" style="border-width: 0;" id="myLabelList"></ul>
+                                        <ul class="select2-choices" style="border-width: 0;" id="myLabelList">
+                                            <c:forEach var="label" items="${myLabelList}" varStatus="status">
+                                                <li class='select2-search-choice myLabel' style="border-width: 0;">
+                                                    <div class="label label-info" style="cursor: pointer"
+                                                         id="${label.labelId}">${label.labelName}</div>
+                                                    <a class='select2-search-choice-close visible-a' tabindex='-1'></a>
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
                                     </div>
                                     <div>
                                         <ul class='select2-choices' style="border-width: 0;" id="labelList">
@@ -149,9 +158,9 @@
         }, "请选择图片文件");
     });
     function changeUserInfo() {
-        var myLabelList ="";
-        $("#myLabelList").find("div").each(function(){
-            myLabelList += $(this).attr("id")+",";
+        var myLabelList = "";
+        $("#myLabelList").find("div").each(function () {
+            myLabelList += $(this).attr("id") + ",";
         });
         $.ajax({
             url: basePath + "user/center/editUserInfo",

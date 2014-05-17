@@ -10,4 +10,6 @@ public interface LabelDao {
     void delAllUserLabelsByUserId(int userId);
 
     void addUserLabel(Label label);
+
+    List<Label> getLabelsByUserId(int userId);
 }

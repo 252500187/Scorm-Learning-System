@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.LinkedList;
+import java.util.List;
 
 @Service("tagService")
 public class LabelServiceImpl implements LabelService {
@@ -40,5 +42,11 @@ public class LabelServiceImpl implements LabelService {
             label.setLabelId(Integer.parseInt(labelId));
             labelDao.addUserLabel(label);
         }
+    }
+
+    @Override
+    public void getLabelsByUserId(HttpServletRequest request) {
+        List<Label> myLabelList = labelDao.getLabelsByUserId(getUserId());
+        request.setAttribute("myLabelList", myLabelList.size() == 0 ? new LinkedList<Label>() : myLabelList);
     }
 }
