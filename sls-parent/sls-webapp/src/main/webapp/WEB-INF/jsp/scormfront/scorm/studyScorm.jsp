@@ -58,7 +58,7 @@
 						</span>
                 </a>
                 <ul class="sub-menu">
-                    <iframe id="ztree" scrolling="no" style="width:100%; height:100%;border:0px;"
+                    <iframe id="ztree" scrolling="no" style="width:100%; min-height:300px;border:0px;"
                             allowfullscreen>
                     </iframe>
                     <div class="chat-form">
