@@ -66,6 +66,7 @@ public class UserCenterController {
             XPathExpressionException {
         int scormId = upScormService.upScorm(request, "upScorm", "upImg", scorm);
         labelService.editScormLabelList(scormLabelList,scormId);
+        labelService.getAllLabel(request);
         return "scormfront/usercenter/upScorm";
     }
 
