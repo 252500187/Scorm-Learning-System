@@ -13,7 +13,12 @@ import java.util.List;
 public class LabelDaoImpl extends PageDao implements LabelDao {
     @Override
     public List<Label> getAllUserLabel() {
-        String sql = "SELECT * FROM us_label";
+        String sql = "SELECT  *  FROM  us_label " +
+                "  WHERE label_id NOT IN " +
+                "    (SELECT ul.label_id " +
+                "    FROM us_label ul " +
+                "      JOIN us_user_label uul " +
+                "        ON ul.`label_id` = uul.`label_id`)";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Label>(Label.class));
     }
 
