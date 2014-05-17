@@ -15,8 +15,6 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/metronic/assets/admin/pages/css/profile.css"/>"/>
     <link rel="stylesheet" type="text/css"
           href="<c:url value="/js/common/zTree-v3.5.14/css/zTreeStyle/zTreeStyle.css"/>"/>
-    <script src="<c:url value="/js/common/zTree-v3.5.14/js/jquery.ztree.all-3.5.min.js"/>"
-            type="text/javascript"></script>
 </head>
 <body class="page-boxed page-header-fixed">
 <div class="page-container">
@@ -64,7 +62,7 @@
                                                             <i class="fa fa-star"></i>
                                                             <i class="fa fa-star"></i>
                                                         </li>
-                                                        <li>${scormInfo.score}</li>
+                                                        <li>${scormInfo.score}分</li>
                                                     </ul>
                                                     <ul class="list-inline" style="max-width: 250px;">
                                                         <li>简介:</li>
@@ -201,6 +199,8 @@
 </div>
 </body>
 </html>
+<script src="<c:url value="/js/common/zTree-v3.5.14/js/jquery.ztree.all-3.5.min.js"/>"
+        type="text/javascript"></script>
 <script type="text/javascript">
     var settingMenu = {
         view: {
@@ -241,6 +241,8 @@
     ];
 
     $(function () {
+        Metronic.init();
+        Layout.init();
         $("#scormImg").attr("src", basePath + "${scormInfo.imgPath}");
         $.fn.zTree.init($("#chapterList"), settingMenu, zNodes);
         $.fn.zTree.getZTreeObj("chapterList").expandAll(true);
