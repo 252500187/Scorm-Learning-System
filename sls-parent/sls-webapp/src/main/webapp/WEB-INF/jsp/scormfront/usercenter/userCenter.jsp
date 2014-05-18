@@ -96,6 +96,14 @@
 								</span>
                             </a>
                         </li>
+                        <li>
+                            <a onclick="changeIframe('user/center/myUpScormsDo')">
+                                <i class="fa fa-bullhorn"></i>
+                                <span class="title">
+									我的上传
+								</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <!-- 第四个菜单  我的笔记本 -->

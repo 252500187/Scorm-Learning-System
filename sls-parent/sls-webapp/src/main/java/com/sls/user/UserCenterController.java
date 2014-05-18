@@ -110,6 +110,13 @@ public class UserCenterController {
         return "scormfront/usercenter/myscorm/collectScorm";
     }
 
+    //个人中心  我的上传
+    @RequestMapping(value = "myUpScormsDo", method = {RequestMethod.GET})
+    public String myUpScormsDo(HttpServletRequest request) {
+        userCenterService.getAllCollectScormInfo(request);
+        return "scormfront/usercenter/myscorm/myUpScorms";
+    }
+
     @RequestMapping(value = "cancelCollect", method = {RequestMethod.POST})
     @ResponseBody
     public void cancelCollect(@RequestParam("scormId") String scormId) {
