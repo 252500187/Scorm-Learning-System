@@ -33,4 +33,6 @@ public interface ScormDao {
     List<Scorm> getAllRegisterScormInfoByUserId(int userId);
 
     List<Scorm> getAllCollectScormInfoByUserId(int userId);
+
+    List<Scorm> getAllUpScormInfoByUserId(int userId);
 }

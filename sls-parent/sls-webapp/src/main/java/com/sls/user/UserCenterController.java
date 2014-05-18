@@ -113,7 +113,7 @@ public class UserCenterController {
     //个人中心  我的上传
     @RequestMapping(value = "myUpScormsDo", method = {RequestMethod.GET})
     public String myUpScormsDo(HttpServletRequest request) {
-        userCenterService.getAllCollectScormInfo(request);
+        userCenterService.getAllUpScormInfo(request);
         return "scormfront/usercenter/myscorm/myUpScorms";
     }
 

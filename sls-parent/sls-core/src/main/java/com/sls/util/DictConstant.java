@@ -18,6 +18,9 @@ public class DictConstant {
 
     //状态
     public static final String STATE = "state";
+
+    //课件审核状态
+    public static final String SCORM_STATE = "scormState";
     // 0 无效
     public static final int NO_USE = 0;
     // 1 有效

@@ -15,6 +15,7 @@ public class Scorm {
     private int uploadUserId;
     private String showUploadUserId;
     private int inUse;
+    private String showInUse;
     private String totalTime;
     private String score;
     private int completeWay;
@@ -167,5 +168,13 @@ public class Scorm {
 
     public void setCollectDate(String collectDate) {
         this.collectDate = collectDate;
+    }
+
+    public String getShowInUse() {
+        return showInUse;
+    }
+
+    public void setShowInUse(String showInUse) {
+        this.showInUse = showInUse;
     }
 }

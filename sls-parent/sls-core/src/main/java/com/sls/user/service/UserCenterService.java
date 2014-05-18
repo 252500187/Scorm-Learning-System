@@ -12,4 +12,6 @@ public interface UserCenterService {
     void getAllCollectScormInfo(HttpServletRequest request);
 
     void cancelCollect(String scormId);
+
+    void getAllUpScormInfo(HttpServletRequest request);
 }
