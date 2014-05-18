@@ -39,21 +39,12 @@
 
                                 <div class="col-md-9">
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
-                                        <div class="fileinput-new thumbnail"
+                                        <div class="fileinput-preview fileinput-exists thumbnail"
                                              style="max-width: 200px; max-height: 150px;">
                                             <img id="userPhoto" alt="用户头像"/>
                                         </div>
-                                        <div class="fileinput-preview fileinput-exists thumbnail"
-                                             style="max-width: 200px; max-height: 150px;">
-                                        </div>
                                         <div>
 													<span class="btn default btn-file">
-														<span class="fileinput-new">
-															 选择
-														</span>
-														<span class="fileinput-exists">
-															 换一个
-														</span>
 														<input type="file" name="upImg" id="upImg"/>
 													</span>
                                         </div>
@@ -178,14 +169,18 @@
             dataType: "json",
             type: "POST",
             success: function () {
-                parent.$("#userName").html($("#nickName").val().trim());
+
+
+
                 if ($("#upImg").val() != "") {
                     $("#userInfo").attr("method", "post").attr("action",
                             basePath + "user/center/upHeadImg").submit();
-                } else {
-                    parent.$("#alertMessage").html("修改成功");
-                    parent.$("#alertButton").click();
                 }
+                parent.$("#alertMessage").html("修改成功");
+                parent.$("#alertModel").modal("show");
+
+
+
             },
             error: doError
         })
@@ -196,7 +191,7 @@
         $("#myLabelList").append(addLabelObj);
         addLabelObj.attr("class", "select2-search-choice myLabel");
         addLabelObj.find("a").attr('class', 'select2-search-choice-close visible-a');
-        addLabelObj.find("div").attr('class',"label label-success");
+        addLabelObj.find("div").attr('class', "label label-success");
         addLabelObj.unbind("click");
     });
 
@@ -205,7 +200,7 @@
         $("#labelList").append(removeLabelObj.parent("li"));
         removeLabelObj.parent("li").attr("class", "select2-search-choice allLabels");
         removeLabelObj.parent("li").find("a").attr("class", "select2-search-choice-close hidden-a");
-        removeLabelObj.parent("li").find("div").attr('class',"label label-info");
+        removeLabelObj.parent("li").find("div").attr('class', "label label-info");
         removeLabelObj.unbind("click");
     })
 
