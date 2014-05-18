@@ -50,7 +50,6 @@
             fitColumns: true,
             columns: [
                 [
-                    {field: 'labelId', title: '标签Id', sortable: true, align: 'center', width: 200},
                     {field: 'labelName', title: '标签名', sortable: false, align: 'center', width: 200},
                     {field: 'operate', title: '操作', align: 'center', width: 200 }
                 ]
@@ -74,8 +73,8 @@
 
     function queryFormat(temp) {
         for (var i in temp) {
-            temp[i].operate = "<a onclick='editLabel(\"" + temp[i].dictName + "\")'><spring:message code="edit"/></a>&nbsp;&nbsp;"
-                    + "<a onclick='delLabel(\"" + temp[i].dictName + "\")'><spring:message code="delete"/></a>&nbsp;&nbsp;";
+            temp[i].operate = "<a onclick='editLabel(\"" + temp[i].labelId + "\")'><spring:message code="edit"/></a>&nbsp;&nbsp;"
+                    + "<a onclick='delLabel(\"" + temp[i].labelId + "\")'><spring:message code="delete"/></a>&nbsp;&nbsp;";
         }
         return temp;
     }
@@ -90,8 +89,8 @@
         }).dialog('open');
     }
 
-    function editLabel(dictName) {
-        var path = basePath + "admin/label/editLabelDo?labelName=" + labelName;
+    function editLabel(labelId) {
+        var path = basePath + "admin/label/editLabelDo?labelId=" + labelId;
         $("#contentList").attr("src", path);
         $('#dataEdit').dialog({
             title: '<spring:message code="edit"/>',
@@ -100,11 +99,11 @@
         }).dialog('open');
     }
 
-    function delLabel(labelName) {
+    function delLabel(labelId) {
         $.messager.confirm("<spring:message code="prompt"/>", "<spring:message code="ensureDelete"/>？", function (r) {
             if (r) {
                 $.ajax({
-                    url: basePath + "admin/label/delLabel?labelName=" + labelName,
+                    url: basePath + "admin/label/delLabel?labelId=" + labelId,
                     dataType: "json",
                     type: "DELETE",
                     success: function () {
@@ -112,7 +111,7 @@
                             query();
                         })
                     },
-                    error: doErro
+                    error: doError
                 })
             }
         })

@@ -24,4 +24,10 @@ public interface LabelDao {
     boolean checkRepeatLabelName(String labelName);
 
     int addLabel(Label label);
+
+    Label findLabelById(String labelId);
+
+    void editLabel(Label label);
+
+    void delLabelByLabelId(String labelId);
 }

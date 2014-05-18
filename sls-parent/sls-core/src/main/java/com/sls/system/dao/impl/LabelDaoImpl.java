@@ -86,4 +86,22 @@ public class LabelDaoImpl extends PageDao implements LabelDao {
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(label), keyHolder);
         return keyHolder.getKey().intValue();
     }
+
+    @Override
+    public Label findLabelById(String labelId) {
+        String sql = "select * from us_label where label_id =?";
+        return getJdbcTemplate().queryForObject(sql, new BeanPropertyRowMapper<Label>(Label.class), labelId);
+    }
+
+    @Override
+    public void editLabel(Label label) {
+        String sql = "UPDATE us_label SET label_name = :labelName WHERE label_id = :labelId";
+        getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(label));
+    }
+
+    @Override
+    public void delLabelByLabelId(String labelId) {
+        String sql = "DELETE FROM us_label WHERE label_id = ?";
+        getJdbcTemplate().update(sql, labelId);
+    }
 }
