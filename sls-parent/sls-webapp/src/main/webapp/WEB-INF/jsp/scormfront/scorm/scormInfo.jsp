@@ -25,12 +25,14 @@
                     <div class="col-md-2" style="float: left">
                         <img id="scormImg" class="img-polaroid" style="max-width: 150px;max-height: 200px" alt=""/>
                     </div>
-                    <div style="float: left">
+                    <div class="col-md-10" style="float: left">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-10">
                                 <div class="portlet-body form">
                                     <div class="form-body">
-                                        <h3 class="form-section">${scormInfo.scormName}
+                                        <h3 class="form-section">
+                                            <img src="${scormInfo.showRecommendLevel}" width="25px" height="25px">
+                                            ${scormInfo.scormName}
                                             <c:if test="${registerScorm && !complete}">
                                                 <a class="btn green m-icon" onclick="return false">
                                                     去学习<i class="m-icon-swapright m-icon-white"></i>
@@ -45,46 +47,27 @@
                                             <c:if test="${!registerScorm}">
                                                 <a class="btn blue" onclick="registerScorm(${scormInfo.scormId})">注册</a>
                                             </c:if>
+                                            <c:if test="${false == collectScorm}">
+                                                <a class="btn blue" onclick="collectScorm(${scormInfo.scormId})">收藏</a>
+                                            </c:if>
                                         </h3>
 
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group profile-info">
-                                                    <ul class="list-inline">
-                                                        <li>发布时间:</li>
-                                                        <li>${scormInfo.uploadDate}</li>
-                                                    </ul>
-                                                    <ul class="list-inline">
-                                                        <li>总评分:</li>
-                                                        <li><i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                        </li>
-                                                        <li>${scormInfo.score}分</li>
-                                                    </ul>
-                                                    <ul class="list-inline" style="max-width: 250px;">
-                                                        <li>简介:</li>
-                                                        <li>${scormInfo.description}</li>
-                                                    </ul>
-                                                    <ul class="list-inline">
-                                                        <li>
-                                                            注册量:${scormInfo.registerSum}
-                                                        </li>
-                                                        <li>
-                                                            <i class="fa fa-heart"></i>
-                                                            <c:if test="${true == collectScorm}">
-                                                                <a style="color:#aaa" onclick="return false">收藏</a>
-                                                            </c:if>
-                                                            <c:if test="${false == collectScorm}">
-                                                                <a style="color:#666"
-                                                                   onclick="collectScorm(${scormInfo.scormId})">收藏</a>
-                                                            </c:if>
-                                                        </li>
-                                                    </ul>
+                                        <div class="form-group profile-info">
+                                            <ul class="list-inline" style="width: 250px;">
+                                                <li>评分:</li>
+                                                <li>${scormInfo.score}分</li>
+                                                <div class="progress progress-striped active">
+                                                    <div class="progress-bar progress-bar-info"
+                                                         role="progressbar"
+                                                         aria-valuemin="0"
+                                                         aria-valuemax="5" style="width: ${(scormInfo.score/5)*100}%">
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </ul>
+                                            <ul class="list-inline" style="width: 250px;">
+                                                <li>简介:</li>
+                                                <li>${scormInfo.description}</li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>

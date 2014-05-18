@@ -22,7 +22,7 @@
             <h3>前往学粉之路总进度</h3>
 
             <div class="progress progress-striped active">
-                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40"
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
                      aria-valuemin="0"
                      aria-valuemax="100" style="width: 80%">
                         <span class="sr-only">
