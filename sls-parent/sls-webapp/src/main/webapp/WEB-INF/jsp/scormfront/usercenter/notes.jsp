@@ -183,6 +183,10 @@
 
         return { init: init };
     })();
+
+    $(function(){
+        parent.$("#alertNotes").modal("hide");
+    })
 </script>
 <script>
     Page.init();
