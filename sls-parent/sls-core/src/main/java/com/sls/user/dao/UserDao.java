@@ -35,4 +35,6 @@ public interface UserDao {
     int findUploadScormNumByUserId(int userId);
 
     void editUseState(User user);
+
+    void cancelCollectByUserIdAndScormId(int userId, String scormId);
 }

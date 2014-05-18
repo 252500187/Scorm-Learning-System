@@ -19,6 +19,7 @@ public class Scorm {
     private String score;
     private int completeWay;
     private String completeDate;
+    private String collectDate;
 
     private int userId;
 
@@ -158,5 +159,13 @@ public class Scorm {
 
     public void setCompleteDate(String completeDate) {
         this.completeDate = completeDate;
+    }
+
+    public String getCollectDate() {
+        return collectDate;
+    }
+
+    public void setCollectDate(String collectDate) {
+        this.collectDate = collectDate;
     }
 }

@@ -1,6 +1,5 @@
 package com.sls.scorm.dao;
 
-import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.entity.ScormSummarize;
 
 import java.util.List;
@@ -18,6 +17,4 @@ public interface SummarizeDao {
     ScormSummarize findScormSummarizeByUserIdAndScormId(int userId, int scormId);
 
     List<ScormSummarize> getAllCommentsByScormId(int scormId);
-
-     List<Scorm> getAllRegisterScormInfoByUserId(int userId);
 }

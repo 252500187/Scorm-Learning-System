@@ -12,7 +12,81 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../../includes/common.jsp" %>
 </head>
-<body>
-我 是 我的收藏 <a onclick="registerScorm('9')">点我注册ID为9的课件</a>
+<body class="page-header-fixed" style="background-color: transparent">
+<div class="page-content" style="min-height:780px">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tabbable tabbable-custom boxless">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab_1">
+                        <!-- BEGIN FILTER -->
+                        <div class="margin-top-10">
+
+
+                            <div class="row mix-grid">
+                                <c:forEach var="scormInfo" items="${allScorm}">
+
+                                    <div class="col-md-3 col-sm-4 mix mix_all"
+                                         style=" display: block; opacity: 1;">
+                                        <div class="mix-inner">
+                                            <img id="${scormInfo.scormId}" class="img-responsive"
+                                                 alt="${scormInfo.scormId}">
+
+                                            <div class="mix-details">
+                                                <h4 style="margin-bottom: 0px;padding-bottom: 3px"></h4>
+                                                <h4 style="margin-bottom: 0px;padding-bottom: 3px">
+                                                    收藏时间&nbsp;${scormInfo.collectDate}</h4>
+                                                <a class="mix-link" onclick="viewMore('${scormInfo.scormId}')">
+                                                    <i class="fa fa-search"></i>&nbsp;<span class="title">课件详情</span>
+                                                </a>
+                                                <a class="mix-preview" onclick="cancelCollect('${scormInfo.scormId}')">
+                                                    <i class="fa fa-file"></i>&nbsp;<span class="title">取消收藏</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="mix-inner">
+                                            <h4 style="margin-bottom: 0px;padding-bottom: 3px">
+                                                &nbsp;${scormInfo.scormName}</h4>
+                                        </div>
+                                    </div>
+
+
+                                </c:forEach>
+                            </div>
+                        </div>
+                        <!-- END FILTER -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
+<script type="text/javascript">
+    $(function () {
+        <c:forEach var="scormInfo" items="${allScorm}">
+        $("#" + "${scormInfo.scormId}").attr("src", basePath + "${scormInfo.imgPath}");
+        </c:forEach>
+        Portfolio.init();
+    })
+    function cancelCollect(scormId) {
+        parent.$("#alertPromptMessage").html("确认取消收藏?");
+        parent.$("#promptButton2").click(function () {
+            $.ajax({
+                url: basePath + "user/center/cancelCollect?scormId=" + scormId,
+                type: "POST",
+                success: function () {
+                    parent.changeIframe('user/center/collectScormDo');
+                }
+            })
+        });
+        parent.$("#alertPrompt").modal("show");
+    }
+
+
+    function viewMore(scormId) {
+        parent.$('#alertScormInfo').modal('show');
+        parent.$("#scormInfo").attr("src", "tourist/scormInfo?scormId=" + scormId + "&type=-1");
+    }
+</script>
