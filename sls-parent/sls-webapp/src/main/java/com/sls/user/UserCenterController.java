@@ -62,10 +62,10 @@ public class UserCenterController {
     }
 
     @RequestMapping(value = "upScorm", method = {RequestMethod.POST})
-    public String upScorm(HttpServletRequest request, Scorm scorm,@RequestParam("scormLabelList") String scormLabelList) throws ServletException, IOException, ParserConfigurationException, SAXException,
+    public String upScorm(HttpServletRequest request, Scorm scorm, @RequestParam("scormLabelList") String scormLabelList) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
         int scormId = upScormService.upScorm(request, "upScorm", "upImg", scorm);
-        labelService.editScormLabelList(scormLabelList,scormId);
+        labelService.editScormLabelList(scormLabelList, scormId);
         labelService.getAllLabel(request);
         return "scormfront/usercenter/upScorm";
     }
@@ -91,6 +91,8 @@ public class UserCenterController {
             XPathExpressionException {
         userService.upHeadImg(request, "upImg");
         userCenterService.toUserInfo(request);
+        labelService.getAllUserLabel(request);
+        labelService.getLabelsByUserId(request);
         return "scormfront/usercenter/userInfo";
     }
 
@@ -117,7 +119,7 @@ public class UserCenterController {
     //个人中心  笔记本
     @RequestMapping(value = "notesDo", method = {RequestMethod.GET})
     public String notesDo(HttpServletRequest request) {
-        scormService.getAllStudyNotesByScormIdAndUserId(DictConstant.VOID_VALUE,request);
+        scormService.getAllStudyNotesByScormIdAndUserId(DictConstant.VOID_VALUE, request);
         return "scormfront/usercenter/notes";
     }
 }

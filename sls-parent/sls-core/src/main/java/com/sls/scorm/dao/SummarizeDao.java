@@ -17,4 +17,6 @@ public interface SummarizeDao {
     ScormSummarize findScormSummarizeByUserIdAndScormId(int userId, int scormId);
 
     List<ScormSummarize> getAllCommentsByScormId(int scormId);
+
+    void discussScorm(ScormSummarize scormSummarize);
 }

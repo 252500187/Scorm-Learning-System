@@ -101,7 +101,7 @@
                 <!-- 第四个菜单  我的笔记本 -->
 
                 <li class="last ">
-                    <a onclick="changeIframe('user/center/notesDo')">
+                    <a onclick="changeNoteIframe('user/center/notesDo')">
                         <i class="fa fa-book"></i>
 						<span class="title">
 							我的笔记本
@@ -184,6 +184,12 @@
         </div>
     </div>
 </div>
+<div id="alertNotes" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
 </body>
 </html>
 <script>
@@ -197,6 +203,11 @@
 
     function changeIframe(src) {
         $("#iframe").attr("src", src);
+    }
+
+    function changeNoteIframe(src) {
+        $("#iframe").attr("src", src);
+        parent.$("#alertNotes").modal("show");
     }
 
     $('ul.page-sidebar-menu ').on('click', ' li > a', function (e) {

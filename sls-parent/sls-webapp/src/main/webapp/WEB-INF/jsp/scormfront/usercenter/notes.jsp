@@ -1,3 +1,4 @@
+<%--@elvariable id="userName" type="java.lang.String"--%>
 <%--@elvariable id="noteList" type="java.util.List<com.sls.scorm.entity.StudyNote>"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
@@ -41,26 +42,21 @@
                         </ul>
                     </nav>
                 </div>
-                <%--<div class="bb-custom-side">--%>
-                <%--<c:if test="${noteList[0].noteType == -1 }">--%>
-                <%--<p>${noteList[0].note}</p>--%>
-                <%--</c:if>--%>
-                <%--<c:if test="${noteList[0].noteType == 1 }">--%>
-                <%--<img style="max-height: 150px;max-width: 250px" src="${noteList[0].imgPath}"/>--%>
-                <%--</c:if>--%>
-                <%--</div>--%>
+                <div class="bb-custom-side">
+                    <%--${userName}--%>
+                </div>
             </div>
             <c:forEach begin="0" step="2" items="${noteList}" varStatus="status">
                 <div class="bb-item">
                     <div class="head-Info" style="padding-left: 5%">
-                        ${noteList[status.index].date}<br/>
+                            ${noteList[status.index].date}<br/>
                         <small>${noteList[status.index].time}</small>
                         <br/>
 
                         <h3 class="page-title">${noteList[status.index].scormName}</h3>
                     </div>
                     <div class="head-Info" style="text-align: right;padding-right: 5%;">
-                        ${noteList[status.index+1].date}<br/>
+                            ${noteList[status.index+1].date}<br/>
                         &nbsp;&nbsp;
                         <small>${noteList[status.index+1].time}</small>
                         <br/>
@@ -68,22 +64,26 @@
                         <h3 class="page-title">${noteList[status.index+1].scormName}</h3>
                     </div>
                     <div class="bb-custom-side">
-                        <c:if test="${noteList[status.index].noteType == -1 }">
-                            <p>${noteList[status.index].note}</p>
-                        </c:if>
-                        <c:if test="${noteList[status.index].noteType == 1 }">
-                            <img style="max-height: 250px;max-width: 350px" src="${noteList[status.index].imgPath}"
-                                 alt=""/>
-                        </c:if>
+                        <c:choose>
+                            <c:when test="${noteList[status.index].noteType == -1 }">
+                                <p>${noteList[status.index].note}</p>
+                            </c:when>
+                            <c:otherwise>
+                                <img style="max-height: 250px;max-width: 350px"
+                                     src="${noteList[status.index].imgPath}" alt=""/>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="bb-custom-side">
-                        <c:if test="${noteList[status.index+1].noteType == -1 }">
-                            <p>${noteList[status.index+1].note}</p>
-                        </c:if>
-                        <c:if test="${noteList[status.index+1].noteType == 1 }">
-                            <img style="max-height: 250px;max-width: 350px" src="${noteList[status.index+1].imgPath}"
-                                 alt=""/>
-                        </c:if>
+                        <c:choose>
+                            <c:when test="${noteList[status.index+1].noteType == -1 }">
+                                <p>${noteList[status.index+1].note}</p>
+                            </c:when>
+                            <c:otherwise>
+                                <img style="max-height: 250px;max-width: 350px"
+                                     src="${noteList[status.index+1].imgPath}" alt=""/>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
             </c:forEach>
@@ -104,6 +104,7 @@
 <script src="booknote/js/jquerypp.custom.js"></script>
 <script src="booknote/js/jquery.bookblock.js"></script>
 <script type="text/javascript">
+
     var Page = (function () {
 
         var config = {
@@ -181,8 +182,11 @@
                 };
 
         return { init: init };
-
     })();
+
+    $(function(){
+        parent.$("#alertNotes").modal("hide");
+    })
 </script>
 <script>
     Page.init();
