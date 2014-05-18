@@ -139,10 +139,7 @@
         if ("${user.sex}" == "0") {
             $("#sexFemale").attr("checked", true);
         }
-        $("#userPhoto").attr("src", "http://www.placehold.it/200x150/EFEFEF/AAAAAA &amp;text=no+image");
-        if ("${user.imgUrl}" != "") {
-            $("#userPhoto").attr("src", basePath + "${user.imgUrl}");
-        }
+        $("#userPhoto").attr("src", basePath + "${user.imgUrl}");
         jQuery.validator.addMethod("isImg", function (value, element, param) {
             if (param) {
                 var imgType = value.substr(value.length - 3, 3);
@@ -171,14 +168,12 @@
             success: function () {
 
 
-
                 if ($("#upImg").val() != "") {
                     $("#userInfo").attr("method", "post").attr("action",
                             basePath + "user/center/upHeadImg").submit();
                 }
                 parent.$("#alertMessage").html("修改成功");
                 parent.$("#alertModel").modal("show");
-
 
 
             },
