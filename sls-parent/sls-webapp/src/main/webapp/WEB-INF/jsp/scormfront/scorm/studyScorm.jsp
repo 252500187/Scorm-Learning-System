@@ -34,7 +34,7 @@
                     <table>
                         <tr>
                             <td>
-                        <img id="scormLogo" alt="scorm" style="max-height: 100px;max-width: 200px"></td>
+                                <img id="scormLogo" alt="scorm" style="max-height: 100px;max-width: 200px"></td>
                         </tr>
 
                     </table>
@@ -120,19 +120,7 @@
                         </div>
                     </div>
                     <div class="portlet-body" id="noteList">
-                        <c:forEach var="note" items="${noteList}">
-                            <div class="note note-success">
-                                <h4 class="caption" style="color: #6b7582">${note.date}</h4>
-                                <small style="color: #6b7582">${note.time}</small>
-                                <br/>
-                                <c:if test="${note.noteType == -1 }">
-                                    <p>${note.note}</p>
-                                </c:if>
-                                <c:if test="${note.noteType == 1 }">
-                                    <img style="max-height: 100px;max-width: 100px" src="${note.imgPath}"/>
-                                </c:if>
-                            </div>
-                        </c:forEach>
+
                     </div>
                 </ul>
             </li>
@@ -263,12 +251,29 @@
     var scoId = "";
     var nowScoId = "-1";
 
+    function getRandom() {
+        var noteIndex = Math.floor(Math.random() * 4);
+        return noteStyles[noteIndex];
+    }
+
     $(function () {
         Metronic.init();
         Layout.init();
         $("#ztree").attr("src", basePath + "user/scorm/studyScormZtree?scormId=${scorm.scormId}");
         $("#scormLogo").attr("src", basePath + "${scorm.imgPath}");
         $("#scormIframe").attr("src", basePath + "img/studyscormdefaultimg/" + Math.floor(Math.random() * 10) + ".jpg");
+            <c:forEach var="note" items="${noteList}">
+            $("#noteList").append('<div class="' + getRandom() + '">' +
+                    '<h4 class="caption" style="color: #6b7582">${note.date}</h4>' +
+                    '<small style="color: #6b7582">${note.time}</small><br/>'
+                    <c:if test="${note.noteType == -1 }">
+                    + '<p>${note.note}</p>'
+                    </c:if>
+                    <c:if test="${note.noteType == 1 }">
+                    + '<img style="max-height: 100px;max-width: 100px" src="${note.imgPath}"/>'
+                    </c:if>
+                    + '</div>');
+            </c:forEach>
     });
 
     function getNowDate() {
@@ -283,7 +288,9 @@
     }
 
     function takeNote() {
-        if("" == ($("#takeNotes").val().trim())) {alert("笔记不能为空")}
+        if ("" == ($("#takeNotes").val().trim())) {
+            alert("笔记不能为空")
+        }
         $.ajax({
             url: basePath + "user/scorm/takeNote",
             data: {
