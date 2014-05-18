@@ -162,8 +162,8 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <button id="promptButton1" class="btn red" data-dismiss="modal">取消</button>
-                <button id="promptButton2" class="btn blue" data-dismiss="modal">确认</button>
+                <button id="promptButton1" class="btn default" data-dismiss="modal">确认</button>
+                <button id="promptButton2" class="btn default" data-dismiss="modal">取消</button>
             </div>
         </div>
     </div>

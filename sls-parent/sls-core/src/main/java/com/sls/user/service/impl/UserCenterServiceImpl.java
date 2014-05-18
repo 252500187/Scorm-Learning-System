@@ -44,6 +44,10 @@ public class UserCenterServiceImpl implements UserCenterService {
         List<User> userList = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName());
         User user = userList.get(0);
         List<Scorm> scormList = scormDao.getAllRegisterScormInfoByUserId(user.getUserId());
+//        todo
+//        for(Scorm oneScorm : scormList) {
+//            oneScorm.setCompleteDate(oneScorm.getCompleteDate().substring(0,9));
+//        }
         request.setAttribute("allScorm", scormList);
     }
 

@@ -44,15 +44,17 @@
                                                      alt="${scormInfo.scormId}">
 
                                                 <div class="mix-details">
-                                                    <h4 style="margin-bottom: 0px;padding-bottom: 3px">
+                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                         课件名称:&nbsp;${scormInfo.scormName}</h4>
-                                                    <h4 style="margin-top:0px;padding-top:3px">状态:进行中</h4>
-                                                    <a class="mix-link" onclick="viewMore('${scormInfo.scormId}')">
-                                                        <i class="fa fa-search"></i>&nbsp;<span class="title">课件详情</span>
-                                                    </a>
-                                                    <a class="mix-preview" onclick="study('${scormInfo.scormId}')">
-                                                        <i class="fa fa-file"></i>&nbsp;<span class="title">开始学习</span>
-                                                    </a>
+                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">状态:进行中</h4>
+                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                        <a class="btn btn-sm purple" onclick="scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
+                                                        <a class="btn btn-sm purple" onclick="studyInfo('${scormInfo.scormId}')">学习情况</a>
+                                                    </h4>
+                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                        <a class="btn btn-sm purple" onclick="scormComment('${scormInfo.scormId}')">评论课件</a>&nbsp;
+                                                        <a class="btn btn-sm purple" onclick="study('${scormInfo.scormId}')">进行学习</a>
+                                                    </h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -66,17 +68,20 @@
                                                      alt="${scormInfo.scormId}">
 
                                                 <div class="mix-details">
-                                                    <h4 style="margin-bottom: 0px;padding-bottom: 3px">
+                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                         课件名称:&nbsp;${scormInfo.scormName}</h4>
-                                                    <h4 style="margin-top:0px;padding-top:3px;margin-bottom: 0px;padding-bottom: 3px">
-                                                        状态:已完成</h4>
-                                                    <h4 style="margin-top:0px;padding-top:3px">
-                                                        完成时间:&nbsp;${scormInfo.completeDate}</h4>
-                                                    <a class="mix-link" onclick="viewMore('${scormInfo.scormId}')"
-                                                       target="_blank">
-                                                        <i class="fa fa-search"></i>&nbsp;<span class="title">课件详情</span>
-                                                    </a></span>
-
+                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                        状态:&nbsp;已完成</h4>
+                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                        完成日期:&nbsp;${scormInfo.completeDate}</h4>
+                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                        <a class="btn btn-sm purple" onclick="scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
+                                                        <a class="btn btn-sm purple" onclick="studyInfo('${scormInfo.scormId}')">学习情况</a>
+                                                    </h4>
+                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                        <a class="btn btn-sm purple" onclick="scormComment('${scormInfo.scormId}')">评论课件</a>&nbsp;
+                                                        <a class="btn btn-sm purple" onclick="study('${scormInfo.scormId}')">进行学习</a>
+                                                    </h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -101,13 +106,21 @@
         </c:forEach>
         Portfolio.init();
     })
+
+    function scormComment(scormId){
+
+    }
+
+    function studyInfo(scormId){
+        parent.window.open(basePath + "user/dealScorm/userStudyInfo?scormId=" + scormId);
+    }
+
     function study(scormId) {
         parent.window.open(basePath + "user/scorm/studyScorm?scormId=" + scormId);
     }
 
-    function viewMore(scormId) {
+    function scormInfo(scormId) {
         parent.$('#alertScormInfo').modal('show');
         parent.$("#scormInfo").attr("src", "tourist/scormInfo?scormId=" + scormId + "&type=-1");
-
     }
 </script>
