@@ -104,6 +104,7 @@
 <script src="booknote/js/jquerypp.custom.js"></script>
 <script src="booknote/js/jquery.bookblock.js"></script>
 <script type="text/javascript">
+
     var Page = (function () {
 
         var config = {
@@ -181,7 +182,6 @@
                 };
 
         return { init: init };
-
     })();
 </script>
 <script>
