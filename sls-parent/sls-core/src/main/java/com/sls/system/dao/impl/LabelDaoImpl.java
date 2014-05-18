@@ -7,6 +7,8 @@ import com.sls.system.dao.LabelDao;
 import com.sls.system.entity.Label;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -68,5 +70,20 @@ public class LabelDaoImpl extends PageDao implements LabelDao {
             sql.append(" AND label_id like '%").append(label.getLabelId()).append("%'");
         }
         return queryForPage(pageParameter, sql.toString(), new BeanPropertySqlParameterSource(label), new BeanPropertyRowMapper<Label>(Label.class));
+    }
+
+    @Override
+    public boolean checkRepeatLabelName(String labelName) {
+        String sql = "select * from us_label where label_name =?";
+        return !getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Label>(Label.class), labelName).isEmpty();
+    }
+
+    @Override
+    public int addLabel(Label label) {
+        String sql = "INSERT INTO us_label(label_name)" +
+                "VALUES(:labelName)";
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(label), keyHolder);
+        return keyHolder.getKey().intValue();
     }
 }
