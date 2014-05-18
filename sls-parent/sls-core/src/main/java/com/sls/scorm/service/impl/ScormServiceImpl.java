@@ -95,8 +95,7 @@ public class ScormServiceImpl implements ScormService {
             sco.setUserId(user.getUserId());
             scoInfo = scoDao.getScoApiInfoByScoId(sco.getScoId()).get(0);
             scoInfo.setScoId(scoDao.addSco(sco));
-            //TOdo 找到用户级别名称
-            user.getLevelName();
+            scoInfo.setCoreStudentName(userDao.findUserLevelNameByScore(user.getScore()).getLevelName() + user.getUserName());
             scoInfo.setCoreStudentId("");
             scoInfo.setCoreStudentName(user.getUserName());
             scoDao.addScoInfo(scoInfo);
@@ -170,7 +169,17 @@ public class ScormServiceImpl implements ScormService {
         if (scorm.getInUse() == DictConstant.NO_USE) {
             return;
         }
+        scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
         request.setAttribute("scorm", scorm);
+    }
+
+    @Override
+    public void setScormSummarizeInfo(int scormId, HttpServletRequest request) {
+        ScormSummarize scormSummarize = new ScormSummarize();
+        scormSummarize.setLastVisitTime(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
+        scormSummarize.setUserId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        scormSummarize.setScormId(scormId);
+        summarizeDao.changeLastVisitTimeByScormIdAndUserId(scormSummarize);
     }
 
     @Override
@@ -228,8 +237,10 @@ public class ScormServiceImpl implements ScormService {
     public void changeScoInfoByScoId(ScoInfo scoInfo, int scormId) {
         //获取本次学习时间，分别加入课件总学习时间和这个SCO总学习时间
         String sessionTime = scoInfo.getCoreSessionTime();
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         if (!("".equals(sessionTime))) {
             scoInfo.setCoreTotalTime(DateUtil.getTotalTime(sessionTime, scoDao.getScoApiInfoByScoId(scoInfo.getScoId()).get(0).getCoreTotalTime()));
+            summarizeDao.changeTotalTimeByScormIdAndUserId(userId, scormId, DateUtil.getTotalTime(sessionTime, summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormId).getTotalTime()));
             scormDao.changeTotalTimeByScormId(scormId, DateUtil.getTotalTime(sessionTime, scormDao.findScormInfoByScormId(scormId).getTotalTime()));
         }
         //处理SCO的学习状态,带测试和不带测试
@@ -249,11 +260,10 @@ public class ScormServiceImpl implements ScormService {
         scoInfo = changeScoInfoFromRead(scoInfo);
         scoDao.changeScoInfoByScoId(scoInfo);
         //判断是否通过整个课程，并更新成绩
-        checkAllSco(scormId);
+        checkAllSco(scormId, userId);
     }
 
-    public void checkAllSco(int scormId) {
-        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+    public void checkAllSco(int scormId, int userId) {
         ScormSummarize scormSummarize = summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormId);
         if (scoDao.isAllScoClick(scormId, userId)) {
             //课件完成方式为浏览即可完成时,判断通过并处理
@@ -449,5 +459,14 @@ public class ScormServiceImpl implements ScormService {
         scormSummarize.setUserId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
         scormSummarize.setDiscussDate(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
         summarizeDao.discussScorm(scormSummarize);
+    }
+
+    @Override
+    public void getSummarizeInfo(int scormId, HttpServletRequest request) {
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        ScormSummarize scormSummarize = summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormId);
+        int[] splitTime = DateUtil.splitScormTime(scormSummarize.getTotalTime());
+        scormSummarize.setTotalTime(splitTime[0] + "小时" + splitTime[1] + "分钟" + splitTime[2] + "秒" + splitTime[3] + "毫秒");
+        request.setAttribute("summarize", scormSummarize);
     }
 }

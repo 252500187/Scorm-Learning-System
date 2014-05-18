@@ -8,6 +8,8 @@ public class ScormSummarize {
     private String discussDate;
     private String grade;
     private String completeDate;
+    private String totalTime;
+    private String lastVisitTime;
 
     private String userName;
     private String imgUrl;
@@ -18,6 +20,8 @@ public class ScormSummarize {
         grade = "";
         discussDate = "";
         completeDate = "";
+        totalTime = "";
+        lastVisitTime = "";
     }
 
     public int getUserId() {
@@ -90,5 +94,21 @@ public class ScormSummarize {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public String getTotalTime() {
+        return totalTime;
+    }
+
+    public void setTotalTime(String totalTime) {
+        this.totalTime = totalTime;
+    }
+
+    public String getLastVisitTime() {
+        return lastVisitTime;
+    }
+
+    public void setLastVisitTime(String lastVisitTime) {
+        this.lastVisitTime = lastVisitTime;
     }
 }

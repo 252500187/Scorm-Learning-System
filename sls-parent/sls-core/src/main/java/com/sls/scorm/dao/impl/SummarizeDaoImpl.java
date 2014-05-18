@@ -15,8 +15,8 @@ public class SummarizeDaoImpl extends PageDao implements SummarizeDao {
 
     @Override
     public void addScormSummarize(ScormSummarize scormSummarize) {
-        String sql = "INSERT INTO luss_scorm_summarize(user_id,scorm_id,score,discuss,grade,discuss_date,complete_date) " +
-                "VALUES(:userId, :scormId, :score, :discuss, :grade, :discussDate, :completeDate)";
+        String sql = "INSERT INTO luss_scorm_summarize(user_id,scorm_id,score,discuss,grade,discuss_date,complete_date,total_time,last_visit_time) " +
+                "VALUES(:userId, :scormId, :score, :discuss, :grade, :discussDate, :completeDate,:totalTime,:lastVisitTime)";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(scormSummarize));
     }
 
@@ -57,5 +57,17 @@ public class SummarizeDaoImpl extends PageDao implements SummarizeDao {
     public void discussScorm(ScormSummarize scormSummarize) {
         String sql = "UPDATE luss_scorm_summarize SET discuss=?, discuss_date=? WHERE scorm_id=? AND user_id=?";
         getJdbcTemplate().update(sql, scormSummarize.getDiscuss(), scormSummarize.getDiscussDate(), scormSummarize.getScormId(), scormSummarize.getUserId());
+    }
+
+    @Override
+    public void changeLastVisitTimeByScormIdAndUserId(ScormSummarize scormSummarize) {
+        String sql = "UPDATE luss_scorm_summarize SET last_visit_time=? WHERE scorm_id=? AND user_id=?";
+        getJdbcTemplate().update(sql, scormSummarize.getLastVisitTime(), scormSummarize.getScormId(), scormSummarize.getUserId());
+    }
+
+    @Override
+    public void changeTotalTimeByScormIdAndUserId(int userId, int scormId, String totalTime) {
+        String sql = "UPDATE luss_scorm_summarize SET total_time=? WHERE scorm_id=? AND user_id=?";
+        getJdbcTemplate().update(sql, totalTime, scormId, userId);
     }
 }
