@@ -465,6 +465,8 @@ public class ScormServiceImpl implements ScormService {
     public void getSummarizeInfo(int scormId, HttpServletRequest request) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         ScormSummarize scormSummarize = summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormId);
+        int[] splitTime = DateUtil.splitScormTime(scormSummarize.getTotalTime());
+        scormSummarize.setTotalTime(splitTime[0] + "小时" + splitTime[1] + "分钟" + splitTime[2] + "秒" + splitTime[3] + "毫秒");
         request.setAttribute("summarize", scormSummarize);
     }
 }

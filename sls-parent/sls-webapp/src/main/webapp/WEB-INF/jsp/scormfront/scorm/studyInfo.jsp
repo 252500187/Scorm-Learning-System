@@ -9,6 +9,7 @@
     <meta charset="utf-8"/>
     <title>SLS | ScormTree</title>
     <%@include file="../../includes/common.jsp" %>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/metronic/assets/admin/pages/css/profile.css"/>"/>
     <link rel="stylesheet" type="text/css"
           href="<c:url value="/js/common/zTree-v3.5.14/css/zTreeStyle/zTreeStyle.css"/>"/>
     <script src="<c:url value="/js/common/zTree-v3.5.14/js/jquery.ztree.all-3.5.min.js"/>"
@@ -36,9 +37,31 @@
 
                                         <div class="form-group profile-info">
                                             <ul class="list-inline" style="width: 250px;">
-                                                <c:if test="${}">
-                                                <li>完成日期:</li>
-                                                <li></li>
+                                                <c:if test="${summarize.completeDate!=''}">
+                                                    <li>完成时间:</li>
+                                                    <li>${summarize.completeDate}</li><br/>
+                                                </c:if>
+                                                <c:if test="${summarize.grade!=''}">
+                                                    <li>课件成绩:</li>
+                                                    <li>${summarize.grade}</li><br/>
+                                                </c:if>
+                                                <c:if test="${summarize.totalTime!=''}">
+                                                    <li>学习时间:</li>
+                                                    <li>${summarize.totalTime}</li><br/>
+                                                </c:if>
+                                                <c:if test="${summarize.lastVisitTime!=''}">
+                                                    <li>上次学习时间:</li>
+                                                    <li>${summarize.lastVisitTime}</li><br/>
+                                                </c:if>
+                                                <br/>
+                                                <c:if test="${summarize.score!=''}">
+                                                    <li>评分:</li>
+                                                    <li>${summarize.score}分</li><br/>
+                                                </c:if>
+                                                <c:if test="${summarize.discuss!=''}">
+                                                    <li>评论:</li>
+                                                    <li>${summarize.discussDate}&nbsp;${summarize.discuss}</li>
+                                                </c:if>
                                             </ul>
                                         </div>
                                     </div>
@@ -53,7 +76,7 @@
                             <ul class="nav nav-tabs">
                                 <li class="active">
                                     <a href="#tab_1" data-toggle="tab">
-                                        课件结构
+                                        章节学习情况
                                     </a>
                                 </li>
                             </ul>
