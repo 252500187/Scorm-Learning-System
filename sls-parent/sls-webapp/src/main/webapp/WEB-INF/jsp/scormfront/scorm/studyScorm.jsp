@@ -283,6 +283,7 @@
     }
 
     function takeNote() {
+        if("" == ($("#takeNotes").val().trim())) {alert("笔记不能为空")}
         $.ajax({
             url: basePath + "user/scorm/takeNote",
             data: {
