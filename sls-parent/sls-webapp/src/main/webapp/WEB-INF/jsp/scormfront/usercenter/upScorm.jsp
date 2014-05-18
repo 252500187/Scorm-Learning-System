@@ -143,6 +143,7 @@
         Metronic.init();
         Layout.init();
         if ("${result}" != "") {
+            parent.$(".modal-title").html("提示");
             parent.$("#alertMessage").html("${result}");
             parent.$("#alertModel").modal("show");
         }
