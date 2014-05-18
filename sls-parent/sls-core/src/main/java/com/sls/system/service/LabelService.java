@@ -18,4 +18,14 @@ public interface LabelService {
     void editScormLabelList(String scormLabelList,int scormId);
 
     Page<Label> getAllLabelPageList(PageParameter pageParameter, Label label);
+
+    boolean checkRepeatLabelName(String labelName, String oldLabelName);
+
+    void addLabel(Label label);
+
+    void findLabelById(String labelId, HttpServletRequest request);
+
+    void editLabel(Label label);
+
+    void delLabel(String labelId);
 }

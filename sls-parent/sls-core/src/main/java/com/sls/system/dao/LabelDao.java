@@ -20,4 +20,14 @@ public interface LabelDao {
     void addScormLabel(Label label);
 
     Page<Label> getAllLabelPageList(PageParameter pageParameter, Label label);
+
+    boolean checkRepeatLabelName(String labelName);
+
+    int addLabel(Label label);
+
+    Label findLabelById(String labelId);
+
+    void editLabel(Label label);
+
+    void delLabelByLabelId(String labelId);
 }

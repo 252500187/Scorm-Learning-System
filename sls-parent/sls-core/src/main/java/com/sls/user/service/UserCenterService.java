@@ -8,4 +8,8 @@ public interface UserCenterService {
     void toUserInfo(HttpServletRequest request);
 
     void getAllRegisterScormInfo(HttpServletRequest request);
+
+    void getAllCollectScormInfo(HttpServletRequest request);
+
+    void cancelCollect(String scormId);
 }

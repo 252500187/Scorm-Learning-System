@@ -133,4 +133,10 @@ public class UserDaoImpl extends PageDao implements UserDao {
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(user));
 
     }
+
+    @Override
+    public void cancelCollectByUserIdAndScormId(int userId, String scormId) {
+        String sql = "DELETE FROM luss_user_collect WHERE user_id = ? AND scorm_id = ?";
+        getJdbcTemplate().update(sql, userId, scormId);
+    }
 }

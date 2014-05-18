@@ -48,10 +48,10 @@
                                                         课件名称:&nbsp;${scormInfo.scormName}</h4>
                                                     <h4 style="margin-top:0px;padding-top:3px">状态:进行中</h4>
                                                     <a class="mix-link" onclick="viewMore('${scormInfo.scormId}')">
-                                                        <i class="fa fa-search"></i>
+                                                        <i class="fa fa-search"></i>&nbsp;<span class="title">课件详情</span>
                                                     </a>
                                                     <a class="mix-preview" onclick="study('${scormInfo.scormId}')">
-                                                        <i class="fa fa-file"></i>
+                                                        <i class="fa fa-file"></i>&nbsp;<span class="title">开始学习</span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -74,7 +74,7 @@
                                                         完成时间:&nbsp;${scormInfo.completeDate}</h4>
                                                     <a class="mix-link" onclick="viewMore('${scormInfo.scormId}')"
                                                        target="_blank">
-                                                        <i class="fa fa-search"></i>
+                                                        <i class="fa fa-search"></i>&nbsp;<span class="title">课件详情</span>
                                                     </a></span>
 
                                                 </div>

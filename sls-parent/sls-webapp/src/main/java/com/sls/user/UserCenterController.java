@@ -103,8 +103,15 @@ public class UserCenterController {
 
     //个人中心  已收藏课件
     @RequestMapping(value = "collectScormDo", method = {RequestMethod.GET})
-    public String collectScormDo() {
+    public String collectScormDo(HttpServletRequest request) {
+        userCenterService.getAllCollectScormInfo(request);
         return "scormfront/usercenter/myscorm/collectScorm";
+    }
+
+    @RequestMapping(value = "cancelCollect", method = {RequestMethod.POST})
+    @ResponseBody
+    public void cancelCollect(@RequestParam("scormId") String scormId) {
+        userCenterService.cancelCollect(scormId);
     }
 
     //个人中心  笔记本

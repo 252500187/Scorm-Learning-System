@@ -76,4 +76,30 @@ public class LabelServiceImpl implements LabelService {
     public Page<Label> getAllLabelPageList(PageParameter pageParameter, Label label) {
         return labelDao.getAllLabelPageList(pageParameter, label);
     }
+
+    @Override
+    public boolean checkRepeatLabelName(String labelName, String oldLabelName) {
+        Boolean hasLabelName = labelDao.checkRepeatLabelName(labelName);
+        return !(hasLabelName && !oldLabelName.equals(labelName));
+    }
+
+    @Override
+    public void addLabel(Label label) {
+        labelDao.addLabel(label);
+    }
+
+    @Override
+    public void findLabelById(String labelId, HttpServletRequest request) {
+        request.setAttribute("label",labelDao.findLabelById(labelId));
+    }
+
+    @Override
+    public void editLabel(Label label) {
+        labelDao.editLabel(label);
+    }
+
+    @Override
+    public void delLabel(String labelId) {
+        labelDao.delLabelByLabelId(labelId);
+    }
 }

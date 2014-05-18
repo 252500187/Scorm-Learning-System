@@ -13,6 +13,8 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository("scormDao")
 public class ScormDaoImpl extends PageDao implements ScormDao {
 
@@ -92,5 +94,17 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
     public void updateScormScoreByScormId(int scormId) {
         String sql = "UPDATE ss_scorm SET score=(SELECT AVG(score) FROM luss_scorm_summarize WHERE score!='' AND scorm_id=?) WHERE scorm_id=?";
         getJdbcTemplate().update(sql, scormId, scormId);
+    }
+
+    @Override
+    public List<Scorm> getAllRegisterScormInfoByUserId(int userId) {
+        String sql = "SELECT b.* , a.`complete_date` FROM luss_scorm_summarize a, ss_scorm b WHERE a.`scorm_id`=b.`scorm_id` AND a.`user_id` = ? ";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId);
+    }
+
+    @Override
+    public List<Scorm> getAllCollectScormInfoByUserId(int userId) {
+        String sql = "SELECT b.* , a.`collect_date` FROM luss_user_collect a, ss_scorm b WHERE a.`scorm_id`=b.`scorm_id` AND a.`user_id` = ?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId);
     }
 }

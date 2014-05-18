@@ -145,7 +145,25 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <button class="btn blue" data-dismiss="modal">确认</button>
+                <button id="alertButton" class="btn blue" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="alertPrompt" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p id="alertPromptMessage">
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button id="promptButton1" class="btn red" data-dismiss="modal">取消</button>
+                <button id="promptButton2" class="btn blue" data-dismiss="modal">确认</button>
             </div>
         </div>
     </div>

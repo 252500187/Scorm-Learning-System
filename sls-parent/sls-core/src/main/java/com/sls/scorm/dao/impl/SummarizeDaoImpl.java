@@ -52,10 +52,4 @@ public class SummarizeDaoImpl extends PageDao implements SummarizeDao {
                 + "WHERE summarize.user_id = userinfo.user_id AND scorm_id = ? ORDER BY discuss_date DESC";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<ScormSummarize>(ScormSummarize.class), scormId);
     }
-
-    @Override
-    public List<Scorm> getAllRegisterScormInfoByUserId(int userId) {
-        String sql = "SELECT b.* , a.`complete_date` FROM luss_scorm_summarize a, ss_scorm b WHERE a.`scorm_id`=b.`scorm_id` AND a.`user_id` = ? ";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId);
-    }
 }
