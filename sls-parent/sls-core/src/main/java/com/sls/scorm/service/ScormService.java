@@ -57,7 +57,7 @@ public interface ScormService {
 
     void evaluateScorm(ScormSummarize scormSummarize);
 
-    void getStudyState(int scormId, HttpServletRequest request);
+    void getDiscusses(int scormId, HttpServletRequest request);
 
     void discussScorm(ScormSummarize scormSummarize);
 }

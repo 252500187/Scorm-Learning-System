@@ -34,8 +34,9 @@ public class DealScormController {
     }
 
     @RequestMapping(value = "userStudyInfo", method = {RequestMethod.GET})
-    public String userStudyInfo(@RequestParam("scormId") String scormId) {
-        //todo tooo
-        return "";
+    public String userStudyInfo(@RequestParam("scormId") String scormId, HttpServletRequest request) {
+        scormService.studyScormZtree(Integer.parseInt(scormId), request);
+        scormService.studyScorm(Integer.parseInt(scormId), request);
+        return "scormfront/scorm/studyInfo";
     }
 }

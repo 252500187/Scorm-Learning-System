@@ -252,7 +252,8 @@
     }
 
     function studyInfo(scormId) {
-        parent.window.open(basePath + "user/dealScorm/userStudyInfo?scormId=" + scormId);
+        parent.$(".modal-title").html("学习情况");
+        window.location.href = basePath + "user/dealScorm/userStudyInfo?scormId=" + scormId;
     }
 
     function toMarkScore() {

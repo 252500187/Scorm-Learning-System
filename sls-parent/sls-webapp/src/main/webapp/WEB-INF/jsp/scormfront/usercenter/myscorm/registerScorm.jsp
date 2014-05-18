@@ -112,7 +112,9 @@
     }
 
     function studyInfo(scormId){
-        parent.window.open(basePath + "user/dealScorm/userStudyInfo?scormId=" + scormId);
+        parent.$(".modal-title").html("学习情况");
+        parent.$('#alertInfo').modal('show');
+        parent.$("#info").attr("src", basePath + "user/dealScorm/userStudyInfo?scormId=" + scormId);
     }
 
     function study(scormId) {
@@ -120,7 +122,8 @@
     }
 
     function scormInfo(scormId) {
-        parent.$('#alertScormInfo').modal('show');
-        parent.$("#scormInfo").attr("src", "tourist/scormInfo?scormId=" + scormId + "&type=-1");
+        parent.$("#alertInfo .modal-title").html("课件信息");
+        parent.$('#alertInfo').modal('show');
+        parent.$("#info").attr("src", "tourist/scormInfo?scormId=" + scormId + "&type=-1");
     }
 </script>

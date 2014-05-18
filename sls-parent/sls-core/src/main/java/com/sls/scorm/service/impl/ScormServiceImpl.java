@@ -149,7 +149,7 @@ public class ScormServiceImpl implements ScormService {
             studyNote1.setDate(studyNote1.getDate().substring(0, 10));
         }
         request.setAttribute("noteList", studyNoteList.size() == 0 ? new LinkedList<StudyNote>() : studyNoteList);
-        request.setAttribute("userName",user.getUserName());
+        request.setAttribute("userName", user.getUserName());
     }
 
     @Override
@@ -437,8 +437,11 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void getStudyState(int scormId, HttpServletRequest request) {
-        //todo 课件信息
+    public void getDiscusses(int scormId, HttpServletRequest request) {
+        request.setAttribute("allComments", summarizeDao.getAllCommentsByScormId(scormId));
+        if (!("").equals(LoginUserUtil.getLoginName())) {
+            request.setAttribute("userId", userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        }
     }
 
     @Override

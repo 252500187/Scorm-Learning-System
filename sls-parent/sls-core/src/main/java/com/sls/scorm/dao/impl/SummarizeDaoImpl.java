@@ -49,7 +49,7 @@ public class SummarizeDaoImpl extends PageDao implements SummarizeDao {
     public List<ScormSummarize> getAllCommentsByScormId(int scormId) {
         String sql = "SELECT summarize.*, userinfo.* "
                 + "FROM luss_scorm_summarize summarize , us_user_info userinfo "
-                + "WHERE summarize.user_id = userinfo.user_id AND scorm_id = ? ORDER BY discuss_date DESC";
+                + "WHERE summarize.user_id = userinfo.user_id AND scorm_id = ? AND summarize.discuss!='' ORDER BY discuss_date DESC";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<ScormSummarize>(ScormSummarize.class), scormId);
     }
 

@@ -132,7 +132,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">课件信息</h4>
+                <h4 class="modal-title"></h4>
             </div>
             <div>
                 <iframe id="scormInfo" style="width:100%; height:500px;border:1px;" frameborder=no allowfullscreen>
@@ -147,12 +147,9 @@
 </html>
 <script type="text/javascript">
     function showScormInfo(scormId) {
-        $('#alertModel').modal('show');
+        $("#alertModel").modal('show');
+        $(".modal-title").html("课件信息");
         $("#scormInfo").attr("src", "tourist/scormInfo?scormId=" + scormId + "&type=-1");
-    }
-
-    function toScormInfo(scormId) {
-        window.location.href = "tourist/scormInfo?scormId=" + scormId;
     }
 
     $(function () {
