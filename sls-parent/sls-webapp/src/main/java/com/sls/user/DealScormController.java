@@ -32,4 +32,10 @@ public class DealScormController {
     public void discussScorm(ScormSummarize scormSummarize) {
         scormService.discussScorm(scormSummarize);
     }
+
+    @RequestMapping(value = "userStudyInfo", method = {RequestMethod.GET})
+    public String userStudyInfo(@RequestParam("scormId") String scormId) {
+        //todo tooo
+        return "";
+    }
 }

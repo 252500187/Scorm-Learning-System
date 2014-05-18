@@ -251,8 +251,8 @@
         })
     }
 
-    function studyInfo() {
-
+    function studyInfo(scormId) {
+        parent.window.open(basePath + "user/dealScorm/userStudyInfo?scormId=" + scormId);
     }
 
     function toMarkScore() {
