@@ -1,6 +1,7 @@
 package com.sls.user;
 
 import com.sls.scorm.entity.ScoInfo;
+import com.sls.scorm.entity.ScormSummarize;
 import com.sls.scorm.entity.StudyNote;
 import com.sls.scorm.service.ScormService;
 import com.sls.util.DictConstant;

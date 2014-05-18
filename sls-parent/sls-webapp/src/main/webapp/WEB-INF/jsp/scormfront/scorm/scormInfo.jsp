@@ -32,28 +32,30 @@
                                     <div class="form-body">
                                         <h3 class="form-section">
                                             <img src="${scormInfo.showRecommendLevel}" width="25px" height="25px">
-                                            ${scormInfo.scormName}
                                             <c:if test="${complete}">
-                                                <a class="btn default m-icon" style="color: #aaa">
-                                                    已完成
-                                                </a>
+                                                (已完成)
                                             </c:if>
-                                            <c:if test="${study}">
-                                                <a class="btn green m-icon" onclick="return false">
-                                                    去学习
-                                                </a>
-                                            </c:if>
-                                            <c:if test="${register}">
-                                                <a class="btn blue" onclick="registerScorm(${scormInfo.scormId})">
-                                                    注册
-                                                </a>
-                                            </c:if>
-                                            <c:if test="${collect}">
-                                                <a class="btn blue" onclick="collectScorm(${scormInfo.scormId})">
-                                                    收藏
-                                                </a>
-                                            </c:if>
+                                            ${scormInfo.scormName}
                                         </h3>
+                                        <c:if test="${study}">
+                                            <a class="btn green m-icon" onclick="study('${scormInfo.scormId}')">
+                                                学习
+                                            </a>
+                                            <a class="btn blue" onclick="studyInfo('${scormInfo.scormId}')">
+                                                学习情况
+                                            </a>
+                                        </c:if>
+                                        <c:if test="${register}">
+                                            <a class="btn blue" onclick="registerScorm('${scormInfo.scormId}')">
+                                                注册
+                                            </a>
+                                        </c:if>
+                                        <c:if test="${collect}">
+                                            <a class="btn blue" onclick="collectScorm('${scormInfo.scormId}')">
+                                                收藏
+                                            </a>
+                                        </c:if>
+                                        <br/><br/>
 
                                         <div class="form-group profile-info">
                                             <ul class="list-inline" style="width: 250px;">
@@ -92,24 +94,33 @@
                                         评论
                                     </a>
                                 </li>
-                                <c:if test="${registerScorm}">
-                                    <li>
-                                        <a href="#tab_3" data-toggle="tab">
-                                            进度
-                                        </a>
-                                    </li>
-                                </c:if>
                             </ul>
-                            <div class="tab-content" style="min-height: 220px">
+                            <div class="tab-content" style="min-height: 200px">
                                 <div class="tab-pane active" id="tab_1">
-                                    <div class="scroller" style="height: 200px;" data-always-visible="1"
+                                    <div class="scroller" style="height: 195px;" data-always-visible="1"
                                          data-rail-visible1="1">
                                         <ul class="ztreeStyle" id="chapterList"></ul>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tab_2">
-                                    <div class="scroller" style="height: 200px;" data-always-visible="1"
+                                    <div class="scroller" style="height: 195px;" data-always-visible="1"
                                          data-rail-visible1="1">
+                                        <c:if test="${!register}">
+
+                                            <div class="chat-form">
+                                                <div class="input-cont">
+                                                    <input class="form-control" type="text" id="discuss"
+                                                           placeholder="说点什么？"/>
+                                                </div>
+                                                <div class="btn-cont">
+                                                    <span class="arrow"></span>
+                                                    <a onclick="changeDiscuss()" class="btn blue icn-only">
+                                                        <i class="fa fa-check icon-white"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                        </c:if>
                                         <ul class="chats">
                                             <c:forEach var="comment" items="${allComments}">
                                                 <c:if test="${comment.userId!=userId}">
@@ -131,9 +142,6 @@
                                             </c:forEach>
                                         </ul>
                                     </div>
-                                </div>
-                                <div class="tab-pane" id="tab_3">
-
                                 </div>
                             </div>
                         </div>
@@ -218,6 +226,33 @@
             },
             error: doError
         })
+    }
+
+    function study(scormId) {
+        parent.window.open(basePath + "user/scorm/studyScorm?scormId=" + scormId);
+    }
+
+    function changeDiscuss() {
+        if ($("#discuss").val().trim() == "") {
+            return;
+        }
+        $.ajax({
+            url: basePath + "user/dealScorm/discussScorm",
+            dataType: "json",
+            data: {
+                scormId: "${scormInfo.scormId}",
+                discuss: $("#discuss").val()
+            },
+            type: "post",
+            success: function () {
+                window.location.reload();
+            },
+            error: doError
+        })
+    }
+
+    function studyInfo() {
+
     }
 
     function toMarkScore() {

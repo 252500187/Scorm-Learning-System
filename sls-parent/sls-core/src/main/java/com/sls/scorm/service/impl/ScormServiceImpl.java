@@ -338,7 +338,9 @@ public class ScormServiceImpl implements ScormService {
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
         request.setAttribute("scoList", scoList);
         request.setAttribute("allComments", summarizeDao.getAllCommentsByScormId(scormId));
-        request.setAttribute("userId", userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        if (!("").equals(LoginUserUtil.getLoginName())) {
+            request.setAttribute("userId", userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        }
     }
 
     @Override
@@ -355,7 +357,7 @@ public class ScormServiceImpl implements ScormService {
             if (scormDao.checkNotHasRegister(scormId, userId)) {
                 register = true;
             }
-            if (register == true) {
+            if (register != true) {
                 study = true;
             }
             if (summarizeDao.isCompleteScorm(scormId, userId)) {
@@ -435,5 +437,12 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void getStudyState(int scormId, HttpServletRequest request) {
         //todo 课件信息
+    }
+
+    @Override
+    public void discussScorm(ScormSummarize scormSummarize) {
+        scormSummarize.setUserId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        scormSummarize.setDiscussDate(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
+        summarizeDao.discussScorm(scormSummarize);
     }
 }

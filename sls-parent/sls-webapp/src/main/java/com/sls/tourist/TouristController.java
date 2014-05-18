@@ -40,7 +40,6 @@ public class TouristController {
     public String scormInfo(@RequestParam("scormId") String scormId, HttpServletRequest request) {
         scormService.getScormInfo(Integer.parseInt(scormId), request);
         scormService.getScormOperate(Integer.parseInt(scormId), request);
-        scormService.getStudyState(Integer.parseInt(scormId), request);
         return "scormfront/scorm/scormInfo";
     }
 }
