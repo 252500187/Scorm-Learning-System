@@ -19,4 +19,8 @@ public interface SummarizeDao {
     List<ScormSummarize> getAllCommentsByScormId(int scormId);
 
     void discussScorm(ScormSummarize scormSummarize);
+
+    void changeLastVisitTimeByScormIdAndUserId(ScormSummarize scormSummarize);
+
+    void changeTotalTimeByScormIdAndUserId(int userId, int scormId, String totalTime);
 }

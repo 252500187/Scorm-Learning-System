@@ -23,6 +23,8 @@ public interface ScormService {
 
     void studyScorm(int scormId, HttpServletRequest request);
 
+    void setScormSummarizeInfo(int scormId, HttpServletRequest request);
+
     void studyScormZtree(int scormId, HttpServletRequest request);
 
     void changeScoState(int scormId, int scoId);
@@ -60,4 +62,6 @@ public interface ScormService {
     void getDiscusses(int scormId, HttpServletRequest request);
 
     void discussScorm(ScormSummarize scormSummarize);
+
+    void getSummarizeInfo(int scormId, HttpServletRequest request);
 }

@@ -14,22 +14,63 @@
     <script src="<c:url value="/js/common/zTree-v3.5.14/js/jquery.ztree.all-3.5.min.js"/>"
             type="text/javascript"></script>
 </head>
-<body class="page-header-fixed">
-<%@include file="../index/navigationMenu.jsp" %>
+<body class="page-boxed page-header-fixed">
 <div class="page-container">
-    <div class="page-content">
-        <div class="row">
-            名称:${scorm.scormName}
-            图片: ${scorm.imgPath}
-            描述: ${scorm.description}
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-2" style="float: left">
+                        <img id="scormImg" src="${scorm.imgPath}" class="img-polaroid"
+                             style="max-width: 150px;max-height: 200px" alt=""/>
+                    </div>
+                    <div class="col-md-10" style="float: left">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="portlet-body form">
+                                    <div class="form-body">
+                                        <h3 class="form-section">
+                                            <img src="${scorm.showRecommendLevel}" width="25px" height="25px">
+                                            ${scorm.scormName}
+                                        </h3>
 
-            <div id="scoTree" class="ztree"
-                 style="width:100%; height:100%; border: 0px solid; float: left; overflow-x:auto; overflow-y:auto">
+                                        <div class="form-group profile-info">
+                                            <ul class="list-inline" style="width: 250px;">
+                                                <c:if test="${}">
+                                                <li>完成日期:</li>
+                                                <li></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tabbable tabbable-custom tabbable-custom-profile">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#tab_1" data-toggle="tab">
+                                        课件结构
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" style="min-height: 300px">
+                                <div class="tab-pane active" id="tab_1">
+                                    <div id="scoTree" class="ztree"
+                                         style="width:98%; height:100%; border: 0px solid; float: left; overflow-x:auto; overflow-y:auto">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<%@include file="../index/footer.jsp" %>
 </body>
 </html>
 <script>
@@ -53,18 +94,12 @@
         <c:forEach var="scoNode" items="${scoList}">
         {id: "${scoNode.treeId}",
             pId: "${scoNode.treeParentId}",
-            <c:if test="${scoNode.lastVisit==isLast}">
-            name: "(${scoNode.showStudyState})${scoNode.title}(上次学到这了)",
-            </c:if>
-            <c:if test="${scoNode.lastVisit!=isLast}">
-            name: "(${scoNode.showStudyState})${scoNode.title}",
-            </c:if>
-            src: "${scoNode.url}",
-            scoId: "${scoNode.scoId}"},
+            name: "(${scoNode.showStudyState})${scoNode.title} <c:if test="${scoNode.lastVisit==isLast}">(上次学到这了)</c:if>"
+        },
         </c:forEach>
     ];
 
     $(function () {
-        $.fn.zTree.init($("#scoTree"), settingMenu, zNodes);
+        $.fn.zTree.init($("#scoTree"), settingMenu, zNodes).expandAll(true);
     });
 </script>
