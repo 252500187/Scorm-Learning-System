@@ -328,45 +328,43 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void getScormInfoAndChapterInfo(int scormId, HttpServletRequest request) {
+    public void getScormInfo(int scormId, HttpServletRequest request) {
         Scorm scormInfo = scormDao.findScormInfoByScormId(scormId);
         if (scormInfo.getInUse() == DictConstant.NO_USE) {
             return;
         }
+        scormInfo.setShowRecommendLevel(dictService.changeDictCodeToValue(scormInfo.getRecommendLevel(), DictConstant.RECOMMEND));
         request.setAttribute("scormInfo", scormInfo);
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
-        for (Sco sco : scoList) {
-            sco.setShowStudyState(dictService.changeDictCodeToValue(sco.getStudyState(), DictConstant.STUDY_STATE));
-        }
         request.setAttribute("scoList", scoList);
-        request.setAttribute("isLast", DictConstant.LAST_VISIT);
-    }
-
-    @Override
-    public void getAllCommentsByScormId(int scormId, HttpServletRequest request) {
         request.setAttribute("allComments", summarizeDao.getAllCommentsByScormId(scormId));
+        request.setAttribute("userId", userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
     }
 
     @Override
-    public void judgeDemonstrationStatus(int scormId, HttpServletRequest request) {
-        boolean collectScorm = true;
-        boolean registerScorm = true;
-        boolean complete = true;
-        boolean isTourist = "".equals(LoginUserUtil.getLoginName());
-        if (!isTourist) {
+    public void getScormOperate(int scormId, HttpServletRequest request) {
+        boolean collect = false;
+        boolean register = false;
+        boolean study = false;
+        boolean complete = false;
+        if (!"".equals(LoginUserUtil.getLoginName())) {
             int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
             if (noteCollectDao.checkNotHasCollected(scormId, userId)) {
-                collectScorm = false;
+                collect = true;
             }
             if (scormDao.checkNotHasRegister(scormId, userId)) {
-                registerScorm = false;
+                register = true;
             }
-            if (summarizeDao.getCompleteInfo(scormId, userId)) {
-                complete = false;
+            if (register == true) {
+                study = true;
+            }
+            if (summarizeDao.isCompleteScorm(scormId, userId)) {
+                complete = true;
             }
         }
-        request.setAttribute("collectScorm", collectScorm);
-        request.setAttribute("registerScorm", registerScorm);
+        request.setAttribute("collect", collect);
+        request.setAttribute("register", register);
+        request.setAttribute("study", study);
         request.setAttribute("complete", complete);
     }
 
@@ -432,5 +430,10 @@ public class ScormServiceImpl implements ScormService {
         scormSummarize.setUserId(userId);
         summarizeDao.changeSummarizeScoreByUserIdAndScormId(scormSummarize);
         scormDao.updateScormScoreByScormId(scormSummarize.getScormId());
+    }
+
+    @Override
+    public void getStudyState(int scormId, HttpServletRequest request) {
+        //todo 课件信息
     }
 }

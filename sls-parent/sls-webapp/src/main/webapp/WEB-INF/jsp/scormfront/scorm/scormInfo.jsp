@@ -33,22 +33,25 @@
                                         <h3 class="form-section">
                                             <img src="${scormInfo.showRecommendLevel}" width="25px" height="25px">
                                             ${scormInfo.scormName}
-                                            <c:if test="${registerScorm && !complete}">
-                                                <a class="btn green m-icon" onclick="return false">
-                                                    去学习<i class="m-icon-swapright m-icon-white"></i>
-                                                </a>
-                                            </c:if>
-                                            <c:if test="${registerScorm && complete}">
-                                                <a class="btn default m-icon" onclick="return false"
-                                                   style="color: #aaa">
+                                            <c:if test="${complete}">
+                                                <a class="btn default m-icon" style="color: #aaa">
                                                     已完成
                                                 </a>
                                             </c:if>
-                                            <c:if test="${!registerScorm}">
-                                                <a class="btn blue" onclick="registerScorm(${scormInfo.scormId})">注册</a>
+                                            <c:if test="${study}">
+                                                <a class="btn green m-icon" onclick="return false">
+                                                    去学习
+                                                </a>
                                             </c:if>
-                                            <c:if test="${false == collectScorm}">
-                                                <a class="btn blue" onclick="collectScorm(${scormInfo.scormId})">收藏</a>
+                                            <c:if test="${register}">
+                                                <a class="btn blue" onclick="registerScorm(${scormInfo.scormId})">
+                                                    注册
+                                                </a>
+                                            </c:if>
+                                            <c:if test="${collect}">
+                                                <a class="btn blue" onclick="collectScorm(${scormInfo.scormId})">
+                                                    收藏
+                                                </a>
                                             </c:if>
                                         </h3>
 
@@ -80,93 +83,57 @@
                         <div class="tabbable tabbable-custom tabbable-custom-profile">
                             <ul class="nav nav-tabs">
                                 <li class="active">
-                                    <a href="#tab_1_11" data-toggle="tab">
-                                        章节列表
+                                    <a href="#tab_1" data-toggle="tab">
+                                        章节
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#tab_1_22" data-toggle="tab" id="commentsTab">
+                                    <a href="#tab_2" data-toggle="tab">
                                         评论
                                     </a>
                                 </li>
                                 <c:if test="${registerScorm}">
                                     <li>
-                                        <a href="#tab_1_33" data-toggle="tab" id="scheduleTab">
+                                        <a href="#tab_3" data-toggle="tab">
                                             进度
                                         </a>
                                     </li>
                                 </c:if>
                             </ul>
-                            <div class="tab-content" style="min-height: 200px">
-                                <div class="tab-pane active" id="tab_1_11">
-                                    <div class="portlet-body">
+                            <div class="tab-content" style="min-height: 220px">
+                                <div class="tab-pane active" id="tab_1">
+                                    <div class="scroller" style="height: 200px;" data-always-visible="1"
+                                         data-rail-visible1="1">
                                         <ul class="ztreeStyle" id="chapterList"></ul>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="tab_1_22">
-                                    <div class="input-group">
-                                        <input id="markScore" name="markScore" class="form-control" type="text"
-                                               placeholder="输入评论 ..." value="">
-                                        <span class="input-group-addon btn blue">评论</span>
+                                <div class="tab-pane" id="tab_2">
+                                    <div class="scroller" style="height: 200px;" data-always-visible="1"
+                                         data-rail-visible1="1">
+                                        <ul class="chats">
+                                            <c:forEach var="comment" items="${allComments}">
+                                                <c:if test="${comment.userId!=userId}">
+                                                    <li class="in">
+                                                </c:if>
+                                                <c:if test="${comment.userId==userId}">
+                                                    <li class="out">
+                                                </c:if>
+                                                <img class="avatar img-responsive" alt=""
+                                                     src="${comment.imgUrl}"/>
+
+                                                <div class="message">
+                                                    <span class="arrow"></span>
+                                                    <a class="name">${comment.userName}</a>
+                                                    <span class="datetime">${comment.discussDate}</span>
+                                                    <span class="body">${comment.discuss}</span>
+                                                </div>
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
                                     </div>
-                                    <br/>
-                                    <ul class="feeds">
-                                        <c:forEach var="comment" items="${allComments}">
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col2">
-                                                            <div class="desc">
-                                                                    ${comment.discuss}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2" style="margin-left: -150px">
-                                                    <div class="date">
-                                                            ${comment.discussDate}
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date" style="color: #000">
-                                                            ${comment.loginName}
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </c:forEach>
-                                    </ul>
                                 </div>
-                                <div class="tab-pane" id="tab_1_33">
-                                    <ul class="media-list">
-                                        <li class="media">
-                                            <img class="pull-left media-object"
-                                                 style="max-width: 64px;max-height: 64px"
-                                                 src="${scormInfo.imgPath}" alt="管理员推荐">
+                                <div class="tab-pane" id="tab_3">
 
-                                            <div class="media-body">
-                                                <div><p class="md-height">注册日期：</p>
-                                                </div>
-                                                <div class="media">
-                                                    <div class="media-body">
-                                                        <p class="md-height">您还没有注册</p></div>
-                                                </div>
-                                                <div class="media">
-                                                    <h4 class="pull-left" style="display: block">评分:</h4>
-
-                                                    <div class="media-body">
-                                                        <ul class="list-inline">
-                                                            <li><i class="fa fa-star"></i><i
-                                                                    class="fa fa-star"></i><i
-                                                                    class="fa fa-star"></i><i
-                                                                    class="fa fa-star"></i><i
-                                                                    class="fa fa-star"></i></li>
-                                                            <li><span class="btn blue">评论</span></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>

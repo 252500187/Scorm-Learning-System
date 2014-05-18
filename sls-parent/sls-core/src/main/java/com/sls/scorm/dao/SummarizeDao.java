@@ -9,7 +9,7 @@ public interface SummarizeDao {
 
     void addScormSummarize(ScormSummarize scormSummarize);
 
-    boolean getCompleteInfo(int scormId, int userId);
+    boolean isCompleteScorm(int scormId, int userId);
 
     void changeSummarizeScoreByUserIdAndScormId(ScormSummarize scormSummarize);
 

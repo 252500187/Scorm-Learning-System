@@ -31,11 +31,9 @@ public interface ScormService {
 
     void changeScoInfoByScoId(ScoInfo scoInfo, int scormId);
 
-    void getScormInfoAndChapterInfo(int scormId, HttpServletRequest request);
+    void getScormInfo(int scormId, HttpServletRequest request);
 
-    void getAllCommentsByScormId(int scormId, HttpServletRequest request);
-
-    void judgeDemonstrationStatus(int scormId, HttpServletRequest request);
+    void getScormOperate(int scormId, HttpServletRequest request);
 
     String collectScorm(int scormId, HttpServletRequest request);
 
@@ -55,7 +53,9 @@ public interface ScormService {
 
     String changeScormRecommend(int scormId, int recommend);
 
-    void changScormCompleteWay(int scormId,int completeWay);
+    void changScormCompleteWay(int scormId, int completeWay);
 
     void evaluateScorm(ScormSummarize scormSummarize);
+
+    void getStudyState(int scormId, HttpServletRequest request);
 }

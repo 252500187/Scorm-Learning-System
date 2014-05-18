@@ -39,8 +39,8 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
 
     @Override
     public boolean checkNotHasRegister(int scormId, int userId) {
-        String sql = "SELECT * FROM luss_scorm_sco WHERE scorm_id = " + scormId + " AND user_id = ? ";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Sco>(Sco.class), userId).isEmpty();
+        String sql = "SELECT * FROM luss_scorm_sco WHERE scorm_id = ? AND user_id = ? ";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Sco>(Sco.class), scormId, userId).isEmpty();
     }
 
     @Override

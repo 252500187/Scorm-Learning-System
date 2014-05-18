@@ -21,9 +21,9 @@ public class SummarizeDaoImpl extends PageDao implements SummarizeDao {
     }
 
     @Override
-    public boolean getCompleteInfo(int scormId, int userId) {
-        String sql = "SELECT * FROM luss_scorm_summarize WHERE complete_date <> '' AND scorm_id = ? AND user_id = ? ";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), scormId, userId).isEmpty();
+    public boolean isCompleteScorm(int scormId, int userId) {
+        String sql = "SELECT * FROM luss_scorm_summarize WHERE complete_date != '' AND scorm_id = ? AND user_id = ? ";
+        return !getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), scormId, userId).isEmpty();
     }
 
     @Override
@@ -47,9 +47,9 @@ public class SummarizeDaoImpl extends PageDao implements SummarizeDao {
 
     @Override
     public List<ScormSummarize> getAllCommentsByScormId(int scormId) {
-        String sql = " SELECT lss.*,uu.`login_name` FROM luss_scorm_summarize lss " +
-                " JOIN us_user uu ON lss.`user_id` = uu.user_id " +
-                " WHERE uu.`in_use`='1' AND scorm_id = ?";
+        String sql = "SELECT summarize.*, userinfo.* "
+                + "FROM luss_scorm_summarize summarize , us_user_info userinfo "
+                + "WHERE summarize.user_id = userinfo.user_id AND scorm_id = ? ORDER BY discuss_date DESC";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<ScormSummarize>(ScormSummarize.class), scormId);
     }
 

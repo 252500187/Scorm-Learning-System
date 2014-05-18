@@ -18,8 +18,8 @@ import java.util.List;
 public class NoteCollectDaoImpl extends PageDao implements NoteCollectDao {
     @Override
     public boolean checkNotHasCollected(int scormId, int userId) {
-        String sql = "SELECT * FROM luss_user_collect WHERE scorm_id = " + scormId + " AND user_id = ? ";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId).isEmpty();
+        String sql = "SELECT * FROM luss_user_collect WHERE scorm_id = ? AND user_id = ? ";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), scormId, userId).isEmpty();
     }
 
     @Override
