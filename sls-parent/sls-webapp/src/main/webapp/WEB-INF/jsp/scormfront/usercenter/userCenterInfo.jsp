@@ -12,7 +12,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
 </head>
-<body>
+<body style="background-color: #FFFFFF">
 <div class="page-container">
 <div class="page-content-wrapper">
     <div class="row">

@@ -13,15 +13,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
-    <%--<link rel="shortcut icon" href="../favicon.ico">--%>
     <link rel="stylesheet" type="text/css" href="booknote/css/default.css"/>
     <link rel="stylesheet" type="text/css" href="booknote/css/bookblock.css"/>
     <!-- custom demo style -->
     <link rel="stylesheet" type="text/css" href="booknote/css/demo4.css"/>
     <script src="booknote/js/modernizr.custom.js" type="text/javascript"></script>
 </head>
-<body>
+<body style="background-color: #FFFFFF">
 <div class="container">
+
     <div class="alert alert-success margin-bottom-10" style="text-align: center">
         <button class="close" aria-hidden="true" data-dismiss="alert" type="button"></button>
         <i class="fa fa-warning fa-lg"></i>
@@ -99,7 +99,9 @@
     </div>
 
 </div>
-<!-- /container -->
+
+</body>
+</html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="booknote/js/jquerypp.custom.js"></script>
 <script src="booknote/js/jquery.bookblock.js"></script>
@@ -184,12 +186,10 @@
         return { init: init };
     })();
 
-    $(function(){
+    $(function () {
         parent.$("#alertNotes").modal("hide");
     })
 </script>
 <script>
     Page.init();
 </script>
-</body>
-</html>
