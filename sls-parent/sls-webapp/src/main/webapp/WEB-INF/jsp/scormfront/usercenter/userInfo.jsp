@@ -130,11 +130,9 @@
 </html>
 <script>
     $(function () {
-        if ("${photoUrl}" != "") {
-            parent.$("#userHeadPhoto").attr("src", basePath + "${photoUrl}");
-            parent.$("#alertMessage").html("修改成功");
-            parent.$("#alertModel").modal("show");
-        }
+        <%--parent.$("#userHeadPhoto").attr("src", basePath + "${user.imgUrl});--%>
+
+
         $("#sexMale").attr("checked", true);
         if ("${user.sex}" == "0") {
             $("#sexFemale").attr("checked", true);
@@ -150,6 +148,9 @@
             }
         }, "请选择图片文件");
     });
+
+
+
     function changeUserInfo() {
         var myLabelList = "";
         $("#myLabelList").find("div").each(function () {
@@ -167,15 +168,11 @@
             type: "POST",
             success: function () {
 
-
-                if ($("#upImg").val() != "") {
                     $("#userInfo").attr("method", "post").attr("action",
                             basePath + "user/center/upHeadImg").submit();
-                }
+
                 parent.$("#alertMessage").html("修改成功");
                 parent.$("#alertModel").modal("show");
-
-
             },
             error: doError
         })
