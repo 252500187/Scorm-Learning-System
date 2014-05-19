@@ -46,82 +46,74 @@
                     <li class="filter" data-filter="category_4">
                         <i class="fa fa-star"></i>课件评分
                     </li>
+                    <a class="filter" id="recommend" data-filter="category_1" hidden="true"></a>
                 </ul>
             </div>
             <div class="row mix-grid">
-                <div class="col-md-3 mix mix_all category_1"
-                     style=" display: block; opacity: 1;">
-                    <div class="thumbnail">
-                        <img src="img/bookmarks/book1.jpg" alt="" style="width: 300px;height: 200px;">
+                <c:forEach var="scorm" items="${scormLevel}">
+                    <div class="col-md-3 mix mix_all category_1"
+                         style=" display: block; opacity: 1;">
+                        <div class="thumbnail">
+                            <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
 
-                        <div class="caption">
-                            <h3>课件1</h3>
+                            <div class="caption">
+                                <h3>${scorm.scormName}</h3>
 
-                            <p>
-                                课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介
-                            </p>
+                                <p> ${scorm.description}</p>
 
-                            <p>
-                                <a onclick="showScormInfo('92')" class="btn blue">
-                                    查看 </a>
-                            </p>
+                                <p><a onclick="showScormInfo('${scorm.scormId}')" class="btn blue">查看</a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 mix mix_all category_2"
-                     style=" display: block; opacity: 1;">
-                    <div class="thumbnail">
-                        <img src="img/bookmarks/book1.jpg" alt="" style="width: 300px;height: 200px;">
+                </c:forEach>
+                <c:forEach var="scorm" items="${scormSum}">
+                    <div class="col-md-3 mix mix_all category_2"
+                         style=" display: block; opacity: 1;">
+                        <div class="thumbnail">
+                            <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
 
-                        <div class="caption">
-                            <h3>课件1</h3>
+                            <div class="caption">
+                                <h3>${scorm.scormName}</h3>
 
-                            <p>
-                                课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介
-                            </p>
+                                <p> ${scorm.description}</p>
 
-                            <p>
-                                <a onclick="showScormInfo('91')" class="btn purple">
-                                    查看 </a>
-                            </p>
+                                <p><a onclick="showScormInfo('${scorm.scormId}')" class="btn purple">查看</a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 mix mix_all category_3"
-                     style=" display: block; opacity: 1;">
-                    <div class="thumbnail">
-                        <img src="img/bookmarks/book1.jpg" alt="" style="width: 300px;height: 200px;">
+                </c:forEach>
+                <c:forEach var="scorm" items="${scormTime}">
+                    <div class="col-md-3 mix mix_all category_3"
+                         style=" display: block; opacity: 1;">
+                        <div class="thumbnail">
+                            <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
 
-                        <div class="caption">
-                            <h3>课件1</h3>
+                            <div class="caption">
+                                <h3>${scorm.scormName}</h3>
 
-                            <p>
-                                课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介
-                            </p>
+                                <p> ${scorm.description}</p>
 
-                            <p>
-                                <a onclick="showScormInfo('90')" class="btn red">
-                                    查看 </a>
-                            </p>
+                                <p><a onclick="showScormInfo('${scorm.scormId}')" class="btn yellow">查看</a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 mix mix_all category_4"
-                     style=" display: block; opacity: 1;">
-                    <div class="thumbnail">
-                        <img src="img/bookmarks/book1.jpg" alt="" style="width: 300px;height: 200px;">
-                        <div class="caption">
-                            <h3>课件1</h3>
-                            <p>
-                                课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介课件1简介
-                            </p>
-                            <p>
-                                <a onclick="showScormInfo('78')" class="btn yellow">
-                                    查看 </a>
-                            </p>
+                </c:forEach>
+                <c:forEach var="scorm" items="${scormScore}">
+                    <div class="col-md-3 mix mix_all category_4"
+                         style=" display: block; opacity: 1;">
+                        <div class="thumbnail">
+                            <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
+
+                            <div class="caption">
+                                <h3>${scorm.scormName}</h3>
+
+                                <p> ${scorm.description}</p>
+
+                                <p><a onclick="showScormInfo('${scorm.scormId}')" class="btn red">查看</a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </c:forEach>
             </div>
         </div>
     </div>
@@ -156,6 +148,7 @@
         Metronic.init();
         Layout.init();
         Portfolio.init();
+        $("#recommend").click();
     });
 </script>
 

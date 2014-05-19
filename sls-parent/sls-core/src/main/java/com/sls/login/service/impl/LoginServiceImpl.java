@@ -1,5 +1,6 @@
 package com.sls.login.service.impl;
 
+import com.sls.scorm.dao.ScormDao;
 import com.sls.user.dao.RoleDao;
 import com.sls.user.dao.UserDao;
 import com.sls.user.entity.User;
@@ -25,6 +26,9 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private RoleDao roleDao;
+
+    @Autowired
+    private ScormDao scormDao;
 
     public String toIndex(HttpServletRequest request) {
         String loginName = LoginUserUtil.getLoginName();
@@ -65,10 +69,9 @@ public class LoginServiceImpl implements LoginService {
     }
 
     public void setIndexInfo(HttpServletRequest request) {
-        String userId = LoginUserUtil.getLoginName();
-        if (userId != "") {
-            //todo ,用户信息
-        }
-        //todo 首页需要显示的信息
+        request.setAttribute("scormSum", scormDao.indexFindTopScormByFieldName("register_sum"));
+        request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score"));
+        request.setAttribute("scormTime", scormDao.indexFindTopScormByFieldName("total_time"));
+        request.setAttribute("scormLevel", scormDao.indexFindTopScormByFieldName("recommend_level"));
     }
 }

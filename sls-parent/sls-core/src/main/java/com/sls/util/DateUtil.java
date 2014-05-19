@@ -75,7 +75,28 @@ public class DateUtil {
             sumTime[0]++;
             sumTime[1] = sumTime[1] % 60;
         }
-        return sumTime[0] + ":" + sumTime[1] + ":" + sumTime[2] + "." + sumTime[3];
+        String totalTime;
+        if (sumTime[0] < 10) {
+            totalTime = "0" + sumTime[0] + ":";
+        } else {
+            totalTime = sumTime[0] + ":";
+        }
+        if (sumTime[1] < 10) {
+            totalTime += "0" + sumTime[1] + ":";
+        } else {
+            totalTime += sumTime[1] + ":";
+        }
+        if (sumTime[2] < 10) {
+            totalTime += "0" + sumTime[2] + ":";
+        } else {
+            totalTime += sumTime[2] + ":";
+        }
+        if (sumTime[3] < 10) {
+            totalTime += "0" + sumTime[3];
+        } else {
+            totalTime += sumTime[3];
+        }
+        return totalTime;
     }
 
     /**
