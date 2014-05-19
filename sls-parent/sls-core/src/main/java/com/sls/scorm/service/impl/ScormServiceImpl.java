@@ -8,6 +8,8 @@ import com.sls.scorm.dao.ScormDao;
 import com.sls.scorm.dao.SummarizeDao;
 import com.sls.scorm.entity.*;
 import com.sls.scorm.service.ScormService;
+import com.sls.system.dao.LabelDao;
+import com.sls.system.entity.Label;
 import com.sls.system.service.DictService;
 import com.sls.user.dao.UserDao;
 import com.sls.user.entity.User;
@@ -47,6 +49,9 @@ public class ScormServiceImpl implements ScormService {
 
     @Autowired
     private DictService dictService;
+
+    @Autowired
+    private LabelDao labelDao;
 
     @Override
     public int upScorm(HttpServletRequest request, String upFile, String upImg, Scorm scorm) throws ServletException, IOException, ParserConfigurationException, SAXException,
@@ -476,5 +481,27 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void findScorm(String info, HttpServletRequest request) {
         //TODO 索索信息
+        request.setAttribute("info", info);
+    }
+
+    @Override
+    public void findRecommendScorm(HttpServletRequest request) {
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        List<Scorm> scormList = scormDao.findRecommendScormByUserLabel(userId);
+        List<Label> labelList;
+        StringBuilder labelName = new StringBuilder();
+        for (Scorm scorm : scormList) {
+            labelList = labelDao.getLabelByScormId(scorm.getScormId());
+            for (Label label : labelList) {
+                labelName.append(label.getLabelName());
+            }
+            scorm.setLabelName(labelName.toString());
+        }
+        request.setAttribute("recommendScorm", scormDao.findRecommendScormByUserLabel(userId));
+    }
+
+    @Override
+    public void findRegisterScorm(HttpServletRequest request) {
+
     }
 }

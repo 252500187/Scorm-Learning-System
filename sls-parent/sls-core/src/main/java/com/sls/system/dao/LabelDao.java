@@ -19,6 +19,8 @@ public interface LabelDao {
 
     void addScormLabel(Label label);
 
+    List<Label> getLabelByScormId(int scormId);
+
     Page<Label> getAllLabelPageList(PageParameter pageParameter, Label label);
 
     boolean checkRepeatLabelName(String labelName);

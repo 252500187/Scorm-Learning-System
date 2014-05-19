@@ -37,4 +37,6 @@ public interface ScormDao {
     List<Scorm> getAllUpScormInfoByUserId(int userId);
 
     List<Scorm> indexFindTopScormByFieldName(String fieldName);
+
+    List<Scorm> findRecommendScormByUserLabel(int userId);
 }

@@ -23,6 +23,7 @@ public class Scorm {
     private String collectDate;
 
     private int userId;
+    private String labelName;
 
     public Scorm() {
         registerSum = 0;
@@ -31,7 +32,7 @@ public class Scorm {
         inUse = DictConstant.NO_USE;
         totalTime = "";
         score = "";
-        completeWay=DictConstant.VOID_VALUE;
+        completeWay = DictConstant.VOID_VALUE;
     }
 
     public int getScormId() {
@@ -176,5 +177,13 @@ public class Scorm {
 
     public void setShowInUse(String showInUse) {
         this.showInUse = showInUse;
+    }
+
+    public String getLabelName() {
+        return labelName;
+    }
+
+    public void setLabelName(String labelName) {
+        this.labelName = labelName;
     }
 }

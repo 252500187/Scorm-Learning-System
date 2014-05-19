@@ -66,4 +66,8 @@ public interface ScormService {
     void getSummarizeInfo(int scormId, HttpServletRequest request);
 
     void findScorm(String info, HttpServletRequest request);
+
+    void findRecommendScorm(HttpServletRequest request);
+
+    void findRegisterScorm(HttpServletRequest request);
 }

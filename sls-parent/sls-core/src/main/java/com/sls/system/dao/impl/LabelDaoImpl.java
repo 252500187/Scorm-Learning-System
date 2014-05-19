@@ -64,6 +64,12 @@ public class LabelDaoImpl extends PageDao implements LabelDao {
     }
 
     @Override
+    public List<Label> getLabelByScormId(int scormId) {
+        String sql = "SELECT * FROM us_label WHERE label_id IN (SELECT label_id FROM ss_scorm_label WHERE scorm_id=?)";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Label>(Label.class), scormId);
+    }
+
+    @Override
     public Page<Label> getAllLabelPageList(PageParameter pageParameter, Label label) {
         StringBuilder sql = getAllLabelSql();
         if (!(0 == label.getLabelId())) {
