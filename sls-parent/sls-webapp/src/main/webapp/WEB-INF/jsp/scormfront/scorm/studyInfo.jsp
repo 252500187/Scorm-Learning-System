@@ -104,8 +104,11 @@
                                 <div class="tab-pane" id="tab_2">
                                     <div class="scroller" style="min-height: 200px;" data-always-visible="1"
                                          data-rail-visible1="1">
+                                        <%
+                                            String[] color = {"success", "info", "danger", "warning"};
+                                        %>
                                         <c:forEach var="note" items="${noteList}">
-                                            <div class="note note-success">
+                                            <div class="note note-<%=color[(int)(Math.random()*100)%4]%>">
                                                 <h4 class="block">${note.date}</h4>
 
                                                 <p>
