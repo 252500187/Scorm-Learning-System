@@ -14,13 +14,17 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
     <script src="<c:url value="/js/ScormAPI.js"/>" type="text/javascript"></script>
+    <style type="text/css">
+        .protectEye {
+            background-color: #C7EDCC;
+        }
+    </style>
 </head>
-
 <body class="page-header-fixed page-sidebar-reversed">
 <%@include file="../index/navigationMenu.jsp" %>
 <div class="page-container">
     <div class="page-sidebar-wrapper">
-        <div class="page-sidebar navbar-collapse collapse">
+        <div class="page-sidebar navbar-collapse collapse" name="protectEye">
             <ul class="page-sidebar-menu" data-auto-scroll="false" data-slide-speed="200">
                 <li class="sidebar-toggler-wrapper">
                     <div class="sidebar-toggler">
@@ -36,15 +40,14 @@
                                 <td>
                                     <img id="scormLogo" alt="scorm" style="max-height: 100px;max-width: 200px"></td>
                             </tr>
-
                         </table>
                     </a>
                 </li>
                 <li>
-                    <a onclick="">
+                    <a onclick="protectEye()">
                         <i class="fa fa-gift"></i>
                     <span class="title">
-                        开启护眼
+                        开/关灯
                     </span>
                     </a>
                 </li>
@@ -120,15 +123,14 @@
                             </div>
                         </div>
                         <div class="portlet-body" id="noteList">
-
                         </div>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="page-content-wrapper">
-        <div class="page-content">
+    <div class="page-content-wrapper" name="protectEye">
+        <div class="page-content" name="protectEye">
             <div class="row">
                 <iframe id="scormIframe" style="width:98%; height:800px;border:0px"
                         allowfullscreen>
@@ -137,7 +139,7 @@
             <br/>
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <div class="portlet">
                         <div class="portlet-title line">
                             <div class="caption">
@@ -148,8 +150,6 @@
                                 </a>
                             </div>
                         </div>
-
-
                         <div class="chat-form">
                             <div class="input-cont">
                                 <input id="discuss" class="form-control" type="text" placeholder="说点什么？"/>
@@ -167,6 +167,7 @@
                         <div class="portlet-body" id="chats">
                             <div class="scroller" style="height: 435px;" data-always-visible="1" data-rail-visible1="1">
                                 <ul class="chats">
+                                    <span id="appendDiscuss"></span>
                                     <c:forEach var="comment" items="${allComments}">
                                         <c:if test="${comment.userId!=user.userId}">
                                             <li class="in">
@@ -239,6 +240,23 @@
         return date;
     }
 
+    function getNowTime() {
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        month = month < 10 ? ("0" + month) : month;
+        var day = date.getDate();
+        day = day < 10 ? ("0" + day) : day;
+        var hour = date.getHours();
+        hour = hour < 10 ? ("0" + hour) : hour;
+        var minutes = date.getMinutes();
+        minutes = minutes < 10 ? ("0" + minutes) : minutes;
+        var seconds = date.getSeconds();
+        seconds = seconds < 10 ? ("0" + seconds) : seconds;
+        date = year + "-" + month + "-" + day + " " + hour + ":" + minutes + ":" + seconds;
+        return date;
+    }
+
     function takeNote() {
         if ("" == ($("#takeNotes").val().trim())) {
             alert("笔记不能为空")
@@ -275,6 +293,9 @@
         )
     }
 
+    function protectEye() {
+        $("div[name='protectEye']").toggleClass("protectEye");
+    }
 
     function changeDiscuss() {
         if ($("#discuss").val().trim() == "") {
@@ -282,17 +303,18 @@
         }
         $.ajax({
             url: basePath + "user/dealScorm/discussScorm",
+            type: "post",
             dataType: "json",
             data: {
-                scormId: "${scormInfo.scormId}",
+                scormId: "${scorm.scormId}",
                 discuss: $("#discuss").val()
             },
-            type: "post",
             success: function () {
                 var discuss = "<li class='out'><img class='avatar img-responsive' src='${user.imgUrl}'/><div class='message'><span class='arrow'></span>"
-                        + "<a class='name'>${user.userName}</a><span class='datetime'>"+getNowDate()+"</span>"
-                        + "<span class='body'>"+$("#discuss").val()+"</span></div></li>";
-                $("ul li").first().prepend(discuss);
+                        + "<a class='name'>${user.userName}</a><span class='datetime'>&nbsp;" + getNowTime() + "</span>"
+                        + "<span class='body'>" + $("#discuss").val() + "</span></div></li>";
+                $(".out").remove();
+                $("#appendDiscuss").append(discuss);
             },
             error: doError
         })
