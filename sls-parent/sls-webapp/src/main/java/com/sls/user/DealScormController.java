@@ -38,6 +38,7 @@ public class DealScormController {
         scormService.studyScormZtree(Integer.parseInt(scormId), request);
         scormService.studyScorm(Integer.parseInt(scormId), request);
         scormService.getSummarizeInfo(Integer.parseInt(scormId), request);
+        scormService.getAllStudyNotesByScormIdAndUserId(Integer.parseInt(scormId), request);
         return "scormfront/scorm/studyInfo";
     }
 }

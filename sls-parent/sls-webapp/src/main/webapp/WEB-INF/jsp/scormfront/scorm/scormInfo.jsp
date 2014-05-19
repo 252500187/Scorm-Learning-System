@@ -22,64 +22,64 @@
         <div class="page-content">
             <div class="col-md-12">
                 <div class="row">
-                <div class="col-md-2" style="float: left">
-                    <img id="scormImg" class="img-polaroid" style="max-width: 150px;max-height: 200px" alt=""/>
-                </div>
-                <div class="col-md-10" style="float: left">
-                    <div class="row">
-                        <div class="col-md-10">
-                            <div class="portlet-body form">
-                                <div class="form-body">
-                                    <h3 class="form-section">
-                                        <img src="${scormInfo.showRecommendLevel}" width="25px" height="25px">
-                                        <c:if test="${complete}">
-                                            (已完成)
+                    <div class="col-md-2" style="float: left">
+                        <img id="scormImg" class="img-polaroid" style="max-width: 150px;max-height: 200px" alt=""/>
+                    </div>
+                    <div class="col-md-10" style="float: left">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="portlet-body form">
+                                    <div class="form-body">
+                                        <h3 class="form-section">
+                                            <img src="${scormInfo.showRecommendLevel}" width="25px" height="25px">
+                                            <c:if test="${complete}">
+                                                (已完成)
+                                            </c:if>
+                                            ${scormInfo.scormName}
+                                        </h3>
+                                        <c:if test="${study}">
+                                            <a class="btn green m-icon" onclick="study('${scormInfo.scormId}')">
+                                                学习
+                                            </a>
+                                            <a class="btn blue" onclick="studyInfo('${scormInfo.scormId}')">
+                                                学习情况
+                                            </a>
                                         </c:if>
-                                        ${scormInfo.scormName}
-                                    </h3>
-                                    <c:if test="${study}">
-                                        <a class="btn green m-icon" onclick="study('${scormInfo.scormId}')">
-                                            学习
-                                        </a>
-                                        <a class="btn blue" onclick="studyInfo('${scormInfo.scormId}')">
-                                            学习情况
-                                        </a>
-                                    </c:if>
-                                    <c:if test="${register}">
-                                        <a class="btn blue" onclick="registerScorm('${scormInfo.scormId}')">
-                                            注册
-                                        </a>
-                                    </c:if>
-                                    <c:if test="${collect}">
-                                        <a class="btn blue" onclick="collectScorm('${scormInfo.scormId}')">
-                                            收藏
-                                        </a>
-                                    </c:if>
-                                    <br/><br/>
+                                        <c:if test="${register}">
+                                            <a class="btn blue" onclick="registerScorm('${scormInfo.scormId}')">
+                                                注册
+                                            </a>
+                                        </c:if>
+                                        <c:if test="${collect}">
+                                            <a class="btn blue" onclick="collectScorm('${scormInfo.scormId}')">
+                                                收藏
+                                            </a>
+                                        </c:if>
+                                        <br/>
 
-                                    <div class="form-group profile-info">
-                                        <ul class="list-inline" style="width: 250px;">
-                                            <li>评分:</li>
-                                            <li>${scormInfo.score}分</li>
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-info"
-                                                     role="progressbar"
-                                                     aria-valuemin="0"
-                                                     aria-valuemax="5" style="width: ${(scormInfo.score/5)*100}%">
+                                        <div class="form-group profile-info">
+                                            <ul class="list-inline" style="width: 250px;">
+                                                <li>评分:</li>
+                                                <li>${scormInfo.score}分</li>
+                                                <div class="progress progress-striped active">
+                                                    <div class="progress-bar progress-bar-info"
+                                                         role="progressbar"
+                                                         aria-valuemin="0"
+                                                         aria-valuemax="5" style="width: ${(scormInfo.score/5)*100}%">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </ul>
-                                        <ul class="list-inline" style="width: 250px;">
-                                            <li>简介:</li>
-                                            <li>${scormInfo.description}</li>
-                                        </ul>
+                                            </ul>
+                                            <ul class="list-inline" style="width: 250px;">
+                                                <li>简介:</li>
+                                                <li>${scormInfo.description}</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="tabbable tabbable-custom tabbable-custom-profile">
@@ -97,13 +97,10 @@
                             </ul>
                             <div class="tab-content" style="min-height: 200px">
                                 <div class="tab-pane active" id="tab_1">
-                                    <div class="scroller" style="height: 195px;" data-always-visible="1"
-                                         data-rail-visible1="1">
-                                        <ul class="ztreeStyle" id="chapterList"></ul>
-                                    </div>
+                                    <ul class="ztree" id="chapterList"></ul>
                                 </div>
                                 <div class="tab-pane" id="tab_2">
-                                    <div class="scroller" style="height: 195px;" data-always-visible="1"
+                                    <div class="scroller" style="min-height: 200px;" data-always-visible="1"
                                          data-rail-visible1="1">
                                         <c:if test="${!register}">
 
@@ -158,10 +155,6 @@
 <script type="text/javascript">
     var settingMenu = {
         view: {
-            showLine: false,
-            showIcon: false,
-            selectedMulti: false,
-            dblClickExpand: false,
             expandSpeed: "fast"
         },
         check: {
@@ -172,15 +165,7 @@
                 enable: true,
                 idKey: "id",
                 pIdKey: "pId"
-            },
-            key: {
-                name: "name"
-            },
-            keep: {
-                parent: true
             }
-        },
-        callback: {
         }
     };
 

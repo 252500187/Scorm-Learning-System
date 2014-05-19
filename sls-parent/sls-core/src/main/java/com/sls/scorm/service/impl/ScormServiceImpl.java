@@ -149,6 +149,7 @@ public class ScormServiceImpl implements ScormService {
         }
         request.setAttribute("noteList", studyNoteList.size() == 0 ? new LinkedList<StudyNote>() : studyNoteList);
         request.setAttribute("userName", user.getUserName());
+        request.setAttribute("text", DictConstant.TEXT_TYPE);
     }
 
     @Override

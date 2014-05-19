@@ -39,28 +39,36 @@
                                             <ul class="list-inline" style="width: 250px;">
                                                 <c:if test="${summarize.completeDate!=''}">
                                                     <li>完成时间:</li>
-                                                    <li>${summarize.completeDate}</li><br/>
+                                                    <li>${summarize.completeDate}</li>
+                                                    <br/>
                                                 </c:if>
                                                 <c:if test="${summarize.grade!=''}">
                                                     <li>课件成绩:</li>
-                                                    <li>${summarize.grade}</li><br/>
+                                                    <li>${summarize.grade}</li>
+                                                    <br/>
                                                 </c:if>
                                                 <c:if test="${summarize.totalTime!=''}">
                                                     <li>学习时间:</li>
-                                                    <li>${summarize.totalTime}</li><br/>
+                                                    <li>${summarize.totalTime}</li>
+                                                    <br/>
                                                 </c:if>
                                                 <c:if test="${summarize.lastVisitTime!=''}">
                                                     <li>上次学习时间:</li>
-                                                    <li>${summarize.lastVisitTime}</li><br/>
+                                                    <li>${summarize.lastVisitTime}</li>
+                                                    <br/>
                                                 </c:if>
                                                 <br/>
                                                 <c:if test="${summarize.score!=''}">
                                                     <li>评分:</li>
-                                                    <li>${summarize.score}分</li><br/>
+                                                    <li>${summarize.score}分</li>
+                                                    <br/>
                                                 </c:if>
                                                 <c:if test="${summarize.discuss!=''}">
                                                     <li>评论:</li>
-                                                    <li>${summarize.discussDate}&nbsp;${summarize.discuss}</li>
+                                                    <li>${summarize.discussDate}</li>
+                                                    <br/>
+                                                    <li>内容:</li>
+                                                    <li>${summarize.discuss}</li>
                                                 </c:if>
                                             </ul>
                                         </div>
@@ -76,14 +84,40 @@
                             <ul class="nav nav-tabs">
                                 <li class="active">
                                     <a href="#tab_1" data-toggle="tab">
-                                        章节学习情况
+                                        学习情况
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#tab_2" data-toggle="tab">
+                                        学习笔记
                                     </a>
                                 </li>
                             </ul>
-                            <div class="tab-content" style="min-height: 300px">
+                            <div class="tab-content" style="min-height: 200px">
                                 <div class="tab-pane active" id="tab_1">
-                                    <div id="scoTree" class="ztree"
-                                         style="width:98%; height:100%; border: 0px solid; float: left; overflow-x:auto; overflow-y:auto">
+                                    <div class="scroller" data-always-visible="1"
+                                         data-rail-visible1="1">
+                                        <ul id="scoTree" class="ztree">
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab_2">
+                                    <div class="scroller" style="min-height: 200px;" data-always-visible="1"
+                                         data-rail-visible1="1">
+                                        <c:forEach var="note" items="${noteList}">
+                                            <div class="note note-success">
+                                                <h4 class="block">${note.date}</h4>
+
+                                                <p>
+                                                    <c:if test="${note.noteType==text}">
+                                                        ${note.note}
+                                                    </c:if>
+                                                    <c:if test="${note.noteType!=text}">
+                                                        <img src="${note.note}"/>
+                                                    </c:if>
+                                                </p>
+                                            </div>
+                                        </c:forEach>
                                     </div>
                                 </div>
                             </div>
