@@ -1,9 +1,9 @@
 package com.sls.tourist;
 
-
 import com.sls.scorm.service.ScormService;
 import com.sls.user.entity.User;
 import com.sls.user.service.UserService;
+import com.sls.util.BaseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,9 +43,9 @@ public class TouristController {
         return "scormfront/scorm/scormInfo";
     }
 
-    @RequestMapping(value = "findScorm", method = {RequestMethod.POST})
-    public String findScorm(@RequestParam("name") String name, HttpServletRequest request) {
-        //todo 找到课件搜索
+    @RequestMapping(value = "findScorm", method = {RequestMethod.GET})
+    public String findScorm(@RequestParam("findInfo") String findInfo, HttpServletRequest request) {
+        scormService.findScorm(BaseUtil.iso2utf(findInfo), request);
         return "scormfront/scorm/findResult";
     }
 }

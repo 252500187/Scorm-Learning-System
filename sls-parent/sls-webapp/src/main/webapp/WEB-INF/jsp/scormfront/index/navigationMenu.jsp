@@ -7,20 +7,14 @@
 <!--<![endif]-->
 
 <div class="page-header navbar navbar-fixed-top">
-    <!-- BEGIN HEADER INNER -->
     <div class="page-header-inner">
-        <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="">
                 <img src="img/logo/logoSmall.png" alt="logo" class="logo-default"/>
             </a>
         </div>
-        <!-- END LOGO -->
-        <!-- BEGIN RESPONSIVE MENU TOGGLER -->
         <div class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
         </div>
-        <!-- END RESPONSIVE MENU TOGGLER -->
-        <!-- BEGIN TOP NAVIGATION MENU -->
         <div class="top-menu">
             <ul class="nav navbar-nav pull-right">
                 <c:if test="${sessionScope.userId==null||sessionScope.userId==''}">
@@ -31,7 +25,6 @@
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.userId!=null&&sessionScope.userId!=''}">
-                    <!-- BEGIN USER LOGIN DROPDOWN -->
                     <li class="dropdown dropdown-user">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                            data-close-others="true">
@@ -53,15 +46,11 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- END USER LOGIN DROPDOWN -->
                 </c:if>
             </ul>
         </div>
-        <!-- END TOP NAVIGATION MENU -->
     </div>
-    <!-- END HEADER INNER -->
 </div>
-<!-- END HEADER -->
 <div class="clearfix">
 </div>
 
