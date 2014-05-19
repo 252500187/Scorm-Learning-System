@@ -589,18 +589,18 @@ var Charts = function () {
             $.plot($("#chart_1_2"), [data1], options);  
         },
 
-        initPieCharts: function () {
-
-            var data = [];
-            var series = Math.floor(Math.random() * 10) + 1;
-            series = series < 5 ? 5 : series;
-            
-            for (var i = 0; i < series; i++) {
-                data[i] = {
-                    label: "Series" + (i + 1),
-                    data: Math.floor(Math.random() * 100) + 1
-                }
-            }
+        initPieCharts: function (data) {
+//
+//            var data = [];
+//            var series = Math.floor(Math.random() * 10) + 1;
+//            series = series < 5 ? 5 : series;
+//
+//            for (var i = 0; i < series; i++) {
+//                data[i] = {
+//                    label: "Series" + (i + 1),
+//                    data: Math.floor(Math.random() * 100) + 1
+//                }
+//            }
 
 //            // DEFAULT
 //            $.plot($("#pie_chart"), data, {

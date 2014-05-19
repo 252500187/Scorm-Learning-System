@@ -17,39 +17,37 @@
 </head>
 <body style="background-color: #FFFFFF">
 <div class="page-container">
-<div class="page-content-wrapper">
-    <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-8">
-            <h3>前往${user.levelName}之路总进度</h3>
+    <div class="page-content-wrapper">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <h3>前往${user.levelName}之路总进度:20%</h3>
 
-            <div class="progress progress-striped active">
-                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
-                     aria-valuemin="0"
-                     aria-valuemax="100" style="width:${((user.score-nowLevelScore)/(nextLevelScore-user.score))*100}%">
-                        <span class="sr-only">
-                             10% Complete (success)
-                        </span>
+                <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                         aria-valuemin="0"
+                         aria-valuemax="100"
+                         style="width:${((user.score-nowLevelScore)/(nextLevelScore-user.score))*100}%">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-5">
-            <div class="portlet box">
-                <div class="portlet-body">
-                    <h3>学习情况分布</h3>
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-5">
+                <div class="portlet box">
+                    <div class="portlet-body">
+                        <h3>学习情况分布</h3>
 
-                    <div id="pie_chart" class="chart">
+                        <div id="pie_chart" class="chart">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>
@@ -58,6 +56,15 @@
         Metronic.init();
         Layout.init();
         Charts.init();
-        Charts.initPieCharts();
+        var data = [];
+        var i = 0;
+        <c:forEach var="perItem" items="${userPeiCharts}">
+        data[i++] = {
+            label: '${perItem.labelName}',
+            data:${perItem.number}
+        }
+        </c:forEach>
+        Charts.initPieCharts(data);
     });
+
 </script>

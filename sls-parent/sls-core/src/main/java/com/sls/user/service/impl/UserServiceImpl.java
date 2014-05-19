@@ -2,6 +2,7 @@ package com.sls.user.service.impl;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
+import com.sls.system.entity.Label;
 import com.sls.system.service.DictService;
 import com.sls.user.dao.RoleDao;
 import com.sls.user.dao.UserDao;
@@ -134,13 +135,15 @@ public class UserServiceImpl implements UserService {
         UserLevel nextUserLevel = userDao.findUserNextLevelNameByScore(user.getScore());
         user.setLevelName(nextUserLevel.getLevelName());
         request.setAttribute("user", user);
-        request.setAttribute("nextLevelScore",Integer.parseInt(nextUserLevel.getScore()));
+        request.setAttribute("nextLevelScore", Integer.parseInt(nextUserLevel.getScore()));
         UserLevel nowUserLevel = userDao.findUserLevelNameByScore(user.getScore());
-        request.setAttribute("nowLevelScore",Integer.parseInt(nowUserLevel.getScore()));
+        request.setAttribute("nowLevelScore", Integer.parseInt(nowUserLevel.getScore()));
     }
 
     @Override
     public void getPieCharts(HttpServletRequest request) {
-       request.setAttribute("userPeiCharts",userDao.getPieChartsByUserId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId()));
+        //todo 简化
+        List<Label> a = userDao.getPieChartsByUserId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        request.setAttribute("userPeiCharts", userDao.getPieChartsByUserId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId()));
     }
 }
