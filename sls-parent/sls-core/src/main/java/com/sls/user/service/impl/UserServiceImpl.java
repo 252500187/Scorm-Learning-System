@@ -8,6 +8,7 @@ import com.sls.user.dao.UserDao;
 import com.sls.user.dao.UserRoleDao;
 import com.sls.user.entity.Role;
 import com.sls.user.entity.User;
+import com.sls.user.entity.UserLevel;
 import com.sls.user.entity.UserRole;
 import com.sls.user.service.UserService;
 import com.sls.util.DateUtil;
@@ -130,7 +131,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void findUserNextLevelNameByScore(HttpServletRequest request) {
         User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
-        user.setLevelName(userDao.findUserNextLevelNameByScore(user.getScore()).getLevelName());
+        UserLevel nextUserLevel = userDao.findUserNextLevelNameByScore(user.getScore());
+        user.setLevelName(nextUserLevel.getLevelName());
         request.setAttribute("user", user);
+        request.setAttribute("nextLevelScore",Integer.parseInt(nextUserLevel.getScore()));
+        UserLevel nowUserLevel = userDao.findUserLevelNameByScore(user.getScore());
+        request.setAttribute("nowLevelScore",Integer.parseInt(nowUserLevel.getScore()));
     }
 }

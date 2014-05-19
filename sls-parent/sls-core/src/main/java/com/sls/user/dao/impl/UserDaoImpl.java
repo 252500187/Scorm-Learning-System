@@ -115,13 +115,13 @@ public class UserDaoImpl extends PageDao implements UserDao {
 
     @Override
     public UserLevel findUserLevelNameByScore(int score) {
-        String sql = "SELECT level_name FROM us_level WHERE score = (SELECT MAX(score)  FROM us_level WHERE score<=?)";
+        String sql = "SELECT * FROM us_level WHERE score = (SELECT MAX(score)  FROM us_level WHERE score<=?)";
         return getJdbcTemplate().queryForObject(sql, new BeanPropertyRowMapper<UserLevel>(UserLevel.class), score);
     }
 
     @Override
     public UserLevel findUserNextLevelNameByScore(int score) {
-        String sql = "SELECT level_name FROM us_level WHERE score = (SELECT MIN(score)  FROM us_level WHERE score>?)";
+        String sql = "SELECT * FROM us_level WHERE score = (SELECT MIN(score)  FROM us_level WHERE score>?)";
         return getJdbcTemplate().queryForObject(sql, new BeanPropertyRowMapper<UserLevel>(UserLevel.class), score);
     }
 
