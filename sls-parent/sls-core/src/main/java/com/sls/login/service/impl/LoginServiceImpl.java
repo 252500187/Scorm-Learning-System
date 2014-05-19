@@ -30,14 +30,16 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private ScormDao scormDao;
 
-    public String toIndex(HttpServletRequest request) {
+    public String toIndex(HttpServletRequest request, HttpSession session) {
         String loginName = LoginUserUtil.getLoginName();
         List<User> user = userDao.findInUseUserByLoginName(loginName);
         if (user.size() > 0) {
+            session.setAttribute("userId", user.get(0).getUserId());
             if (user.get(0).getRoleId() == roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_ADMIN).getRoleId()) {
                 return "/scormadmin/index";
             }
         }
+
         setIndexInfo(request);
         return "/scormfront/index";
     }

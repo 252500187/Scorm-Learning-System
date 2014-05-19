@@ -36,8 +36,8 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/", method = {RequestMethod.GET})
-    public String toIndex(HttpServletRequest request) {
-        return loginService.toIndex(request);
+    public String toIndex(HttpServletRequest request, HttpSession session) {
+        return loginService.toIndex(request, session);
     }
 
 

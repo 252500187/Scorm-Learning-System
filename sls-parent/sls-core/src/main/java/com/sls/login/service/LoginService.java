@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 public interface LoginService {
-    String toIndex(HttpServletRequest request);
+    String toIndex(HttpServletRequest request, HttpSession session);
 
     ModelAndView loginResult(HttpServletRequest request, User user, HttpSession session);
 }
