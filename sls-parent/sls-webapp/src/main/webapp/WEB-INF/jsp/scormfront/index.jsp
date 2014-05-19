@@ -155,13 +155,9 @@
     }
 
     function findScorm() {
-        if ($("#findInfo").val() == "") {
-            return;
+        if ($("#findInfo").val() != "") {
+            window.location.href = basePath + "tourist/findScorm?findInfo=" + $("#findInfo").val();
         }
-        $.ajax({
-            url: basePath + "tourist/findScorm?findInfo=" + $("#findInfo").val(),
-            type: "GET"
-        })
     }
 
     $(function () {

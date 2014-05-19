@@ -472,4 +472,9 @@ public class ScormServiceImpl implements ScormService {
         }
         request.setAttribute("summarize", scormSummarize);
     }
+
+    @Override
+    public void findScorm(String info, HttpServletRequest request) {
+        //TODO 索索信息
+    }
 }
