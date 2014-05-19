@@ -14,79 +14,74 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
     <script src="<c:url value="/js/ScormAPI.js"/>" type="text/javascript"></script>
-    <style type="text/css">
-        .protectEye {
-            background-color: #C7EDCC ;
-        }
-    </style>
 </head>
 
 <body class="page-header-fixed page-sidebar-reversed">
 <%@include file="../index/navigationMenu.jsp" %>
 <div class="page-container">
-<div class="page-sidebar-wrapper">
-    <div class="page-sidebar navbar-collapse collapse" name="protectEye">
-        <ul class="page-sidebar-menu" data-auto-scroll="false" data-slide-speed="200">
-            <li class="sidebar-toggler-wrapper">
-                <div class="sidebar-toggler">
-                </div>
-            </li>
-            <li class="start">
-                <a>
+    <div class="page-sidebar-wrapper">
+        <div class="page-sidebar navbar-collapse collapse">
+            <ul class="page-sidebar-menu" data-auto-scroll="false" data-slide-speed="200">
+                <li class="sidebar-toggler-wrapper">
+                    <div class="sidebar-toggler">
+                    </div>
+                </li>
+                <li class="start">
+                    <a>
                     <span class="title">
                         课件名称：${scorm.scormName}
                     </span><br/>
-                    <table>
-                        <tr>
-                            <td>
-                                <img id="scormLogo" alt="scorm" style="max-height: 100px;max-width: 200px"></td>
-                        </tr>
+                        <table>
+                            <tr>
+                                <td>
+                                    <img id="scormLogo" alt="scorm" style="max-height: 100px;max-width: 200px"></td>
+                            </tr>
 
-                    </table>
-                </a>
-            </li>
-            <li>
-                <a onclick="protectEye()">
-                    <i class="fa fa-gift"></i>
+                        </table>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="">
+                        <i class="fa fa-gift"></i>
                     <span class="title">
                         开启护眼
                     </span>
-                </a>
-            </li>
-            <li>
-                <a>
-                    <i class="fa fa-sitemap"></i>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-sitemap"></i>
 						<span class="title">
 							课程安排
 						</span>
 						<span class="arrow">
 						</span>
-                </a>
-                <ul class="sub-menu">
-                    <iframe id="ztree" scrolling="no" style="width:100%; min-height:300px;border:0px;"
-                            allowfullscreen>
-                    </iframe>
-                    <div class="chat-form">
-                    </div>
-                </ul>
-            </li>
-            <li>
-                <a>
-                    <i class="fa fa-file-text"></i>
+                    </a>
+                    <ul class="sub-menu">
+                        <iframe id="ztree" scrolling="no" style="width:100%; min-height:300px;border:0px;"
+                                allowfullscreen>
+                        </iframe>
+                        <div class="chat-form">
+                        </div>
+                    </ul>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-file-text"></i>
 						<span class="title">
 							笔记本
 						</span>
 						<span class="arrow ">
 						</span>
-                </a>
-                <ul class="sub-menu">
-                    <iframe style="border: 0;display: none;" id="upImgIframe" name="upImgIframe"></iframe>
-                    <div class="chat-form">
-                        传张图片？
-                        <form target="upImgIframe" id="upImgForm" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <div class="col-md-9">
-                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                    </a>
+                    <ul class="sub-menu">
+                        <iframe style="border: 0;display: none;" id="upImgIframe" name="upImgIframe"></iframe>
+                        <div class="chat-form">
+                            传张图片？
+                            <form target="upImgIframe" id="upImgForm" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <div class="col-md-9">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
                                        <span class="btn default btn-file">
                                            <span class="fileinput-new">
                                                 选图
@@ -96,78 +91,100 @@
                                            </span>
                                            <input type="file" id="noteImg" name="noteImg">
                                        </span>
-                                        <span class="row fileinput-filename"></span>
-                                        <a href="#" class="close fileinput-exists" data-dismiss="fileinput"
-                                           style="float: none">
-                                        </a>
+                                            <span class="row fileinput-filename"></span>
+                                            <a href="#" class="close fileinput-exists" data-dismiss="fileinput"
+                                               style="float: none">
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="btn-cont">
+                                <div class="btn-cont">
                                 <span class="arrow">
                                 </span>
-                                <a onclick="upStudyImg()" class="btn blue icn-only">
+                                    <a onclick="upStudyImg()" class="btn blue icn-only">
+                                        <i class="fa fa-check icon-white"></i>
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="chat-form">
+                            <div class="input-cont">
+                                <input class="form-control" type="text" placeholder="记点什么？" id="takeNotes"/>
+                            </div>
+                            <div class="btn-cont">
+									<span class="arrow">
+									</span>
+                                <a onclick="takeNote()" class="btn blue icn-only">
                                     <i class="fa fa-check icon-white"></i>
                                 </a>
                             </div>
-                        </form>
-                    </div>
-                    <div class="chat-form">
-                        <div class="input-cont">
-                            <input class="form-control" type="text" placeholder="记点什么？" id="takeNotes"/>
                         </div>
-                        <div class="btn-cont">
+                        <div class="portlet-body" id="noteList">
+
+                        </div>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <div class="row">
+                <iframe id="scormIframe" style="width:98%; height:800px;border:0px"
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet">
+                        <div class="portlet-title line">
+                            <div class="caption">
+                                <i class="fa fa-comments"></i>评论
+                            </div>
+                            <div class="tools">
+                                <a href="" class="collapse">
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div class="chat-form">
+                            <div class="input-cont">
+                                <input id="discuss" class="form-control" type="text" placeholder="说点什么？"/>
+                            </div>
+                            <div class="btn-cont">
 									<span class="arrow">
 									</span>
-                            <a onclick="takeNote()" class="btn blue icn-only">
-                                <i class="fa fa-check icon-white"></i>
-                            </a>
+                                <a onclick="changeDiscuss()" class="btn blue icn-only">
+                                    <i class="fa fa-check icon-white"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="portlet-body" id="noteList">
+                        <br/>
 
-                    </div>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="page-content-wrapper" name="protectEye">
-    <div class="page-content" name="protectEye">
-        <div class="row">
-            <iframe id="scormIframe" style="width:98%; height:800px;border:0px"
-                    allowfullscreen>
-            </iframe>
-        </div>
-        <br/>
+                        <div class="portlet-body" id="chats">
+                            <div class="scroller" style="height: 435px;" data-always-visible="1" data-rail-visible1="1">
+                                <ul class="chats">
+                                    <c:forEach var="comment" items="${allComments}">
+                                        <c:if test="${comment.userId!=user.userId}">
+                                            <li class="in">
+                                        </c:if>
+                                        <c:if test="${comment.userId==user.userId}">
+                                            <li class="out">
+                                        </c:if>
+                                        <img class="avatar img-responsive" alt=""
+                                             src="${comment.imgUrl}"/>
 
-        <div class="row ">
-            <div class="col-md-6">
-                <div class="portlet box blue">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fa fa-calendar"></i>课件信息
-                        </div>
-                        <div class="tools">
-                            <a href="" class="collapse">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="portlet-body">
-                        <div class="caption"><h4>${scorm.scormName}</h4></div>
-                        <div class="slimScrollDiv"
-                             style="position: relative; overflow: hidden; width: auto; height: 300px;">
-                            <div class="scroller" data-rail-visible="0" data-always-visible="1"
-                                 style="height: 300px; overflow: hidden; width: auto;">
-                                <ul class="feeds">
-                                    <li>
-                                        <div class="row col-md-2">上传日期:</div>
-                                        <div class="row col-md-10">${scorm.uploadDate}</div>
-                                    </li>
-                                    <li>
-                                        <div class="row col-md-2">课件简介:</div>
-                                        <div class="row col-md-10">${scorm.description}</div>
-                                    </li>
+                                        <div class="message">
+                                            <span class="arrow"></span>
+                                            <a class="name">${comment.userName}</a>
+                                            <span class="datetime">${comment.discussDate}</span>
+                                            <span class="body">${comment.discuss}</span>
+                                        </div>
+                                        </li>
+                                    </c:forEach>
                                 </ul>
                             </div>
                         </div>
@@ -175,77 +192,7 @@
                 </div>
             </div>
         </div>
-        <div class="row ">
-            <div class="col-md-12">
-                <div class="portlet">
-                    <div class="portlet-title line">
-                        <div class="caption">
-                            <i class="fa fa-comments"></i>评论
-                        </div>
-                        <div class="tools">
-                            <a href="" class="collapse">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="chat-form">
-                        <div class="input-cont">
-                            <input class="form-control" type="text" placeholder="说点什么？"/>
-                        </div>
-                        <div class="btn-cont">
-									<span class="arrow">
-									</span>
-                            <a href="" class="btn blue icn-only">
-                                <i class="fa fa-check icon-white"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <br/>
-
-                    <div class="portlet-body" id="chats">
-                        <div class="scroller" style="height: 435px;" data-always-visible="1" data-rail-visible1="1">
-                            <ul class="chats">
-                                <li class="in">
-                                    <img class="avatar img-responsive" alt="" src="assets/img/avatar1.jpg"/>
-
-                                    <div class="message">
-											<span class="arrow">
-											</span>
-                                        <a href="#" class="name">
-                                            Bob Nilson
-                                        </a>
-											<span class="datetime">
-												 at Jul 25, 2012 11:09
-											</span>
-											<span class="body">
-												 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-											</span>
-                                    </div>
-                                </li>
-                                <li class="out">
-                                    <img class="avatar img-responsive" alt="" src="assets/img/avatar2.jpg"/>
-
-                                    <div class="message">
-											<span class="arrow">
-											</span>
-                                        <a href="#" class="name">
-                                            Lisa Wong
-                                        </a>
-											<span class="datetime">
-												 at Jul 25, 2012 11:09
-											</span>
-											<span class="body">
-												 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-											</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-</div>
 </div>
 <%@include file="../index/footer.jsp" %>
 </body>
@@ -328,8 +275,27 @@
         )
     }
 
-    function protectEye() {
-        $("div[name='protectEye']").toggleClass("protectEye");
+
+    function changeDiscuss() {
+        if ($("#discuss").val().trim() == "") {
+            return;
+        }
+        $.ajax({
+            url: basePath + "user/dealScorm/discussScorm",
+            dataType: "json",
+            data: {
+                scormId: "${scormInfo.scormId}",
+                discuss: $("#discuss").val()
+            },
+            type: "post",
+            success: function () {
+                var discuss = "<li class='out'><img class='avatar img-responsive' src='${user.imgUrl}'/><div class='message'><span class='arrow'></span>"
+                        + "<a class='name'>${user.userName}</a><span class='datetime'>"+getNowDate()+"</span>"
+                        + "<span class='body'>"+$("#discuss").val()+"</span></div></li>";
+                $("ul li").first().prepend(discuss);
+            },
+            error: doError
+        })
     }
 
     $('.page-sidebar ul').on('click', ' li > a', function (e) {

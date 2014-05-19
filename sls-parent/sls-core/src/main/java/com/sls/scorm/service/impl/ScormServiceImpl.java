@@ -450,7 +450,7 @@ public class ScormServiceImpl implements ScormService {
     public void getDiscusses(int scormId, HttpServletRequest request) {
         request.setAttribute("allComments", summarizeDao.getAllCommentsByScormId(scormId));
         if (!("").equals(LoginUserUtil.getLoginName())) {
-            request.setAttribute("userId", userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+            request.setAttribute("user", userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0));
         }
     }
 
