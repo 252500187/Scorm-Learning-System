@@ -42,7 +42,6 @@ public class DictServiceImpl implements DictService {
     public void delDictDefine(String dictName) {
         dictDao.delDictDefine(dictName);
         List<DictValues> dictValuesList = dictDao.findDictValuesByDictName(dictName);
-        //todo 字典定义有字典值校验不能删除
         for (DictValues dictValues : dictValuesList) {
             dictDao.delDictValues(dictValues);
         }

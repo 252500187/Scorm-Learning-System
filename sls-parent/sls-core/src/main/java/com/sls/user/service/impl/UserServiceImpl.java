@@ -142,8 +142,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void getPieCharts(HttpServletRequest request) {
-        //todo 简化
-        List<Label> a = userDao.getPieChartsByUserId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
         request.setAttribute("userPeiCharts", userDao.getPieChartsByUserId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId()));
     }
 }
