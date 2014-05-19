@@ -135,9 +135,9 @@ public class UserServiceImpl implements UserService {
         UserLevel nextUserLevel = userDao.findUserNextLevelNameByScore(user.getScore());
         user.setLevelName(nextUserLevel.getLevelName());
         request.setAttribute("user", user);
-        request.setAttribute("nextLevelScore", Integer.parseInt(nextUserLevel.getScore()));
         UserLevel nowUserLevel = userDao.findUserLevelNameByScore(user.getScore());
-        request.setAttribute("nowLevelScore", Integer.parseInt(nowUserLevel.getScore()));
+        int deno = Integer.parseInt(nextUserLevel.getScore()) - user.getScore();
+        request.setAttribute("finalScore", deno == 0 ? 1 : ((user.getScore() - Integer.parseInt(nowUserLevel.getScore())) / (Integer.parseInt(nextUserLevel.getScore()) - user.getScore())));
     }
 
     @Override
