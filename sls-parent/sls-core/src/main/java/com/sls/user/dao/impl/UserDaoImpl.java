@@ -4,6 +4,7 @@ import com.core.page.dao.PageDao;
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.Scorm;
+import com.sls.system.entity.Label;
 import com.sls.user.dao.UserDao;
 import com.sls.user.entity.User;
 import com.sls.user.entity.UserLevel;
@@ -123,6 +124,15 @@ public class UserDaoImpl extends PageDao implements UserDao {
     public UserLevel findUserNextLevelNameByScore(int score) {
         String sql = "SELECT * FROM us_level WHERE score = (SELECT MIN(score)  FROM us_level WHERE score>?)";
         return getJdbcTemplate().queryForObject(sql, new BeanPropertyRowMapper<UserLevel>(UserLevel.class), score);
+    }
+
+    @Override
+    public List<Label> getPieChartsByUserId(int userId) {
+        String sql = "SELECT a.*, ul.label_name FROM (SELECT COUNT(label_id) AS number,label_id " +
+                " FROM  ss_scorm_label WHERE scorm_id IN (SELECT DISTINCT  scorm_id " +
+                "    FROM luss_scorm_sco WHERE user_id = ?) GROUP BY label_id)a JOIN us_label ul" +
+                " ON a.label_id = ul.label_id";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Label>(Label.class), userId);
     }
 
     @Override

@@ -34,4 +34,6 @@ public interface UserService {
     void shieldUser(int userId);
 
     void findUserNextLevelNameByScore(HttpServletRequest request);
+
+    void getPieCharts(HttpServletRequest request);
 }

@@ -7,6 +7,7 @@ public class Label {
     private int scormId;
     private String userName;
     private String scormName;
+    private int number;
 
     public Label() {}
 
@@ -56,5 +57,13 @@ public class Label {
 
     public void setScormName(String scormName) {
         this.scormName = scormName;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 }

@@ -138,4 +138,9 @@ public class UserServiceImpl implements UserService {
         UserLevel nowUserLevel = userDao.findUserLevelNameByScore(user.getScore());
         request.setAttribute("nowLevelScore",Integer.parseInt(nowUserLevel.getScore()));
     }
+
+    @Override
+    public void getPieCharts(HttpServletRequest request) {
+       request.setAttribute("userPeiCharts",userDao.getPieChartsByUserId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId()));
+    }
 }

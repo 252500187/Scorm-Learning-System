@@ -52,6 +52,7 @@ public class UserCenterController {
     @RequestMapping(value = "userCenterInfo", method = {RequestMethod.GET})
     public String userCenterInfo(HttpServletRequest request) {
         userService.findUserNextLevelNameByScore(request);
+        userService.getPieCharts(request);
         return "scormfront/usercenter/userCenterInfo";
     }
 
