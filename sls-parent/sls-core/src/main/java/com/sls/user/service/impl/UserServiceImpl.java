@@ -126,4 +126,11 @@ public class UserServiceImpl implements UserService {
         }
         userDao.editUseState(user);
     }
+
+    @Override
+    public void findUserNextLevelNameByScore(HttpServletRequest request) {
+        User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
+        user.setLevelName(userDao.findUserNextLevelNameByScore(user.getScore()).getLevelName());
+        request.setAttribute("user", user);
+    }
 }

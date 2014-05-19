@@ -32,4 +32,6 @@ public interface UserService {
     boolean checkRepeatLoginName(String loginName);
 
     void shieldUser(int userId);
+
+    void findUserNextLevelNameByScore(HttpServletRequest request);
 }

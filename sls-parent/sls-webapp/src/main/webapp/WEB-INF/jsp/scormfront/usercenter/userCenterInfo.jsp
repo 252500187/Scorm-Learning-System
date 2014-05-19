@@ -1,3 +1,4 @@
+<%--@elvariable id="user" type="com.sls.user.entity.User"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -19,7 +20,7 @@
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
-            <h3>前往学粉之路总进度</h3>
+            <h3>前往${user.levelName}之路总进度</h3>
 
             <div class="progress progress-striped active">
                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"

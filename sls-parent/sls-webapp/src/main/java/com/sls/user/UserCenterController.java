@@ -50,7 +50,8 @@ public class UserCenterController {
 
     //个人中心  首页
     @RequestMapping(value = "userCenterInfo", method = {RequestMethod.GET})
-    public String userCenterInfo() {
+    public String userCenterInfo(HttpServletRequest request) {
+        userService.findUserNextLevelNameByScore(request);
         return "scormfront/usercenter/userCenterInfo";
     }
 
