@@ -43,8 +43,8 @@ public class TouristController {
         return "scormfront/scorm/scormInfo";
     }
 
-    @RequestMapping(value = "findScorm", method = {RequestMethod.POST})
-    public String findScorm(@RequestParam("name") String name, HttpServletRequest request) {
+    @RequestMapping(value = "findScorm", method = {RequestMethod.GET})
+    public String findScorm(@RequestParam("findInfo") String findInfo, HttpServletRequest request) {
         //todo 找到课件搜索
         return "scormfront/scorm/findResult";
     }

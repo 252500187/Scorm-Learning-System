@@ -19,9 +19,7 @@
 <div class="page-container">
     <div class="page-content-wrapper">
         <div class="row">
-            <div class="col-md-2">
-            </div>
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <h3>前往${user.levelName}之路总进度:20%</h3>
 
                 <div class="progress progress-striped active">
@@ -34,9 +32,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2">
-            </div>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <div class="portlet box">
                     <div class="portlet-body">
                         <h3>学习情况分布</h3>

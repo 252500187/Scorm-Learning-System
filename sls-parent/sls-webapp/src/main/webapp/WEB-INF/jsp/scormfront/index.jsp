@@ -25,8 +25,8 @@
             <div class="col-md-3"><br/>
 
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn"><a class="btn default blue-stripe" href="#">查询</a></span>
+                    <input type="text" class="form-control" placeholder="Search..." id="findInfo">
+                    <span class="input-group-btn"><a class="btn default blue-stripe" onclick="findScorm()">查询</a></span>
                 </div>
             </div>
         </div>
@@ -152,6 +152,16 @@
         $("#alertModel").modal('show');
         $(".modal-title").html("课件信息");
         $("#scormInfo").attr("src", "tourist/scormInfo?scormId=" + scormId);
+    }
+
+    function findScorm() {
+        if ($("#findInfo").val() == "") {
+            return;
+        }
+        $.ajax({
+            url: basePath + "tourist/findScorm?findInfo=" + $("#findInfo").val(),
+            type: "GET"
+        })
     }
 
     $(function () {
