@@ -46,10 +46,14 @@
                     <li class="filter" data-filter="category_4">
                         <i class="fa fa-star"></i>课件评分
                     </li>
-                    <a class="filter" id="recommend" data-filter="category_1" hidden="true"></a>
+                    <a id="recommend" class="filter" data-filter="category_1" hidden="true"></a>
                 </ul>
             </div>
             <div class="row mix-grid">
+                <%
+                    String[] color = {"blue", "yellow", "red", "purple"};
+                    int i = 0;
+                %>
                 <c:forEach var="scorm" items="${scormLevel}">
                     <div class="col-md-3 mix mix_all category_1"
                          style=" display: block; opacity: 1;">
@@ -59,13 +63,15 @@
                             <div class="caption">
                                 <h3>${scorm.scormName}</h3>
 
-                                <p> ${scorm.description}</p>
+                                <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
 
-                                <p><a onclick="showScormInfo('${scorm.scormId}')" class="btn blue">查看</a></p>
+                                <p><a onclick="showScormInfo('${scorm.scormId}')" class="btn <%=color[i++]%>">查看</a></p>
                             </div>
                         </div>
                     </div>
                 </c:forEach>
+                <div class="row"></div>
+                <% i = 0; %>
                 <c:forEach var="scorm" items="${scormSum}">
                     <div class="col-md-3 mix mix_all category_2"
                          style=" display: block; opacity: 1;">
@@ -75,13 +81,15 @@
                             <div class="caption">
                                 <h3>${scorm.scormName}</h3>
 
-                                <p> ${scorm.description}</p>
+                                <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
 
-                                <p><a onclick="showScormInfo('${scorm.scormId}')" class="btn purple">查看</a></p>
+                                <p><a onclick="showScormInfo('${scorm.scormId}')" class="btn <%=color[i++]%>">查看</a></p>
                             </div>
                         </div>
                     </div>
                 </c:forEach>
+                <div class="row"></div>
+                <% i = 0; %>
                 <c:forEach var="scorm" items="${scormTime}">
                     <div class="col-md-3 mix mix_all category_3"
                          style=" display: block; opacity: 1;">
@@ -91,13 +99,15 @@
                             <div class="caption">
                                 <h3>${scorm.scormName}</h3>
 
-                                <p> ${scorm.description}</p>
+                                <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
 
-                                <p><a onclick="showScormInfo('${scorm.scormId}')" class="btn yellow">查看</a></p>
+                                <p><a onclick="showScormInfo('${scorm.scormId}')" class="btn <%=color[i++]%>">查看</a></p>
                             </div>
                         </div>
                     </div>
                 </c:forEach>
+                <div class="row"></div>
+                <% i = 0; %>
                 <c:forEach var="scorm" items="${scormScore}">
                     <div class="col-md-3 mix mix_all category_4"
                          style=" display: block; opacity: 1;">
@@ -107,9 +117,9 @@
                             <div class="caption">
                                 <h3>${scorm.scormName}</h3>
 
-                                <p> ${scorm.description}</p>
+                                <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
 
-                                <p><a onclick="showScormInfo('${scorm.scormId}')" class="btn red">查看</a></p>
+                                <p><a onclick="showScormInfo('${scorm.scormId}')" class="btn <%=color[i++]%>">查看</a></p>
                             </div>
                         </div>
                     </div>
