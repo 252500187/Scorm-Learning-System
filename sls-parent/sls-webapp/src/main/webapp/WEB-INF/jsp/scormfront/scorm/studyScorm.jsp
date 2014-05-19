@@ -14,13 +14,18 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
     <script src="<c:url value="/js/ScormAPI.js"/>" type="text/javascript"></script>
+    <style type="text/css">
+        .protectEye {
+            background-color: #C7EDCC ;
+        }
+    </style>
 </head>
 
 <body class="page-header-fixed page-sidebar-reversed">
 <%@include file="../index/navigationMenu.jsp" %>
 <div class="page-container">
 <div class="page-sidebar-wrapper">
-    <div class="page-sidebar navbar-collapse collapse">
+    <div class="page-sidebar navbar-collapse collapse" name="protectEye">
         <ul class="page-sidebar-menu" data-auto-scroll="false" data-slide-speed="200">
             <li class="sidebar-toggler-wrapper">
                 <div class="sidebar-toggler">
@@ -41,7 +46,7 @@
                 </a>
             </li>
             <li>
-                <a onclick="">
+                <a onclick="protectEye()">
                     <i class="fa fa-gift"></i>
                     <span class="title">
                         开启护眼
@@ -127,8 +132,8 @@
         </ul>
     </div>
 </div>
-<div class="page-content-wrapper">
-    <div class="page-content">
+<div class="page-content-wrapper" name="protectEye">
+    <div class="page-content" name="protectEye">
         <div class="row">
             <iframe id="scormIframe" style="width:98%; height:800px;border:0px"
                     allowfullscreen>
@@ -262,18 +267,18 @@
         $("#ztree").attr("src", basePath + "user/scorm/studyScormZtree?scormId=${scorm.scormId}");
         $("#scormLogo").attr("src", basePath + "${scorm.imgPath}");
         $("#scormIframe").attr("src", basePath + "img/studyscormdefaultimg/" + Math.floor(Math.random() * 10) + ".jpg");
-            <c:forEach var="note" items="${noteList}">
-            $("#noteList").append('<div class="' + getRandom() + '">' +
-                    '<h4 class="caption" style="color: #6b7582">${note.date}</h4>' +
-                    '<small style="color: #6b7582">${note.time}</small><br/>'
-                    <c:if test="${note.noteType == -1 }">
-                    + '<p>${note.note}</p>'
-                    </c:if>
-                    <c:if test="${note.noteType == 1 }">
-                    + '<img style="max-height: 100px;max-width: 100px" src="${note.imgPath}"/>'
-                    </c:if>
-                    + '</div>');
-            </c:forEach>
+        <c:forEach var="note" items="${noteList}">
+        $("#noteList").append('<div class="' + getRandom() + '">' +
+                '<h4 class="caption" style="color: #6b7582">${note.date}</h4>' +
+                '<small style="color: #6b7582">${note.time}</small><br/>'
+                <c:if test="${note.noteType == -1 }">
+                + '<p>${note.note}</p>'
+                </c:if>
+                <c:if test="${note.noteType == 1 }">
+                + '<img style="max-height: 100px;max-width: 100px" src="${note.imgPath}"/>'
+                </c:if>
+                + '</div>');
+        </c:forEach>
     });
 
     function getNowDate() {
@@ -321,6 +326,10 @@
         $("#noteList").prepend("<div class='note note-success'>" +
                 " <h4 class='block'>" + getNowDate() + "</h4><p>图片" + $("#noteImg").val() + "上传成功！</p></div>"
         )
+    }
+
+    function protectEye() {
+        $("div[name='protectEye']").toggleClass("protectEye");
     }
 
     $('.page-sidebar ul').on('click', ' li > a', function (e) {
