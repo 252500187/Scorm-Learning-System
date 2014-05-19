@@ -41,4 +41,9 @@ public class DealScormController {
         scormService.getAllStudyNotesByScormIdAndUserId(Integer.parseInt(scormId), request);
         return "scormfront/scorm/studyInfo";
     }
+
+    @RequestMapping(value = "review", method = {RequestMethod.GET})
+    public String review(@RequestParam("scormId") String scormId, HttpServletRequest request) {
+        return "scormfront/scorm/review";
+    }
 }
