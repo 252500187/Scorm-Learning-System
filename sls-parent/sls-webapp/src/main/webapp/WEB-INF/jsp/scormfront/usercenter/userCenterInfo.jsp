@@ -1,3 +1,6 @@
+<%--@elvariable id="nextLevelScore" type="java.lang.Integer"--%>
+<%--@elvariable id="nowLevelScore" type="java.lang.Integer"--%>
+<%--@elvariable id="user" type="com.sls.user.entity.User"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -19,12 +22,12 @@
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
-            <h3>前往学粉之路总进度</h3>
+            <h3>前往${user.levelName}之路总进度</h3>
 
             <div class="progress progress-striped active">
                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
                      aria-valuemin="0"
-                     aria-valuemax="100" style="width: 80%">
+                     aria-valuemax="100" style="width:${((user.score-nowLevelScore)/(nextLevelScore-user.score))*100}%">
                         <span class="sr-only">
                              10% Complete (success)
                         </span>
