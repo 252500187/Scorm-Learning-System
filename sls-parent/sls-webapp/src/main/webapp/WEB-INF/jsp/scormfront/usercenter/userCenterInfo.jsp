@@ -26,7 +26,7 @@
                      aria-valuemin="0"
                      aria-valuemax="100" style="width: 80%">
                         <span class="sr-only">
-                             40% Complete (success)
+                             10% Complete (success)
                         </span>
                 </div>
             </div>

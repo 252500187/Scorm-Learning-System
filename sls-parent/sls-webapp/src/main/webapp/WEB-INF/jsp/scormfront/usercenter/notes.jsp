@@ -42,8 +42,11 @@
                         </ul>
                     </nav>
                 </div>
+                <div class="head-Info" style="text-align: right;padding-right: 5%;">
+                    作者：${userName}
+                </div>
                 <div class="bb-custom-side">
-                    <%--${userName}--%>
+                    <%--<p class="page-title">${userName}</p>--%>
                 </div>
             </div>
             <c:forEach begin="0" step="2" items="${noteList}" varStatus="status">
