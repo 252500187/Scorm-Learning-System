@@ -157,8 +157,5 @@
     $(function () {
         Metronic.init();
         Layout.init();
-        Portfolio.init();
-        $("#recommend").click();
     });
 </script>
-

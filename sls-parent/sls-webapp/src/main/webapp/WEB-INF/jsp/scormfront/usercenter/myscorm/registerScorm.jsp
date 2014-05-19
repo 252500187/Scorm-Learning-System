@@ -124,6 +124,6 @@
     function scormInfo(scormId) {
         parent.$("#alertInfo .modal-title").html("课件信息");
         parent.$('#alertInfo').modal('show');
-        parent.$("#info").attr("src", "tourist/scormInfo?scormId=" + scormId + "&type=-1");
+        parent.$("#info").attr("src", "tourist/scormInfo?scormId=" + scormId);
     }
 </script>

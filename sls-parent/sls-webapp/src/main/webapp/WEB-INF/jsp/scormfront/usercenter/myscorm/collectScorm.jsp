@@ -87,6 +87,6 @@
 
     function viewMore(scormId) {
         parent.$('#alertScormInfo').modal('show');
-        parent.$("#scormInfo").attr("src", "tourist/scormInfo?scormId=" + scormId + "&type=-1");
+        parent.$("#scormInfo").attr("src", "tourist/scormInfo?scormId=" + scormId);
     }
 </script>

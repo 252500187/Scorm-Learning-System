@@ -42,4 +42,10 @@ public class TouristController {
         scormService.getScormOperate(Integer.parseInt(scormId), request);
         return "scormfront/scorm/scormInfo";
     }
+
+    @RequestMapping(value = "findScorm", method = {RequestMethod.POST})
+    public String findScorm(@RequestParam("name") String name, HttpServletRequest request) {
+        //todo 找到课件搜索
+        return "scormfront/scorm/findResult";
+    }
 }

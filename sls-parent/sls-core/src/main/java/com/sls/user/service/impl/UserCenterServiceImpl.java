@@ -29,8 +29,7 @@ public class UserCenterServiceImpl implements UserCenterService {
 
     @Override
     public void toUserCenter(HttpServletRequest request) {
-        List<User> userList = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName());
-        User user = userList.get(0);
+        User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
         user.setLevelName(userDao.findUserLevelNameByScore(user.getScore()).getLevelName());
         request.setAttribute("user", user);
     }
