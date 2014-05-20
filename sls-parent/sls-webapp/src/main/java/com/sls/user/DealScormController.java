@@ -20,7 +20,7 @@ public class DealScormController {
     @Autowired
     private ScormService scormService;
 
-    @RequestMapping(value = "evaluateScorm", method = {RequestMethod.GET})
+    @RequestMapping(value = "evaluateScorm", method = {RequestMethod.POST})
     @ResponseBody
     public void evaluateScorm(ScormSummarize scormSummarize) {
         //todo 写完了别忘删注释，我要分数score和课件scormId
@@ -44,6 +44,7 @@ public class DealScormController {
 
     @RequestMapping(value = "review", method = {RequestMethod.GET})
     public String review(@RequestParam("scormId") String scormId, HttpServletRequest request) {
+        request.setAttribute("scormId",scormId);
         return "scormfront/scorm/review";
     }
 }

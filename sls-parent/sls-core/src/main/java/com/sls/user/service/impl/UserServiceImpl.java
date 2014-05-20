@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
         user.setInUse(DictConstant.IN_USE);
         user.setRoleId(roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_USER).getRoleId());
         user.setRegisterDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
-        user.setUserName("懒人");
+        user.setUserName(DictConstant.DEFAULT_USER_NAME);
         user.setScore(DictConstant.SCORE_0);
         int id = userDao.addUser(user);
         user.setUserId(id);
@@ -91,6 +91,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void editUser(User user) {
+        User oldUser = userDao.findUserAllInfoById(user.getUserId());
+        if (oldUser.getImgUrl().equals(DictConstant.DEFAULT_USER_PHOTO) && oldUser.getUserName().equals(DictConstant.DEFAULT_USER_NAME)) {
+            userDao.addScore(DictConstant.EXP_SCORE, user.getUserId());
+        }
         userDao.editUser(user);
     }
 

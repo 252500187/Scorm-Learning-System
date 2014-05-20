@@ -193,7 +193,8 @@
             dataType: "json",
             type: "GET",
             success: function (message) {
-                alert(message);
+                top.$("#alertPrompt").modal("show");
+                top.$("#alertPromptMessage").html(message);
                 window.location.href = basePath + "tourist/scormInfo?scormId=" + ${scormInfo.scormId};
             },
             error: doError
@@ -205,8 +206,9 @@
             url: basePath + "user/scorm/collectScorm?scormId=" + id,
             dataType: "json",
             type: "GET",
-            success: function (message) {
-                alert(message);
+            success: function () {
+                top.$("#alertPrompt").modal("show");
+                top.$("#alertPromptMessage").html("收藏成功");
                 window.location.href = basePath + "tourist/scormInfo?scormId=" + ${scormInfo.scormId};
             },
             error: doError

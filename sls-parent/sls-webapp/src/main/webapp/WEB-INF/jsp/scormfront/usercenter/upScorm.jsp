@@ -143,9 +143,8 @@
         Metronic.init();
         Layout.init();
         if ("${result}" != "") {
-            parent.$(".modal-title").html("提示");
-            parent.$("#alertMessage").html("${result}");
-            parent.$("#alertModel").modal("show");
+            parent.$("#alertPromptMessage").html("${result}");
+            parent.$("#alertPrompt").modal("show");
         }
         jQuery.validator.addMethod("isImg", function (value, element, param) {
             if (param) {

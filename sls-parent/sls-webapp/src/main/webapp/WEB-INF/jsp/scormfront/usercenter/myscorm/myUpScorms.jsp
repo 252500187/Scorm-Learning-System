@@ -65,8 +65,4 @@
         </c:forEach>
         Portfolio.init();
     })
-
-
-
-
 </script>

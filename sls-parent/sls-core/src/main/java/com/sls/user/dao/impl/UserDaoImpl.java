@@ -161,4 +161,10 @@ public class UserDaoImpl extends PageDao implements UserDao {
         String sql = "DELETE FROM luss_user_collect WHERE user_id = ? AND scorm_id = ?";
         getJdbcTemplate().update(sql, userId, scormId);
     }
+
+    @Override
+    public void addScore(int score, int userId) {
+        String sql = "UPDATE us_user_info SET score=score+? WHERE user_id=?";
+        getJdbcTemplate().update(sql, score, userId);
+    }
 }

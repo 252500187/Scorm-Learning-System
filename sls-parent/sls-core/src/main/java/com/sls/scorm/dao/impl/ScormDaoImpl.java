@@ -92,7 +92,7 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
 
     @Override
     public void updateScormScoreByScormId(int scormId) {
-        String sql = "UPDATE ss_scorm SET score=(SELECT AVG(score) FROM luss_scorm_summarize WHERE score!='' AND scorm_id=?) WHERE scorm_id=?";
+        String sql = "UPDATE ss_scorm SET score=(SELECT AVG(score) FROM luss_scorm_summarize WHERE score<>'' AND scorm_id=?) WHERE scorm_id=?";
         getJdbcTemplate().update(sql, scormId, scormId);
     }
 
