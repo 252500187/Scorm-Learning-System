@@ -76,6 +76,7 @@ public class ScormServiceImpl implements ScormService {
                 scoInfo.setCoreCredit(scoNode.getCoreCredit());
                 scoDao.addScoInfo(scoInfo);
             }
+            userDao.addScore(DictConstant.EXP_SCORE, userId);
             request.setAttribute("result", "上传成功");
             return scormId;
         } catch (Exception e) {
@@ -481,9 +482,9 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void findScorm(String info, HttpServletRequest request) {
         request.setAttribute("info", info);
-        request.setAttribute("findNameScorm", scormDao.queryScormByFieldName(info,"scorm_name"));
-        request.setAttribute("findDescriptionScorm", scormDao.queryScormByFieldName(info,"description"));
-        request.setAttribute("findScoreScorm", scormDao.queryScormByFieldName(info,"score"));
+        request.setAttribute("findNameScorm", scormDao.queryScormByFieldName(info, "scorm_name"));
+        request.setAttribute("findDescriptionScorm", scormDao.queryScormByFieldName(info, "description"));
+        request.setAttribute("findScoreScorm", scormDao.queryScormByFieldName(info, "score"));
         request.setAttribute("findLabelScorm", scormDao.queryScormByLabelName(info));
     }
 

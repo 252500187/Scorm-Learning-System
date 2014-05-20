@@ -44,4 +44,6 @@ public interface UserDao {
     UserLevel findUserNowLevelByScore(int score);
 
     List<Label> getPieChartsByUserId(int userId);
+
+    void addScore(int score, int userId);
 }

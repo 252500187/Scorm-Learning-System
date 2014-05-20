@@ -42,7 +42,8 @@
                                                style="max-width:100px;max-height:100px"/>
                                 </td>
                                 <td>
-                                    <span style="margin-left:10px">昵称</span>:&nbsp;&nbsp;<span id="userNickName">${user.userName}</span><br/><br/>
+                                    <span style="margin-left:10px">昵称</span>:&nbsp;&nbsp;${user.userName}<br/>
+                                    <span style="margin-left:10px">分数</span>:&nbsp;&nbsp;${user.score}<br/>
                                     <span style="margin-left:10px">等级</span>:&nbsp;&nbsp;${user.levelName}<br/>
                                 </td>
                             </tr>
