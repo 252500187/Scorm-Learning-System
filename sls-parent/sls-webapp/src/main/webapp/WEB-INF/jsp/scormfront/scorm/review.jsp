@@ -18,87 +18,93 @@
 </div>
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
-    <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
         <div class="page-content">
-            <div class="row ">
-                <!-- BEGIN PORTLET-->
-                <div class="portlet">
-                    <div class="portlet-title line">
-                        <div class="caption">
-                            <i class="fa fa-comments"></i>课件评论列表
-                        </div>
-                    </div>
-                    <div class="portlet-body" id="chats">
-                        <div class="row">
-                            <ul style="list-style-type:none">
-                                <li style="display: block;float: left">评分:</li>
-                                <li style="display: block;float: left;cursor:pointer" name="changeStar"><i
-                                        class="fa fa-star-o"><a data-start="1"></a></i></li>
-                                <li style="display: block;float: left;cursor:pointer" name="changeStar"><i
-                                        class="fa fa-star-o"><a data-start="2"></a></i></li>
-                                <li style="display: block;float: left;cursor:pointer" name="changeStar"><i
-                                        class="fa fa-star-o"><a data-start="3"></a></i></li>
-                                <li style="display: block;float: left;cursor:pointer" name="changeStar"><i
-                                        class="fa fa-star-o"><a data-start="4"></a></i></li>
-                                <li style="display: block;float: left;cursor:pointer" name="changeStar"><i
-                                        class="fa fa-star-o"><a data-start="5"></a></i></li>
-                            </ul>
-                        </div>
-                        <div class="chat-form">
-                            <div class="row"></div>
-                            <div class="input-cont">
-                                <input class="form-control" type="text" placeholder="输入评论..."/>
-                            </div>
-                            <div class="btn-cont">
-                                <span class="arrow"></span>
-                                <a href="" class="btn blue icn-only">
-                                    <i class="fa fa-check icon-white"></i>
-                                </a>
+            <div class="col-md-12">
+                <div class="row">
+                    <!-- BEGIN PORTLET-->
+                    <div class="portlet">
+                        <div class="portlet-title line">
+                            <div class="caption">
+                                <i class="fa fa-comments"></i>课件评论列表
                             </div>
                         </div>
-                        <div class="scroller" style="height: 435px;" data-always-visible="1" data-rail-visible1="1">
-                            <ul class="chats">
-                                <li class="in">
-                                    <img class="avatar img-responsive" alt="" src="/img/bookmarks/book1.jpg"/>
+                        <div class="portlet-body" id="chats">
+                            <div class="chat-form">
+                                <div class="row"></div>
+                                <div class="input-cont">
+                                    <input class="form-control" type="text" placeholder="输入评论..."/>
+                                </div>
+                                <div class="btn-cont">
+                                    <span class="arrow"></span>
+                                    <a href="" class="btn blue icn-only">
+                                        <i class="fa fa-check icon-white"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="chat-form">
+                                <div class="input-cont">
+                                    <div style="margin-left: 0">评分：</div>
+                                    <ul style="list-style-type:none;display: block;float: left">
+                                        <%--<li style="display: block;float: left">评分:</li>--%>
+                                        <li style="display: block;float: left;cursor:pointer" name="changeStar"><i
+                                                class="fa fa-star-o"><a data-start="1"></a></i></li>
+                                        <li style="display: block;float: left;cursor:pointer" name="changeStar"><i
+                                                class="fa fa-star-o"><a data-start="2"></a></i></li>
+                                        <li style="display: block;float: left;cursor:pointer" name="changeStar"><i
+                                                class="fa fa-star-o"><a data-start="3"></a></i></li>
+                                        <li style="display: block;float: left;cursor:pointer" name="changeStar"><i
+                                                class="fa fa-star-o"><a data-start="4"></a></i></li>
+                                        <li style="display: block;float: left;cursor:pointer" name="changeStar"><i
+                                                class="fa fa-star-o"><a data-start="5"></a></i></li>
+                                    </ul>
+                                    <div class="col-md-1">0分</div>
+                                </div>
 
-                                    <div class="message">
+                            </div>
+                            <div class="scroller" style="height: 435px;" data-always-visible="1" data-rail-visible1="1">
+                                <ul class="chats">
+                                    <li class="in">
+                                        <img class="avatar img-responsive" alt="" src="/img/bookmarks/book1.jpg"/>
+
+                                        <div class="message">
 											<span class="arrow">
 											</span>
-                                        <a href="#" class="name">
-                                            Bob Nilson </a>
+                                            <a href="#" class="name">
+                                                Bob Nilson </a>
 											<span class="datetime">
 											at Jul 25, 2012 11:09 </span>
 											<span class="body">
 											Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
-                                    </div>
-                                </li>
-                                <li class="out">
-                                    <img class="avatar img-responsive" alt=""
-                                         src="../../assets/admin/layout/img/avatar2.jpg"/>
+                                        </div>
+                                    </li>
+                                    <li class="out">
+                                        <img class="avatar img-responsive" alt=""
+                                             src="../../assets/admin/layout/img/avatar2.jpg"/>
 
-                                    <div class="message">
+                                        <div class="message">
 											<span class="arrow">
 											</span>
-                                        <a href="#" class="name">
-                                            Lisa Wong </a>
+                                            <a href="#" class="name">
+                                                Lisa Wong </a>
 											<span class="datetime">
 											at Jul 25, 2012 11:09 </span>
 											<span class="body">
 											Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
-                                    </div>
-                                </li>
-                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
+                    <!-- END PORTLET-->
                 </div>
-                <!-- END PORTLET-->
             </div>
         </div>
+        <!-- END CONTENT -->
     </div>
-    <!-- END CONTENT -->
+    <!-- END CONTAINER -->
 </div>
-<!-- END CONTAINER -->
 </body>
 <!-- END BODY -->
 </html>
