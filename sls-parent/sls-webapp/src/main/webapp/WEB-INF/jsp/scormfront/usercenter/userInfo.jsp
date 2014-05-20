@@ -164,9 +164,9 @@
             type: "POST",
             success: function () {
                 if($("#upImg").val() != "" ){
-                $("#userInfo").attr("method", "post").attr("action",
-                        basePath + "user/center/upHeadImg").submit();  }
-                <%--parent.$("#userHeadPhoto").attr("src", basePath + "${photoUrl}")--%>
+                    $("#userInfo").attr("method", "post").attr("action",
+                        basePath + "user/center/upHeadImg").submit();
+                }
                 parent.$("#userNickName").html($("#nickName").val());
                 parent.$("#alertMessage").html("修改成功");
                 parent.$("#alertModel").modal("show");
