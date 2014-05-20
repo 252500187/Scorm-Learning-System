@@ -24,20 +24,20 @@
                 <div class="row">
                     <!-- BEGIN PORTLET-->
                     <div class="portlet">
-                        <div class="portlet-title line">
-                            <div class="caption">
-                                <i class="fa fa-comments"></i>课件评论列表
-                            </div>
-                        </div>
+                        <%--<div class="portlet-title line">--%>
+                        <%--<div class="caption">--%>
+                        <%--<i class="fa fa-comments"></i>课件评论列表--%>
+                        <%--</div>--%>
+                        <%--</div>--%>
                         <div class="portlet-body" id="chats">
                             <div class="chat-form">
                                 <div class="row"></div>
                                 <div class="input-cont">
-                                    <input class="form-control" type="text" placeholder="输入评论..."/>
+                                    <input id="evaluateInput" class="form-control" type="text" placeholder="输入评论..."/>
                                 </div>
                                 <div class="btn-cont">
                                     <span class="arrow"></span>
-                                    <a href="" class="btn blue icn-only">
+                                    <a onclick="evaluateScorm()" class="btn blue icn-only">
                                         <i class="fa fa-check icon-white"></i>
                                     </a>
                                 </div>
@@ -110,7 +110,7 @@
 </html>
 </body>
 </html>
-<script>
+<script type="text/javascript">
     $(function () {
         $("li[name='changeStar']").bind({
             mouseover: function () {
@@ -128,5 +128,15 @@
             }
         })
     })
+
+    function evaluateScorm() {
+        var discuss = $("#evaluateInput").val().trim();
+        if (discuss == "") return;
+        $.ajax({
+            url: basePath + "user/dealScorm/discussScorm?scormId=${scormId}",
+            data: { discuss: discuss },
+            type: "POST"
+        })
+    }
 
 </script>
