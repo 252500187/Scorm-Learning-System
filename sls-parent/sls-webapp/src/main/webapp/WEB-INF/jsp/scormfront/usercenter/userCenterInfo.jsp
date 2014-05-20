@@ -19,7 +19,7 @@
     <div class="page-content">
         <div class="row">
             <div class="col-md-8"><h3 class="page-title">
-                个人中心
+                ${user.userName}&nbsp;个人中心
             </h3>
             </div>
             <div class="col-md-4">
@@ -42,7 +42,7 @@
                         <i class="fa fa-angle-right"></i>
                     </li>
                     <li>
-                        <a>用户名</a>
+                        <a>${user.userName}</a>
                     </li>
                 </ul>
             </div>
@@ -74,7 +74,7 @@
                             </div>
                             <div class="col-md-7">
                                 <h3>&nbsp;</h3>
-                                <img src="img/userCenterImg/1.jpg" class="img-responsive"
+                                <img src="img/userCenterImg/1.jpg" class="img-circle"
                                      alt="Good Good Study Day Day Up"
                                      style="max-width: 470px;">
                             </div>

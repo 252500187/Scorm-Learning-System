@@ -124,7 +124,7 @@
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
         <div class="page-content">
-            <iframe id="iframe" style="min-height: 800px;width:100%;"
+            <iframe id="iframe" style="min-height: 1200px;width:100%;"
                     frameborder=no
                     scrolling="no"
                     allowfullscreen>
