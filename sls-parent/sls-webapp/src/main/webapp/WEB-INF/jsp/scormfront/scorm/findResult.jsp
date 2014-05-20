@@ -58,6 +58,9 @@
 <div class="col-md-1">
 </div>
 <div class="col-md-8 col-sm-8 article-block">
+    <c:if test="${fn:length(findNameScorm)<=0&&fn:length(findDescriptionScorm)<=0&&fn:length(findScoreScorm)<=0&&fn:length(findLabelScorm)<=0}">
+        <h1>没有找到啊...</h1>
+    </c:if>
     <c:if test="${fn:length(findNameScorm)>0}">
         <h1>按名称</h1>
         <c:forEach var="scorm" items="${findNameScorm}">
