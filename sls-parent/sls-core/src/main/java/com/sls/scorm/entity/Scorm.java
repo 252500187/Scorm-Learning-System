@@ -24,6 +24,8 @@ public class Scorm {
 
     private int userId;
     private String labelName;
+    private String lastVisitTime;
+    private String chapterNum;
 
     public Scorm() {
         registerSum = 0;
@@ -185,5 +187,21 @@ public class Scorm {
 
     public void setLabelName(String labelName) {
         this.labelName = labelName;
+    }
+
+    public String getLastVisitTime() {
+        return lastVisitTime;
+    }
+
+    public void setLastVisitTime(String lastVisitTime) {
+        this.lastVisitTime = lastVisitTime;
+    }
+
+    public String getChapterNum() {
+        return chapterNum;
+    }
+
+    public void setChapterNum(String chapterNum) {
+        this.chapterNum = chapterNum;
     }
 }

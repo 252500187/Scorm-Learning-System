@@ -480,28 +480,40 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void findScorm(String info, HttpServletRequest request) {
-        //TODO 索索信息
         request.setAttribute("info", info);
+        request.setAttribute("findNameScorm", scormDao.queryScormByFieldName(info,"scorm_name"));
+        request.setAttribute("findDescriptionScorm", scormDao.queryScormByFieldName(info,"description"));
+        request.setAttribute("findScoreScorm", scormDao.queryScormByFieldName(info,"score"));
+        request.setAttribute("findLabelScorm", scormDao.queryScormByLabelName(info));
     }
 
     @Override
     public void findRecommendScorm(HttpServletRequest request) {
-        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-        List<Scorm> scormList = scormDao.findRecommendScormByUserLabel(userId);
         List<Label> labelList;
         StringBuilder labelName = new StringBuilder();
+        List<Scorm> scormList;
+        if (!"".equals(LoginUserUtil.getLoginName())) {
+            int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+            scormList = scormDao.findRecommendScormByUserLabel(userId);
+        } else {
+            scormList = scormDao.indexFindTopScormByFieldName("score", 5);
+        }
         for (Scorm scorm : scormList) {
+            scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
             labelList = labelDao.getLabelByScormId(scorm.getScormId());
             for (Label label : labelList) {
-                labelName.append(label.getLabelName());
+                labelName.append(label.getLabelName() + "、");
             }
             scorm.setLabelName(labelName.toString());
         }
-        request.setAttribute("recommendScorm", scormDao.findRecommendScormByUserLabel(userId));
+        request.setAttribute("recommendScorm", scormList);
     }
 
     @Override
     public void findRegisterScorm(HttpServletRequest request) {
-
+        if (!"".equals(LoginUserUtil.getLoginName())) {
+            int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+            request.setAttribute("registerScorm", scormDao.findRegisterScormByUserId(userId));
+        }
     }
 }

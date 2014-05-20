@@ -115,16 +115,37 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
     }
 
     @Override
-    public List<Scorm> indexFindTopScormByFieldName(String fieldName) {
-        String sql = "SELECT * FROM ss_scorm WHERE in_use = ? ORDER BY ? DESC LIMIT 4";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), DictConstant.IN_USE, fieldName);
+    public List<Scorm> indexFindTopScormByFieldName(String fieldName, int num) {
+        String sql = "SELECT * FROM ss_scorm WHERE in_use = ? ORDER BY ? DESC LIMIT ?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), DictConstant.IN_USE, fieldName, num);
     }
 
     @Override
     public List<Scorm> findRecommendScormByUserLabel(int userId) {
-        String sql = "SELECT * FROM ss_scorm WHERE scorm_id IN " +
-                "(SELECT DISTINCT scorm_id  FROM ss_scorm_label WHERE label_id IN " +
+        String sql = "SELECT * FROM ss_scorm WHERE scorm_id IN (SELECT DISTINCT scorm_id  FROM ss_scorm_label WHERE label_id IN " +
                 "(SELECT label_id FROM us_user_label WHERE user_id=?))";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId);
+    }
+
+    @Override
+    public List<Scorm> findRegisterScormByUserId(int userId) {
+        String sql = "SELECT * FROM ss_scorm a,luss_scorm_summarize b WHERE a.scorm_id=b.scorm_id AND user_id=?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId);
+    }
+
+    @Override
+    public List<Scorm> queryScormByFieldName(String info, String fieldName) {
+        String sql = "SELECT a.*,COUNT(TYPE) AS chapterNum FROM ss_scorm a,luss_scorm_sco b WHERE a.scorm_id=b.scorm_id AND b.user_id=? AND b.type='item' " +
+                "AND a.in_use=? AND a." + fieldName + " LIKE '%" + info.trim() + "%' GROUP BY a.scorm_id";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), DictConstant.VOID_VALUE, DictConstant.IN_USE);
+    }
+
+    @Override
+    public List<Scorm> queryScormByLabelName(String info) {
+        String sql = "SELECT a.*,COUNT(TYPE) AS chapterNum FROM ss_scorm a,luss_scorm_sco b " +
+                "WHERE a.scorm_id = b.scorm_id AND b.user_id = -1 AND b.type = 'item' AND a.in_use = 1 " +
+                "AND a.scorm_id IN (SELECT DISTINCT c.scorm_id FROM ss_scorm c ,ss_scorm_label d,us_label e " +
+                "WHERE c.scorm_id=d.scorm_id AND e.label_id=d.label_id AND label_name LIKE '%" + info + "%')GROUP BY a.scorm_id";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class));
     }
 }
