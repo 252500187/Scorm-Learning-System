@@ -109,7 +109,10 @@
         $("li[name='changeStar']").hover(function () {
             $(this).prevAll().find("i").toggleClass("fa fa-star");
             $(this).find("i").toggleClass("fa fa-star");
-        })
+        }).click(function () {
+                    $(this).prevAll().find("i").attr("class","fa fa-star");
+                    $(this).find("i").attr("class","fa fa-star");
+                })
     })
 
 </script>
