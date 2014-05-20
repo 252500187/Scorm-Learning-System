@@ -23,7 +23,6 @@ public class DealScormController {
     @RequestMapping(value = "evaluateScorm", method = {RequestMethod.POST})
     @ResponseBody
     public void evaluateScorm(ScormSummarize scormSummarize) {
-        //todo 写完了别忘删注释，我要分数score和课件scormId
         scormService.evaluateScorm(scormSummarize);
     }
 
