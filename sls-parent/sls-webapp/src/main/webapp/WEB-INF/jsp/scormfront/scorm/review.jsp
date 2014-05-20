@@ -33,11 +33,16 @@
                         <div class="row">
                             <ul style="list-style-type:none">
                                 <li style="display: block;float: left">评分:</li>
-                                <li style="display: block;float: left"><i class="fa fa-star-o"><a data-start="20"></a></i></li>
-                                <li style="display: block;float: left"><i class="fa fa-star-o"><a data-start="40"></a></i></li>
-                                <li style="display: block;float: left"><i class="fa fa-star-o"><a data-start="60"></a></i></li>
-                                <li style="display: block;float: left"><i class="fa fa-star-o"><a data-start="80"></a></i></li>
-                                <li style="display: block;float: left"><i class="fa fa-star-o"><a data-start="100"></a></i></li>
+                                <li style="display: block;float: left;cursor:pointer" name="changeStar"><i
+                                        class="fa fa-star-o"><a data-start="1"></a></i></li>
+                                <li style="display: block;float: left;cursor:pointer" name="changeStar"><i
+                                        class="fa fa-star-o"><a data-start="2"></a></i></li>
+                                <li style="display: block;float: left;cursor:pointer" name="changeStar"><i
+                                        class="fa fa-star-o"><a data-start="3"></a></i></li>
+                                <li style="display: block;float: left;cursor:pointer" name="changeStar"><i
+                                        class="fa fa-star-o"><a data-start="4"></a></i></li>
+                                <li style="display: block;float: left;cursor:pointer" name="changeStar"><i
+                                        class="fa fa-star-o"><a data-start="5"></a></i></li>
                             </ul>
                         </div>
                         <div class="chat-form">
@@ -99,3 +104,11 @@
 </html>
 </body>
 </html>
+<script>
+    $(function () {
+        $("li[name='changeStar']").mouseover(function () {
+            $(this).prevAll().find("i").toggleClass("fa fa-star");
+        })
+    })
+
+</script>
