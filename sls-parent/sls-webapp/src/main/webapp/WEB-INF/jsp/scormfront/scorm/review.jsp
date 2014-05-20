@@ -111,12 +111,11 @@
                 $(this).prevAll().find("i").attr("class", ("fa fa-star"));
                 $(this).find("i").attr("class", "fa fa-star");
             },
-            mouseout: function () {
+            mouseleave: function () {
                 $(this).prevAll().find("i").attr("class", "fa fa-star-o");
                 $(this).find("i").attr("class", "fa fa-star-o");
             },
             click: function () {
-                $("li[name='changeStar']").unbind("mouseout");
                 $(this).prevAll().find("i").attr("class", "fa fa-star");
                 $(this).find("i").attr("class", "fa fa-star");
             }
