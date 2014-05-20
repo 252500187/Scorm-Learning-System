@@ -4,7 +4,7 @@ package com.sls.user.entity;
 public class UserLevel {
     private int levelId;
     private String levelName;
-    private String score;
+    private int score;
 
     public UserLevel() {
     }
@@ -25,11 +25,11 @@ public class UserLevel {
         this.levelName = levelName;
     }
 
-    public String getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(int score) {
         this.score = score;
     }
 }

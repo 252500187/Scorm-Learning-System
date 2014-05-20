@@ -53,13 +53,17 @@
                     <div class="col-md-9 article-block">
                         <div class="row">
                             <div class="col-md-12">
-                                <h3>前往${user.levelName}之路:${finalScore}</h3>
-
+                                <c:if test="${nextLevel==null}">
+                                    <h3>恭喜，您已满级！</h3>
+                                </c:if>
+                                <c:if test="${nextLevel!=null}">
+                                    <h3>前往${nextLevel}之路:已完成${finalScore}%</h3>
+                                </c:if>
                                 <div class="progress progress-striped active">
                                     <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
                                          aria-valuemin="0"
                                          aria-valuemax="100"
-                                         style="width:${((user.score-nowLevelScore)/(nextLevelScore-user.score))*100}%">
+                                         style="width:${finalScore}%">
                                     </div>
                                 </div>
                                 <hr>
