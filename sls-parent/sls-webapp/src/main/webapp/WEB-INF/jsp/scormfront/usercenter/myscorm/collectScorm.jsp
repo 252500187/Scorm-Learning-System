@@ -36,7 +36,7 @@
                                                 <h4 style="margin-bottom: 0px;padding-bottom: 3px"></h4>
                                                 <h4 style="margin-bottom: 0px;padding-bottom: 3px">
                                                     收藏时间&nbsp;${scormInfo.collectDate}</h4>
-                                                <a class="mix-link" onclick="viewMore('${scormInfo.scormId}')">
+                                                <a class="mix-link" onclick="scormInfo('${scormInfo.scormId}')">
                                                     <i class="fa fa-search"></i>&nbsp;<span class="title">课件详情</span>
                                                 </a>
                                                 <a class="mix-preview" onclick="cancelCollect('${scormInfo.scormId}')">
@@ -85,8 +85,9 @@
     }
 
 
-    function viewMore(scormId) {
-        parent.$('#alertScormInfo').modal('show');
-        parent.$("#scormInfo").attr("src", "tourist/scormInfo?scormId=" + scormId);
+    function scormInfo(scormId) {
+        parent.$("#alertInfo .modal-title").html("课件信息");
+        parent.$('#alertInfo').modal('show');
+        parent.$("#info").attr("src", "tourist/scormInfo?scormId=" + scormId);
     }
 </script>
