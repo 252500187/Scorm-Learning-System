@@ -199,14 +199,14 @@
 
     function findScorm() {
         if ($("#findInfo").val() != "") {
-            parent.window.open(basePath + "tourist/findScorm?findInfo=" + $("#findInfo").val());
+            window.open(basePath + "tourist/findScorm?findInfo=" + $("#findInfo").val());
         }
     }
 
     function showScormInfo(scormId) {
-        parent.$("#alertInfo").modal('show');
+        parent.$("#alertIframe").modal('show');
         parent.$(".modal-title").html("课件信息");
-        parent.$("#info").attr("src", "tourist/scormInfo?scormId=" + scormId);
+        parent.$("#iframeInfo").attr("src", "tourist/scormInfo?scormId=" + scormId);
     }
 
     function study(scormId) {

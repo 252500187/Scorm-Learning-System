@@ -130,7 +130,7 @@
 </html>
 <script>
     $(function () {
-        parent.$("#userHeadPhoto").attr("src",basePath + "${user.imgUrl}");
+        parent.$("#userHeadPhoto").attr("src", basePath + "${user.imgUrl}");
         $("#sexMale").attr("checked", true);
         if ("${user.sex}" == "0") {
             $("#sexFemale").attr("checked", true);
@@ -163,13 +163,13 @@
             dataType: "json",
             type: "POST",
             success: function () {
-                if($("#upImg").val() != "" ){
+                if ($("#upImg").val() != "") {
                     $("#userInfo").attr("method", "post").attr("action",
-                        basePath + "user/center/upHeadImg").submit();
+                            basePath + "user/center/upHeadImg").submit();
                 }
                 parent.$("#userNickName").html($("#nickName").val());
-                parent.$("#alertMessage").html("修改成功");
-                parent.$("#alertModel").modal("show");
+                parent.$("#alertPromptMessage").html("修改成功");
+                parent.$("#alertPrompt").modal("show");
             },
             error: doError
         })

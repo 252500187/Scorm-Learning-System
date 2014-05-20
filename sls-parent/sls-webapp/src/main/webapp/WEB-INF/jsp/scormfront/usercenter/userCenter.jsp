@@ -42,7 +42,8 @@
                                                style="max-width:100px;max-height:100px"/>
                                 </td>
                                 <td>
-                                    <span style="margin-left:10px">昵称</span>:&nbsp;&nbsp;<span id="userNickName">${user.userName}</span><br/>
+                                    <span style="margin-left:10px">昵称</span>:&nbsp;&nbsp;<span
+                                        id="userNickName">${user.userName}</span><br/>
                                     <span style="margin-left:10px">分数</span>:&nbsp;&nbsp;${user.score}<br/>
                                     <span style="margin-left:10px">等级</span>:&nbsp;&nbsp;${user.levelName}<br/>
                                 </td>
@@ -138,23 +139,6 @@
 <!-- BEGIN FOOTER -->
 <%@include file="../index/footer.jsp" %>
 
-<div id="alertModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">提示</h4>
-            </div>
-            <div class="modal-body">
-                <p id="alertMessage">
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button id="alertButton" class="btn blue" data-dismiss="modal">确认</button>
-            </div>
-        </div>
-    </div>
-</div>
 <div id="alertPrompt" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -167,13 +151,31 @@
                 </p>
             </div>
             <div class="modal-footer">
+                <button id="alertButton" class="btn blue" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="alertConfirm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p id="alertConfirmMessage">
+                </p>
+            </div>
+            <div class="modal-footer">
                 <button id="promptButton1" class="btn default" data-dismiss="modal">确认</button>
                 <button id="promptButton2" class="btn default" data-dismiss="modal">取消</button>
             </div>
         </div>
     </div>
 </div>
-<div id="alertInfo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+<div id="alertIframe" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -181,7 +183,7 @@
                 <h4 class="modal-title"></h4>
             </div>
             <div>
-                <iframe id="info" style="width:100%; height:500px;border:1px;" frameborder=no allowfullscreen>
+                <iframe id="iframeInfo" style="width:100%; height:500px;border:1px;" frameborder=no allowfullscreen>
                 </iframe>
             </div>
             <div class="modal-footer">
@@ -189,7 +191,7 @@
         </div>
     </div>
 </div>
-<div id="alertNotes" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+<div id="maskNotes" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div>
@@ -212,7 +214,7 @@
 
     function changeNoteIframe(src) {
         $("#iframe").attr("src", src);
-        parent.$("#alertNotes").modal("show");
+        $("#maskNotes").modal("show");
     }
 
     $('ul.page-sidebar-menu ').on('click', ' li > a', function (e) {

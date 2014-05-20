@@ -190,9 +190,8 @@
     })();
 
     $(function () {
-        parent.$("#alertNotes").modal("hide");
+        parent.$("#maskNotes").modal("hide");
     })
-</script>
-<script>
+
     Page.init();
 </script>

@@ -111,6 +111,7 @@ public class ScormServiceImpl implements ScormService {
         scormSummarize.setScormId(scormId);
         summarizeDao.addScormSummarize(scormSummarize);
         scormDao.addVisitSum(scormId);
+        userDao.addScore(DictConstant.EXP_SCORE,user.getUserId());
         return "注册成功。";
     }
 
