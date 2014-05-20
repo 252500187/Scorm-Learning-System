@@ -128,7 +128,8 @@
 </html>
 <script>
     $(function () {
-        parent.$("#userHeadPhoto").attr("src", basePath + "${user.imgUrl}");
+        parent.$("#userHeadPhoto").attr("src", "${user.imgUrl}");
+        parent.$("#userTopImg").attr("src", "${user.imgUrl}");
         $("#sexMale").attr("checked", true);
         if ("${user.sex}" == "0") {
             $("#sexFemale").attr("checked", true);

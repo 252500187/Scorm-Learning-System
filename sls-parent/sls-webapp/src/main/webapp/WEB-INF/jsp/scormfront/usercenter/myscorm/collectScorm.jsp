@@ -71,7 +71,7 @@
         Portfolio.init();
     })
     function cancelCollect(scormId) {
-        parent.$("#alertPromptMessage").html("确认取消收藏?");
+        parent.$("#alertConfirmMessage").html("确认取消收藏?");
         parent.$("#promptButton1").click(function () {
             $.ajax({
                 url: basePath + "user/center/cancelCollect?scormId=" + scormId,
@@ -81,7 +81,7 @@
                 }
             })
         });
-        parent.$("#alertPrompt").modal("show");
+        parent.$("#alertConfirm").modal("show");
     }
 
 

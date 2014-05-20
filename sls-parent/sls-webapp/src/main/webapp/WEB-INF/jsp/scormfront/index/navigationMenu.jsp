@@ -28,7 +28,7 @@
                     <li class="dropdown dropdown-user">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                            data-close-others="true">
-                            <img alt="Hello" class="img-circle" style="max-height: 39px;"
+                            <img id="userTopImg" alt="Hello" style="height: 28px;"
                                  src="${sessionScope.userImg}"/>
                             <span class="username">${sessionScope.userName}</span>
                             <i class="fa fa-angle-down"></i>

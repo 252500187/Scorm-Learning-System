@@ -54,7 +54,7 @@
                 </li>
                 <!-- 第一个菜单  个人资料-->
                 <li>
-                    <a onclick="changeIframe('user/center/userInfoDo')">
+                    <a id="userInfo" onclick="changeIframe('user/center/userInfoDo')">
                         <i class="fa fa-italic"></i>
 						<span class="title">
 							个人资料
@@ -168,8 +168,8 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <button id="promptButton1" class="btn default" data-dismiss="modal">确认</button>
                 <button id="promptButton2" class="btn default" data-dismiss="modal">取消</button>
+                <button id="promptButton1" class="btn blue" data-dismiss="modal">确认</button>
             </div>
         </div>
     </div>

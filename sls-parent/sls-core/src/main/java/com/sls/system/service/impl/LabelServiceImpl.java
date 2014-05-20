@@ -36,6 +36,9 @@ public class LabelServiceImpl implements LabelService {
 
     @Override
     public void editUserLabelList(String myLabelList) {
+        if (("").equals(myLabelList)) {
+            return;
+        }
         int userId = getUserId();
         Label label = new Label();
         label.setUserId(userId);

@@ -87,7 +87,7 @@ public class UserCenterController {
     @ResponseBody
     public void editUserInfo(User user, @RequestParam("myLabelList") String myLabelList) {
         userService.editUser(user);
-        labelService.editUserLabelList(myLabelList);
+        labelService.editUserLabelList(myLabelList.trim());
     }
 
     @RequestMapping(value = "upHeadImg", method = {RequestMethod.POST})

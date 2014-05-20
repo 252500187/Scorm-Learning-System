@@ -70,17 +70,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-12">
                                 <h3>学习分布</h3>
 
                                 <div id="pie_chart" class="chart">
                                 </div>
-                            </div>
-                            <div class="col-md-7">
-                                <h3>&nbsp;</h3>
-                                <img src="img/userCenterImg/1.jpg" class="img-circle"
-                                     alt="Good Good Study Day Day Up"
-                                     style="max-width: 470px;">
                             </div>
                         </div>
                         <div class="row">
