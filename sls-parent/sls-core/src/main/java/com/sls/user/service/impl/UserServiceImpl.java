@@ -132,12 +132,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public void findUserNextLevelNameByScore(HttpServletRequest request) {
         User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
-        UserLevel nextUserLevel = userDao.findUserNextLevelNameByScore(user.getScore());
-        user.setLevelName(nextUserLevel.getLevelName());
-        request.setAttribute("user", user);
-        UserLevel nowUserLevel = userDao.findUserLevelNameByScore(user.getScore());
-        int deno = Integer.parseInt(nextUserLevel.getScore()) - user.getScore();
-        request.setAttribute("finalScore", deno == 0 ? 1 : ((user.getScore() - Integer.parseInt(nowUserLevel.getScore())) / (Integer.parseInt(nextUserLevel.getScore()) - user.getScore())));
+        List<UserLevel> nextUserLevel = userDao.findUserNextLevelByScore(user.getScore());
+        UserLevel userNowLevel = userDao.findUserNowLevelByScore(user.getScore());
+        if (nextUserLevel.size() == 0) {
+            request.setAttribute("finalScore", "100");
+        } else {
+            request.setAttribute("nextLevel", nextUserLevel.get(0).getLevelName());
+            request.setAttribute("finalScore", (user.getScore() - userNowLevel.getScore()) * 100 / (nextUserLevel.get(0).getScore() - userNowLevel.getScore()));
+        }
     }
 
     @Override

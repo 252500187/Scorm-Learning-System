@@ -39,7 +39,9 @@ public interface UserDao {
 
     void cancelCollectByUserIdAndScormId(int userId, String scormId);
 
-    UserLevel findUserNextLevelNameByScore(int score);
+    List<UserLevel> findUserNextLevelByScore(int score);
+
+    UserLevel findUserNowLevelByScore(int score);
 
     List<Label> getPieChartsByUserId(int userId);
 }
