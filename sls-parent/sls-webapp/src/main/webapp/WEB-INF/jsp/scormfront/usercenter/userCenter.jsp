@@ -151,7 +151,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <button id="alertButton" class="btn blue" data-dismiss="modal">确认</button>
+                <button id="promptButton" class="btn blue" data-dismiss="modal">确认</button>
             </div>
         </div>
     </div>

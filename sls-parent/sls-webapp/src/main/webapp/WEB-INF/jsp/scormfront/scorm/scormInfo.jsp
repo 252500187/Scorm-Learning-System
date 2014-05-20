@@ -193,7 +193,6 @@
             dataType: "json",
             type: "GET",
             success: function (message) {
-
                 window.location.href = basePath + "tourist/scormInfo?scormId=" + ${scormInfo.scormId};
             },
             error: doError
@@ -206,7 +205,6 @@
             dataType: "json",
             type: "GET",
             success: function () {
-
                 window.location.href = basePath + "tourist/scormInfo?scormId=" + ${scormInfo.scormId};
             },
             error: doError

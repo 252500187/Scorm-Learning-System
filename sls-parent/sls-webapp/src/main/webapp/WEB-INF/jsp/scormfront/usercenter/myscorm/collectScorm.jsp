@@ -49,8 +49,6 @@
                                                 &nbsp;${scormInfo.scormName}</h4>
                                         </div>
                                     </div>
-
-
                                 </c:forEach>
                             </div>
                         </div>
@@ -71,7 +69,7 @@
         Portfolio.init();
     })
     function cancelCollect(scormId) {
-        parent.$("#alertPromptMessage").html("确认取消收藏?");
+        parent.$("#alertConfirmMessage").html("确认取消收藏?");
         parent.$("#promptButton1").click(function () {
             $.ajax({
                 url: basePath + "user/center/cancelCollect?scormId=" + scormId,
@@ -81,12 +79,13 @@
                 }
             })
         });
-        parent.$("#alertPrompt").modal("show");
+        parent.$("#alertConfirm").modal("show");
     }
 
 
     function viewMore(scormId) {
-        parent.$('#alertScormInfo').modal('show');
-        parent.$("#scormInfo").attr("src", "tourist/scormInfo?scormId=" + scormId);
+        parent.$('#alertIframe').modal("show");
+        parent.$('.modal-title').html("课件信息");
+        parent.$("#iframeInfo").attr("src", "tourist/scormInfo?scormId=" + scormId);
     }
 </script>

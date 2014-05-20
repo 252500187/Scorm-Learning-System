@@ -117,15 +117,15 @@
     })
 
     function scormComment(scormId) {
-        parent.$("#alertInfo .modal-title").html("评论课件");
-        parent.$('#alertInfo').modal('show');
-        parent.$("#info").attr("src", basePath + "user/dealScorm/review?scormId=" + scormId);
+        parent.$(".modal-title").html("评论课件");
+        parent.$('#alertIframe').modal('show');
+        parent.$("#iframeInfo").attr("src", basePath + "user/dealScorm/review?scormId=" + scormId);
     }
 
     function studyInfo(scormId) {
         parent.$(".modal-title").html("学习情况");
-        parent.$('#alertInfo').modal('show');
-        parent.$("#info").attr("src", basePath + "user/dealScorm/userStudyInfo?scormId=" + scormId);
+        parent.$('#alertIframe').modal('show');
+        parent.$("#iframeInfo").attr("src", basePath + "user/dealScorm/userStudyInfo?scormId=" + scormId);
     }
 
     function study(scormId) {
@@ -133,8 +133,8 @@
     }
 
     function scormInfo(scormId) {
-        parent.$("#alertInfo .modal-title").html("课件信息");
-        parent.$('#alertInfo').modal('show');
-        parent.$("#info").attr("src", "tourist/scormInfo?scormId=" + scormId);
+        parent.$(".modal-title").html("课件信息");
+        parent.$('#alertIframe').modal('show');
+        parent.$("#iframeInfo").attr("src", "tourist/scormInfo?scormId=" + scormId);
     }
 </script>
