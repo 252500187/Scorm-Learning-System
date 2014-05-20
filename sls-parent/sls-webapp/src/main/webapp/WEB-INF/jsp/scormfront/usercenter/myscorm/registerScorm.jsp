@@ -49,15 +49,15 @@
                                                     <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                         状态:进行中</h4>
                                                     <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                        <a class="btn btn-sm purple"
+                                                        <a class="btn btn-sm blue"
                                                            onclick="scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
-                                                        <a class="btn btn-sm purple"
+                                                        <a class="btn btn-sm blue"
                                                            onclick="studyInfo('${scormInfo.scormId}')">学习情况</a>
                                                     </h4>
                                                     <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                        <a class="btn btn-sm purple"
-                                                           onclick="scormComment('${scormInfo.scormId}')">评论课件</a>&nbsp;
-                                                        <a class="btn btn-sm purple"
+                                                        <a class="btn btn-sm blue"
+                                                           onclick="scormComment('${scormInfo.scormId}')">评价课件</a>&nbsp;
+                                                        <a class="btn btn-sm blue"
                                                            onclick="study('${scormInfo.scormId}')">进行学习</a>
                                                     </h4>
                                                 </div>
@@ -80,15 +80,15 @@
                                                     <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                         完成日期:&nbsp;${scormInfo.completeDate}</h4>
                                                     <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                        <a class="btn btn-sm purple"
+                                                        <a class="btn btn-sm blue"
                                                            onclick="scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
-                                                        <a class="btn btn-sm purple"
+                                                        <a class="btn btn-sm blue"
                                                            onclick="studyInfo('${scormInfo.scormId}')">学习情况</a>
                                                     </h4>
                                                     <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                        <a class="btn btn-sm purple"
-                                                           onclick="scormComment('${scormInfo.scormId}')">评论课件</a>&nbsp;
-                                                        <a class="btn btn-sm purple"
+                                                        <a class="btn btn-sm blue"
+                                                           onclick="scormComment('${scormInfo.scormId}')">评价课件</a>&nbsp;
+                                                        <a class="btn btn-sm blue"
                                                            onclick="study('${scormInfo.scormId}')">进行学习</a>
                                                     </h4>
                                                 </div>

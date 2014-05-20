@@ -36,7 +36,7 @@
                                                 <h4 style="margin-bottom: 0px;padding-bottom: 3px"></h4>
                                                 <h4 style="margin-bottom: 0px;padding-bottom: 3px">
                                                     收藏时间&nbsp;${scormInfo.collectDate}</h4>
-                                                <a class="mix-link" onclick="viewMore('${scormInfo.scormId}')">
+                                                <a class="mix-link" onclick="scormInfo('${scormInfo.scormId}')">
                                                     <i class="fa fa-search"></i>&nbsp;<span class="title">课件详情</span>
                                                 </a>
                                                 <a class="mix-preview" onclick="cancelCollect('${scormInfo.scormId}')">
@@ -49,6 +49,8 @@
                                                 &nbsp;${scormInfo.scormName}</h4>
                                         </div>
                                     </div>
+
+
                                 </c:forEach>
                             </div>
                         </div>
@@ -69,7 +71,7 @@
         Portfolio.init();
     })
     function cancelCollect(scormId) {
-        parent.$("#alertConfirmMessage").html("确认取消收藏?");
+        parent.$("#alertPromptMessage").html("确认取消收藏?");
         parent.$("#promptButton1").click(function () {
             $.ajax({
                 url: basePath + "user/center/cancelCollect?scormId=" + scormId,
@@ -79,13 +81,13 @@
                 }
             })
         });
-        parent.$("#alertConfirm").modal("show");
+        parent.$("#alertPrompt").modal("show");
     }
 
 
-    function viewMore(scormId) {
-        parent.$('#alertIframe').modal("show");
-        parent.$('.modal-title').html("课件信息");
+    function scormInfo(scormId) {
+        parent.$(".modal-title").html("课件信息");
+        parent.$('#alertIframe').modal('show');
         parent.$("#iframeInfo").attr("src", "tourist/scormInfo?scormId=" + scormId);
     }
 </script>
