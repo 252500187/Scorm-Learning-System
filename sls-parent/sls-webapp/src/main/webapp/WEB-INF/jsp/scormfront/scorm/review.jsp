@@ -106,13 +106,20 @@
 </html>
 <script>
     $(function () {
-        $("li[name='changeStar']").hover(function () {
-            $(this).prevAll().find("i").toggleClass("fa fa-star");
-            $(this).find("i").toggleClass("fa fa-star");
-        }).click(function () {
-                    $(this).prevAll().find("i").attr("class","fa fa-star");
-                    $(this).find("i").attr("class","fa fa-star");
-                })
+        $("li[name='changeStar']").one({
+            mouseover: function () {
+                $(this).prevAll().find("i").attr("class", ("fa fa-star"));
+                $(this).find("i").attr("class", "fa fa-star");
+            },
+            mouseout: function () {
+                $(this).prevAll().find("i").attr("class", "fa fa-star-o");
+                $(this).find("i").attr("class", "fa fa-star-o");
+            },
+            click: function () {
+                $(this).prevAll().find("i").attr("class", "fa fa-star");
+                $(this).find("i").attr("class", "fa fa-star");
+            }
+        });
     })
 
 </script>
