@@ -111,7 +111,7 @@ public class ScormServiceImpl implements ScormService {
         scormSummarize.setScormId(scormId);
         summarizeDao.addScormSummarize(scormSummarize);
         scormDao.addVisitSum(scormId);
-        userDao.addScore(DictConstant.EXP_SCORE,user.getUserId());
+        userDao.addScore(DictConstant.EXP_SCORE, user.getUserId());
         return "注册成功。";
     }
 
@@ -277,7 +277,7 @@ public class ScormServiceImpl implements ScormService {
             //课件完成方式为浏览即可完成时,判断通过并处理
             if (scormDao.findScormInfoByScormId(scormId).getCompleteWay() != DictConstant.VOID_VALUE) {
                 if (scormSummarize.getCompleteDate().equals("")) {
-                    changeSummarize(scormSummarize, "");
+                    changeSummarize(scormSummarize, "", userId);
                     return;
                 }
             }
@@ -309,32 +309,33 @@ public class ScormServiceImpl implements ScormService {
                 flag = 1;
             }
         }
-        defaultPassDeal(scormSummarize, flag, sum, i);
+        defaultPassDeal(scormSummarize, flag, sum, i, userId);
     }
 
-    public void defaultPassDeal(ScormSummarize scormSummarize, int flag, int sum, int i) {
+    public void defaultPassDeal(ScormSummarize scormSummarize, int flag, int sum, int i, int userId) {
         if (flag == 1) {
             //1.1带测试时，若原来有成绩，则比较成绩，只有大于原有成绩才更新
             if (!scormSummarize.getCompleteDate().equals("")) {
                 if (!scormSummarize.getGrade().equals("")) {
                     if ((sum / i) > Integer.parseInt(scormSummarize.getGrade())) {
-                        changeSummarize(scormSummarize, sum / i + "");
+                        changeSummarize(scormSummarize, sum / i + "", userId);
                     }
                 }
             } else {
-                changeSummarize(scormSummarize, sum / i + "");
+                changeSummarize(scormSummarize, sum / i + "", userId);
             }
         } else {
             //1.2不带测试时，若原来没有成绩，则更新成绩
             if (scormSummarize.getCompleteDate().equals("")) {
-                changeSummarize(scormSummarize, "");
+                changeSummarize(scormSummarize, "", userId);
             }
         }
     }
 
-    public void changeSummarize(ScormSummarize scormSummarize, String grade) {
+    public void changeSummarize(ScormSummarize scormSummarize, String grade, int userId) {
         scormSummarize.setGrade(grade);
         scormSummarize.setCompleteDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
+        userDao.addScore(DictConstant.EXP_SCORE, userId);
         summarizeDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
     }
 
@@ -377,7 +378,7 @@ public class ScormServiceImpl implements ScormService {
             if (scormDao.checkNotHasRegister(scormId, userId)) {
                 register = true;
             }
-            if (register != true) {
+            if (!register) {
                 study = true;
             }
             if (summarizeDao.isCompleteScorm(scormId, userId)) {
@@ -450,6 +451,9 @@ public class ScormServiceImpl implements ScormService {
     public void evaluateScorm(ScormSummarize scormSummarize) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         scormSummarize.setUserId(userId);
+        if (("").equals(summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormSummarize.getScormId()).getScore())) {
+            userDao.addScore(DictConstant.EXP_SCORE, userId);
+        }
         summarizeDao.changeSummarizeScoreByUserIdAndScormId(scormSummarize);
         scormDao.updateScormScoreByScormId(scormSummarize.getScormId());
     }
@@ -464,7 +468,11 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void discussScorm(ScormSummarize scormSummarize) {
-        scormSummarize.setUserId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        if (("").equals(summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormSummarize.getScormId()).getDiscussDate())) {
+            userDao.addScore(DictConstant.EXP_SCORE, userId);
+        }
+        scormSummarize.setUserId(userId);
         scormSummarize.setDiscussDate(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
         summarizeDao.discussScorm(scormSummarize);
     }

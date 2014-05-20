@@ -38,7 +38,7 @@
                         <table>
                             <tr>
                                 <td>
-                                    &nbsp;<img id="userHeadPhoto" class="img-polaroid" alt="用户头像"
+                                    &nbsp;<img id="userHeadPhoto" class="img-rounded" alt="用户头像"
                                                style="max-width:100px;max-height:100px"/>
                                 </td>
                                 <td>
@@ -138,7 +138,6 @@
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
 <%@include file="../index/footer.jsp" %>
-
 <div id="alertPrompt" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

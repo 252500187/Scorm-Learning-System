@@ -68,7 +68,7 @@ public class DictConstant {
     public static final String LESSON_STATUS_PASS = "passed";
     //已完成
     public static final String LESSON_STATUS_COMPLETED = "completed";
-//浏览 （无lesson_mode，则不会出现浏览状态）
+    //浏览 （无lesson_mode，则不会出现浏览状态）
 //    public static final String LESSON_STATUS_BROWSED = "browsed";
 //非完成（课件赋值）
 //    public static final String LESSON_STATUS_INCOMPLETE = "incomplete";
@@ -114,6 +114,8 @@ public class DictConstant {
 
     //用户默认头像
     public static final String DEFAULT_USER_PHOTO = "img/defaultImg/userDefaultImg.jpg";
+    //用户默认名
+    public static final String DEFAULT_USER_NAME = "地球人";
 
 
 }
