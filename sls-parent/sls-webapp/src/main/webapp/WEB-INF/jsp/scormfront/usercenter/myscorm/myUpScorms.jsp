@@ -33,12 +33,17 @@
                                                  alt="${scormInfo.scormId}">
 
                                             <div class="mix-details">
-                                                <h4 style="margin-bottom: 0px;padding-bottom: 3px"></h4>
-                                                <h4 style="margin-bottom: 0px;padding-bottom: 3px">
+                                                <h4>
+                                                </h4>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                     课件名称:&nbsp;${scormInfo.scormName}
                                                 </h4>
-                                                <h4 style="margin-bottom: 0px;padding-bottom: 3px">
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                     审核状态:&nbsp;${scormInfo.showInUse}
+                                                </h4>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    <a class="btn btn-sm blue"
+                                                       onclick="scormInfo('${scormInfo.scormId}')">课件信息</a>
                                                 </h4>
 
                                             </div>
@@ -65,4 +70,10 @@
         </c:forEach>
         Portfolio.init();
     })
+
+    function scormInfo(scormId) {
+        parent.$(".modal-title").html("课件信息");
+        parent.$('#alertIframe').modal('show');
+        parent.$("#iframeInfo").attr("src", "tourist/scormInfo?scormId=" + scormId);
+    }
 </script>
