@@ -60,7 +60,7 @@ public class LabelServiceImpl implements LabelService {
 
     @Override
     public void editScormLabelList(String scormLabelList, int scormId) {
-        if (scormId == DictConstant.VOID_VALUE) {
+        if (scormId == DictConstant.VOID_VALUE || scormLabelList.equals("")) {
             return;
         }
         Label label = new Label();
@@ -90,7 +90,7 @@ public class LabelServiceImpl implements LabelService {
 
     @Override
     public void findLabelById(String labelId, HttpServletRequest request) {
-        request.setAttribute("label",labelDao.findLabelById(labelId));
+        request.setAttribute("label", labelDao.findLabelById(labelId));
     }
 
     @Override

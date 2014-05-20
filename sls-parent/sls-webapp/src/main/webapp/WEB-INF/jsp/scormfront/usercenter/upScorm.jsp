@@ -227,20 +227,18 @@
     );
 
     $(".allLabels").live("click", function () {
-        var addLabelObj = $(this);
-        $("#myLabelList").append(addLabelObj);
-        addLabelObj.attr("class", "select2-search-choice myLabel");
-        addLabelObj.find("a").attr('class', 'select2-search-choice-close visible-a');
-        addLabelObj.find("div").attr('class', "label label-success");
-        addLabelObj.unbind("click");
+        $("#myLabelList").append($(this));
+        $(this).attr("class", "select2-search-choice myLabel");
+        $(this).find("a").attr('class', 'select2-search-choice-close visible-a');
+        $(this).find("div").attr('class', "label label-success");
+        $(this).unbind("click");
     });
 
     $(".visible-a").live("click", function () {
-        var removeLabelObj = $(this);
-        $("#labelList").append(removeLabelObj.parent("li"));
-        removeLabelObj.parent("li").attr("class", "select2-search-choice allLabels");
-        removeLabelObj.parent("li").find("a").attr("class", "select2-search-choice-close hidden-a");
-        removeLabelObj.parent("li").find("div").attr('class', "label label-info");
-        removeLabelObj.unbind("click");
+        $("#labelList").append($(this).parent("li"));
+        $(this).parent("li").attr("class", "select2-search-choice allLabels");
+        $(this).parent("li").find("a").attr("class", "select2-search-choice-close hidden-a");
+        $(this).parent("li").find("div").attr('class', "label label-info");
+        $(this).unbind("click");
     })
 </script>

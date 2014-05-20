@@ -69,7 +69,7 @@ public class UserCenterController {
     public String upScorm(HttpServletRequest request, Scorm scorm, @RequestParam("scormLabelList") String scormLabelList) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
         int scormId = upScormService.upScorm(request, "upScorm", "upImg", scorm);
-        labelService.editScormLabelList(scormLabelList, scormId);
+        labelService.editScormLabelList(scormLabelList.trim(), scormId);
         labelService.getAllLabel(request);
         return "scormfront/usercenter/upScorm";
     }
