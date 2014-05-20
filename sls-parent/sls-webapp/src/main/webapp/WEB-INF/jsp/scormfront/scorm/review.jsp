@@ -106,7 +106,7 @@
 </html>
 <script>
     $(function () {
-        $("li[name='changeStar']").live({
+        $("li[name='changeStar']").bind({
             mouseover: function () {
                 $(this).prevAll().find("i").attr("class", ("fa fa-star"));
                 $(this).find("i").attr("class", "fa fa-star");
@@ -116,21 +116,11 @@
                 $(this).find("i").attr("class", "fa fa-star-o");
             },
             click: function () {
+                $("li[name='changeStar']").unbind("mouseover").unbind("mouseleave");
                 $(this).prevAll().find("i").attr("class", "fa fa-star");
                 $(this).find("i").attr("class", "fa fa-star");
             }
         })
-
-//        $("li[name='changeStar']").mouseover(function () {
-//            $(this).prevAll().find("i").attr("class", ("fa fa-star"));
-//            $(this).find("i").attr("class", "fa fa-star");
-//        }).mouseout(function () {
-//                    $(this).prevAll().find("i").attr("class", "fa fa-star-o");
-//                    $(this).find("i").attr("class", "fa fa-star-o");
-//                }).click(function () {
-//                    $(this).prevAll().find("i").attr("class", "fa fa-star");
-//                    $(this).find("i").attr("class", "fa fa-star");
-//                })
     })
 
 </script>
