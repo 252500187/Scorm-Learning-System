@@ -106,8 +106,9 @@
 </html>
 <script>
     $(function () {
-        $("li[name='changeStar']").mouseover(function () {
+        $("li[name='changeStar']").hover(function () {
             $(this).prevAll().find("i").toggleClass("fa fa-star");
+            $(this).find("i").toggleClass("fa fa-star");
         })
     })
 
