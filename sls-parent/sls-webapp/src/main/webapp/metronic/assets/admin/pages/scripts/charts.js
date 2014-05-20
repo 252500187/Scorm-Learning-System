@@ -754,8 +754,8 @@ var Charts = function () {
 //                    }
 //                });
 //
-//            // GRAPH 8
-//            $.plot($("#pie_chart_8"), data, {
+            // GRAPH 8
+//            $.plot($("#pie_chart"), data, {
 //                    series: {
 //                        pie: {
 //                            show: true,

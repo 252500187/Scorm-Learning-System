@@ -53,6 +53,8 @@ public class UserCenterController {
     public String userCenterInfo(HttpServletRequest request) {
         userService.findUserNextLevelNameByScore(request);
         userService.getPieCharts(request);
+        scormService.findRecommendScorm(request);
+        scormService.findRegisterScorm(request);
         return "scormfront/usercenter/userCenterInfo";
     }
 

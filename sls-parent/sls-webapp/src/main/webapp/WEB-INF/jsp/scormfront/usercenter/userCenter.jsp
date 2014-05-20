@@ -32,7 +32,7 @@
                 </li>
                 <!-- 用户信息 -->
                 <li class="start">
-                    <a onclick="changeIframe('user/center/userCenterInfo')">
+                    <a id="userCenterIndex" onclick="changeIframe('user/center/userCenterInfo')">
                         <i class="fa fa-user"></i><br/>
                         <span class="title">
                         <table>
@@ -124,15 +124,11 @@
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
         <div class="page-content">
-            <div class="row">
-                <div class="col-md-12">
-                    <iframe id="iframe" style="min-height: 800px;width:100%; height:100%;padding-left: 6px;"
-                            frameborder=no
-                            scrolling="no"
-                            allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
+            <iframe id="iframe" style="min-height: 800px;width:100%;"
+                    frameborder=no
+                    scrolling="no"
+                    allowfullscreen>
+            </iframe>
         </div>
     </div>
     <!-- END CONTENT -->
@@ -206,7 +202,7 @@
         Layout.init(); // init layout
         Tasks.initDashboardWidget();
         $("#userHeadPhoto").attr("src", basePath + "${user.imgUrl}");
-        changeIframe('user/center/userCenterInfo');
+        $("#userCenterIndex").click();
     })
 
     function changeIframe(src) {
