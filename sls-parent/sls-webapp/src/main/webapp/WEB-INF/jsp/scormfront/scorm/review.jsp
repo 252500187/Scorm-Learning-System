@@ -116,11 +116,12 @@
             mouseover: function () {
                 $(this).unbind("click");
                 $(this).prevAll().find("i").attr("class", ("fa fa-star"));
+                $(this).nextAll().find("i").attr("class", ("fa fa-star-o"));
                 $(this).find("i").attr("class", "fa fa-star");
             },
             mouseleave: function () {
                 $(this).unbind("click");
-                $(this).prevAll().find("i").attr("class", "fa fa-star-o");
+                $(this).siblings().find("i").attr("class", "fa fa-star-o");
                 $(this).find("i").attr("class", "fa fa-star-o");
             }
         })
