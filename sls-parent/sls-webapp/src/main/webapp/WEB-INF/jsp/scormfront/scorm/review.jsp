@@ -143,22 +143,10 @@
             dataType: "json",
             type: "POST",
             success: function () {
-                alert("评分成功！")
+                alert("评分成功！");
+                window.location.reload()
             },
-            error: function () {
-                changeStar.bind({
-                    mouseover: function () {
-                        $(this).unbind("click");
-                        $(this).prevAll().find("i").attr("class", ("fa fa-star"));
-                        $(this).find("i").attr("class", "fa fa-star");
-                    },
-                    mouseleave: function () {
-                        $(this).unbind("click");
-                        $(this).prevAll().find("i").attr("class", "fa fa-star-o");
-                        $(this).find("i").attr("class", "fa fa-star-o");
-                    }
-                })
-            }
+            error: doError
         })
     }
 
