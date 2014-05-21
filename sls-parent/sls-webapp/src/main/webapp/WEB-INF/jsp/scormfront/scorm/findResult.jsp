@@ -27,9 +27,9 @@
     </div>
     <div class="col-md-4">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search..." id="findInfo">
+            <input type="text" class="form-control" placeholder="Search..." id="queryInfo">
                         <span class="input-group-btn">
-                            <a class="btn default blue-stripe" onclick="findScorm()">查询</a></span>
+                            <a id="query" class="btn default blue-stripe" onclick="findScorm()">查询</a></span>
         </div>
     </div>
 </div>
@@ -333,7 +333,7 @@
     }
 
     function findScorm() {
-        if ($("#findInfo").val() != "") {
+        if ($("#queryInfo").val() != "") {
             window.location.href = basePath + "tourist/findScorm?findInfo=" + $("#findInfo").val();
         }
     }
@@ -345,5 +345,10 @@
     $(function () {
         Metronic.init();
         Layout.init();
+        $('#query').keypress(function (e) {
+            if (e.which == 13) {
+                findScorm();
+            }
+        });
     });
 </script>

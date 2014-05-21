@@ -25,8 +25,9 @@
             <div class="col-md-3"><br/>
 
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search..." id="findInfo">
-                    <span class="input-group-btn"><a class="btn default blue-stripe" onclick="findScorm()">查询</a></span>
+                    <input type="text" class="form-control" placeholder="Search..." id="queryInfo">
+                    <span class="input-group-btn"><a id="query" class="btn default blue-stripe"
+                                                     onclick="findScorm()">查询</a></span>
                 </div>
             </div>
         </div>
@@ -172,7 +173,7 @@
     }
 
     function findScorm() {
-        if ($("#findInfo").val() != "") {
+        if ($("#queryInfo").val() != "") {
             window.location.href = basePath + "tourist/findScorm?findInfo=" + $("#findInfo").val();
         }
     }
@@ -181,6 +182,11 @@
         Metronic.init();
         Layout.init();
         Portfolio.init();
+        $('#query').keypress(function (e) {
+            if (e.which == 13) {
+                findScorm();
+            }
+        });
         $("#recommend").click();
     });
 </script>

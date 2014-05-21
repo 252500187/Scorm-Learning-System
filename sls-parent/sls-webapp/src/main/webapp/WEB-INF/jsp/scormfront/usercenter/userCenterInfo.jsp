@@ -24,9 +24,9 @@
             </div>
             <div class="col-md-4">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search..." id="findInfo">
+                    <input type="text" class="form-control" placeholder="Search..." id="queryInfo">
                         <span class="input-group-btn">
-                            <a class="btn default blue-stripe" onclick="findScorm()">查询</a></span>
+                            <a id="query" class="btn default blue-stripe" onclick="findScorm()">查询</a></span>
                 </div>
             </div>
             <div class="col-md-12">
@@ -189,10 +189,15 @@
         }
         </c:forEach>
         Charts.initPieCharts(data);
+        $('#query').keypress(function (e) {
+            if (e.which == 13) {
+                findScorm();
+            }
+        });
     });
 
     function findScorm() {
-        if ($("#findInfo").val() != "") {
+        if ($("#queryInfo").val() != "") {
             window.open(basePath + "tourist/findScorm?findInfo=" + $("#findInfo").val());
         }
     }
