@@ -14,19 +14,11 @@
     <%@include file="../../includes/common.jsp" %>
 </head>
 <body class="page-header-fixed">
-
 <%@include file="../index/navigationMenu.jsp" %>
-
-<div class="clearfix">
-</div>
-<!-- BEGIN CONTAINER -->
 <div class="page-container">
-    <!-- BEGIN SIDEBAR -->
     <div class="page-sidebar-wrapper">
         <div class="page-sidebar navbar-collapse collapse">
-            <!-- BEGIN SIDEBAR MENU -->
             <ul class="page-sidebar-menu" data-auto-scroll="false" data-auto-speed="200">
-                <!-- 隐藏框 点击一下变成小图标 -->               <!--  -->
                 <li class="sidebar-toggler-wrapper">
                     <div class="sidebar-toggler"></div>
                 </li>
@@ -122,8 +114,6 @@
             <!-- END SIDEBAR MENU -->
         </div>
     </div>
-    <!-- END SIDEBAR -->
-    <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
         <div class="page-content">
             <iframe id="iframe" style="min-height: 1200px;width:100%;"
@@ -133,10 +123,7 @@
             </iframe>
         </div>
     </div>
-    <!-- END CONTENT -->
 </div>
-<!-- END CONTAINER -->
-<!-- BEGIN FOOTER -->
 <%@include file="../index/footer.jsp" %>
 <div id="alertPrompt" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
     <div class="modal-dialog">
