@@ -351,6 +351,9 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void getScormInfo(int scormId, HttpServletRequest request) {
         Scorm scormInfo = scormDao.findScormInfoByScormId(scormId);
+        if ("".equals(scormInfo.getScore())) {
+            scormInfo.setScore("0");
+        }
         if (scormInfo.getInUse() == DictConstant.NO_USE) {
             return;
         }
