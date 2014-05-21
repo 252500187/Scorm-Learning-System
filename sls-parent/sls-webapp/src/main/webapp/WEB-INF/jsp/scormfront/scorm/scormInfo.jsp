@@ -23,7 +23,9 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-2" style="float: left">
-                        <img id="scormImg" class="img-polaroid" style="max-width: 150px;max-height: 200px" alt=""/>
+                        <img style="width: 150px" src="img/others/flag_top.png" alt=""/><br/>
+                        <img id="scormImg" src="${scormInfo.imgPath}" class="img-polaroid"
+                             style="max-width: 150px;max-height: 200px" alt=""/>
                     </div>
                     <div class="col-md-10" style="float: left">
                         <div class="row">
@@ -182,7 +184,6 @@
     $(function () {
         Metronic.init();
         Layout.init();
-        $("#scormImg").attr("src", basePath + "${scormInfo.imgPath}");
         $.fn.zTree.init($("#chapterList"), settingMenu, zNodes);
         $.fn.zTree.getZTreeObj("chapterList").expandAll(true);
     });
