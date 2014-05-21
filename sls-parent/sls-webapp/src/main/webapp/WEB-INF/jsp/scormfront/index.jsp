@@ -27,7 +27,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search..." id="queryInfo">
                     <span class="input-group-btn"><a id="query" class="btn default blue-stripe"
-                                                     onclick="findScorm()">查询</a></span>
+                                                     onclick="findScorm()"><i class="fa fa-search"></i></a></span>
                 </div>
             </div>
         </div>
@@ -182,12 +182,13 @@
         Metronic.init();
         Layout.init();
         Portfolio.init();
-        $('#query').keypress(function (e) {
-            if (e.which == 13) {
-                findScorm();
-            }
-        });
         $("#recommend").click();
+    });
+
+    $("#queryInfo").bind("keydown", function (e) {
+        if (e.which == 13) {
+            findScorm();
+        }
     });
 </script>
 

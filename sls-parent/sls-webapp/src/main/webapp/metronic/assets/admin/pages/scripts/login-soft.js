@@ -42,12 +42,11 @@ var Login = function () {
             }
         });
 
-        $('.login-form input').keypress(function (e) {
+        $("#password").bind("keydown", function (e) {
             if (e.which == 13) {
                 if ($('.login-form').validate().form()) {
                     $('.login-form').submit();
                 }
-                return false;
             }
         });
     }
@@ -92,15 +91,6 @@ var Login = function () {
 
             submitHandler: function (form) {
                 form.submit();
-            }
-        });
-
-        $('.forget-form input').keypress(function (e) {
-            if (e.which == 13) {
-                if ($('.forget-form').validate().form()) {
-                    $('.forget-form').submit();
-                }
-                return false;
             }
         });
 

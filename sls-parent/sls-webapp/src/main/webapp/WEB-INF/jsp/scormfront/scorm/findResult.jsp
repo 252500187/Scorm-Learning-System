@@ -29,7 +29,8 @@
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search..." id="queryInfo">
                         <span class="input-group-btn">
-                            <a id="query" class="btn default blue-stripe" onclick="findScorm()">查询</a></span>
+                            <a id="query" class="btn default blue-stripe" onclick="findScorm()"><i
+                                    class="fa fa-search"></i></a></span>
         </div>
     </div>
 </div>
@@ -59,7 +60,11 @@
 </div>
 <div class="col-md-8 col-sm-8 article-block">
     <c:if test="${fn:length(findNameScorm)<=0&&fn:length(findDescriptionScorm)<=0&&fn:length(findScoreScorm)<=0&&fn:length(findLabelScorm)<=0}">
-        <h1>没有找到啊...</h1>
+        <h3 class="page-title">Sorry</h3>
+        <h3 class="page-title">
+            没有相关搜索结果
+            <small>...</small>
+        </h3>
     </c:if>
     <c:if test="${fn:length(findNameScorm)>0}">
         <h1>按名称</h1>
@@ -345,7 +350,8 @@
     $(function () {
         Metronic.init();
         Layout.init();
-        $('#query').keypress(function (e) {
+
+        $("#queryInfo").bind("keydown", function (e) {
             if (e.which == 13) {
                 findScorm();
             }

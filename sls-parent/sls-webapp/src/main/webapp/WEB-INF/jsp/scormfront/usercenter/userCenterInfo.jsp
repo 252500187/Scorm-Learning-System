@@ -26,7 +26,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search..." id="queryInfo">
                         <span class="input-group-btn">
-                            <a id="query" class="btn default blue-stripe" onclick="findScorm()">查询</a></span>
+                            <a id="query" class="btn default blue-stripe" onclick="findScorm()"><i class="fa fa-search"></i></a></span>
                 </div>
             </div>
             <div class="col-md-12">
@@ -189,7 +189,7 @@
         }
         </c:forEach>
         Charts.initPieCharts(data);
-        $('#query').keypress(function (e) {
+        $("#queryInfo").bind("keydown", function (e) {
             if (e.which == 13) {
                 findScorm();
             }
