@@ -19,6 +19,7 @@
         .fa-star-o {
             color: #D7D31F;
         }
+
         .fa-star {
             color: #D7D31F;
         }
@@ -37,6 +38,31 @@
                     <div class="portlet">
                         <div class="portlet-body" id="chats">
                             <div class="chat-form">
+                                <div class="input-cont">
+                                    <%--<div style="margin-left: 0">评分：</div>--%>
+                                    <ul style="list-style-type:none;display: block;float: left">
+                                        <li style="display: block;float: left">评分:</li>
+                                        <li style="display: block;float: left;cursor:pointer" name="changeStar"
+                                            id="changeStar1">
+                                            <i onclick="onclickStar(1)" class="fa fa-star-o"></i></li>
+                                        <li style="display: block;float: left;cursor:pointer" name="changeStar"
+                                            id="changeStar2">
+                                            <i onclick="onclickStar(2)" class="fa fa-star-o"></i></li>
+                                        <li style="display: block;float: left;cursor:pointer" name="changeStar"
+                                            id="changeStar3">
+                                            <i onclick="onclickStar(3)" class="fa fa-star-o"></i></li>
+                                        <li style="display: block;float: left;cursor:pointer" name="changeStar"
+                                            id="changeStar4">
+                                            <i onclick="onclickStar(4)" class="fa fa-star-o"></i></li>
+                                        <li style="display: block;float: left;cursor:pointer" name="changeStar"
+                                            id="changeStar5">
+                                            <i onclick="onclickStar(5)" class="fa fa-star-o"></i></li>
+                                        <input id="showScore" value="${myEvaluateScore}分" readonly="readonly"
+                                               style="border: 0;background-color: #E9EFF3">
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="chat-form">
                                 <div class="row"></div>
                                 <div class="input-cont">
                                     <input id="discussInput" class="form-control" type="text" placeholder="输入评论..."/>
@@ -46,26 +72,6 @@
                                     <a onclick="discussScorm()" class="btn blue icn-only">
                                         <i class="fa fa-check icon-white"></i>
                                     </a>
-                                </div>
-                            </div>
-                            <div class="chat-form">
-                                <div class="input-cont">
-                                    <%--<div style="margin-left: 0">评分：</div>--%>
-                                    <ul style="list-style-type:none;display: block;float: left">
-                                        <li style="display: block;float: left">评分:</li>
-                                        <li style="display: block;float: left;cursor:pointer" name="changeStar" id="changeStar1">
-                                            <i onclick="onclickStar(1)" class="fa fa-star-o"></i></li>
-                                        <li style="display: block;float: left;cursor:pointer" name="changeStar" id="changeStar2">
-                                            <i onclick="onclickStar(2)" class="fa fa-star-o"></i></li>
-                                        <li style="display: block;float: left;cursor:pointer" name="changeStar" id="changeStar3">
-                                            <i onclick="onclickStar(3)" class="fa fa-star-o"></i></li>
-                                        <li style="display: block;float: left;cursor:pointer" name="changeStar" id="changeStar4">
-                                            <i onclick="onclickStar(4)" class="fa fa-star-o"></i></li>
-                                        <li style="display: block;float: left;cursor:pointer" name="changeStar" id="changeStar5">
-                                            <i onclick="onclickStar(5)" class="fa fa-star-o"></i></li>
-                                        <input id="showScore" value="${myEvaluateScore}分" readonly="readonly"
-                                               style="border: 0;background-color: #E9EFF3">
-                                    </ul>
                                 </div>
                             </div>
                             <div class="scroller" style="height: 435px;" data-always-visible="1" data-rail-visible1="1">
@@ -107,8 +113,8 @@
     $(function () {
         if (0 !=${myEvaluateScore}) {
             $("#showScore").attr("value", ${myEvaluateScore} +"分");
-            for(var i =1; i<=${myEvaluateScore}; i++) {
-                $("#changeStar"+i).find("i").attr("class","fa fa-star");
+            for (var i = 1; i <=${myEvaluateScore}; i++) {
+                $("#changeStar" + i).find("i").attr("class", "fa fa-star");
             }
         }
 
@@ -140,7 +146,8 @@
             dataType: "json",
             type: "POST",
             success: function () {
-                alert("评分成功！");
+                top.$("#alertPromptMessage").html("评论成功");
+                top.$("#alertPrompt").modal("show");
                 window.location.reload()
             },
             error: doError
@@ -155,6 +162,8 @@
             data: { discuss: discuss },
             type: "POST",
             success: function () {
+                top.$("#alertPromptMessage").html("评论成功");
+                top.$("#alertPrompt").modal("show");
                 $("#discussInput").attr("value", "");
                 window.location.reload()
             },
