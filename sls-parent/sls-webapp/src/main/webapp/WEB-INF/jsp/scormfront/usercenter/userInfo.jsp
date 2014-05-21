@@ -41,7 +41,7 @@
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                         <div class="fileinput-preview fileinput-exists thumbnail"
                                              style="max-width: 200px; max-height: 150px;">
-                                            <img id="userPhoto" alt="用户头像"/>
+                                            <img id="userPhoto" alt="用户头像" style="max-height: 150px;max-width: 200px"/>
                                         </div>
                                         <div>
                                             <span class="btn-file">
