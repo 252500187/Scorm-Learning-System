@@ -71,10 +71,10 @@
                             <div class="scroller" style="height: 435px;" data-always-visible="1" data-rail-visible1="1">
                                 <ul class="chats" id="chatList">
                                     <c:forEach var="review" items="${allReviews}" varStatus="status">
-                                        <c:if test="${status.index == fn:length(allReviews)-1}">
-                                            <li class="in"></c:if>
-                                        <c:if test="${status.index != fn:length(allReviews)-1}">
+                                        <c:if test="${status.index == 0}">
                                             <li class="out"></c:if>
+                                        <c:if test="${status.index != 0}">
+                                            <li class="in"></c:if>
                                         <img class="avatar img-responsive" alt="" src="${review.imgUrl}"/>
 
                                         <div class="message">
