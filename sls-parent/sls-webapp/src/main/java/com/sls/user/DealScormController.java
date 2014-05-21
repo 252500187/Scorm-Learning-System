@@ -2,6 +2,7 @@ package com.sls.user;
 
 import com.sls.scorm.entity.ScormSummarize;
 import com.sls.scorm.service.ScormService;
+import com.sls.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,9 @@ public class DealScormController {
 
     @Autowired
     private ScormService scormService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "evaluateScorm", method = {RequestMethod.POST})
     @ResponseBody

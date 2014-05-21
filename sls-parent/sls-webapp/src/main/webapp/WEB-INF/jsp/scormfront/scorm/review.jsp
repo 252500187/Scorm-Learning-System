@@ -181,7 +181,7 @@
                                 </div>
                             </div>
                             <div class="scroller" style="height: 435px;" data-always-visible="1" data-rail-visible1="1">
-                                <ul class="chats">
+                                <ul class="chats" id="chatList">
                                     <c:forEach var="review" items="${allReviews}" varStatus="status">
                                         <c:if test="${0==((status.index) % 2)}">
                                             <li class="in"></c:if>
@@ -251,7 +251,7 @@
             dataType: "json",
             type: "POST",
             success: function () {
-                alert("评论成功！")
+                alert("评分成功！")
             },
             error: function () {
                 changeStar.bind({
@@ -276,7 +276,12 @@
         $.ajax({
             url: basePath + "user/dealScorm/discussScorm?scormId=${scormId}",
             data: { discuss: discuss },
-            type: "POST"
+            type: "POST",
+            success: function () {
+                $("#discussInput").attr("value","");
+                window.location.reload()
+            },
+            error:  doError
         })
     }
 </script>
