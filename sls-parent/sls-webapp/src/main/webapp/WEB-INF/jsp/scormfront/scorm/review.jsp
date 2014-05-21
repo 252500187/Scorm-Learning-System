@@ -15,6 +15,14 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
     <link rel="stylesheet" type="text/css" href="<c:url value="/metronic/assets/admin/pages/css/tasks.css"/>"/>
+    <style type="text/css">
+        .fa-star-o {
+            color: #D7D31F;
+        }
+        .fa-star {
+            color: #D7D31F;
+        }
+    </style>
 </head>
 <body class="page-header-fixed page-full-width">
 <div class="clearfix">
@@ -27,11 +35,6 @@
                 <div class="row">
                     <!-- BEGIN PORTLET-->
                     <div class="portlet">
-                        <%--<div class="portlet-title line">--%>
-                        <%--<div class="caption">--%>
-                        <%--<i class="fa fa-comments"></i>课件评论列表--%>
-                        <%--</div>--%>
-                        <%--</div>--%>
                         <div class="portlet-body" id="chats">
                             <div class="chat-form">
                                 <div class="row"></div>
@@ -60,11 +63,9 @@
                                             <i onclick="onclickStar(4)" class="fa fa-star-o"></i></li>
                                         <li style="display: block;float: left;cursor:pointer" name="changeStar" id="changeStar5">
                                             <i onclick="onclickStar(5)" class="fa fa-star-o"></i></li>
-                                        <%--<li style="display: block;float: left;cursor:pointer"></li>--%>
                                         <input id="showScore" value="${myEvaluateScore}分" readonly="readonly"
                                                style="border: 0;background-color: #E9EFF3">
                                     </ul>
-                                    <%--<div class="col-md-1" id="showScore">0分</div>--%>
                                 </div>
                             </div>
                             <div class="scroller" style="height: 435px;" data-always-visible="1" data-rail-visible1="1">
