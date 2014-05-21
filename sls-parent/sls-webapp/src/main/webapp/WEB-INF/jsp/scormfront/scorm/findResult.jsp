@@ -365,7 +365,7 @@
 
     function findScorm() {
         if ($("#queryInfo").val() != "") {
-            window.location.href = basePath + "tourist/findScorm?findInfo=" + $("#findInfo").val();
+            window.location.href = basePath + "tourist/findScorm?queryInfo=" + $("#queryInfo").val();
         }
     }
 

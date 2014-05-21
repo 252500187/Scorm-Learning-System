@@ -44,7 +44,7 @@ public class TouristController {
     }
 
     @RequestMapping(value = "findScorm", method = {RequestMethod.GET})
-    public String findScorm(@RequestParam("findInfo") String findInfo, HttpServletRequest request) {
+    public String findScorm(@RequestParam("queryInfo") String findInfo, HttpServletRequest request) {
         scormService.findScorm(BaseUtil.iso2utf(findInfo), request);
         scormService.findRecommendScorm(request);
         scormService.findRegisterScorm(request);

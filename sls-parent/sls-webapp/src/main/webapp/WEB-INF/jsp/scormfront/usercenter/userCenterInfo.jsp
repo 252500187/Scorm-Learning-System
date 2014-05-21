@@ -219,7 +219,7 @@
 
     function findScorm() {
         if ($("#queryInfo").val() != "") {
-            window.open(basePath + "tourist/findScorm?findInfo=" + $("#findInfo").val());
+            window.open(basePath + "tourist/findScorm?queryInfo=" + $("#queryInfo").val());
         }
     }
 
