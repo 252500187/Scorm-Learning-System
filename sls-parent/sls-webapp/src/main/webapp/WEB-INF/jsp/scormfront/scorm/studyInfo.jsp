@@ -31,7 +31,9 @@
                                 <div class="portlet-body form">
                                     <div class="form-body">
                                         <h3 class="form-section">
-                                            <img src="${scorm.showRecommendLevel}" width="25px" height="25px">
+                                            <c:if test="${scorm.showRecommendLevel!=''}">
+                                                <img src="${scorm.showRecommendLevel}" width="25px" height="25px">
+                                            </c:if>
                                             ${scorm.scormName}
                                         </h3>
 
