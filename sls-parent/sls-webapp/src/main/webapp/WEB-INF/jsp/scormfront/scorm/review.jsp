@@ -1,4 +1,5 @@
-<%--@elvariable id="myEvaluateScore" type="java.lang.String"--%>
+<%--@elvariable id="scormId" type="java.lang.String"--%>
+<%--@elvariable id="myEvaluateScore" type="java.lang.Integer"--%>
 <%--@elvariable id="allReviews" type="java.util.List<com.sls.scorm.entity.ScormSummarize>"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
@@ -14,122 +15,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
     <link rel="stylesheet" type="text/css" href="<c:url value="/metronic/assets/admin/pages/css/tasks.css"/>"/>
-    <style type="text/css">
-        ul, li {
-            margin: 0;
-            padding: 0;
-            border: 0;
-        }
-
-        .shop-rating {
-            height: 25px;
-            overflow: hidden;
-            zoom: 1;
-            padding: 2px 0;
-            position: relative;
-            z-index: 999;
-            font: 12px Arial;
-            color: #000;
-            line-height: 1.2em
-        }
-
-        .shop-rating span {
-            height: 23px;
-            display: block;
-            line-height: 23px;
-            float: left;
-        }
-
-        .shop-rating span.title {
-            width: 125px;
-            text-align: right;
-            margin-right: 5px;
-        }
-
-        .shop-rating ul {
-            float: left;
-        }
-
-        .shop-rating .result {
-            margin-left: 20px;
-            padding-top: 2px;
-        }
-
-        .shop-rating .result span {
-            color: #ff6d02;
-        }
-
-        .rating-level,
-        .rating-level a {
-            background: url(http://images.cnblogs.com/cnblogs_com/bluedream2009/201609/o_star.png) no-repeat scroll 1000px 1000px;
-        }
-
-        .rating-level {
-            background-position: 0px 0px;
-            width: 120px;
-            height: 23px;
-            position: relative;
-            z-index: 1000;
-        }
-
-        .shop-rating .result em {
-            color: #f60;
-            font-family: arial;
-            font-weight: bold;
-        }
-
-        .rating-level li {
-            display: inline;
-        }
-
-        .rating-level a {
-            line-height: 23px;
-            height: 23px;
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            text-indent: -999em;
-            *zoom: 1;
-            outline: none;
-        }
-
-        .rating-level a.one-star {
-            width: 20%;
-            z-index: 6;
-        }
-
-        .rating-level a.two-stars {
-            width: 40%;
-            z-index: 5;
-        }
-
-        .rating-level a.three-stars {
-            width: 60%;
-            z-index: 4;
-        }
-
-        .rating-level a.four-stars {
-            width: 80%;
-            z-index: 3;
-        }
-
-        .rating-level a.five-stars {
-            width: 100%;
-            z-index: 2;
-        }
-
-        .rating-level .current-rating, .rating-level a:hover {
-            background-position: 0 -28px
-        }
-
-        .rating-level a.one-star:hover, .rating-level a.two-stars:hover, .rating-level a.one-star.current-rating, .rating-level a.two-stars.current-rating {
-            background-position: 0 -116px;
-        }
-
-        .rating-level .three-stars .current-rating, .rating-level .four-stars .current-rating, .rating-level .five-stars .current-rating {
-            background-position: 0 -28px;
-        }
-    </style>
 </head>
 <body class="page-header-fixed page-full-width">
 <div class="clearfix">
@@ -165,18 +50,19 @@
                                     <%--<div style="margin-left: 0">评分：</div>--%>
                                     <ul style="list-style-type:none;display: block;float: left">
                                         <li style="display: block;float: left">评分:</li>
-                                        <li style="display: block;float: left;cursor:pointer" name="changeStar">
+                                        <li style="display: block;float: left;cursor:pointer" name="changeStar" id="changeStar1">
                                             <i onclick="onclickStar(1)" class="fa fa-star-o"></i></li>
-                                        <li style="display: block;float: left;cursor:pointer" name="changeStar">
+                                        <li style="display: block;float: left;cursor:pointer" name="changeStar" id="changeStar2">
                                             <i onclick="onclickStar(2)" class="fa fa-star-o"></i></li>
-                                        <li style="display: block;float: left;cursor:pointer" name="changeStar">
+                                        <li style="display: block;float: left;cursor:pointer" name="changeStar" id="changeStar3">
                                             <i onclick="onclickStar(3)" class="fa fa-star-o"></i></li>
-                                        <li style="display: block;float: left;cursor:pointer" name="changeStar">
+                                        <li style="display: block;float: left;cursor:pointer" name="changeStar" id="changeStar4">
                                             <i onclick="onclickStar(4)" class="fa fa-star-o"></i></li>
-                                        <li style="display: block;float: left;cursor:pointer" name="changeStar">
+                                        <li style="display: block;float: left;cursor:pointer" name="changeStar" id="changeStar5">
                                             <i onclick="onclickStar(5)" class="fa fa-star-o"></i></li>
                                         <%--<li style="display: block;float: left;cursor:pointer"></li>--%>
-                                        <input id="showScore" value="${myEvaluateScore}分"readonly="readonly" style="border: 0;background-color: #E9EFF3">
+                                        <input id="showScore" value="${myEvaluateScore}分" readonly="readonly"
+                                               style="border: 0;background-color: #E9EFF3">
                                     </ul>
                                     <%--<div class="col-md-1" id="showScore">0分</div>--%>
                                 </div>
@@ -218,6 +104,13 @@
 </html>
 <script type="text/javascript">
     $(function () {
+        if (0 !=${myEvaluateScore}) {
+            $("#showScore").attr("value", ${myEvaluateScore} +"分");
+            for(var i =1; i<=${myEvaluateScore}; i++) {
+                $("#changeStar"+i).find("i").attr("class","fa fa-star");
+            }
+        }
+
         $("li[name='changeStar']").bind({
             mouseover: function () {
                 $(this).unbind("click");
@@ -242,13 +135,11 @@
         changeStar.unbind("mouseover").unbind("mouseleave");
         $(this).prevAll().find("i").attr("class", "fa fa-star");
         $(this).find("i").attr("class", "fa fa-star");
-        $("#showScore").attr("value", score+"分");
+        $("#showScore").attr("value", score + "分");
 
         $.ajax({
             url: basePath + "user/dealScorm/evaluateScorm?scormId=${scormId}",
-            data: {
-                score: score
-            },
+            data: {score: score},
             dataType: "json",
             type: "POST",
             success: function () {
@@ -279,10 +170,10 @@
             data: { discuss: discuss },
             type: "POST",
             success: function () {
-                $("#discussInput").attr("value","");
+                $("#discussInput").attr("value", "");
                 window.location.reload()
             },
-            error:  doError
+            error: doError
         })
     }
 </script>
