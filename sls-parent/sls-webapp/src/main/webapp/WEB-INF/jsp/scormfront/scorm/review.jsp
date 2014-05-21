@@ -25,130 +25,140 @@
         }
     </style>
 </head>
-<body class="page-header-fixed page-full-width">
-<div class="clearfix">
-</div>
-<!-- BEGIN CONTAINER -->
+<body class="page-header-fixed">
 <div class="page-container">
     <div class="page-content-wrapper">
         <div class="page-content">
-            <div class="col-md-12">
-                <div class="row">
-                    <!-- BEGIN PORTLET-->
-                    <div class="portlet">
-                        <div class="portlet-body" id="chats">
-                            <div class="chat-form">
-                                <div class="input-cont">
-                                    <%--<div style="margin-left: 0">评分：</div>--%>
-                                    <ul style="list-style-type:none;display: block;float: left">
-                                        <li style="display: block;float: left">评分:</li>
-                                        <li style="display: block;float: left;cursor:pointer" name="changeStar"
-                                            id="changeStar1">
-                                            <i onclick="onclickStar(1)" class="fa fa-star-o"></i></li>
-                                        <li style="display: block;float: left;cursor:pointer" name="changeStar"
-                                            id="changeStar2">
-                                            <i onclick="onclickStar(2)" class="fa fa-star-o"></i></li>
-                                        <li style="display: block;float: left;cursor:pointer" name="changeStar"
-                                            id="changeStar3">
-                                            <i onclick="onclickStar(3)" class="fa fa-star-o"></i></li>
-                                        <li style="display: block;float: left;cursor:pointer" name="changeStar"
-                                            id="changeStar4">
-                                            <i onclick="onclickStar(4)" class="fa fa-star-o"></i></li>
-                                        <li style="display: block;float: left;cursor:pointer" name="changeStar"
-                                            id="changeStar5">
-                                            <i onclick="onclickStar(5)" class="fa fa-star-o"></i></li>
-                                        <input id="showScore" value="${myEvaluateScore}分" readonly="readonly"
-                                               style="border: 0;background-color: #E9EFF3">
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="chat-form">
-                                <div class="row"></div>
-                                <div class="input-cont">
-                                    <input id="discussInput" class="form-control" type="text" placeholder="输入评论..."/>
-                                </div>
-                                <div class="btn-cont">
-                                    <span class="arrow"></span>
-                                    <a onclick="discussScorm()" class="btn blue icn-only">
-                                        <i class="fa fa-check icon-white"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="scroller" style="height: 435px;" data-always-visible="1" data-rail-visible1="1">
-                                <ul class="chats" id="chatList">
-                                    <c:forEach var="review" items="${allReviews}" varStatus="status">
-                                        <c:if test="${status.index == 0}">
-                                            <li class="out"></c:if>
-                                        <c:if test="${status.index != 0}">
-                                            <li class="in"></c:if>
-                                        <img class="avatar img-responsive" alt="" src="${review.imgUrl}"/>
-
-                                        <div class="message">
-											<span class="arrow">
-											</span>
-                                            <a href="#" class="name">
-                                                    ${review.userName} </a>
-											<span class="datetime">
-                                                    ${review.discussDate}</span>
-                                            <span class="body">${review.discuss}</span>
-                                        </div>
-                                        </li>
-                                    </c:forEach>
-                                </ul>
-                            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="alert alert-info display-hide">
+                        <span id="result"></span>
+                    </div>
+                    <ul id="stars" class="list-inline">
+                        <li>评分:</li>
+                        <li name="changeStar">
+                            <i id="changeStar0" class="fa fa-star-o"></i>
+                        </li>
+                        <li name="changeStar">
+                            <i id="changeStar1" class="fa fa-star-o"></i>
+                        </li>
+                        <li name="changeStar">
+                            <i id="changeStar2" class="fa fa-star-o"></i>
+                        </li>
+                        <li name="changeStar">
+                            <i id="changeStar3" class="fa fa-star-o"></i>
+                        </li>
+                        <li name="changeStar">
+                            <i id="changeStar4" class="fa fa-star-o"></i>
+                        </li>
+                        <li>
+                            <a id="showScore">${myEvaluateScore}分</a>
+                        </li>
+                        <li>
+                            <a class="btn blue" onclick="evaluateScorm()">
+                                评分
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr/>
+            <hr/>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="chat-form">
+                        <div class="input-cont">
+                            <input id="discussInput" class="form-control" type="text" placeholder="说点什么?"/>
+                        </div>
+                        <div class="btn-cont">
+                            <span class="arrow"></span>
+                            <a onclick="discussScorm()" class="btn blue icn-only">
+                                <i class="fa fa-check icon-white"></i>
+                            </a>
                         </div>
                     </div>
-                    <!-- END PORTLET-->
+                    <br/>
+
+                    <div class="scroller" style="height: 435px;" data-always-visible="1" data-rail-visible1="1">
+                        <ul class="chats" id="chatList">
+                            <c:forEach var="review" items="${allReviews}" varStatus="status">
+                                <c:if test="${status.index == 0}">
+                                    <li class="out"></c:if>
+                                <c:if test="${status.index != 0}">
+                                    <li class="in"></c:if>
+                                <img class="avatar img-responsive" alt="" src="${review.imgUrl}"/>
+
+                                <div class="message">
+                                    <span class="arrow"></span>
+                                    <a href="#" class="name">${review.userName} </a>
+                                    <span class="datetime">${review.discussDate}</span>
+                                    <span class="body">${review.discuss}</span>
+                                </div>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- END CONTENT -->
     </div>
-    <!-- END CONTAINER -->
 </div>
 </body>
-<!-- END BODY -->
 </html>
 <script type="text/javascript">
+    var score = ${myEvaluateScore}-1;
     $(function () {
-        if (0 !=${myEvaluateScore}) {
-            $("#showScore").attr("value", ${myEvaluateScore} +"分");
-            for (var i = 1; i <=${myEvaluateScore}; i++) {
-                $("#changeStar" + i).find("i").attr("class", "fa fa-star");
+        if (0 != score) {
+            $("#showScore").html(score + "分");
+            for (var i = 0; i < score; i++) {
+                $("#changeStar" + i).attr("class", "fa fa-star");
             }
         }
 
-        $("li[name='changeStar']").bind({
-            mouseover: function () {
-                $(this).unbind("click");
-                $(this).prevAll().find("i").attr("class", ("fa fa-star"));
-                $(this).nextAll().find("i").attr("class", ("fa fa-star-o"));
-                $(this).find("i").attr("class", "fa fa-star");
-            },
-            mouseleave: function () {
-                $(this).unbind("click");
-                $(this).siblings().find("i").attr("class", "fa fa-star-o");
-                $(this).find("i").attr("class", "fa fa-star-o");
-            }
+        var stars = $("#stars > li[name='changeStar']>i");
+        stars.each(function (i) {
+            $(stars[i]).click(function () {
+                var j = 1;
+                for (; j <= i; j++) {
+                    $("#changeStar" + j).attr("class", "fa fa-star");
+                }
+                for (; j < 5; j++) {
+                    $("#changeStar" + j).attr("class", "fa fa-star-o");
+                }
+                score = i;
+                $("#showScore").html(score + 1 + "分");
+            });
+            $(stars[i]).mouseover(function () {
+                var j = score + 1;
+                for (j; j <= i; j++) {
+                    $("#changeStar" + j).attr("class", "fa fa-star");
+                }
+                for (j; j < 5; j++) {
+                    $("#changeStar" + j).attr("class", "fa fa-star-o");
+                }
+            });
+            $(stars[i]).mouseout(function () {
+                var j = score + 1;
+                for (j; j < 5; j++) {
+                    $("#changeStar" + j).attr("class", "fa fa-star-o");
+                }
+            });
         })
     });
 
-    function onclickStar(score) {
-        var changeStar = $("li[name='changeStar']");
-        changeStar.unbind("mouseover").unbind("mouseleave");
-        $(this).prevAll().find("i").attr("class", "fa fa-star");
-        $(this).find("i").attr("class", "fa fa-star");
-        $("#showScore").attr("value", score + "分");
-
+    function evaluateScorm() {
+        var resultScore = score + 1;
         $.ajax({
-            url: basePath + "user/dealScorm/evaluateScorm?scormId=${scormId}",
-            data: {score: score},
+            url: basePath + "user/dealScorm/evaluateScorm",
+            data: {
+                scormId: "${scormId}",
+                score: resultScore
+            },
             dataType: "json",
             type: "POST",
             success: function () {
-                top.$("#alertPromptMessage").html("评论成功");
-                top.$("#alertPrompt").modal("show");
-                window.location.reload()
+                $("#result").html("评分成功！您给了" + resultScore + "分！");
+                $('.alert-info').show();
             },
             error: doError
         })
@@ -162,8 +172,6 @@
             data: { discuss: discuss },
             type: "POST",
             success: function () {
-                top.$("#alertPromptMessage").html("评论成功");
-                top.$("#alertPrompt").modal("show");
                 $("#discussInput").attr("value", "");
                 window.location.reload()
             },

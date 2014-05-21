@@ -21,9 +21,6 @@ public class DealScormController {
     @Autowired
     private ScormService scormService;
 
-    @Autowired
-    private UserService userService;
-
     @RequestMapping(value = "evaluateScorm", method = {RequestMethod.POST})
     @ResponseBody
     public void evaluateScorm(ScormSummarize scormSummarize) {
