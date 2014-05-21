@@ -28,7 +28,7 @@
     <form class="login-form" action="loginResult" method="post" id="login">
         <h3 class="form-title">Welcome to SLS</h3>
 
-        <div class="alert alert-danger display-hide">
+        <div class="alert alert-info display-hide">
             <button class="close" data-close="alert"></button>
 			<span>
 			注册成功！ </span>
@@ -180,7 +180,6 @@
             },
             error: doError
         })
-
     }
 
     function findPassword() {

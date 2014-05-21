@@ -203,7 +203,7 @@ var Login = function () {
             },
 
             submitHandler: function (form) {
-                $('.alert-danger', $('.login-form')).show();
+                $('.alert-info', $('.login-form')).show();
                 register();
             }
         });
@@ -220,6 +220,9 @@ var Login = function () {
         jQuery('#register-btn').click(function () {
             jQuery('.login-form').hide();
             jQuery('.register-form').show();
+            $("#registerLoginName").val("");
+            $("#registerPassword").val("");
+            $("#email").val("");
         });
 
         jQuery('#register-back-btn').click(function () {

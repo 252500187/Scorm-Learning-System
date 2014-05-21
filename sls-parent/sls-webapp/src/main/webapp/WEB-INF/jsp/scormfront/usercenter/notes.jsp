@@ -21,14 +21,12 @@
 </head>
 <body style="background-color: #FFFFFF">
 <div class="container">
-
     <div class="alert alert-success margin-bottom-10" style="text-align: center">
         <button class="close" aria-hidden="true" data-dismiss="alert" type="button"></button>
         <i class="fa fa-warning fa-lg"></i>
         试试按住鼠标后向左滑动吧
     </div>
     <div class="bb-custom-wrapper">
-
         <div id="bb-bookblock" class="bb-bookblock">
             <div class="bb-item">
                 <div class="bb-custom-firstpage">
@@ -91,27 +89,21 @@
                 </div>
             </c:forEach>
         </div>
-
         <nav>
             <a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">首页</a>
             <a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">前页</a>
             <a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">后页</a>
             <a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">尾页</a>
         </nav>
-
     </div>
-
 </div>
-
 </body>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="booknote/js/jquerypp.custom.js"></script>
 <script src="booknote/js/jquery.bookblock.js"></script>
 <script type="text/javascript">
-
     var Page = (function () {
-
         var config = {
                     $bookBlock: $('#bb-bookblock'),
                     $navNext: $('#bb-nav-next'),
