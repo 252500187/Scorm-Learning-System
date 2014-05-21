@@ -529,7 +529,9 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void findReviewsByScormId(String scormId, HttpServletRequest request) {
+        User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
         request.setAttribute("allReviews",summarizeDao.getAllCommentsByScormId(Integer.parseInt(scormId)));
-        request.setAttribute("nowUser",userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0));
+        request.setAttribute("nowUser",user);
+        request.setAttribute("myEvaluateScore",summarizeDao.findScormSummarizeByUserIdAndScormId(user.getUserId(),Integer.parseInt(scormId)).getScore());
     }
 }

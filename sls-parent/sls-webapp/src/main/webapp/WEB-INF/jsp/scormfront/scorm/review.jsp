@@ -1,3 +1,4 @@
+<%--@elvariable id="myEvaluateScore" type="java.lang.String"--%>
 <%--@elvariable id="allReviews" type="java.util.List<com.sls.scorm.entity.ScormSummarize>"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
@@ -175,7 +176,7 @@
                                         <li style="display: block;float: left;cursor:pointer" name="changeStar">
                                             <i onclick="onclickStar(5)" class="fa fa-star-o"></i></li>
                                         <%--<li style="display: block;float: left;cursor:pointer"></li>--%>
-                                        <input id="showScore">
+                                        <input id="showScore" value="${myEvaluateScore}分"readonly="readonly" style="border: 0;background-color: #E9EFF3">
                                     </ul>
                                     <%--<div class="col-md-1" id="showScore">0分</div>--%>
                                 </div>
@@ -241,7 +242,7 @@
         changeStar.unbind("mouseover").unbind("mouseleave");
         $(this).prevAll().find("i").attr("class", "fa fa-star");
         $(this).find("i").attr("class", "fa fa-star");
-        $("#showScore").attr("value", score);
+        $("#showScore").attr("value", score+"分");
 
         $.ajax({
             url: basePath + "user/dealScorm/evaluateScorm?scormId=${scormId}",
