@@ -143,7 +143,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">提示</h4>
+                <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body">
                 <p id="alertPromptMessage">
@@ -161,7 +161,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">提示</h4>
+                <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body">
                 <p id="alertConfirmMessage">

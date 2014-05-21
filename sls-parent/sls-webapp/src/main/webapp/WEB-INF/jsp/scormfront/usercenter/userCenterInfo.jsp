@@ -26,7 +26,8 @@
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search..." id="queryInfo">
                         <span class="input-group-btn">
-                            <a id="query" class="btn default blue-stripe" onclick="findScorm()"><i class="fa fa-search"></i></a></span>
+                            <a id="query" class="btn default blue-stripe" onclick="findScorm()"><i
+                                    class="fa fa-search"></i></a></span>
                 </div>
             </div>
             <div class="col-md-12">
@@ -96,9 +97,13 @@
                         <div class="top-news">
                             <c:if test="${recommendScorm[0]!=null}">
                                 <a onclick="showScormInfo('${recommendScorm[0].scormId}')" class="btn red">
-                                        <span><img src="${recommendScorm[0].showRecommendLevel}"
-                                                   style="width: 25px;height: 25px"/>&nbsp;
-                                                ${recommendScorm[0].scormName}</span>
+                                        <span>
+                                            <c:if test="${recommendScorm[0].showRecommendLevel!=''}">
+                                                <img src="${recommendScorm[0].showRecommendLevel}"
+                                                     style="width: 25px;height: 25px"/>&nbsp;
+                                            </c:if>
+                                            ${recommendScorm[0].scormName}
+                                        </span>
                                     <em>评分：${recommendScorm[0].score}</em>
                                     <em><i class="fa fa-tags"></i>${recommendScorm[0].labelName}</em>
                                     <i class="fa fa-briefcase top-news-icon"></i>
@@ -106,9 +111,13 @@
                             </c:if>
                             <c:if test="${recommendScorm[1]!=null}">
                                 <a onclick="showScormInfo('${recommendScorm[1].scormId}')" class="btn green">
-                                        <span><img src="${recommendScorm[1].showRecommendLevel}"
-                                                   style="width: 25px;height: 25px"/>&nbsp;
-                                                ${recommendScorm[1].scormName}</span>
+                                         <span>
+                                            <c:if test="${recommendScorm[1].showRecommendLevel!=''}">
+                                                <img src="${recommendScorm[1].showRecommendLevel}"
+                                                     style="width: 25px;height: 25px"/>&nbsp;
+                                            </c:if>
+                                            ${recommendScorm[1].scormName}
+                                        </span>
                                     <em>评分：${recommendScorm[1].score}</em>
                                     <em><i class="fa fa-tags"></i>${recommendScorm[1].labelName}</em>
                                     <i class="fa fa-music top-news-icon"></i>
@@ -116,9 +125,13 @@
                             </c:if>
                             <c:if test="${recommendScorm[2]!=null}">
                                 <a onclick="showScormInfo('${recommendScorm[2].scormId}')" class="btn blue">
-                                        <span><img src="${recommendScorm[2].showRecommendLevel}"
-                                                   style="width: 25px;height: 25px"/>&nbsp;
-                                                ${recommendScorm[2].scormName}</span>
+                                       <span>
+                                            <c:if test="${recommendScorm[2].showRecommendLevel!=''}">
+                                                <img src="${recommendScorm[2].showRecommendLevel}"
+                                                     style="width: 25px;height: 25px"/>&nbsp;
+                                            </c:if>
+                                            ${recommendScorm[2].scormName}
+                                        </span>
                                     <em>评分：${recommendScorm[2].score}</em>
                                     <em><i class="fa fa-tags"></i>${recommendScorm[2].labelName}</em>
                                     <i class="fa fa-globe top-news-icon"></i>
@@ -126,9 +139,13 @@
                             </c:if>
                             <c:if test="${recommendScorm[3]!=null}">
                                 <a onclick="showScormInfo('${recommendScorm[3].scormId}')" class="btn yellow">
-                                        <span><img src="${recommendScorm[3].showRecommendLevel}"
-                                                   style="width: 25px;height: 25px"/>&nbsp;
-                                                ${recommendScorm[3].scormName}</span>
+                                         <span>
+                                            <c:if test="${recommendScorm[3].showRecommendLevel!=''}">
+                                                <img src="${recommendScorm[3].showRecommendLevel}"
+                                                     style="width: 25px;height: 25px"/>&nbsp;
+                                            </c:if>
+                                            ${recommendScorm[3].scormName}
+                                        </span>
                                     <em>评分：${recommendScorm[3].score}</em>
                                     <em><i class="fa fa-tags"></i>${recommendScorm[3].labelName}</em>
                                     <i class="fa fa-book top-news-icon"></i>
@@ -136,9 +153,13 @@
                             </c:if>
                             <c:if test="${recommendScorm[4]!=null}">
                                 <a onclick="showScormInfo('${recommendScorm[4].scormId}')" class="btn purple">
-                                        <span><img src="${recommendScorm[4].showRecommendLevel}"
-                                                   style="width: 25px;height: 25px"/>&nbsp;
-                                                ${recommendScorm[4].scormName}</span>
+                                         <span>
+                                            <c:if test="${recommendScorm[4].showRecommendLevel!=''}">
+                                                <img src="${recommendScorm[4].showRecommendLevel}"
+                                                     style="width: 25px;height: 25px"/>&nbsp;
+                                            </c:if>
+                                            ${recommendScorm[4].scormName}
+                                        </span>
                                     <em>评分：${recommendScorm[4].score}</em>
                                     <em><i class="fa fa-tags"></i>${recommendScorm[4].labelName}</em>
                                     <i class="fa fa-bolt top-news-icon"></i>

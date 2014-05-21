@@ -167,6 +167,7 @@
                             basePath + "user/center/upHeadImg").submit();
                 }
                 parent.$("#userNickName").html($("#nickName").val());
+                parent.$(".modal-title").html("提示");
                 parent.$("#alertPromptMessage").html("修改成功");
                 parent.$("#alertPrompt").modal("show");
             },

@@ -25,7 +25,8 @@
                     <div class="col-md-2" style="float: left">
                         <img style="width: 150px" src="img/others/flag_top.png" alt=""/><br/>
                         <img id="scormImg" src="${scormInfo.imgPath}" class="img-polaroid"
-                             style="max-width: 150px;max-height: 200px" alt=""/>
+                             style="max-width: 150px;max-height: 200px" alt=""/><br/>
+                        <img style="width: 150px" src="img/others/flag_center.png" alt=""/>
                     </div>
                     <div class="col-md-10" style="float: left">
                         <div class="row">
@@ -33,7 +34,9 @@
                                 <div class="portlet-body form">
                                     <div class="form-body">
                                         <h3 class="form-section">
-                                            <img src="${scormInfo.showRecommendLevel}" width="25px" height="25px">
+                                            <c:if test="${scormInfo.showRecommendLevel!=''}">
+                                                <img src="${scormInfo.showRecommendLevel}" width="25px" height="25px">
+                                            </c:if>
                                             <c:if test="${complete}">
                                                 (已完成)
                                             </c:if>
@@ -57,7 +60,7 @@
                                                 收藏
                                             </a>
                                         </c:if>
-                                        <br/>
+                                        <br/><br/>
 
                                         <div class="form-group profile-info">
                                             <ul class="list-inline" style="width: 250px;">
