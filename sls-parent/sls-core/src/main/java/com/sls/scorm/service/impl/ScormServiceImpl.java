@@ -526,4 +526,9 @@ public class ScormServiceImpl implements ScormService {
             request.setAttribute("registerScorm", scormDao.findRegisterScormByUserId(userId));
         }
     }
+
+    @Override
+    public void findReviewsByScormId(String scormId, HttpServletRequest request) {
+        request.setAttribute("allReviews",summarizeDao.getAllCommentsByScormId(Integer.parseInt(scormId)));
+    }
 }
