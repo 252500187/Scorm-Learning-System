@@ -53,7 +53,7 @@
                 <tr>
                     <td>
                         <div id="menuTree" class="ztree"
-                             style="width:100%; height:500px; border: 0px solid; float: left; overflow-x:auto; overflow-y:auto ">
+                             style="max-width:200px; min-height:300px; border: 0px solid; float: left; overflow-x:auto; overflow-y:auto ">
                         </div>
                     </td>
                 </tr>
@@ -66,16 +66,18 @@
         </div>
         <div class="span2">
             <div class="row">
-                <img id="scormImg" class="img-polaroid">
+                <img id="scormImg" src="${scorm.imgPath}" class="img-polaroid">
                 <table class="table table-hover">
                     <tr>
                         <td>课件名称</td>
                         <td>${scorm.scormName}</td>
                     </tr>
-                    <tr>
-                        <td>推荐等级</td>
-                        <td><img id="recommend" width="25px" height="25px"/></td>
-                    </tr>
+                    <c:if test="${scorm.showRecommendLevel!=''}">
+                        <tr>
+                            <td>推荐等级</td>
+                            <td><img id="recommend" src="${scorm.showRecommendLevel}" width="25px" height="25px"/></td>
+                        </tr>
+                    </c:if>
                     <tr>
                         <td>上传用户</td>
                         <td>${scorm.showUploadUserId}</td>
@@ -156,8 +158,6 @@
         <c:if test="${scorm.inUse!=inUse}">
         $("#forbiddenScorm").hide();
         </c:if>
-        $("#scormImg").attr("src", basePath + "${scorm.imgPath}");
-        $("#recommend").attr("src", basePath + "${scorm.showRecommendLevel}");
         $.fn.zTree.init($("#menuTree"), settingMenu, zNodes);
         $.fn.zTree.getZTreeObj("menuTree").expandAll(true);
         $("#scormIframe").attr("src", basePath + "img/studyscormdefaultimg/" + Math.floor(Math.random() * 10) + ".jpg");

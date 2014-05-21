@@ -371,18 +371,20 @@ public class ScormServiceImpl implements ScormService {
         boolean study = false;
         boolean complete = false;
         if (!"".equals(LoginUserUtil.getLoginName())) {
-            int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-            if (noteCollectDao.checkNotHasCollected(scormId, userId)) {
-                collect = true;
-            }
-            if (scormDao.checkNotHasRegister(scormId, userId)) {
-                register = true;
-            }
-            if (!register) {
-                study = true;
-            }
-            if (summarizeDao.isCompleteScorm(scormId, userId)) {
-                complete = true;
+            if (scormDao.findScormInfoByScormId(scormId).getInUse() == DictConstant.IN_USE) {
+                int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+                if (noteCollectDao.checkNotHasCollected(scormId, userId)) {
+                    collect = true;
+                }
+                if (scormDao.checkNotHasRegister(scormId, userId)) {
+                    register = true;
+                }
+                if (!register) {
+                    study = true;
+                }
+                if (summarizeDao.isCompleteScorm(scormId, userId)) {
+                    complete = true;
+                }
             }
         }
         request.setAttribute("collect", collect);

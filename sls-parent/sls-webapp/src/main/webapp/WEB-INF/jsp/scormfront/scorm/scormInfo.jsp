@@ -199,7 +199,7 @@
             success: function (message) {
                 top.$("#alertPrompt").modal("show");
                 top.$("#alertPromptMessage").html(message);
-                window.location.href = basePath + "tourist/scormInfo?scormId=" + ${scormInfo.scormId};
+                window.location.href = basePath + "tourist/scormInfo?scormId=" + id;
             },
             error: doError
         })
@@ -213,7 +213,7 @@
             success: function () {
                 top.$("#alertPrompt").modal("show");
                 top.$("#alertPromptMessage").html("收藏成功");
-                window.location.href = basePath + "tourist/scormInfo?scormId=" + ${scormInfo.scormId};
+                window.location.href = basePath + "tourist/scormInfo?scormId=" + id;
             },
             error: doError
         })

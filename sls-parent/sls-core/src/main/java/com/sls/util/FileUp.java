@@ -103,6 +103,7 @@ public class FileUp {
             }
             zipFile.close();
         } catch (Exception e) {
+            System.out.print(e);
         }
     }
 
