@@ -1,3 +1,4 @@
+<%--@elvariable id="allReviews" type="java.util.List<com.sls.scorm.entity.ScormSummarize>"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -181,35 +182,24 @@
                             </div>
                             <div class="scroller" style="height: 435px;" data-always-visible="1" data-rail-visible1="1">
                                 <ul class="chats">
-                                    <li class="in">
-                                        <img class="avatar img-responsive" alt="" src="/img/bookmarks/book1.jpg"/>
+                                    <c:forEach var="review" items="${allReviews}" varStatus="status">
+                                        <c:if test="${0==((status.index) % 2)}">
+                                            <li class="in"></c:if>
+                                        <c:if test="${0!=((status.index) % 2)}">
+                                            <li class="out"></c:if>
+                                        <img class="avatar img-responsive" alt="" src="${review.imgUrl}"/>
 
                                         <div class="message">
 											<span class="arrow">
 											</span>
                                             <a href="#" class="name">
-                                                Bob Nilson </a>
+                                                    ${review.userName} </a>
 											<span class="datetime">
-											at Jul 25, 2012 11:09 </span>
-											<span class="body">
-											Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
+                                                    ${review.discussDate}</span>
+                                            <span class="body">${review.discuss}</span>
                                         </div>
-                                    </li>
-                                    <li class="out">
-                                        <img class="avatar img-responsive" alt=""
-                                             src="../../assets/admin/layout/img/avatar2.jpg"/>
-
-                                        <div class="message">
-											<span class="arrow">
-											</span>
-                                            <a href="#" class="name">
-                                                Lisa Wong </a>
-											<span class="datetime">
-											at Jul 25, 2012 11:09 </span>
-											<span class="body">
-											Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </span>
-                                        </div>
-                                    </li>
+                                        </li>
+                                    </c:forEach>
                                 </ul>
                             </div>
                         </div>

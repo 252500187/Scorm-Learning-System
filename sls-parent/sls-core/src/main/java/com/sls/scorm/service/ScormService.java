@@ -70,4 +70,6 @@ public interface ScormService {
     void findRecommendScorm(HttpServletRequest request);
 
     void findRegisterScorm(HttpServletRequest request);
+
+    void findReviewsByScormId(String scormId, HttpServletRequest request);
 }

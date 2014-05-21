@@ -44,6 +44,7 @@ public class DealScormController {
     @RequestMapping(value = "review", method = {RequestMethod.GET})
     public String review(@RequestParam("scormId") String scormId, HttpServletRequest request) {
         request.setAttribute("scormId",scormId);
+        scormService.findReviewsByScormId(scormId,request);
         return "scormfront/scorm/review";
     }
 }
