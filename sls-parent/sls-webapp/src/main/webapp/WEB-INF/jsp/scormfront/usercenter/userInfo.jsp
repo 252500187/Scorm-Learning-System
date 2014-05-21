@@ -44,7 +44,7 @@
                                             <img id="userPhoto" alt="用户头像"/>
                                         </div>
                                         <div>
-                                            <span class="btn default btn-file">
+                                            <span class="btn-file">
                                                 <input type="file" name="upImg" id="upImg"/>
                                             </span>
                                         </div>

@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -14,7 +15,7 @@
     <meta content="" name="author"/>
     <%@include file="common.jsp" %>
 </head>
-<body class="page-500-full-page">
+<body class="page-500-full-page" style="background-color: #FFFFFF">
 <div class="row">
     <div class="col-md-12 page-500">
         <div class=" number">

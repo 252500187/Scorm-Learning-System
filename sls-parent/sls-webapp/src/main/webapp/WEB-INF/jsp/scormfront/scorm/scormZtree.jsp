@@ -54,12 +54,6 @@
                 idKey: "id",
                 pIdKey: "pId"
             }
-//            key: {
-//                name: "name"
-//            },
-//            keep: {
-//                parent: true
-//            }
         },
         callback: {
             onClick: zTreeOnClick
@@ -96,9 +90,11 @@
     $(function () {
         $.fn.zTree.init($("#scoTree"), settingMenu, zNodes);
         if (parent.scoId != "") {
-            if (parent.confirm("是否继续上次学习进度")) {
+            parent.$("#promptButton1").click(function(){
                 parent.$("#scormIframe").attr("src", scoSrc);
-            }
+            });
+            parent.$("#alertConfirm").modal("show");
+            parent.$("#alertConfirmMessage").html("是否继续上次学习进度");
         }
     });
 </script>

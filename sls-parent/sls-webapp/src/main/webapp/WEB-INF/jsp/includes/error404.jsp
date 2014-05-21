@@ -15,7 +15,7 @@
     <meta content="" name="author"/>
     <%@include file="common.jsp" %>
 </head>
-<body class="page-404-full-page">
+<body class="page-404-full-page" style="background-color: #FFFFFF">
 <div class="row">
     <div class="col-md-12 page-404">
         <div class="number">

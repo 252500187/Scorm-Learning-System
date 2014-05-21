@@ -46,10 +46,10 @@
                                     <%--<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt=""/>--%>
                                     <%--</div>--%>
                                     <div class="fileinput-preview fileinput-exists thumbnail"
-                                         style="max-width: 200px; max-height: 150px;">
+                                         style="max-width: 200px; max-height: 150px;border: 0px">
                                     </div>
                                     <div>
-                                        <span class="btn default btn-file">
+                                        <span class="btn-file">
                                             <%--<span class="fileinput-new">选择</span>--%>
                                             <%--<span class="fileinput-exists">换一个 </span>--%>
                                             <input type="file" name="upImg" id="upImg"/>
@@ -72,7 +72,7 @@
                                         <%--<i class="fa fa-file fileinput-exists"></i>&nbsp;--%>
                                         <%--<span class="fileinput-filename"></span>--%>
                                         <%--</div>--%>
-                                        <span class="input-group-addon btn default btn-file">
+                                        <span class="btn-file">
                                             <%--<span class="fileinput-new">--%>
                                                  <%--选择--%>
                                             <%--</span>--%>
