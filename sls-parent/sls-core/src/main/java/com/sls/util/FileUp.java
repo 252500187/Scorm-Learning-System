@@ -60,7 +60,7 @@ public class FileUp {
         return filePath.substring(filePath.indexOf(mainPath));
     }
 
-    public String upScorm(HttpServletRequest request, String scormPath, String upFile) throws ServletException, IOException {
+    public String upScorm(HttpServletRequest request, String scormPath, String upFile) throws ServletException, IOException, Exception {
         String scormFilePath = request.getSession().getServletContext().getRealPath("");
         scormFilePath = scormFilePath + "/" + DictConstant.TOP_SCORM_FILE_NAME + "/" + scormPath + "/" + DictConstant.SCORM_FILE_NAME + "/";
         //创建文件，防文件夹不存在
@@ -69,7 +69,7 @@ public class FileUp {
         //接受页面流文件
         InputStream input = getInputStream((MultipartHttpServletRequest) request, upFile);
         uploadFile(input, scormFilePath, DictConstant.SCORM_NAME);
-        unzip(scormFilePath + DictConstant.SCORM_NAME);
+        ZipUtil.unzip(scormFilePath + DictConstant.SCORM_NAME);
         return scormFilePath;
     }
 
