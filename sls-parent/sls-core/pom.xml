@@ -123,6 +123,12 @@
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>com.springsource.org.apache.tools.ant</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
