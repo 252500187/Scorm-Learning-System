@@ -17,7 +17,7 @@ public class Scorm {
     private int inUse;
     private String showInUse;
     private String totalTime;
-    private String score;
+    private int score;
     private int completeWay;
     private String completeDate;
     private String collectDate;
@@ -33,7 +33,7 @@ public class Scorm {
         uploadDate = DateUtil.getCurrentTimestamp().toString().substring(0, 16);
         inUse = DictConstant.NO_USE;
         totalTime = "";
-        score = "";
+        score = 0;
         completeWay = DictConstant.VOID_VALUE;
     }
 
@@ -133,11 +133,11 @@ public class Scorm {
         this.showUploadUserId = showUploadUserId;
     }
 
-    public String getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(int score) {
         this.score = score;
     }
 

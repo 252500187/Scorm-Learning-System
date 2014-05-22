@@ -3,7 +3,7 @@ package com.sls.scorm.entity;
 public class ScormSummarize {
     private int userId;
     private int scormId;
-    private String score;
+    private int score;
     private String discuss;
     private String discussDate;
     private String grade;
@@ -15,7 +15,7 @@ public class ScormSummarize {
     private String imgUrl;
 
     public ScormSummarize() {
-        score = "";
+        score = 0;
         discuss = "";
         grade = "";
         discussDate = "";
@@ -40,11 +40,11 @@ public class ScormSummarize {
         this.scormId = scormId;
     }
 
-    public String getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(int score) {
         this.score = score;
     }
 
