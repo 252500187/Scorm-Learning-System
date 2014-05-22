@@ -108,11 +108,9 @@
 <script type="text/javascript">
     var score = ${myEvaluateScore}-1;
     $(function () {
-        if (0 != score) {
-            $("#showScore").html(score + "分");
-            for (var i = 0; i < score; i++) {
-                $("#changeStar" + i).attr("class", "fa fa-star");
-            }
+        $("#showScore").html("${myEvaluateScore}分");
+        for (var i = 0; i < score; i++) {
+            $("#changeStar" + i).attr("class", "fa fa-star");
         }
 
         var stars = $("#stars > li[name='changeStar']>i");
