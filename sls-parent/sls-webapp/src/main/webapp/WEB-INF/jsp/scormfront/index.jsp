@@ -12,27 +12,26 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../includes/common.jsp" %>
 </head>
-<body class="page-header-fixed">
+<body class="page-header-fixed" style="background: url(img/index/3.jpg) #f7ca77 no-repeat">
 <%@include file="index/navigationMenu.jsp" %>
 <div class="page-container">
     <div class="row">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-8">
-            <img src="img/index/2.jpg" style="max-height:600px ">
+        <div class="col-md-9">
         </div>
         <div class="col-md-3"><br/>
 
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." id="queryInfo">
-            <span class="input-group-btn"><a id="query" class="btn default blue-stripe"
-                                             onclick="findScorm()"><i class="fa fa-search"></i></a></span>
+                <input type="text" class="form-control" placeholder="Search..." id="queryInfo"
+                       style="BACKGROUND-COLOR: transparent;">
+                <span class="input-group-btn">
+                <a id="query" class="btn default blue-stripe"
+                   onclick="findScorm()"><i class="fa fa-search"></i></a></span>
             </div>
         </div>
     </div>
-    <HR>
+    <div style="height: 750px"></div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <ul class="mix-filter">
                 <li class="filter" data-filter="category_1">
                     <i class="fa fa-bookmark-o"></i>推荐等级
@@ -76,7 +75,6 @@
                         </div>
                     </div>
                 </c:forEach>
-                <div class="row"></div>
                 <% i = 0; %>
                 <c:forEach var="scorm" items="${scormSum}">
                     <div class="col-md-3 mix mix_all category_2"
@@ -97,7 +95,6 @@
                         </div>
                     </div>
                 </c:forEach>
-                <div class="row"></div>
                 <% i = 0; %>
                 <c:forEach var="scorm" items="${scormTime}">
                     <div class="col-md-3 mix mix_all category_3"
@@ -118,7 +115,6 @@
                         </div>
                     </div>
                 </c:forEach>
-                <div class="row"></div>
                 <% i = 0; %>
                 <c:forEach var="scorm" items="${scormScore}">
                     <div class="col-md-3 mix mix_all category_4"
@@ -142,6 +138,7 @@
             </div>
         </div>
     </div>
+
 </div>
 <%@include file="index/footer.jsp" %>
 <div id="alertPrompt" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
@@ -196,7 +193,6 @@
         Metronic.init();
         Layout.init();
         Portfolio.init();
-        $("#recommend").click();
     });
 
     $("#queryInfo").bind("keydown", function (e) {
