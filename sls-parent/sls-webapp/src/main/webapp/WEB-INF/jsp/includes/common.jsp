@@ -11,6 +11,7 @@
 <script src="<c:url value="/js/common/ccjcJS/ccjcJS.js"/>" type="text/javascript"></script>
 <%--<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>" type="text/javascript"></script>--%>
 <base href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()%><c:url value="/"/>"/>
+<link rel="icon" href="img/index/0.jpg" type="image/x-icon"/>
 <script>
     $(function () {
         JC.inputInit();
