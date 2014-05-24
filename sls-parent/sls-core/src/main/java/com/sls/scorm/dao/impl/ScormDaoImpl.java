@@ -98,14 +98,14 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
 
     @Override
     public List<Scorm> getAllRegisterScormInfoByUserId(int userId) {
-        String sql = "SELECT b.* , a.`complete_date` FROM luss_scorm_summarize a, ss_scorm b WHERE a.`scorm_id`=b.`scorm_id` AND a.`user_id` = ? ";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId);
+        String sql = "SELECT b.* , a.`complete_date` FROM luss_scorm_summarize a, ss_scorm b WHERE a.`scorm_id`=b.`scorm_id` AND a.`user_id` = ? AND b.in_use=?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId, DictConstant.IN_USE);
     }
 
     @Override
     public List<Scorm> getAllCollectScormInfoByUserId(int userId) {
-        String sql = "SELECT b.* , a.`collect_date` FROM luss_user_collect a, ss_scorm b WHERE a.`scorm_id`=b.`scorm_id` AND a.`user_id` = ?";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId);
+        String sql = "SELECT b.* , a.`collect_date` FROM luss_user_collect a, ss_scorm b WHERE a.`scorm_id`=b.`scorm_id` AND a.`user_id` = ? AND b.in_use=?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId, DictConstant.IN_USE);
     }
 
     @Override
@@ -123,8 +123,8 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
     @Override
     public List<Scorm> findRecommendScormByUserLabel(int userId) {
         String sql = "SELECT * FROM ss_scorm WHERE scorm_id IN (SELECT DISTINCT scorm_id  FROM ss_scorm_label WHERE label_id IN " +
-                "(SELECT label_id FROM us_user_label WHERE user_id=?))";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId);
+                "(SELECT label_id FROM us_user_label WHERE user_id=?)) AND in_use=?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId, DictConstant.IN_USE);
     }
 
     @Override

@@ -23,8 +23,8 @@ public class DealScormController {
 
     @RequestMapping(value = "evaluateScorm", method = {RequestMethod.POST})
     @ResponseBody
-    public void evaluateScorm(ScormSummarize scormSummarize) {
-        scormService.evaluateScorm(scormSummarize);
+    public Boolean evaluateScorm(ScormSummarize scormSummarize) {
+        return scormService.evaluateScorm(scormSummarize);
     }
 
     @RequestMapping(value = "discussScorm", method = {RequestMethod.POST})
@@ -44,8 +44,8 @@ public class DealScormController {
 
     @RequestMapping(value = "review", method = {RequestMethod.GET})
     public String review(@RequestParam("scormId") String scormId, HttpServletRequest request) {
-        request.setAttribute("scormId",scormId);
-        scormService.findReviewsByScormId(scormId,request);
+        request.setAttribute("scormId", scormId);
+        scormService.findReviewsByScormId(Integer.parseInt(scormId), request);
         return "scormfront/scorm/review";
     }
 }

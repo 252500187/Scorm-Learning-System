@@ -76,7 +76,7 @@
                         <div class="portlet blue box">
                             <div class="portlet-title">
                                 <div class="caption">
-                                    <i class="fa fa-cogs"></i>学习分布图
+                                    <i class="fa fa-bar-chart-o"></i>学习分布图
                                 </div>
                                 <div class="tools">
                                     <a href="javascript:;" class="collapse">
@@ -107,27 +107,17 @@
             <div class="space20">
             </div>
             <div class="col-md-3 blog-sidebar">
-                <div class="portlet red box">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fa fa-cogs"></i>推荐给你
-                        </div>
-                        <div class="tools">
-                            <a href="javascript:;" class="collapse">
-                            </a>
-                            <a href="javascript:;" class="remove">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="portlet-body">
-                        <c:if test="${fn:length(recommendScorm)<1}">
-                            <h5>试着给自己添加标签</h5>
+                <h3>推荐给你</h3>
+                <hr/>
 
-                            <h5>我们会推荐相关课程！</h5>
-                        </c:if>
-                        <div class="top-news">
-                            <c:if test="${recommendScorm[0]!=null}">
-                                <a onclick="showScormInfo('${recommendScorm[0].scormId}')" class="btn red">
+                <c:if test="${fn:length(recommendScorm)<1}">
+                    <h5>试着给自己添加标签</h5>
+
+                    <h5>我们会推荐相关课程！</h5>
+                </c:if>
+                <div class="top-news">
+                    <c:if test="${recommendScorm[0]!=null}">
+                        <a onclick="showScormInfo('${recommendScorm[0].scormId}')" class="btn red">
                                         <span>
                                             <c:if test="${recommendScorm[0].showRecommendLevel!=''}">
                                                 <img src="${recommendScorm[0].showRecommendLevel}"
@@ -135,13 +125,13 @@
                                             </c:if>
                                             ${recommendScorm[0].scormName}
                                         </span>
-                                    <em>评分：${recommendScorm[0].score}</em>
-                                    <em><i class="fa fa-tags"></i>${recommendScorm[0].labelName}</em>
-                                    <i class="fa fa-briefcase top-news-icon"></i>
-                                </a>
-                            </c:if>
-                            <c:if test="${recommendScorm[1]!=null}">
-                                <a onclick="showScormInfo('${recommendScorm[1].scormId}')" class="btn green">
+                            <em>评分：${recommendScorm[0].score}</em>
+                            <em><i class="fa fa-tags"></i>${recommendScorm[0].labelName}</em>
+                            <i class="fa fa-briefcase top-news-icon"></i>
+                        </a>
+                    </c:if>
+                    <c:if test="${recommendScorm[1]!=null}">
+                        <a onclick="showScormInfo('${recommendScorm[1].scormId}')" class="btn green">
                                          <span>
                                             <c:if test="${recommendScorm[1].showRecommendLevel!=''}">
                                                 <img src="${recommendScorm[1].showRecommendLevel}"
@@ -149,13 +139,13 @@
                                             </c:if>
                                             ${recommendScorm[1].scormName}
                                         </span>
-                                    <em>评分：${recommendScorm[1].score}</em>
-                                    <em><i class="fa fa-tags"></i>${recommendScorm[1].labelName}</em>
-                                    <i class="fa fa-music top-news-icon"></i>
-                                </a>
-                            </c:if>
-                            <c:if test="${recommendScorm[2]!=null}">
-                                <a onclick="showScormInfo('${recommendScorm[2].scormId}')" class="btn blue">
+                            <em>评分：${recommendScorm[1].score}</em>
+                            <em><i class="fa fa-tags"></i>${recommendScorm[1].labelName}</em>
+                            <i class="fa fa-music top-news-icon"></i>
+                        </a>
+                    </c:if>
+                    <c:if test="${recommendScorm[2]!=null}">
+                        <a onclick="showScormInfo('${recommendScorm[2].scormId}')" class="btn blue">
                                        <span>
                                             <c:if test="${recommendScorm[2].showRecommendLevel!=''}">
                                                 <img src="${recommendScorm[2].showRecommendLevel}"
@@ -163,13 +153,13 @@
                                             </c:if>
                                             ${recommendScorm[2].scormName}
                                         </span>
-                                    <em>评分：${recommendScorm[2].score}</em>
-                                    <em><i class="fa fa-tags"></i>${recommendScorm[2].labelName}</em>
-                                    <i class="fa fa-globe top-news-icon"></i>
-                                </a>
-                            </c:if>
-                            <c:if test="${recommendScorm[3]!=null}">
-                                <a onclick="showScormInfo('${recommendScorm[3].scormId}')" class="btn yellow">
+                            <em>评分：${recommendScorm[2].score}</em>
+                            <em><i class="fa fa-tags"></i>${recommendScorm[2].labelName}</em>
+                            <i class="fa fa-globe top-news-icon"></i>
+                        </a>
+                    </c:if>
+                    <c:if test="${recommendScorm[3]!=null}">
+                        <a onclick="showScormInfo('${recommendScorm[3].scormId}')" class="btn yellow">
                                          <span>
                                             <c:if test="${recommendScorm[3].showRecommendLevel!=''}">
                                                 <img src="${recommendScorm[3].showRecommendLevel}"
@@ -177,13 +167,13 @@
                                             </c:if>
                                             ${recommendScorm[3].scormName}
                                         </span>
-                                    <em>评分：${recommendScorm[3].score}</em>
-                                    <em><i class="fa fa-tags"></i>${recommendScorm[3].labelName}</em>
-                                    <i class="fa fa-book top-news-icon"></i>
-                                </a>
-                            </c:if>
-                            <c:if test="${recommendScorm[4]!=null}">
-                                <a onclick="showScormInfo('${recommendScorm[4].scormId}')" class="btn purple">
+                            <em>评分：${recommendScorm[3].score}</em>
+                            <em><i class="fa fa-tags"></i>${recommendScorm[3].labelName}</em>
+                            <i class="fa fa-book top-news-icon"></i>
+                        </a>
+                    </c:if>
+                    <c:if test="${recommendScorm[4]!=null}">
+                        <a onclick="showScormInfo('${recommendScorm[4].scormId}')" class="btn purple">
                                          <span>
                                             <c:if test="${recommendScorm[4].showRecommendLevel!=''}">
                                                 <img src="${recommendScorm[4].showRecommendLevel}"
@@ -191,22 +181,20 @@
                                             </c:if>
                                             ${recommendScorm[4].scormName}
                                         </span>
-                                    <em>评分：${recommendScorm[4].score}</em>
-                                    <em><i class="fa fa-tags"></i>${recommendScorm[4].labelName}</em>
-                                    <i class="fa fa-bolt top-news-icon"></i>
-                                </a>
-                            </c:if>
-                        </div>
-
-                    </div>
+                            <em>评分：${recommendScorm[4].score}</em>
+                            <em><i class="fa fa-tags"></i>${recommendScorm[4].labelName}</em>
+                            <i class="fa fa-bolt top-news-icon"></i>
+                        </a>
+                    </c:if>
                 </div>
+
                 <div class="space20">
                     <hr/>
                 </div>
                 <div class="portlet green box">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="fa fa-cogs"></i>最近学习
+                            <i class="fa fa-table"></i>最近学习
                         </div>
                         <div class="tools">
                             <a href="javascript:;" class="collapse">

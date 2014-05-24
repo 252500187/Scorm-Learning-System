@@ -186,11 +186,15 @@
 </div>
 
 <div class="col-md-3 col-sm-4 blog-sidebar">
-    <c:if test="${recommendScorm[0]!=null}">
-        <h3>推荐给你</h3>
+    <h3>推荐给你</h3>
+    <hr/>
+    <c:if test="${fn:length(recommendScorm)<1}">
+        <h5>试着给自己添加标签</h5>
+
+        <h5>我们会推荐相关课程！</h5>
     </c:if>
     <div class="top-news">
-        <c:if test="${recommendScorm[0]!=null}">
+        <c:if test="${fn:length(recommendScorm)>0}">
             <a onclick="showScormInfo('${recommendScorm[0].scormId}')" class="btn red">
                <span>
                     <c:if test="${recommendScorm[0].showRecommendLevel!=''}">
@@ -262,9 +266,10 @@
         </c:if>
     </div>
     <div class="space20">
+        <hr/>
     </div>
     <h3>名言名句</h3>
-
+    <hr/>
     <div class="tabbable tabbable-custom">
         <ul class="nav nav-tabs">
             <li class="active">
@@ -293,9 +298,11 @@
         </div>
     </div>
     <div class="space20">
+        <hr/>
     </div>
     <c:if test="${registerScorm!=null}">
         <h3>最近学习</h3>
+        <hr/>
     </c:if>
     <div class="blog-twitter">
         <c:forEach var="scorm" items="${registerScorm}">

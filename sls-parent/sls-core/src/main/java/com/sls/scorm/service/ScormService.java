@@ -19,7 +19,7 @@ public interface ScormService {
     int upScorm(HttpServletRequest request, String upFile, String upImg, Scorm scorm) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException;
 
-    String registerScorm(int scormId, HttpServletRequest request);
+    void registerScorm(int scormId, HttpServletRequest request);
 
     void studyScorm(int scormId, HttpServletRequest request);
 
@@ -57,7 +57,7 @@ public interface ScormService {
 
     void changScormCompleteWay(int scormId, int completeWay);
 
-    void evaluateScorm(ScormSummarize scormSummarize);
+    Boolean evaluateScorm(ScormSummarize scormSummarize);
 
     void getDiscusses(int scormId, HttpServletRequest request);
 
@@ -71,5 +71,5 @@ public interface ScormService {
 
     void findRegisterScorm(HttpServletRequest request);
 
-    void findReviewsByScormId(String scormId, HttpServletRequest request);
+    void findReviewsByScormId(int scormId, HttpServletRequest request);
 }

@@ -41,11 +41,17 @@
                                                 <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                     审核状态:&nbsp;${scormInfo.showInUse}
                                                 </h4>
-                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                    <a class="btn btn-sm blue"
-                                                       onclick="scormInfo('${scormInfo.scormId}')">课件信息</a>
-                                                </h4>
-
+                                                <c:if test="${scormInfo.inUse==0}">
+                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                        目前课件不可使用
+                                                    </h4>
+                                                </c:if>
+                                                <c:if test="${scormInfo.inUse!=0}">
+                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                        <a class="btn btn-sm blue"
+                                                           onclick="scormInfo('${scormInfo.scormId}')">课件信息</a>
+                                                    </h4>
+                                                </c:if>
                                             </div>
                                         </div>
                                     </div>
@@ -66,7 +72,7 @@
 <script type="text/javascript">
     $(function () {
         <c:forEach var="scormInfo" items="${allScorm}">
-                $("#" + "${scormInfo.scormId}").attr("src", basePath + "${scormInfo.imgPath}");
+        $("#" + "${scormInfo.scormId}").attr("src", basePath + "${scormInfo.imgPath}");
         </c:forEach>
         Portfolio.init();
     })

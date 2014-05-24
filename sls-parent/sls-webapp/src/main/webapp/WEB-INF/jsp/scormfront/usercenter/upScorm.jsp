@@ -36,7 +36,7 @@
                             <div class="col-md-1"></div>
                             <div class="alert alert-success alert-dismissable col-md-6">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                                <strong>提示!</strong>上传前请确认您的课件是否符合SCORM标准(如imsmanifest.xml文件应在根目录下)
+                                <strong>提示!</strong><br/>上传前请确认您的课件是否符合SCORM标准(如imsmanifest.xml文件应在根目录下)
                             </div>
                         </div>
                         <div class="form-group">

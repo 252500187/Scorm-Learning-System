@@ -85,14 +85,14 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public String registerScorm(int scormId, HttpServletRequest request) {
+    public void registerScorm(int scormId, HttpServletRequest request) {
         User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
         int scormState = scormDao.findScormInfoByScormId(scormId).getInUse();
         if (scoDao.findScosByScormIdAndUserId(scormId, user.getUserId()).size() > 0) {
-            return "对不起，您已注册。";
+            return;
         }
         if (scormState == DictConstant.NO_USE) {
-            return "此课件不可注册。";
+            return;
         }
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
         ScoInfo scoInfo;
@@ -111,7 +111,6 @@ public class ScormServiceImpl implements ScormService {
         summarizeDao.addScormSummarize(scormSummarize);
         scormDao.addVisitSum(scormId);
         userDao.addScore(DictConstant.EXP_SCORE, user.getUserId());
-        return "注册成功。";
     }
 
     @Override
@@ -441,14 +440,19 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void evaluateScorm(ScormSummarize scormSummarize) {
+    public Boolean evaluateScorm(ScormSummarize scormSummarize) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         scormSummarize.setUserId(userId);
-        if (("").equals(summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormSummarize.getScormId()).getScore())) {
+        ScormSummarize oldScormSummarize = summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormSummarize.getScormId());
+        if (("").equals(oldScormSummarize.getCompleteDate())) {
+            return false;
+        }
+        if (0 == oldScormSummarize.getScore()) {
             userDao.addScore(DictConstant.EXP_SCORE, userId);
         }
         summarizeDao.changeSummarizeScoreByUserIdAndScormId(scormSummarize);
         scormDao.updateScormScoreByScormId(scormSummarize.getScormId());
+        return true;
     }
 
     @Override
@@ -521,10 +525,11 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void findReviewsByScormId(String scormId, HttpServletRequest request) {
+    public void findReviewsByScormId(int scormId, HttpServletRequest request) {
         User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
-        int myEvaluateScore = summarizeDao.findScormSummarizeByUserIdAndScormId(user.getUserId(), Integer.parseInt(scormId)).getScore();
-        request.setAttribute("allReviews", summarizeDao.getAllCommentsByScormId(Integer.parseInt(scormId)));
+        int myEvaluateScore = summarizeDao.findScormSummarizeByUserIdAndScormId(user.getUserId(), scormId).getScore();
+        request.setAttribute("completeDate", summarizeDao.findScormSummarizeByUserIdAndScormId(user.getUserId(), scormId).getCompleteDate());
+        request.setAttribute("AllComments", summarizeDao.getAllCommentsByScormId(scormId));
         request.setAttribute("nowUser", user);
         request.setAttribute("myEvaluateScore", myEvaluateScore);
     }

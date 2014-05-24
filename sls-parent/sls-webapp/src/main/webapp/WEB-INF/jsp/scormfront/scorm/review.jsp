@@ -1,6 +1,6 @@
 <%--@elvariable id="scormId" type="java.lang.String"--%>
 <%--@elvariable id="myEvaluateScore" type="java.lang.Integer"--%>
-<%--@elvariable id="allReviews" type="java.util.List<com.sls.scorm.entity.ScormSummarize>"--%>
+<%--@elvariable id="AllComments" type="java.util.List<com.sls.scorm.entity.ScormSummarize>"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -31,8 +31,17 @@
         <div class="page-content">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="alert alert-info display-hide">
-                        <span id="result"></span>
+                    <div class="alert alert-info display-hide col-md-4">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                        <strong>提示!</strong>
+
+                        <p id="result"></p>
+                    </div>
+                    <div class="alert alert-danger display-hide col-md-4">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                        <strong>提示!</strong>
+
+                        <p id="errorResult"></p>
                     </div>
                     <ul id="stars" class="list-inline">
                         <li>评分:</li>
@@ -63,7 +72,6 @@
                 </div>
             </div>
             <hr/>
-            <hr/>
             <div class="row">
                 <div class="col-md-8">
                     <div class="chat-form">
@@ -81,7 +89,7 @@
 
                     <div class="scroller" style="height: 435px;" data-always-visible="1" data-rail-visible1="1">
                         <ul class="chats" id="chatList">
-                            <c:forEach var="review" items="${allReviews}" varStatus="status">
+                            <c:forEach var="review" items="${AllComments}" varStatus="status">
                                 <c:if test="${status.index == 0}">
                                     <li class="out"></c:if>
                                 <c:if test="${status.index != 0}">
@@ -109,10 +117,9 @@
     var score = ${myEvaluateScore}-1;
     $(function () {
         $("#showScore").html("${myEvaluateScore}分");
-        for (var i = 0; i < score; i++) {
+        for (var i = 0; i < score + 1; i++) {
             $("#changeStar" + i).attr("class", "fa fa-star");
         }
-
         var stars = $("#stars > li[name='changeStar']>i");
         stars.each(function (i) {
             $(stars[i]).click(function () {
@@ -154,9 +161,14 @@
             },
             dataType: "json",
             type: "POST",
-            success: function () {
-                $("#result").html("评分成功！您给了" + resultScore + "分！");
-                $('.alert-info').show();
+            success: function (result) {
+                if (result) {
+                    $("#result").html("评分成功！您给了" + resultScore + "分！");
+                    $('.alert-info').show();
+                } else {
+                    $("#errorResult").html("您还没完成学习，暂时无法评分，先评论吧？");
+                    $('.alert-danger').show();
+                }
             },
             error: doError
         })
@@ -170,7 +182,6 @@
             data: { discuss: discuss },
             type: "POST",
             success: function () {
-                $("#discussInput").attr("value", "");
                 window.location.reload()
             },
             error: doError
