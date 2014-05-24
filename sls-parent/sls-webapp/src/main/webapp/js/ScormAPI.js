@@ -42,7 +42,7 @@ function LMSInitialize(parameter) {
             scoInfo['cmi.core.entry'] = info[0].coreEntry;                 //Read
             scoInfo['cmi.core.score.raw'] = info[0].coreScoreRaw;
             scoInfo['cmi.core.total_time'] = info[0].coreTotalTime;      //Read
-//            scoInfo['cmi.core.lesson_mode'] = info[0].coreLessonMode;
+            scoInfo['cmi.core.lesson_mode'] = info[0].coreLessonMode;
             scoInfo['cmi.core.exit'] = info[0].coreExit;                        //Write
             scoInfo['cmi.core.session_time'] = info[0].coreSessionTime;                //Write
             scoInfo['cmi.suspend_data'] = info[0].suspendData;
@@ -72,7 +72,8 @@ function LMSSetValue(key, value) {
     }
     if (key == "cmi.core.student_id" || key == "cmi.core.student_name"
         || key == "cmi.core.credit" || key == "cmi.core.entry"
-        || key == "cmi.core.total_time" || key == "cmi.launch_data") {
+        || key == "cmi.core.total_time" || key == "cmi.launch_data"
+        || key == "cmi.core.lesson_mode") {
         errorCode = "403";
         return "false";
     }
