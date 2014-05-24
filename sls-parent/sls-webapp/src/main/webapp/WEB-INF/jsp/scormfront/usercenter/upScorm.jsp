@@ -28,7 +28,17 @@
             <div class="portlet-body form">
                 <form class="form-horizontal" id="fileGetUp" method="post"
                       enctype="multipart/form-data">
+                    <%--<div class="form-group">--%>
+                    <%--<label class="control-label col-md-2"><h3></h3></label>--%>
+                    <%--</div>--%>
                     <div class="form-body">
+                        <div class="form-group">
+                            <div class="col-md-1"></div>
+                            <div class="alert alert-success alert-dismissable col-md-6">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                <strong>提示!</strong>上传前请确认您的课件是否符合SCORM标准(如imsmanifest.xml文件应在根目录下)
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="control-label col-md-2">课件名称</label>
 
@@ -117,7 +127,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="form-actions">
                         <div class="row">

@@ -16,83 +16,114 @@
 </head>
 <body>
 <div class="page-container">
-    <div class="page-content">
-        <div class="row">
-            <div class="col-md-8"><h3 class="page-title">
-                ${user.userName}&nbsp;个人中心
-            </h3>
-            </div>
-            <div class="col-md-4">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search..." id="queryInfo">
+<div class="page-content">
+<div class="row">
+    <div class="col-md-8"><h3 class="page-title">
+        ${user.userName}&nbsp;个人中心
+    </h3>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search..." id="queryInfo">
                         <span class="input-group-btn">
                             <a id="query" class="btn default blue-stripe" onclick="findScorm()"><i
                                     class="fa fa-search"></i></a></span>
-                </div>
-            </div>
-            <div class="col-md-12">
-
-                <ul class="page-breadcrumb breadcrumb">
-                    <li>
-                        <i class="fa fa-home"></i>
-                        <a onclick="parent.window.location.href=''">Home</a>
-                        <i class="fa fa-angle-right"></i>
-                    </li>
-                    <li>
-                        <a>UserCenter</a>
-                        <i class="fa fa-angle-right"></i>
-                    </li>
-                    <li>
-                        <a>${user.userName}</a>
-                    </li>
-                </ul>
-            </div>
         </div>
+    </div>
+    <div class="col-md-12">
+
+        <ul class="page-breadcrumb breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a onclick="parent.window.location.href=''">Home</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a>UserCenter</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a>${user.userName}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" style="padding-left: 60px">
         <div class="row">
-            <div class="col-md-12" style="padding-left: 60px">
+            <div class="col-md-9 article-block">
                 <div class="row">
-                    <div class="col-md-9 article-block">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <c:if test="${nextLevel==null}">
-                                    <h3>恭喜，您已满级！</h3>
-                                </c:if>
-                                <c:if test="${nextLevel!=null}">
-                                    <h3>前往${nextLevel}之路:已完成${finalScore}%</h3>
-                                </c:if>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
-                                         aria-valuemin="0"
-                                         aria-valuemax="100"
-                                         style="width:${finalScore}%">
-                                    </div>
-                                </div>
-                                <hr>
+                    <div class="col-md-12">
+                        <c:if test="${nextLevel==null}">
+                            <h3>恭喜，您已满级！</h3>
+                        </c:if>
+                        <c:if test="${nextLevel!=null}">
+                            <h3>前往${nextLevel}之路:已完成${finalScore}%</h3>
+                        </c:if>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100"
+                                 style="width:${finalScore}%">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3>学习分布</h3>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="portlet blue box">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-cogs"></i>学习分布图
+                                </div>
+                                <div class="tools">
+                                    <a href="javascript:;" class="collapse">
+                                    </a>
+                                    <a href="javascript:;" class="remove">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <h3 id="studyDistribute"></h3>
 
                                 <div id="pie_chart" class="chart">
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <hr>
-                            <blockquote class="hero">
-                                <p>
-                                    学知不足，业精于勤。
-                                </p>
-                                <small>（唐）韩愈</small>
-                            </blockquote>
+                    </div>
+                </div>
+                <div class="row">
+                    <hr>
+                    <blockquote class="hero">
+                        <p>
+                            学知不足，业精于勤。
+                        </p>
+                        <small>（唐）韩愈</small>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="space20">
+            </div>
+            <div class="col-md-3 blog-sidebar">
+                <div class="portlet red box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-cogs"></i>推荐给你
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse">
+                            </a>
+                            <a href="javascript:;" class="remove">
+                            </a>
                         </div>
                     </div>
-                    <div class="space20">
-                    </div>
-                    <div class="col-md-3 blog-sidebar">
-                        <c:if test="${recommendScorm[0]!=null}">
-                            <h3>推荐给你</h3>
+                    <div class="portlet-body">
+                        <c:if test="${fn:length(recommendScorm)<1}">
+                            <h5>试着给自己添加标签</h5>
+
+                            <h5>我们会推荐相关课程！</h5>
                         </c:if>
                         <div class="top-news">
                             <c:if test="${recommendScorm[0]!=null}">
@@ -166,10 +197,27 @@
                                 </a>
                             </c:if>
                         </div>
-                        <div class="space20">
+
+                    </div>
+                </div>
+                <div class="space20">
+                    <hr/>
+                </div>
+                <div class="portlet green box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-cogs"></i>最近学习
                         </div>
-                        <c:if test="${registerScorm!=null}">
-                            <h3>最近学习</h3>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse">
+                            </a>
+                            <a href="javascript:;" class="remove">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <c:if test="${fn:length(registerScorm)<1}">
+                            <h5>您最近没有正在学习的课程</h5>
                         </c:if>
                         <div class="blog-twitter">
                             <c:forEach var="scorm" items="${registerScorm}">
@@ -194,6 +242,8 @@
         </div>
     </div>
 </div>
+</div>
+</div>
 </body>
 </html>
 <script>
@@ -209,7 +259,12 @@
             data:${perItem.number}
         }
         </c:forEach>
+        <c:if test="${fn:length(userPeiCharts)>0}">
         Charts.initPieCharts(data);
+        </c:if>
+        <c:if test="${fn:length(userPeiCharts)<1}">
+        $("#studyDistribute").html("您还没有注册过课程，试着去注册课程吧！");
+        </c:if>
         $("#queryInfo").bind("keydown", function (e) {
             if (e.which == 13) {
                 findScorm();
