@@ -111,7 +111,6 @@
                     </a>
                 </li>
             </ul>
-            <!-- END SIDEBAR MENU -->
         </div>
     </div>
     <div class="page-content-wrapper">

@@ -12,7 +12,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../includes/common.jsp" %>
 </head>
-<body class="page-header-fixed" style="background: url(img/index/3.jpg) #f7ca77 no-repeat">
+<body class="page-header-fixed" style="background: url('<c:url value='/img/index/8.jpg'/>') #f0f5f7 no-repeat;
+        background-size: 70%">
 <%@include file="index/navigationMenu.jsp" %>
 <div class="page-container">
     <div class="row">
@@ -29,7 +30,7 @@
             </div>
         </div>
     </div>
-    <div style="height: 750px"></div>
+    <div id="indexImg" style="height: 500px"></div>
     <div class="row">
         <div class="col-md-6">
             <ul class="mix-filter">
@@ -193,6 +194,10 @@
         Metronic.init();
         Layout.init();
         Portfolio.init();
+        var width = document.documentElement.clientWidth;
+        $("#indexImg").height(width / 2.8);
+        $("body").css("background-position", width*0.15+"px 110px");
+        $("#recommend").click();
     });
 
     $("#queryInfo").bind("keydown", function (e) {
