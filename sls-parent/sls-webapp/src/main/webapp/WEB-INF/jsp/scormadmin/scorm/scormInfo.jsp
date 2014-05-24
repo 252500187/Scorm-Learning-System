@@ -34,6 +34,7 @@
                 </tr>
                 <tr>
                     <td>
+                        课件完成率:${completeRate*100}%<br/>
                         课件完成方式:<br/>
                         <button class="btn btn-success" onclick="changeCompleteWay('${completeWay1}')">浏览完成</button>
                         <button class="btn btn-success" onclick="changeCompleteWay('${completeWay0}')">默认</button>

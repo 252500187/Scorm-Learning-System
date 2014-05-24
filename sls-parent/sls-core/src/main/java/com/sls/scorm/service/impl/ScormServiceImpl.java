@@ -409,6 +409,7 @@ public class ScormServiceImpl implements ScormService {
         scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
         scorm.setShowUploadUserId(userDao.findUserAllInfoById(scorm.getUploadUserId()).getUserName());
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
+        request.setAttribute("completeRate",scormDao.findCompleteRateByScormId(scormId));
         request.setAttribute("scorm", scorm);
         request.setAttribute("scoList", scoList);
         request.setAttribute("inUse", DictConstant.IN_USE);

@@ -25,19 +25,19 @@ function LMSInitialize(parameter) {
     scoInfo['cmi.core._count'] = "12";
     scoInfo['cmi.suspend_data._count'] = "0";
 
-    scoInfo['cmi.core.student_id'] = info[0].coreStudentId;       //Read
-    scoInfo['cmi.core.student_name'] = info[0].coreStudentName;     //Read
-    scoInfo['cmi.core.lesson_location'] = info[0].coreLessonLocation;
-    scoInfo['cmi.core.credit'] = info[0].coreCredit;              //Read
-    scoInfo['cmi.core.lesson_status'] = info[0].coreLessonStatus;
-    scoInfo['cmi.core.entry'] = info[0].coreEntry;                 //Read
-    scoInfo['cmi.core.score.raw'] = info[0].coreScoreRaw;
-    scoInfo['cmi.core.total_time'] = info[0].coreTotalTime;      //Read
-    scoInfo['cmi.core.lesson_mode'] = info[0].coreLessonMode;
-    scoInfo['cmi.core.exit'] = info[0].coreExit;                        //Write
-    scoInfo['cmi.core.session_time'] = info[0].coreSessionTime;                //Write
-    scoInfo['cmi.suspend_data'] = info[0].suspendData;
-    scoInfo['cmi.launch_data'] = info[0].launchData;          //Read
+    scoInfo['cmi.core.student_id'] = "";       //Read
+    scoInfo['cmi.core.student_name'] = "";     //Read
+    scoInfo['cmi.core.lesson_location'] = "";
+    scoInfo['cmi.core.credit'] = "";              //Read
+    scoInfo['cmi.core.lesson_status'] = "";
+    scoInfo['cmi.core.entry'] = "";                 //Read
+    scoInfo['cmi.core.score.raw'] = "";
+    scoInfo['cmi.core.total_time'] = "";      //Read
+    scoInfo['cmi.core.lesson_mode'] = "";
+    scoInfo['cmi.core.exit'] = "";                        //Write
+    scoInfo['cmi.core.session_time'] = "";                //Write
+    scoInfo['cmi.suspend_data'] = "";
+    scoInfo['cmi.launch_data'] = "";          //Read
     iniFlag = "true";
     return "true";
 }

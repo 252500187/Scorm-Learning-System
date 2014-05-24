@@ -148,4 +148,11 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
                 "WHERE c.scorm_id=d.scorm_id AND e.label_id=d.label_id AND label_name LIKE '%" + info + "%')GROUP BY a.scorm_id";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class));
     }
+
+    @Override
+    public String findCompleteRateByScormId(int scormId) {
+        String sql = "SELECT (SELECT COUNT(*) FROM luss_scorm_summarize WHERE scorm_id=? AND user_id!=? AND complete_date!='')/COUNT(*) " +
+                "FROM luss_scorm_summarize WHERE scorm_id=? AND user_id!=?";
+        return getJdbcTemplate().queryForObject(sql, (String.class), scormId, DictConstant.VOID_VALUE, scormId, DictConstant.VOID_VALUE);
+    }
 }

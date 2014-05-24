@@ -45,4 +45,6 @@ public interface ScormDao {
     List<Scorm> queryScormByFieldName(String info, String fieldName);
 
     List<Scorm> queryScormByLabelName(String info);
+
+    String findCompleteRateByScormId(int scormId);
 }

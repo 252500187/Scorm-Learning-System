@@ -43,7 +43,7 @@
                     {field: 'uploadDate', title: '上传日期', align: 'center', width: 150},
                     {field: 'totalTime', title: '观看总时间', sortable: true, align: 'center', width: 100},
                     {field: 'registerSum', title: '注册人数', sortable: true, align: 'center', width: 100},
-                    {field: '22', title: '平均得分', sortable: true, align: 'center', width: 100},
+                    {field: 'score', title: '评分', sortable: true, align: 'center', width: 100},
                     {field: 'operate', title: '操作', align: 'center', width: 100}
                 ]
             ],
