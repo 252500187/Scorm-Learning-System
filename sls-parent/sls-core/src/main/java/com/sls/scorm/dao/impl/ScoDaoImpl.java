@@ -28,8 +28,8 @@ public class ScoDaoImpl extends PageDao implements ScoDao {
 
     @Override
     public void addScoInfo(ScoInfo scoInfo) {
-        String sql = "INSERT INTO luss_scorm_sco_api_info(sco_id,coreStudentId,coreStudentName,coreLessonLocation,coreCredit,coreLessonStatus,coreEntry,coreScoreRaw,coreTotalTime,coreExit,coreSessionTime,suspendData,launchData,pass_raw) " +
-                "VALUES(:scoId, :coreStudentId, :coreStudentName, :coreLessonLocation, :coreCredit, :coreLessonStatus,:coreEntry,:coreScoreRaw,:coreTotalTime,:coreExit,:coreSessionTime,:suspendData,:launchData,:passRaw)";
+        String sql = "INSERT INTO luss_scorm_sco_api_info(sco_id,coreStudentId,coreStudentName,coreLessonLocation,coreCredit,coreLessonStatus,coreEntry,coreScoreRaw,coreTotalTime,coreExit,coreSessionTime,suspendData,launchData,coreLessonMode,pass_raw) " +
+                "VALUES(:scoId, :coreStudentId, :coreStudentName, :coreLessonLocation, :coreCredit, :coreLessonStatus,:coreEntry,:coreScoreRaw,:coreTotalTime,:coreExit,:coreSessionTime,:suspendData,:launchData,:coreLessonMode,:passRaw)";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(scoInfo));
     }
 
@@ -81,6 +81,9 @@ public class ScoDaoImpl extends PageDao implements ScoDao {
         if (!("").equals(scoInfo.getSuspendData())) {
             findSql.append(" suspendData='" + scoInfo.getSuspendData() + "',");
         }
+        if (!("").equals(scoInfo.getCoreLessonMode())) {
+            findSql.append(" coreLessonMode='" + scoInfo.getCoreLessonMode() + "',");
+        }
         if (!("").equals(scoInfo.getLaunchData())) {
             findSql.append(" launchData='" + scoInfo.getLaunchData() + "',");
         }
@@ -107,9 +110,9 @@ public class ScoDaoImpl extends PageDao implements ScoDao {
     }
 
     @Override
-    public List<ScoInfo> findScosByCreditAndScormIdAndUserId(String credit, int scormId, int userId) {
+    public List<ScoInfo> findUrlScosByCreditAndScormIdAndUserId(String credit, int scormId, int userId) {
         String sql = "SELECT * FROM luss_scorm_sco_api_info WHERE coreCredit=? " +
-                "AND sco_id IN (SELECT sco_id FROM luss_scorm_sco WHERE scorm_id=? AND user_id=?)";
+                "AND sco_id IN (SELECT sco_id FROM luss_scorm_sco WHERE scorm_id=? AND user_id=? AND url!='')";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<ScoInfo>(ScoInfo.class), credit, scormId, userId);
     }
 }

@@ -22,5 +22,5 @@ public interface ScoDao {
 
     Boolean isAllScoClick(int scormId, int userId);
 
-    List<ScoInfo> findScosByCreditAndScormIdAndUserId(String credit, int scormId, int userId);
+    List<ScoInfo> findUrlScosByCreditAndScormIdAndUserId(String credit, int scormId, int userId);
 }

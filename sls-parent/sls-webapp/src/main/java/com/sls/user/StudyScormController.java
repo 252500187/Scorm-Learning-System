@@ -57,7 +57,7 @@ public class StudyScormController {
     }
 
 
-    @RequestMapping(value = "changeScoState", method = {RequestMethod.GET})
+    @RequestMapping(value = "treeScoClick", method = {RequestMethod.GET})
     @ResponseBody
     public void changeScoState(@RequestParam("scormId") String scormId, @RequestParam("scoId") String scoId) {
         scormService.changeScoState(Integer.parseInt(scormId), Integer.parseInt(scoId));
@@ -78,7 +78,7 @@ public class StudyScormController {
     @RequestMapping(value = "commitScoApiInfo", method = {RequestMethod.POST})
     @ResponseBody
     public void commitScoApiInfo(ScoInfo scoInfo, @RequestParam("scormId") String scormId) {
-        scormService.changeScoInfoByScoId(scoInfo, Integer.parseInt(scormId));
+        scormService.commitScoApiInfoByScoId(scoInfo, Integer.parseInt(scormId));
     }
 
     @RequestMapping(value = "upStudyImg", method = {RequestMethod.POST})

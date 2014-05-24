@@ -81,7 +81,7 @@
         parent.nowScoId = treeNode.scoId;
         parent.$("#scormIframe").attr("src", treeNode.src);
         $.ajax({
-            url: basePath + "user/scorm/changeScoState?scormId=" + parent.scormId + "&scoId=" + parent.scoId,
+            url: basePath + "user/scorm/treeScoClick?scormId=" + parent.scormId + "&scoId=" + parent.scoId,
             dataType: "json",
             type: "get"
         })

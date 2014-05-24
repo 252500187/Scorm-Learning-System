@@ -14,25 +14,27 @@ public class ScoInfo {
     private String coreTotalTime;
     private String coreExit;
     private String coreSessionTime;
+    private String coreLessonMode;
     private String suspendData;
     private String launchData;
 
     private String passRaw;
 
     public ScoInfo() {
-        coreStudentId="";
-        coreStudentName="";
+        coreStudentId = "";
+        coreStudentName = "";
         coreLessonLocation = "";
         coreCredit = "";
         coreLessonStatus = DictConstant.LESSON_STATUS_NOT_ATTEMPTED;
         coreEntry = DictConstant.ENTRY_INI;
         coreScoreRaw = "";
-        coreTotalTime = "";
+        coreTotalTime = "0000:00:00.00";
         coreExit = "";
         coreSessionTime = "";
+        coreLessonMode = DictConstant.LESSON_MODE_NORMAL;
         suspendData = "";
-        launchData="";
-        passRaw="";
+        launchData = "";
+        passRaw = "";
     }
 
     public String getCoreStudentId() {
@@ -145,5 +147,13 @@ public class ScoInfo {
 
     public void setPassRaw(String passRaw) {
         this.passRaw = passRaw;
+    }
+
+    public String getCoreLessonMode() {
+        return coreLessonMode;
+    }
+
+    public void setCoreLessonMode(String coreLessonMode) {
+        this.coreLessonMode = coreLessonMode;
     }
 }

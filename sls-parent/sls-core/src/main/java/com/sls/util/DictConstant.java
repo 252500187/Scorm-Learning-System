@@ -47,12 +47,6 @@ public class DictConstant {
     //笔记类型文字
     public static final int TEXT_TYPE = -1;
 
-    // SCO节点TYPE
-    //根节点
-    public static final String SCO_MAIN = "root";
-    //ITEM
-    public static final String SCO_ITEM = "item";
-
     //最后访问的SCO
     public static final int LAST_VISIT = 1;
 
@@ -84,6 +78,12 @@ public class DictConstant {
     public static final String CREDIT_IM = "credit";
     //非重点
     public static final String CREDIT_NO = "no-credit";
+    //浏览
+    public static final String LESSON_MODE_BROWSE = "browse";
+    //正常模式
+    public static final String LESSON_MODE_NORMAL = "normal";
+    //再次阅读
+    public static final String LESSON_MODE_REVIEW = "review";
 
 
     //管理员推荐级别

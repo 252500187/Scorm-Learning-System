@@ -66,7 +66,7 @@ public class ScormServiceImpl implements ScormService {
             scorm.setUploadUserId(userId);
             List<Sco> scoNodes = fileUp.analyzeXml(fileUp.upScorm(request, fileName, upFile) + DictConstant.IMSMANIFEST);
             int scormId = scormDao.addScorm(scorm);
-            scoNodes.add(new Sco(scorm.getScormName(), DictConstant.SCO_MAIN, "0", "1", "", ""));
+            scoNodes.add(new Sco(scorm.getScormName(), "root", "0", "1", "", ""));
             ScoInfo scoInfo = new ScoInfo();
             for (Sco scoNode : scoNodes) {
                 scoNode.setScormId(scormId);
@@ -76,7 +76,6 @@ public class ScormServiceImpl implements ScormService {
                 scoInfo.setCoreCredit(scoNode.getCoreCredit());
                 scoDao.addScoInfo(scoInfo);
             }
-            userDao.addScore(DictConstant.EXP_SCORE, userId);
             request.setAttribute("result", "上传成功");
             return scormId;
         } catch (Exception e) {
@@ -204,10 +203,6 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void changeScoState(int scormId, int scoId) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-        ScoInfo scoInfo = new ScoInfo();
-        scoInfo.setScoId(scoId);
-        scoInfo.setCoreEntry(DictConstant.ENTRY_RE);
-        scoDao.changeScoInfoByScoId(scoInfo);
         //改变最后访问SCO
         Sco oneSco = new Sco();
         oneSco.setUserId(userId);
@@ -242,7 +237,7 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void changeScoInfoByScoId(ScoInfo scoInfo, int scormId) {
+    public void commitScoApiInfoByScoId(ScoInfo scoInfo, int scormId) {
         //获取本次学习时间，分别加入课件总学习时间和这个SCO总学习时间
         String sessionTime = scoInfo.getCoreSessionTime();
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
@@ -251,11 +246,15 @@ public class ScormServiceImpl implements ScormService {
             summarizeDao.changeTotalTimeByScormIdAndUserId(userId, scormId, DateUtil.getTotalTime(sessionTime, summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormId).getTotalTime()));
             scormDao.changeTotalTimeByScormId(scormId, DateUtil.getTotalTime(sessionTime, scormDao.findScormInfoByScormId(scormId).getTotalTime()));
         }
-        //处理SCO的学习状态,带测试和不带测试
+        //处理SCO的学习状态,测试和非测试
         if (scoInfo.getCoreCredit() == DictConstant.CREDIT_IM) {
             if (("").equals(scoInfo.getCoreLessonStatus())) {
                 scoInfo.setCoreLessonStatus(DictConstant.LESSON_STATUS_FAILED);
-                if (Integer.parseInt(scoInfo.getCoreScoreRaw()) >= Integer.parseInt(scoInfo.getPassRaw())) {
+                int score = 0;
+                if (!("").equals(scoInfo.getCoreScoreRaw())) {
+                    score = Integer.parseInt(scoInfo.getCoreScoreRaw());
+                }
+                if (score >= Integer.parseInt(scoInfo.getPassRaw())) {
                     scoInfo.setCoreLessonStatus(DictConstant.LESSON_STATUS_PASS);
                 }
             }
@@ -264,8 +263,12 @@ public class ScormServiceImpl implements ScormService {
                 scoInfo.setCoreLessonStatus(DictConstant.LESSON_STATUS_COMPLETED);
             }
         }
-        //删除不该修改项目（置为空串）
-        scoInfo = changeScoInfoFromRead(scoInfo);
+        scoInfo.setCoreEntry(DictConstant.ENTRY_RE);
+        scoInfo.setCoreLessonMode(DictConstant.LESSON_MODE_REVIEW);
+        if (scoInfo.getCoreLessonStatus().equals(DictConstant.LESSON_STATUS_COMPLETED) || scoInfo.getCoreLessonStatus().equals(DictConstant.LESSON_STATUS_PASS)) {
+            scoInfo.setCoreEntry("");
+            scoInfo.setCoreLessonMode(DictConstant.LESSON_MODE_BROWSE);
+        }
         scoDao.changeScoInfoByScoId(scoInfo);
         //判断是否通过整个课程，并更新成绩
         checkAllSco(scormId, userId);
@@ -288,23 +291,21 @@ public class ScormServiceImpl implements ScormService {
 
     public void checkIsPassAllSco(ScormSummarize scormSummarize, int scormId, int userId) {
         //1不带测试的课件
-        List<ScoInfo> scoInfoList = scoDao.findScosByCreditAndScormIdAndUserId(DictConstant.CREDIT_NO, scormId, userId);
+        List<ScoInfo> scoInfoList = scoDao.findUrlScosByCreditAndScormIdAndUserId(DictConstant.CREDIT_NO, scormId, userId);
         for (ScoInfo oneScoInfo : scoInfoList) {
             if (!oneScoInfo.getCoreLessonStatus().equals(DictConstant.LESSON_STATUS_COMPLETED)) {
                 return;
             }
         }
         //2带测试的课件
-        scoInfoList = scoDao.findScosByCreditAndScormIdAndUserId(DictConstant.CREDIT_IM, scormId, userId);
+        scoInfoList = scoDao.findUrlScosByCreditAndScormIdAndUserId(DictConstant.CREDIT_IM, scormId, userId);
         int i = 0, sum = 0, flag = 0;
         for (ScoInfo oneScoInfo : scoInfoList) {
-            if ((!oneScoInfo.getCoreLessonStatus().equals(DictConstant.LESSON_STATUS_PASS))
-                    || oneScoInfo.getCoreScoreRaw().equals("")
-                    || (Integer.parseInt(oneScoInfo.getCoreScoreRaw()) < Integer.parseInt(oneScoInfo.getPassRaw()))) {
+            if (!oneScoInfo.getCoreLessonStatus().equals(DictConstant.LESSON_STATUS_PASS)) {
                 return;
             }
-            i++;
             if (!oneScoInfo.getCoreScoreRaw().equals("")) {
+                i++;
                 sum += Integer.parseInt(oneScoInfo.getCoreScoreRaw());
                 flag = 1;
             }
@@ -315,14 +316,12 @@ public class ScormServiceImpl implements ScormService {
     public void defaultPassDeal(ScormSummarize scormSummarize, int flag, int sum, int i, int userId) {
         if (flag == 1) {
             //1.1带测试时，若原来有成绩，则比较成绩，只有大于原有成绩才更新
-            if (!scormSummarize.getCompleteDate().equals("")) {
-                if (!scormSummarize.getGrade().equals("")) {
-                    if ((sum / i) > Integer.parseInt(scormSummarize.getGrade())) {
-                        changeSummarize(scormSummarize, sum / i + "", userId);
-                    }
-                }
-            } else {
+            if (scormSummarize.getGrade().equals("")) {
                 changeSummarize(scormSummarize, sum / i + "", userId);
+            } else {
+                if ((sum / i) > Integer.parseInt(scormSummarize.getGrade())) {
+                    changeSummarize(scormSummarize, sum / i + "", userId);
+                }
             }
         } else {
             //1.2不带测试时，若原来没有成绩，则更新成绩
@@ -337,15 +336,6 @@ public class ScormServiceImpl implements ScormService {
         scormSummarize.setCompleteDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
         userDao.addScore(DictConstant.EXP_SCORE, userId);
         summarizeDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
-    }
-
-    public ScoInfo changeScoInfoFromRead(ScoInfo scoInfo) {
-        scoInfo.setCoreStudentId("");
-        scoInfo.setCoreStudentName("");
-        scoInfo.setCoreCredit("");
-        scoInfo.setCoreEntry("");
-        scoInfo.setLaunchData("");
-        return scoInfo;
     }
 
     @Override
@@ -435,6 +425,7 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void changeScormInUse(int scormId, int isUse) {
+        userDao.addScore(DictConstant.EXP_SCORE, scormDao.findScormInfoByScormId(scormId).getUploadUserId());
         scormDao.changeScormInUse(scormId, isUse);
     }
 
