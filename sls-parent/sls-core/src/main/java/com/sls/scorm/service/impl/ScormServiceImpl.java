@@ -101,8 +101,7 @@ public class ScormServiceImpl implements ScormService {
             scoInfo = scoDao.getScoApiInfoByScoId(sco.getScoId()).get(0);
             scoInfo.setScoId(scoDao.addSco(sco));
             scoInfo.setCoreStudentName(userDao.findUserLevelNameByScore(user.getScore()).getLevelName() + user.getUserName());
-            scoInfo.setCoreStudentId("");
-            scoInfo.setCoreStudentName(user.getUserName());
+            scoInfo.setCoreStudentId(user.getUserId() + "");
             scoDao.addScoInfo(scoInfo);
         }
         ScormSummarize scormSummarize = new ScormSummarize();
