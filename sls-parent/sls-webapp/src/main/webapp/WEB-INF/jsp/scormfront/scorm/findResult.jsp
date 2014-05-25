@@ -11,6 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
+    <script src="<c:url value="/metronic/assets/global/plugins/pace/pace.min.js"/>" type="text/javascript"></script>
+    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-barber-shop.css"/>" rel="stylesheet" type="text/css"/>
 </head>
 <body class="page-header-fixed">
 <%@include file="../index/navigationMenu.jsp" %>
@@ -363,6 +365,7 @@
 </div>
 </body>
 </html>
+<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>" type="text/javascript"></script>
 <script type="text/javascript">
     function showScormInfo(scormId) {
         $("#alertIframe").modal('show');
@@ -383,11 +386,19 @@
     $(function () {
         Metronic.init();
         Layout.init();
-
         $("#queryInfo").bind("keydown", function (e) {
             if (e.which == 13) {
                 findScorm();
             }
+        });
+        $.sessionTimeout({
+            title: '提示',
+            message: '您已经学习很久了（20分钟），请注意保护眼睛。',
+            keepAliveUrl: '',
+            redirUrl: 'logout',
+            logoutUrl: 'logout',
+            warnAfter: 1200000,
+            redirAfter: 1210000
         });
     });
 </script>

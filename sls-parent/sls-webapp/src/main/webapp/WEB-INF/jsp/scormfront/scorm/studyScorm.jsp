@@ -13,6 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
+    <script src="<c:url value="/metronic/assets/global/plugins/pace/pace.min.js"/>" type="text/javascript"></script>
+    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-barber-shop.css"/>" rel="stylesheet" type="text/css"/>
     <script src="<c:url value="/js/ScormAPI.js"/>" type="text/javascript"></script>
     <style type="text/css">
         .protectEye {
@@ -217,6 +219,7 @@
 </div>
 </body>
 </html>
+<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>" type="text/javascript"></script>
 <script>
     var noteStyles = ["note note-success", "note note-note-info", "note note-danger", "note note-warning"];
     var scormId = "${scorm.scormId}";
@@ -246,6 +249,15 @@
                 </c:if>
                 + '</div>');
         </c:forEach>
+        $.sessionTimeout({
+            title: '提示',
+            message: '您已经学习很久了（20分钟），请注意保护眼睛。',
+            keepAliveUrl: '',
+            redirUrl: 'logout',
+            logoutUrl: 'logout',
+            warnAfter: 1200000,
+            redirAfter: 1210000
+        });
     });
 
     function getNowDate() {

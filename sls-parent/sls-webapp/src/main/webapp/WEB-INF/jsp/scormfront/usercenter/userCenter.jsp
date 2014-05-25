@@ -184,6 +184,7 @@
 </div>
 </body>
 </html>
+<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>" type="text/javascript"></script>
 <script>
     $(function () {
         Metronic.init(); // init metronic core componets
@@ -191,6 +192,15 @@
         Tasks.initDashboardWidget();
         $("#userHeadPhoto").attr("src", basePath + "${user.imgUrl}");
         $("#userCenterIndex").click();
+        $.sessionTimeout({
+            title: '提示',
+            message: '您已经学习很久了（20分钟），请注意保护眼睛。',
+            keepAliveUrl: '',
+            redirUrl: 'logout',
+            logoutUrl: 'logout',
+            warnAfter: 1200000,
+            redirAfter: 1210000
+        });
     })
 
     function changeIframe(src) {
@@ -214,5 +224,4 @@
         $('.selected').remove();
         $(this).parents('li').find("a").append('<span class="selected" ></span>');
     });
-
 </script>

@@ -16,15 +16,6 @@
     $(function () {
         JC.inputInit();
     })
-//    $.sessionTimeout({
-//        title: '提示',
-//        message: '您已经学习很久了（60分钟），要不要出去溜达溜达？',
-//        keepAliveUrl: '',
-//        redirUrl: '',
-//        logoutUrl: '',
-//        warnAfter: 10000,
-//        redirAfter: 5000
-//    });
 </script>
 
 <%--<!-- BEGIN GLOBAL MANDATORY STYLES -->--%>
@@ -50,7 +41,6 @@
 <link id="style_color" href="<c:url value="/metronic/assets/admin/layout/css/themes/default.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/metronic/assets/admin/layout/css/custom.css"/>" rel="stylesheet" type="text/css"/>
 <%--<!-- END THEME STYLES -->--%>
-
 
 <%--<!-- BEGIN CORE PLUGINS -->--%>
 <%--<!--[if lt IE 9]>--%>

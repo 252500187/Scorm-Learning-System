@@ -151,6 +151,8 @@
         </div>
     </div>
     <hr/>
+    <br/>
+
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-5">
@@ -236,6 +238,7 @@
 </div>
 </body>
 </html>
+<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>" type="text/javascript"></script>
 <script type="text/javascript">
     function showScormInfo(scormId) {
         $("#alertIframe").modal('show');
@@ -257,6 +260,15 @@
         $("#indexBackImg").css("background-size", width + 30 + "px");
         $("#indexCenterImg").css("width", width * 5 / 12 + "px");
         $("#recommend").click();
+        $.sessionTimeout({
+            title: '提示',
+            message: '您已经学习很久了（20分钟），请注意保护眼睛。',
+            keepAliveUrl: '',
+            redirUrl: 'logout',
+            logoutUrl: 'logout',
+            warnAfter: 1200000,
+            redirAfter: 1210000
+        });
     });
 
     $("#queryInfo").bind("keydown", function (e) {

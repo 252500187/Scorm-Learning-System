@@ -13,14 +13,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
+    <script src="<c:url value="/metronic/assets/global/plugins/pace/pace.min.js"/>" type="text/javascript"></script>
+    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-minimal.css"/>" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div class="page-container">
 <div class="page-content">
 <div class="row">
-    <div class="col-md-8"><h3 class="page-title">
-        ${user.userName}&nbsp;个人中心
-    </h3>
+    <div class="col-md-8">
+        <h3>
+            ${user.userName}&nbsp;个人中心
+        </h3>
     </div>
     <div class="col-md-4">
         <div class="input-group">
