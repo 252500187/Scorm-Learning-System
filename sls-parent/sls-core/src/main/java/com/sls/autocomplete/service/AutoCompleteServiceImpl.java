@@ -31,6 +31,7 @@ public class AutoCompleteServiceImpl extends AbstractAutoCompleteService {
 
     @Autowired
     private AutoCompleteDao autoCompleteDao;
+
     @Autowired
     private DictDao dictDao;
 
@@ -44,14 +45,14 @@ public class AutoCompleteServiceImpl extends AbstractAutoCompleteService {
     protected void initAutoCompleteMap() {
         Map<String, List<AutoCompleteVO>> autoCompleteMap = new HashMap<String, List<AutoCompleteVO>>();
 
-        String dictName;
-        List<DictDefine> dictDefineList = dictDao.findAllDictDefine();
-        if (dictDefineList != null && dictDefineList.size() != 0) {
-            for (DictDefine dictDefine : dictDefineList) {
-                dictName = dictDefine.getDictName();
-                autoCompleteMap.put(dictName, autoCompleteDao.getDictValues(dictName));
-            }
-        }
+//        String dictName;
+//        List<DictDefine> dictDefineList = dictDao.findAllDictDefine();
+//        if (dictDefineList != null && dictDefineList.size() != 0) {
+//            for (DictDefine dictDefine : dictDefineList) {
+//                dictName = dictDefine.getDictName();
+//                autoCompleteMap.put(dictName, autoCompleteDao.getDictValues(dictName));
+//            }
+//        }
 
 //        autoCompleteMap.put("allRoles", autoCompleteDao.findAllRoles());
 //        autoCompleteMap.put("allGroupJudges", autoCompleteDao.findGroupJudges());

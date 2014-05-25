@@ -21,9 +21,6 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @Autowired
-    private UserService userService;
-
     @RequestMapping(value = "/login", method = {RequestMethod.GET})
     public String login(HttpServletRequest request) {
         WebUtils.getAndClearSavedRequest(request);
@@ -39,6 +36,4 @@ public class LoginController {
     public String toIndex(HttpServletRequest request, HttpSession session) {
         return loginService.toIndex(request, session);
     }
-
-
 }
