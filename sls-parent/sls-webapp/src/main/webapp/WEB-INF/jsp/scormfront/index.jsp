@@ -12,8 +12,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../includes/common.jsp" %>
 </head>
-<body class="page-header-fixed" style="background: url('<c:url value='/img/index/8.jpg'/>') #f0f5f7 no-repeat;
-        background-size: 70%">
+<%--<body class="page-header-fixed" style="background: url('<c:url value='/img/index/10.jpg'/>') fixed #f0f5f7;">--%>
+<body class="page-header-fixed">
 <%@include file="index/navigationMenu.jsp" %>
 <div class="page-container">
     <div class="row">
@@ -31,8 +31,17 @@
             </div>
         </div>
     </div>
-    <div id="indexImg"></div>
     <div class="row">
+        <div style="height: 80px"></div>
+    </div>
+    <div class="row" id="indexBackImg" style="background-image: url('<c:url value='/img/index/6.jpg'/>')">
+        <div style="height: 400px"></div>
+    </div>
+    <br/>
+
+    <div class="row">
+        <div class="col-md-4">
+        </div>
         <div class="col-md-6">
             <ul class="mix-filter">
                 <li class="filter" data-filter="category_1">
@@ -52,14 +61,16 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
             <div class="row mix-grid">
                 <%
                     String[] color = {"blue", "yellow", "red", "purple"};
                     int i = 0;
                 %>
                 <c:forEach var="scorm" items="${scormLevel}">
-                    <div class="col-md-3 mix mix_all category_1"
+                    <div class="col-md-4 mix mix_all category_1"
                          style=" display: block; opacity: 1;">
                         <div class="thumbnail">
                             <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
@@ -79,7 +90,7 @@
                 </c:forEach>
                 <% i = 0; %>
                 <c:forEach var="scorm" items="${scormSum}">
-                    <div class="col-md-3 mix mix_all category_2"
+                    <div class="col-md-4 mix mix_all category_2"
                          style=" display: block; opacity: 1;">
                         <div class="thumbnail">
                             <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
@@ -99,7 +110,7 @@
                 </c:forEach>
                 <% i = 0; %>
                 <c:forEach var="scorm" items="${scormTime}">
-                    <div class="col-md-3 mix mix_all category_3"
+                    <div class="col-md-4 mix mix_all category_3"
                          style=" display: block; opacity: 1;">
                         <div class="thumbnail">
                             <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
@@ -119,7 +130,7 @@
                 </c:forEach>
                 <% i = 0; %>
                 <c:forEach var="scorm" items="${scormScore}">
-                    <div class="col-md-3 mix mix_all category_4"
+                    <div class="col-md-4 mix mix_all category_4"
                          style=" display: block; opacity: 1;">
                         <div class="thumbnail">
                             <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
@@ -140,7 +151,16 @@
             </div>
         </div>
     </div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <img id="indexFootImg" src="img/index/7.jpg"/>
+        </div>
+        <div class="col-md-5">
 
+        </div>
+    </div>
 </div>
 <%@include file="index/footer.jsp" %>
 <div id="alertPrompt" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
@@ -196,9 +216,10 @@
         Layout.init();
         Portfolio.init();
         var width = document.documentElement.clientWidth;
-        $("#indexImg").height(width / 2.6);
-        $("body").css("background-position", width * 0.15 + "px 110px");
-        $("#recommend").click();
+        $("#indexBackImg").css("background-size", width + 30 + "px");
+        $("#indexFootImg").css("width", width * 5 / 12 + "px");
+//        $("#indexImg").css("background-position", width * 0.15 + "px 110px");
+//        $("#recommend").click();
     });
 
     $("#queryInfo").bind("keydown", function (e) {
