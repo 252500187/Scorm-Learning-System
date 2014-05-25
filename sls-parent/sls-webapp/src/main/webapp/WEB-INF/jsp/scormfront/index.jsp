@@ -155,12 +155,39 @@
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-5">
-            <img id="indexFootImg" src="img/index/7.jpg"/>
+            <img id="indexCenterImg" src="img/index/7.jpg"/>
         </div>
         <div class="col-md-5">
 
         </div>
     </div>
+    <hr/>
+    <br/>
+
+
+    <div class="row">
+        <div class="col-sm-6 col-md-3">
+            <a href="#" class="thumbnail">
+                <img src="img/index/8.jpg" alt="100%x180" style="height: 180px; width: 100%; display: block;">
+            </a>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <a href="#" class="thumbnail">
+                <img src="img/index/9.JPG" alt="100%x180" style="height: 180px; width: 100%; display: block;">
+            </a>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <a href="#" class="thumbnail">
+                <img src="img/index/10.jpg" alt="100%x180" style="height: 180px; width: 100%; display: block;">
+            </a>
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <a href="#" class="thumbnail">
+                <img src="img/index/11.jpg" alt="100%x180" style="height: 180px; width: 100%; display: block;">
+            </a>
+        </div>
+    </div>
+
 </div>
 <%@include file="index/footer.jsp" %>
 <div id="alertPrompt" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
@@ -217,7 +244,8 @@
         Portfolio.init();
         var width = document.documentElement.clientWidth;
         $("#indexBackImg").css("background-size", width + 30 + "px");
-        $("#indexFootImg").css("width", width * 5 / 12 + "px");
+        $("#indexCenterImg").css("width", width * 5 / 12 + "px");
+        $("#indexFootImg").css("width", width + 30 + "px");
 //        $("#indexImg").css("background-position", width * 0.15 + "px 110px");
 //        $("#recommend").click();
     });
