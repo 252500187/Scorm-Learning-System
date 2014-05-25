@@ -12,7 +12,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../includes/common.jsp" %>
 </head>
-<%--<body class="page-header-fixed" style="background: url('<c:url value='/img/index/10.jpg'/>') fixed #f0f5f7;">--%>
 <body class="page-header-fixed">
 <%@include file="index/navigationMenu.jsp" %>
 <div class="page-container">
@@ -34,7 +33,7 @@
     <div class="row">
         <div style="height: 80px"></div>
     </div>
-    <div class="row" id="indexBackImg" style="background-image: url('<c:url value='/img/index/6.jpg'/>')">
+    <div class="row" id="indexBackImg" style="background-image: url('<c:url value='/img/index/2.jpg'/>')">
         <div style="height: 400px"></div>
     </div>
     <br/>
@@ -155,39 +154,51 @@
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-5">
-            <img id="indexCenterImg" src="img/index/7.jpg"/>
+            <a class="thumbnail">
+                <img id="indexCenterImg" src="img/index/3.jpg"/>
+            </a>
         </div>
         <div class="col-md-5">
 
         </div>
     </div>
     <hr/>
-    <br/>
-
-
     <div class="row">
-        <div class="col-sm-6 col-md-3">
-            <a href="#" class="thumbnail">
-                <img src="img/index/8.jpg" alt="100%x180" style="height: 180px; width: 100%; display: block;">
+        <div class="col-md-2">
+        </div>
+        <div class="col-sm-6 col-md-2">
+            <a class="thumbnail">
+                <img src="img/index/4.jpg" alt="我" style="width: 100%">
             </a>
         </div>
-        <div class="col-sm-6 col-md-3">
-            <a href="#" class="thumbnail">
-                <img src="img/index/9.JPG" alt="100%x180" style="height: 180px; width: 100%; display: block;">
+        <div class="col-sm-6 col-md-2">
+            <a class="thumbnail">
+                <img src="img/index/5.jpg" alt="好" style="width: 100%">
             </a>
         </div>
-        <div class="col-sm-6 col-md-3">
-            <a href="#" class="thumbnail">
-                <img src="img/index/10.jpg" alt="100%x180" style="height: 180px; width: 100%; display: block;">
+        <div class="col-sm-6 col-md-2">
+            <a class="thumbnail">
+                <img src="img/index/6.jpg" alt="好" style="width: 100%">
             </a>
         </div>
-        <div class="col-sm-6 col-md-3">
-            <a href="#" class="thumbnail">
-                <img src="img/index/11.jpg" alt="100%x180" style="height: 180px; width: 100%; display: block;">
+        <div class="col-sm-6 col-md-2">
+            <a class="thumbnail">
+                <img src="img/index/7.jpg" alt="学" style="width: 100%">
             </a>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-10">
+            <div class="portlet-body">
+                <div class="well">
+                    <h4>基于SCORM标准的资源学习平台</h4>
+                    轻松的学习从现在开始
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <%@include file="index/footer.jsp" %>
 <div id="alertPrompt" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
@@ -245,9 +256,7 @@
         var width = document.documentElement.clientWidth;
         $("#indexBackImg").css("background-size", width + 30 + "px");
         $("#indexCenterImg").css("width", width * 5 / 12 + "px");
-        $("#indexFootImg").css("width", width + 30 + "px");
-//        $("#indexImg").css("background-position", width * 0.15 + "px 110px");
-//        $("#recommend").click();
+        $("#recommend").click();
     });
 
     $("#queryInfo").bind("keydown", function (e) {
