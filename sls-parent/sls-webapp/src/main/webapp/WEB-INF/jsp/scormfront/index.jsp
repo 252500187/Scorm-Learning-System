@@ -17,20 +17,21 @@
 <%@include file="index/navigationMenu.jsp" %>
 <div class="page-container">
     <div class="row">
-        <div class="col-md-9">
-        </div>
-        <div class="col-md-3"><br/>
-
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." id="queryInfo"
-                       style="BACKGROUND-COLOR: transparent;">
+        <div class="navbar-fixed-top" style="margin-top: 60px">
+            <div class="col-md-9">
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search..." id="queryInfo"
+                           style="BACKGROUND-COLOR: transparent;">
                 <span class="input-group-btn">
                 <a id="query" class="btn default blue-stripe"
                    onclick="findScorm()"><i class="fa fa-search"></i></a></span>
+                </div>
             </div>
         </div>
     </div>
-    <div id="indexImg" style="height: 500px"></div>
+    <div id="indexImg"></div>
     <div class="row">
         <div class="col-md-6">
             <ul class="mix-filter">
@@ -195,8 +196,8 @@
         Layout.init();
         Portfolio.init();
         var width = document.documentElement.clientWidth;
-        $("#indexImg").height(width / 2.8);
-        $("body").css("background-position", width*0.15+"px 110px");
+        $("#indexImg").height(width / 2.6);
+        $("body").css("background-position", width * 0.15 + "px 110px");
         $("#recommend").click();
     });
 

@@ -6,11 +6,11 @@
 <html lang="en" class="no-js">
 <!--<![endif]-->
 
-<div class="page-header navbar navbar-fixed-top">
+<div class="page-header navbar navbar-fixed-top ">
     <div class="page-header-inner">
         <div class="page-logo">
             <a href="">
-                <img src="img/logo/index_logo.png" alt="logo" class="logo-default"/>
+                <img src="img/logo/index_logo.png" alt="logo" class="logo-default" style="max-height: 40px"/>
             </a>
         </div>
         <div class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
