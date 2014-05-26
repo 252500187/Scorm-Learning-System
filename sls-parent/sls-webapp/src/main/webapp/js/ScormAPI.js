@@ -90,6 +90,10 @@ function LMSSetValue(key, value) {
             return "false";
         }
     }
+    if (scoInfo[key] == null) {
+        errorCode = "401";
+        return "false";
+    }
     scoInfo[key] = value;
     return "true";
 }
