@@ -100,7 +100,7 @@ public class ScormServiceImpl implements ScormService {
             sco.setUserId(user.getUserId());
             scoInfo = scoDao.getScoApiInfoByScoId(sco.getScoId()).get(0);
             scoInfo.setScoId(scoDao.addSco(sco));
-            scoInfo.setCoreStudentName(userDao.findUserLevelNameByScore(user.getScore()).getLevelName() + user.getUserName());
+            scoInfo.setCoreStudentName(userDao.findUserLevelNameByScore(user.getScore()).getLevelName()+"、" + user.getUserName());
             scoInfo.setCoreStudentId(user.getUserId() + "");
             scoDao.addScoInfo(scoInfo);
         }
