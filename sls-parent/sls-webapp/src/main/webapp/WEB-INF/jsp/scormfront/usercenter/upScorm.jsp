@@ -17,7 +17,6 @@
         .visible-a {
             visibility: visible;
         }
-
         .hidden-a {
             visibility: hidden;
         }

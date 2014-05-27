@@ -2,10 +2,7 @@ package com.sls.scorm.service.impl;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
-import com.sls.scorm.dao.NoteCollectDao;
-import com.sls.scorm.dao.ScoDao;
-import com.sls.scorm.dao.ScormDao;
-import com.sls.scorm.dao.SummarizeDao;
+import com.sls.scorm.dao.*;
 import com.sls.scorm.entity.*;
 import com.sls.scorm.service.ScormService;
 import com.sls.system.dao.LabelDao;
@@ -53,8 +50,17 @@ public class ScormServiceImpl implements ScormService {
     @Autowired
     private LabelDao labelDao;
 
+    @Autowired
+    private GroupDao groupDao;
+
     @Override
-    public int upScorm(HttpServletRequest request, String upFile, String upImg, Scorm scorm) throws ServletException, IOException, ParserConfigurationException, SAXException,
+    public void getUpScormGroupsByUserId(HttpServletRequest request) {
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        request.setAttribute("groupsScorm", groupDao.getUpScormGroupsByUserId(userId));
+    }
+
+    @Override
+    public int upScorm(HttpServletRequest request, String upFile, String upImg, Scorm scorm, int groupId) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
         try {
             FileUp fileUp = new FileUp();
@@ -66,6 +72,11 @@ public class ScormServiceImpl implements ScormService {
             scorm.setUploadUserId(userId);
             List<Sco> scoNodes = fileUp.analyzeXml(fileUp.upScorm(request, fileName, upFile) + DictConstant.IMSMANIFEST);
             int scormId = scormDao.addScorm(scorm);
+            if (groupId != -1) {
+                groupDao.addScormGroup(scormId, groupId);
+            } else {
+                groupDao.addDefaultScormGroup(scormId);
+            }
             scoNodes.add(new Sco(scorm.getScormName(), "root", "0", "1", "", ""));
             ScoInfo scoInfo = new ScoInfo();
             for (Sco scoNode : scoNodes) {
@@ -100,7 +111,7 @@ public class ScormServiceImpl implements ScormService {
             sco.setUserId(user.getUserId());
             scoInfo = scoDao.getScoApiInfoByScoId(sco.getScoId()).get(0);
             scoInfo.setScoId(scoDao.addSco(sco));
-            scoInfo.setCoreStudentName(userDao.findUserLevelNameByScore(user.getScore()).getLevelName()+"、" + user.getUserName());
+            scoInfo.setCoreStudentName(userDao.findUserLevelNameByScore(user.getScore()).getLevelName() + "、" + user.getUserName());
             scoInfo.setCoreStudentId(user.getUserId() + "");
             scoDao.addScoInfo(scoInfo);
         }
@@ -350,6 +361,7 @@ public class ScormServiceImpl implements ScormService {
         if (!("").equals(LoginUserUtil.getLoginName())) {
             request.setAttribute("userId", userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
         }
+        request.setAttribute("groupScorms", groupDao.getGroupScormsByScormId(scormId));
     }
 
     @Override
@@ -409,7 +421,7 @@ public class ScormServiceImpl implements ScormService {
         scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
         scorm.setShowUploadUserId(userDao.findUserAllInfoById(scorm.getUploadUserId()).getUserName());
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
-        request.setAttribute("completeRate",scormDao.findCompleteRateByScormId(scormId));
+        request.setAttribute("completeRate", scormDao.findCompleteRateByScormId(scormId));
         request.setAttribute("scorm", scorm);
         request.setAttribute("scoList", scoList);
         request.setAttribute("inUse", DictConstant.IN_USE);

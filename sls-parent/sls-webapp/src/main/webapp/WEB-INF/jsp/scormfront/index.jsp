@@ -190,9 +190,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="portlet-body">
                 <div class="well">
                     <h4>基于SCORM标准的资源学习平台</h4>

@@ -16,7 +16,9 @@ import java.io.IOException;
 import java.util.List;
 
 public interface ScormService {
-    int upScorm(HttpServletRequest request, String upFile, String upImg, Scorm scorm) throws ServletException, IOException, ParserConfigurationException, SAXException,
+    void getUpScormGroupsByUserId(HttpServletRequest request);
+
+    int upScorm(HttpServletRequest request, String upFile, String upImg, Scorm scorm, int groupId) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException;
 
     void registerScorm(int scormId, HttpServletRequest request);

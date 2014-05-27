@@ -94,6 +94,13 @@
                                         章节
                                     </a>
                                 </li>
+                                <c:if test="${fn:length(groupScorms)>0}">
+                                    <li>
+                                        <a href="#tab_3" data-toggle="tab">
+                                            本系列课程
+                                        </a>
+                                    </li>
+                                </c:if>
                                 <li>
                                     <a href="#tab_2" data-toggle="tab">
                                         评论
@@ -103,6 +110,13 @@
                             <div class="tab-content" style="min-height: 200px">
                                 <div class="tab-pane active" id="tab_1">
                                     <ul class="ztree" id="chapterList"></ul>
+                                </div>
+                                <div class="tab-pane active" id="tab_3">
+                                    <c:forEach var="groupScorm" items="${groupScorms}">
+                                        <a onclick="window.location.href='tourist/scormInfo?scormId=${groupScorm.scormId}'">
+                                                ${groupScorm.scormName}
+                                        </a><br/>
+                                    </c:forEach>
                                 </div>
                                 <div class="tab-pane" id="tab_2">
                                     <div class="scroller" style="min-height: 200px;" data-always-visible="1"
