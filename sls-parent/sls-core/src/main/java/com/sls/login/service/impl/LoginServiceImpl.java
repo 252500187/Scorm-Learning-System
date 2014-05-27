@@ -1,6 +1,7 @@
 package com.sls.login.service.impl;
 
 import com.sls.scorm.dao.ScormDao;
+import com.sls.system.dao.LabelDao;
 import com.sls.user.dao.RoleDao;
 import com.sls.user.dao.UserDao;
 import com.sls.user.entity.User;
@@ -29,6 +30,9 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private ScormDao scormDao;
+
+    @Autowired
+    private LabelDao labelDao;
 
     public String toIndex(HttpServletRequest request, HttpSession session) {
         String loginName = LoginUserUtil.getLoginName();
@@ -78,5 +82,6 @@ public class LoginServiceImpl implements LoginService {
         request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score",3));
         request.setAttribute("scormTime", scormDao.indexFindTopScormByFieldName("total_time",3));
         request.setAttribute("scormLevel", scormDao.indexFindTopScormByFieldName("recommend_level",3));
+        request.setAttribute("labels", labelDao.getAllLabel());
     }
 }

@@ -160,8 +160,20 @@
                 <img id="indexCenterImg" src="img/index/3.jpg"/>
             </a>
         </div>
-        <div class="col-md-5">
-
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <ul class="list-inline sidebar-tags">
+                <c:forEach var="label" items="${labels}">
+                    <li style="padding: 10px">
+                        <a onclick="findByLabel('${label.labelName}')" class="btn">
+                            <i class="fa fa-tags"></i>${label.labelName}
+                        </a>
+                    </li>
+                    <% if (Math.random() > 0.7) {%>
+                    <br/>
+                    <%}%>
+                </c:forEach>
+            </ul>
         </div>
     </div>
     <hr/>
@@ -236,12 +248,17 @@
 </div>
 </body>
 </html>
-<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>"
+        type="text/javascript"></script>
 <script type="text/javascript">
     function showScormInfo(scormId) {
         $("#alertIframe").modal('show');
         $(".modal-title").html("课件信息");
         $("#iframeInfo").attr("src", "tourist/scormInfo?scormId=" + scormId);
+    }
+
+    function findByLabel(label) {
+        window.open(basePath + "tourist/findScorm?queryInfo=" + label);
     }
 
     function findScorm() {
