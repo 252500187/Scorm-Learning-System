@@ -62,6 +62,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <hr/>
                                 <label class="control-label col-md-2">昵称</label>
 
                                 <div class="col-md-9">
@@ -76,8 +77,12 @@
                                 <label class="control-label col-md-2">性别</label>
 
                                 <div class="col-md-9">
-                                    <input type="radio" name="sex" id="sexMale" value="1">男&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <input type="radio" name="sex" id="sexFemale" value="0">女
+                                    <label class="radio-inline">
+                                        <input type="radio" name="sex" id="sexMale" value="1">男
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="sex" id="sexFemale" value="0">女
+                                    </label>
                                 </div>
                                 </label>
                             </div>
@@ -138,19 +143,19 @@
 </html>
 <script>
     $(function () {
-        parent.$("#userHeadPhoto").attr("src", "${user.imgUrl}");
-        parent.$("#userTopImg").attr("src", "${user.imgUrl}");
         $("#sexMale").attr("checked", true);
         if ("${user.sex}" == "0") {
             $("#sexFemale").attr("checked", true);
         }
         if ("${result}" != "") {
-            parent.$("#userHeadPhoto").attr("src", "${imgUrl}");
             parent.$("#userNickName").html("${userName}");
-            parent.$("#userTopImg").attr("src", "${imgUrl}");
             parent.$("#userTopName").html("${userName}");
             parent.$("#alertPromptMessage").html("${result}");
             parent.$("#alertPrompt").modal("show");
+        }
+        if ("${imgUrl}" != "") {
+            parent.$("#userTopImg").attr("src", "${imgUrl}");
+            parent.$("#userHeadPhoto").attr("src", "${imgUrl}");
         }
         jQuery.validator.addMethod("isImg", function (value, element, param) {
             if (param) {
