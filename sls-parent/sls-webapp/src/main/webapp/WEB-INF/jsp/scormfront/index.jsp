@@ -12,7 +12,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../includes/common.jsp" %>
 </head>
-<body class="page-header-fixed">
+<body class="page-header-fixed" style="background-image: url(img/index/back1.jpg);background-size: 100% 100%">
 <%@include file="index/navigationMenu.jsp" %>
 <div class="page-container">
     <div class="row" id="indexBackImg" style="background-image: url('<c:url value='/img/index/2.jpg'/>'); box-shadow: 1px 1px 10px black;">
