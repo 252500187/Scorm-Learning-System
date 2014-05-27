@@ -23,9 +23,7 @@ public interface UserService {
 
     void addUser(User user);
 
-    void editUser(User user);
-
-    void delUsers(String userIds[]);
+    void editUser(HttpServletRequest request, User user);
 
     void upHeadImg(HttpServletRequest request, String upImg) throws ServletException, IOException;
 

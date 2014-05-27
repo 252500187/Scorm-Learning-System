@@ -102,12 +102,6 @@ public class UserDaoImpl extends PageDao implements UserDao {
     }
 
     @Override
-    public int delUser(int id) {
-        String sql = "DELETE FROM sys_user WHERE id = ?";
-        return getJdbcTemplate().update(sql, id);
-    }
-
-    @Override
     public void addUserInfo(User user) {
         String sql = "INSERT INTO us_user_info(user_id, user_name, register_date, email, score,img_url, sex ) " +
                 "VALUES(:userId, :userName, :registerDate, :email, :score,:imgUrl, :sex)";

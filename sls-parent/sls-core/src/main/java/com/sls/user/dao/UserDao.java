@@ -27,8 +27,6 @@ public interface UserDao {
 
     void upUserPhoto(User user);
 
-    int delUser(int id);
-
     void addUserInfo(User user);
 
     UserLevel findUserLevelNameByScore(int score);

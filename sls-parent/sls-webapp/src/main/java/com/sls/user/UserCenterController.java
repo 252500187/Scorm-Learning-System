@@ -78,27 +78,25 @@ public class UserCenterController {
     //个人中心  个人资料
     @RequestMapping(value = "userInfoDo", method = {RequestMethod.GET})
     public String userInfoDo(HttpServletRequest request) {
-        userCenterService.toUserInfo(request);
-        labelService.getAllUserLabel(request);
-        labelService.getLabelsByUserId(request);
+        getUserInfo(request);
         return "scormfront/usercenter/userInfo";
     }
 
     @RequestMapping(value = "editUserInfo", method = {RequestMethod.POST})
-    @ResponseBody
-    public void editUserInfo(User user, @RequestParam("myLabelList") String myLabelList) {
-        userService.editUser(user);
+    public String upHeadImg(HttpServletRequest request, User user, @RequestParam("myLabelList") String myLabelList) throws ServletException, IOException, ParserConfigurationException, SAXException,
+            XPathExpressionException {
+        userService.editUser(request, user);
         labelService.editUserLabelList(myLabelList.trim());
+        userService.upHeadImg(request, "upImg");
+        request.setAttribute("result", "修改成功");
+        getUserInfo(request);
+        return "scormfront/usercenter/userInfo";
     }
 
-    @RequestMapping(value = "upHeadImg", method = {RequestMethod.POST})
-    public String upHeadImg(HttpServletRequest request) throws ServletException, IOException, ParserConfigurationException, SAXException,
-            XPathExpressionException {
-        userService.upHeadImg(request, "upImg");
+    public void getUserInfo(HttpServletRequest request) {
         userCenterService.toUserInfo(request);
         labelService.getAllUserLabel(request);
         labelService.getLabelsByUserId(request);
-        return "scormfront/usercenter/userInfo";
     }
 
     //个人中心  已注册课件

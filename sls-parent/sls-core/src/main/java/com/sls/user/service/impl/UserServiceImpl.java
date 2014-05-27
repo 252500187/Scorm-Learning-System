@@ -12,16 +12,14 @@ import com.sls.user.entity.User;
 import com.sls.user.entity.UserLevel;
 import com.sls.user.entity.UserRole;
 import com.sls.user.service.UserService;
-import com.sls.util.DateUtil;
-import com.sls.util.DictConstant;
-import com.sls.util.FileUp;
-import com.sls.util.LoginUserUtil;
+import com.sls.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @Service("userService")
@@ -90,30 +88,29 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void editUser(User user) {
+    public void editUser(HttpServletRequest request, User user) {
         User oldUser = userDao.findUserAllInfoById(user.getUserId());
         if (oldUser.getImgUrl().equals(DictConstant.DEFAULT_USER_PHOTO) && oldUser.getUserName().equals(DictConstant.DEFAULT_USER_NAME)) {
             userDao.addScore(DictConstant.EXP_SCORE, user.getUserId());
         }
+        user.setUserName(BaseUtil.iso2utf(user.getUserName()));
         userDao.editUser(user);
-    }
-
-    @Override
-    public void delUsers(String userIds[]) {
-        for (String userId : userIds) {
-            userDao.delUser(Integer.parseInt(userId));
-            userRoleDao.deleteUserRoleByUserId(userId);
-        }
+        request.setAttribute("userName", user.getUserName());
     }
 
     @Override
     public void upHeadImg(HttpServletRequest request, String upImg) throws ServletException, IOException {
+        if (request.getParameter("haveImg").equals("")) {
+            return;
+        }
         FileUp fileUp = new FileUp();
         User user = new User();
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         user.setUserId(userId);
-        user.setImgUrl(fileUp.upImg(request, DictConstant.USER_PHOTO_NAME, "", userId + DictConstant.PHOTO_FORM, upImg));
+        Date date = new Date();
+        user.setImgUrl(fileUp.upImg(request, DictConstant.USER_PHOTO_NAME, "", date.getTime() + userId + DictConstant.PHOTO_FORM, upImg));
         userDao.upUserPhoto(user);
+        request.setAttribute("imgUrl", user.getImgUrl());
     }
 
     @Override

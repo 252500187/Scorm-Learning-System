@@ -72,11 +72,4 @@ public class UserController {
         request.setAttribute("user", user);
         return "scormadmin/user/editUserDo";
     }
-
-    @RequestMapping(value = "editUser", method = {RequestMethod.POST})
-    @ResponseBody
-    public void editUser(User user, @RequestParam("oldLoginName") String oldLoginName) {
-        userService.checkRepeatLoginName(user.getLoginName(), oldLoginName);
-        userService.editUser(user);
-    }
 }

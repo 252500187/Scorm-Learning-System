@@ -12,11 +12,13 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
     <script src="<c:url value="/metronic/assets/global/plugins/pace/pace.min.js"/>" type="text/javascript"></script>
-    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-minimal.css"/>" rel="stylesheet" type="text/css"/>
+    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-minimal.css"/>" rel="stylesheet"
+          type="text/css"/>
     <style type="text/css">
         .visible-a {
             visibility: visible;
         }
+
         .hidden-a {
             visibility: hidden;
         }
@@ -29,9 +31,6 @@
             <div class="portlet-body form">
                 <form class="form-horizontal" id="fileGetUp" method="post"
                       enctype="multipart/form-data">
-                    <%--<div class="form-group">--%>
-                    <%--<label class="control-label col-md-2"><h3></h3></label>--%>
-                    <%--</div>--%>
                     <div class="form-body">
                         <div class="form-group">
                             <div class="col-md-1"></div>
@@ -48,50 +47,54 @@
                                        id="scormName" name="scormName" type="text" value=""/>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group ">
                             <label class="control-label col-md-2">选择图片</label>
 
-                            <div class="col-md-9">
+                            <div class="col-md-10">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
-                                    <%--<div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">--%>
-                                    <%--<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt=""/>--%>
-                                    <%--</div>--%>
-                                    <div class="fileinput-preview fileinput-exists thumbnail"
-                                         style="max-width: 200px; max-height: 150px;border: 0px">
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                         style="width: 200px; height: 150px;">
                                     </div>
                                     <div>
-                                        <span class="btn-file">
-                                            <%--<span class="fileinput-new">选择</span>--%>
-                                            <%--<span class="fileinput-exists">换一个 </span>--%>
-                                            <input type="file" name="upImg" id="upImg"/>
-                                        </span>
+													<span class="btn default btn-file">
+													<span class="fileinput-new">
+													选择图片 </span>
+													<span class="fileinput-exists">
+													换一张 </span>
+                                                    <input type="file" name="upImg" id="upImg"/>
+													</span>
+                                        <a href="#" class="btn red fileinput-exists" data-dismiss="fileinput">
+                                            移除 </a>
                                     </div>
                                 </div>
-                                <%--<div class="clearfix margin-top-10">--%>
-                                <%--<span class="label label-danger">提示! </span>--%>
-                                <%--<span>图片预览只支持 IE10+, FF3.6+, Safari6.0+, Chrome6.0+, Opera11.1+.</span>--%>
-                                <%--</div>--%>
+                                <div class="clearfix margin-top-10">
+												<span class="label label-danger">
+												提示! </span>
+                                    预览只支持 IE10+, FF3.6+, Safari6.0+, Chrome6.0+ and Opera11.1+.
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-2">选择SCORM课件<br/>（仅支持1.2版本）</label>
 
-                            <div class="col-md-9">
+                            <div class="col-md-10">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">
                                     <div class="input-group input-large">
-                                        <%--<div class="form-control uneditable-input span3" data-trigger="fileinput">--%>
-                                        <%--<i class="fa fa-file fileinput-exists"></i>&nbsp;--%>
-                                        <%--<span class="fileinput-filename"></span>--%>
-                                        <%--</div>--%>
-                                        <span class="btn-file">
-                                            <%--<span class="fileinput-new">--%>
-                                                 <%--选择--%>
-                                            <%--</span>--%>
-                                            <%--<span class="fileinput-exists">--%>
-                                                 <%--换一个--%>
-                                            <%--</span>--%>
-                                            <input type="file" name="upScorm" id="upScorm"/>
-                                        </span>
+                                        <div class="form-control uneditable-input span3" data-trigger="fileinput">
+                                            <i class="fa fa-file fileinput-exists"></i>&nbsp; <span
+                                                class="fileinput-filename">
+														</span>
+                                        </div>
+													<span class="input-group-addon btn default btn-file">
+													<span class="fileinput-new">
+													选择课件 </span>
+													<span class="fileinput-exists">
+													换一个 </span>
+													<input type="file" name="upScorm" id="upScorm"/>
+													</span>
+                                        <a href="#" class="input-group-addon btn red fileinput-exists"
+                                           data-dismiss="fileinput">
+                                            移除 </a>
                                     </div>
                                 </div>
                             </div>

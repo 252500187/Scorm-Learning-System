@@ -30,7 +30,7 @@
                            data-close-others="true">
                             <img id="userTopImg" alt="Hello" style="height: 28px;"
                                  src="${sessionScope.userImg}"/>
-                            <span class="username">${sessionScope.userName}</span>
+                            <span class="username" id="userTopName">${sessionScope.userName}</span>
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu">

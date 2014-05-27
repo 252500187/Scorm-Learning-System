@@ -14,7 +14,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
     <script src="<c:url value="/metronic/assets/global/plugins/pace/pace.min.js"/>" type="text/javascript"></script>
-    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-minimal.css"/>" rel="stylesheet" type="text/css"/>
+    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-minimal.css"/>" rel="stylesheet"
+          type="text/css"/>
     <style type="text/css">
         .visible-a {
             visibility: visible;
@@ -31,25 +32,32 @@
         <div class="portlet box">
             <div class="portlet-body form">
                 <div class="portlet-body form">
-                    <form class="form-horizontal" id="userInfo" enctype="multipart/form-data">
+                    <form class="form-horizontal" id="userInfo" method="post" enctype="multipart/form-data">
                         <div class="form-body">
-                            <div class="form-group">
-                                <label class="control-label col-md-2"><h3></h3></label>
-                            </div>
-                            <div class="form-group">
+                            <div class="form-group ">
                                 <label class="control-label col-md-2">头像</label>
 
-                                <div class="col-md-9">
+                                <div class="col-md-10">
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
-                                        <div class="fileinput-preview fileinput-exists thumbnail"
-                                             style="max-width: 200px; max-height: 160px;">
-                                            <img id="userPhoto" alt="用户头像" style="max-height: 150px;max-width: 200px"/>
+                                        <div class="fileinput-preview thumbnail" data-trigger="fileinput"
+                                             style="width: 200px; height: 150px;">
                                         </div>
                                         <div>
-                                            <span class="btn-file">
-                                                <input type="file" name="upImg" id="upImg"/>
-                                            </span>
+													<span class="btn default btn-file">
+													<span class="fileinput-new">
+													选择图片 </span>
+													<span class="fileinput-exists">
+													换一张 </span>
+                                                    <input type="file" name="upImg" id="upImg"/>
+													</span>
+                                            <a href="#" class="btn red fileinput-exists" data-dismiss="fileinput">
+                                                移除 </a>
                                         </div>
+                                    </div>
+                                    <div class="clearfix margin-top-10">
+												<span class="label label-danger">
+												提示! </span>
+                                        预览只支持 IE10+, FF3.6+, Safari6.0+, Chrome6.0+ and Opera11.1+.
                                     </div>
                                 </div>
                             </div>
@@ -111,10 +119,10 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="col-md-offset-3 col-md-9">
-                                        <a onclick="changeUserInfo()" class="btn purple"><i
+                                        <button class="btn purple" type="submit"><i
                                                 class="fa fa-check"></i>
                                             修改
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -136,9 +144,19 @@
         if ("${user.sex}" == "0") {
             $("#sexFemale").attr("checked", true);
         }
-        $("#userPhoto").attr("src", basePath + "${user.imgUrl}");
+        if ("${result}" != "") {
+            parent.$("#userHeadPhoto").attr("src", "${imgUrl}");
+            parent.$("#userNickName").html("${userName}");
+            parent.$("#userTopImg").attr("src", "${imgUrl}");
+            parent.$("#userTopName").html("${userName}");
+            parent.$("#alertPromptMessage").html("${result}");
+            parent.$("#alertPrompt").modal("show");
+        }
         jQuery.validator.addMethod("isImg", function (value, element, param) {
             if (param) {
+                if (value == "") {
+                    return true;
+                }
                 var imgType = value.substr(value.length - 3, 3);
                 if ((imgType != "jpg") && (imgType != "png") && (imgType != "gif")) {
                     return false;
@@ -148,34 +166,54 @@
         }, "请选择图片文件");
     });
 
-    function changeUserInfo() {
-        var myLabelList = "";
-        $("#myLabelList").find("div").each(function () {
-            myLabelList += $(this).attr("id") + ",";
-        });
-        $.ajax({
-            url: basePath + "user/center/editUserInfo",
-            data: {
-                userId: ${user.userId},
-                userName: $("#nickName").val().trim(),
-                sex: $("input[name=sex]:checked").val(),
-                myLabelList: myLabelList
-            },
-            dataType: "json",
-            type: "POST",
-            success: function () {
-                if ($("#upImg").val() != "") {
-                    $("#userInfo").attr("method", "post").attr("action",
-                            basePath + "user/center/upHeadImg").submit();
+    $('#userInfo').validate({
+                errorElement: 'span',
+                errorClass: 'help-block',
+                focusInvalid: false,
+                rules: {
+                    nickName: {
+                        required: true
+                    },
+                    upImg: {
+                        isImg: true
+                    }
+                },
+
+                messages: {
+                    nickName: {
+                        required: "给自己选个昵称吧"
+                    }
+                },
+                highlight: function (element) {
+                    $(element).closest('.form-group').addClass('has-error');
+                },
+                success: function (label) {
+                    label.closest('.form-group').removeClass('has-error');
+                    label.remove();
+                },
+                errorPlacement: function (error, element) {
+                    if (element.attr("name") == "upImg" || element.attr("name") == "upScorm") {
+                        error.insertAfter(element.parent().parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                },
+                submitHandler: function () {
+                    var myLabelList = "";
+                    $("#myLabelList").find("div").each(function () {
+                        myLabelList += $(this).attr("id") + ",";
+                    });
+                    var haveImg = "";
+                    if ($("#upImg").val() != "") {
+                        haveImg = "true";
+                    }
+                    $("#userInfo").attr("action",
+                            basePath + "user/center/editUserInfo?userId=${user.userId}"
+                                    + "&userName=" + $("#nickName").val().trim() + "&sex=" + $("input[name=sex]:checked").val()
+                                    + "&myLabelList=" + myLabelList + "&haveImg=" + haveImg).submit();
                 }
-                parent.$("#userNickName").html($("#nickName").val());
-                parent.$(".modal-title").html("提示");
-                parent.$("#alertPromptMessage").html("修改成功");
-                parent.$("#alertPrompt").modal("show");
-            },
-            error: doError
-        })
-    }
+            }
+    );
 
     $(".allLabels").live("click", function () {
         var addLabelObj = $(this);

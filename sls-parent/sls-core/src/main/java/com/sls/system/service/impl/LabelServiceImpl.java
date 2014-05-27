@@ -36,13 +36,13 @@ public class LabelServiceImpl implements LabelService {
 
     @Override
     public void editUserLabelList(String myLabelList) {
-        if (("").equals(myLabelList)) {
-            return;
-        }
         int userId = getUserId();
         Label label = new Label();
         label.setUserId(userId);
         labelDao.delAllUserLabelsByUserId(userId);
+        if (("").equals(myLabelList)) {
+            return;
+        }
         String labelIdList[] = myLabelList.split(",");
         for (String labelId : labelIdList) {
             label.setLabelId(Integer.parseInt(labelId));
