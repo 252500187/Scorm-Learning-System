@@ -6,7 +6,7 @@
 <html lang="en" class="no-js">
 <!--<![endif]-->
 
-<div class="page-header navbar navbar-fixed-top ">
+<div class="page-header navbar navbar-fixed-top">
     <div class="page-header-inner">
         <div class="page-logo">
             <a href="">
@@ -20,7 +20,7 @@
                 <c:if test="${sessionScope.userId==null||sessionScope.userId==''}">
                     <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
                         <a href="login">
-                            <i class="fa  fa-play"></i>登陆
+                            <i class="fa fa-sign-in"></i>登陆
                         </a>
                     </li>
                 </c:if>
@@ -36,13 +36,20 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="user/center/userCenterDo">
-                                    <i class="fa fa-user"></i> 个人中心 </a>
+                                    <i class="fa fa-user"></i> 个人中心
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <i class="fa fa-key"></i> 修改密码
+                                </a>
                             </li>
                             <li class="divider">
                             </li>
                             <li>
                                 <a href="logout">
-                                    <i class="fa fa-key"></i> 退出 </a>
+                                    <i class="fa fa-sign-out"></i> 退出
+                                </a>
                             </li>
                         </ul>
                     </li>

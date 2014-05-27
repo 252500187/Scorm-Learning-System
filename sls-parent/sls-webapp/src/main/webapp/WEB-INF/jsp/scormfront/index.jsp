@@ -15,33 +15,15 @@
 <body class="page-header-fixed">
 <%@include file="index/navigationMenu.jsp" %>
 <div class="page-container">
+    <div class="row" id="indexBackImg" style="background-image: url('<c:url value='/img/index/2.jpg'/>'); box-shadow: 1px 1px 10px black;">
+        <div style="height: 350px"></div>
+    </div>
     <div class="row">
-        <div class="navbar-fixed-top" style="margin-top: 60px">
-            <div class="col-md-9">
-            </div>
-            <div class="col-md-3">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search..." id="queryInfo"
-                           style="BACKGROUND-COLOR: transparent;">
-                <span class="input-group-btn">
-                <a id="query" class="btn default blue-stripe"
-                   onclick="findScorm()"><i class="fa fa-search"></i></a></span>
-                </div>
-            </div>
+        <br/>
+        <br/>
+        <div class="col-md-2">
         </div>
-    </div>
-    <div class="row">
-        <div style="height: 80px"></div>
-    </div>
-    <div class="row" id="indexBackImg" style="background-image: url('<c:url value='/img/index/2.jpg'/>')">
-        <div style="height: 400px"></div>
-    </div>
-    <br/>
-
-    <div class="row">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
             <ul class="mix-filter">
                 <li class="filter" data-filter="category_1">
                     <i class="fa fa-bookmark-o"></i>推荐等级
@@ -57,6 +39,15 @@
                 </li>
                 <a id="recommend" class="filter" data-filter="category_1" hidden="true"></a>
             </ul>
+        </div>
+
+        <div class="col-md-3">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="搜索..." id="queryInfo">
+                <span class="input-group-btn">
+                <a id="query" class="btn default blue-stripe"
+                   onclick="findScorm()"><i class="fa fa-search"></i></a></span>
+            </div>
         </div>
     </div>
     <div class="row">
