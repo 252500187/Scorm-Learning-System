@@ -108,6 +108,7 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <hr/>
                             <div class="select2-container select2-container-multi form-control select2_sample3">
                                 <label class="control-label col-md-2">标签</label>
 
@@ -132,10 +133,25 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-2">课件简介</label>
+                            <hr/>
+                            <label class="control-label col-md-2">添加到系列</label>
 
                             <div class="col-md-3">
-                                <input type="checkbox" class="make-switch" checked data-on-color="primary" data-off-color="info">
+                                <input id="isGroup" type="checkbox" class="make-switch" checked data-on-color="primary"
+                                       data-off-color="info">
+                            </div>
+                        </div>
+                        <div class="form-group" id="scormGroup" hidden="true">
+                            <label class="control-label col-md-2">同系列课件</label>
+
+                            <div class="col-md-3">
+                                <select id="groupId" class="form-control input-medium select2me"
+                                        data-placeholder="选择...">
+                                    <option id="voidScorm" value=""></option>
+                                    <c:forEach var="scorm" items="${groupsScorm}">
+                                        <option value="${scorm.groupId}">${scorm.scormName}</option>
+                                    </c:forEach>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -159,6 +175,7 @@
 </body>
 </html>
 <script>
+    var haveGroup = "";
     jQuery(document).ready(function () {
         Metronic.init();
         Layout.init();
@@ -166,6 +183,16 @@
             parent.$("#alertPromptMessage").html("${result}");
             parent.$("#alertPrompt").modal("show");
         }
+        $("#isGroup").click();
+        $("#isGroup").click(function () {
+            if ($("#isGroup").attr("checked")) {
+                haveGroup = "true";
+                $("#scormGroup").slideDown("slow");
+            } else {
+                haveGroup = "";
+                $("#scormGroup").slideUp("slow");
+            }
+        });
         jQuery.validator.addMethod("isImg", function (value, element, param) {
             if (param) {
                 var imgType = value.substr(value.length - 3, 3);
@@ -240,8 +267,12 @@
                     $("#myLabelList").find("div").each(function () {
                         scormLabelList += $(this).attr("id") + ",";
                     });
+                    var groupId = $("#groupId").val();
+                    if (groupId == null || groupId == "" || haveGroup == "") {
+                        groupId = "-1";
+                    }
                     $("#fileGetUp").attr("action",
-                            basePath + "user/center/upScorm?scormName=" + $("#scormName").val() + "&scormLabelList=" + scormLabelList+"&groupId=-1").submit();
+                            basePath + "user/center/upScorm?scormName=" + $("#scormName").val() + "&scormLabelList=" + scormLabelList + "&groupId=" + groupId).submit();
                 }
             }
     );

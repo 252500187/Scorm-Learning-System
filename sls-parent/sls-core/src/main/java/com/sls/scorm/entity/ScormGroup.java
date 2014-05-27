@@ -4,7 +4,7 @@ public class ScormGroup {
     private int groupId;
     private int scormId;
 
-    private String ScormName;
+    private String scormName;
 
     public ScormGroup() {
     }
@@ -26,10 +26,10 @@ public class ScormGroup {
     }
 
     public String getScormName() {
-        return ScormName;
+        return scormName;
     }
 
     public void setScormName(String scormName) {
-        ScormName = scormName;
+        this.scormName = scormName;
     }
 }

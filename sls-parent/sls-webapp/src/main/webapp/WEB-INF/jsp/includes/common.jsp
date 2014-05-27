@@ -95,6 +95,7 @@
 <script src="<c:url value="/metronic/assets/global/plugins/flot/jquery.flot.categories.min.js"/>" type="text/javascript"></script>
 <script type="text/javascript" src="<c:url value="/metronic/assets/global/plugins/jquery-mixitup/jquery.mixitup.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/metronic/assets/global/plugins/fancybox/source/jquery.fancybox.pack.js"/>"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js"/>" type="text/javascript"></script>
 <%--<!-- END PAGE LEVEL PLUGINS -->--%>
 
 <%--<!-- BEGIN PAGE LEVEL SCRIPTS -->--%>
