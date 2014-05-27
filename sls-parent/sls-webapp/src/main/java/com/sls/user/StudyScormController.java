@@ -81,6 +81,7 @@ public class StudyScormController {
     }
 
     @RequestMapping(value = "upStudyImg", method = {RequestMethod.POST})
+    @ResponseBody
     public void upStudyImg(HttpServletRequest request, StudyNote studyNote) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
         scormService.upStudyImg(request, "noteImg", studyNote);

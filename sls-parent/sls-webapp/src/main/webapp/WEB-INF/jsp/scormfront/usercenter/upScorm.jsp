@@ -131,6 +131,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-2">课件简介</label>
+
+                            <div class="col-md-3">
+                                <input type="checkbox" class="make-switch" checked data-on-color="primary" data-off-color="info">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-actions">
                         <div class="row">
@@ -234,7 +241,7 @@
                         scormLabelList += $(this).attr("id") + ",";
                     });
                     $("#fileGetUp").attr("action",
-                            basePath + "user/center/upScorm?scormName=" + $("#scormName").val() + "&scormLabelList=" + scormLabelList).submit();
+                            basePath + "user/center/upScorm?scormName=" + $("#scormName").val() + "&scormLabelList=" + scormLabelList+"&groupId=-1").submit();
                 }
             }
     );

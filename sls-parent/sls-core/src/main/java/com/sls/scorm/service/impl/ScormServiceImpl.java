@@ -361,7 +361,7 @@ public class ScormServiceImpl implements ScormService {
         if (!("").equals(LoginUserUtil.getLoginName())) {
             request.setAttribute("userId", userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
         }
-        request.setAttribute("groupScorms", groupDao.getGroupScormsByScormId(scormId));
+        request.setAttribute("groupScorms",groupDao.getGroupScormsByScormId(scormId));
     }
 
     @Override

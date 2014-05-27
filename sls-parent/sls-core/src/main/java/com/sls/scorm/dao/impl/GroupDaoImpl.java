@@ -15,9 +15,9 @@ public class GroupDaoImpl extends PageDao implements GroupDao {
 
     @Override
     public List<Scorm> getGroupScormsByScormId(int scormId) {
-        String sql = "SELECT a.* FROM ss_scorm a, ss_scorm_group b WHERE a.scorm_id=b.scorm_id AND a.in_use=?" +
+        String sql = "SELECT a.* FROM ss_scorm a, ss_scorm_group b WHERE a.scorm_id=b.scorm_id AND a.in_use=? " +
                 "AND b.group_id=(SELECT group_id FROM ss_scorm_group WHERE scorm_id=?) AND a.scorm_id!=? ";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), DictConstant.IN_USE, scormId, scormId);
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), DictConstant.IN_USE, scormId,scormId);
     }
 
     @Override
