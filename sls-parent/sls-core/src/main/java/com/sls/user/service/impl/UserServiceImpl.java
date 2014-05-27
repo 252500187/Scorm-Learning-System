@@ -108,7 +108,7 @@ public class UserServiceImpl implements UserService {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         user.setUserId(userId);
         Date date = new Date();
-        user.setImgUrl(fileUp.upImg(request, DictConstant.USER_PHOTO_NAME, "", date.getTime() + userId + DictConstant.PHOTO_FORM, upImg));
+        user.setImgUrl(fileUp.upImg(request, DictConstant.USER_PHOTO_NAME, "", userId + "time" + date.getTime() + DictConstant.PHOTO_FORM, upImg));
         userDao.upUserPhoto(user);
         request.setAttribute("imgUrl", user.getImgUrl());
     }
