@@ -176,32 +176,32 @@
     <div class="row" style="color: #ffffff;margin-top: 60px">
         <div class="col-md-2">
         </div>
-        <div class="col-md-2">
+        <div style="position: relative;float: left;width: 16.66%;">
             <img src="img/defaultImg/userDefaultImg.jpg" style="width: 200px;height: 200px"/>
 
-            <div class="text-center">
+            <div class="text-center" style="position: absolute;z-index: 2;left: 10px;top: 10px">
+                神秘刘
+            </div>
+        </div>
+        <div style="position: relative;float: left;width: 16.66%;">
+            <img src="img/defaultImg/userDefaultImg.jpg" style="width: 200px;height: 200px"/>
+
+            <div class="text-center" style="position: absolute;z-index: 2;left: 10px;top: 10px">
                 李俊波
             </div>
         </div>
-        <div class="col-md-2">
+        <div style="position: relative;float: left;width: 16.66%;">
             <img src="img/defaultImg/userDefaultImg.jpg" style="width: 200px;height: 200px"/>
 
-            <div class="text-center">
+            <div class="text-center" style="position: absolute;z-index: 2;left: 10px;top: 10px">
                 秦雯
             </div>
         </div>
-        <div class="col-md-2">
+        <div style="position: relative;float: left;width: 16.66%;">
             <img src="img/defaultImg/userDefaultImg.jpg" style="width: 200px;height: 200px"/>
 
-            <div class="text-center">
+            <div class="text-center" style="position: absolute;z-index: 2;left: 10px;top: 10px">
                 张天奇
-            </div>
-        </div>
-        <div class="col-md-2">
-            <img src="img/defaultImg/userDefaultImg.jpg" style="width: 200px;height: 200px"/>
-
-            <div class="text-center">
-                神秘刘
             </div>
         </div>
     </div>
