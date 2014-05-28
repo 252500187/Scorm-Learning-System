@@ -118,7 +118,7 @@
     })
 
     function scormComment(scormId) {
-        parent.$(".modal-title").html("评论课件");
+        parent.$(".modal-title").html("评价课件");
         parent.$('#alertIframe').modal('show');
         parent.$("#iframeInfo").attr("src", basePath + "user/dealScorm/review?scormId=" + scormId);
     }

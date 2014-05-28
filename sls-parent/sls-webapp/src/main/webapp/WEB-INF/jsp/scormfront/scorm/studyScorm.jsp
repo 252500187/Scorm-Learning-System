@@ -14,72 +14,72 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
     <script src="<c:url value="/metronic/assets/global/plugins/pace/pace.min.js"/>" type="text/javascript"></script>
-    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-barber-shop.css"/>" rel="stylesheet" type="text/css"/>
+    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-barber-shop.css"/>"
+          rel="stylesheet" type="text/css"/>
     <script src="<c:url value="/js/ScormAPI.js"/>" type="text/javascript"></script>
     <style type="text/css">
         .protectEye {
             background-color: #C7EDCC;
+        }
+
+        .fa-star-o {
+            color: #D7D31F;
+        }
+
+        .fa-star {
+            color: #D7D31F;
         }
     </style>
 </head>
 <body class="page-header-fixed page-sidebar-reversed">
 <%@include file="../index/navigationMenu.jsp" %>
 <div class="page-container">
-    <div class="page-sidebar-wrapper">
-        <div class="page-sidebar navbar-collapse collapse" name="protectEye">
-            <ul class="page-sidebar-menu" data-auto-scroll="false" data-slide-speed="200">
-                <li class="sidebar-toggler-wrapper">
-                    <div class="sidebar-toggler">
+    <div class="page-content" name="protectEye">
+        <div class="row">
+            <div class="col-md-10">
+                <iframe id="scormIframe" style="width:98%; height:800px;border:0px"
+                        allowfullscreen>
+                </iframe>
+            </div>
+            <div class="col-md-2">
+                <div class="portlet box blue" style="margin: 10px">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-sitemap"></i>课件信息及章节
+                        </div>
                     </div>
-                </li>
-                <li class="start">
-                    <a>
-                    <span class="title">
-                        课件名称：${scorm.scormName}
-                    </span><br/>
-                        <table>
-                            <tr>
-                                <td>
-                                    <img id="scormLogo" alt="scorm" style="max-height: 100px;max-width: 200px"></td>
-                            </tr>
-                        </table>
-                    </a>
-                </li>
-                <li>
-                    <a onclick="protectEye()">
-                        <i class="fa fa-gift"></i>
-                    <span class="title">
-                        开/关灯
-                    </span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <i class="fa fa-sitemap"></i>
-						<span class="title">
-							课程安排
-						</span>
-						<span class="arrow">
-						</span>
-                    </a>
-                    <ul class="sub-menu">
-                        <iframe id="ztree" scrolling="no" style="width:100%; min-height:300px;border:0px;"
+                    <div class="portlet-body">
+                        <div>
+                            <a onclick="protectEye()" class="btn green" style="margin: 10px">
+                                <i class="fa fa-eye"></i>
+                                <span class="title">
+                                    开/关灯
+                                </span>
+                            </a><br/>
+                            <span class="title">
+                                课件名称:&nbsp;${scorm.scormName}
+                            </span>
+                        </div>
+                        <img src="${scorm.imgPath}" style="width: 100%;margin-top: 10px; margin-bottom: 10px"/>
+                        <iframe id="ztree" scrolling="no" style="width:100%; min-height:500px;border:0px;"
                                 allowfullscreen>
                         </iframe>
-                        <div class="chat-form">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="portlet box green">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-file-text"></i>笔记本
                         </div>
-                    </ul>
-                </li>
-                <li>
-                    <a>
-                        <i class="fa fa-file-text"></i>
-						<span class="title">
-							笔记本
-						</span>
-						<span class="arrow ">
-						</span>
-                    </a>
-                    <ul class="sub-menu">
+                    </div>
+                    <div class="portlet-body">
+
                         <iframe style="border: 0;display: none;" id="upImgIframe" name="upImgIframe"></iframe>
                         <div class="chat-form">
                             传张图片？
@@ -126,31 +126,58 @@
                         </div>
                         <div class="portlet-body" id="noteList">
                         </div>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="page-content-wrapper" name="protectEye">
-        <div class="page-content" name="protectEye">
-            <div class="row">
-                <iframe id="scormIframe" style="width:98%; height:800px;border:0px"
-                        allowfullscreen>
-                </iframe>
+                    </div>
+                </div>
             </div>
-            <br/>
+            <div class="col-md-6">
+                <div class="portlet box yellow">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-comments"></i>评价
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="alert alert-info display-hide col-md-4">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                            <strong>提示!</strong>
 
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="portlet">
-                        <div class="portlet-title line">
-                            <div class="caption">
-                                <i class="fa fa-comments"></i>评论
-                            </div>
-                            <div class="tools">
-                                <a href="" class="collapse">
-                                </a>
-                            </div>
+                            <p id="result"></p>
+                        </div>
+                        <div class="alert alert-danger display-hide col-md-4">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                            <strong>提示!</strong>
+
+                            <p id="errorResult"></p>
+                        </div>
+                        <br/>
+
+                        <div class="text-center">
+                            <ul id="stars" class="list-inline">
+                                <li>评分:</li>
+                                <li name="changeStar">
+                                    <i id="changeStar0" class="fa fa-star-o"></i>
+                                </li>
+                                <li name="changeStar">
+                                    <i id="changeStar1" class="fa fa-star-o"></i>
+                                </li>
+                                <li name="changeStar">
+                                    <i id="changeStar2" class="fa fa-star-o"></i>
+                                </li>
+                                <li name="changeStar">
+                                    <i id="changeStar3" class="fa fa-star-o"></i>
+                                </li>
+                                <li name="changeStar">
+                                    <i id="changeStar4" class="fa fa-star-o"></i>
+                                </li>
+                                <li>
+                                    <a id="showScore">${myEvaluateScore}分</a>
+                                </li>
+                                <li>
+                                    <a class="btn blue" onclick="evaluateScorm()">
+                                        评分
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                         <div class="chat-form">
                             <div class="input-cont">
@@ -166,30 +193,28 @@
                         </div>
                         <br/>
 
-                        <div class="portlet-body" id="chats">
-                            <div class="scroller" style="height: 435px;" data-always-visible="1" data-rail-visible1="1">
-                                <ul class="chats">
-                                    <span id="appendDiscuss"></span>
-                                    <c:forEach var="comment" items="${allComments}">
-                                        <c:if test="${comment.userId!=user.userId}">
-                                            <li class="in">
-                                        </c:if>
-                                        <c:if test="${comment.userId==user.userId}">
-                                            <li class="out">
-                                        </c:if>
-                                        <img class="avatar img-responsive" alt=""
-                                             src="${comment.imgUrl}"/>
+                        <div id="chats">
+                            <ul class="chats">
+                                <span id="appendDiscuss"></span>
+                                <c:forEach var="comment" items="${allComments}">
+                                    <c:if test="${comment.userId!=user.userId}">
+                                        <li class="in">
+                                    </c:if>
+                                    <c:if test="${comment.userId==user.userId}">
+                                        <li class="out">
+                                    </c:if>
+                                    <img class="avatar img-responsive" alt=""
+                                         src="${comment.imgUrl}"/>
 
-                                        <div class="message">
-                                            <span class="arrow"></span>
-                                            <a class="name">${comment.userName}</a>
-                                            <span class="datetime">${comment.discussDate}</span>
-                                            <span class="body">${comment.discuss}</span>
-                                        </div>
-                                        </li>
-                                    </c:forEach>
-                                </ul>
-                            </div>
+                                    <div class="message">
+                                        <span class="arrow"></span>
+                                        <a class="name">${comment.userName}</a>
+                                        <span class="datetime">${comment.discussDate}</span>
+                                        <span class="body">${comment.discuss}</span>
+                                    </div>
+                                    </li>
+                                </c:forEach>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -219,12 +244,14 @@
 </div>
 </body>
 </html>
-<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>"
+        type="text/javascript"></script>
 <script>
     var noteStyles = ["note note-success", "note note-note-info", "note note-danger", "note note-warning"];
     var scormId = "${scorm.scormId}";
     var scoId = "";
     var nowScoId = "-1";
+    var score = ${summarize.score}-1;
 
     function getRandom() {
         var noteIndex = Math.floor(Math.random() * 4);
@@ -235,8 +262,6 @@
         Metronic.init();
         Layout.init();
         $("#ztree").attr("src", basePath + "user/scorm/studyScormZtree?scormId=${scorm.scormId}");
-        $("#scormLogo").attr("src", basePath + "${scorm.imgPath}");
-        $("#scormIframe").attr("src", basePath + "img/studyscormdefaultimg/" + Math.floor(Math.random() * 10) + ".jpg");
         <c:forEach var="note" items="${noteList}">
         $("#noteList").append('<div class="' + getRandom() + '">' +
                 '<h4 class="caption" style="color: #6b7582">${note.date}</h4>' +
@@ -249,6 +274,39 @@
                 </c:if>
                 + '</div>');
         </c:forEach>
+        $("#showScore").html("${summarize.score}分");
+        for (var i = 0; i < score + 1; i++) {
+            $("#changeStar" + i).attr("class", "fa fa-star");
+        }
+        var stars = $("#stars > li[name='changeStar']>i");
+        stars.each(function (i) {
+            $(stars[i]).click(function () {
+                var j = 1;
+                for (; j <= i; j++) {
+                    $("#changeStar" + j).attr("class", "fa fa-star");
+                }
+                for (; j < 5; j++) {
+                    $("#changeStar" + j).attr("class", "fa fa-star-o");
+                }
+                score = i;
+                $("#showScore").html(score + 1 + "分");
+            });
+            $(stars[i]).mouseover(function () {
+                var j = score + 1;
+                for (j; j <= i; j++) {
+                    $("#changeStar" + j).attr("class", "fa fa-star");
+                }
+                for (j; j < 5; j++) {
+                    $("#changeStar" + j).attr("class", "fa fa-star-o");
+                }
+            });
+            $(stars[i]).mouseout(function () {
+                var j = score + 1;
+                for (j; j < 5; j++) {
+                    $("#changeStar" + j).attr("class", "fa fa-star-o");
+                }
+            });
+        })
         $.sessionTimeout({
             title: '提示',
             message: '您已经学习很久了（20分钟），请注意保护眼睛。',
@@ -290,7 +348,7 @@
 
     function takeNote() {
         if ("" == ($("#takeNotes").val().trim())) {
-            alert("笔记不能为空")
+            return;
         }
         $.ajax({
             url: basePath + "user/scorm/takeNote",
@@ -302,7 +360,7 @@
             dataType: "json",
             type: "POST",
             success: function () {
-                $("#noteList").prepend("<div class='note note-success'>" +
+                $("#noteList").prepend("<div class='" + getRandom() + "'>" +
                         " <h4 class='block'>" + getNowDate() + "</h4><p>" + $("#takeNotes").val().trim() + "</p></div>"
                 )
                 $("#takeNotes").attr("value", "");
@@ -314,7 +372,6 @@
     function upStudyImg() {
         var imgType = $("#noteImg").val().substr($("#noteImg").val().length - 3, 3);
         if ((imgType != "jpg") && (imgType != "png") && (imgType != "gif")) {
-            alert("必须是图片格式！");
             return;
         }
         $("#upImgForm").attr("method", "post").attr("action",
@@ -326,6 +383,29 @@
 
     function protectEye() {
         $("div[name='protectEye']").toggleClass("protectEye");
+    }
+
+    function evaluateScorm() {
+        var resultScore = score + 1;
+        $.ajax({
+            url: basePath + "user/dealScorm/evaluateScorm",
+            data: {
+                scormId: "${scorm.scormId}",
+                score: resultScore
+            },
+            dataType: "json",
+            type: "POST",
+            success: function (result) {
+                if (result) {
+                    $("#result").html("评分成功！您给了" + resultScore + "分！");
+                    $('.alert-info').show();
+                } else {
+                    $("#errorResult").html("您还没完成学习，暂时无法评分，先评论吧？");
+                    $('.alert-danger').show();
+                }
+            },
+            error: doError
+        })
     }
 
     function changeDiscuss() {
@@ -350,17 +430,4 @@
             error: doError
         })
     }
-
-    $('.page-sidebar ul').on('click', ' li > a', function (e) {
-        var menuContainer = $('.page-sidebar ul');
-        menuContainer.children('li.active').removeClass('active');
-        menuContainer.children('arrow.open').removeClass('open');
-        $(this).parents('li').each(function () {
-            $(this).addClass('active');
-            $(this).children('a > span.arrow').addClass('open');
-        });
-        $(this).parents('li').addClass('active');
-        $('.selected').remove();
-        $(this).parents('li').find("a").append('<span class="selected" ></span>');
-    });
 </script>

@@ -25,7 +25,7 @@ public interface ScormService {
 
     void studyScorm(int scormId, HttpServletRequest request);
 
-    void setScormSummarizeInfo(int scormId, HttpServletRequest request);
+    void setScormSummarizeInfo(int scormId);
 
     void studyScormZtree(int scormId, HttpServletRequest request);
 

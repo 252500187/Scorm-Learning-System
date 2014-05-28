@@ -44,7 +44,8 @@ public class StudyScormController {
     public String studyScorm(HttpServletRequest request, @RequestParam("scormId") String scormId) {
         scormService.studyScorm(Integer.parseInt(scormId), request);
         scormService.getDiscusses(Integer.parseInt(scormId), request);
-        scormService.setScormSummarizeInfo(Integer.parseInt(scormId), request);
+        scormService.setScormSummarizeInfo(Integer.parseInt(scormId));
+        scormService.getSummarizeInfo(Integer.parseInt(scormId), request);
         scormService.getAllStudyNotesByScormIdAndUserId(Integer.parseInt(scormId), request);
         return "scormfront/scorm/studyScorm";
     }

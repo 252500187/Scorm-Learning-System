@@ -190,7 +190,7 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void setScormSummarizeInfo(int scormId, HttpServletRequest request) {
+    public void setScormSummarizeInfo(int scormId) {
         ScormSummarize scormSummarize = new ScormSummarize();
         scormSummarize.setLastVisitTime(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
         scormSummarize.setUserId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());

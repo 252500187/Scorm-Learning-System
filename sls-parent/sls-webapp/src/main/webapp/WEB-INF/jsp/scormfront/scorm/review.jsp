@@ -43,32 +43,34 @@
 
                         <p id="errorResult"></p>
                     </div>
-                    <ul id="stars" class="list-inline">
-                        <li>评分:</li>
-                        <li name="changeStar">
-                            <i id="changeStar0" class="fa fa-star-o"></i>
-                        </li>
-                        <li name="changeStar">
-                            <i id="changeStar1" class="fa fa-star-o"></i>
-                        </li>
-                        <li name="changeStar">
-                            <i id="changeStar2" class="fa fa-star-o"></i>
-                        </li>
-                        <li name="changeStar">
-                            <i id="changeStar3" class="fa fa-star-o"></i>
-                        </li>
-                        <li name="changeStar">
-                            <i id="changeStar4" class="fa fa-star-o"></i>
-                        </li>
-                        <li>
-                            <a id="showScore">${myEvaluateScore}分</a>
-                        </li>
-                        <li>
-                            <a class="btn blue" onclick="evaluateScorm()">
-                                评分
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="text-center">
+                        <ul id="stars" class="list-inline">
+                            <li>评分:</li>
+                            <li name="changeStar">
+                                <i id="changeStar0" class="fa fa-star-o"></i>
+                            </li>
+                            <li name="changeStar">
+                                <i id="changeStar1" class="fa fa-star-o"></i>
+                            </li>
+                            <li name="changeStar">
+                                <i id="changeStar2" class="fa fa-star-o"></i>
+                            </li>
+                            <li name="changeStar">
+                                <i id="changeStar3" class="fa fa-star-o"></i>
+                            </li>
+                            <li name="changeStar">
+                                <i id="changeStar4" class="fa fa-star-o"></i>
+                            </li>
+                            <li>
+                                <a id="showScore">${myEvaluateScore}分</a>
+                            </li>
+                            <li>
+                                <a class="btn blue" onclick="evaluateScorm()">
+                                    评分
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <hr/>

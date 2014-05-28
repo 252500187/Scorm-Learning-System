@@ -88,7 +88,7 @@
     }
 
     $(function () {
-        $.fn.zTree.init($("#scoTree"), settingMenu, zNodes);
+        $.fn.zTree.init($("#scoTree"), settingMenu, zNodes).expandAll(true);
         if (parent.scoId != "") {
             parent.$("#promptButton1").click(function(){
                 parent.$("#scormIframe").attr("src", scoSrc);
