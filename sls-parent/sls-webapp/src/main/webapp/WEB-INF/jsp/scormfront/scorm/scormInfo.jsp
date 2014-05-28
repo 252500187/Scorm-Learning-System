@@ -25,7 +25,7 @@
                     <div class="col-md-2" style="float: left">
                         <img style="width: 150px" src="img/others/flag_top.png" alt=""/><br/>
                         <img id="scormImg" src="${scormInfo.imgPath}" class="img-polaroid"
-                             style="max-width: 150px;max-height: 200px" alt=""/><br/>
+                             style="width: 150px;height: 100px" alt=""/><br/>
                         <img style="width: 150px" src="img/others/flag_center.png" alt=""/>
                     </div>
                     <div class="col-md-10" style="float: left">
@@ -94,6 +94,11 @@
                                         章节
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="#tab_2" data-toggle="tab">
+                                        评论
+                                    </a>
+                                </li>
                                 <c:if test="${fn:length(groupScorms)>0}">
                                     <li>
                                         <a href="#tab_3" data-toggle="tab">
@@ -101,15 +106,44 @@
                                         </a>
                                     </li>
                                 </c:if>
-                                <li>
-                                    <a href="#tab_2" data-toggle="tab">
-                                        评论
-                                    </a>
-                                </li>
                             </ul>
                             <div class="tab-content" style="min-height: 200px">
                                 <div class="tab-pane active" id="tab_1">
                                     <ul class="ztree" id="chapterList"></ul>
+                                </div>
+                                <div class="tab-pane" id="tab_2">
+                                    <c:if test="${register}">
+                                        <div class="chat-form">
+                                            <div class="input-cont">
+                                                <input class="form-control" type="text" id="discuss"
+                                                       placeholder="说点什么？"/>
+                                            </div>
+                                            <div class="btn-cont">
+                                                <span class="arrow"></span>
+                                                <a onclick="changeDiscuss()" class="btn blue icn-only">
+                                                    <i class="fa fa-check icon-white"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                    </c:if>
+                                    <ul class="chats">
+                                        <c:forEach var="comment" items="${allComments}">
+                                            <c:if test="${comment.userId!=userId}">
+                                                <li class="in">
+                                            </c:if>
+                                            <c:if test="${comment.userId==userId}">
+                                                <li class="out">
+                                            </c:if>
+                                            <div class="message">
+                                                <span class="arrow"></span>
+                                                <a class="name">${comment.userName}</a>
+                                                <span class="datetime">${comment.discussDate}</span>
+                                                <span class="body">${comment.discuss}</span>
+                                            </div>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
                                 </div>
                                 <div class="tab-pane active" id="tab_3">
                                     <c:forEach var="groupScorm" items="${groupScorms}">
@@ -117,47 +151,6 @@
                                                 ${groupScorm.scormName}
                                         </a><br/>
                                     </c:forEach>
-                                </div>
-                                <div class="tab-pane" id="tab_2">
-                                    <div class="scroller" style="min-height: 200px;" data-always-visible="1"
-                                         data-rail-visible1="1">
-                                        <c:if test="${!register}">
-
-                                            <div class="chat-form">
-                                                <div class="input-cont">
-                                                    <input class="form-control" type="text" id="discuss"
-                                                           placeholder="说点什么？"/>
-                                                </div>
-                                                <div class="btn-cont">
-                                                    <span class="arrow"></span>
-                                                    <a onclick="changeDiscuss()" class="btn blue icn-only">
-                                                        <i class="fa fa-check icon-white"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <br/>
-                                        </c:if>
-                                        <ul class="chats">
-                                            <c:forEach var="comment" items="${allComments}">
-                                                <c:if test="${comment.userId!=userId}">
-                                                    <li class="in">
-                                                </c:if>
-                                                <c:if test="${comment.userId==userId}">
-                                                    <li class="out">
-                                                </c:if>
-                                                <img class="avatar img-responsive" alt=""
-                                                     src="${comment.imgUrl}"/>
-
-                                                <div class="message">
-                                                    <span class="arrow"></span>
-                                                    <a class="name">${comment.userName}</a>
-                                                    <span class="datetime">${comment.discussDate}</span>
-                                                    <span class="body">${comment.discuss}</span>
-                                                </div>
-                                                </li>
-                                            </c:forEach>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>

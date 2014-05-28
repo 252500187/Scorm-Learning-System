@@ -22,8 +22,10 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-2" style="float: left">
+                        <img style="width: 150px" src="img/others/flag_top.png" alt=""/><br/>
                         <img id="scormImg" src="${scorm.imgPath}" class="img-polaroid"
-                             style="max-width: 150px;max-height: 200px" alt=""/>
+                             style="width: 150px;height: 100px" alt=""/><br/>
+                        <img style="width: 150px" src="img/others/flag_center.png" alt=""/>
                     </div>
                     <div class="col-md-10" style="float: left">
                         <div class="row">
@@ -36,42 +38,37 @@
                                             </c:if>
                                             ${scorm.scormName}
                                         </h3>
+                                        <a class="btn blue" onclick="history.back()">课件信息</a>
+                                        <br/><br/>
 
                                         <div class="form-group profile-info">
                                             <ul class="list-inline" style="width: 250px;">
-                                                <c:if test="${summarize.completeDate!=''}">
-                                                    <li>完成时间:</li>
-                                                    <li>${summarize.completeDate}</li>
-                                                    <br/>
-                                                </c:if>
-                                                <c:if test="${summarize.grade!=''}">
-                                                    <li>课件成绩:</li>
-                                                    <li>${summarize.grade}</li>
-                                                    <br/>
-                                                </c:if>
-                                                <c:if test="${summarize.totalTime!=''}">
-                                                    <li>学习时间:</li>
-                                                    <li>${summarize.totalTime}</li>
-                                                    <br/>
-                                                </c:if>
-                                                <c:if test="${summarize.lastVisitTime!=''}">
-                                                    <li>上次学习时间:</li>
-                                                    <li>${summarize.lastVisitTime}</li>
-                                                    <br/>
-                                                </c:if>
+                                                <li>完成时间:</li>
+                                                <li>${summarize.completeDate}</li>
                                                 <br/>
-                                                <c:if test="${summarize.score!=''}">
-                                                    <li>评分:</li>
-                                                    <li>${summarize.score}分</li>
-                                                    <br/>
-                                                </c:if>
-                                                <c:if test="${summarize.discuss!=''}">
-                                                    <li>评论:</li>
-                                                    <li>${summarize.discussDate}</li>
-                                                    <br/>
-                                                    <li>内容:</li>
-                                                    <li>${summarize.discuss}</li>
-                                                </c:if>
+
+                                                <li>课件成绩:</li>
+                                                <li>${summarize.grade}</li>
+                                                <br/>
+
+                                                <li>学习时间:</li>
+                                                <li>${summarize.totalTime}</li>
+                                                <br/>
+
+                                                <li>上次学习时间:</li>
+                                                <li>${summarize.lastVisitTime}</li>
+                                                <br/>
+
+                                                <li>评分:</li>
+                                                <li>${summarize.score}分</li>
+                                                <br/>
+
+                                                <li>评论:</li>
+                                                <li>${summarize.discussDate}</li>
+                                                <br/>
+
+                                                <li>内容:</li>
+                                                <li>${summarize.discuss}</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -99,8 +96,7 @@
                                 <div class="tab-pane active" id="tab_1">
                                     <div class="scroller" data-always-visible="1"
                                          data-rail-visible1="1">
-                                        <ul id="scoTree" class="ztree">
-                                        </ul>
+                                        <ul id="scoTree" class="ztree"></ul>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tab_2">
