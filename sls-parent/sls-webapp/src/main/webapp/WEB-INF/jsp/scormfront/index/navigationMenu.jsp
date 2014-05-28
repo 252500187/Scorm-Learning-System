@@ -18,7 +18,8 @@
             <input type="text" class="form-control" placeholder="搜索..." id="queryInfo"
                    style="float: left;width: 400px;height: 50px;">
                             <span style="float: left;height: 50px;background-color: #4AA1FF;width: 80px;">
-                                <a id="query" style="color: #fff;margin-left: 18px;font-size: 20px;line-height: 50px;cursor: pointer;text-decoration: none;" onclick="findScorm()">搜索</a>
+                                <a id="query" style="color: #fff;margin-left: 18px;font-size: 20px;line-height: 50px;cursor: pointer;text-decoration: none;"
+                                   onclick="findScorm()">搜索</a>
                             </span>
         </div>
         <div class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">

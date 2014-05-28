@@ -52,6 +52,14 @@
                        id="password" name="password" value="admin"/>
             </div>
         </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">验证码</label>
+
+            <div class="input-icon">
+                <input class="form-control" type="text" placeholder="输入验证码" style="float: left;width: 150px"/>&nbsp;&nbsp;
+                <img src="img/fake/1.jpg" style="height: 33px"/>&nbsp;<a>换一张</a>
+            </div>
+        </div>
         <div class="form-actions">
             <button type="submit" class="btn blue pull-right">
                 登陆 <i class="m-icon-swapright m-icon-white"></i>
@@ -68,6 +76,7 @@
         </div>
         <div class="forget-password">
             <h4>忘记密码?</h4>
+
             <p>
                 <a href="javascript:;" id="forget-password">
                     重置
@@ -111,8 +120,9 @@
 
     <form id="registerInfo" class="register-form">
         <h3>注册</h3>
+
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">登陆帐号</label>
+            <label class="control-label visible-ie8 visible-ie9">帐号</label>
 
             <div class="input-icon">
                 <i class="fa fa-font"></i>
@@ -122,7 +132,8 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">登陆密码</label>
+            <label class="control-label visible-ie8 visible-ie9">密码</label>
+
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
                 <input id="registerPassword" name="registerPassword" class="form-control placeholder-no-fix"
@@ -131,7 +142,18 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Email</label>
+            <label class="control-label visible-ie8 visible-ie9">确认密码</label>
+
+            <div class="input-icon">
+                <i class="fa fa-lock"></i>
+                <input id="copyRegisterPassword" name="copyRegisterPassword" class="form-control placeholder-no-fix"
+                       type="password"
+                       placeholder="再次输入登陆密码" name="password"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">邮箱</label>
+
             <div class="input-icon">
                 <i class="fa fa-envelope"></i>
                 <input id="email" class="form-control placeholder-no-fix" type="text" placeholder="输入Email（密码找回）"
@@ -139,9 +161,18 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">验证码</label>
+
+            <div class="input-icon">
+                <input class="form-control" type="text" placeholder="输入验证码" style="float: left;width: 150px"/>&nbsp;&nbsp;
+                <img src="img/fake/2.jpg" style="height: 33px"/>&nbsp;<a>换一张</a>
+            </div>
+        </div>
+        <div class="form-group">
             <label>
                 <input type="checkbox" name="tnc"/> 我同意加入SLS大家庭
             </label>
+
             <div id="register_tnc_error">
             </div>
         </div>
