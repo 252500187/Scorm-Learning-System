@@ -42,7 +42,7 @@
                                              style=" display: block; opacity: 1;">
                                             <div class="mix-inner">
                                                 <img src="${scormInfo.imgPath}" class="img-responsive"
-                                                     alt="${scormInfo.scormId}">
+                                                     alt="${scormInfo.scormId}" style="height: 200px;width: 300px">
 
                                                 <div class="mix-details">
                                                     <h4></h4>

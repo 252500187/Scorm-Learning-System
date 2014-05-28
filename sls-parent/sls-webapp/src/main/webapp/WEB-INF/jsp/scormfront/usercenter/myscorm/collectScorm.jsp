@@ -12,7 +12,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../../includes/common.jsp" %>
     <script src="<c:url value="/metronic/assets/global/plugins/pace/pace.min.js"/>" type="text/javascript"></script>
-    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-minimal.css"/>" rel="stylesheet" type="text/css"/>
+    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-minimal.css"/>" rel="stylesheet"
+          type="text/css"/>
 </head>
 <body class="page-header-fixed" style="background-color: transparent">
 <div class="page-content" style="min-height:780px">
@@ -29,7 +30,7 @@
                                          style=" display: block; opacity: 1;">
                                         <div class="mix-inner">
                                             <img src="${scormInfo.imgPath}" class="img-responsive"
-                                                 alt="${scormInfo.scormId}">
+                                                 alt="${scormInfo.scormId}" style="height: 200px;width: 300px">
 
                                             <div class="mix-details">
                                                 <h4></h4>

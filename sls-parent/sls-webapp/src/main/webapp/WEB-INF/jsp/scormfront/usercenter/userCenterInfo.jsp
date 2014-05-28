@@ -14,47 +14,35 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
     <script src="<c:url value="/metronic/assets/global/plugins/pace/pace.min.js"/>" type="text/javascript"></script>
-    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-minimal.css"/>" rel="stylesheet" type="text/css"/>
+    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-minimal.css"/>" rel="stylesheet"
+          type="text/css"/>
 </head>
 <body>
 <div class="page-container">
-<div class="page-content">
-<div class="row">
-    <div class="col-md-8">
-        <h3>
-            ${user.userName}&nbsp;个人中心
-        </h3>
-    </div>
-    <div class="col-md-4">
-        <div class="input-group">
-            <%--<input type="text" class="form-control" placeholder="Search..." id="queryInfo">--%>
-                        <%--<span class="input-group-btn">--%>
-                            <%--<a id="query" class="btn default blue-stripe" onclick="findScorm()"><i--%>
-                                    <%--class="fa fa-search"></i></a></span>--%>
-        </div>
-    </div>
-    <div class="col-md-12">
-
-        <ul class="page-breadcrumb breadcrumb">
-            <li>
-                <i class="fa fa-home"></i>
-                <a onclick="parent.window.location.href=''">Home</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a>UserCenter</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a>${user.userName}</a>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12" style="padding-left: 60px">
+    <div class="page-content">
         <div class="row">
-            <div class="col-md-9 article-block">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>
+                            ${user.userName}&nbsp;个人中心
+                        </h3>
+                        <ul class="page-breadcrumb breadcrumb">
+                            <li>
+                                <i class="fa fa-home"></i>
+                                <a onclick="parent.window.location.href=''">Home</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>
+                                <a>UserCenter</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>
+                                <a>${user.userName}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-12">
                         <c:if test="${nextLevel==null}">
@@ -72,10 +60,7 @@
                         </div>
                         <hr>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-
+                    <div class="col-md-6">
                         <div class="portlet blue box">
                             <div class="portlet-title">
                                 <div class="caption">
@@ -96,23 +81,58 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
+                    <div class="col-md-6">
+                        <div class="portlet green box">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-table"></i>最近学习
+                                </div>
+                                <div class="tools">
+                                    <a href="javascript:;" class="collapse">
+                                    </a>
+                                    <a href="javascript:;" class="remove">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <c:if test="${fn:length(registerScorm)<1}">
+                                    <h5>您最近没有正在学习的课程</h5>
+                                </c:if>
+                                <div class="blog-twitter">
+                                    <c:forEach var="scorm" items="${registerScorm}">
+                                        <div class="blog-twitter-block">
+                                            <i class="fa fa-book blog-twiiter-icon"></i>
+                                            <a onclick="showScormInfo('${scorm.scormId}')">${scorm.scormName}</a>
+                                            <a onclick="study('${scorm.scormId}')">
+                                                <em>继续</em>
+                                            </a>
+                                            <c:if test="${scorm.lastVisitTime!=''}">
+                                                <p>上次学习时间:${scorm.lastVisitTime}</p>
+                                            </c:if>
+                                            <c:if test="${scorm.lastVisitTime==''}">
+                                                <p>还未学习！</p>
+                                            </c:if>
+                                        </div>
+                                    </c:forEach>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <hr>
-                    <blockquote class="hero">
-                        <p>
-                            学知不足，业精于勤。
-                        </p>
-                        <small>（唐）韩愈</small>
-                    </blockquote>
+                    <div class="col-md-12">
+                        <blockquote class="hero">
+                            <p>
+                                学知不足，业精于勤。
+                            </p>
+                            <small>（唐）韩愈</small>
+                        </blockquote>
+                    </div>
                 </div>
             </div>
-            <div class="space20">
-            </div>
-            <div class="col-md-3 blog-sidebar">
+            <div class="col-md-3">
+                <br/>
                 <h3>推荐给你</h3>
                 <hr/>
-
                 <c:if test="${fn:length(recommendScorm)<1}">
                     <h5>试着给自己添加标签</h5>
 
@@ -190,50 +210,9 @@
                         </a>
                     </c:if>
                 </div>
-
-                <div class="space20">
-                    <hr/>
-                </div>
-                <div class="portlet green box">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fa fa-table"></i>最近学习
-                        </div>
-                        <div class="tools">
-                            <a href="javascript:;" class="collapse">
-                            </a>
-                            <a href="javascript:;" class="remove">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="portlet-body">
-                        <c:if test="${fn:length(registerScorm)<1}">
-                            <h5>您最近没有正在学习的课程</h5>
-                        </c:if>
-                        <div class="blog-twitter">
-                            <c:forEach var="scorm" items="${registerScorm}">
-                                <div class="blog-twitter-block">
-                                    <i class="fa fa-book blog-twiiter-icon"></i>
-                                    <a onclick="showScormInfo('${scorm.scormId}')">${scorm.scormName}</a>
-                                    <a onclick="study('${scorm.scormId}')">
-                                        <em>继续</em>
-                                    </a>
-                                    <c:if test="${scorm.lastVisitTime!=''}">
-                                        <p>上次学习时间:${scorm.lastVisitTime}</p>
-                                    </c:if>
-                                    <c:if test="${scorm.lastVisitTime==''}">
-                                        <p>还未学习！</p>
-                                    </c:if>
-                                </div>
-                            </c:forEach>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 </body>
 </html>

@@ -22,7 +22,6 @@
                 <li class="sidebar-toggler-wrapper">
                     <div class="sidebar-toggler"></div>
                 </li>
-                <!-- 用户信息 -->
                 <li class="start">
                     <a id="userCenterIndex" onclick="changeIframe('user/center/userCenterInfo')">
                         <i class="fa fa-user"></i><br/>
@@ -44,7 +43,6 @@
                         </span>
                     </a>
                 </li>
-                <!-- 第一个菜单  个人资料-->
                 <li>
                     <a id="userInfo" onclick="changeIframe('user/center/userInfoDo')">
                         <i class="fa fa-italic"></i>
@@ -53,7 +51,6 @@
 						</span>
                     </a>
                 </li>
-                <!-- 第二个菜单  上传课件 -->
                 <li>
                     <a onclick="changeIframe('user/center/upScormDo')">
                         <i class="fa fa-upload"></i>
@@ -62,46 +59,30 @@
 						</span>
                     </a>
                 </li>
-                <!-- 第三个菜单  我的课件 -->
                 <li>
-
-                    <a href="javascript:;">
+                    <a onclick="changeIframe('user/center/registerScormDo')">
                         <i class="fa fa-briefcase"></i>
 						<span class="title">
-							我的课件
-						</span>
-						<span class="arrow">
+							注册的课件
 						</span>
                     </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a onclick="changeIframe('user/center/registerScormDo')">
-                                <i class="fa fa-bullhorn"></i>
-                                <span class="title">
-                                    已注册课件
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a onclick="changeIframe('user/center/collectScormDo')">
-                                <i class="fa fa-bullhorn"></i>
-                                <span class="title">
-									我的收藏
-								</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a onclick="changeIframe('user/center/myUpScormsDo')">
-                                <i class="fa fa-bullhorn"></i>
-                                <span class="title">
-									我的上传
-								</span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
-                <!-- 第四个菜单  我的笔记本 -->
-
+                <li>
+                    <a onclick="changeIframe('user/center/collectScormDo')">
+                        <i class="fa fa-folder-open-o"></i>
+						<span class="title">
+							收藏的课件
+						</span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="changeIframe('user/center/myUpScormsDo')">
+                        <i class="fa fa-level-up"></i>
+						<span class="title">
+							上传的课件
+						</span>
+                    </a>
+                </li>
                 <li class="last ">
                     <a onclick="changeNoteIframe('user/center/notesDo')">
                         <i class="fa fa-book"></i>
