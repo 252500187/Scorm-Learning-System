@@ -6,7 +6,7 @@
 <html lang="en" class="no-js">
 <!--<![endif]-->
 
-<div class="page-header navbar navbar-fixed-top" >
+<div class="page-header navbar navbar-fixed-top">
     <div class="page-header-inner">
         <div class="page-logo">
             <a href="">
@@ -19,6 +19,11 @@
         <div class="top-menu">
             <ul class="nav navbar-nav pull-right">
                 <c:if test="${sessionScope.userId==null||sessionScope.userId==''}">
+                    <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
+                        <a href="login">
+                            <i class="fa fa-users"></i>注册
+                        </a>
+                    </li>
                     <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
                         <a href="login">
                             <i class="fa fa-sign-in"></i>登陆
