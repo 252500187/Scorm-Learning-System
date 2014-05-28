@@ -1,0 +1,10 @@
+.span-name {
+    position: absolute;
+    bottom: 67px;
+    background: rgba(0, 0, 0, .65);
+    width: 300px;
+    color: #fff;
+    padding: 0 9px;
+    height: 25px;
+    line-height: 25px;
+}

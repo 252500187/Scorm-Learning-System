@@ -45,6 +45,7 @@
 <link href="<c:url value="/metronic/assets/admin/layout/css/layout.css"/>" rel="stylesheet" type="text/css"/>
 <link id="style_color" href="<c:url value="/metronic/assets/admin/layout/css/themes/default.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/metronic/assets/admin/layout/css/custom.css"/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value="/metronic/assets/admin/layout/css/my.css"/>" rel="stylesheet" type="text/css"/>
 <%--<!-- END THEME STYLES -->--%>
 
 <%--<!-- BEGIN CORE PLUGINS -->--%>

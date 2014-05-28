@@ -48,7 +48,7 @@ Page Header
   border: 0px;
   padding: 0px;
   box-shadow: none;
-  height: 46px;
+  height: 80px;
   min-height: 46px;
   filter: none;
   background-image: none;
@@ -347,7 +347,7 @@ Page Header
 .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .task .percent {
   font-size: 14px;
   font-weight: 600;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "微软雅黑",'Open Sans', sans-serif;
   float: right;
   display: inline-block;
 }
@@ -737,7 +737,7 @@ Page container
   clear: both;
 }
 .page-header-fixed .page-container {
-  margin-top: 46px;
+  margin-top: 120px;
 }
 .page-footer-fixed.page-footer-fixed-mobile .page-container {
   margin-bottom: 20px !important;

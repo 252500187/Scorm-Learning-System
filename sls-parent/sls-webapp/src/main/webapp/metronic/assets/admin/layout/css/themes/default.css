@@ -10,7 +10,7 @@ Page Header
 ***/
 /* Header search bar, toggler button & top menu */
 .page-header.navbar {
-    background-color: #efefef;
+    background-color: #fff;
     /* Top notification menu/bar */
     /* Header seaech box */
     /* Toggler button for sidebar expand/collapse and responsive sidebar menu */
@@ -26,10 +26,10 @@ Page Header
     color: white;
 }
 .page-header.navbar .top-menu .navbar-nav > li.dropdown.open .dropdown-toggle {
-    background-color: #e2e2e2;
+    background-color: #ffffff;
 }
 .page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle {
-    background-color: #e7e7e7;
+    background-color: #ffffff;
 }
 .page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle .username {
     color: #444444;
