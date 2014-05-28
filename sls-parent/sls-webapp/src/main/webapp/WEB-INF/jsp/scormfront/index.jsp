@@ -15,8 +15,8 @@
 <body class="page-header-fixed" style="background-color: #ffffff">
 <%@include file="index/navigationMenu.jsp" %>
 <div class="page-container">
-<div class="row" style="box-shadow: 1px 1px 10px black;">
-    <img src="img/index/back3.jpg" style="width: 100%; height: 410px"/>
+<div class="row" style="box-shadow: 1px 1px 10px black; height: 410px;
+        background-image:url('<c:url value="/img/index/back3.jpg"/>');background-size: 100% 410px">
 </div>
 <div class="row" style="height: 280px;">
     <div class="col-md-12">
@@ -26,254 +26,132 @@
                 <span style="color: orange;">Scorm Learnning Platform Of SEEK</span><br/>
                 <small>轻松的学习，从现在开始</small>
             </h1>
-            <br/>
+        </div>
+        <br/>
 
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="搜索..." id="queryInfo">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="搜索..." id="queryInfo">
                     <span class="input-group-btn">
                         <a id="query" class="btn default blue-stripe" onclick="findScorm()"><i class="fa fa-search"></i></a>
                     </span>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
-        <ul class="mix-filter">
-            <li class="filter" data-filter="category_1">
-                <i class="fa fa-bookmark-o"></i>推荐等级
-            </li>
-            <li class="filter" data-filter="category_2">
-                <i class="fa fa-users"></i>注册人数
-            </li>
-            <li class="filter" data-filter="category_3">
-                <i class="fa fa-clock-o"></i>学习时间
-            </li>
-            <li class="filter" data-filter="category_4">
-                <i class="fa fa-star"></i>课件评分
-            </li>
-            <a id="recommend" class="filter" data-filter="category_1" hidden="true"></a>
-        </ul>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-8">
-        <div class="row mix-grid">
-            <%
-                String[] color = {"blue", "yellow", "red", "purple"};
-                int i = 0;
-            %>
-            <c:forEach var="scorm" items="${scormLevel}">
-                <div class="col-md-4 mix mix_all category_1"
-                     style=" display: block; opacity: 1;">
-                    <div class="thumbnail">
-                        <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
-
-                        <div class="caption">
-                            <h3>${scorm.scormName}</h3>
-
-                            <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
-
-                            <p>
-                                <a onclick="showScormInfo('${scorm.scormId}')"
-                                   class="btn <%=color[i++]%>">查看</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </c:forEach>
-            <% i = 0; %>
-            <c:forEach var="scorm" items="${scormSum}">
-                <div class="col-md-4 mix mix_all category_2"
-                     style=" display: block; opacity: 1;">
-                    <div class="thumbnail">
-                        <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
-
-                        <div class="caption">
-                            <h3>${scorm.scormName}</h3>
-
-                            <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
-
-                            <p>
-                                <a onclick="showScormInfo('${scorm.scormId}')"
-                                   class="btn <%=color[i++]%>">查看</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </c:forEach>
-            <% i = 0; %>
-            <c:forEach var="scorm" items="${scormTime}">
-                <div class="col-md-4 mix mix_all category_3"
-                     style=" display: block; opacity: 1;">
-                    <div class="thumbnail">
-                        <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
-
-                        <div class="caption">
-                            <h3>${scorm.scormName}</h3>
-
-                            <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
-
-                            <p>
-                                <a onclick="showScormInfo('${scorm.scormId}')"
-                                   class="btn <%=color[i++]%>">查看</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </c:forEach>
-            <% i = 0; %>
-            <c:forEach var="scorm" items="${scormScore}">
-                <div class="col-md-4 mix mix_all category_4"
-                     style=" display: block; opacity: 1;">
-                    <div class="thumbnail">
-                        <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
-
-                        <div class="caption">
-                            <h3>${scorm.scormName}</h3>
-
-                            <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
-
-                            <p>
-                                <a onclick="showScormInfo('${scorm.scormId}')"
-                                   class="btn <%=color[i++]%>">查看</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </c:forEach>
-        </div>
-    </div>
-</div>
-<br/><br/><br/>
-
-<div class="row" style="background-image: url('<c:url
-        value='/img/index/back2.png'/>');height: 480px;box-shadow: 0px 0px 10px rgba(0,0,0,0.8) inset,0px 0px 5px rgba(200,200,200,0.5);">
-    <div class="row" style="margin-top: 60px">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-3">
-            <hr style="width: 100%;"/>
-        </div>
-        <div class="col-md-2">
-            <div class="text-center" style="margin-top: 10px">
-                <span style="color: #ffffff;">SEEK 团队</span>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <hr style="width: 100%"/>
-        </div>
-    </div>
-    <div class="row" style="color: #ffffff;margin-top: 60px">
-        <div class="col-md-2">
-        </div>
-        <div style="position: relative;float: left;width: 16.66%;">
-            <img src="img/defaultImg/userDefaultImg.jpg" style="width: 200px;height: 200px"/>
-
-            <div class="text-center" style="position: absolute;z-index: 2;left: 10px;top: 10px">
-                神秘刘
-            </div>
-        </div>
-        <div style="position: relative;float: left;width: 16.66%;">
-            <img src="img/defaultImg/userDefaultImg.jpg" style="width: 200px;height: 200px"/>
-
-            <div class="text-center" style="position: absolute;z-index: 2;left: 10px;top: 10px">
-                李俊波
-            </div>
-        </div>
-        <div style="position: relative;float: left;width: 16.66%;">
-            <img src="img/defaultImg/userDefaultImg.jpg" style="width: 200px;height: 200px"/>
-
-            <div class="text-center" style="position: absolute;z-index: 2;left: 10px;top: 10px">
-                秦雯
-            </div>
-        </div>
-        <div style="position: relative;float: left;width: 16.66%;">
-            <img src="img/defaultImg/userDefaultImg.jpg" style="width: 200px;height: 200px"/>
-
-            <div class="text-center" style="position: absolute;z-index: 2;left: 10px;top: 10px">
-                张天奇
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row" style="margin-top: 60px">
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-3">
-        <hr style="width: 100%;"/>
-    </div>
-    <div class="col-md-2">
-        <div class="text-center" style="margin-top: 10px">
-            <span style="color: #808080;">按分类查看</span>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <hr style="width: 100%"/>
-    </div>
-</div>
-<div class="row" style="margin-top: 50px">
-    <div class="col-md-1"></div>
-    <div class="col-md-5">
-        <a class="thumbnail">
-            <img id="indexCenterImg" src="img/index/3.jpg"/>
-        </a>
-        <br/><br/><br/>
-    </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-3">
-        <ul class="list-inline sidebar-tags">
-            <c:forEach var="label" items="${labels}">
-                <li style="padding: 10px">
-                    <a onclick="findByLabel('${label.labelName}')" class="btn">
-                        <i class="fa fa-tags"></i>${label.labelName}
-                    </a>
+    <div class="col-md-12">
+        <div class="text-center">
+            <ul class="mix-filter">
+                <li class="filter" data-filter="category_1">
+                    <i class="fa fa-bookmark-o"></i>推荐等级
                 </li>
-                <% if (Math.random() > 0.7) {%>
-                <br/>
-                <%}%>
-            </c:forEach>
-        </ul>
-        <br/>
-    </div>
-</div>
-<hr/>
-<div class="row">
-    <br/><br/><br/>
-    <div class="col-md-2">
-    </div>
-    <div class="col-sm-6 col-md-2">
-        <a class="thumbnail">
-            <img src="img/index/4.jpg" alt="我" style="width: 100%">
-        </a>
-    </div>
-    <div class="col-sm-6 col-md-2">
-        <a class="thumbnail">
-            <img src="img/index/5.jpg" alt="好" style="width: 100%">
-        </a>
-    </div>
-    <div class="col-sm-6 col-md-2">
-        <a class="thumbnail">
-            <img src="img/index/6.jpg" alt="好" style="width: 100%">
-        </a>
-    </div>
-    <div class="col-sm-6 col-md-2">
-        <a class="thumbnail">
-            <img src="img/index/7.jpg" alt="学" style="width: 100%">
-        </a>
+                <li class="filter" data-filter="category_2">
+                    <i class="fa fa-users"></i>注册人数
+                </li>
+                <li class="filter" data-filter="category_3">
+                    <i class="fa fa-clock-o"></i>学习时间
+                </li>
+                <li class="filter" data-filter="category_4">
+                    <i class="fa fa-star"></i>课件评分
+                </li>
+                <a id="recommend" class="filter" data-filter="category_1" hidden="true"></a>
+            </ul>
+        </div>
     </div>
 </div>
 
+<div class="row mix-grid">
+    <div class="col-md-1"></div>
+    <%
+        String[] color = {"blue", "yellow", "red", "purple", "grey"};
+        int i = 0;
+    %>
+    <c:forEach var="scorm" items="${scormLevel}">
+        <div class="col-md-2 mix mix_all category_1"
+             style=" display: block; opacity: 1;">
+            <div class="thumbnail">
+                <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
+
+                <div class="caption">
+                    <h3>${scorm.scormName}</h3>
+
+                    <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
+
+                    <p>
+                        <a onclick="showScormInfo('${scorm.scormId}')"
+                           class="btn <%=color[i++]%>">查看</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
+    <% i = 0; %>
+    <c:forEach var="scorm" items="${scormSum}">
+        <div class="col-md-2 mix mix_all category_2"
+             style=" display: block; opacity: 1;">
+            <div class="thumbnail">
+                <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
+
+                <div class="caption">
+                    <h3>${scorm.scormName}</h3>
+
+                    <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
+
+                    <p>
+                        <a onclick="showScormInfo('${scorm.scormId}')"
+                           class="btn <%=color[i++]%>">查看</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
+    <% i = 0; %>
+    <c:forEach var="scorm" items="${scormTime}">
+        <div class="col-md-2 mix mix_all category_3"
+             style=" display: block; opacity: 1;">
+            <div class="thumbnail">
+                <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
+
+                <div class="caption">
+                    <h3>${scorm.scormName}</h3>
+
+                    <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
+
+                    <p>
+                        <a onclick="showScormInfo('${scorm.scormId}')"
+                           class="btn <%=color[i++]%>">查看</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
+    <% i = 0; %>
+    <c:forEach var="scorm" items="${scormScore}">
+        <div class="col-md-2 mix mix_all category_4"
+             style=" display: block; opacity: 1;">
+            <div class="thumbnail">
+                <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
+
+                <div class="caption">
+                    <h3>${scorm.scormName}</h3>
+
+                    <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
+
+                    <p>
+                        <a onclick="showScormInfo('${scorm.scormId}')"
+                           class="btn <%=color[i++]%>">查看</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
+    <div class="col-md-1"></div>
+</div>
+<br/>
 <div class="row">
     <div class="col-md-12">
         <div style="background-color: #8996A0; margin-top: 80px;color: #ffffff">
@@ -294,7 +172,6 @@
         </div>
     </div>
 </div>
-<hr/>
 </div>
 <%@include file="index/footer.jsp" %>
 <div id="alertPrompt" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
@@ -355,6 +232,9 @@
         Metronic.init();
         Layout.init();
         Portfolio.init();
+        $("#carousel-example-generic").carousel({
+            interval: 1000
+        })
         var width = document.documentElement.clientWidth;
         $("#indexCenterImg").css("width", width * 5 / 12 + "px");
         $("#recommend").click();
