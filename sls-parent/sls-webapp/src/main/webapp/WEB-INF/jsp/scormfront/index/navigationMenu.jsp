@@ -8,7 +8,7 @@
 
 <div class="page-header navbar navbar-fixed-top" style="box-shadow: 1px 1px 10px #969696;">
     <div class="page-header-inner">
-        <div class="col-md-4">
+        <div class="col-md-4" style="margin-top: 17px">
             <a href="">
                 <img src="img/logo/index_logo.png" alt="logo" class="logo-default"
                      style="max-height: 40px;margin-top:4px"/>
@@ -23,11 +23,11 @@
         </div>
         <div class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
         </div>
-        <div class="top-menu">
+        <div class="top-menu" style="margin-top: 17px">
             <ul class="nav navbar-nav pull-right">
                 <c:if test="${sessionScope.userId==null||sessionScope.userId==''}">
                     <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
-                        <a href="login" style="font-size: 20px;margin-top: 15px;">
+                        <a href="login" style="font-size: 20px;">
                             <i class="fa fa-sign-in" style="font-size: 20px"></i>登陆
                         </a>
                     </li>

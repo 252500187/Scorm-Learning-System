@@ -64,14 +64,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-9" style="padding-left: 40px;">
             <div class="mix-grid">
                 <%--<%--%>
                 <%--String[] color = {"blue", "yellow", "red", "purple", "orange"};--%>
                 <%--int i = 0;--%>
                 <%--%>--%>
                 <c:forEach var="scorm" items="${scormLevel}">
-                    <div class=" mix mix_all category_1"
+                    <div class="col-md-4 mix mix_all category_1"
                          style=" display: block; opacity: 1;width: 300px;">
                         <div>
                             <div class="thumbnail">
@@ -88,7 +88,7 @@
                 </c:forEach>
                 <%--<% i = 0; %>--%>
                 <c:forEach var="scorm" items="${scormSum}">
-                    <div class="mix mix_all category_2"
+                    <div class="col-md-4 mix mix_all category_2"
                          style=" display: block; opacity: 1;width: 300px;">
                         <div>
                             <div class="thumbnail">
@@ -137,6 +137,25 @@
                         </div>
                     </div>
                 </c:forEach>
+            </div>
+        </div>
+        <div class="col-md-3" style="padding-right: 20px;">
+            <div class="portlet blue box">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-bar-chart-o"></i>学习分布图
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse">
+                        </a>
+                        <a href="javascript:;" class="remove">
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+
+
+                </div>
             </div>
         </div>
     </div>
