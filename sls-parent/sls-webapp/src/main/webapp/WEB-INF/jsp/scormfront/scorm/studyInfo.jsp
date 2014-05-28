@@ -38,7 +38,7 @@
                                             </c:if>
                                             ${scorm.scormName}
                                         </h3>
-                                        <a class="btn blue" onclick="history.back()">课件信息</a>
+                                        <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">课件信息</a>
                                         <br/><br/>
 
                                         <div class="form-group profile-info">
@@ -160,4 +160,9 @@
     $(function () {
         $.fn.zTree.init($("#scoTree"), settingMenu, zNodes).expandAll(true);
     });
+
+    function scormInfo(scormId) {
+        parent.$(".modal-title").html("课件信息");
+        parent.$("#iframeInfo").attr("src", "tourist/scormInfo?scormId=" + scormId);
+    }
 </script>
