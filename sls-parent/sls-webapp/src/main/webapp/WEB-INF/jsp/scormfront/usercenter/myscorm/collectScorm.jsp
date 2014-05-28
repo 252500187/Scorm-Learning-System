@@ -23,19 +23,19 @@
                     <div class="tab-pane active" id="tab_1">
                         <!-- BEGIN FILTER -->
                         <div class="margin-top-10">
-
-
                             <div class="row mix-grid">
                                 <c:forEach var="scormInfo" items="${allScorm}">
-
                                     <div class="col-md-3 col-sm-4 mix mix_all"
                                          style=" display: block; opacity: 1;">
                                         <div class="mix-inner">
-                                            <img id="${scormInfo.scormId}" class="img-responsive"
+                                            <img src="${scormInfo.imgPath}" class="img-responsive"
                                                  alt="${scormInfo.scormId}">
 
                                             <div class="mix-details">
-                                                <h4 style="margin-bottom: 0px;padding-bottom: 3px"></h4>
+                                                <h4></h4>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    课件名称:&nbsp;${scormInfo.scormName}
+                                                </h4>
                                                 <h4 style="margin-bottom: 0px;padding-bottom: 3px">
                                                     收藏时间&nbsp;${scormInfo.collectDate}</h4>
                                                 <a class="mix-link" onclick="scormInfo('${scormInfo.scormId}')">
@@ -46,13 +46,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="mix-inner">
-                                            <h4 style="margin-bottom: 0px;padding-bottom: 3px">
-                                                &nbsp;${scormInfo.scormName}</h4>
-                                        </div>
                                     </div>
-
-
                                 </c:forEach>
                             </div>
                         </div>
@@ -67,9 +61,6 @@
 </html>
 <script type="text/javascript">
     $(function () {
-        <c:forEach var="scormInfo" items="${allScorm}">
-        $("#" + "${scormInfo.scormId}").attr("src", basePath + "${scormInfo.imgPath}");
-        </c:forEach>
         Portfolio.init();
     })
     function cancelCollect(scormId) {

@@ -65,7 +65,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </c:if>
                                     <c:if test="${scormInfo.completeDate != ''}">
                                         <div class="col-md-3 col-sm-4 mix mix_all category_2"

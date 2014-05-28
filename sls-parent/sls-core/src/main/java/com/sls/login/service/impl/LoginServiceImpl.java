@@ -78,10 +78,10 @@ public class LoginServiceImpl implements LoginService {
     }
 
     public void setIndexInfo(HttpServletRequest request) {
-        request.setAttribute("scormSum", scormDao.indexFindTopScormByFieldName("register_sum",3));
-        request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score",3));
-        request.setAttribute("scormTime", scormDao.indexFindTopScormByFieldName("total_time",3));
-        request.setAttribute("scormLevel", scormDao.indexFindTopScormByFieldName("recommend_level",3));
+        request.setAttribute("scormSum", scormDao.indexFindTopScormByFieldName("register_sum",5));
+        request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score",5));
+        request.setAttribute("scormTime", scormDao.indexFindTopScormByFieldName("total_time",5));
+        request.setAttribute("scormLevel", scormDao.indexFindTopScormByFieldName("recommend_level",5));
         request.setAttribute("labels", labelDao.getAllLabel());
     }
 }
