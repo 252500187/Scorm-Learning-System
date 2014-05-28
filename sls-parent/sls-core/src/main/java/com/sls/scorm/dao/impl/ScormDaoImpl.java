@@ -155,4 +155,10 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
                 "FROM luss_scorm_summarize WHERE scorm_id=? AND user_id!=?";
         return getJdbcTemplate().queryForObject(sql, (String.class), scormId, DictConstant.VOID_VALUE, scormId, DictConstant.VOID_VALUE);
     }
+
+    @Override
+    public List<Scorm> findLatestScorms(int i) {
+        String sql = "SELECT * FROM ss_scorm ORDER BY upload_date DESC LIMIT "+ i;
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class));
+    }
 }
