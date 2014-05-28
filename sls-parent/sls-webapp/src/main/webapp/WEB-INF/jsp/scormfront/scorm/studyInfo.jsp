@@ -44,31 +44,79 @@
                                         <div class="form-group profile-info">
                                             <ul class="list-inline" style="width: 250px;">
                                                 <li>完成时间:</li>
-                                                <li>${summarize.completeDate}</li>
+                                                <li>
+                                                    <c:if test="${summarize.completeDate!=''}">
+                                                        ${summarize.completeDate}
+                                                    </c:if>
+                                                    <c:if test="${summarize.completeDate==''}">
+                                                        未完成
+                                                    </c:if>
+                                                </li>
                                                 <br/>
 
                                                 <li>课件成绩:</li>
-                                                <li>${summarize.grade}</li>
+                                                <li>
+                                                    <c:if test="${summarize.grade!=''}">
+                                                        ${summarize.grade}
+                                                    </c:if>
+                                                    <c:if test="${summarize.grade==''}">
+                                                        无成绩
+                                                    </c:if>
+                                                </li>
                                                 <br/>
 
                                                 <li>学习时间:</li>
-                                                <li>${summarize.totalTime}</li>
+                                                <li>
+                                                    <c:if test="${summarize.totalTime!=''}">
+                                                        ${summarize.totalTime}
+                                                    </c:if>
+                                                    <c:if test="${summarize.totalTime==''}">
+                                                        未学习
+                                                    </c:if>
+                                                </li>
+                                                <br/>
                                                 <br/>
 
                                                 <li>上次学习时间:</li>
-                                                <li>${summarize.lastVisitTime}</li>
+                                                <li>
+                                                    <c:if test="${summarize.lastVisitTime!=''}">
+                                                        ${summarize.lastVisitTime}
+                                                    </c:if>
+                                                    <c:if test="${summarize.lastVisitTime==''}">
+                                                        未学习
+                                                    </c:if>
+                                                </li>
                                                 <br/>
 
                                                 <li>评分:</li>
-                                                <li>${summarize.score}分</li>
+                                                <li>
+                                                    <c:if test="${summarize.score!='0'}">
+                                                        ${summarize.score}
+                                                    </c:if>
+                                                    <c:if test="${summarize.score=='0'}">
+                                                        未评分
+                                                    </c:if>
+                                                </li>
                                                 <br/>
 
                                                 <li>评论:</li>
-                                                <li>${summarize.discussDate}</li>
+                                                <li>
+                                                    <c:if test="${summarize.discussDate!=''}">
+                                                        ${summarize.discussDate}
+                                                    </c:if>
+                                                    <c:if test="${summarize.discussDate==''}">
+                                                        未评论
+                                                    </c:if>
+                                                </li>
                                                 <br/>
 
                                                 <li>内容:</li>
                                                 <li>${summarize.discuss}</li>
+                                                <li>
+                                                    <c:if test="${summarize.discuss!=''}">
+                                                        ${summarize.discuss}
+                                                    </c:if>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
