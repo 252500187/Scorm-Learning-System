@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <div class="portlet box purple">
                     <div class="portlet-title">
                         <div class="caption">
@@ -69,9 +69,75 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
+        </div>
+        <div class="row">
+            <div class="col-md-3">
                 <h3>课件注册数目排行</h3>
                 <hr/>
+                <div class="alert alert-block alert-info fade in">
+                    <button type="button" class="close" data-dismiss="alert"></button>
+                    <h4 class="alert-heading">课件1</h4>
+
+                    <p>
+                        课件描述
+                    </p>
+
+                    <p>
+                        <a class="btn purple" href="#">
+                            详情 </a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h3>课件注册数目排行</h3>
+                <hr/>
+                <div class="alert alert-block alert-info fade in">
+                    <button type="button" class="close" data-dismiss="alert"></button>
+                    <h4 class="alert-heading">课件1</h4>
+
+                    <p>
+                        课件描述
+                    </p>
+
+                    <p>
+                        <a class="btn purple" href="#">
+                            详情 </a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h3>课件注册数目排行</h3>
+                <hr/>
+                <div class="alert alert-block alert-info fade in">
+                    <button type="button" class="close" data-dismiss="alert"></button>
+                    <h4 class="alert-heading">课件1</h4>
+
+                    <p>
+                        课件描述
+                    </p>
+
+                    <p>
+                        <a class="btn purple" href="#">
+                            详情 </a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h3>课件注册数目排行</h3>
+                <hr/>
+                <div class="alert alert-block alert-info fade in">
+                    <button type="button" class="close" data-dismiss="alert"></button>
+                    <h4 class="alert-heading">课件1</h4>
+
+                    <p>
+                        课件描述
+                    </p>
+
+                    <p>
+                        <a class="btn purple" href="#">
+                            详情 </a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>

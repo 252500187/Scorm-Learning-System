@@ -35,7 +35,7 @@
                     <li><a data-toggle="tab" onclick="changeIframe('admin/dict/listAllDictDefineDo')">字典管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listNotAuditScormInfoDo')">未审核课件</a>
                     </li>
-                    <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listAuditScormInfoDo')">已审核课件</a>
+                    <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listAuditScormInfoDo')">课件管理</a>
                     </li>
                     <li class="pull-right"><a data-toggle="tab" onclick="window.location.href='logout'">退出</a>
                 </ul>
@@ -43,7 +43,7 @@
         </div>
         <div class="row-fluid">
             <div class="span12">
-                <iframe frameborder="no" id="iframe" style="width:100%;height:100%;overflow:auto;"></iframe>
+                <iframe frameborder="no" id="iframe" style="width:100%;height:100%;overflow-y: hidden;"></iframe>
             </div>
         </div>
         <div class="row-fluid">
