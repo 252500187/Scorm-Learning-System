@@ -19,14 +19,17 @@
         <div class="row" style="margin-left: 0">
             <div class="span12">
                 <%--<div style="padding: 0 20px; height:70px; background:url('img/defaultImg/userDefaultImg.jpg') repeat-x scroll 0px 0px;">--%>
-                    <img src="img/logo/logo.gif"/>
+                <img src="img/logo/logo.gif"/>
                 <%--</div>--%>
             </div>
         </div>
         <div class="row-fluid">
             <div class="span12">
                 <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" onclick="changeIframe('admin/user/adminIndexStatisticDo')">首页</a>
+                    </li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllUserDo')">用户管理</a></li>
+                    <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllDiscussDo')">评论管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/role/listAllRoleDo')">角色管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/label/listAllLabelTreeDo')">标签管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/dict/listAllDictDefineDo')">字典管理</a></li>
@@ -40,34 +43,23 @@
         </div>
         <div class="row-fluid">
             <div class="span12">
-                <div id="mainDiv">
-                    <iframe frameborder="no" id="iframe" style="width:100%;height:100%;overflow:auto;"></iframe>
-                </div>
+                <iframe frameborder="no" id="iframe" style="width:100%;height:100%;overflow:auto;"></iframe>
             </div>
         </div>
     </div>
     <div class="row" style="margin-left: 0">
-        <div style="font-size:15px;width: 100%; height: 30px; text-align: center;">
+        <div style="font-size:15px;width: 100%; height: 20px; text-align: center;">
             SCORM LEARNING OF SEEK
         </div>
     </div>
 </div>
 </div>
-<div id="dataEdit" closed="true" modal="true" style="overflow: hidden" closable="true">
-    <iframe style="width: 100%;height: 100%"
-            id="contentFrame"
-            name="contentFrame"
-            marginheight="0"
-            marginwidth="0"
-            frameborder="0" src=""
-            allowTransparency="true">
-    </iframe>
-</div>
 </body>
 </html>
 <script type="text/javascript">
     $(function () {
-        $('#mainDiv').height(document.documentElement.clientHeight - 150);
+        $('#iframe').height(document.documentElement.clientHeight);
+        changeIframe('admin/user/adminIndexStatisticDo');
     });
 
     function changeIframe(src) {

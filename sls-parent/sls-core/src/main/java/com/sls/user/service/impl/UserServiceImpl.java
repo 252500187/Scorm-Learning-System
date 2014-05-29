@@ -2,6 +2,8 @@ package com.sls.user.service.impl;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
+import com.sls.scorm.dao.SummarizeDao;
+import com.sls.scorm.entity.ScormSummarize;
 import com.sls.system.entity.Label;
 import com.sls.system.service.DictService;
 import com.sls.user.dao.RoleDao;
@@ -37,6 +39,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private DictService dictService;
 
+    @Autowired
+    private SummarizeDao summarizeDao;
+
     @Override
     public Page<User> findUserPageList(PageParameter pageParameter, User user) {
         Page<User> userPage = userDao.findUserPageList(pageParameter, user);
@@ -49,8 +54,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserAllInfoById(int id) {
-        User user = userDao.findUserAllInfoById(id);
-        return user;
+        return userDao.findUserAllInfoById(id);
     }
 
     @Override
@@ -145,5 +149,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public void getPieCharts(HttpServletRequest request) {
         request.setAttribute("userPeiCharts", userDao.getPieChartsByUserId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId()));
+    }
+
+    @Override
+    public Page<ScormSummarize> findDiscussPageList(PageParameter pageParameter, ScormSummarize scormSummarize) {
+        return summarizeDao.findDiscussPageList(pageParameter, scormSummarize);
+    }
+
+    @Override
+    public void shieldDiscuss(int userId, int scormId) {
+        summarizeDao.shieldDiscuss(userId, scormId);
     }
 }

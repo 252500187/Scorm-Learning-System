@@ -13,6 +13,8 @@ public class ScormSummarize {
 
     private String userName;
     private String imgUrl;
+    private String scormName;
+    private String loginName;
 
     public ScormSummarize() {
         score = 0;
@@ -110,5 +112,21 @@ public class ScormSummarize {
 
     public void setLastVisitTime(String lastVisitTime) {
         this.lastVisitTime = lastVisitTime;
+    }
+
+    public String getScormName() {
+        return scormName;
+    }
+
+    public void setScormName(String scormName) {
+        this.scormName = scormName;
+    }
+
+    public String getLoginName() {
+        return loginName;
+    }
+
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
     }
 }

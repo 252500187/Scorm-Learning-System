@@ -1,5 +1,7 @@
 package com.sls.scorm.dao;
 
+import com.core.page.entity.Page;
+import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.ScormSummarize;
 
 import java.util.List;
@@ -23,4 +25,8 @@ public interface SummarizeDao {
     void changeLastVisitTimeByScormIdAndUserId(ScormSummarize scormSummarize);
 
     void changeTotalTimeByScormIdAndUserId(int userId, int scormId, String totalTime);
+
+    Page<ScormSummarize> findDiscussPageList(PageParameter pageParameter, ScormSummarize scormSummarize);
+
+    void shieldDiscuss(int userId, int scormId);
 }

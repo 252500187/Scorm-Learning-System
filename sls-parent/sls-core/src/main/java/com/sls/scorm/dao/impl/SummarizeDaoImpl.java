@@ -1,6 +1,8 @@
 package com.sls.scorm.dao.impl;
 
 import com.core.page.dao.PageDao;
+import com.core.page.entity.Page;
+import com.core.page.entity.PageParameter;
 import com.sls.scorm.dao.SummarizeDao;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.entity.ScormSummarize;
@@ -69,5 +71,20 @@ public class SummarizeDaoImpl extends PageDao implements SummarizeDao {
     public void changeTotalTimeByScormIdAndUserId(int userId, int scormId, String totalTime) {
         String sql = "UPDATE luss_scorm_summarize SET total_time=? WHERE scorm_id=? AND user_id=?";
         getJdbcTemplate().update(sql, totalTime, scormId, userId);
+    }
+
+    @Override
+    public Page<ScormSummarize> findDiscussPageList(PageParameter pageParameter, ScormSummarize scormSummarize) {
+        StringBuilder sql = new StringBuilder("SELECT a.*,b.scorm_name,c.login_name FROM luss_scorm_summarize a, ss_scorm b, us_user c WHERE a.scorm_id=b.scorm_id AND a.user_id=c.user_id AND a.discuss!=''");
+        if (!("").equals(scormSummarize.getDiscuss())) {
+            sql.append(" AND a.discuss like '%").append(scormSummarize.getDiscuss().trim()).append("%'");
+        }
+        return queryForPage(pageParameter, sql.toString(), new BeanPropertySqlParameterSource(scormSummarize), new BeanPropertyRowMapper<ScormSummarize>(ScormSummarize.class));
+    }
+
+    @Override
+    public void shieldDiscuss(int userId, int scormId) {
+        String sql = "UPDATE luss_scorm_summarize SET discuss='' WHERE scorm_id=? AND user_id=?";
+        getJdbcTemplate().update(sql, scormId, userId);
     }
 }

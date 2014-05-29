@@ -2,6 +2,7 @@ package com.sls.user.service;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
+import com.sls.scorm.entity.ScormSummarize;
 import com.sls.user.entity.User;
 
 import javax.servlet.ServletException;
@@ -34,4 +35,8 @@ public interface UserService {
     void findUserNextLevelNameByScore(HttpServletRequest request);
 
     void getPieCharts(HttpServletRequest request);
+
+    Page<ScormSummarize> findDiscussPageList(PageParameter pageParameter, ScormSummarize scormSummarize);
+
+    void shieldDiscuss(int userId,int scormId);
 }

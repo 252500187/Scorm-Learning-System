@@ -2,6 +2,7 @@ package com.sls.admin;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
+import com.sls.scorm.entity.ScormSummarize;
 import com.sls.user.entity.User;
 import com.sls.user.service.UserService;
 import com.sls.util.DictConstant;
@@ -23,6 +24,11 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @RequestMapping(value = "adminIndexStatisticDo", method = {RequestMethod.GET})
+    public String adminIndexStatisticDo(HttpServletRequest request) {
+        return "scormadmin/statisticData";
+    }
 
     @RequestMapping(value = "listAllUserDo", method = {RequestMethod.GET})
     public String listAllUserDo(HttpServletRequest request) {
@@ -71,5 +77,22 @@ public class UserController {
         User user = userService.findUserAllInfoById(id);
         request.setAttribute("user", user);
         return "scormadmin/user/editUserDo";
+    }
+
+    @RequestMapping(value = "listAllDiscussDo", method = {RequestMethod.GET})
+    public String listAllDiscussDo(HttpServletRequest request) {
+        return "scormadmin/discuss/listAllDiscussDo";
+    }
+
+    @RequestMapping(value = "listAllDiscuss", method = RequestMethod.POST)
+    @ResponseBody
+    public Page listAllDiscuss(PageParameter pageParameter, ScormSummarize scormSummarize) {
+        return userService.findDiscussPageList(pageParameter, scormSummarize);
+    }
+
+    @RequestMapping(value = "shieldDiscuss", method = RequestMethod.POST)
+    @ResponseBody
+    public void shieldDiscuss(ScormSummarize scormSummarize) {
+        userService.shieldDiscuss(scormSummarize.getUserId(), scormSummarize.getScormId());
     }
 }
