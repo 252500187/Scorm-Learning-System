@@ -69,14 +69,19 @@
                                 <div class="tools">
                                     <a href="javascript:;" class="collapse">
                                     </a>
+                                    <a href="#portlet-config" data-toggle="modal" class="config">
+                                    </a>
+                                    <a href="javascript:;" class="reload">
+                                    </a>
                                     <a href="javascript:;" class="remove">
                                     </a>
                                 </div>
                             </div>
                             <div class="portlet-body">
-                                <h3 id="studyDistribute"></h3>
-
-                                <div id="pie_chart" class="chart">
+                                <c:if test="${fn:length(userPeiCharts)<1}">
+                                    <h3 id="studyDistribute">您还没有注册过课程，试着去注册课程吧！</h3>
+                                </c:if>
+                                <div id="pie_chart_6" class="chart">
                                 </div>
                             </div>
                         </div>
@@ -89,6 +94,10 @@
                                 </div>
                                 <div class="tools">
                                     <a href="javascript:;" class="collapse">
+                                    </a>
+                                    <a href="#portlet-config" data-toggle="modal" class="config">
+                                    </a>
+                                    <a href="javascript:;" class="reload">
                                     </a>
                                     <a href="javascript:;" class="remove">
                                     </a>
@@ -220,7 +229,6 @@
     jQuery(document).ready(function () {
         Metronic.init();
         Layout.init();
-        Charts.init();
         var data = [];
         var i = 0;
         <c:forEach var="perItem" items="${userPeiCharts}">
@@ -232,14 +240,6 @@
         <c:if test="${fn:length(userPeiCharts)>0}">
         Charts.initPieCharts(data);
         </c:if>
-        <c:if test="${fn:length(userPeiCharts)<1}">
-        $("#studyDistribute").html("您还没有注册过课程，试着去注册课程吧！");
-        </c:if>
-        $("#queryInfo").bind("keydown", function (e) {
-            if (e.which == 13) {
-                findScorm();
-            }
-        });
     });
 
     function findScorm() {

@@ -84,5 +84,11 @@
             warnAfter: 1200000,
             redirAfter: 1210000
         });
+
+        $("#queryInfo").bind("keydown", function (e) {
+            if (e.which == 13) {
+                findScorm();
+            }
+        });
     })
 </script>

@@ -21,35 +21,56 @@
 <div class="page-container">
     <div class="page-content">
         <div class="row">
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="portlet blue box">
-                            <div class="portlet-title">
-                                <div class="caption">
-                                    <i class="fa fa-bar-chart-o"></i>课件分布图
-                                </div>
-                                <div class="tools">
-                                    <a href="javascript:;" class="collapse">
-                                    </a>
-                                    <a href="javascript:;" class="remove">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="portlet-body">
-                                <h3 id="studyDistribute"></h3>
+            <div class="col-md-4">
+                <div class="portlet blue box">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-bar-chart-o"></i>课件分布图
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse">
+                            </a>
+                            <a href="#portlet-config" data-toggle="modal" class="config">
+                            </a>
+                            <a href="javascript:;" class="reload">
+                            </a>
+                            <a href="javascript:;" class="remove">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <h3 id="studyDistribute"></h3>
 
-                                <div id="pie_chart" class="chart">
-                                </div>
-                            </div>
+                        <div id="pie_chart_6" class="chart">
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <br/>
-
-                <h3>注册数目排行</h3>
+            <div class="col-md-6">
+                <div class="portlet box purple">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-signal"></i>数量统计
+                        </div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse">
+                            </a>
+                            <a href="#portlet-config" data-toggle="modal" class="config">
+                            </a>
+                            <a href="javascript:;" class="reload">
+                            </a>
+                            <a href="javascript:;" class="remove">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div id="chart_1_2" class="chart">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <h3>课件注册数目排行</h3>
                 <hr/>
             </div>
         </div>
@@ -61,7 +82,7 @@
     jQuery(document).ready(function () {
         Metronic.init();
         Layout.init();
-        Charts.init();
+//        Charts.init();
         var data = [];
         var i = 0;
         data[0] = {
@@ -81,5 +102,6 @@
             data: 4
         }
         Charts.initPieCharts(data);
+        Charts.initCharts();
     });
 </script>

@@ -379,19 +379,5 @@
     $(function () {
         Metronic.init();
         Layout.init();
-        $("#queryInfo").bind("keydown", function (e) {
-            if (e.which == 13) {
-                findScorm();
-            }
-        });
-        $.sessionTimeout({
-            title: '提示',
-            message: '您已经学习很久了（20分钟），请注意保护眼睛。',
-            keepAliveUrl: '',
-            redirUrl: 'logout',
-            logoutUrl: 'logout',
-            warnAfter: 1200000,
-            redirAfter: 1210000
-        });
     });
 </script>

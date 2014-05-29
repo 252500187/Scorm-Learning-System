@@ -46,10 +46,10 @@
                 <iframe frameborder="no" id="iframe" style="width:100%;height:100%;overflow:auto;"></iframe>
             </div>
         </div>
-    </div>
-    <div class="row" style="margin-left: 0">
-        <div style="font-size:15px;width: 100%; height: 20px; text-align: center;">
-            SCORM LEARNING OF SEEK
+        <div class="row-fluid">
+            <div style="font-size:15px;width: 100%; height: 20px; text-align: center;">
+                SCORM LEARNING OF SEEK
+            </div>
         </div>
     </div>
 </div>

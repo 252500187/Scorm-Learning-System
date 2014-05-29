@@ -221,11 +221,5 @@
         $("#indexCenterImg").css("width", width * 5 / 12 + "px");
         $("#recommend").click();
     });
-
-    $("#queryInfo").bind("keydown", function (e) {
-        if (e.which == 13) {
-            findScorm();
-        }
-    });
 </script>
 
