@@ -18,7 +18,8 @@
             <input type="text" class="form-control" placeholder="搜索..." id="queryInfo"
                    style="float: left;width: 400px;height: 50px;">
                             <span style="float: left;height: 50px;background-color: #4AA1FF;width: 80px;">
-                                <a id="query" style="color: #fff;margin-left: 18px;font-size: 20px;line-height: 50px;cursor: pointer;text-decoration: none;"
+                                <a id="query"
+                                   style="color: #fff;margin-left: 18px;font-size: 20px;line-height: 50px;cursor: pointer;text-decoration: none;"
                                    onclick="findScorm()">搜索</a>
                             </span>
         </div>
@@ -71,21 +72,21 @@
 </div>
 
 <script>
-    $("#userPhoto").attr("src", "metronic/assets/admin/layout/img/avatar3_small.jpg");
-
-    function studyScorm(id) {
-        window.location.href = basePath + "user/scorm/studyScorm?scormId=" + id;
+    function findScorm() {
+        if ($("#queryInfo").val() != "") {
+            window.open(basePath + "tourist/findScorm?queryInfo=" + $("#queryInfo").val());
+        }
     }
 
-    function registerScorm(id) {
-        $.ajax({
-            url: basePath + "user/scorm/registerScorm?scormId=" + id,
-            dataType: "json",
-            type: "GET",
-            success: function (message) {
-                alert(message);
-            },
-            error: doError
-        })
-    }
+    $(function(){
+        $.sessionTimeout({
+            title: '提示',
+            message: '您已经学习很久了（20分钟），请注意保护眼睛。',
+            keepAliveUrl: '',
+            redirUrl: 'logout',
+            logoutUrl: 'logout',
+            warnAfter: 1200000,
+            redirAfter: 1210000
+        });
+    })
 </script>

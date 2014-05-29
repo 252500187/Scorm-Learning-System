@@ -116,12 +116,12 @@
                     <!--begin labels-->
                     <ul class="feeds">
                         <c:forEach var="latest" items="${latestScorms}">
-                        <%--<li style="background-color: #fff;">今日上传</li>--%>
+                            <%--<li style="background-color: #fff;">今日上传</li>--%>
                             <li style="background-color: #fff;">
                                 <div class="col1">
                                     <div class="cont">
                                         <div class="cont-col1">
-                                            <div >
+                                            <div>
                                                 <img style="width: 100px;height: 60px;" src="${latest.imgPath}">
                                             </div>
                                         </div>
@@ -151,7 +151,8 @@
                     <ul class="feeds list-inline">
                         <c:forEach var="label" items="${labels}">
                             <li style="background-color: #fff;">
-                                <a onclick="findByLabel('${label.labelName}')" style="text-decoration: none;cursor: pointer;">
+                                <a onclick="findByLabel('${label.labelName}')"
+                                   style="text-decoration: none;cursor: pointer;">
                                     <i class="fa fa-tags"></i> &nbsp; ${label.labelName}
                                 </a>
                             </li>
@@ -212,12 +213,6 @@
         window.open(basePath + "tourist/findScorm?queryInfo=" + label);
     }
 
-    function findScorm() {
-        if ($("#queryInfo").val() != "") {
-            window.location.href = basePath + "tourist/findScorm?queryInfo=" + $("#queryInfo").val();
-        }
-    }
-
     $(function () {
         Metronic.init();
         Layout.init();
@@ -225,15 +220,6 @@
         var width = document.documentElement.clientWidth;
         $("#indexCenterImg").css("width", width * 5 / 12 + "px");
         $("#recommend").click();
-        $.sessionTimeout({
-            title: '提示',
-            message: '您已经学习很久了（20分钟），请注意保护眼睛。',
-            keepAliveUrl: '',
-            redirUrl: 'logout',
-            logoutUrl: 'logout',
-            warnAfter: 1200000,
-            redirAfter: 1210000
-        });
     });
 
     $("#queryInfo").bind("keydown", function (e) {
