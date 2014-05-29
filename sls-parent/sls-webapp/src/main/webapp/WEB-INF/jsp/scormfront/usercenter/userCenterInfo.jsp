@@ -257,5 +257,4 @@
     function study(scormId) {
         window.open(basePath + "user/scorm/studyScorm?scormId=" + scormId);
     }
-
 </script>

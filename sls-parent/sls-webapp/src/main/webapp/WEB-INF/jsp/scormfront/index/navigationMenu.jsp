@@ -67,7 +67,6 @@
 </div>
 <div class="clearfix">
 </div>
-
 <script>
     function findScorm() {
         if ($("#queryInfo").val() != "") {

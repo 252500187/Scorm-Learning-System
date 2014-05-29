@@ -1,3 +1,4 @@
+<%--@elvariable id="allScorm" type="java.util.List"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -7,13 +8,13 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8"/>
-    <title>SLS | Collect</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <%@include file="../../../includes/common.jsp" %>
+    <%@include file="../../includes/common.jsp" %>
     <script src="<c:url value="/metronic/assets/global/plugins/pace/pace.min.js"/>" type="text/javascript"></script>
     <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-minimal.css"/>" rel="stylesheet"
           type="text/css"/>
+    <title>SLS | Register</title>
 </head>
 <body class="page-header-fixed" style="background-color: transparent">
 <div class="page-content" style="min-height:780px">
@@ -26,32 +27,29 @@
                         <div class="margin-top-10">
                             <div class="row mix-grid">
                                 <c:forEach var="scormInfo" items="${allScorm}">
-                                    <div class="col-md-3 col-sm-4 mix mix_all"
+                                    <div class="col-md-3 col-sm-4 mix mix_all category_1"
                                          style=" display: block; opacity: 1;">
                                         <div class="mix-inner">
-                                            <img src="${scormInfo.imgPath}" class="img-responsive"
+                                            <img id="${scormInfo.scormId}" class="img-responsive"
                                                  alt="${scormInfo.scormId}" style="height: 200px;width: 300px">
 
                                             <div class="mix-details">
-                                                <h4></h4>
                                                 <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                    课件名称:&nbsp;${scormInfo.scormName}
+                                                    课件名称:&nbsp;${scormInfo.scormName}</h4>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    <a class="btn btn-sm blue"
+                                                       onclick="scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
                                                 </h4>
-                                                <h4 style="margin-bottom: 0px;padding-bottom: 3px">
-                                                    收藏时间&nbsp;${scormInfo.collectDate}</h4>
-                                                <a class="mix-link" onclick="scormInfo('${scormInfo.scormId}')">
-                                                    <i class="fa fa-search"></i>&nbsp;<span class="title">课件详情</span>
-                                                </a>
-                                                <a class="mix-preview" onclick="cancelCollect('${scormInfo.scormId}')">
-                                                    <i class="fa fa-file"></i>&nbsp;<span class="title">取消收藏</span>
-                                                </a>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    <a class="btn btn-sm blue"
+                                                       onclick="scormComment('${scormInfo.scormId}')">评价课件</a>&nbsp;
+                                                </h4>
                                             </div>
                                         </div>
                                     </div>
                                 </c:forEach>
                             </div>
                         </div>
-                        <!-- END FILTER -->
                     </div>
                 </div>
             </div>
@@ -62,21 +60,26 @@
 </html>
 <script type="text/javascript">
     $(function () {
+        <c:forEach var="scormInfo" items="${allScorm}">
+        $("#" + "${scormInfo.scormId}").attr("src", basePath + "${scormInfo.imgPath}");
+        </c:forEach>
         Portfolio.init();
     })
 
-    function cancelCollect(scormId) {
-        parent.$("#alertConfirmMessage").html("确认取消收藏?");
-        parent.$("#promptButton1").click(function () {
-            $.ajax({
-                url: basePath + "user/center/cancelCollect?scormId=" + scormId,
-                type: "POST",
-                success: function () {
-                    parent.changeIframe('user/center/collectScormDo');
-                }
-            })
-        });
-        parent.$("#alertConfirm").modal("show");
+    function scormComment(scormId) {
+        parent.$(".modal-title").html("评价课件");
+        parent.$('#alertIframe').modal('show');
+        parent.$("#iframeInfo").attr("src", basePath + "user/dealScorm/review?scormId=" + scormId);
+    }
+
+    function studyInfo(scormId) {
+        parent.$(".modal-title").html("学习情况");
+        parent.$('#alertIframe').modal('show');
+        parent.$("#iframeInfo").attr("src", basePath + "user/dealScorm/userStudyInfo?scormId=" + scormId);
+    }
+
+    function study(scormId) {
+        parent.window.open(basePath + "user/scorm/studyScorm?scormId=" + scormId);
     }
 
     function scormInfo(scormId) {

@@ -24,7 +24,7 @@
         }
     </style>
 </head>
-<body class="page-header-fixed ">
+<body class="page-header-fixed" style="background-color: #ffffff">
 <div class="row">
     <div class="col-md-12">
         <div class="portlet box">

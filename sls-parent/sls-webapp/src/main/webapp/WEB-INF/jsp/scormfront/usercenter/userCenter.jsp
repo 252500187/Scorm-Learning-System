@@ -15,7 +15,7 @@
 </head>
 <body class="page-header-fixed">
 <%@include file="../index/navigationMenu.jsp" %>
-<div class="page-container">
+<div class="page-container" style="margin-top: 80px">
     <div class="page-sidebar-wrapper">
         <div class="page-sidebar navbar-collapse collapse">
             <ul class="page-sidebar-menu" data-auto-scroll="false" data-auto-speed="200">
@@ -23,13 +23,13 @@
                     <div class="sidebar-toggler"></div>
                 </li>
                 <li class="start">
-                    <a id="userCenterIndex" onclick="changeIframe('user/center/userCenterInfo')">
+                    <a id="userCenterIndex">
                         <i class="fa fa-user"></i><br/>
                         <span class="title">
                         <table>
                             <tr>
                                 <td>
-                                    &nbsp;<img id="userHeadPhoto" class="img-rounded" alt="用户头像"
+                                    &nbsp;<img id="userHeadPhoto" src="${user.imgUrl}" class="img-rounded" alt="用户头像"
                                                style="max-width:100px;max-height:100px"/>
                                 </td>
                                 <td>
@@ -41,6 +41,14 @@
                             </tr>
                         </table>
                         </span>
+                    </a>
+                </li>
+                <li>
+                    <a id="statistic" onclick="changeIframe('user/center/userCenterInfo')">
+                        <i class="fa fa-signal"></i>
+						<span class="title">
+							统计信息
+						</span>
                     </a>
                 </li>
                 <li>
@@ -80,6 +88,14 @@
                         <i class="fa fa-level-up"></i>
 						<span class="title">
 							上传的课件
+						</span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="changeIframe('user/center/evaluateScormDo')">
+                        <i class="fa fa-star"></i>
+						<span class="title">
+							评价课件
 						</span>
                     </a>
                 </li>
@@ -171,17 +187,8 @@
         Metronic.init(); // init metronic core componets
         Layout.init(); // init layout
         Tasks.initDashboardWidget();
-        $("#userHeadPhoto").attr("src", basePath + "${user.imgUrl}");
+        $("#statistic").click();
         $("#userCenterIndex").click();
-        $.sessionTimeout({
-            title: '提示',
-            message: '您已经学习很久了（20分钟），请注意保护眼睛。',
-            keepAliveUrl: '',
-            redirUrl: 'logout',
-            logoutUrl: 'logout',
-            warnAfter: 1200000,
-            redirAfter: 1210000
-        });
     })
 
     function changeIframe(src) {

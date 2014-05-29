@@ -12,181 +12,176 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
     <script src="<c:url value="/metronic/assets/global/plugins/pace/pace.min.js"/>" type="text/javascript"></script>
-    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-barber-shop.css"/>" rel="stylesheet" type="text/css"/>
+    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-barber-shop.css"/>"
+          rel="stylesheet" type="text/css"/>
 </head>
-<body class="page-header-fixed">
+<body class="page-header-fixed" style="background-color: #ffffff">
 <%@include file="../index/navigationMenu.jsp" %>
-<div class="page-container">
-<div class="page-content">
+<div class="page-container" style="margin-top: 80px">
 <div class="row">
-    <br/><br/>
-
-    <div class="col-md-8">
-        <h3 class="page-title">
-            Result
-            <small>"${info}"搜索结果</small>
-        </h3>
+<br/>
+<div class="col-md-9">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="page-title">
+                Result
+                <small>"${info}"搜索结果</small>
+            </h3>
+        </div>
     </div>
-    <div class="col-md-4">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search..." id="queryInfo">
-                        <span class="input-group-btn">
-                            <a id="query" class="btn default blue-stripe" onclick="findScorm()"><i
-                                    class="fa fa-search"></i></a></span>
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="page-breadcrumb breadcrumb">
+                <li>
+                    <i class="fa fa-home"></i>
+                    <a href="">Home</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>
+                    <a>result</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>
+                    <a>"${info}"</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-8 col-sm-8 article-block">
+            <c:if test="${fn:length(findNameScorm)<=0&&fn:length(findDescriptionScorm)<=0&&fn:length(findScoreScorm)<=0&&fn:length(findLabelScorm)<=0}">
+                <h3 class="page-title">Sorry</h3>
+
+                <h3 class="page-title">
+                    没有相关搜索结果
+                    <small>...</small>
+                </h3>
+            </c:if>
+            <c:if test="${fn:length(findNameScorm)>0}">
+                <h1>按名称</h1>
+                <c:forEach var="scorm" items="${findNameScorm}">
+                    <div class="row">
+                        <div class="col-md-4 blog-img blog-tag-data">
+                            <img src="${scorm.imgPath}" alt="img" class="img-responsive"
+                                 style="width: 300px">
+                            <ul class="list-inline">
+                                <li>
+                                    <i class="fa fa-calendar"></i>
+                                    <a>${scorm.uploadDate}</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-comments"></i>
+                                    <a>章节数:${scorm.chapterNum}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-8 blog-article">
+                            <h3><a onclick="showScormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
+
+                            <p>${scorm.description}</p>
+                            <a class="btn blue" onclick="showScormInfo('${scorm.scormId}')">
+                                详细 <i class="m-icon-swapright m-icon-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <hr>
+                </c:forEach>
+            </c:if>
+            <c:if test="${fn:length(findLabelScorm)>0}">
+                <h1>按标签</h1>
+                <c:forEach var="scorm" items="${findLabelScorm}">
+                    <div class="row">
+                        <div class="col-md-4 blog-img blog-tag-data">
+                            <img src="${scorm.imgPath}" alt="img" class="img-responsive"
+                                 style="width: 300px">
+                            <ul class="list-inline">
+                                <li>
+                                    <i class="fa fa-calendar"></i>
+                                    <a>${scorm.uploadDate}</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-comments"></i>
+                                    <a>章节数:${scorm.chapterNum}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-8 blog-article">
+                            <h3><a onclick="showScormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
+
+                            <p>${scorm.description}</p>
+                            <a class="btn blue" onclick="showScormInfo('${scorm.scormId}')">
+                                详细 <i class="m-icon-swapright m-icon-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <hr>
+                </c:forEach>
+            </c:if>
+            <c:if test="${fn:length(findDescriptionScorm)>0}">
+                <h1>按描述</h1>
+                <c:forEach var="scorm" items="${findDescriptionScorm}">
+                    <div class="row">
+                        <div class="col-md-4 blog-img blog-tag-data">
+                            <img src="${scorm.imgPath}" alt="img" class="img-responsive"
+                                 style="width: 300px">
+                            <ul class="list-inline">
+                                <li>
+                                    <i class="fa fa-calendar"></i>
+                                    <a>${scorm.uploadDate}</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-comments"></i>
+                                    <a>章节数:${scorm.chapterNum}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-8 blog-article">
+                            <h3><a onclick="showScormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
+
+                            <p>${scorm.description}</p>
+                            <a class="btn blue" onclick="showScormInfo('${scorm.scormId}')">
+                                详细 <i class="m-icon-swapright m-icon-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <hr>
+                </c:forEach>
+            </c:if>
+            <c:if test="${fn:length(findScoreScorm)>0}">
+                <h1>按评分</h1>
+                <c:forEach var="scorm" items="${findScoreScorm}">
+                    <div class="row">
+                        <div class="col-md-4 blog-img blog-tag-data">
+                            <img src="${scorm.imgPath}" alt="img" class="img-responsive"
+                                 style="width: 300px">
+                            <ul class="list-inline">
+                                <li>
+                                    <i class="fa fa-calendar"></i>
+                                    <a>${scorm.uploadDate}</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-comments"></i>
+                                    <a>章节数:${scorm.chapterNum}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-8 blog-article">
+                            <h3><a onclick="showScormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
+
+                            <p>${scorm.description}</p>
+                            <a class="btn blue" onclick="showScormInfo('${scorm.scormId}')">
+                                详细 <i class="m-icon-swapright m-icon-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <hr>
+                </c:forEach>
+            </c:if>
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        <ul class="page-breadcrumb breadcrumb">
-            <li>
-                <i class="fa fa-home"></i>
-                <a href="">Home</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a>result</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a>"${info}"</a>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="row">
-<div class="col-md-12 blog-page">
-<div class="row">
-
-<div class="col-md-1">
-</div>
-<div class="col-md-8 col-sm-8 article-block">
-    <c:if test="${fn:length(findNameScorm)<=0&&fn:length(findDescriptionScorm)<=0&&fn:length(findScoreScorm)<=0&&fn:length(findLabelScorm)<=0}">
-        <h3 class="page-title">Sorry</h3>
-
-        <h3 class="page-title">
-            没有相关搜索结果
-            <small>...</small>
-        </h3>
-    </c:if>
-    <c:if test="${fn:length(findNameScorm)>0}">
-        <h1>按名称</h1>
-        <c:forEach var="scorm" items="${findNameScorm}">
-            <div class="row">
-                <div class="col-md-4 blog-img blog-tag-data">
-                    <img src="${scorm.imgPath}" alt="img" class="img-responsive" style="width: 300px">
-                    <ul class="list-inline">
-                        <li>
-                            <i class="fa fa-calendar"></i>
-                            <a>${scorm.uploadDate}</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-comments"></i>
-                            <a>章节数:${scorm.chapterNum}</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-8 blog-article">
-                    <h3><a onclick="showScormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
-
-                    <p>${scorm.description}</p>
-                    <a class="btn blue" onclick="showScormInfo('${scorm.scormId}')">
-                        详细 <i class="m-icon-swapright m-icon-white"></i>
-                    </a>
-                </div>
-            </div>
-            <hr>
-        </c:forEach>
-    </c:if>
-    <c:if test="${fn:length(findLabelScorm)>0}">
-        <h1>按标签</h1>
-        <c:forEach var="scorm" items="${findLabelScorm}">
-            <div class="row">
-                <div class="col-md-4 blog-img blog-tag-data">
-                    <img src="${scorm.imgPath}" alt="img" class="img-responsive" style="width: 300px">
-                    <ul class="list-inline">
-                        <li>
-                            <i class="fa fa-calendar"></i>
-                            <a>${scorm.uploadDate}</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-comments"></i>
-                            <a>章节数:${scorm.chapterNum}</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-8 blog-article">
-                    <h3><a onclick="showScormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
-
-                    <p>${scorm.description}</p>
-                    <a class="btn blue" onclick="showScormInfo('${scorm.scormId}')">
-                        详细 <i class="m-icon-swapright m-icon-white"></i>
-                    </a>
-                </div>
-            </div>
-            <hr>
-        </c:forEach>
-    </c:if>
-    <c:if test="${fn:length(findDescriptionScorm)>0}">
-        <h1>按描述</h1>
-        <c:forEach var="scorm" items="${findDescriptionScorm}">
-            <div class="row">
-                <div class="col-md-4 blog-img blog-tag-data">
-                    <img src="${scorm.imgPath}" alt="img" class="img-responsive" style="width: 300px">
-                    <ul class="list-inline">
-                        <li>
-                            <i class="fa fa-calendar"></i>
-                            <a>${scorm.uploadDate}</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-comments"></i>
-                            <a>章节数:${scorm.chapterNum}</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-8 blog-article">
-                    <h3><a onclick="showScormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
-
-                    <p>${scorm.description}</p>
-                    <a class="btn blue" onclick="showScormInfo('${scorm.scormId}')">
-                        详细 <i class="m-icon-swapright m-icon-white"></i>
-                    </a>
-                </div>
-            </div>
-            <hr>
-        </c:forEach>
-    </c:if>
-    <c:if test="${fn:length(findScoreScorm)>0}">
-        <h1>按评分</h1>
-        <c:forEach var="scorm" items="${findScoreScorm}">
-            <div class="row">
-                <div class="col-md-4 blog-img blog-tag-data">
-                    <img src="${scorm.imgPath}" alt="img" class="img-responsive" style="width: 300px">
-                    <ul class="list-inline">
-                        <li>
-                            <i class="fa fa-calendar"></i>
-                            <a>${scorm.uploadDate}</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-comments"></i>
-                            <a>章节数:${scorm.chapterNum}</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-8 blog-article">
-                    <h3><a onclick="showScormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
-
-                    <p>${scorm.description}</p>
-                    <a class="btn blue" onclick="showScormInfo('${scorm.scormId}')">
-                        详细 <i class="m-icon-swapright m-icon-white"></i>
-                    </a>
-                </div>
-            </div>
-            <hr>
-        </c:forEach>
-    </c:if>
-</div>
-
 <div class="col-md-3 col-sm-4 blog-sidebar">
     <h3>推荐给你</h3>
     <hr/>
@@ -326,9 +321,6 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
 <%@include file="../index/footer.jsp" %>
 <div id="alertPrompt" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
     <div class="modal-dialog">
@@ -365,7 +357,8 @@
 </div>
 </body>
 </html>
-<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>"
+        type="text/javascript"></script>
 <script type="text/javascript">
     function showScormInfo(scormId) {
         $("#alertIframe").modal('show');

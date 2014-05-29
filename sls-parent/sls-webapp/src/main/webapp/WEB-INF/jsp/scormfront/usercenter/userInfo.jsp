@@ -26,7 +26,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: #ffffff">
 <div class="row">
     <div class="col-md-12">
         <div class="portlet box">

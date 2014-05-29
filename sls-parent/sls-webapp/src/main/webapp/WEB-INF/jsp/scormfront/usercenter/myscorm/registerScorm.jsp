@@ -42,7 +42,7 @@
                                         <div class="col-md-3 col-sm-4 mix mix_all category_1"
                                              style=" display: block; opacity: 1;">
                                             <div class="mix-inner">
-                                                <img id="${scormInfo.scormId}" class="img-responsive"
+                                                <img src="${scormInfo.imgPath}" class="img-responsive"
                                                      alt="${scormInfo.scormId}" style="height: 200px;width: 300px">
 
                                                 <div class="mix-details">
@@ -70,7 +70,7 @@
                                         <div class="col-md-3 col-sm-4 mix mix_all category_2"
                                              style=" display: block; opacity: 1;">
                                             <div class="mix-inner">
-                                                <img id="${scormInfo.scormId}" class="img-responsive"
+                                                <img src="${scormInfo.imgPath}" class="img-responsive"
                                                      alt="${scormInfo.scormId}" style="height: 200px;width: 300px">
 
                                                 <div class="mix-details">
@@ -111,9 +111,6 @@
 </html>
 <script type="text/javascript">
     $(function () {
-        <c:forEach var="scormInfo" items="${allScorm}">
-        $("#" + "${scormInfo.scormId}").attr("src", basePath + "${scormInfo.imgPath}");
-        </c:forEach>
         Portfolio.init();
     })
 

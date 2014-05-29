@@ -132,4 +132,11 @@ public class UserCenterController {
         scormService.getAllStudyNotesByScormIdAndUserId(DictConstant.VOID_VALUE, request);
         return "scormfront/usercenter/notes";
     }
+
+    //个人中心  评价课件
+    @RequestMapping(value = "evaluateScormDo", method = {RequestMethod.GET})
+    public String evaluateScormDo(HttpServletRequest request) {
+        userCenterService.getAllRegisterScormInfo(request);
+        return "scormfront/usercenter/evaluteScorm";
+    }
 }
