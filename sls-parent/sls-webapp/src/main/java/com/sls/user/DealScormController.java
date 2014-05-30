@@ -33,15 +33,6 @@ public class DealScormController {
         scormService.discussScorm(scormSummarize);
     }
 
-    @RequestMapping(value = "userStudyInfo", method = {RequestMethod.GET})
-    public String userStudyInfo(@RequestParam("scormId") String scormId, HttpServletRequest request) {
-        scormService.studyScormZtree(Integer.parseInt(scormId), request);
-        scormService.studyScorm(Integer.parseInt(scormId), request);
-        scormService.getSummarizeInfo(Integer.parseInt(scormId), request);
-        scormService.getAllStudyNotesByScormIdAndUserId(Integer.parseInt(scormId), request);
-        return "scormfront/scorm/studyInfo";
-    }
-
     @RequestMapping(value = "review", method = {RequestMethod.GET})
     public String review(@RequestParam("scormId") String scormId, HttpServletRequest request) {
         request.setAttribute("scormId", scormId);

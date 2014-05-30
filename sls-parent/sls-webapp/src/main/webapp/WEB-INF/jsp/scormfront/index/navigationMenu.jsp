@@ -8,19 +8,22 @@
 
 <div class="page-header navbar navbar-fixed-top" style="box-shadow: 1px 1px 10px #969696;">
     <div class="page-header-inner">
-        <div class="col-md-3" style="margin-top: 17px">
+        <div class="page-logo">
             <a href="">
                 <img src="img/logo/index_logo.png" alt="logo" class="logo-default"
-                     style="max-height: 40px;margin-top:4px"/>
+                     style="max-height: 40px;"/>
             </a>
         </div>
+        <div class="col-md-1"></div>
         <div class="col-md-5" style="margin: 15px;">
-            <input type="text" class="form-control" placeholder="搜索..." id="queryInfo"
-                   style="float: left;width: 400px;height: 50px;">
-            <span style="float: left;height: 50px;background-color: #4AA1FF;width: 80px;">
-                <a style="color: #fff;margin-left: 18px;font-size: 20px;line-height: 50px;cursor: pointer;text-decoration: none;"
-                   onclick="findScorm()">搜索</a>
-            </span>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="搜索..." id="queryInfo"
+                       style="width: 400px;height: 50px;"/>
+							<span class="input-group-btn" style="background-color: #4AA1FF;width: 80px;height: 50px;">
+                                 <a style="color: #fff;margin-left: 18px;font-size: 20px;line-height: 50px;cursor: pointer;text-decoration: none;"
+                                    onclick="findScorm()">搜索</a>
+							</span>
+            </div>
         </div>
         <div class="top-menu" style="margin: 17px">
             <ul class="nav navbar-nav pull-right">

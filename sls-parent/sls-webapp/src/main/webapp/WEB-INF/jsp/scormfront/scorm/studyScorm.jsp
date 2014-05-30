@@ -31,11 +31,11 @@
         }
     </style>
 </head>
-<body class="page-header-fixed page-sidebar-reversed">
+<body class="page-header-fixed" style="background-color: #ffffff">
 <%@include file="../index/navigationMenu.jsp" %>
 <div class="page-container">
-    <div class="page-content" name="protectEye">
-        <div class="row">
+
+        <div class="row" name="protectEye">
             <div class="col-md-10">
                 <iframe id="scormIframe" style="width:98%; height:800px;border:0px"
                         allowfullscreen>
@@ -70,7 +70,7 @@
         </div>
         <br/>
 
-        <div class="row">
+        <div class="row" name="protectEye">
             <div class="col-md-6">
                 <div class="portlet box green">
                     <div class="portlet-title">
@@ -220,7 +220,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
 </div>
 <%@include file="../index/footer.jsp" %>
 <div id="alertConfirm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"

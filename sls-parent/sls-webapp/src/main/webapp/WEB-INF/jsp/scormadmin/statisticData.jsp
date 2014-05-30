@@ -89,7 +89,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <h3>课件注册数目排行</h3>
+                <h3>课件上传日期排行</h3>
                 <hr/>
                 <div class="alert alert-block alert-info fade in">
                     <button type="button" class="close" data-dismiss="alert"></button>
@@ -106,7 +106,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <h3>课件注册数目排行</h3>
+                <h3>课件完成量排行</h3>
                 <hr/>
                 <div class="alert alert-block alert-info fade in">
                     <button type="button" class="close" data-dismiss="alert"></button>
@@ -123,7 +123,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <h3>课件注册数目排行</h3>
+                <h3>课件评分排行</h3>
                 <hr/>
                 <div class="alert alert-block alert-info fade in">
                     <button type="button" class="close" data-dismiss="alert"></button>

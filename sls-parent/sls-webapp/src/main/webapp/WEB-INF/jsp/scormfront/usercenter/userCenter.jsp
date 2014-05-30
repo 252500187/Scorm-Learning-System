@@ -181,7 +181,6 @@
 </div>
 </body>
 </html>
-<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>" type="text/javascript"></script>
 <script>
     $(function () {
         Metronic.init(); // init metronic core componets

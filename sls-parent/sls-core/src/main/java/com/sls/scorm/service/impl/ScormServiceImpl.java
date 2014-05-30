@@ -152,6 +152,9 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void getAllStudyNotesByScormIdAndUserId(int scormId, HttpServletRequest request) {
+        if ("".equals(LoginUserUtil.getLoginName())) {
+            return;
+        }
         User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
         int userId = user.getUserId();
         StudyNote studyNote = new StudyNote();
@@ -348,20 +351,41 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void getScormInfo(int scormId, HttpServletRequest request) {
+    public void getAllAboutScormInfo(int scormId, HttpServletRequest request) {
         Scorm scormInfo = scormDao.findScormInfoByScormId(scormId);
         if (scormInfo.getInUse() == DictConstant.NO_USE) {
             return;
         }
         scormInfo.setShowRecommendLevel(dictService.changeDictCodeToValue(scormInfo.getRecommendLevel(), DictConstant.RECOMMEND));
         request.setAttribute("scormInfo", scormInfo);
-        List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
-        request.setAttribute("scoList", scoList);
         request.setAttribute("allComments", summarizeDao.getAllCommentsByScormId(scormId));
         if (!("").equals(LoginUserUtil.getLoginName())) {
             request.setAttribute("userId", userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
         }
-        request.setAttribute("groupScorms",groupDao.getGroupScormsByScormId(scormId));
+        request.setAttribute("groupScorms", groupDao.getGroupScormsByScormId(scormId));
+
+        getScoList(request, scormId);
+    }
+
+    public void getScoList(HttpServletRequest request, int scormId) {
+        int userId = DictConstant.VOID_VALUE;
+        if (!("").equals(LoginUserUtil.getLoginName())) {
+            userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        }
+        List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, userId);
+        if (userId != DictConstant.VOID_VALUE) {
+            StringBuilder title = new StringBuilder();
+            for (Sco sco : scoList) {
+                title.append("(").append(dictService.changeDictCodeToValue(sco.getStudyState(), DictConstant.STUDY_STATE)).append(")");
+                title.append(sco.getTitle());
+                if (sco.getLastVisit() == DictConstant.LAST_VISIT) {
+                    title.append("(上次学到这里)");
+                }
+                sco.setTitle(title.toString());
+                title.setLength(0);
+            }
+        }
+        request.setAttribute("scoList", scoList);
     }
 
     @Override
@@ -488,6 +512,9 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void getSummarizeInfo(int scormId, HttpServletRequest request) {
+        if ("".equals(LoginUserUtil.getLoginName())) {
+            return;
+        }
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         ScormSummarize scormSummarize = summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormId);
         if (!("").equals(scormSummarize.getTotalTime())) {

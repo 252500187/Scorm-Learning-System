@@ -38,8 +38,10 @@ public class TouristController {
 
     @RequestMapping(value = "scormInfo", method = {RequestMethod.GET})
     public String scormInfo(@RequestParam("scormId") String scormId, HttpServletRequest request) {
-        scormService.getScormInfo(Integer.parseInt(scormId), request);
+        scormService.getAllAboutScormInfo(Integer.parseInt(scormId), request);
         scormService.getScormOperate(Integer.parseInt(scormId), request);
+        scormService.getSummarizeInfo(Integer.parseInt(scormId), request);
+        scormService.getAllStudyNotesByScormIdAndUserId(Integer.parseInt(scormId), request);
         return "scormfront/scorm/scormInfo";
     }
 

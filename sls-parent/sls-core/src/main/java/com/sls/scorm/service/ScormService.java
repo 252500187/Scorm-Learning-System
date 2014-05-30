@@ -35,7 +35,7 @@ public interface ScormService {
 
     void commitScoApiInfoByScoId(ScoInfo scoInfo, int scormId);
 
-    void getScormInfo(int scormId, HttpServletRequest request);
+    void getAllAboutScormInfo(int scormId, HttpServletRequest request);
 
     void getScormOperate(int scormId, HttpServletRequest request);
 
