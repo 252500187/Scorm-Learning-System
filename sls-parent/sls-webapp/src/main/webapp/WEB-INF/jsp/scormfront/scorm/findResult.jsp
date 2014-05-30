@@ -78,10 +78,10 @@
                             </ul>
                         </div>
                         <div class="col-md-8 blog-article">
-                            <h3><a onclick="showScormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
+                            <h3><a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
 
                             <p>${scorm.description}</p>
-                            <a class="btn blue" onclick="showScormInfo('${scorm.scormId}')">
+                            <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">
                                 详细 <i class="m-icon-swapright m-icon-white"></i>
                             </a>
                         </div>
@@ -108,10 +108,10 @@
                             </ul>
                         </div>
                         <div class="col-md-8 blog-article">
-                            <h3><a onclick="showScormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
+                            <h3><a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
 
                             <p>${scorm.description}</p>
-                            <a class="btn blue" onclick="showScormInfo('${scorm.scormId}')">
+                            <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">
                                 详细 <i class="m-icon-swapright m-icon-white"></i>
                             </a>
                         </div>
@@ -138,10 +138,10 @@
                             </ul>
                         </div>
                         <div class="col-md-8 blog-article">
-                            <h3><a onclick="showScormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
+                            <h3><a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
 
                             <p>${scorm.description}</p>
-                            <a class="btn blue" onclick="showScormInfo('${scorm.scormId}')">
+                            <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">
                                 详细 <i class="m-icon-swapright m-icon-white"></i>
                             </a>
                         </div>
@@ -168,10 +168,10 @@
                             </ul>
                         </div>
                         <div class="col-md-8 blog-article">
-                            <h3><a onclick="showScormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
+                            <h3><a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
 
                             <p>${scorm.description}</p>
-                            <a class="btn blue" onclick="showScormInfo('${scorm.scormId}')">
+                            <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">
                                 详细 <i class="m-icon-swapright m-icon-white"></i>
                             </a>
                         </div>
@@ -192,7 +192,7 @@
     </c:if>
     <div class="top-news">
         <c:if test="${fn:length(recommendScorm)>0}">
-            <a onclick="showScormInfo('${recommendScorm[0].scormId}')" class="btn red">
+            <a onclick="scormInfo('${recommendScorm[0].scormId}')" class="btn red">
                <span>
                     <c:if test="${recommendScorm[0].showRecommendLevel!=''}">
                         <img src="${recommendScorm[0].showRecommendLevel}"
@@ -206,7 +206,7 @@
             </a>
         </c:if>
         <c:if test="${recommendScorm[1]!=null}">
-            <a onclick="showScormInfo('${recommendScorm[1].scormId}')" class="btn green">
+            <a onclick="scormInfo('${recommendScorm[1].scormId}')" class="btn green">
                 <span>
                     <c:if test="${recommendScorm[1].showRecommendLevel!=''}">
                         <img src="${recommendScorm[1].showRecommendLevel}"
@@ -220,7 +220,7 @@
             </a>
         </c:if>
         <c:if test="${recommendScorm[2]!=null}">
-            <a onclick="showScormInfo('${recommendScorm[2].scormId}')" class="btn blue">
+            <a onclick="scormInfo('${recommendScorm[2].scormId}')" class="btn blue">
                 <span>
                     <c:if test="${recommendScorm[2].showRecommendLevel!=''}">
                         <img src="${recommendScorm[2].showRecommendLevel}"
@@ -234,7 +234,7 @@
             </a>
         </c:if>
         <c:if test="${recommendScorm[3]!=null}">
-            <a onclick="showScormInfo('${recommendScorm[3].scormId}')" class="btn yellow">
+            <a onclick="scormInfo('${recommendScorm[3].scormId}')" class="btn yellow">
                 <span>
                     <c:if test="${recommendScorm[3].showRecommendLevel!=''}">
                         <img src="${recommendScorm[3].showRecommendLevel}"
@@ -248,7 +248,7 @@
             </a>
         </c:if>
         <c:if test="${recommendScorm[4]!=null}">
-            <a onclick="showScormInfo('${recommendScorm[4].scormId}')" class="btn purple">
+            <a onclick="scormInfo('${recommendScorm[4].scormId}')" class="btn purple">
                 <span>
                     <c:if test="${recommendScorm[4].showRecommendLevel!=''}">
                         <img src="${recommendScorm[4].showRecommendLevel}"
@@ -305,7 +305,7 @@
         <c:forEach var="scorm" items="${registerScorm}">
             <div class="blog-twitter-block">
                 <i class="fa fa-book blog-twiiter-icon"></i>
-                <a onclick="showScormInfo('${scorm.scormId}')">${scorm.scormName}</a>
+                <a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a>
                 <a onclick="study('${scorm.scormId}')">
                     <em>继续</em>
                 </a>
@@ -360,12 +360,6 @@
 <script src="<c:url value="/metronic/assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>"
         type="text/javascript"></script>
 <script type="text/javascript">
-    function showScormInfo(scormId) {
-        $("#alertIframe").modal('show');
-        $(".modal-title").html("课件信息");
-        $("#iframeInfo").attr("src", "tourist/scormInfo?scormId=" + scormId);
-    }
-
     function findScorm() {
         if ($("#queryInfo").val() != "") {
             window.location.href = basePath + "tourist/findScorm?queryInfo=" + $("#queryInfo").val();

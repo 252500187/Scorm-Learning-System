@@ -129,10 +129,4 @@
     function study(scormId) {
         parent.window.open(basePath + "user/scorm/studyScorm?scormId=" + scormId);
     }
-
-    function scormInfo(scormId) {
-        parent.$(".modal-title").html("课件信息");
-        parent.$('#alertIframe').modal('show');
-        parent.$("#iframeInfo").attr("src", "tourist/scormInfo?scormId=" + scormId);
-    }
 </script>

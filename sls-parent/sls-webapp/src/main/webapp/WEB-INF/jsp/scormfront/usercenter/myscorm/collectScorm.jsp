@@ -78,10 +78,4 @@
         });
         parent.$("#alertConfirm").modal("show");
     }
-
-    function scormInfo(scormId) {
-        parent.$(".modal-title").html("课件信息");
-        parent.$('#alertIframe').modal('show');
-        parent.$("#iframeInfo").attr("src", "tourist/scormInfo?scormId=" + scormId);
-    }
 </script>

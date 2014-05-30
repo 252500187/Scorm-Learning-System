@@ -42,7 +42,7 @@
                          style=" display: block; opacity: 1;width: 300px;">
                         <div>
                             <div class="thumbnail">
-                                <a onclick="showScormInfo('${scorm.scormId}')">
+                                <a onclick="scormInfo('${scorm.scormId}')">
                                     <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
                                 </a>
                             </div>
@@ -58,7 +58,7 @@
                          style=" display: block; opacity: 1;width: 300px;">
                         <div>
                             <div class="thumbnail">
-                                <a onclick="showScormInfo('${scorm.scormId}')">
+                                <a onclick="scormInfo('${scorm.scormId}')">
                                     <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
                                 </a>
                             </div>
@@ -74,7 +74,7 @@
                          style=" display: block; opacity: 1;width: 300px;">
                         <div>
                             <div class="thumbnail">
-                                <a onclick="showScormInfo('${scorm.scormId}')">
+                                <a onclick="scormInfo('${scorm.scormId}')">
                                     <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
                                 </a>
                             </div>
@@ -90,7 +90,7 @@
                          style=" display: block; opacity: 1;width: 300px;">
                         <div>
                             <div class="thumbnail">
-                                <a onclick="showScormInfo('${scorm.scormId}')">
+                                <a onclick="scormInfo('${scorm.scormId}')">
                                     <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
                                 </a>
                             </div>
@@ -203,12 +203,6 @@
 <script src="<c:url value="/metronic/assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>"
         type="text/javascript"></script>
 <script type="text/javascript">
-    function showScormInfo(scormId) {
-        $("#alertIframe").modal('show');
-        $(".modal-title").html("课件信息");
-        $("#iframeInfo").attr("src", "tourist/scormInfo?scormId=" + scormId);
-    }
-
     function findByLabel(label) {
         window.open(basePath + "tourist/findScorm?queryInfo=" + label);
     }
@@ -217,9 +211,6 @@
         Metronic.init();
         Layout.init();
         Portfolio.init();
-        var width = document.documentElement.clientWidth;
-        $("#indexCenterImg").css("width", width * 5 / 12 + "px");
-        $("#recommend").click();
     });
 </script>
 

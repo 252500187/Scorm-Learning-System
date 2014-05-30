@@ -91,4 +91,8 @@
             }
         });
     })
+
+    function scormInfo(scormId) {
+        top.window.open(basePath + "tourist/scormInfo?scormId=" + scormId);
+    }
 </script>
