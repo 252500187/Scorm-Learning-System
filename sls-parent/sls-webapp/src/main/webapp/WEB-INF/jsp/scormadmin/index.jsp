@@ -13,14 +13,12 @@
     <title>SCORM LEARNING OF SEEK</title>
     <%@include file="../includes/adminCommon.jsp" %>
 </head>
-<body>
+<body style="overflow: hidden;">
 <div class="container-fluid" style="padding: 0">
     <div class="row-fluid">
         <div class="row" style="margin-left: 0">
             <div class="span12">
-                <%--<div style="padding: 0 20px; height:70px; background:url('img/defaultImg/userDefaultImg.jpg') repeat-x scroll 0px 0px;">--%>
                 <img src="img/logo/logo.gif"/>
-                <%--</div>--%>
             </div>
         </div>
         <div class="row-fluid">
@@ -37,7 +35,8 @@
                     </li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listAuditScormInfoDo')">课件管理</a>
                     </li>
-                    <li class="pull-right"><a data-toggle="tab" onclick="window.location.href='logout'">退出</a>
+                    <li class="pull-right"><a data-toggle="tab" onclick="window.location.href='logout'">退出</a></li>
+                    <li class="pull-right"><a data-toggle="tab" onclick="">修改密码</a></li>
                 </ul>
             </div>
         </div>

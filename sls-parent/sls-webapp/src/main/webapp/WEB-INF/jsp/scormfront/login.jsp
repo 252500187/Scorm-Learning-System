@@ -30,8 +30,7 @@
 
         <div class="alert alert-info display-hide">
             <button class="close" data-close="alert"></button>
-			<span>
-			注册成功！ </span>
+			<span>注册成功！</span>
         </div>
 
         <div class="form-group">
@@ -40,7 +39,7 @@
             <div class="input-icon">
                 <i class="fa fa-user"></i>
                 <input class="form-control placeholder-no-fix" type="text" placeholder="输入帐号"
-                       id="loginName" name="loginName" value="admin"/>
+                       id="loginName" name="loginName"/>
             </div>
         </div>
         <div class="form-group">
@@ -49,7 +48,7 @@
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
                 <input class="form-control placeholder-no-fix" type="password" placeholder="输入密码"
-                       id="password" name="password" value="admin"/>
+                       id="password" name="password"/>
             </div>
         </div>
         <div class="form-group">

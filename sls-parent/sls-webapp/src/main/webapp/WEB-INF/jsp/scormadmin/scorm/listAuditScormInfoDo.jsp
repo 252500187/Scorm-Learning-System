@@ -44,7 +44,7 @@
                     {field: 'totalTime', title: '观看总时间', sortable: true, align: 'center', width: 100},
                     {field: 'registerSum', title: '注册人数', sortable: true, align: 'center', width: 100},
                     {field: 'score', title: '评分', sortable: true, align: 'center', width: 100},
-                    {field: 'operate', title: '操作', align: 'center', width: 100}
+                    {field: 'operate', title: '操作', align: 'center', width: 200}
                 ]
             ],
             sortName: "",
@@ -78,7 +78,9 @@
 
     function queryFormat(temp) {
         for (var i in temp) {
-            temp[i].operate = "<a onclick='scormInfo(\"" + temp[i].scormId + "\")'>查看</a>";
+            temp[i].operate = "<a onclick='scormInfo(\"" + temp[i].scormId + "\")'>查看</a>&nbsp;&nbsp;" +
+                    "<a onclick=''>注册用户</a>&nbsp;&nbsp;" +
+                    "<a onclick=''>课件评论</a>";
         }
         return temp;
     }
