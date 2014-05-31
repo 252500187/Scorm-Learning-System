@@ -28,10 +28,10 @@
 <%--课件基本信息--%>
 <div class="row">
     <div class="col-md-5">
-        <img style="width: 300px" src="img/others/flag_top.png" alt=""/><br/>
+        <img style="width: 300px" src="img/scormInfo/flag_top.png" alt=""/><br/>
         <img id="scormImg" src="${scormInfo.imgPath}" class="img-polaroid"
              style="width: 300px;height: 200px" alt=""/><br/>
-        <img style="width: 300px" src="img/others/flag_center.png" alt=""/>
+        <img style="width: 300px" src="img/scormInfo/flag_center.png" alt=""/>
     </div>
     <div class="col-md-7">
         <h3 class="caption-sidebar">

@@ -12,7 +12,7 @@
     <title>SLS | Notes</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <%@include file="../../includes/common.jsp" %>
+    <%@include file="../../../includes/common.jsp" %>
     <script src="<c:url value="/metronic/assets/global/plugins/pace/pace.min.js"/>" type="text/javascript"></script>
     <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-minimal.css"/>" rel="stylesheet"
           type="text/css"/>
@@ -77,6 +77,8 @@
                                      src="${noteList[status.index].imgPath}" alt=""/>
                             </c:otherwise>
                         </c:choose>
+                        <br/>
+                        <a onclick="">修改</a>&nbsp;&nbsp;<a onclick="">删除</a>
                     </div>
                     <div class="bb-custom-side">
                         <c:choose>
@@ -88,6 +90,7 @@
                                      src="${noteList[status.index+1].imgPath}" alt=""/>
                             </c:otherwise>
                         </c:choose>
+                        <a onclick="">修改</a>&nbsp;&nbsp;<a onclick="">删除</a>
                     </div>
                 </div>
             </c:forEach>

@@ -46,8 +46,7 @@ public class UserCenterServiceImpl implements UserCenterService {
     @Override
     public void getAllRegisterScormInfo(HttpServletRequest request) {
         List<User> userList = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName());
-        User user = userList.get(0);
-        List<Scorm> scormList = scormDao.getAllRegisterScormInfoByUserId(user.getUserId());
+        List<Scorm> scormList = scormDao.getAllRegisterScormInfoByUserId(userList.get(0).getUserId());
         request.setAttribute("allScorm", scormList);
     }
 

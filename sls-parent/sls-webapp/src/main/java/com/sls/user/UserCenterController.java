@@ -127,11 +127,24 @@ public class UserCenterController {
     }
 
     //个人中心  笔记本
-    @RequestMapping(value = "notesDo", method = {RequestMethod.GET})
-    public String notesDo(HttpServletRequest request) {
-        scormService.getAllStudyNotesByScormIdAndUserId(DictConstant.VOID_VALUE, request);
-        return "scormfront/usercenter/notes";
+    @RequestMapping(value = "scormNotesDo", method = {RequestMethod.GET})
+    public String scormNotesDo(HttpServletRequest request) {
+        userCenterService.getAllRegisterScormInfo(request);
+        return "scormfront/usercenter/note/scormNotes";
     }
+
+    @RequestMapping(value = "notesDo", method = {RequestMethod.GET})
+    public String notesDo(HttpServletRequest request, @RequestParam("scormId") String scormId) {
+        scormService.getAllStudyNotesByScormIdAndUserId(Integer.parseInt(scormId), request);
+        return "scormfront/usercenter/note/notes";
+    }
+
+    @RequestMapping(value = "addNote", method = {RequestMethod.GET})
+    public String addNote(HttpServletRequest request) {
+        userCenterService.getAllRegisterScormInfo(request);
+        return "scormfront/usercenter/note/addNote";
+    }
+
 
     //个人中心  评价课件
     @RequestMapping(value = "evaluateScormDo", method = {RequestMethod.GET})

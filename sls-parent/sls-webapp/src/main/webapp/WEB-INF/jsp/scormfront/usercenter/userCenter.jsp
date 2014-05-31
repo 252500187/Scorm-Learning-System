@@ -100,7 +100,15 @@
                     </a>
                 </li>
                 <li class="last ">
-                    <a onclick="changeNoteIframe('user/center/notesDo')">
+                    <a onclick="changeIframe('user/center/addNote')">
+                        <i class="fa fa-plus"></i>
+						<span class="title">
+							添加笔记
+						</span>
+                    </a>
+                </li>
+                <li class="last ">
+                    <a onclick="changeIframe('user/center/scormNotesDo')">
                         <i class="fa fa-book"></i>
 						<span class="title">
 							我的笔记本
@@ -200,11 +208,6 @@
 
     function changeIframe(src) {
         $("#iframe").attr("src", src);
-    }
-
-    function changeNoteIframe(src) {
-        $("#iframe").attr("src", src);
-        $("#maskNotes").modal("show");
     }
 
     $('ul.page-sidebar-menu ').on('click', ' li > a', function (e) {
