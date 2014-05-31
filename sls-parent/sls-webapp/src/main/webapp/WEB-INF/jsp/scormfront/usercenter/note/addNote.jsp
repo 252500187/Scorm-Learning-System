@@ -37,7 +37,7 @@
 													选择图片 </span>
 													<span class="fileinput-exists">
 													换一张 </span>
-                                                    <input type="file" name="upImg" id="upImg"/>
+                                                    <input type="file" name="noteImg" id="noteImg"/>
 													</span>
                                         <a href="#" class="btn red fileinput-exists" data-dismiss="fileinput">
                                             移除 </a>
@@ -55,7 +55,7 @@
 
                             <div class="col-md-3">
                                 <textarea class="form-control"
-                                          name="note" value=""/></textarea>
+                                          id="note" name="note" value=""/></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -71,11 +71,11 @@
                             <label class="control-label col-md-2">课件</label>
 
                             <div class="col-md-3">
-                                <select id="groupId" class="form-control input-medium select2me"
+                                <select id="scormId" class="form-control input-medium select2me"
                                         data-placeholder="选择...">
                                     <option id="voidScorm" value=""></option>
                                     <c:forEach var="scorm" items="${allScorm}">
-                                        <option value="${scorm.scormName}">${scorm.scormName}</option>
+                                        <option value="${scorm.scormId}">${scorm.scormName}</option>
                                     </c:forEach>
                                 </select>
                             </div>
@@ -101,10 +101,14 @@
 </body>
 </html>
 <script>
-    var isScorm = "";
+    var isScorm = "true";
     jQuery(document).ready(function () {
         Metronic.init();
         Layout.init();
+        if ("${result}" != "") {
+            parent.$("#alertPromptMessage").html("添加成功");
+            parent.$("#alertPrompt").modal("show");
+        }
         $("#isScorm").click(function () {
             if ($("#isScorm").attr("checked")) {
                 isScorm = "true";
@@ -126,31 +130,39 @@
     });
 
     $('#fileGetUp').validate({
-                errorElement: 'span',
-                errorClass: 'help-block',
-                focusInvalid: false,
-                rules: {
-                    upImg: {
-                        isImg: true
-                    }
-                },
-                highlight: function (element) {
-                    $(element).closest('.form-group').addClass('has-error');
-                },
-                success: function (label) {
-                    label.closest('.form-group').removeClass('has-error');
-                    label.remove();
-                },
-                errorPlacement: function (error, element) {
-                    if (element.attr("name") == "upImg" || element.attr("name") == "upScorm") {
-                        error.insertAfter(element.parent().parent());
-                    } else {
-                        error.insertAfter(element);
-                    }
-                },
-                submitHandler: function () {
-
-                }
+        errorElement: 'span',
+        errorClass: 'help-block',
+        focusInvalid: false,
+        rules: {
+            upImg: {
+                isImg: true
             }
-    );
+        },
+        highlight: function (element) {
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        success: function (label) {
+            label.closest('.form-group').removeClass('has-error');
+            label.remove();
+        },
+        errorPlacement: function (error, element) {
+            if (element.attr("name") == "upImg" || element.attr("name") == "upScorm") {
+                error.insertAfter(element.parent().parent());
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function () {
+            var scormId = $("#scormId").val();
+            var haveImg = "";
+            if (isScorm == "" || scormId == "") {
+                scormId = "-1";
+            }
+            if ($("#noteImg").val() != "") {
+                haveImg = "true";
+            }
+            $("#fileGetUp").attr("action",
+                    basePath + "user/scorm/userCenterUpNote?scormId=" + scormId + "&note=" + $("#note").val().trim() + "&haveImg=" + haveImg).submit();
+        }
+    });
 </script>

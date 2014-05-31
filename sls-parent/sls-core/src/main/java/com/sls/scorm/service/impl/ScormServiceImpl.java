@@ -144,6 +144,9 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void addStudyNote(StudyNote studyNote) {
+        if (("").equals(studyNote.getNote())) {
+            return;
+        }
         studyNote.setNoteType(DictConstant.TEXT_TYPE);
         studyNote.setImgPath("");
         studyNote.setDate(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));

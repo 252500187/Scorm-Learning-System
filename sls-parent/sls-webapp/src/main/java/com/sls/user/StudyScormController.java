@@ -4,6 +4,7 @@ import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.ScormSummarize;
 import com.sls.scorm.entity.StudyNote;
 import com.sls.scorm.service.ScormService;
+import com.sls.user.service.UserCenterService;
 import com.sls.util.DictConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,9 @@ public class StudyScormController {
 
     @Autowired
     private ScormService scormService;
+
+    @Autowired
+    private UserCenterService userCenterService;
 
     @RequestMapping(value = "registerScorm", method = {RequestMethod.GET})
     @ResponseBody
@@ -86,5 +90,18 @@ public class StudyScormController {
     public void upStudyImg(HttpServletRequest request, StudyNote studyNote) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
         scormService.upStudyImg(request, "noteImg", studyNote);
+    }
+
+    @RequestMapping(value = "userCenterUpNote", method = {RequestMethod.POST})
+    public String userCenterUpStudyImg(HttpServletRequest request, StudyNote studyNote, @RequestParam("haveImg") String haveImg) throws ServletException, IOException, ParserConfigurationException, SAXException,
+            XPathExpressionException {
+        studyNote.setScoId(-1);
+        if (!("").equals(haveImg)) {
+            scormService.upStudyImg(request, "noteImg", studyNote);
+        }
+        scormService.addStudyNote(studyNote);
+        userCenterService.getAllRegisterScormInfo(request);
+        request.setAttribute("result", "true");
+        return "scormfront/usercenter/note/addNote";
     }
 }
