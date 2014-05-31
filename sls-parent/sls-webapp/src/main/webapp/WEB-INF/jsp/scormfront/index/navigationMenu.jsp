@@ -27,7 +27,29 @@
         </div>
         <div class="top-menu" style="margin: 17px">
             <ul class="nav navbar-nav pull-right">
+                <li class="dropdown dropdown-extended dropdown-tasks">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                       style="font-size: 20px;"
+                       data-close-others="true">
+                        分类查看课件
+                        <i class="fa fa-angle-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <c:forEach var="label" items="${sessionScope.labels}">
+                            <li>
+                                <a onclick="findByLabel('${label.labelName}')">
+                                    <i class="fa fa-tags"></i>${label.labelName}
+                                </a>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </li>
                 <c:if test="${sessionScope.userId==null||sessionScope.userId==''}">
+                    <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
+                        <a href="" style="font-size: 20px;">
+                            <i class="fa fa-bookmark-o" style="font-size: 20px"></i>首页
+                        </a>
+                    </li>
                     <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
                         <a href="login" style="font-size: 20px;">
                             <i class="fa fa-sign-in" style="font-size: 20px"></i>登陆
@@ -44,6 +66,13 @@
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu">
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-bookmark-o"></i>首页
+                                </a>
+                            </li>
+                            <li class="divider">
+                            </li>
                             <li>
                                 <a href="user/center/userCenterDo">
                                     <i class="fa fa-user"></i> 个人中心
@@ -97,5 +126,9 @@
 
     function scormInfo(scormId) {
         top.window.open(basePath + "tourist/scormInfo?scormId=" + scormId);
+    }
+
+    function findByLabel(label) {
+        window.open(basePath + "tourist/findScorm?queryInfo=" + label);
     }
 </script>

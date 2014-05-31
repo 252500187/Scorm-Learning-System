@@ -47,7 +47,7 @@ public class LoginServiceImpl implements LoginService {
                 return "/scormadmin/index";
             }
         }
-        setIndexInfo(request);
+        setIndexInfo(request,session);
         return "/scormfront/index";
     }
 
@@ -69,7 +69,7 @@ public class LoginServiceImpl implements LoginService {
             session.setAttribute("userImg", userList.get(0).getImgUrl());
             modelView.setViewName("/scormadmin/index");
             if (userList.get(0).getRoleId() == roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_USER).getRoleId()) {
-                setIndexInfo(request);
+                setIndexInfo(request,session);
                 modelView.setViewName("/scormfront/index");
             }
         } else {
@@ -79,12 +79,12 @@ public class LoginServiceImpl implements LoginService {
         return modelView;
     }
 
-    public void setIndexInfo(HttpServletRequest request) {
+    public void setIndexInfo(HttpServletRequest request,HttpSession session) {
         request.setAttribute("scormSum", scormDao.indexFindTopScormByFieldName("register_sum",8));
         request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score",8));
         request.setAttribute("scormTime", scormDao.indexFindTopScormByFieldName("total_time",8));
         request.setAttribute("scormLevel", scormDao.indexFindTopScormByFieldName("recommend_level",8));
-        request.setAttribute("labels", labelDao.getAllLabel());
+        session.setAttribute("labels", labelDao.getAllLabel());
         request.setAttribute("latestScorms", scormDao.findLatestScorms(5));
     }
 }

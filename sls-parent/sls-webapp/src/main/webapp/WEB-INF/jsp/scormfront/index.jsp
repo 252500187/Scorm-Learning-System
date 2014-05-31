@@ -242,10 +242,6 @@
 </body>
 </html>
 <script type="text/javascript">
-    function findByLabel(label) {
-        window.open(basePath + "tourist/findScorm?queryInfo=" + label);
-    }
-
     $(function () {
         Metronic.init();
         Layout.init();
