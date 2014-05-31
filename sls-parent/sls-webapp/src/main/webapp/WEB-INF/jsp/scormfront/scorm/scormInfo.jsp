@@ -74,7 +74,13 @@
             </ul>
             <ul class="list-inline">
                 <li>标签:</li>
-                <li></li>
+                <li>
+                    <c:forEach var="label" items="${labels}">
+                        <a onclick="findByLabel('${label.labelName}')">
+                            <i class="fa fa-tags"></i>${label.labelName},
+                        </a>
+                    </c:forEach>
+                </li>
             </ul>
             <ul class="list-inline">
                 <li>简介:</li>

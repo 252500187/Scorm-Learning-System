@@ -44,6 +44,7 @@
                     {field: 'totalTime', title: '观看总时间', sortable: true, align: 'center', width: 100},
                     {field: 'registerSum', title: '注册人数', sortable: true, align: 'center', width: 100},
                     {field: 'score', title: '评分', sortable: true, align: 'center', width: 100},
+                    {field: 'recommendLevel', title: '推荐等级', sortable: true, align: 'center', width: 100},
                     {field: 'operate', title: '操作', align: 'center', width: 200}
                 ]
             ],
@@ -64,6 +65,9 @@
             case "registerSum":
                 sortColumn = "register_sum";
                 break;
+            case "recommendLevel":
+                sortColumn = "recommend_level";
+                break;
             case "":
                 sortColumn = "";
                 break;
@@ -81,6 +85,11 @@
             temp[i].operate = "<a onclick='scormInfo(\"" + temp[i].scormId + "\")'>查看</a>&nbsp;&nbsp;" +
                     "<a onclick=''>注册用户</a>&nbsp;&nbsp;" +
                     "<a onclick=''>课件评论</a>";
+            if (temp[i].recommendLevel == "6") {
+                temp[i].recommendLevel = "(首页显示)6级"
+            } else {
+                temp[i].recommendLevel += "级";
+            }
         }
         return temp;
     }

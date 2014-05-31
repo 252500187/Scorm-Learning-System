@@ -72,14 +72,14 @@
                                     <a>${scorm.uploadDate}</a>
                                 </li>
                                 <li>
-                                    <i class="fa fa-comments"></i>
+                                    <i class="fa fa-folder-open-o"></i>
                                     <a>章节数:${scorm.chapterNum}</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="col-md-8 blog-article">
                             <h3><a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
-
+                            <p>评分:${scorm.score}分</p>
                             <p>${scorm.description}</p>
                             <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">
                                 详细 <i class="m-icon-swapright m-icon-white"></i>
@@ -102,14 +102,14 @@
                                     <a>${scorm.uploadDate}</a>
                                 </li>
                                 <li>
-                                    <i class="fa fa-comments"></i>
+                                    <i class="fa fa-folder-open-o"></i>
                                     <a>章节数:${scorm.chapterNum}</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="col-md-8 blog-article">
                             <h3><a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
-
+                            <p>评分:${scorm.score}分</p>
                             <p>${scorm.description}</p>
                             <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">
                                 详细 <i class="m-icon-swapright m-icon-white"></i>
@@ -132,14 +132,14 @@
                                     <a>${scorm.uploadDate}</a>
                                 </li>
                                 <li>
-                                    <i class="fa fa-comments"></i>
+                                    <i class="fa fa-folder-open-o"></i>
                                     <a>章节数:${scorm.chapterNum}</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="col-md-8 blog-article">
                             <h3><a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
-
+                            <p>评分:${scorm.score}分</p>
                             <p>${scorm.description}</p>
                             <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">
                                 详细 <i class="m-icon-swapright m-icon-white"></i>
@@ -162,14 +162,14 @@
                                     <a>${scorm.uploadDate}</a>
                                 </li>
                                 <li>
-                                    <i class="fa fa-comments"></i>
+                                    <i class="fa fa-folder-open-o"></i>
                                     <a>章节数:${scorm.chapterNum}</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="col-md-8 blog-article">
                             <h3><a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
-
+                            <p>评分:${scorm.score}分</p>
                             <p>${scorm.description}</p>
                             <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">
                                 详细 <i class="m-icon-swapright m-icon-white"></i>

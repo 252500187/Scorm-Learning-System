@@ -36,19 +36,24 @@
                     <td>
                         课件完成率:${completeRate*100}%<br/>
                         设置课件完成方式:<br/>
-                        <button class="btn btn-success" onclick="changeCompleteWay('${completeWay1}')">浏览完成</button>
-                        <button class="btn btn-success" onclick="changeCompleteWay('${completeWay0}')">默认</button>
+                        <button class="btn btn-success" onclick="changeCompleteWay('1')">浏览完成</button>
+                        <button class="btn btn-success" onclick="changeCompleteWay('-1')">默认</button>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <button class="btn btn-primary" onclick="changLevel('${levelOne}')">1级推荐</button>
-                        <button class="btn btn-info" onclick="changLevel('${levelTwo}')">2级推荐</button>
+                        <button class="btn btn-danger" onclick="changLevel('6')">首页推荐</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn btn-primary" onclick="changLevel('1')">1级推荐</button>
+                        <button class="btn btn-info" onclick="changLevel('2')">2级推荐</button>
                         <br/>
-                        <button class="btn btn-success" onclick="changLevel('${levelThree}')">3级推荐</button>
-                        <button class="btn btn-warning" onclick="changLevel('${levelFour}')">4级推荐</button>
+                        <button class="btn btn-success" onclick="changLevel('3')">3级推荐</button>
+                        <button class="btn btn-warning" onclick="changLevel('4')">4级推荐</button>
                         <br/>
-                        <button class="btn btn-danger" onclick="changLevel('${levelFive}')">5级推荐</button>
+                        <button class="btn btn-danger" onclick="changLevel('5')">5级推荐</button>
                     </td>
                 </tr>
                 <tr>

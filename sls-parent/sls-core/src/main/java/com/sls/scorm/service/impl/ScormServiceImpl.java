@@ -359,12 +359,12 @@ public class ScormServiceImpl implements ScormService {
         }
         scormInfo.setShowRecommendLevel(dictService.changeDictCodeToValue(scormInfo.getRecommendLevel(), DictConstant.RECOMMEND));
         request.setAttribute("scormInfo", scormInfo);
+        request.setAttribute("labels", labelDao.getLabelByScormId(scormId));
         request.setAttribute("allComments", summarizeDao.getAllCommentsByScormId(scormId));
         if (!("").equals(LoginUserUtil.getLoginName())) {
             request.setAttribute("userId", userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
         }
         request.setAttribute("groupScorms", groupDao.getGroupScormsByScormId(scormId));
-
         getScoList(request, scormId);
     }
 
@@ -452,13 +452,6 @@ public class ScormServiceImpl implements ScormService {
         request.setAttribute("scoList", scoList);
         request.setAttribute("registerUsers", registerUsers);
         request.setAttribute("inUse", DictConstant.IN_USE);
-        request.setAttribute("levelOne", DictConstant.RECOMMEND_1);
-        request.setAttribute("levelTwo", DictConstant.RECOMMEND_2);
-        request.setAttribute("levelThree", DictConstant.RECOMMEND_3);
-        request.setAttribute("levelFour", DictConstant.RECOMMEND_4);
-        request.setAttribute("levelFive", DictConstant.RECOMMEND_5);
-        request.setAttribute("completeWay1", DictConstant.COMPLETE_WAY_1);
-        request.setAttribute("completeWay0", DictConstant.VOID_VALUE);
     }
 
     @Override

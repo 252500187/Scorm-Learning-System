@@ -18,74 +18,81 @@
 <div class="row">
 <div class="col-md-9">
     <div class="row">
-        <div class="col-md-6" style="padding-left: 55px">
-            <div class="news-blocks">
-                <div style="display: block;">
-                    <div>
-                        <div class="thumbnail" style="width: 450px;">
-                            <a onclick="scormInfo('${scormLevel[0].scormId}')">
-                                <img src="${scormLevel[0].imgPath}" alt="" style="width: 450px;height: 300px;">
-                            </a>
+        <c:if test="${recommendIndexScorms[0]!=null}">
+            <div class="col-md-6" style="padding-left: 55px">
+                <div class="news-blocks">
+                    <div style="display: block;">
+                        <div>
+                            <div class="thumbnail" style="width: 450px;">
+                                <a onclick="scormInfo('${recommendIndexScorms[0].scormId}')">
+                                    <img src="${recommendIndexScorms[0].imgPath}" alt=""
+                                         style="width: 450px;height: 300px;">
+                                </a>
+                            </div>
+                            <span class="span-name" style="width: 450px">${recommendIndexScorms[0].scormName}</span>
                         </div>
-                        <span class="span-name" style="width: 450px">${scormLevel[0].scormName}</span>
-                    </div>
-                    <div>
-                        <p style="height: 50px;overflow: hidden"> ${scormLevel[0].description}</p>
+                        <div>
+                            <p style="height: 50px;overflow: hidden"> ${recommendIndexScorms[0].description}</p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </c:if>
+        <div class="col-md-3">
+            <c:if test="${recommendIndexScorms[1]!=null}">
+                <div>
+                    <div class="thumbnail" style="width: 225px">
+                        <a onclick="scormInfo('${recommendIndexScorms[1].scormId}')">
+                            <img src="${recommendIndexScorms[1].imgPath}" alt="" style="width: 225px;height: 150px;">
+                        </a>
+                    </div>
+                    <span class="span-name" style="width: 225px;">${recommendIndexScorms[1].scormName}</span>
+                </div>
+                <div>
+                    <p style="height: 50px;overflow: hidden"> ${recommendIndexScorms[1].description}</p>
+                </div>
+            </c:if>
+            <c:if test="${recommendIndexScorms[2]!=null}">
+                <div>
+                    <div class="thumbnail" style="width: 225px">
+                        <a onclick="scormInfo('${recommendIndexScorms[2].scormId}')">
+                            <img src="${recommendIndexScorms[2].imgPath}" alt="" style="width: 225px;height: 150px;">
+                        </a>
+                    </div>
+                    <span class="span-name" style="width: 225px;">${recommendIndexScorms[2].scormName}</span>
+                </div>
+                <div>
+                    <p style="height: 50px;overflow: hidden"> ${recommendIndexScorms[2].description}</p>
+                </div>
+            </c:if>
         </div>
         <div class="col-md-3">
-
-            <div>
-                <div class="thumbnail" style="width: 225px">
-                    <a onclick="scormInfo('${scormScore[0].scormId}')">
-                        <img src="${scormScore[0].imgPath}" alt="" style="width: 225px;height: 150px;">
-                    </a>
+            <c:if test="${recommendIndexScorms[3]!=null}">
+                <div>
+                    <div class="thumbnail" style="width: 225px">
+                        <a onclick="scormInfo('${recommendIndexScorms[3].scormId}')">
+                            <img src="${recommendIndexScorms[3].imgPath}" alt="" style="width: 225px;height: 150px;">
+                        </a>
+                    </div>
+                    <span class="span-name" style="width: 225px;">${recommendIndexScorms[3].scormName}</span>
                 </div>
-                <span class="span-name" style="width: 225px;">${scormScore[0].scormName}</span>
-            </div>
-            <div>
-                <p style="height: 50px;overflow: hidden"> ${scormScore[0].description}</p>
-            </div>
-            <div>
-                <div class="thumbnail" style="width: 225px">
-                    <a onclick="scormInfo('${scormScore[1].scormId}')">
-                        <img src="${scormScore[1].imgPath}" alt="" style="width: 225px;height: 150px;">
-                    </a>
+                <div>
+                    <p style="height: 50px;overflow: hidden"> ${recommendIndexScorms[3].description}</p>
                 </div>
-                <span class="span-name" style="width: 225px;">${scormScore[1].scormName}</span>
-            </div>
-            <div>
-                <p style="height: 50px;overflow: hidden"> ${scormScore[1].description}</p>
-            </div>
-
-        </div>
-        <div class="col-md-3">
-
-
-            <div>
-                <div class="thumbnail" style="width: 225px">
-                    <a onclick="scormInfo('${scormScore[2].scormId}')">
-                        <img src="${scormScore[2].imgPath}" alt="" style="width: 225px;height: 150px;">
-                    </a>
+            </c:if>
+            <c:if test="${recommendIndexScorms[4]!=null}">
+                <div>
+                    <div class="thumbnail" style="width: 225px">
+                        <a onclick="scormInfo('${recommendIndexScorms[4].scormId}')">
+                            <img src="${recommendIndexScorms[4].imgPath}" alt="" style="width: 225px;height: 150px;">
+                        </a>
+                    </div>
+                    <span class="span-name" style="width: 225px;">${recommendIndexScorms[4].scormName}</span>
                 </div>
-                <span class="span-name" style="width: 225px;">${scormScore[2].scormName}</span>
-            </div>
-            <div>
-                <p style="height: 50px;overflow: hidden"> ${scormScore[2].description}</p>
-            </div>
-            <div>
-                <div class="thumbnail" style="width: 225px">
-                    <a onclick="scormInfo('${scormScore[3].scormId}')">
-                        <img src="${scormScore[3].imgPath}" alt="" style="width: 225px;height: 150px;">
-                    </a>
+                <div>
+                    <p style="height: 50px;overflow: hidden"> ${recommendIndexScorms[4].description}</p>
                 </div>
-                <span class="span-name" style="width: 225px;">${scormScore[3].scormName}</span>
-            </div>
-            <div>
-                <p style="height: 50px;overflow: hidden"> ${scormScore[3].description}</p>
-            </div>
+            </c:if>
         </div>
     </div>
     <div class="row">
@@ -191,7 +198,6 @@
             <!--begin labels-->
             <ul class="feeds">
                 <c:forEach var="latest" items="${latestScorms}">
-                    <%--<li style="background-color: #fff;">今日上传</li>--%>
                     <li style="background-color: #fff;">
                         <div class="col1">
                             <div class="cont">

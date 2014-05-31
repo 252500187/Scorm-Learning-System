@@ -49,4 +49,6 @@ public interface ScormDao {
     String findCompleteRateByScormId(int scormId);
 
     List<Scorm> findLatestScorms(int i);
+
+    List<Scorm> findRecommendIndexScorms();
 }
