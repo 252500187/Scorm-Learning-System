@@ -27,6 +27,7 @@ public class UserController {
 
     @RequestMapping(value = "adminIndexStatisticDo", method = {RequestMethod.GET})
     public String adminIndexStatisticDo(HttpServletRequest request) {
+        userService.adminIndexStatisticInfo(request);
         return "scormadmin/statisticData";
     }
 

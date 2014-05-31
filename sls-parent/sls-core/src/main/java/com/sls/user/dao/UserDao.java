@@ -45,4 +45,6 @@ public interface UserDao {
     List<Label> getPieChartsByUserId(int userId);
 
     void addScore(int score, int userId);
+
+    List<User> getRegisterUsers(int scormId);
 }

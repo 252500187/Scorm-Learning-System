@@ -4,6 +4,7 @@ public class ScormSummarize {
     private int userId;
     private int scormId;
     private int score;
+    private String registerDate;
     private String discuss;
     private String discussDate;
     private String grade;
@@ -128,5 +129,13 @@ public class ScormSummarize {
 
     public void setLoginName(String loginName) {
         this.loginName = loginName;
+    }
+
+    public String getRegisterDate() {
+        return registerDate;
+    }
+
+    public void setRegisterDate(String registerDate) {
+        this.registerDate = registerDate;
     }
 }

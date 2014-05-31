@@ -2,7 +2,9 @@ package com.sls.user.service.impl;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
+import com.sls.scorm.dao.ScormDao;
 import com.sls.scorm.dao.SummarizeDao;
+import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.entity.ScormSummarize;
 import com.sls.system.entity.Label;
 import com.sls.system.service.DictService;
@@ -41,6 +43,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private SummarizeDao summarizeDao;
+
+    @Autowired
+    private ScormDao scormDao;
 
     @Override
     public Page<User> findUserPageList(PageParameter pageParameter, User user) {
@@ -159,5 +164,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public void shieldDiscuss(int userId, int scormId) {
         summarizeDao.shieldDiscuss(userId, scormId);
+    }
+
+    @Override
+    public void adminIndexStatisticInfo(HttpServletRequest request) {
+        request.setAttribute("scormSum", scormDao.indexFindTopScormByFieldName("register_sum", 10));
+        List<Scorm> scormTimeList = scormDao.indexFindTopScormByFieldName("total_time", 10);
+        int[] splitTime;
+        for (Scorm scorm : scormTimeList) {
+            splitTime = DateUtil.splitScormTime(scorm.getTotalTime());
+            scorm.setTotalTime(splitTime[0] + "小时" + splitTime[1] + "分钟" + splitTime[2] + "秒" + splitTime[3] + "毫秒");
+        }
+        request.setAttribute("scormTime", scormTimeList);
+        request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score", 10));
+        request.setAttribute("scormLevel", scormDao.indexFindTopScormByFieldName("recommend_level", 10));
     }
 }

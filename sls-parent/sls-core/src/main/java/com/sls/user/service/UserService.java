@@ -38,5 +38,7 @@ public interface UserService {
 
     Page<ScormSummarize> findDiscussPageList(PageParameter pageParameter, ScormSummarize scormSummarize);
 
-    void shieldDiscuss(int userId,int scormId);
+    void shieldDiscuss(int userId, int scormId);
+
+    void adminIndexStatisticInfo(HttpServletRequest request);
 }

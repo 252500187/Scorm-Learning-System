@@ -26,7 +26,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" onclick="changeIframe('admin/user/adminIndexStatisticDo')">首页</a>
+                    <li class="active"><a data-toggle="tab" onclick="changeIframe('admin/user/adminIndexStatisticDo')">统计信息</a>
                     </li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllUserDo')">用户管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllDiscussDo')">评论管理</a></li>
@@ -53,6 +53,15 @@
         </div>
     </div>
 </div>
+<div id="dataEdit" closed="true" modal="true" style="overflow: hidden" closable="true">
+    <iframe style="width: 100%;height: 100%"
+            id="contentFrame"
+            name="contentFrame"
+            marginheight="0"
+            marginwidth="0"
+            frameborder="0" src=""
+            allowTransparency="true">
+    </iframe>
 </div>
 </body>
 </html>

@@ -17,8 +17,8 @@ public class SummarizeDaoImpl extends PageDao implements SummarizeDao {
 
     @Override
     public void addScormSummarize(ScormSummarize scormSummarize) {
-        String sql = "INSERT INTO luss_scorm_summarize(user_id,scorm_id,score,discuss,grade,discuss_date,complete_date,total_time,last_visit_time) " +
-                "VALUES(:userId, :scormId, :score, :discuss, :grade, :discussDate, :completeDate,:totalTime,:lastVisitTime)";
+        String sql = "INSERT INTO luss_scorm_summarize(user_id,scorm_id,register_date, score,discuss,grade,discuss_date,complete_date,total_time,last_visit_time) " +
+                "VALUES(:userId, :scormId, :registerDate, :score, :discuss, :grade, :discussDate, :completeDate,:totalTime,:lastVisitTime)";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(scormSummarize));
     }
 

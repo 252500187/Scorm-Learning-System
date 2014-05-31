@@ -162,4 +162,10 @@ public class UserDaoImpl extends PageDao implements UserDao {
         String sql = "UPDATE us_user_info SET score=score+? WHERE user_id=?";
         getJdbcTemplate().update(sql, score, userId);
     }
+
+    @Override
+    public List<User> getRegisterUsers(int scormId) {
+        String sql = "SELECT * FROM us_user_info WHERE user_id IN (SELECT user_id FROM luss_scorm_summarize WHERE scorm_id=?)";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<User>(User.class), scormId);
+    }
 }

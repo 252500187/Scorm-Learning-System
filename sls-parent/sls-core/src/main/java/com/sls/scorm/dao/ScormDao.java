@@ -22,7 +22,7 @@ public interface ScormDao {
 
     Page<Scorm> listAuditScormPageList(PageParameter pageParameter, Scorm scorm);
 
-    void changeScormInUse(int scormId, int isUse);
+    void changeScormInUse(int scormId, int isUse, String date);
 
     void changeScormRecommend(int scormId, int recommend);
 

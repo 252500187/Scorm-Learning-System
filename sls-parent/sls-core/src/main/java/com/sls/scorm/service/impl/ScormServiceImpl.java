@@ -118,6 +118,7 @@ public class ScormServiceImpl implements ScormService {
         ScormSummarize scormSummarize = new ScormSummarize();
         scormSummarize.setUserId(user.getUserId());
         scormSummarize.setScormId(scormId);
+        scormSummarize.setRegisterDate(DateUtil.getSystemDate("yyyy-MM-dd"));
         summarizeDao.addScormSummarize(scormSummarize);
         scormDao.addVisitSum(scormId);
         userDao.addScore(DictConstant.EXP_SCORE, user.getUserId());
@@ -445,9 +446,11 @@ public class ScormServiceImpl implements ScormService {
         scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
         scorm.setShowUploadUserId(userDao.findUserAllInfoById(scorm.getUploadUserId()).getUserName());
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
+        List<User> registerUsers = userDao.getRegisterUsers(scormId);
         request.setAttribute("completeRate", scormDao.findCompleteRateByScormId(scormId));
         request.setAttribute("scorm", scorm);
         request.setAttribute("scoList", scoList);
+        request.setAttribute("registerUsers", registerUsers);
         request.setAttribute("inUse", DictConstant.IN_USE);
         request.setAttribute("levelOne", DictConstant.RECOMMEND_1);
         request.setAttribute("levelTwo", DictConstant.RECOMMEND_2);
@@ -460,8 +463,15 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void changeScormInUse(int scormId, int isUse) {
-        userDao.addScore(DictConstant.EXP_SCORE, scormDao.findScormInfoByScormId(scormId).getUploadUserId());
-        scormDao.changeScormInUse(scormId, isUse);
+        String date = DateUtil.getSystemDate("yyyy-MM-dd");
+        if (isUse == DictConstant.IN_USE) {
+            if (!scormDao.findScormInfoByScormId(scormId).getPassDate().equals("")) {
+                userDao.addScore(DictConstant.EXP_SCORE, scormDao.findScormInfoByScormId(scormId).getUploadUserId());
+            }
+        } else {
+            date = "";
+        }
+        scormDao.changeScormInUse(scormId, isUse, date);
     }
 
     @Override

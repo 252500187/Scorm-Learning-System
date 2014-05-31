@@ -35,7 +35,7 @@
                 <tr>
                     <td>
                         课件完成率:${completeRate*100}%<br/>
-                        课件完成方式:<br/>
+                        设置课件完成方式:<br/>
                         <button class="btn btn-success" onclick="changeCompleteWay('${completeWay1}')">浏览完成</button>
                         <button class="btn btn-success" onclick="changeCompleteWay('${completeWay0}')">默认</button>
                     </td>
@@ -73,12 +73,22 @@
                         <td>课件名称</td>
                         <td>${scorm.scormName}</td>
                     </tr>
-                    <c:if test="${scorm.showRecommendLevel!=''}">
-                        <tr>
-                            <td>推荐等级</td>
-                            <td><img id="recommend" src="${scorm.showRecommendLevel}" width="25px" height="25px"/></td>
-                        </tr>
-                    </c:if>
+
+                    <tr>
+                        <td>推荐等级</td>
+                        <td>
+                            <c:if test="${scorm.showRecommendLevel!=''}">
+                                <img id="recommend" src="${scorm.showRecommendLevel}" width="25px" height="25px"/>
+                                ${scorm.recommendLevel}级
+                            </c:if>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>总评分</td>
+                        <td>
+                            ${scorm.score}分
+                        </td>
+                    </tr>
                     <tr>
                         <td>上传用户</td>
                         <td>${scorm.showUploadUserId}</td>
@@ -100,6 +110,23 @@
                     <tr>
                         <td>课件描述</td>
                         <td>${scorm.description}</td>
+                    </tr>
+                    <tr>
+                        <td>使用状态</td>
+                        <c:if test="${scorm.inUse==inUse}">
+                            <td>在用</td>
+                        </c:if>
+                        <c:if test="${scorm.inUse!=inUse}">
+                            <td>不在用</td>
+                        </c:if>
+                    </tr>
+                    <tr>
+                        <td>注册用户:</td>
+                        <td>
+                            <c:forEach var="user" items="${registerUsers}">
+                                <a onclick="">${user.userName}</a><br/>
+                            </c:forEach>
+                        </td>
                     </tr>
                 </table>
             </div>

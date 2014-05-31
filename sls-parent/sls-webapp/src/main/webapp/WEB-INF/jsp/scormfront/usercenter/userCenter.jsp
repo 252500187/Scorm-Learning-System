@@ -107,6 +107,14 @@
 						</span>
                     </a>
                 </li>
+                <li>
+                    <a onclick="">
+                        <i class="fa fa-calendar"></i>
+						<span class="title">
+							日程表
+						</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

@@ -21,6 +21,7 @@ public class Scorm {
     private int completeWay;
     private String completeDate;
     private String collectDate;
+    private String passDate;
 
     private int userId;
     private String labelName;
@@ -35,6 +36,7 @@ public class Scorm {
         totalTime = "";
         score = 0;
         completeWay = DictConstant.VOID_VALUE;
+        passDate = "";
     }
 
     public int getScormId() {
@@ -203,5 +205,13 @@ public class Scorm {
 
     public void setChapterNum(String chapterNum) {
         this.chapterNum = chapterNum;
+    }
+
+    public String getPassDate() {
+        return passDate;
+    }
+
+    public void setPassDate(String passDate) {
+        this.passDate = passDate;
     }
 }

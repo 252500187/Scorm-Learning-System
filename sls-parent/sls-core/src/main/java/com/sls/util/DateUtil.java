@@ -40,6 +40,13 @@ public class DateUtil {
 
     public static int[] splitScormTime(String time) {
         int[] times = new int[4];
+        if (time.equals("")) {
+            times[0] = 0;
+            times[1] = 0;
+            times[2] = 0;
+            times[3] = 0;
+            return times;
+        }
         String[] secTimes = time.split(":");
         String[] tsTime = secTimes[2].split("\\.");
         //时

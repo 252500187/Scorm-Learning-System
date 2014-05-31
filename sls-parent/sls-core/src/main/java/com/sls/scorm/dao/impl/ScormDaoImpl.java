@@ -20,8 +20,8 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
 
     @Override
     public int addScorm(Scorm scorm) {
-        String sql = "INSERT INTO ss_scorm(scorm_name,register_sum,score,recommend_level,total_time,img_path,description,upload_user_id,upload_date,in_use,complete_way) " +
-                "VALUES(:scormName,:registerSum,:score,:recommendLevel,:totalTime,:imgPath,:description,:uploadUserId,:uploadDate,:inUse,:completeWay)";
+        String sql = "INSERT INTO ss_scorm(scorm_name,register_sum,score,recommend_level,total_time,pass_date,img_path,description,upload_user_id,upload_date,in_use,complete_way) " +
+                "VALUES(:scormName,:registerSum,:score,:recommendLevel,:totalTime,:passDate,:imgPath,:description,:uploadUserId,:uploadDate,:inUse,:completeWay)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(scorm), keyHolder);
         return keyHolder.getKey().intValue();
@@ -73,9 +73,9 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
     }
 
     @Override
-    public void changeScormInUse(int scormId, int isUse) {
-        String sql = "UPDATE ss_scorm SET in_use=? WHERE scorm_id=?";
-        getJdbcTemplate().update(sql, isUse, scormId);
+    public void changeScormInUse(int scormId, int isUse, String date) {
+        String sql = "UPDATE ss_scorm SET in_use=?, pass_date=?  WHERE scorm_id=?";
+        getJdbcTemplate().update(sql, isUse, date, scormId);
     }
 
     @Override
@@ -158,7 +158,7 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
 
     @Override
     public List<Scorm> findLatestScorms(int i) {
-        String sql = "SELECT * FROM ss_scorm ORDER BY upload_date DESC LIMIT "+ i;
+        String sql = "SELECT * FROM ss_scorm ORDER BY upload_date DESC LIMIT " + i;
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class));
     }
 }

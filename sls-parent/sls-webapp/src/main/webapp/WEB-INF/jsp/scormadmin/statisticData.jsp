@@ -64,6 +64,8 @@
                         </div>
                     </div>
                     <div class="portlet-body">
+                        1.注册用户与有效用户比例<br/>
+                        2.上传课件与在用课件比例
                         <div id="chart_1_2" class="chart">
                         </div>
                     </div>
@@ -74,70 +76,82 @@
             <div class="col-md-3">
                 <h3>课件注册数目排行</h3>
                 <hr/>
-                <div class="alert alert-block alert-info fade in">
-                    <button type="button" class="close" data-dismiss="alert"></button>
-                    <h4 class="alert-heading">课件1</h4>
+                <c:forEach var="scorm" items="${scormSum}">
+                    <div class="alert alert-block alert-info fade in">
+                        <button type="button" class="close" data-dismiss="alert"></button>
+                        <h4 class="alert-heading">${scorm.scormName}</h4>
 
-                    <p>
-                        课件描述
-                    </p>
+                        <p>
+                            注册数目:${scorm.registerSum}<br/>
+                            课件描述: ${scorm.description}
+                        </p>
 
-                    <p>
-                        <a class="btn purple" href="#">
-                            详情 </a>
-                    </p>
-                </div>
+                        <p>
+                            <a class="btn purple" onclick="scormInfo('${scorm.scormId}')">
+                                详情 </a>
+                        </p>
+                    </div>
+                </c:forEach>
             </div>
             <div class="col-md-3">
-                <h3>课件上传日期排行</h3>
+                <h3>课件学习时间排行</h3>
                 <hr/>
-                <div class="alert alert-block alert-info fade in">
-                    <button type="button" class="close" data-dismiss="alert"></button>
-                    <h4 class="alert-heading">课件1</h4>
+                <c:forEach var="scorm" items="${scormTime}">
+                    <div class="alert alert-block alert-info fade in">
+                        <button type="button" class="close" data-dismiss="alert"></button>
+                        <h4 class="alert-heading">${scorm.scormName}</h4>
 
-                    <p>
-                        课件描述
-                    </p>
+                        <p>
+                            学习时间:${scorm.totalTime}<br/>
+                            课件描述: ${scorm.description}
+                        </p>
 
-                    <p>
-                        <a class="btn purple" href="#">
-                            详情 </a>
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <h3>课件完成量排行</h3>
-                <hr/>
-                <div class="alert alert-block alert-info fade in">
-                    <button type="button" class="close" data-dismiss="alert"></button>
-                    <h4 class="alert-heading">课件1</h4>
-
-                    <p>
-                        课件描述
-                    </p>
-
-                    <p>
-                        <a class="btn purple" href="#">
-                            详情 </a>
-                    </p>
-                </div>
+                        <p>
+                            <a class="btn purple" onclick="scormInfo('${scorm.scormId}')">
+                                详情 </a>
+                        </p>
+                    </div>
+                </c:forEach>
             </div>
             <div class="col-md-3">
                 <h3>课件评分排行</h3>
                 <hr/>
-                <div class="alert alert-block alert-info fade in">
-                    <button type="button" class="close" data-dismiss="alert"></button>
-                    <h4 class="alert-heading">课件1</h4>
+                <c:forEach var="scorm" items="${scormScore}">
+                    <div class="alert alert-block alert-info fade in">
+                        <button type="button" class="close" data-dismiss="alert"></button>
+                        <h4 class="alert-heading">${scorm.scormName}</h4>
 
-                    <p>
-                        课件描述
-                    </p>
+                        <p>
+                            评分:${scorm.score}<br/>
+                            课件描述: ${scorm.description}
+                        </p>
 
-                    <p>
-                        <a class="btn purple" href="#">
-                            详情 </a>
-                    </p>
-                </div>
+                        <p>
+                            <a class="btn purple" onclick="scormInfo('${scorm.scormId}')">
+                                详情 </a>
+                        </p>
+                    </div>
+                </c:forEach>
+            </div>
+            <div class="col-md-3">
+                <h3>课件推荐等级排行</h3>
+                <hr/>
+                <c:forEach var="scorm" items="${scormLevel}">
+                    <div class="alert alert-block alert-info fade in">
+                        <button type="button" class="close" data-dismiss="alert"></button>
+                        <h4 class="alert-heading">${scorm.scormName}</h4>
+
+                        <p>
+                            推荐等级:${scorm.recommendLevel}级<br/>
+                            课件描述: ${scorm.description}
+                        </p>
+
+                        <p>
+                            <a class="btn purple" onclick="scormInfo('${scorm.scormId}')">
+                                详情 </a>
+                        </p>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>
@@ -170,4 +184,17 @@
         Charts.initPieCharts(data);
         Charts.initCharts();
     });
+
+    function scormInfo(scormId) {
+        var contentFrame = parent.$("#contentFrame");
+        var dataEdit = parent.$('#dataEdit');
+        contentFrame[0].contentWindow.document.write("");
+        contentFrame.attr("src", basePath + "admin/scorm/scormInfo?scormId=" + scormId);
+        dataEdit.dialog({
+            title: '课件信息',
+            height: document.documentElement.clientHeight - 100,
+            width: document.documentElement.clientWidth - 100
+        });
+        dataEdit.dialog('open');
+    }
 </script>
