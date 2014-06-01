@@ -46,8 +46,8 @@
                 </li>
                 <c:if test="${sessionScope.userId==null||sessionScope.userId==''}">
                     <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
-                        <a href="" style="font-size: 20px;">
-                            <i class="fa fa-bookmark-o" style="font-size: 20px"></i>首页
+                        <a href="login" style="font-size: 20px;">
+                            <i class="fa fa-user" style="font-size: 20px"></i>注册
                         </a>
                     </li>
                     <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
