@@ -13,7 +13,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
 </head>
-<body class="page-header-fixed">
+<body class="page-header-fixed" style="overflow-x:hidden">
 <%@include file="../index/navigationMenu.jsp" %>
 <div class="page-container" style="margin-top: 80px">
     <div class="page-sidebar-wrapper">

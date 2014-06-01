@@ -12,7 +12,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../includes/common.jsp" %>
 </head>
-<body class="page-header-fixed" style="background-color: #ffffff">
+<body class="page-header-fixed" style="background-color: #ffffff;overflow-x:hidden">
 <%@include file="index/navigationMenu.jsp" %>
 <div class="page-container">
 <div class="row">
@@ -23,13 +23,13 @@
                 <div class="news-blocks">
                     <div style="display: block;">
                         <div>
-                            <div class="thumbnail" style="width: 450px;">
+                            <div class="thumbnail" name="firstScorm">
                                 <a onclick="scormInfo('${recommendIndexScorms[0].scormId}')">
                                     <img src="${recommendIndexScorms[0].imgPath}" alt=""
-                                         style="width: 450px;height: 300px;">
+                                         id="firstScormImg" name="firstScorm">
                                 </a>
                             </div>
-                            <span class="span-name" style="width: 450px">${recommendIndexScorms[0].scormName}</span>
+                            <span class="span-name" name="firstScorm">${recommendIndexScorms[0].scormName}</span>
                         </div>
                         <div>
                             <p style="height: 50px;overflow: hidden"> ${recommendIndexScorms[0].description}</p>
@@ -252,6 +252,9 @@
         Metronic.init();
         Layout.init();
         Portfolio.init();
+        var width = document.documentElement.clientWidth;
+        $("[name=firstScorm]").css("width", width * 3 / 8 - 50);
+        $("#firstScormImg").css("height", width / 4 - 33);
     });
 </script>
 

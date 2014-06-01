@@ -15,7 +15,7 @@
     <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-barber-shop.css"/>"
           rel="stylesheet" type="text/css"/>
 </head>
-<body class="page-header-fixed" style="background-color: #ffffff">
+<body class="page-header-fixed" style="background-color: #ffffff;overflow-x:hidden">
 <%@include file="../index/navigationMenu.jsp" %>
 <div class="page-container" style="margin-top: 80px">
 <div class="row">
