@@ -229,7 +229,7 @@
     </c:if>
 </div>
 <div class="col-md-8">
-    <c:if test="${study}">
+    <c:if test="${study&&fn:length(noteList)>0}">
     <div class="portlet">
         <div class="portlet-title sidebar-title">
             <div class="caption-sidebar">学习笔记</div>

@@ -161,6 +161,9 @@ public class ScormServiceImpl implements ScormService {
         }
         User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
         int userId = user.getUserId();
+        if (scoDao.findScosByScormIdAndUserId(scormId, userId).size() < 1) {
+            return;
+        }
         StudyNote studyNote = new StudyNote();
         studyNote.setScormId(scormId);
         studyNote.setUserId(userId);
@@ -522,6 +525,9 @@ public class ScormServiceImpl implements ScormService {
             return;
         }
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        if (scoDao.findScosByScormIdAndUserId(scormId, userId).size() < 1) {
+            return;
+        }
         ScormSummarize scormSummarize = summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormId);
         if (!("").equals(scormSummarize.getTotalTime())) {
             int[] splitTime = DateUtil.splitScormTime(scormSummarize.getTotalTime());

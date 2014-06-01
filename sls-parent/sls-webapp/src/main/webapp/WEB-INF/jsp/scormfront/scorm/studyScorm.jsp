@@ -34,56 +34,57 @@
 <body class="page-header-fixed" style="background-color: #ffffff">
 <%@include file="../index/navigationMenu.jsp" %>
 <div class="page-container" style="margin-top: 80px">
-    <div class="row" name="protectEye">
-        <div class="col-md-10">
-            <iframe id="scormIframe" style="width:100%; height:800px;border:0px"
-                    allowfullscreen>
-            </iframe>
-        </div>
-        <div class="col-md-2">
-            <div class="portlet box blue" style="margin: 10px">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-sitemap"></i>课件信息及章节
-                    </div>
+<div class="row" name="protectEye">
+    <div class="col-md-10">
+        <iframe id="scormIframe" style="width:100%; height:800px;border:0px"
+                allowfullscreen>
+        </iframe>
+    </div>
+    <div class="col-md-2">
+        <div class="portlet box blue" style="margin: 10px">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-sitemap"></i>课件信息及章节
                 </div>
-                <div class="portlet-body">
-                    <div>
-                        <a onclick="protectEye()" class="btn green" style="margin: 10px">
-                            <i class="fa fa-eye"></i>
+            </div>
+            <div class="portlet-body">
+                <div>
+                    <a onclick="protectEye()" class="btn green" style="margin: 10px">
+                        <i class="fa fa-eye"></i>
                                 <span class="title">
                                     开/关灯
                                 </span>
-                        </a><br/>
-                            <span class="title">
-                                课件名称:&nbsp;${scorm.scormName}
-                            </span>
-                    </div>
-                    <img src="${scorm.imgPath}" style="width: 100%;margin-top: 10px; margin-bottom: 10px"/>
-                    <iframe id="ztree" scrolling="no" style="width:100%; min-height:500px;border:0px;"
-                            allowfullscreen>
-                    </iframe>
+                    </a><br/>
+
+                    <div class="caption-sidebar">${scorm.scormName}</div>
                 </div>
+                <img src="${scorm.imgPath}" style="width: 100%;margin-top: 10px; margin-bottom: 10px"/>
+                <br/>
+                <hr/>
+                <iframe id="ztree" scrolling="no" style="width:100%; min-height:500px;border:0px;"
+                        allowfullscreen>
+                </iframe>
             </div>
         </div>
     </div>
-    <div class="row" name="protectEye">
-        <div class="col-md-6">
-            <div class="portlet box green">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-file-text"></i>笔记本
-                    </div>
-                </div>
-                <div class="portlet-body">
+</div>
+<div class="row" name="protectEye">
+<div class="col-md-5">
+    <div class="portlet box green">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-file-text"></i>笔记本
+            </div>
+        </div>
+        <div class="portlet-body">
 
-                    <iframe style="border: 0;display: none;" id="upImgIframe" name="upImgIframe"></iframe>
-                    <div class="chat-form">
-                        传张图片？
-                        <form target="upImgIframe" id="upImgForm" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <div class="col-md-9">
-                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+            <iframe style="border: 0;display: none;" id="upImgIframe" name="upImgIframe"></iframe>
+            <div class="chat-form">
+                传张图片？
+                <form target="upImgIframe" id="upImgForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <div class="col-md-9">
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
                                        <span class="btn default btn-file">
                                            <span class="fileinput-new">
                                                 选图
@@ -93,130 +94,180 @@
                                            </span>
                                            <input type="file" id="noteImg" name="noteImg">
                                        </span>
-                                        <span class="row fileinput-filename"></span>
-                                        <a href="#" class="close fileinput-exists" data-dismiss="fileinput"
-                                           style="float: none">
-                                        </a>
-                                    </div>
-                                </div>
+                                <span class="row fileinput-filename"></span>
+                                <a href="#" class="close fileinput-exists" data-dismiss="fileinput"
+                                   style="float: none">
+                                </a>
                             </div>
-                            <div class="btn-cont">
+                        </div>
+                    </div>
+                    <div class="btn-cont">
                                 <span class="arrow">
                                 </span>
-                                <a onclick="upStudyImg()" class="btn blue icn-only">
-                                    <i class="fa fa-check icon-white"></i>
-                                </a>
-                            </div>
-                        </form>
+                        <a onclick="upStudyImg()" class="btn blue icn-only">
+                            <i class="fa fa-check icon-white"></i>
+                        </a>
                     </div>
-                    <div class="chat-form">
-                        <div class="input-cont">
-                            <input class="form-control" type="text" placeholder="记点什么？" id="takeNotes"/>
-                        </div>
-                        <div class="btn-cont">
+                </form>
+            </div>
+            <div class="chat-form">
+                <div class="input-cont">
+                    <input class="form-control" type="text" placeholder="记点什么？" id="takeNotes"/>
+                </div>
+                <div class="btn-cont">
 									<span class="arrow">
 									</span>
-                            <a onclick="takeNote()" class="btn blue icn-only">
-                                <i class="fa fa-check icon-white"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="portlet-body" id="noteList">
-                    </div>
+                    <a onclick="takeNote()" class="btn blue icn-only">
+                        <i class="fa fa-check icon-white"></i>
+                    </a>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="portlet box yellow">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-comments"></i>评价
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <div class="alert alert-info display-hide col-md-4">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                        <strong>提示!</strong>
-
-                        <p id="result"></p>
-                    </div>
-                    <div class="alert alert-danger display-hide col-md-4">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                        <strong>提示!</strong>
-
-                        <p id="errorResult"></p>
-                    </div>
-                    <br/>
-
-                    <div class="text-center">
-                        <ul id="stars" class="list-inline">
-                            <li>评分:</li>
-                            <li name="changeStar">
-                                <i id="changeStar0" class="fa fa-star-o"></i>
-                            </li>
-                            <li name="changeStar">
-                                <i id="changeStar1" class="fa fa-star-o"></i>
-                            </li>
-                            <li name="changeStar">
-                                <i id="changeStar2" class="fa fa-star-o"></i>
-                            </li>
-                            <li name="changeStar">
-                                <i id="changeStar3" class="fa fa-star-o"></i>
-                            </li>
-                            <li name="changeStar">
-                                <i id="changeStar4" class="fa fa-star-o"></i>
-                            </li>
-                            <li>
-                                <a id="showScore">${myEvaluateScore}分</a>
-                            </li>
-                            <li>
-                                <a class="btn blue" onclick="evaluateScorm()">
-                                    评分
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="chat-form">
-                        <div class="input-cont">
-                            <input id="discuss" class="form-control" type="text" placeholder="说点什么？"/>
-                        </div>
-                        <div class="btn-cont">
-									<span class="arrow">
-									</span>
-                            <a onclick="changeDiscuss()" class="btn blue icn-only">
-                                <i class="fa fa-check icon-white"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <br/>
-
-                    <div id="chats">
-                        <ul class="chats">
-                            <span id="appendDiscuss"></span>
-                            <c:forEach var="comment" items="${allComments}">
-                                <c:if test="${comment.userId!=user.userId}">
-                                    <li class="in">
-                                </c:if>
-                                <c:if test="${comment.userId==user.userId}">
-                                    <li class="out">
-                                </c:if>
-                                <img class="avatar img-responsive" alt=""
-                                     src="${comment.imgUrl}"/>
-
-                                <div class="message">
-                                    <span class="arrow"></span>
-                                    <a class="name">${comment.userName}</a>
-                                    <span class="datetime">${comment.discussDate}</span>
-                                    <span class="body">${comment.discuss}</span>
-                                </div>
-                                </li>
-                            </c:forEach>
-                        </ul>
-                    </div>
-                </div>
+            <div class="portlet-body" id="noteList">
             </div>
         </div>
     </div>
+</div>
+<div class="col-md-5">
+    <div class="portlet box green">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-comments"></i>评价
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="alert alert-info display-hide col-md-4">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                <strong>提示!</strong>
+
+                <p id="result"></p>
+            </div>
+            <div class="alert alert-danger display-hide col-md-4">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                <strong>提示!</strong>
+
+                <p id="errorResult"></p>
+            </div>
+            <br/>
+
+            <div class="text-center">
+                <ul id="stars" class="list-inline">
+                    <li>评分:</li>
+                    <li name="changeStar">
+                        <i id="changeStar0" class="fa fa-star-o"></i>
+                    </li>
+                    <li name="changeStar">
+                        <i id="changeStar1" class="fa fa-star-o"></i>
+                    </li>
+                    <li name="changeStar">
+                        <i id="changeStar2" class="fa fa-star-o"></i>
+                    </li>
+                    <li name="changeStar">
+                        <i id="changeStar3" class="fa fa-star-o"></i>
+                    </li>
+                    <li name="changeStar">
+                        <i id="changeStar4" class="fa fa-star-o"></i>
+                    </li>
+                    <li>
+                        <a id="showScore">${myEvaluateScore}分</a>
+                    </li>
+                    <li>
+                        <a class="btn blue" onclick="evaluateScorm()">
+                            评分
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="chat-form">
+                <div class="input-cont">
+                    <input id="discuss" class="form-control" type="text" placeholder="说点什么？"/>
+                </div>
+                <div class="btn-cont">
+									<span class="arrow">
+									</span>
+                    <a onclick="changeDiscuss()" class="btn blue icn-only">
+                        <i class="fa fa-check icon-white"></i>
+                    </a>
+                </div>
+            </div>
+            <br/>
+
+            <div id="chats">
+                <ul class="chats">
+                    <span id="appendDiscuss"></span>
+                    <c:forEach var="comment" items="${allComments}">
+                        <c:if test="${comment.userId!=user.userId}">
+                            <li class="in">
+                        </c:if>
+                        <c:if test="${comment.userId==user.userId}">
+                            <li class="out">
+                        </c:if>
+                        <img class="avatar img-responsive" alt=""
+                             src="${comment.imgUrl}"/>
+
+                        <div class="message">
+                            <span class="arrow"></span>
+                            <a class="name">${comment.userName}</a>
+                            <span class="datetime">${comment.discussDate}</span>
+                            <span class="body">${comment.discuss}</span>
+                        </div>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-2">
+    <div class="portlet box blue" style="margin: 10px">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-italic"></i>学习情况
+            </div>
+        </div>
+        <div class="portlet-body">
+            <ul class="feeds">
+                <li style="background-color: #fff;">
+                    <div class="col1">
+                        <div class="cont">
+                            <ul class="list-inline">
+                                <li>完成时间:</li>
+                                <li>
+                                    <c:if test="${summarize.completeDate!=''}">
+                                        ${summarize.completeDate}
+                                    </c:if>
+                                    <c:if test="${summarize.completeDate==''}">
+                                        未完成
+                                    </c:if>
+                                </li>
+                                <br/>
+                                <li>课件成绩:</li>
+                                <li>
+                                    <c:if test="${summarize.grade!=''}">
+                                        ${summarize.grade}
+                                    </c:if>
+                                    <c:if test="${summarize.grade==''}">
+                                        无成绩
+                                    </c:if>
+                                </li>
+                                <br/>
+                                <li>学习时间:</li>
+                                <li>
+                                    <c:if test="${summarize.totalTime!=''}">
+                                        ${summarize.totalTime}
+                                    </c:if>
+                                    <c:if test="${summarize.totalTime==''}">
+                                        之前未学习
+                                    </c:if>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
 
 </div>
 <%@include file="../index/footer.jsp" %>
