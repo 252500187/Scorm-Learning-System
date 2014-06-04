@@ -129,8 +129,8 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
 
     @Override
     public List<Scorm> findRegisterScormByUserId(int userId) {
-        String sql = "SELECT * FROM ss_scorm a,luss_scorm_summarize b WHERE a.scorm_id=b.scorm_id AND user_id=?";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId);
+        String sql = "SELECT * FROM ss_scorm a,luss_scorm_summarize b WHERE a.scorm_id=b.scorm_id AND user_id=? AND a.in_use=?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId, DictConstant.IN_USE);
     }
 
     @Override
@@ -158,13 +158,13 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
 
     @Override
     public List<Scorm> findLatestScorms(int i) {
-        String sql = "SELECT * FROM ss_scorm ORDER BY upload_date DESC LIMIT " + i;
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class));
+        String sql = "SELECT * FROM ss_scorm WHERE in_use=? ORDER BY upload_date DESC LIMIT ?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), DictConstant.IN_USE, i);
     }
 
     @Override
     public List<Scorm> findRecommendIndexScorms() {
-        String sql = "SELECT * FROM ss_scorm ORDER BY recommend_level DESC";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class));
+        String sql = "SELECT * FROM ss_scorm WHERE in_use=? ORDER BY recommend_level DESC";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), DictConstant.IN_USE);
     }
 }
