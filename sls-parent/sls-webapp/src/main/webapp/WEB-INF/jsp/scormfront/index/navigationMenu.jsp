@@ -14,15 +14,14 @@
                      style="max-height: 40px;"/>
             </a>
         </div>
-        <div class="col-md-1"></div>
         <div class="col-md-5" style="margin: 15px;">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="搜索..." id="queryInfo"
                        style="width: 400px;height: 50px;"/>
-							<span class="input-group-btn" style="background-color: #4AA1FF;width: 80px;height: 50px;">
-                                 <a style="color: #fff;margin-left: 18px;font-size: 20px;line-height: 50px;cursor: pointer;text-decoration: none;"
-                                    onclick="findScorm()">搜索</a>
-							</span>
+                    <span class="input-group-btn" style="background-color: #4AA1FF;width: 80px;height: 50px;">
+                         <a style="color: #fff;margin-left: 18px;font-size: 20px;line-height: 50px;cursor: pointer;text-decoration: none;"
+                            onclick="findScorm()">搜索</a>
+                    </span>
             </div>
         </div>
         <div class="top-menu" style="margin: 17px">
@@ -57,7 +56,7 @@
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.userId!=null&&sessionScope.userId!=''}">
-                    <li class="dropdown dropdown-user">
+                    <li class="dropdown dropdown-tasks">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                            data-close-others="true">
                             <img id="userTopImg" alt="Hello" style="height: 40px;"
