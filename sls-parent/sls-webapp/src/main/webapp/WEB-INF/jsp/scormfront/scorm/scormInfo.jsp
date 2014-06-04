@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css"
           href="<c:url value="/js/common/zTree-v3.5.14/css/zTreeStyle/zTreeStyle.css"/>"/>
 </head>
-<body class="page-header-fixed" style="background-color: #ffffff">
+<body class="page-header-fixed" style="background-color: #ffffff;overflow-x:hidden">
 <%@include file="../index/navigationMenu.jsp" %>
 <div class="page-container">
 <div class="row">

@@ -31,7 +31,7 @@
         }
     </style>
 </head>
-<body class="page-header-fixed" style="background-color: #ffffff">
+<body class="page-header-fixed" style="background-color: #ffffff;overflow-x:hidden">
 <%@include file="../index/navigationMenu.jsp" %>
 <div class="page-container" style="margin-top: 80px">
 <div class="row" name="protectEye">
