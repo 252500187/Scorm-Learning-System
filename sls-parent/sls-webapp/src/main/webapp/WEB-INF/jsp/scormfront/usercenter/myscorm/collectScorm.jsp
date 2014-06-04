@@ -37,21 +37,21 @@
                                                 <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                     课件名称:&nbsp;${scormInfo.scormName}
                                                 </h4>
-                                                <h4 style="margin-bottom: 0px;padding-bottom: 3px">
-                                                    收藏时间&nbsp;${scormInfo.collectDate}</h4>
-                                                <a class="mix-link" onclick="scormInfo('${scormInfo.scormId}')">
-                                                    <i class="fa fa-search"></i>&nbsp;<span class="title">课件详情</span>
-                                                </a>
-                                                <a class="mix-preview" onclick="cancelCollect('${scormInfo.scormId}')">
-                                                    <i class="fa fa-file"></i>&nbsp;<span class="title">取消收藏</span>
-                                                </a>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    收藏时间:&nbsp;${scormInfo.collectDate}
+                                                </h4>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    <a class="btn btn-sm blue"
+                                                       onclick="top.scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
+                                                    <a class="btn btn-sm blue"
+                                                       onclick="cancelCollect('${scormInfo.scormId}')">取消收藏</a>
+                                                </h4>
                                             </div>
                                         </div>
                                     </div>
                                 </c:forEach>
                             </div>
                         </div>
-                        <!-- END FILTER -->
                     </div>
                 </div>
             </div>

@@ -34,15 +34,14 @@
                                                  alt="${scormInfo.scormId}" style="height: 200px;width: 300px">
 
                                             <div class="mix-details">
+                                                <h4></h4>
                                                 <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                     课件名称:&nbsp;${scormInfo.scormName}</h4>
                                                 <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                     <a class="btn btn-sm blue"
-                                                       onclick="scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
-                                                </h4>
-                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                       onclick="top.scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
                                                     <a class="btn btn-sm blue"
-                                                       onclick="scormComment('${scormInfo.scormId}')">评价课件</a>&nbsp;
+                                                       onclick="scormComment('${scormInfo.scormId}')">评价课件</a>
                                                 </h4>
                                             </div>
                                         </div>

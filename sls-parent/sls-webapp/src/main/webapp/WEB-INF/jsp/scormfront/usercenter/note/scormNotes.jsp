@@ -26,16 +26,15 @@
                     <div class="tab-pane active" id="tab_1">
                         <!-- BEGIN FILTER -->
                         <div class="margin-top-10">
-
                             <ul class="mix-filter">
                                 <li class="filter" data-filter="category_0" id="allNotes">
-                                    笔记本
+                                    全部笔记
                                 </li>
                                 <li class="filter" data-filter="category_1">
-                                    随时记录的笔记
+                                    碎片笔记
                                 </li>
                                 <li class="filter" data-filter="category_2">
-                                    进行中课件笔记
+                                    未完成课件笔记
                                 </li>
                                 <li class="filter" data-filter="category_3">
                                     已完成课件笔记
@@ -52,7 +51,7 @@
                                         <div class="mix-details">
                                             <br/>
                                             <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                整个笔记本</h4>
+                                                笔记本</h4>
                                             <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                 <a class="btn btn-sm blue"
                                                    onclick="openNote('-1')">打开</a>&nbsp;
@@ -70,7 +69,7 @@
                                         <div class="mix-details">
                                             <br/>
                                             <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                随时记录的笔记</h4>
+                                                碎片笔记本</h4>
                                             <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                 <a class="btn btn-sm blue"
                                                    onclick="openNote('0')">打开</a>&nbsp;
@@ -78,7 +77,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <c:forEach var="scormInfo" items="${allScorm}">
                                     <c:if test="${scormInfo.completeDate == ''}">
                                         <div class="col-md-3 col-sm-4 mix mix_all category_2"
@@ -132,7 +130,6 @@
 <script type="text/javascript">
     $(function () {
         Portfolio.init();
-        $("#allNotes").click();
     })
 
     function openNote(scormId) {

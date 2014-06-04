@@ -13,7 +13,8 @@
     <title>SLS | Register</title>
     <%@include file="../../../includes/common.jsp" %>
     <script src="<c:url value="/metronic/assets/global/plugins/pace/pace.min.js"/>" type="text/javascript"></script>
-    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-minimal.css"/>" rel="stylesheet" type="text/css"/>
+    <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-minimal.css"/>" rel="stylesheet"
+          type="text/css"/>
 </head>
 <body class="page-header-fixed" style="background-color: transparent">
 <div class="page-content" style="min-height:780px">
@@ -52,15 +53,13 @@
                                                         状态:进行中</h4>
                                                     <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                         <a class="btn btn-sm blue"
-                                                           onclick="scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
-                                                        <a class="btn btn-sm blue"
-                                                           onclick="studyInfo('${scormInfo.scormId}')">学习情况</a>
+                                                           onclick="study('${scormInfo.scormId}')">学习</a>
                                                     </h4>
                                                     <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                         <a class="btn btn-sm blue"
-                                                           onclick="scormComment('${scormInfo.scormId}')">评价课件</a>&nbsp;
+                                                           onclick="top.scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
                                                         <a class="btn btn-sm blue"
-                                                           onclick="study('${scormInfo.scormId}')">进行学习</a>
+                                                           onclick="scormComment('${scormInfo.scormId}')">评价课件</a>
                                                     </h4>
                                                 </div>
                                             </div>
@@ -82,15 +81,13 @@
                                                         完成日期:&nbsp;${scormInfo.completeDate}</h4>
                                                     <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                         <a class="btn btn-sm blue"
-                                                           onclick="scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
-                                                        <a class="btn btn-sm blue"
-                                                           onclick="studyInfo('${scormInfo.scormId}')">学习情况</a>
+                                                           onclick="study('${scormInfo.scormId}')">学习</a>
                                                     </h4>
                                                     <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                         <a class="btn btn-sm blue"
-                                                           onclick="scormComment('${scormInfo.scormId}')">评价课件</a>&nbsp;
+                                                           onclick="top.scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
                                                         <a class="btn btn-sm blue"
-                                                           onclick="study('${scormInfo.scormId}')">进行学习</a>
+                                                           onclick="scormComment('${scormInfo.scormId}')">评价课件</a>
                                                     </h4>
                                                 </div>
                                             </div>
@@ -120,11 +117,6 @@
         parent.$("#iframeInfo").attr("src", basePath + "user/dealScorm/review?scormId=" + scormId);
     }
 
-    function studyInfo(scormId) {
-        parent.$(".modal-title").html("学习情况");
-        parent.$('#alertIframe').modal('show');
-        parent.$("#iframeInfo").attr("src", basePath + "user/dealScorm/userStudyInfo?scormId=" + scormId);
-    }
 
     function study(scormId) {
         parent.window.open(basePath + "user/scorm/studyScorm?scormId=" + scormId);

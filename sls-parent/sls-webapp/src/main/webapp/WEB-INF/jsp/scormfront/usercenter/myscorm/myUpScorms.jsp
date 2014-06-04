@@ -60,8 +60,6 @@
                                             </div>
                                         </div>
                                     </c:if>
-                                </c:forEach>
-                                <c:forEach var="scormInfo" items="${allScorm}">
                                     <c:if test="${scormInfo.inUse!=1}">
                                         <div class="col-md-3 col-sm-4 mix mix_all category_2"
                                              style=" display: block; opacity: 1;">
