@@ -67,11 +67,6 @@
                                             移除 </a>
                                     </div>
                                 </div>
-                                <div class="clearfix margin-top-10">
-												<span class="label label-danger">
-												提示! </span>
-                                    预览只支持 IE10+, FF3.6+, Safari6.0+, Chrome6.0+ and Opera11.1+.
-                                </div>
                             </div>
                         </div>
                         <div class="form-group">
