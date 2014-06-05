@@ -161,9 +161,6 @@ public class ScormServiceImpl implements ScormService {
         }
         User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
         int userId = user.getUserId();
-        if (scoDao.findScosByScormIdAndUserId(scormId, userId).size() < 1) {
-            return;
-        }
         StudyNote studyNote = new StudyNote();
         studyNote.setScormId(scormId);
         studyNote.setUserId(userId);

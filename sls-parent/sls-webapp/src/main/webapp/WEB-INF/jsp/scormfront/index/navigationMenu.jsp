@@ -58,7 +58,7 @@
                 <c:if test="${sessionScope.userId!=null&&sessionScope.userId!=''}">
                     <li class="dropdown dropdown-tasks">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                           data-close-others="true">
+                           data-close-others="true" style="font-size: 20px;padding: 10px">
                             <img id="userTopImg" alt="Hello" style="height: 40px;"
                                  src="${sessionScope.userImg}"/>
                             <span class="username" id="userTopName">${sessionScope.userName}</span>

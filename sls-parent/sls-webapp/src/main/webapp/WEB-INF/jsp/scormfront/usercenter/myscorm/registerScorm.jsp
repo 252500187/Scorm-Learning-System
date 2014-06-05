@@ -46,7 +46,7 @@
                                                 <img src="${scormInfo.imgPath}" class="img-responsive"
                                                      alt="${scormInfo.scormId}" style="height: 200px;width: 300px">
 
-                                                <div class="mix-details">
+                                                <div class="mix-details" style="height: 200px;width: 300px">
                                                     <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                         课件名称:&nbsp;${scormInfo.scormName}</h4>
                                                     <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">

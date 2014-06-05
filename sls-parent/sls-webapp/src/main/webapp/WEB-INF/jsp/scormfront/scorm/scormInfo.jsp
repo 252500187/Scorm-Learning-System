@@ -109,6 +109,11 @@
                             <div class="col1">
                                 <div class="cont">
                                     <ul class="list-inline">
+                                        <li>注册日期:</li>
+                                        <li>
+                                            ${summarize.registerDate}
+                                        </li>
+                                        <br/>
                                         <li>完成时间:</li>
                                         <li>
                                             <c:if test="${summarize.completeDate!=''}">
@@ -139,7 +144,7 @@
                                             </c:if>
                                         </li>
                                         <br/>
-                                        <li>评分:</li>
+                                        <li>我的评分:</li>
                                         <li>
                                             <c:if test="${summarize.score!='0'}">
                                                 ${summarize.score}
@@ -149,7 +154,7 @@
                                             </c:if>
                                         </li>
                                         <br/>
-                                        <li>评论:</li>
+                                        <li>评论日期:</li>
                                         <li>
                                             <c:if test="${summarize.discussDate!=''}">
                                                 ${summarize.discussDate}
@@ -159,7 +164,7 @@
                                             </c:if>
                                         </li>
                                         <br/>
-                                        <li>内容:</li>
+                                        <li>评论内容:</li>
                                         <li>${summarize.discuss}</li>
                                         <li>
                                             <c:if test="${summarize.discuss!=''}">

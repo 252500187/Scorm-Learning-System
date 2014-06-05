@@ -48,7 +48,7 @@
                                         <img src="img/note/1.jpg" class="img-responsive"
                                              alt="笔记本" style="height: 200px;width: 300px">
 
-                                        <div class="mix-details">
+                                        <div class="mix-details" style="height: 200px;width: 300px">
                                             <br/>
                                             <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                 笔记本</h4>

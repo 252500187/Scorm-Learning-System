@@ -36,7 +36,7 @@
 <div class="page-container" style="margin-top: 80px">
 <div class="row" name="protectEye">
     <div class="col-md-10">
-        <iframe id="scormIframe" style="width:100%; height:800px;border:0px"
+        <iframe id="scormIframe" style="width:100%; height:800px;border:0px;margin-top: 10px"
                 allowfullscreen>
         </iframe>
     </div>
