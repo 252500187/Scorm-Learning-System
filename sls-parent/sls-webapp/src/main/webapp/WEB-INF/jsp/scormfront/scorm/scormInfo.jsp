@@ -140,7 +140,7 @@
                                                 ${summarize.totalTime}
                                             </c:if>
                                             <c:if test="${summarize.totalTime==''}">
-                                                未学习
+                                                未记录
                                             </c:if>
                                         </li>
                                         <br/>
