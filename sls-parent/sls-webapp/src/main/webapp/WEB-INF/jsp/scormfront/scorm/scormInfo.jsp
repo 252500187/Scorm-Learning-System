@@ -48,7 +48,7 @@
             <c:if test="${study}">
                 <a class="btn green m-icon" onclick="study('${scormInfo.scormId}')">
                     进行学习
-                </a><br/>
+                </a>
             </c:if>
             <c:if test="${register}">
                 <a class="btn blue" onclick="registerScorm('${scormInfo.scormId}')" id="registerScorm">
@@ -383,9 +383,7 @@
             dataType: "json",
             type: "GET",
             success: function () {
-                $("#alertPromptMessage").html("注册成功");
-                $("#alertPrompt").modal("show");
-                $("#registerScorm").hide();
+                window.location.href=basePath + "tourist/scormInfo?scormId=" + id;
             },
             error: doError
         })
