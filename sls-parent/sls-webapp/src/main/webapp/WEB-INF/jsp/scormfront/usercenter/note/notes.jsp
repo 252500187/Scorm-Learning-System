@@ -46,9 +46,9 @@
                 <div class="head-Info" style="text-align: right;padding-right: 5%;">
                     作者：${userName}
                 </div>
-                <div class="bb-custom-side">
-                    <%--<p class="page-title">${userName}</p>--%>
-                </div>
+                <%--<div class="bb-custom-side">--%>
+                <%--&lt;%&ndash;<p class="page-title">${userName}</p>&ndash;%&gt;--%>
+                <%--</div>--%>
             </div>
             <c:forEach begin="0" step="2" items="${noteList}" varStatus="status">
                 <div class="bb-item">
@@ -68,28 +68,24 @@
                         <h3 class="page-title">${noteList[status.index+1].scormName}</h3>
                     </div>
                     <div class="bb-custom-side">
-                        <c:choose>
-                            <c:when test="${noteList[status.index].noteType == -1 }">
-                                <p>${noteList[status.index].note}</p>
-                            </c:when>
-                            <c:otherwise>
-                                <img style="max-height: 250px;max-width: 350px"
-                                     src="${noteList[status.index].imgPath}" alt=""/>
-                            </c:otherwise>
-                        </c:choose>
+                        <c:if test="${noteList[status.index].noteType == -1 }">
+                            <p>${noteList[status.index].note}</p>
+                        </c:if>
+                        <c:if test="${noteList[status.index].noteType != -1 }">
+                            <img style="max-height: 250px;max-width: 350px"
+                                 src="${noteList[status.index].imgPath}" alt=""/>
+                        </c:if>
                         <br/>
                         <a onclick="">修改</a>&nbsp;&nbsp;<a onclick="">删除</a>
                     </div>
                     <div class="bb-custom-side">
-                        <c:choose>
-                            <c:when test="${noteList[status.index+1].noteType == -1 }">
-                                <p>${noteList[status.index+1].note}</p>
-                            </c:when>
-                            <c:otherwise>
-                                <img style="max-height: 250px;max-width: 350px"
-                                     src="${noteList[status.index+1].imgPath}" alt=""/>
-                            </c:otherwise>
-                        </c:choose>
+                        <c:if test="${noteList[status.index+1].noteType == -1 }">
+                            <p>${noteList[status.index+1].note}</p>
+                        </c:if>
+                        <c:if test="${noteList[status.index+1].noteType != -1 }">
+                            <img style="max-height: 250px;max-width: 350px"
+                                 src="${noteList[status.index+1].imgPath}" alt=""/>
+                        </c:if>
                         <a onclick="">修改</a>&nbsp;&nbsp;<a onclick="">删除</a>
                     </div>
                 </div>
@@ -105,7 +101,6 @@
 </div>
 </body>
 </html>
-<%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>--%>
 <script src="booknote/js/jquerypp.custom.js"></script>
 <script src="booknote/js/jquery.bookblock.js"></script>
 <script type="text/javascript">
