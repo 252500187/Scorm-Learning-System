@@ -75,7 +75,7 @@
                 <img id="scormImg" src="${scorm.imgPath}" class="img-polaroid">
                 <table class="table table-hover">
                     <tr>
-                        <td>课件名称</td>
+                        <td><nobr>课件名称</nobr></td>
                         <td>${scorm.scormName}</td>
                     </tr>
 
@@ -126,7 +126,7 @@
                         </c:if>
                     </tr>
                     <tr>
-                        <td>注册用户:</td>
+                        <td>注册用户</td>
                         <td>
                             <c:forEach var="user" items="${registerUsers}">
                                 <a onclick="">${user.userName}</a><br/>

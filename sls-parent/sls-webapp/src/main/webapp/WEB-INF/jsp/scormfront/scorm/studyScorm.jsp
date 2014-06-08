@@ -415,7 +415,7 @@
             return;
         }
         $("#upImgForm").attr("method", "post").attr("action",
-                basePath + "user/scorm/upStudyImg?scormId=" + scormId + "&scoId=" + scoId).submit();
+                basePath + "user/scorm/upStudyImg?scormId=" + scormId + "&scoId=" + nowScoId).submit();
         $("#noteList").prepend("<div class='note note-success'>" +
                 " <h4 class='block'>" + getNowDate() + "</h4><p>图片" + $("#noteImg").val() + "上传成功！</p></div>"
         )
