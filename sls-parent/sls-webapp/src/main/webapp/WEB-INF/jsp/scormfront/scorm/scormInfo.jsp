@@ -134,7 +134,7 @@
                                             </c:if>
                                         </li>
                                         <br/>
-                                        <li>学习时间:</li>
+                                        <li>学习总时间:</li>
                                         <li>
                                             <c:if test="${summarize.totalTime!=''}">
                                                 ${summarize.totalTime}
