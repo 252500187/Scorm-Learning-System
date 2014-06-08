@@ -377,6 +377,9 @@ public class ScormServiceImpl implements ScormService {
             userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         }
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, userId);
+        if (scoList.size() == 0) {
+            scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
+        }
         if (userId != DictConstant.VOID_VALUE) {
             StringBuilder title = new StringBuilder();
             for (Sco sco : scoList) {
