@@ -16,7 +16,7 @@
         </div>
         <div class="col-md-5" style="margin: 15px;">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="搜索..." id="queryInfo"
+                <input type="text" class="form-control" placeholder="搜索您感兴趣的内容..." id="queryInfo"
                        style="width: 400px;height: 50px;"/>
                     <span class="input-group-btn" style="background-color: #4AA1FF;width: 80px;height: 50px;">
                          <a style="color: #fff;margin-left: 18px;font-size: 20px;line-height: 50px;cursor: pointer;text-decoration: none;"
