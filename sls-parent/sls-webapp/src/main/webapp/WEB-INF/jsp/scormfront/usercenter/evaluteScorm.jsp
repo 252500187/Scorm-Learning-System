@@ -68,12 +68,6 @@
         parent.$("#iframeInfo").attr("src", basePath + "user/dealScorm/review?scormId=" + scormId);
     }
 
-    function studyInfo(scormId) {
-        parent.$(".modal-title").html("学习情况");
-        parent.$('#alertIframe').modal('show');
-        parent.$("#iframeInfo").attr("src", basePath + "user/dealScorm/userStudyInfo?scormId=" + scormId);
-    }
-
     function study(scormId) {
         parent.window.open(basePath + "user/scorm/studyScorm?scormId=" + scormId);
     }

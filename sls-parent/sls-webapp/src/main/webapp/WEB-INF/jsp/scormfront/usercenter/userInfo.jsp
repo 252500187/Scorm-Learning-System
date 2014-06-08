@@ -146,6 +146,7 @@
             parent.$("#userNickName").html("${userName}");
             parent.$("#userTopName").html("${userName}");
             parent.$("#alertPromptMessage").html("${result}");
+            parent.$(".modal-title").html("修改资料");
             parent.$("#alertPrompt").modal("show");
         }
         if ("${imgUrl}" != "") {
