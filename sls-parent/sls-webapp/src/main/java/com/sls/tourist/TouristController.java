@@ -12,7 +12,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.imageio.ImageIO;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Random;
 
 @Controller
 @Transactional
@@ -51,5 +60,59 @@ public class TouristController {
         scormService.findRecommendScorm(request);
         scormService.findRegisterScorm(request);
         return "scormfront/scorm/findResult";
+    }
+
+    @RequestMapping(value = "checkValidateCodeYesOrNot", method = {RequestMethod.POST})
+    @ResponseBody
+    public boolean checkValidateCodeYesOrNot(@RequestParam("validateCode") String validateCode, HttpServletRequest request) throws Exception {
+        return (request.getSession().getAttribute("validation_code").toString()).equals(validateCode);
+    }
+
+    @RequestMapping(value = "validateCode", method = {RequestMethod.GET, RequestMethod.POST})
+    public void validateCode(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String codeChars = "0123456789";//验证码的字符集合
+        //关闭客户端浏览器的缓冲区。
+        response.setHeader("ragma", "No-cache");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setHeader("Expirse", "0");
+        //设置图形大小。
+        int width = 65, height = 20;
+        //建立图形缓冲区。
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics g = image.getGraphics();//获得   Graphics 对象。
+        g.setColor(getRandomColor(180, 250));//设置背景色。
+        g.fillRect(0, 0, width, height);//填充背景。
+        StringBuilder validationCode = new StringBuilder();//用于保存最后的验证码
+        String[] fontNames = {"Times New Roman", "Arial"};//用于随机的字体的集合
+        Random r = new Random();
+        //随机生成3-5个验证码
+        for (int i = 0; i < 4; i++) {
+            g.setFont(new Font(fontNames[r.nextInt(2)], Font.BOLD, height));
+            char codeChar = codeChars.charAt(r.nextInt(codeChars.length()));
+            validationCode.append(codeChar);
+            g.setColor(getRandomColor(10, 100));
+            g.drawString(String.valueOf(codeChar), 16 * i + r.nextInt(7), height - r.nextInt(6));//在图形上输出验证码
+        }
+        //随机生干扰码
+        for (int i = 0; i < 30; i++) {
+            g.setColor(getRandomColor(90, 200));
+            int x = r.nextInt(width);
+            int y = r.nextInt(height);
+            g.drawLine(x, y, x + r.nextInt(10), y + r.nextInt(5));
+        }
+
+        HttpSession session = request.getSession();//得到HttpSession对象
+        session.setAttribute("validation_code", validationCode.toString());//将验证码保存在session中
+        g.dispose();//关闭Graphics对象
+        OutputStream os = response.getOutputStream();//得到输出流
+        ImageIO.write(image, "JPEG", os);//以JPEG格式向客户端发送图形验证码
+    }
+
+    private Color getRandomColor(int minColor, int maxColor) {
+        Random r = new Random();
+        int red = minColor + r.nextInt(maxColor - minColor);
+        int green = minColor + r.nextInt(maxColor - minColor);
+        int blue = minColor + r.nextInt(maxColor - minColor);
+        return new Color(red, green, blue);
     }
 }

@@ -55,8 +55,11 @@
             <label class="control-label visible-ie8 visible-ie9">验证码</label>
 
             <div class="input-icon">
-                <input class="form-control" type="text" placeholder="输入验证码" style="float: left;width: 150px"/>&nbsp;&nbsp;
-                <img src="img/fake/1.jpg" style="height: 33px"/>&nbsp;<a>换一张</a>
+                <i class="fa fa-check"></i>
+                <input class="form-control" type="text" placeholder="输入验证码" style="float: left;width: 120px"
+                       id="loginValidateCode" name="loginValidateCode" type="text" maxlength="4"/>&nbsp;
+                <img style="height: 33px"  title="换一张" id="loginValidateCodeImg" src="tourist/validateCode">&nbsp;
+                <a id="changeLoginValidateCode">换一张</a>
             </div>
         </div>
         <div class="form-actions">
@@ -163,8 +166,11 @@
             <label class="control-label visible-ie8 visible-ie9">验证码</label>
 
             <div class="input-icon">
-                <input class="form-control" type="text" placeholder="输入验证码" style="float: left;width: 150px"/>&nbsp;&nbsp;
-                <img src="img/fake/2.jpg" style="height: 33px"/>&nbsp;<a>换一张</a>
+                <i class="fa fa-check"></i>
+                <input class="form-control" type="text" placeholder="输入验证码" style="float: left;width: 120px"
+                       id="registerValidateCode" name="registerValidateCode" type="text" maxlength="4"/>&nbsp;
+                <img style="height: 33px"  title="换一张" id="registerValidateCodeImg" src="tourist/validateCode">&nbsp;
+                <a id="changeRegisterValidateCode">换一张</a>
             </div>
         </div>
         <div class="form-group">
@@ -188,32 +194,19 @@
 </body>
 </html>
 <script>
-    jQuery(document).ready(function () {
+    $(function () {
         Metronic.init();
         Layout.init();
         Login.init();
+        $("#loginValidateCodeImg,#changeLoginValidateCode").click(function () {
+            $("#loginValidateCodeImg").attr("src", basePath + "tourist/validateCode?" + Math.random());
+        });
+        $("#changeRegisterValidateCode,#registerValidateCodeImg").click(function () {
+            $("#registerValidateCodeImg").attr("src", basePath + "tourist/validateCode?" + Math.random());
+        });
     });
-
-    function register() {
-        $.ajax({
-            url: basePath + "tourist/register",
-            data: {
-                loginName: $("#registerLoginName").val().trim(),
-                password: $("#registerPassword").val().md5(),
-                email: $("#email").val().trim()
-            },
-            dataType: "json",
-            type: "POST",
-            success: function () {
-                jQuery('.register-form').hide();
-                jQuery('.login-form').show();
-            },
-            error: doError
-        })
-    }
 
     function findPassword() {
         alert("有待完成a ");
     }
-
 </script>

@@ -11,15 +11,31 @@ var Login = function () {
                 },
                 password: {
                     required: true
+                },
+                loginValidateCode: {
+                    required: true,
+                    remote: {
+                        url: basePath + "tourist/checkValidateCodeYesOrNot",
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                            validateCode: function () {
+                                return $("#loginValidateCode").val();
+                            }
+                        }
+                    }
                 }
             },
-
             messages: {
                 loginName: {
                     required: "请输入帐号"
                 },
                 password: {
                     required: "请输入密码"
+                },
+                loginValidateCode: {
+                    required: "请输入验证码",
+                    remote: "验证码错误"
                 }
             },
 
@@ -63,7 +79,6 @@ var Login = function () {
                     email: true
                 }
             },
-
             messages: {
                 email: {
                     required: "请输入邮箱",
@@ -107,8 +122,6 @@ var Login = function () {
     }
 
     var handleRegister = function () {
-
-
         $('#select2_sample4').change(function () {
             $('.register-form').validate().element($(this)); //revalidate the chosen dropdown value and show error or success message for the input
         });
@@ -146,6 +159,19 @@ var Login = function () {
                     required: true,
                     email: true
                 },
+                registerValidateCode: {
+                    required: true,
+                    remote: {
+                        url: basePath + "tourist/checkValidateCodeYesOrNot",
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                            validateCode: function () {
+                                return $("#registerValidateCode").val();
+                            }
+                        }
+                    }
+                },
                 tnc: {
                     required: true
                 }
@@ -168,6 +194,10 @@ var Login = function () {
                 email: {
                     required: "请输入邮箱",
                     email: "邮箱格式不正确"
+                },
+                registerValidateCode: {
+                    required: "请输入验证码",
+                    remote: "验证码错误"
                 },
                 tnc: {
                     required: "确认加入么?"
@@ -200,7 +230,21 @@ var Login = function () {
 
             submitHandler: function (form) {
                 $('.alert-info', $('.login-form')).show();
-                register();
+                $.ajax({
+                    url: basePath + "tourist/register",
+                    data: {
+                        loginName: $("#registerLoginName").val().trim(),
+                        password: $("#registerPassword").val().md5(),
+                        email: $("#email").val().trim()
+                    },
+                    dataType: "json",
+                    type: "POST",
+                    success: function () {
+                        jQuery('.register-form').hide();
+                        jQuery('.login-form').show();
+                    },
+                    error: doError
+                })
             }
         });
 
