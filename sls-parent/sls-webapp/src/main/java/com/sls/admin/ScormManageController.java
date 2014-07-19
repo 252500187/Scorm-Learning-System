@@ -4,6 +4,7 @@ import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.service.ScormService;
+import com.sls.system.service.LabelService;
 import com.sls.util.DictConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.xml.sax.SAXException;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPathExpressionException;
+import java.io.IOException;
 
 @Controller
 @Transactional
@@ -22,6 +28,9 @@ public class ScormManageController {
 
     @Autowired
     private ScormService scormService;
+
+    @Autowired
+    private LabelService labelService;
 
     @RequestMapping(value = "listNotAuditScormInfoDo", method = {RequestMethod.GET})
     public String listAllScormInfoDo() {
@@ -74,5 +83,23 @@ public class ScormManageController {
     @ResponseBody
     public void changScormCompleteWay(@RequestParam("scormId") String scormId, @RequestParam("completeWay") String completeWay) {
         scormService.changScormCompleteWay(Integer.parseInt(scormId), Integer.parseInt(completeWay));
+    }
+
+    @RequestMapping(value = "upScormDo", method = {RequestMethod.GET})
+    public String upScormDo(HttpServletRequest request) {
+        labelService.getAllLabel(request);
+        scormService.getUpScormGroupsByUserId(request);
+        return "scormadmin/scorm/upScormDo";
+    }
+
+    @RequestMapping(value = "upScorm", method = {RequestMethod.POST})
+    public String upScorm(HttpServletRequest request, Scorm scorm, @RequestParam("scormLabelList") String scormLabelList, @RequestParam("groupId") String groupId) throws ServletException, IOException, ParserConfigurationException, SAXException,
+            XPathExpressionException {
+        scorm.setInUse(DictConstant.IN_USE);
+        int scormId = scormService.upScorm(request, "upScorm", "upImg", scorm, Integer.parseInt(groupId));
+        labelService.editScormLabelList(scormLabelList.trim(), scormId);
+        labelService.getAllLabel(request);
+        scormService.getUpScormGroupsByUserId(request);
+        return "scormadmin/scorm/upScormDo";
     }
 }

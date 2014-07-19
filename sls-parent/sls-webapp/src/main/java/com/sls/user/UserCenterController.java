@@ -31,9 +31,6 @@ public class UserCenterController {
     private UserCenterService userCenterService;
 
     @Autowired
-    private ScormService upScormService;
-
-    @Autowired
     private UserService userService;
 
     @Autowired
@@ -69,7 +66,7 @@ public class UserCenterController {
     @RequestMapping(value = "upScorm", method = {RequestMethod.POST})
     public String upScorm(HttpServletRequest request, Scorm scorm, @RequestParam("scormLabelList") String scormLabelList, @RequestParam("groupId") String groupId) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
-        int scormId = upScormService.upScorm(request, "upScorm", "upImg", scorm, Integer.parseInt(groupId));
+        int scormId = scormService.upScorm(request, "upScorm", "upImg", scorm, Integer.parseInt(groupId));
         labelService.editScormLabelList(scormLabelList.trim(), scormId);
         labelService.getAllLabel(request);
         return "scormfront/usercenter/upScorm";

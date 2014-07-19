@@ -31,7 +31,7 @@
                     <li><a data-toggle="tab" onclick="changeIframe('admin/role/listAllRoleDo')">角色管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/label/listAllLabelTreeDo')">标签管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/dict/listAllDictDefineDo')">字典管理</a></li>
-                    <li><a data-toggle="tab" onclick="changeIframe('')">上传课件</a>
+                    <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/upScormDo')">上传课件</a>
                     </li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listNotAuditScormInfoDo')">未审核课件</a>
                     </li>

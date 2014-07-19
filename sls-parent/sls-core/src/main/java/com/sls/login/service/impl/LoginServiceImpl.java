@@ -59,7 +59,8 @@ public class LoginServiceImpl implements LoginService {
         try {
             currentUser.login(token);
         } catch (Exception e) {
-            modelView.addObject("message", "password error！");
+            request.setAttribute("loginResult","false");
+            modelView.addObject("message", "密码错误！");
             modelView.setViewName("/scormfront/login");
         }
         if (currentUser.isAuthenticated()) {
@@ -73,7 +74,8 @@ public class LoginServiceImpl implements LoginService {
                 modelView.setViewName("/scormfront/index");
             }
         } else {
-            modelView.addObject("message", "password error！");
+            request.setAttribute("loginResult","false");
+            modelView.addObject("message", "密码错误！");
             modelView.setViewName("/scormfront/login");
         }
         return modelView;
