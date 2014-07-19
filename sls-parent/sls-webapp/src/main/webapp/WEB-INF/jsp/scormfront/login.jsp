@@ -30,7 +30,12 @@
 
         <div class="alert alert-info display-hide">
             <button class="close" data-close="alert"></button>
-			<span>注册成功！</span>
+            <span>注册成功！</span>
+        </div>
+
+        <div class="alert alert-info display-hide" id="loginError">
+            <button class="close" data-close="alert"></button>
+            <span>密码错误！</span>
         </div>
 
         <div class="form-group">
@@ -58,7 +63,7 @@
                 <i class="fa fa-check"></i>
                 <input class="form-control" type="text" placeholder="输入验证码" style="float: left;width: 120px"
                        id="loginValidateCode" name="loginValidateCode" type="text" maxlength="4"/>&nbsp;
-                <img style="height: 33px"  title="换一张" id="loginValidateCodeImg" src="tourist/validateCode">&nbsp;
+                <img style="height: 33px" title="换一张" id="loginValidateCodeImg" src="tourist/validateCode">&nbsp;
                 <a id="changeLoginValidateCode">换一张</a>
             </div>
         </div>
@@ -169,7 +174,7 @@
                 <i class="fa fa-check"></i>
                 <input class="form-control" type="text" placeholder="输入验证码" style="float: left;width: 120px"
                        id="registerValidateCode" name="registerValidateCode" type="text" maxlength="4"/>&nbsp;
-                <img style="height: 33px"  title="换一张" id="registerValidateCodeImg" src="tourist/validateCode">&nbsp;
+                <img style="height: 33px" title="换一张" id="registerValidateCodeImg" src="tourist/validateCode">&nbsp;
                 <a id="changeRegisterValidateCode">换一张</a>
             </div>
         </div>
@@ -204,6 +209,9 @@
         $("#changeRegisterValidateCode,#registerValidateCodeImg").click(function () {
             $("#registerValidateCodeImg").attr("src", basePath + "tourist/validateCode?" + Math.random());
         });
+        <c:if test="${loginResult=='false'}">
+        $("#loginError").show();
+        </c:if>
     });
 
     function findPassword() {
