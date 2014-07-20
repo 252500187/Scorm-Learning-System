@@ -58,7 +58,7 @@ var Login = function () {
             }
         });
 
-        $("#password").bind("keydown", function (e) {
+        $("#loginValidateCode").bind("keydown", function (e) {
             if (e.which == 13) {
                 if ($('.login-form').validate().form()) {
                     $('.login-form').submit();
@@ -245,15 +245,6 @@ var Login = function () {
                     },
                     error: doError
                 })
-            }
-        });
-
-        $('.register-form input').keypress(function (e) {
-            if (e.which == 13) {
-                if ($('.register-form').validate().form()) {
-                    $('.register-form').submit();
-                }
-                return false;
             }
         });
 

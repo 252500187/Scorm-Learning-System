@@ -213,8 +213,4 @@
         $("#loginError").show();
         </c:if>
     });
-
-    function findPassword() {
-        alert("有待完成a ");
-    }
 </script>
