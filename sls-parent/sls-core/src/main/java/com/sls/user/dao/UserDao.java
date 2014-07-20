@@ -47,4 +47,8 @@ public interface UserDao {
     void addScore(int score, int userId);
 
     List<User> getRegisterUsers(int scormId);
+
+    int getAllUserNum();
+
+    int getUseUserNum();
 }

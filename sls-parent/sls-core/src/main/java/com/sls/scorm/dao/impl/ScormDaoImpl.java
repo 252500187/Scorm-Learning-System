@@ -167,4 +167,16 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
         String sql = "SELECT * FROM ss_scorm WHERE in_use=? ORDER BY recommend_level DESC";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), DictConstant.IN_USE);
     }
+
+    @Override
+    public int getAllScormNum() {
+        String sql = "SELECT COUNT(*) FROM ss_scorm";
+        return getJdbcTemplate().queryForObject(sql, Integer.class);
+    }
+
+    @Override
+    public int getUseScormNum() {
+        String sql = "SELECT COUNT(*) FROM ss_scorm WHERE in_use=?";
+        return getJdbcTemplate().queryForObject(sql, Integer.class, DictConstant.IN_USE);
+    }
 }

@@ -48,7 +48,7 @@ public class LabelDaoImpl extends PageDao implements LabelDao {
 
     @Override
     public List<Label> getAllLabel() {
-        String sql = "SELECT  *  FROM  us_label ";
+        String sql = "SELECT * FROM us_label ";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Label>(Label.class));
     }
 
@@ -105,5 +105,11 @@ public class LabelDaoImpl extends PageDao implements LabelDao {
     public void delLabelByLabelId(String labelId) {
         String sql = "DELETE FROM us_label WHERE label_id = ?";
         getJdbcTemplate().update(sql, labelId);
+    }
+
+    @Override
+    public int getAllScormLabelNumByLableId(int labelId) {
+        String sql = "SELECT COUNT(*) FROM ss_scorm_label WHERE label_id=?";
+        return getJdbcTemplate().queryForObject(sql,Integer.class,labelId);
     }
 }

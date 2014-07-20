@@ -168,4 +168,16 @@ public class UserDaoImpl extends PageDao implements UserDao {
         String sql = "SELECT * FROM us_user_info WHERE user_id IN (SELECT user_id FROM luss_scorm_summarize WHERE scorm_id=?)";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<User>(User.class), scormId);
     }
+
+    @Override
+    public int getAllUserNum() {
+        String sql = "SELECT COUNT(*) FROM us_user";
+        return getJdbcTemplate().queryForObject(sql, Integer.class);
+    }
+
+    @Override
+    public int getUseUserNum() {
+        String sql = "SELECT COUNT(*) FROM us_user WHERE in_use=?";
+        return getJdbcTemplate().queryForObject(sql, Integer.class, DictConstant.IN_USE);
+    }
 }

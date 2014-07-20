@@ -41,7 +41,7 @@
                     <div class="portlet-body">
                         <h3 id="studyDistribute"></h3>
 
-                        <div id="pie_chart_6" class="chart">
+                        <div id="pie_chart" class="chart">
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                 <div class="portlet box purple">
                     <div class="portlet-title">
                         <div class="caption">
-                            <i class="fa fa-signal"></i>数量统计
+                            <i class="fa fa-signal"></i>比例统计信息
                         </div>
                         <div class="tools">
                             <a href="javascript:;" class="collapse">
@@ -64,9 +64,7 @@
                         </div>
                     </div>
                     <div class="portlet-body">
-                        1.注册用户与有效用户比例<br/>
-                        2.上传课件与在用课件比例
-                        <div id="chart_1_2" class="chart">
+                        <div id="bar_chart" class="chart">
                         </div>
                     </div>
                 </div>
@@ -159,31 +157,101 @@
 </body>
 </html>
 <script>
-    jQuery(document).ready(function () {
+    $(function () {
         Metronic.init();
         Layout.init();
-//        Charts.init();
-        var data = [];
-        var i = 0;
-        data[0] = {
-            label: '艺术',
-            data: 5
-        };
-        data[1] = {
-            label: '数学',
-            data: 2
-        };
-        data[2] = {
-            label: '语文',
-            data: 6
-        };
-        data[3] = {
-            label: '外语',
-            data: 4
-        }
-        Charts.initPieCharts(data);
-        Charts.initCharts();
+        initPieChart();
+        initBarChart();
     });
+
+    function initPieChart() {
+        var data = [];
+        <% int i=0; %>
+        <c:forEach var="label" items="${labels}">
+        data[<%=i++%>] = {
+            label: '${label.labelName}',
+            data: ${label.labelId}
+        };
+        </c:forEach>
+        $.plot($("#pie_chart"), data, {
+            series: {
+                pie: {
+                    show: true
+                }
+            },
+            legend: {
+                show: false
+            }
+        });
+    }
+
+    function initBarChart() {
+        var userNum = [
+            [0, ${userNum}]
+        ];
+        var useUserNum = [
+            [1, ${useUserNum}]
+        ];
+        var scormNum = [
+            [2, ${scormNum}]
+        ];
+        var useScormNum = [
+            [3, ${useScormNum}]
+        ];
+        $.plot($("#bar_chart"),
+                [
+                    {
+                        label: "用户总数量",
+                        data: userNum,
+                        lines: {
+                            lineWidth: 1
+                        },
+                        shadowSize: 0
+                    },
+                    {
+                        label: "在用状态用户数量",
+                        data: useUserNum,
+                        lines: {
+                            lineWidth: 1
+                        },
+                        shadowSize: 0
+                    },
+                    {
+                        label: "课件总数量",
+                        data: scormNum,
+                        lines: {
+                            lineWidth: 1
+                        },
+                        shadowSize: 0
+                    },
+                    {
+                        label: "在用课件数量",
+                        data: useScormNum,
+                        lines: {
+                            lineWidth: 1
+                        },
+                        shadowSize: 0
+                    }
+                ],
+                {
+                    series: {
+                        stack: false,
+                        bars: {
+                            show: true,
+                            barWidth: 0.5,
+                            lineWidth: 0, // in pixels
+                            shadowSize: 0,
+                            align: 'center'
+                        }
+                    },
+                    grid: {
+                        tickColor: "#eee",
+                        borderColor: "#eee",
+                        borderWidth: 1
+                    }
+                }
+        );
+    }
 
     function scormInfo(scormId) {
         var contentFrame = parent.$("#contentFrame");

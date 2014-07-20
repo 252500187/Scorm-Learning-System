@@ -6,12 +6,12 @@ import com.sls.scorm.dao.ScormDao;
 import com.sls.scorm.dao.SummarizeDao;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.entity.ScormSummarize;
+import com.sls.system.dao.LabelDao;
 import com.sls.system.entity.Label;
 import com.sls.system.service.DictService;
 import com.sls.user.dao.RoleDao;
 import com.sls.user.dao.UserDao;
 import com.sls.user.dao.UserRoleDao;
-import com.sls.user.entity.Role;
 import com.sls.user.entity.User;
 import com.sls.user.entity.UserLevel;
 import com.sls.user.entity.UserRole;
@@ -46,6 +46,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private ScormDao scormDao;
+
+    @Autowired
+    private LabelDao labelDao;
 
     @Override
     public Page<User> findUserPageList(PageParameter pageParameter, User user) {
@@ -168,6 +171,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void adminIndexStatisticInfo(HttpServletRequest request) {
+        //获取所有课件标签饼状图
+        List<Label> labels = labelDao.getAllLabel();
+        for (Label label : labels) {
+            label.setLabelId(labelDao.getAllScormLabelNumByLableId(label.getLabelId()));
+        }
+        request.setAttribute("labels", labels);
+        //获取比例信息
+        request.setAttribute("userNum", userDao.getAllUserNum());
+        request.setAttribute("useUserNum", userDao.getUseUserNum());
+        request.setAttribute("scormNum", scormDao.getAllScormNum());
+        request.setAttribute("useScormNum", scormDao.getUseScormNum());
+        //获取课件排行
         request.setAttribute("scormSum", scormDao.indexFindTopScormByFieldName("register_sum", 10));
         List<Scorm> scormTimeList = scormDao.indexFindTopScormByFieldName("total_time", 10);
         int[] splitTime;

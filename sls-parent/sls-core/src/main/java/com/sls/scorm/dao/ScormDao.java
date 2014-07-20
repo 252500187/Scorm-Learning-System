@@ -51,4 +51,8 @@ public interface ScormDao {
     List<Scorm> findLatestScorms(int i);
 
     List<Scorm> findRecommendIndexScorms();
+
+    int getAllScormNum();
+
+    int getUseScormNum();
 }

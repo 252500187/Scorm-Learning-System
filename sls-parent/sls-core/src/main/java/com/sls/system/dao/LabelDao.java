@@ -32,4 +32,6 @@ public interface LabelDao {
     void editLabel(Label label);
 
     void delLabelByLabelId(String labelId);
+
+    int getAllScormLabelNumByLableId(int labelId);
 }
