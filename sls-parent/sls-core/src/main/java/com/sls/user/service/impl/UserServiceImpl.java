@@ -173,7 +173,7 @@ public class UserServiceImpl implements UserService {
         int[] splitTime;
         for (Scorm scorm : scormTimeList) {
             splitTime = DateUtil.splitScormTime(scorm.getTotalTime());
-            scorm.setTotalTime(splitTime[0] + "小时" + splitTime[1] + "分钟" + splitTime[2] + "秒" + splitTime[3] + "毫秒");
+            scorm.setTotalTime(splitTime[0] + "小时" + splitTime[1] + "分钟");
         }
         request.setAttribute("scormTime", scormTimeList);
         request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score", 10));
