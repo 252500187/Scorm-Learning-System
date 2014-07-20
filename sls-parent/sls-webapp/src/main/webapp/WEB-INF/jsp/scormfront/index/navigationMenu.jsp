@@ -30,7 +30,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                        style="font-size: 20px;"
                        data-close-others="true">
-                        分类查看课件
+                        课件分类
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu">

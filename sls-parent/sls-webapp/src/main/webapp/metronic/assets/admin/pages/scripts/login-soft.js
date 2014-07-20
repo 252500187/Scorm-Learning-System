@@ -229,7 +229,7 @@ var Login = function () {
             },
 
             submitHandler: function (form) {
-                $('.alert-info', $('.login-form')).show();
+                $('#registerSuccess', $('.login-form')).show();
                 $.ajax({
                     url: basePath + "tourist/register",
                     data: {

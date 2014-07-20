@@ -19,7 +19,6 @@
 <body class="page-header-fixed" style="background-color: #ffffff;overflow-x:hidden">
 <%@include file="../index/navigationMenu.jsp" %>
 <div class="page-container">
-<div class="row">
 <%--左侧旁白--%>
 <div class="col-md-2">
 </div>
@@ -92,6 +91,90 @@
 <br/><br/>
 <%--课件学习情况，章节列表，学习笔记，评论等--%>
 <div class="row">
+<div class="col-md-8">
+    <c:if test="${study&&fn:length(noteList)>0}">
+    <div class="portlet">
+        <div class="portlet-title sidebar-title">
+            <div class="caption-sidebar">学习笔记</div>
+            <div class="tools">
+                <a href="javascript:;" class="collapse">
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <ul class="feeds">
+                <%
+                    String[] color = {"success", "info", "danger", "warning"};
+                %>
+                <c:forEach var="note" items="${noteList}">
+                    <div class="note note-<%=color[(int)(Math.random()*100)%4]%>">
+                        <h4 class="block">${note.date}</h4>
+
+                        <p>
+                            <c:if test="${note.noteType==text}">
+                                ${note.note}
+                            </c:if>
+                            <c:if test="${note.noteType!=text}">
+                                <img src="${note.note}"/>
+                            </c:if>
+                        </p>
+                    </div>
+                </c:forEach>
+            </ul>
+        </div>
+        </c:if>
+    <div class="portlet">
+        <div class="portlet-title sidebar-title">
+            <div class="caption-sidebar">评论</div>
+            <div class="tools">
+                <a href="javascript:;" class="collapse">
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <ul class="feeds">
+                <li style="background-color: #fff;">
+                    <div class="cont">
+                        <div class="cont-col2">
+                            <c:if test="${register}">
+                                <div class="chat-form">
+                                    <div class="input-cont">
+                                        <input class="form-control" type="text" id="discuss"
+                                               placeholder="说点什么？"/>
+                                    </div>
+                                    <div class="btn-cont">
+                                        <span class="arrow"></span>
+                                        <a onclick="changeDiscuss()" class="btn blue icn-only">
+                                            <i class="fa fa-check icon-white"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <br/>
+                            </c:if>
+                            <ul class="chats">
+                                <c:forEach var="comment" items="${allComments}">
+                                    <c:if test="${comment.userId!=userId}">
+                                        <li class="in">
+                                    </c:if>
+                                    <c:if test="${comment.userId==userId}">
+                                        <li class="out">
+                                    </c:if>
+                                    <div class="message">
+                                        <span class="arrow"></span>
+                                        <a class="name">${comment.userName}</a>
+                                        <span class="datetime">${comment.discussDate}</span>
+                                        <span class="body">${comment.discuss}</span>
+                                    </div>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 <div class="col-md-4">
     <c:if test="${study}">
         <div class="row">
@@ -111,7 +194,7 @@
                                     <ul class="list-inline">
                                         <li>注册日期:</li>
                                         <li>
-                                            ${summarize.registerDate}
+                                                ${summarize.registerDate}
                                         </li>
                                         <br/>
                                         <li>完成时间:</li>
@@ -233,90 +316,6 @@
         </div>
     </c:if>
 </div>
-<div class="col-md-8">
-    <c:if test="${study&&fn:length(noteList)>0}">
-    <div class="portlet">
-        <div class="portlet-title sidebar-title">
-            <div class="caption-sidebar">学习笔记</div>
-            <div class="tools">
-                <a href="javascript:;" class="collapse">
-                </a>
-            </div>
-        </div>
-        <div class="portlet-body">
-            <ul class="feeds">
-                <%
-                    String[] color = {"success", "info", "danger", "warning"};
-                %>
-                <c:forEach var="note" items="${noteList}">
-                    <div class="note note-<%=color[(int)(Math.random()*100)%4]%>">
-                        <h4 class="block">${note.date}</h4>
-
-                        <p>
-                            <c:if test="${note.noteType==text}">
-                                ${note.note}
-                            </c:if>
-                            <c:if test="${note.noteType!=text}">
-                                <img src="${note.note}"/>
-                            </c:if>
-                        </p>
-                    </div>
-                </c:forEach>
-            </ul>
-        </div>
-        </c:if>
-        <div class="portlet">
-            <div class="portlet-title sidebar-title">
-                <div class="caption-sidebar">评论</div>
-                <div class="tools">
-                    <a href="javascript:;" class="collapse">
-                    </a>
-                </div>
-            </div>
-            <div class="portlet-body">
-                <ul class="feeds">
-                    <li style="background-color: #fff;">
-                        <div class="cont">
-                            <div class="cont-col2">
-                                <c:if test="${register}">
-                                    <div class="chat-form">
-                                        <div class="input-cont">
-                                            <input class="form-control" type="text" id="discuss"
-                                                   placeholder="说点什么？"/>
-                                        </div>
-                                        <div class="btn-cont">
-                                            <span class="arrow"></span>
-                                            <a onclick="changeDiscuss()" class="btn blue icn-only">
-                                                <i class="fa fa-check icon-white"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <br/>
-                                </c:if>
-                                <ul class="chats">
-                                    <c:forEach var="comment" items="${allComments}">
-                                        <c:if test="${comment.userId!=userId}">
-                                            <li class="in">
-                                        </c:if>
-                                        <c:if test="${comment.userId==userId}">
-                                            <li class="out">
-                                        </c:if>
-                                        <div class="message">
-                                            <span class="arrow"></span>
-                                            <a class="name">${comment.userName}</a>
-                                            <span class="datetime">${comment.discussDate}</span>
-                                            <span class="body">${comment.discuss}</span>
-                                        </div>
-                                        </li>
-                                    </c:forEach>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
 </div>
 <%@include file="../index/footer.jsp" %>
 <div id="alertPrompt" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
@@ -335,8 +334,6 @@
             </div>
         </div>
     </div>
-</div>
-</div>
 </div>
 </div>
 </div>
