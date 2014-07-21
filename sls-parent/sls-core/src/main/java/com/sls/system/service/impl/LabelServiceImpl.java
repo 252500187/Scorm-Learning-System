@@ -51,9 +51,14 @@ public class LabelServiceImpl implements LabelService {
     }
 
     @Override
-    public void getLabelsByUserId(HttpServletRequest request) {
+    public void getLabelsByLoginUserId(HttpServletRequest request) {
         List<Label> myLabelList = labelDao.getLabelsByUserId(getUserId());
         request.setAttribute("myLabelList", myLabelList.size() == 0 ? new LinkedList<Label>() : myLabelList);
+    }
+
+    @Override
+    public List<Label> getLabelsByUserId(int userId) {
+        return labelDao.getLabelsByUserId(userId);
     }
 
     @Override

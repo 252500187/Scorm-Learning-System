@@ -33,6 +33,7 @@
         <img style="width: 300px" src="img/scormInfo/flag_center.png" alt=""/>
     </div>
     <div class="col-md-7">
+        <br/><br/>
         <h3 class="caption-sidebar">
             <c:if test="${scormInfo.showRecommendLevel!=''}">
                 <img src="${scormInfo.showRecommendLevel}" width="25px" height="25px">
@@ -88,7 +89,7 @@
         </div>
     </div>
 </div>
-<br/><br/>
+<br/>
 <%--课件学习情况，章节列表，学习笔记，评论等--%>
 <div class="row">
 <div class="col-md-8">
@@ -103,10 +104,9 @@
             </div>
             <div class="portlet-body">
                 <c:forEach var="user" items="${registerUsers}">
-                    <a onclick="">
+                    <a onclick="userInfo('${user.userId}')">
                         <div class="col-md-3 mix mix_all" style=" display: block;">
                             <img src="${user.imgUrl}" width="80px" height="80px" class="img-rounded"/>
-
                             <p style="margin-left: 16px">${user.userName}</p>
                         </div>
                     </a>

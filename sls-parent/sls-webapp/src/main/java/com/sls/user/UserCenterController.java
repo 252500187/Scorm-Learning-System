@@ -93,7 +93,7 @@ public class UserCenterController {
     public void getUserInfo(HttpServletRequest request) {
         userCenterService.toUserInfo(request);
         labelService.getAllUserLabel(request);
-        labelService.getLabelsByUserId(request);
+        labelService.getLabelsByLoginUserId(request);
     }
 
     //个人中心  已注册课件

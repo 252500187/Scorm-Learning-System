@@ -5,13 +5,16 @@ import com.core.page.entity.PageParameter;
 import com.sls.system.entity.Label;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 public interface LabelService {
     void getAllUserLabel(HttpServletRequest request);
 
     void editUserLabelList(String myLabelList);
 
-    void getLabelsByUserId(HttpServletRequest request);
+    void getLabelsByLoginUserId(HttpServletRequest request);
+
+    List<Label> getLabelsByUserId(int userId);
 
     void getAllLabel(HttpServletRequest request);
 

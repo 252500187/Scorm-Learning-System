@@ -1,6 +1,7 @@
 package com.sls.tourist;
 
 import com.sls.scorm.service.ScormService;
+import com.sls.system.service.LabelService;
 import com.sls.user.entity.User;
 import com.sls.user.service.UserService;
 import com.sls.util.BaseUtil;
@@ -32,6 +33,9 @@ public class TouristController {
 
     @Autowired
     private ScormService scormService;
+
+    @Autowired
+    private LabelService labelService;
 
     @RequestMapping(value = "register", method = {RequestMethod.POST})
     @ResponseBody
@@ -116,5 +120,14 @@ public class TouristController {
         int green = minColor + r.nextInt(maxColor - minColor);
         int blue = minColor + r.nextInt(maxColor - minColor);
         return new Color(red, green, blue);
+    }
+
+    @RequestMapping(value = "userInfo", method = {RequestMethod.GET})
+    public String userInfo(@RequestParam("userId") int userId, HttpServletRequest request) {
+        request.setAttribute("user", userService.findUserAllInfoById(userId));
+        request.setAttribute("labels", labelService.getLabelsByUserId(userId));
+        request.setAttribute("registerScorms", scormService.getRegisterScormsByUserId(userId));
+        request.setAttribute("upScorms", scormService.getUpScormsByUserId(userId));
+        return "scormfront/user/userInfo";
     }
 }

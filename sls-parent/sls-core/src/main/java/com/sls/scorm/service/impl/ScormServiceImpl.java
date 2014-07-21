@@ -595,4 +595,14 @@ public class ScormServiceImpl implements ScormService {
         int userId = scormDao.findScormInfoByScormId(scormId).getUploadUserId();
         request.setAttribute("otherScorms", scormDao.getAllUpScormInfoByUserId(userId));
     }
+
+    @Override
+    public List<Scorm> getRegisterScormsByUserId(int userId) {
+        return scormDao.findRegisterScormByUserId(userId);
+    }
+
+    @Override
+    public List<Scorm> getUpScormsByUserId(int userId) {
+        return scormDao.getAllUpScormInfoByUserId(userId);
+    }
 }

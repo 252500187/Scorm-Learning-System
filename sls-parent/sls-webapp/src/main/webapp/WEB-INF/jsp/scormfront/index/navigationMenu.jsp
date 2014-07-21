@@ -101,7 +101,7 @@
 <script>
     function findScorm() {
         if ($("#queryInfo").val() != "") {
-            window.open(basePath + "tourist/findScorm?queryInfo=" + $("#queryInfo").val());
+            top.window.open(basePath + "tourist/findScorm?queryInfo=" + $("#queryInfo").val());
         }
     }
 
@@ -128,6 +128,10 @@
     }
 
     function findByLabel(label) {
-        window.open(basePath + "tourist/findScorm?queryInfo=" + label);
+        top.window.open(basePath + "tourist/findScorm?queryInfo=" + label);
+    }
+
+    function userInfo(userId) {
+        top.window.open(basePath + "tourist/userInfo?userId=" + userId);
     }
 </script>

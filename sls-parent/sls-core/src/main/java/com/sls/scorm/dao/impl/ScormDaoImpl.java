@@ -129,7 +129,7 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
 
     @Override
     public List<Scorm> findRegisterScormByUserId(int userId) {
-        String sql = "SELECT * FROM ss_scorm a,luss_scorm_summarize b WHERE a.scorm_id=b.scorm_id AND user_id=? AND a.in_use=?";
+        String sql = "SELECT * FROM ss_scorm a,luss_scorm_summarize b WHERE a.scorm_id=b.scorm_id AND b.user_id=? AND a.in_use=?";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), userId, DictConstant.IN_USE);
     }
 

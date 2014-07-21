@@ -33,6 +33,7 @@
 <link href="<c:url value="/metronic/assets/global/plugins/fancybox/source/jquery.fancybox.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/metronic/assets/admin/pages/css/portfolio.css"/>" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="<c:url value="/metronic/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css"/>"/>
+<link href="<c:url value="/metronic/assets/admin/pages/css/profile.css"/>" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="<c:url value="/metronic/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css"/>"/>
 <link rel="stylesheet" type="text/css" href="<c:url value="/metronic/assets/global/plugins/jquery-tags-input/jquery.tagsinput.css"/>"/>
 <link rel="stylesheet" type="text/css" href="<c:url value="/metronic/assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css"/>">
