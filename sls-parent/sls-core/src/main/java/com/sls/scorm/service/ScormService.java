@@ -74,4 +74,8 @@ public interface ScormService {
     void findRegisterScorm(HttpServletRequest request);
 
     void findReviewsByScormId(int scormId, HttpServletRequest request);
+
+    void getAllRegisterUsers(int scormId, HttpServletRequest request);
+
+    void getUseUpScormsByScormId(int scormId, HttpServletRequest request);
 }

@@ -584,4 +584,15 @@ public class ScormServiceImpl implements ScormService {
         request.setAttribute("nowUser", user);
         request.setAttribute("myEvaluateScore", myEvaluateScore);
     }
+
+    @Override
+    public void getAllRegisterUsers(int scormId, HttpServletRequest request) {
+        request.setAttribute("registerUsers", summarizeDao.getAllRegisterUsersByScormId(scormId));
+    }
+
+    @Override
+    public void getUseUpScormsByScormId(int scormId, HttpServletRequest request) {
+        int userId = scormDao.findScormInfoByScormId(scormId).getUploadUserId();
+        request.setAttribute("otherScorms", scormDao.getAllUpScormInfoByUserId(userId));
+    }
 }

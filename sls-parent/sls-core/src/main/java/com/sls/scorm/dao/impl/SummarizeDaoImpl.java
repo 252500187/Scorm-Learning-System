@@ -6,6 +6,8 @@ import com.core.page.entity.PageParameter;
 import com.sls.scorm.dao.SummarizeDao;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.entity.ScormSummarize;
+import com.sls.user.entity.User;
+import com.sls.util.DictConstant;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.stereotype.Repository;
@@ -86,5 +88,12 @@ public class SummarizeDaoImpl extends PageDao implements SummarizeDao {
     public void shieldDiscuss(int userId, int scormId) {
         String sql = "UPDATE luss_scorm_summarize SET discuss='' WHERE scorm_id=? AND user_id=?";
         getJdbcTemplate().update(sql, scormId, userId);
+    }
+
+    @Override
+    public List<User> getAllRegisterUsersByScormId(int scormId) {
+        String sql = "SELECT * FROM us_user_info WHERE user_id IN(SELECT user_id FROM us_user WHERE user_id IN (" +
+                "SELECT user_id FROM luss_scorm_summarize WHERE scorm_id=?) AND in_use=?)";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<User>(User.class), scormId, DictConstant.IN_USE);
     }
 }

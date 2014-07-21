@@ -28,8 +28,8 @@
 <div class="row">
     <div class="col-md-5">
         <img style="width: 300px" src="img/scormInfo/flag_top.png" alt=""/><br/>
-        <img id="scormImg" src="${scormInfo.imgPath}" class="img-polaroid"
-             style="width: 300px;height: 200px" alt=""/><br/>
+        <img id="scormImg" src="${scormInfo.imgPath}" class="img-rounded"
+             style="width: 300px;height: 200px" alt="${scormInfo.scormName}"/><br/>
         <img style="width: 300px" src="img/scormInfo/flag_center.png" alt=""/>
     </div>
     <div class="col-md-7">
@@ -92,37 +92,58 @@
 <%--课件学习情况，章节列表，学习笔记，评论等--%>
 <div class="row">
 <div class="col-md-8">
-    <c:if test="${study&&fn:length(noteList)>0}">
-    <div class="portlet">
-        <div class="portlet-title sidebar-title">
-            <div class="caption-sidebar">学习笔记</div>
-            <div class="tools">
-                <a href="javascript:;" class="collapse">
-                </a>
+    <c:if test="${fn:length(registerUsers)>0}">
+        <div class="portlet">
+            <div class="portlet-title sidebar-title">
+                <div class="caption-sidebar">注册用户</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse">
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <c:forEach var="user" items="${registerUsers}">
+                    <a onclick="">
+                        <div class="col-md-3 mix mix_all" style=" display: block;">
+                            <img src="${user.imgUrl}" width="80px" height="80px" class="img-rounded"/>
+
+                            <p style="margin-left: 16px">${user.userName}</p>
+                        </div>
+                    </a>
+                </c:forEach>
             </div>
         </div>
-        <div class="portlet-body">
-            <ul class="feeds">
-                <%
-                    String[] color = {"success", "info", "danger", "warning"};
-                %>
-                <c:forEach var="note" items="${noteList}">
-                    <div class="note note-<%=color[(int)(Math.random()*100)%4]%>">
-                        <h4 class="block">${note.date}</h4>
+    </c:if>
+    <c:if test="${study&&fn:length(noteList)>0}">
+        <div class="portlet">
+            <div class="portlet-title sidebar-title">
+                <div class="caption-sidebar">学习笔记</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse">
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <ul class="feeds">
+                    <% String[] color = {"success", "info", "danger", "warning"}; %>
+                    <c:forEach var="note" items="${noteList}">
+                        <div class="note note-<%=color[(int)(Math.random()*100)%4]%>">
+                            <h4 class="block">${note.date}</h4>
 
-                        <p>
-                            <c:if test="${note.noteType==text}">
-                                ${note.note}
-                            </c:if>
-                            <c:if test="${note.noteType!=text}">
-                                <img src="${note.note}"/>
-                            </c:if>
-                        </p>
-                    </div>
-                </c:forEach>
-            </ul>
+                            <p>
+                                <c:if test="${note.noteType==text}">
+                                    ${note.note}
+                                </c:if>
+                                <c:if test="${note.noteType!=text}">
+                                    <img src="${note.note}"/>
+                                </c:if>
+                            </p>
+                        </div>
+                    </c:forEach>
+                </ul>
+            </div>
         </div>
-        </c:if>
+    </c:if>
     <div class="portlet">
         <div class="portlet-title sidebar-title">
             <div class="caption-sidebar">评论</div>
@@ -176,6 +197,7 @@
     </div>
 </div>
 <div class="col-md-4">
+    <%--学习情况--%>
     <c:if test="${study}">
         <div class="row">
             <div class="portlet">
@@ -263,6 +285,7 @@
             </div>
         </div>
     </c:if>
+    <%--章节列表--%>
     <div class="row">
         <div class="portlet">
             <div class="portlet-title sidebar-title">
@@ -287,11 +310,12 @@
             </div>
         </div>
     </div>
+    <%--系列课件--%>
     <c:if test="${fn:length(groupScorms)>0}">
         <div class="row">
             <div class="portlet">
                 <div class="portlet-title sidebar-title">
-                    <div class="caption-sidebar">本系列课程</div>
+                    <div class="caption-sidebar">系列课程</div>
                     <div class="tools">
                         <a href="javascript:;" class="collapse">
                         </a>
@@ -304,7 +328,39 @@
                                 <div class="cont">
                                     <c:forEach var="groupScorm" items="${groupScorms}">
                                         <a onclick="scormInfo('${groupScorm.scormId}')">
+                                            <img src="${groupScorm.imgPath}" width="80px" height="80px"
+                                                 class="img-rounded"/>
                                                 ${groupScorm.scormName}
+                                        </a><br/>
+                                    </c:forEach>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </c:if>
+    <%--其他课件--%>
+    <c:if test="${fn:length(otherScorms)>0}">
+        <div class="row">
+            <div class="portlet">
+                <div class="portlet-title sidebar-title">
+                    <div class="caption-sidebar">作者更多课件</div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse">
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <ul class="feeds">
+                        <li style="background-color: #fff;">
+                            <div class="col1">
+                                <div class="cont">
+                                    <c:forEach var="scorm" items="${otherScorms}">
+                                        <a onclick="scormInfo('${scorm.scormId}')">
+                                            <img src="${scorm.imgPath}" width="80px" height="80px" class="img-rounded"/>
+                                                ${scorm.scormName}
                                         </a><br/>
                                     </c:forEach>
                                 </div>
@@ -380,7 +436,7 @@
             dataType: "json",
             type: "GET",
             success: function () {
-                window.location.href=basePath + "tourist/scormInfo?scormId=" + id;
+                window.location.href = basePath + "tourist/scormInfo?scormId=" + id;
             },
             error: doError
         })

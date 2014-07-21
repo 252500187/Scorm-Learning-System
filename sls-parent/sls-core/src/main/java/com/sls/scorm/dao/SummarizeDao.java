@@ -3,6 +3,7 @@ package com.sls.scorm.dao;
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.ScormSummarize;
+import com.sls.user.entity.User;
 
 import java.util.List;
 
@@ -29,4 +30,6 @@ public interface SummarizeDao {
     Page<ScormSummarize> findDiscussPageList(PageParameter pageParameter, ScormSummarize scormSummarize);
 
     void shieldDiscuss(int userId, int scormId);
+
+    List<User> getAllRegisterUsersByScormId(int scormId);
 }
