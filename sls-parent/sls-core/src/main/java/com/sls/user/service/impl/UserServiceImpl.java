@@ -62,7 +62,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserAllInfoById(int id) {
-        return userDao.findUserAllInfoById(id);
+        User user = userDao.findUserAllInfoById(id);
+        user.setLevelName(userDao.findUserLevelNameByScore(user.getScore()).getLevelName());
+        List<UserLevel> nextUserLevel = userDao.findUserNextLevelByScore(user.getScore());
+        UserLevel userNowLevel = userDao.findUserNowLevelByScore(user.getScore());
+        if (nextUserLevel.size() == 0) {
+            user.setFinalScore(100);
+        } else {
+            user.setFinalScore((user.getScore() - userNowLevel.getScore()) * 100 / (nextUserLevel.get(0).getScore() - userNowLevel.getScore()));
+        }
+        return user;
     }
 
     @Override

@@ -593,16 +593,28 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void getUseUpScormsByScormId(int scormId, HttpServletRequest request) {
         int userId = scormDao.findScormInfoByScormId(scormId).getUploadUserId();
-        request.setAttribute("otherScorms", scormDao.getAllUpScormInfoByUserId(userId));
+        List<Scorm> scorms = scormDao.getAllUpScormInfoByUserId(userId);
+        for (Scorm scorm : scorms) {
+            scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
+        }
+        request.setAttribute("otherScorms", scorms);
     }
 
     @Override
     public List<Scorm> getRegisterScormsByUserId(int userId) {
-        return scormDao.findRegisterScormByUserId(userId);
+        List<Scorm> scorms = scormDao.findRegisterScormByUserId(userId);
+        for (Scorm scorm : scorms) {
+            scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
+        }
+        return scorms;
     }
 
     @Override
     public List<Scorm> getUpScormsByUserId(int userId) {
-        return scormDao.getAllUpScormInfoByUserId(userId);
+        List<Scorm> scorms = scormDao.getAllUpScormInfoByUserId(userId);
+        for (Scorm scorm : scorms) {
+            scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
+        }
+        return scorms;
     }
 }

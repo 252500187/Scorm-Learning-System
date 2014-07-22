@@ -25,14 +25,111 @@
             <div class="col-md-4">
                 <ul class="list-unstyled profile-nav">
                     <li>
-                        <img src="" class="img-responsive" alt=""/>
-                        <a href="#" class="profile-edit">edit</a>
+                        <img src="${user.imgUrl}" class="img-responsive" alt=""/>
                     </li>
                 </ul>
             </div>
             <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-8 profile-info">
+                        <h1 style="font-weight:bold;">${user.userName}
+                            <a class="btn blue">关注</a>
+                        </h1>
+                        <br/>
 
+                        <p>
+                            爱好：
+                            <c:forEach var="label" items="${labels}">
+                                <a onclick="findByLabel('${label.labelName}')">${label.labelName},</a>
+                            </c:forEach>
+                        </p><br/>
+
+                        <p>
+                            等级：<span style="font-weight:bold;"> ${user.levelName}</span>&nbsp;&nbsp;${user.score}分
+                        </p>
+
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100"
+                                 style="width:${user.finalScore}%">
+                            </div>
+                        </div>
+                        <%--<ul class="list-inline">--%>
+                        <%--<li>--%>
+                        <%--<i class="fa fa-map-marker"></i> Spain--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                        <%--<i class="fa fa-calendar"></i> 18 Jan 1982--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                        <%--<i class="fa fa-briefcase"></i> Design--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                        <%--<i class="fa fa-star"></i> Top Seller--%>
+                        <%--</li>--%>
+                        <%--<li>--%>
+                        <%--<i class="fa fa-heart"></i> BASE Jumping--%>
+                        <%--</li>--%>
+                        <%--</ul>--%>
+                    </div>
+                    <!--end col-md-8-->
+                    <div class="col-md-4">
+                        <div class="portlet sale-summary">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <span class="sale-info">上传课件数<i class="fa fa-img-down"></i></span>
+                                        <span class="sale-num">${fn:length(upScorms)}</span>
+                                    </li>
+                                    <li>
+                                        <span class="sale-info">注册课件数<i class="fa fa-img-up"></i></span>
+                                        <span class="sale-num">${fn:length(registerScorms)}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="row">
+            <h3 class="form-section">上传的课件</h3>
+            <hr/>
+
+            <c:forEach var="scorm" items="${upScorms}">
+                <a onclick="scormInfo('${scorm.scormId}')">
+                    <div class="col-md-2 mix mix_all" style=" display: block;">
+                        <img src="${scorm.imgPath}" width="80px" height="80px" class="img-rounded"/>
+
+                        <p>
+                            <img src="${scorm.showRecommendLevel}"
+                                 style="width: 15px;height: 15px"/>&nbsp;${scorm.scormName}
+                        </p>
+                    </div>
+                </a>
+            </c:forEach>
+        </div>
+        <div class="row">
+            <h3 class="form-section">注册的课件</h3>
+            <hr/>
+
+            <c:forEach var="scorm" items="${registerScorms}">
+                <a onclick="scormInfo('${scorm.scormId}')">
+                    <div class="col-md-2 mix mix_all" style=" display: block;">
+                        <img src="${scorm.imgPath}" width="80px" height="80px" class="img-rounded"/>
+
+                        <p>
+                            <img src="${scorm.showRecommendLevel}"
+                                 style="width: 15px;height: 15px"/>&nbsp;${scorm.scormName}
+                        </p>
+                    </div>
+                </a>
+            </c:forEach>
         </div>
     </div>
 </div>

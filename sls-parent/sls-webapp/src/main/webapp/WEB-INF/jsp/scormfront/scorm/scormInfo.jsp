@@ -34,6 +34,7 @@
     </div>
     <div class="col-md-7">
         <br/><br/>
+
         <h3 class="caption-sidebar">
             <c:if test="${scormInfo.showRecommendLevel!=''}">
                 <img src="${scormInfo.showRecommendLevel}" width="25px" height="25px">
@@ -107,6 +108,7 @@
                     <a onclick="userInfo('${user.userId}')">
                         <div class="col-md-3 mix mix_all" style=" display: block;">
                             <img src="${user.imgUrl}" width="80px" height="80px" class="img-rounded"/>
+
                             <p style="margin-left: 16px">${user.userName}</p>
                         </div>
                     </a>
@@ -330,7 +332,8 @@
                                         <a onclick="scormInfo('${groupScorm.scormId}')">
                                             <img src="${groupScorm.imgPath}" width="80px" height="80px"
                                                  class="img-rounded"/>
-                                                ${groupScorm.scormName}
+                                            <img src="${groupScorm.showRecommendLevel}"
+                                                 style="width: 15px;height: 15px"/>&nbsp;${groupScorm.scormName}
                                         </a><br/>
                                     </c:forEach>
                                 </div>
@@ -360,7 +363,8 @@
                                     <c:forEach var="scorm" items="${otherScorms}">
                                         <a onclick="scormInfo('${scorm.scormId}')">
                                             <img src="${scorm.imgPath}" width="80px" height="80px" class="img-rounded"/>
-                                                ${scorm.scormName}
+                                            <img src="${scorm.showRecommendLevel}"
+                                                 style="width: 15px;height: 15px"/>&nbsp;${scorm.scormName}
                                         </a><br/>
                                     </c:forEach>
                                 </div>

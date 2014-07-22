@@ -69,7 +69,7 @@
                             <ul class="list-inline">
                                 <li>
                                     <i class="fa fa-calendar"></i>
-                                    <a>${scorm.uploadDate}</a>
+                                    <a>上传日期:${scorm.uploadDate}</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-folder-open-o"></i>
@@ -99,7 +99,7 @@
                             <ul class="list-inline">
                                 <li>
                                     <i class="fa fa-calendar"></i>
-                                    <a>${scorm.uploadDate}</a>
+                                    <a>上传日期:${scorm.uploadDate}</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-folder-open-o"></i>
@@ -129,7 +129,7 @@
                             <ul class="list-inline">
                                 <li>
                                     <i class="fa fa-calendar"></i>
-                                    <a>${scorm.uploadDate}</a>
+                                    <a>上传日期:${scorm.uploadDate}</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-folder-open-o"></i>
@@ -159,7 +159,7 @@
                             <ul class="list-inline">
                                 <li>
                                     <i class="fa fa-calendar"></i>
-                                    <a>${scorm.uploadDate}</a>
+                                    <a>上传日期:${scorm.uploadDate}</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-folder-open-o"></i>

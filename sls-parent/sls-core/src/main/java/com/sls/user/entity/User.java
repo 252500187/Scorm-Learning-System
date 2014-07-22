@@ -19,6 +19,8 @@ public class User {
     private String imgUrl;
     private int upLoadScormNum;
 
+    private int finalScore;
+
     private String registerDate;
 
     private int roleId;
@@ -164,5 +166,13 @@ public class User {
 
     public void setUpLoadScormNum(int upLoadScormNum) {
         this.upLoadScormNum = upLoadScormNum;
+    }
+
+    public int getFinalScore() {
+        return finalScore;
+    }
+
+    public void setFinalScore(int finalScore) {
+        this.finalScore = finalScore;
     }
 }
