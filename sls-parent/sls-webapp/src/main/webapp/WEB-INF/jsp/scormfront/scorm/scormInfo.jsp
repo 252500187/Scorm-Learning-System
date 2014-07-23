@@ -56,10 +56,13 @@
                     注册
                 </a>
             </c:if>
-            <c:if test="${collect}">
-                <a class="btn blue" onclick="collectScorm('${scormInfo.scormId}')" id="collectScorm">
-                    收藏
-                </a>
+            <c:if test="${showCollect}">
+                <c:if test="${collect}">
+                    <a class="btn blue" onclick="collectScorm('${scormInfo.scormId}')" name="collect">收藏</a>
+                </c:if>
+                <c:if test="${!collect}">
+                    <a class="btn blue" onclick="collectScorm('${scormInfo.scormId}')" name="collect">取消收藏</a>
+                </c:if>
             </c:if>
             <br/>
             <ul class="list-inline">
@@ -448,13 +451,19 @@
 
     function collectScorm(id) {
         $.ajax({
-            url: basePath + "user/scorm/collectScorm?scormId=" + id,
+            url: basePath + "user/scorm/collectDealScorm?scormId=" + id,
             dataType: "json",
             type: "GET",
             success: function () {
-                $("#alertPromptMessage").html("收藏成功");
+                var collectEle = $("[name='collect']");
+                if (collectEle.html() == "收藏") {
+                    $("#alertPromptMessage").html("收藏成功");
+                    collectEle.html("取消收藏");
+                } else {
+                    $("#alertPromptMessage").html("取消成功");
+                    collectEle.html("收藏");
+                }
                 $("#alertPrompt").modal("show");
-                $("#collectScorm").hide();
             },
             error: doError
         })

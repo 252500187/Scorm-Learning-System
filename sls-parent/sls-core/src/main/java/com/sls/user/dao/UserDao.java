@@ -36,7 +36,7 @@ public interface UserDao {
 
     void editUseState(User user);
 
-    void cancelCollectByUserIdAndScormId(int userId, String scormId);
+    void cancelCollectByUserIdAndScormId(int userId, int scormId);
 
     List<UserLevel> findUserNextLevelByScore(int score);
 

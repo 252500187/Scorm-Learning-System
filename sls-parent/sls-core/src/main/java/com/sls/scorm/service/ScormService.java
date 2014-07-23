@@ -39,7 +39,7 @@ public interface ScormService {
 
     void getScormOperate(int scormId, HttpServletRequest request);
 
-    String collectScorm(int scormId, HttpServletRequest request);
+    void collectDealScorm(int scormId, HttpServletRequest request);
 
     void addStudyNote(StudyNote studyNote);
 

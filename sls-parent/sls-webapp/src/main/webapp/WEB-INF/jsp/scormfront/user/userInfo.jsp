@@ -153,15 +153,15 @@
             url: basePath + "user/info/userAttention?userAttentionId=" + userId,
             type: "GET",
             success: function () {
-                var ele = $("[name = 'userAttention']");
-                if (ele.html() == "关注") {
+                var attentionEle = $("[name = 'userAttention']");
+                if (attentionEle.html() == "关注") {
                     $("#alertPromptMessage").html("关注成功");
                     $("#alertPrompt").modal("show");
-                    ele.html("取消关注");
+                    attentionEle.html("取消关注");
                 } else {
-                    $("#alertPromptMessage").html("取消关注成功");
+                    $("#alertPromptMessage").html("取消成功");
                     $("#alertPrompt").modal("show");
-                    ele.html("关注");
+                    attentionEle.html("关注");
                 }
             },
             error: doError

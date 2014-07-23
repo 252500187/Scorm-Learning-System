@@ -69,8 +69,8 @@
         parent.$("#alertConfirmMessage").html("确认取消收藏?");
         parent.$("#promptButton1").click(function () {
             $.ajax({
-                url: basePath + "user/center/cancelCollect?scormId=" + scormId,
-                type: "POST",
+                url: basePath + "user/scorm/collectDealScorm?scormId=" + scormId,
+                type: "GET",
                 success: function () {
                     parent.changeIframe('user/center/collectScormDo');
                 }

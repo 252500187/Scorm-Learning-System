@@ -58,13 +58,6 @@ public class UserCenterServiceImpl implements UserCenterService {
     }
 
     @Override
-    public void cancelCollect(String scormId) {
-        List<User> userList = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName());
-        User user = userList.get(0);
-        userDao.cancelCollectByUserIdAndScormId(user.getUserId(),scormId);
-    }
-
-    @Override
     public void getAllUpScormInfo(HttpServletRequest request) {
         List<User> userList = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName());
         User user = userList.get(0);

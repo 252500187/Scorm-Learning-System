@@ -117,12 +117,6 @@ public class UserCenterController {
         return "scormfront/usercenter/myscorm/myUpScorms";
     }
 
-    @RequestMapping(value = "cancelCollect", method = {RequestMethod.POST})
-    @ResponseBody
-    public void cancelCollect(@RequestParam("scormId") String scormId) {
-        userCenterService.cancelCollect(scormId);
-    }
-
     //个人中心  笔记本
     @RequestMapping(value = "scormNotesDo", method = {RequestMethod.GET})
     public String scormNotesDo(HttpServletRequest request) {

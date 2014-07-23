@@ -125,21 +125,21 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public String collectScorm(int scormId, HttpServletRequest request) {
+    public void collectDealScorm(int scormId, HttpServletRequest request) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         int scormState = scormDao.findScormInfoByScormId(scormId).getInUse();
-        if (noteCollectDao.findCollectScormByScormIdAndUserId(scormId, userId).size() > 0) {
-            return "对不起，您已收藏。";
-        }
         if (scormState == DictConstant.NO_USE) {
-            return "此课件不可收藏。";
+            return ;
+        }
+        if (noteCollectDao.findCollectScormByScormIdAndUserId(scormId, userId).size() > 0) {
+            userDao.cancelCollectByUserIdAndScormId(userId, scormId);
+            return ;
         }
         Collect collect = new Collect();
         collect.setScormId(scormId);
         collect.setUserId(userId);
         collect.setCollectDate(DateUtil.getSystemDate("yyyy-MM-dd"));
         noteCollectDao.addCollectScorm(collect);
-        return "收藏成功。";
     }
 
     @Override
@@ -397,11 +397,13 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void getScormOperate(int scormId, HttpServletRequest request) {
+        boolean showCollect = false;
         boolean collect = false;
         boolean register = false;
         boolean study = false;
         boolean complete = false;
         if (!"".equals(LoginUserUtil.getLoginName())) {
+            showCollect = true;
             if (scormDao.findScormInfoByScormId(scormId).getInUse() == DictConstant.IN_USE) {
                 int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
                 if (noteCollectDao.checkNotHasCollected(scormId, userId)) {
@@ -418,6 +420,7 @@ public class ScormServiceImpl implements ScormService {
                 }
             }
         }
+        request.setAttribute("showCollect", showCollect);
         request.setAttribute("collect", collect);
         request.setAttribute("register", register);
         request.setAttribute("study", study);

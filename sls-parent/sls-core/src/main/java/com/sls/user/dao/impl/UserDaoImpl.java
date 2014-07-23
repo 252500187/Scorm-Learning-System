@@ -136,7 +136,7 @@ public class UserDaoImpl extends PageDao implements UserDao {
     }
 
     @Override
-    public void cancelCollectByUserIdAndScormId(int userId, String scormId) {
+    public void cancelCollectByUserIdAndScormId(int userId, int scormId) {
         String sql = "DELETE FROM luss_user_collect WHERE user_id = ? AND scorm_id = ?";
         getJdbcTemplate().update(sql, userId, scormId);
     }
