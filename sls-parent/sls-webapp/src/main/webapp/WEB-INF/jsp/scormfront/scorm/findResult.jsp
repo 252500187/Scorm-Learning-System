@@ -20,7 +20,21 @@
 <div class="page-container" style="margin-top: 80px">
 <div class="row">
 <br/>
-<div class="col-md-9">
+
+<div class="col-md-2">
+    <hr/>
+    <ul class="nav">
+        <c:forEach var="label" items="${sessionScope.labels}">
+            <li>
+                <a onclick="findByLabel('${label.labelName}')">
+                    <i class="fa fa-tags"></i>${label.labelName}
+                </a>
+            </li>
+        </c:forEach>
+    </ul>
+    <hr/>
+</div>
+<div class="col-md-7">
     <div class="row">
         <div class="col-md-12">
             <h3 class="page-title">
@@ -48,9 +62,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-8 col-sm-8 article-block">
+        <div class="col-md-12 col-sm-8 article-block">
             <c:if test="${fn:length(findNameScorm)<=0&&fn:length(findDescriptionScorm)<=0&&fn:length(findScoreScorm)<=0&&fn:length(findLabelScorm)<=0}">
                 <h3 class="page-title">Sorry</h3>
 
@@ -79,7 +91,9 @@
                         </div>
                         <div class="col-md-8 blog-article">
                             <h3><a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
+
                             <p>评分:${scorm.score}分</p>
+
                             <p>${scorm.description}</p>
                             <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">
                                 详细 <i class="m-icon-swapright m-icon-white"></i>
@@ -109,7 +123,9 @@
                         </div>
                         <div class="col-md-8 blog-article">
                             <h3><a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
+
                             <p>评分:${scorm.score}分</p>
+
                             <p>${scorm.description}</p>
                             <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">
                                 详细 <i class="m-icon-swapright m-icon-white"></i>
@@ -139,7 +155,9 @@
                         </div>
                         <div class="col-md-8 blog-article">
                             <h3><a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
+
                             <p>评分:${scorm.score}分</p>
+
                             <p>${scorm.description}</p>
                             <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">
                                 详细 <i class="m-icon-swapright m-icon-white"></i>
@@ -169,7 +187,9 @@
                         </div>
                         <div class="col-md-8 blog-article">
                             <h3><a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
+
                             <p>评分:${scorm.score}分</p>
+
                             <p>${scorm.description}</p>
                             <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">
                                 详细 <i class="m-icon-swapright m-icon-white"></i>
@@ -183,7 +203,7 @@
     </div>
 </div>
 <div class="col-md-3 col-sm-4 blog-sidebar">
-    <h3>推荐给你</h3>
+    <h3 class="page-title">推荐给你</h3>
     <hr/>
     <c:if test="${fn:length(recommendScorm)<1}">
         <h5>试着给自己添加标签</h5>
@@ -263,9 +283,10 @@
         </c:if>
     </div>
     <div class="space20">
-        <hr/>
     </div>
-    <h3>名言名句</h3>
+    <br/>
+
+    <h3 class="page-title">名言名句</h3>
     <hr/>
     <div class="tabbable tabbable-custom">
         <ul class="nav nav-tabs">

@@ -46,13 +46,15 @@
                         </h1>
                         <br/>
 
-                        <p>
-                            爱好：
-                            <c:forEach var="label" items="${labels}">
-                                <a onclick="findByLabel('${label.labelName}')">${label.labelName},</a>
-                            </c:forEach>
-                        </p><br/>
-
+                        <c:if test="${fn:length(labels)>0}">
+                            <p>
+                                爱好：
+                                <c:forEach var="label" items="${labels}">
+                                    <a onclick="findByLabel('${label.labelName}')"> <i
+                                            class="fa fa-tags"></i>${label.labelName},</a>
+                                </c:forEach>
+                            </p><br/>
+                        </c:if>
                         <p>
                             等级：<span style="font-weight:bold;"> ${user.levelName}</span>&nbsp;&nbsp;${user.score}分
                         </p>
