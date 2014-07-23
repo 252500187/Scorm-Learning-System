@@ -10,9 +10,11 @@ import com.sls.system.dao.LabelDao;
 import com.sls.system.entity.Label;
 import com.sls.system.service.DictService;
 import com.sls.user.dao.RoleDao;
+import com.sls.user.dao.UserAttentionDao;
 import com.sls.user.dao.UserDao;
 import com.sls.user.dao.UserRoleDao;
 import com.sls.user.entity.User;
+import com.sls.user.entity.UserAttention;
 import com.sls.user.entity.UserLevel;
 import com.sls.user.entity.UserRole;
 import com.sls.user.service.UserService;
@@ -49,6 +51,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private LabelDao labelDao;
+
+    @Autowired
+    private UserAttentionDao userAttentionDao;
 
     @Override
     public Page<User> findUserPageList(PageParameter pageParameter, User user) {
@@ -202,5 +207,36 @@ public class UserServiceImpl implements UserService {
         request.setAttribute("scormTime", scormTimeList);
         request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score", 10));
         request.setAttribute("scormLevel", scormDao.indexFindTopScormByFieldName("recommend_level", 10));
+    }
+
+    @Override
+    public void getUserOperate(int userAttentionId, HttpServletRequest request) {
+        Boolean isAttention = true;
+        Boolean showAttention = true;
+        if (LoginUserUtil.getLoginName().equals("")) {
+            showAttention = false;
+        } else {
+            int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+            if (userAttentionDao.findAttention(userId, userAttentionId).size() > 0) {
+                isAttention = false;
+            }
+        }
+        request.setAttribute("isAttention", isAttention);
+        request.setAttribute("showAttention", showAttention);
+    }
+
+    @Override
+    public void attentionUser(int userAttentionId) {
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        UserAttention userAttention = new UserAttention();
+        userAttention.setUserAttentionId(userAttentionId);
+        userAttention.setUserId(userId);
+        List<UserAttention> userAttentions = userAttentionDao.findAttention(userId, userAttentionId);
+        if (userAttentions.size() < 1) {
+            userAttention.setNewMessage(DictConstant.NO_USE);
+            userAttentionDao.addUserAttention(userAttention);
+        } else {
+            userAttentionDao.delUserAttention(userAttention);
+        }
     }
 }

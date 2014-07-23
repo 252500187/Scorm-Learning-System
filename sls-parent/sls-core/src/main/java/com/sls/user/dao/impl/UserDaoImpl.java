@@ -3,8 +3,6 @@ package com.sls.user.dao.impl;
 import com.core.page.dao.PageDao;
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
-import com.sls.scorm.entity.Scorm;
-import com.sls.scorm.entity.ScormSummarize;
 import com.sls.system.entity.Label;
 import com.sls.user.dao.UserDao;
 import com.sls.user.entity.User;
@@ -27,17 +25,8 @@ public class UserDaoImpl extends PageDao implements UserDao {
     }
 
     private StringBuilder getUserManageSql() {
-        String sql = "SELECT " +
-                "  a.`user_id`,a.`login_name`,d.`user_name`,c.role_name,d.register_date,a.`in_use`," +
-                "  d.`email`,d.`score`" +
-                "FROM" +
-                "  us_user a," +
-                "  us_user_role b," +
-                "  us_role c," +
-                "  us_user_info d " +
-                "WHERE a.user_id = b.user_id " +
-                "  AND b.role_id = c.role_id " +
-                "  AND d.user_id = a.user_id";
+        String sql = "SELECT   a.`user_id`,a.`login_name`,d.`user_name`,c.role_name,d.register_date,a.`in_use`, d.`email`,d.`score` FROM us_user a, us_user_role b, us_role c, us_user_info d " +
+                "WHERE a.user_id = b.user_id AND b.role_id = c.role_id  AND d.user_id = a.user_id";
         return new StringBuilder(sql);
     }
 
@@ -81,8 +70,7 @@ public class UserDaoImpl extends PageDao implements UserDao {
 
     @Override
     public int addUser(User user) {
-        String sql = "INSERT INTO us_user(login_name, password, in_use) " +
-                "VALUES(:loginName, :password, :inUse)";
+        String sql = "INSERT INTO us_user(login_name, password, in_use) VALUES(:loginName, :password, :inUse)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(user), keyHolder);
         return keyHolder.getKey().intValue();
@@ -90,9 +78,7 @@ public class UserDaoImpl extends PageDao implements UserDao {
 
     @Override
     public void editUser(User user) {
-        String sql = "UPDATE us_user_info " +
-                "SET user_name = :userName, sex = :sex  " +
-                "WHERE user_id = :userId";
+        String sql = "UPDATE us_user_info SET user_name = :userName, sex = :sex WHERE user_id = :userId";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(user));
     }
 
@@ -131,7 +117,7 @@ public class UserDaoImpl extends PageDao implements UserDao {
     public List<Label> getPieChartsByUserId(int userId) {
         String sql = "SELECT a.*, ul.label_name FROM (SELECT COUNT(label_id) AS number,label_id " +
                 " FROM  ss_scorm_label WHERE scorm_id IN (SELECT DISTINCT  scorm_id " +
-                "    FROM luss_scorm_sco WHERE user_id = ?) GROUP BY label_id)a JOIN us_label ul" +
+                " FROM luss_scorm_sco WHERE user_id = ?) GROUP BY label_id)a JOIN us_label ul" +
                 " ON a.label_id = ul.label_id";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Label>(Label.class), userId);
     }
@@ -144,9 +130,7 @@ public class UserDaoImpl extends PageDao implements UserDao {
 
     @Override
     public void editUseState(User user) {
-        String sql = "UPDATE us_user " +
-                "SET in_use = :inUse " +
-                "WHERE user_id = :userId";
+        String sql = "UPDATE us_user SET in_use = :inUse WHERE user_id = :userId";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(user));
 
     }

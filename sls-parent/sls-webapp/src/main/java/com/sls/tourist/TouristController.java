@@ -128,6 +128,7 @@ public class TouristController {
         request.setAttribute("labels", labelService.getLabelsByUserId(userId));
         request.setAttribute("registerScorms", scormService.getRegisterScormsByUserId(userId));
         request.setAttribute("upScorms", scormService.getUpScormsByUserId(userId));
+        userService.getUserOperate(userId, request);
         return "scormfront/user/userInfo";
     }
 }

@@ -41,4 +41,8 @@ public interface UserService {
     void shieldDiscuss(int userId, int scormId);
 
     void adminIndexStatisticInfo(HttpServletRequest request);
+
+    void getUserOperate(int userAttentionId, HttpServletRequest request);
+
+    void attentionUser(int userAttentionId);
 }

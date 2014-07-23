@@ -16,11 +16,11 @@
 <body class="page-header-fixed" style="background-color: #ffffff;overflow-x:hidden">
 <%@include file="../index/navigationMenu.jsp" %>
 <div class="page-container">
-    <%--左侧旁白--%>
+    <!--左侧旁白-->
     <div class="col-md-2">
     </div>
     <div class="col-md-8">
-        <%--基本信息--%>
+        <!--基本信息-->
         <div class="row">
             <div class="col-md-4">
                 <ul class="list-unstyled profile-nav">
@@ -33,7 +33,14 @@
                 <div class="row">
                     <div class="col-md-8 profile-info">
                         <h1 style="font-weight:bold;">${user.userName}
-                            <a class="btn blue">关注</a>
+                            <c:if test="${showAttention}">
+                                <c:if test="${isAttention}">
+                                    <a class="btn blue" name="userAttention" onclick="userAttention('${user.userId}')">关注</a>
+                                </c:if>
+                                <c:if test="${!isAttention}">
+                                    <a class="btn blue" name="userAttention" onclick="userAttention('${user.userId}')">取消关注</a>
+                                </c:if>
+                            </c:if>
                         </h1>
                         <br/>
 
@@ -55,25 +62,7 @@
                                  style="width:${user.finalScore}%">
                             </div>
                         </div>
-                        <%--<ul class="list-inline">--%>
-                        <%--<li>--%>
-                        <%--<i class="fa fa-map-marker"></i> Spain--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                        <%--<i class="fa fa-calendar"></i> 18 Jan 1982--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                        <%--<i class="fa fa-briefcase"></i> Design--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                        <%--<i class="fa fa-star"></i> Top Seller--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                        <%--<i class="fa fa-heart"></i> BASE Jumping--%>
-                        <%--</li>--%>
-                        <%--</ul>--%>
                     </div>
-                    <!--end col-md-8-->
                     <div class="col-md-4">
                         <div class="portlet sale-summary">
                             <div class="portlet-title">
@@ -158,4 +147,24 @@
         Metronic.init();
         Layout.init();
     });
+
+    function userAttention(userId) {
+        $.ajax({
+            url: basePath + "user/info/userAttention?userAttentionId=" + userId,
+            type: "GET",
+            success: function () {
+                var ele = $("[name = 'userAttention']");
+                if (ele.html() == "关注") {
+                    $("#alertPromptMessage").html("关注成功");
+                    $("#alertPrompt").modal("show");
+                    ele.html("取消关注");
+                } else {
+                    $("#alertPromptMessage").html("取消关注成功");
+                    $("#alertPrompt").modal("show");
+                    ele.html("关注");
+                }
+            },
+            error: doError
+        })
+    }
 </script>
