@@ -129,11 +129,11 @@ public class ScormServiceImpl implements ScormService {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         int scormState = scormDao.findScormInfoByScormId(scormId).getInUse();
         if (scormState == DictConstant.NO_USE) {
-            return ;
+            return;
         }
         if (noteCollectDao.findCollectScormByScormIdAndUserId(scormId, userId).size() > 0) {
             userDao.cancelCollectByUserIdAndScormId(userId, scormId);
-            return ;
+            return;
         }
         Collect collect = new Collect();
         collect.setScormId(scormId);
@@ -160,16 +160,11 @@ public class ScormServiceImpl implements ScormService {
             return;
         }
         User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
-        int userId = user.getUserId();
         StudyNote studyNote = new StudyNote();
         studyNote.setScormId(scormId);
-        studyNote.setUserId(userId);
+        studyNote.setUserId(user.getUserId());
         List<StudyNote> studyNoteList = noteCollectDao.getAllStudyNotesByScormIdAndUserId(studyNote);
-        for (StudyNote studyNote1 : studyNoteList) {
-            studyNote1.setTime(studyNote1.getDate().substring(10));
-            studyNote1.setDate(studyNote1.getDate().substring(0, 10));
-        }
-        request.setAttribute("noteList", studyNoteList.size() == 0 ? new LinkedList<StudyNote>() : studyNoteList);
+        request.setAttribute("noteList", studyNoteList);
         request.setAttribute("userName", user.getUserName());
         request.setAttribute("text", DictConstant.TEXT_TYPE);
     }
@@ -259,7 +254,7 @@ public class ScormServiceImpl implements ScormService {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         if (!("".equals(sessionTime))) {
             scoInfo.setCoreTotalTime(DateUtil.getTotalTime(sessionTime, scoDao.getScoApiInfoByScoId(scoInfo.getScoId()).get(0).getCoreTotalTime()));
-            summarizeDao.changeTotalTimeByScormIdAndUserId(userId, scormId, DateUtil.getTotalTime(sessionTime, summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormId).getTotalTime()));
+            summarizeDao.changeTotalTimeByScormIdAndUserId(userId, scormId, DateUtil.getTotalTime(sessionTime, summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormId).get(0).getTotalTime()));
             scormDao.changeTotalTimeByScormId(scormId, DateUtil.getTotalTime(sessionTime, scormDao.findScormInfoByScormId(scormId).getTotalTime()));
         }
         //处理SCO的学习状态,测试和非测试
@@ -291,7 +286,7 @@ public class ScormServiceImpl implements ScormService {
     }
 
     public void checkAllSco(int scormId, int userId) {
-        ScormSummarize scormSummarize = summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormId);
+        ScormSummarize scormSummarize = summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormId).get(0);
         if (scoDao.isAllScoClick(scormId, userId)) {
             //课件完成方式为浏览即可完成时,判断通过并处理
             if (scormDao.findScormInfoByScormId(scormId).getCompleteWay() != DictConstant.VOID_VALUE) {
@@ -491,7 +486,7 @@ public class ScormServiceImpl implements ScormService {
     public Boolean evaluateScorm(ScormSummarize scormSummarize) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         scormSummarize.setUserId(userId);
-        ScormSummarize oldScormSummarize = summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormSummarize.getScormId());
+        ScormSummarize oldScormSummarize = summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormSummarize.getScormId()).get(0);
         if (("").equals(oldScormSummarize.getCompleteDate())) {
             return false;
         }
@@ -514,7 +509,7 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void discussScorm(ScormSummarize scormSummarize) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-        if (("").equals(summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormSummarize.getScormId()).getDiscussDate())) {
+        if (("").equals(summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormSummarize.getScormId()).get(0).getDiscussDate())) {
             userDao.addScore(DictConstant.EXP_SCORE, userId);
         }
         scormSummarize.setUserId(userId);
@@ -528,15 +523,14 @@ public class ScormServiceImpl implements ScormService {
             return;
         }
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-        if (scoDao.findScosByScormIdAndUserId(scormId, userId).size() < 1) {
-            return;
+        List<ScormSummarize> scormSummarizes = summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormId);
+        if (scormSummarizes.size() > 0) {
+            if (!("").equals(scormSummarizes.get(0).getTotalTime())) {
+                int[] splitTime = DateUtil.splitScormTime(scormSummarizes.get(0).getTotalTime());
+                scormSummarizes.get(0).setTotalTime(splitTime[0] + "小时" + splitTime[1] + "分钟" + splitTime[2] + "秒");
+            }
+            request.setAttribute("summarize", scormSummarizes.get(0));
         }
-        ScormSummarize scormSummarize = summarizeDao.findScormSummarizeByUserIdAndScormId(userId, scormId);
-        if (!("").equals(scormSummarize.getTotalTime())) {
-            int[] splitTime = DateUtil.splitScormTime(scormSummarize.getTotalTime());
-            scormSummarize.setTotalTime(splitTime[0] + "小时" + splitTime[1] + "分钟" + splitTime[2] + "秒");
-        }
-        request.setAttribute("summarize", scormSummarize);
     }
 
     @Override
@@ -581,8 +575,8 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void findReviewsByScormId(int scormId, HttpServletRequest request) {
         User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
-        int myEvaluateScore = summarizeDao.findScormSummarizeByUserIdAndScormId(user.getUserId(), scormId).getScore();
-        request.setAttribute("completeDate", summarizeDao.findScormSummarizeByUserIdAndScormId(user.getUserId(), scormId).getCompleteDate());
+        int myEvaluateScore = summarizeDao.findScormSummarizeByUserIdAndScormId(user.getUserId(), scormId).get(0).getScore();
+        request.setAttribute("completeDate", summarizeDao.findScormSummarizeByUserIdAndScormId(user.getUserId(), scormId).get(0).getCompleteDate());
         request.setAttribute("AllComments", summarizeDao.getAllCommentsByScormId(scormId));
         request.setAttribute("nowUser", user);
         request.setAttribute("myEvaluateScore", myEvaluateScore);

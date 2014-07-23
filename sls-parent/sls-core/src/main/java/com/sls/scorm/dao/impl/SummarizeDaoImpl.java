@@ -44,15 +44,14 @@ public class SummarizeDaoImpl extends PageDao implements SummarizeDao {
 
 
     @Override
-    public ScormSummarize findScormSummarizeByUserIdAndScormId(int userId, int scormId) {
+    public List<ScormSummarize> findScormSummarizeByUserIdAndScormId(int userId, int scormId) {
         String sql = "SELECT * FROM luss_scorm_summarize WHERE user_id=? AND scorm_id=?";
-        return getJdbcTemplate().queryForObject(sql, new BeanPropertyRowMapper<ScormSummarize>(ScormSummarize.class), userId, scormId);
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<ScormSummarize>(ScormSummarize.class), userId, scormId);
     }
 
     @Override
     public List<ScormSummarize> getAllCommentsByScormId(int scormId) {
-        String sql = "SELECT summarize.*, userinfo.* "
-                + "FROM luss_scorm_summarize summarize , us_user_info userinfo "
+        String sql = "SELECT summarize.*, userinfo.* FROM luss_scorm_summarize summarize , us_user_info userinfo "
                 + "WHERE summarize.user_id = userinfo.user_id AND scorm_id = ? AND summarize.discuss!='' ORDER BY discuss_date DESC";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<ScormSummarize>(ScormSummarize.class), scormId);
     }

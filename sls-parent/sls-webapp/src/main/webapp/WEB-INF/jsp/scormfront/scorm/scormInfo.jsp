@@ -149,57 +149,59 @@
             </div>
         </div>
     </c:if>
-    <div class="portlet">
-        <div class="portlet-title sidebar-title">
-            <div class="caption-sidebar">评论</div>
-            <div class="tools">
-                <a href="javascript:;" class="collapse">
-                </a>
+    <c:if test="${fn:length(allComments)>0||!register}">
+        <div class="portlet">
+            <div class="portlet-title sidebar-title">
+                <div class="caption-sidebar">评论</div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse">
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <ul class="feeds">
+                    <li style="background-color: #fff;">
+                        <div class="cont">
+                            <div class="cont-col2">
+                                <c:if test="${!register}">
+                                    <div class="chat-form">
+                                        <div class="input-cont">
+                                            <input class="form-control" type="text" id="discuss"
+                                                   placeholder="说点什么？"/>
+                                        </div>
+                                        <div class="btn-cont">
+                                            <span class="arrow"></span>
+                                            <a onclick="changeDiscuss()" class="btn blue icn-only">
+                                                <i class="fa fa-check icon-white"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                </c:if>
+                                <ul class="chats">
+                                    <c:forEach var="comment" items="${allComments}">
+                                        <c:if test="${comment.userId!=userId}">
+                                            <li class="in">
+                                        </c:if>
+                                        <c:if test="${comment.userId==userId}">
+                                            <li class="out">
+                                        </c:if>
+                                        <div class="message">
+                                            <span class="arrow"></span>
+                                            <a class="name">${comment.userName}</a>
+                                            <span class="datetime">${comment.discussDate}</span>
+                                            <span class="body">${comment.discuss}</span>
+                                        </div>
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="portlet-body">
-            <ul class="feeds">
-                <li style="background-color: #fff;">
-                    <div class="cont">
-                        <div class="cont-col2">
-                            <c:if test="${register}">
-                                <div class="chat-form">
-                                    <div class="input-cont">
-                                        <input class="form-control" type="text" id="discuss"
-                                               placeholder="说点什么？"/>
-                                    </div>
-                                    <div class="btn-cont">
-                                        <span class="arrow"></span>
-                                        <a onclick="changeDiscuss()" class="btn blue icn-only">
-                                            <i class="fa fa-check icon-white"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <br/>
-                            </c:if>
-                            <ul class="chats">
-                                <c:forEach var="comment" items="${allComments}">
-                                    <c:if test="${comment.userId!=userId}">
-                                        <li class="in">
-                                    </c:if>
-                                    <c:if test="${comment.userId==userId}">
-                                        <li class="out">
-                                    </c:if>
-                                    <div class="message">
-                                        <span class="arrow"></span>
-                                        <a class="name">${comment.userName}</a>
-                                        <span class="datetime">${comment.discussDate}</span>
-                                        <span class="body">${comment.discuss}</span>
-                                    </div>
-                                    </li>
-                                </c:forEach>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
+    </c:if>
 </div>
 <div class="col-md-4">
     <%--学习情况--%>
@@ -332,11 +334,14 @@
                             <div class="col1">
                                 <div class="cont">
                                     <c:forEach var="groupScorm" items="${groupScorms}">
+                                        <br/>
                                         <a onclick="scormInfo('${groupScorm.scormId}')">
                                             <img src="${groupScorm.imgPath}" width="80px" height="80px"
                                                  class="img-rounded"/>
-                                            <img src="${groupScorm.showRecommendLevel}"
-                                                 style="width: 15px;height: 15px"/>&nbsp;${groupScorm.scormName}
+                                            <c:if test="${groupScorm.showRecommendLevel!=''}">
+                                                <img src="${groupScorm.showRecommendLevel}"
+                                                     style="width: 15px;height: 15px"/>
+                                            </c:if>&nbsp;${groupScorm.scormName}
                                         </a><br/>
                                     </c:forEach>
                                 </div>
@@ -364,10 +369,13 @@
                             <div class="col1">
                                 <div class="cont">
                                     <c:forEach var="scorm" items="${otherScorms}">
+                                        <br/>
                                         <a onclick="scormInfo('${scorm.scormId}')">
                                             <img src="${scorm.imgPath}" width="80px" height="80px" class="img-rounded"/>
-                                            <img src="${scorm.showRecommendLevel}"
-                                                 style="width: 15px;height: 15px"/>&nbsp;${scorm.scormName}
+                                            <c:if test="${scorm.showRecommendLevel!=''}">
+                                                <img src="${scorm.showRecommendLevel}"
+                                                     style="width: 15px;height: 15px"/>
+                                            </c:if>&nbsp;${scorm.scormName}
                                         </a><br/>
                                     </c:forEach>
                                 </div>
