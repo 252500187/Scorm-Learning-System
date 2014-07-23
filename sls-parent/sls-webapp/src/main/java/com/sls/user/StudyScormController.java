@@ -44,12 +44,14 @@ public class StudyScormController {
     }
 
     @RequestMapping(value = "studyScorm", method = {RequestMethod.GET})
-    public String studyScorm(HttpServletRequest request, @RequestParam("scormId") String scormId) {
-        scormService.studyScorm(Integer.parseInt(scormId), request);
-        scormService.getDiscusses(Integer.parseInt(scormId), request);
-        scormService.setScormSummarizeInfo(Integer.parseInt(scormId));
-        scormService.getSummarizeInfo(Integer.parseInt(scormId), request);
-        scormService.getAllStudyNotesByScormIdAndUserId(Integer.parseInt(scormId), request);
+    public String studyScorm(HttpServletRequest request, @RequestParam("scormId") int scormId) {
+        scormService.studyScorm(scormId, request);
+        scormService.getDiscusses(scormId, request);
+        scormService.setScormSummarizeInfo(scormId);
+        scormService.getSummarizeInfo(scormId, request);
+        scormService.getAllStudyNotesByScormIdAndUserId(scormId, request);
+        scormService.getUseUpScormsByScormId(scormId, request);
+        scormService.getAllRegisterUsers(scormId, request);
         return "scormfront/scorm/studyScorm";
     }
 

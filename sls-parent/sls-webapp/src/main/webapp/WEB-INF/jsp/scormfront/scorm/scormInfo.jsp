@@ -163,7 +163,7 @@
                     <li style="background-color: #fff;">
                         <div class="cont">
                             <div class="cont-col2">
-                                <c:if test="${!register}">
+                                <c:if test="${showDiscussInput}">
                                     <div class="chat-form">
                                         <div class="input-cont">
                                             <input class="form-control" type="text" id="discuss"

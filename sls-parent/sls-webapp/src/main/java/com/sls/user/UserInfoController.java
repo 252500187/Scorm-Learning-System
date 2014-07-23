@@ -17,9 +17,9 @@ public class UserInfoController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "userAttention", method = {RequestMethod.GET})
+    @RequestMapping(value = "userAttentionDeal", method = {RequestMethod.GET})
     @ResponseBody
-    public void attentionUser(@RequestParam("userAttentionId") int userAttentionId) {
-        userService.attentionUser(userAttentionId);
+    public void userAttentionDeal(@RequestParam("userAttentionId") int userAttentionId) {
+        userService.userAttentionDeal(userAttentionId);
     }
 }

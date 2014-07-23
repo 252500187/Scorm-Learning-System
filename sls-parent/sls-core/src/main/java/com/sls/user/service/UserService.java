@@ -44,5 +44,5 @@ public interface UserService {
 
     void getUserOperate(int userAttentionId, HttpServletRequest request);
 
-    void attentionUser(int userAttentionId);
+    void userAttentionDeal(int userAttentionId);
 }

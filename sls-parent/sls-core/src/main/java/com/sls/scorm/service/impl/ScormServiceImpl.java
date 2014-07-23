@@ -393,6 +393,7 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void getScormOperate(int scormId, HttpServletRequest request) {
         boolean showCollect = false;
+        boolean showDiscussInput = false;
         boolean collect = false;
         boolean register = false;
         boolean study = false;
@@ -409,6 +410,7 @@ public class ScormServiceImpl implements ScormService {
                 }
                 if (!register) {
                     study = true;
+                    showDiscussInput = true;
                 }
                 if (summarizeDao.isCompleteScorm(scormId, userId)) {
                     complete = true;
@@ -416,6 +418,7 @@ public class ScormServiceImpl implements ScormService {
             }
         }
         request.setAttribute("showCollect", showCollect);
+        request.setAttribute("showDiscussInput", showDiscussInput);
         request.setAttribute("collect", collect);
         request.setAttribute("register", register);
         request.setAttribute("study", study);

@@ -77,7 +77,6 @@
                 </div>
             </div>
             <div class="portlet-body">
-
                 <iframe style="border: 0;display: none;" id="upImgIframe" name="upImgIframe"></iframe>
                 <div class="chat-form">
                     传张图片？
@@ -268,7 +267,63 @@
         </div>
     </div>
 </div>
+<c:if test="${fn:length(otherScorms)>0}">
+    <div class="row" name="protectEye">
+        <div class="col-md-12">
+            <div class="portlet box purple">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-file-text"></i>作者更多课件
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <c:forEach var="scorm" items="${otherScorms}">
+                            <a onclick="scormInfo('${scorm.scormId}')">
+                                <div class="col-md-1 mix mix_all" style=" display: block;">
+                                    <img src="${scorm.imgPath}" width="80px" height="80px" class="img-rounded"/>
 
+                                    <p>
+                                        <c:if test="${scorm.showRecommendLevel!=''}">
+                                            <img src="${scorm.showRecommendLevel}"
+                                                 style="width: 15px;height: 15px"/>&nbsp;
+                                        </c:if>${scorm.scormName}
+                                    </p>
+                                </div>
+                            </a>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</c:if>
+<c:if test="${fn:length(registerUsers)>0}">
+    <div class="row" name="protectEye">
+        <div class="col-md-12">
+            <div class="portlet box purple">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-file-text"></i>注册用户
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row">
+                        <c:forEach var="user" items="${registerUsers}">
+                            <a onclick="userInfo('${user.userId}')">
+                                <div class="col-md-1 mix mix_all" style=" display: block;">
+                                    <img src="${user.imgUrl}" width="80px" height="80px" class="img-rounded"/>
+
+                                    <p>${user.userName}</p>
+                                </div>
+                            </a>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</c:if>
 </div>
 <%@include file="../index/footer.jsp" %>
 <div id="alertConfirm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
@@ -355,7 +410,7 @@
                 }
             });
         });
-        $("#scormIframe").attr("src","img/studyscormdefaultimg/8.jpg");
+        $("#scormIframe").attr("src", "img/studyscormdefaultimg/8.jpg");
     });
 
     function getNowDate() {

@@ -35,10 +35,12 @@
                         <h1 style="font-weight:bold;">${user.userName}
                             <c:if test="${showAttention}">
                                 <c:if test="${isAttention}">
-                                    <a class="btn blue" name="userAttention" onclick="userAttention('${user.userId}')">关注</a>
+                                    <a class="btn blue" name="userAttention"
+                                       onclick="userAttentionDeal('${user.userId}')">关注</a>
                                 </c:if>
                                 <c:if test="${!isAttention}">
-                                    <a class="btn blue" name="userAttention" onclick="userAttention('${user.userId}')">取消关注</a>
+                                    <a class="btn blue" name="userAttention"
+                                       onclick="userAttentionDeal('${user.userId}')">取消关注</a>
                                 </c:if>
                             </c:if>
                         </h1>
@@ -86,40 +88,48 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <h3 class="form-section">上传的课件</h3>
-            <hr/>
+        <c:if test="${fn:length(upScorms)>0}">
+            <div class="row">
+                <h3 class="form-section">上传的课件</h3>
+                <hr/>
 
-            <c:forEach var="scorm" items="${upScorms}">
-                <a onclick="scormInfo('${scorm.scormId}')">
-                    <div class="col-md-2 mix mix_all" style=" display: block;">
-                        <img src="${scorm.imgPath}" width="80px" height="80px" class="img-rounded"/>
+                <c:forEach var="scorm" items="${upScorms}">
+                    <a onclick="scormInfo('${scorm.scormId}')">
+                        <div class="col-md-2 mix mix_all" style=" display: block;">
+                            <img src="${scorm.imgPath}" width="80px" height="80px" class="img-rounded"/>
 
-                        <p>
-                            <img src="${scorm.showRecommendLevel}"
-                                 style="width: 15px;height: 15px"/>&nbsp;${scorm.scormName}
-                        </p>
-                    </div>
-                </a>
-            </c:forEach>
-        </div>
-        <div class="row">
-            <h3 class="form-section">注册的课件</h3>
-            <hr/>
+                            <p>
+                                <c:if test="${scorm.showRecommendLevel!=''}">
+                                    <img src="${scorm.showRecommendLevel}"
+                                         style="width: 15px;height: 15px"/>&nbsp;
+                                </c:if>${scorm.scormName}
+                            </p>
+                        </div>
+                    </a>
+                </c:forEach>
+            </div>
+        </c:if>
+        <c:if test="${fn:length(registerScorms)>0}">
+            <div class="row">
+                <h3 class="form-section">注册的课件</h3>
+                <hr/>
 
-            <c:forEach var="scorm" items="${registerScorms}">
-                <a onclick="scormInfo('${scorm.scormId}')">
-                    <div class="col-md-2 mix mix_all" style=" display: block;">
-                        <img src="${scorm.imgPath}" width="80px" height="80px" class="img-rounded"/>
+                <c:forEach var="scorm" items="${registerScorms}">
+                    <a onclick="scormInfo('${scorm.scormId}')">
+                        <div class="col-md-2 mix mix_all" style=" display: block;">
+                            <img src="${scorm.imgPath}" width="80px" height="80px" class="img-rounded"/>
 
-                        <p>
-                            <img src="${scorm.showRecommendLevel}"
-                                 style="width: 15px;height: 15px"/>&nbsp;${scorm.scormName}
-                        </p>
-                    </div>
-                </a>
-            </c:forEach>
-        </div>
+                            <p>
+                                <c:if test="${scorm.showRecommendLevel!=''}">
+                                    <img src="${scorm.showRecommendLevel}"
+                                         style="width: 15px;height: 15px"/>&nbsp;
+                                </c:if>${scorm.scormName}
+                            </p>
+                        </div>
+                    </a>
+                </c:forEach>
+            </div>
+        </c:if>
     </div>
 </div>
 <%@include file="../index/footer.jsp" %>
@@ -148,9 +158,9 @@
         Layout.init();
     });
 
-    function userAttention(userId) {
+    function userAttentionDeal(userId) {
         $.ajax({
-            url: basePath + "user/info/userAttention?userAttentionId=" + userId,
+            url: basePath + "user/info/userAttentionDeal?userAttentionId=" + userId,
             type: "GET",
             success: function () {
                 var attentionEle = $("[name = 'userAttention']");
