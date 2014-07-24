@@ -26,21 +26,36 @@
         </div>
         <div class="top-menu" style="margin: 17px">
             <ul class="nav navbar-nav pull-right">
-                <li class="dropdown dropdown-extended dropdown-tasks">
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                       style="font-size: 20px;"
-                       data-close-others="true">
+                       style="font-size: 20px;" data-close-others="true">
                         课件分类
                         <i class="fa fa-angle-down"></i>
                     </a>
-                    <ul class="dropdown-menu">
-                        <c:forEach var="label" items="${sessionScope.labels}">
-                            <li>
-                                <a onclick="findByLabel('${label.labelName}')">
-                                    <i class="fa fa-tags"></i>${label.labelName}
-                                </a>
-                            </li>
-                        </c:forEach>
+                    <ul class="dropdown-menu extended notification">
+                        <li>
+                            <ul class="dropdown-menu-list scroller"
+                                style="height: ${fn:length(sessionScope.labels)*30>400?400:fn:length(sessionScope.labels)*30}px;">
+                                <c:forEach var="label" items="${sessionScope.labels}">
+
+                                    <li>
+                                        <a onclick="findByLabel('${label.labelName}')">
+                                            <span class="label label-sm label-icon label-success">
+                                                <i class="fa fa-tags"></i>
+                                            </span>
+                                                ${label.labelName}
+                                        </a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </li>
+                        <li class="divider">
+                        </li>
+                        <li>
+                            <a href="">
+                                全部课件<i class="m-icon-swapright"></i>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <c:if test="${sessionScope.userId==null||sessionScope.userId==''}">
@@ -56,15 +71,55 @@
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.userId!=null&&sessionScope.userId!=''}">
-                    <li class="dropdown dropdown-tasks">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                           data-close-others="true" style="font-size: 20px;padding: 10px">
-                            <img id="userTopImg" alt="Hello" style="height: 40px;"
-                                 src="${sessionScope.userImg}"/>
-                            <span class="username" id="userTopName">${sessionScope.userName}</span>
+                           style="font-size: 20px;" data-close-others="true">
+                            关注用户
+                            <c:if test="${sessionScope.messageNum>0}">
+                                <span class="badge">${sessionScope.messageNum}</span>
+                            </c:if>
                             <i class="fa fa-angle-down"></i>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu extended notification">
+                            <c:if test="${fn:length(sessionScope.attentionUsers)>0}">
+                                <li>
+                                    <ul class="dropdown-menu-list scroller"
+                                        style="height: ${fn:length(sessionScope.attentionUsers)*30>400?400:fn:length(sessionScope.attentionUsers)*30}px;">
+                                        <c:forEach var="attentionUser" items="${sessionScope.attentionUsers}">
+                                            <li>
+                                                <a onclick="userInfo('${attentionUser.userAttentionId}')">
+                                                <span class="label label-sm label-icon label-success">
+                                                    <i class="fa fa-user"></i>
+                                                </span>
+                                                        ${attentionUser.userName}
+                                                    <c:if test="${attentionUser.newMessage>0}">
+                                                        <span style="color: red">${attentionUser.newMessage}</span>
+                                                    </c:if>
+                                                </a>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+                                </li>
+                            </c:if>
+                            <c:if test="${fn:length(sessionScope.attentionUsers)<1}">
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <p>
+                                        还未关注其他用户
+                                    </p>
+                                </li>
+                            </c:if>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                           data-close-others="true" style="font-size: 20px;padding: 10px">
+                            <img id="userTopImg" alt="Hello" style="height: 40px;" src="${sessionScope.userImg}"/>
+                            <span class="username" id="userTopName">${sessionScope.userName}</span><i
+                                class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu extended notification">
                             <li>
                                 <a href="">
                                     <i class="fa fa-bookmark-o"></i>首页

@@ -8,6 +8,7 @@ import com.sls.scorm.service.ScormService;
 import com.sls.system.dao.LabelDao;
 import com.sls.system.entity.Label;
 import com.sls.system.service.DictService;
+import com.sls.user.dao.UserAttentionDao;
 import com.sls.user.dao.UserDao;
 import com.sls.user.entity.User;
 import com.sls.util.*;
@@ -52,6 +53,9 @@ public class ScormServiceImpl implements ScormService {
 
     @Autowired
     private GroupDao groupDao;
+
+    @Autowired
+    private UserAttentionDao userAttentionDao;
 
     @Override
     public void getUpScormGroupsByUserId(HttpServletRequest request) {
@@ -98,13 +102,15 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void registerScorm(int scormId, HttpServletRequest request) {
         User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
+        //校验防止重复注册和注册不可使用课件
         int scormState = scormDao.findScormInfoByScormId(scormId).getInUse();
-        if (scoDao.findScosByScormIdAndUserId(scormId, user.getUserId()).size() > 0) {
-            return;
-        }
         if (scormState == DictConstant.NO_USE) {
             return;
         }
+        if (scoDao.findScosByScormIdAndUserId(scormId, user.getUserId()).size() > 0) {
+            return;
+        }
+        //添加课件相关数据
         List<Sco> scoList = scoDao.findScosByScormIdAndUserId(scormId, DictConstant.VOID_VALUE);
         ScoInfo scoInfo;
         for (Sco sco : scoList) {
@@ -120,8 +126,12 @@ public class ScormServiceImpl implements ScormService {
         scormSummarize.setScormId(scormId);
         scormSummarize.setRegisterDate(DateUtil.getSystemDate("yyyy-MM-dd"));
         summarizeDao.addScormSummarize(scormSummarize);
+        //添加课件注册数
         scormDao.addVisitSum(scormId);
+        //添加用户分数
         userDao.addScore(DictConstant.EXP_SCORE, user.getUserId());
+        //添加消息提醒
+        userAttentionDao.countNewMessageByAttentionUserId(user.getUserId());
     }
 
     @Override

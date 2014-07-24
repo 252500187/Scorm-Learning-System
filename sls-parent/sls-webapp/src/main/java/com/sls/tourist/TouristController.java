@@ -123,12 +123,13 @@ public class TouristController {
     }
 
     @RequestMapping(value = "userInfo", method = {RequestMethod.GET})
-    public String userInfo(@RequestParam("userId") int userId, HttpServletRequest request) {
+    public String userInfo(@RequestParam("userId") int userId, HttpServletRequest request, HttpSession session) {
         request.setAttribute("user", userService.findUserAllInfoById(userId));
         request.setAttribute("labels", labelService.getLabelsByUserId(userId));
         request.setAttribute("registerScorms", scormService.getRegisterScormsByUserId(userId));
         request.setAttribute("upScorms", scormService.getUpScormsByUserId(userId));
         userService.getUserOperate(userId, request);
+        userService.clearAllNewMessage(userId, session);
         return "scormfront/user/userInfo";
     }
 }

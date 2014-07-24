@@ -107,11 +107,19 @@
 						</span>
                     </a>
                 </li>
-                <li class="last ">
+                <li class="last">
                     <a onclick="changeIframe('user/center/scormNotesDo')">
                         <i class="fa fa-book"></i>
 						<span class="title">
 							我的笔记本
+						</span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="changeIframe('user/center/scormNotesDo')">
+                        <i class="fa fa-users"></i>
+						<span class="title">
+							关注列表
 						</span>
                     </a>
                 </li>

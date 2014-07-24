@@ -11,4 +11,10 @@ public interface UserAttentionDao {
     void addUserAttention(UserAttention userAttention);
 
     void delUserAttention(UserAttention userAttention);
+
+    List<UserAttention> getAttentionUsersByUserId(int userId);
+
+    void clearAllNewMessageByUserIdAndAttentionUserId(int userId, int attentionUserId);
+
+    void countNewMessageByAttentionUserId(int attentionUserId);
 }

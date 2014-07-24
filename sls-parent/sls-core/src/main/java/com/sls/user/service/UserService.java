@@ -7,6 +7,7 @@ import com.sls.user.entity.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -45,4 +46,6 @@ public interface UserService {
     void getUserOperate(int userAttentionId, HttpServletRequest request);
 
     void userAttentionDeal(int userAttentionId);
+
+    void clearAllNewMessage(int attentionUserId, HttpSession session);
 }

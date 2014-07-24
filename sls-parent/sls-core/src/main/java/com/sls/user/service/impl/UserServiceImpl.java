@@ -24,6 +24,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -233,10 +234,27 @@ public class UserServiceImpl implements UserService {
         userAttention.setUserId(userId);
         List<UserAttention> userAttentions = userAttentionDao.findAttention(userId, userAttentionId);
         if (userAttentions.size() < 1) {
-            userAttention.setNewMessage(DictConstant.NO_USE);
+            userAttention.setNewMessage(0);
             userAttentionDao.addUserAttention(userAttention);
         } else {
             userAttentionDao.delUserAttention(userAttention);
+        }
+    }
+
+    @Override
+    public void clearAllNewMessage(int attentionUserId, HttpSession session) {
+        if (!("").equals(LoginUserUtil.getLoginName())) {
+            //清空新消息提示
+            int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+            userAttentionDao.clearAllNewMessageByUserIdAndAttentionUserId(userId, attentionUserId);
+            //重设好友列表的数据
+            List<UserAttention> userAttentionList = userAttentionDao.getAttentionUsersByUserId(userId);
+            int messageNum = 0;
+            for (UserAttention userAttention : userAttentionList) {
+                messageNum += userAttention.getNewMessage();
+            }
+            session.setAttribute("attentionUsers", userAttentionList);
+            session.setAttribute("messageNum", messageNum);
         }
     }
 }

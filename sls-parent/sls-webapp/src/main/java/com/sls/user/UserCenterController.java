@@ -124,6 +124,12 @@ public class UserCenterController {
         return "scormfront/usercenter/note/scormNotes";
     }
 
+    //个人中心  关注列表
+    @RequestMapping(value = "userAttentionDo", method = {RequestMethod.GET})
+    public String userAttentionDo(HttpServletRequest request) {
+        return "scormfront/usercenter/note/userAttentions";
+    }
+
     @RequestMapping(value = "notesDo", method = {RequestMethod.GET})
     public String notesDo(HttpServletRequest request, @RequestParam("scormId") String scormId) {
         scormService.getAllStudyNotesByScormIdAndUserId(Integer.parseInt(scormId), request);

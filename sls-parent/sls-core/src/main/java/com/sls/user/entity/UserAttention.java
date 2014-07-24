@@ -5,6 +5,8 @@ public class UserAttention {
     private int userAttentionId;
     private int newMessage;
 
+    private String userName;
+
     public UserAttention() {
     }
 
@@ -30,5 +32,13 @@ public class UserAttention {
 
     public void setNewMessage(int newMessage) {
         this.newMessage = newMessage;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

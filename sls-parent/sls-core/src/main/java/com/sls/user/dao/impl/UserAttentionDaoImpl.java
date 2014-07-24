@@ -29,4 +29,22 @@ public class UserAttentionDaoImpl extends PageDao implements UserAttentionDao {
         String sql = "DELETE FROM us_user_attention WHERE user_id=? AND user_attention_id=?";
         getJdbcTemplate().update(sql, userAttention.getUserId(), userAttention.getUserAttentionId());
     }
+
+    @Override
+    public List<UserAttention> getAttentionUsersByUserId(int userId) {
+        String sql = "SELECT * FROM us_user_attention a LEFT JOIN us_user_info b ON a.user_attention_id=b.user_id WHERE a.user_id=?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<UserAttention>(UserAttention.class), userId);
+    }
+
+    @Override
+    public void clearAllNewMessageByUserIdAndAttentionUserId(int userId, int attentionUserId) {
+        String sql = "UPDATE us_user_attention SET new_message=0 WHERE user_id=? AND user_attention_id=?";
+        getJdbcTemplate().update(sql, userId, attentionUserId);
+    }
+
+    @Override
+    public void countNewMessageByAttentionUserId(int attentionUserId) {
+        String sql = "UPDATE us_user_attention SET new_message=new_message+1 WHERE user_attention_id=?";
+        getJdbcTemplate().update(sql, attentionUserId);
+    }
 }
