@@ -23,9 +23,7 @@
             <div class="tabbable tabbable-custom boxless">
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
-                        <!-- BEGIN FILTER -->
                         <div class="margin-top-10">
-
                             <ul class="mix-filter">
                                 <li class="filter" data-filter="all">
                                     所有课件
@@ -93,11 +91,9 @@
                                             </div>
                                         </div>
                                     </c:if>
-
                                 </c:forEach>
                             </div>
                         </div>
-                        <!-- END FILTER -->
                     </div>
                 </div>
             </div>
