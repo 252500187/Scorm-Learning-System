@@ -126,8 +126,8 @@ public class UserCenterController {
 
     //个人中心  关注列表
     @RequestMapping(value = "userAttentionDo", method = {RequestMethod.GET})
-    public String userAttentionDo(HttpServletRequest request) {
-        return "scormfront/usercenter/note/userAttentions";
+    public String userAttentionDo() {
+        return "scormfront/usercenter/userAttentions";
     }
 
     @RequestMapping(value = "notesDo", method = {RequestMethod.GET})

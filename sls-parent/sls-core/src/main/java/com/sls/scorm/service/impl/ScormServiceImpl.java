@@ -91,6 +91,10 @@ public class ScormServiceImpl implements ScormService {
                 scoInfo.setCoreCredit(scoNode.getCoreCredit());
                 scoDao.addScoInfo(scoInfo);
             }
+            //添加用户经验值
+            userDao.addScore(DictConstant.EXP_SCORE, userId);
+            //添加消息提醒
+            userAttentionDao.countNewMessageByAttentionUserId(userId);
             request.setAttribute("result", "上传成功");
             return scormId;
         } catch (Exception e) {
@@ -128,7 +132,7 @@ public class ScormServiceImpl implements ScormService {
         summarizeDao.addScormSummarize(scormSummarize);
         //添加课件注册数
         scormDao.addVisitSum(scormId);
-        //添加用户分数
+        //添加用户经验值
         userDao.addScore(DictConstant.EXP_SCORE, user.getUserId());
         //添加消息提醒
         userAttentionDao.countNewMessageByAttentionUserId(user.getUserId());

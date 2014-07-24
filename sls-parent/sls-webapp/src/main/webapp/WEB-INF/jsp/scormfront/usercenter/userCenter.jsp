@@ -116,11 +116,14 @@
                     </a>
                 </li>
                 <li>
-                    <a onclick="changeIframe('user/center/scormNotesDo')">
+                    <a onclick="changeIframe('user/center/userAttentionDo')">
                         <i class="fa fa-users"></i>
 						<span class="title">
 							关注列表
 						</span>
+                        <c:if test="${sessionScope.messageNum>0}">
+                            <span class="badge">${sessionScope.messageNum}</span>
+                        </c:if>
                     </a>
                 </li>
                 <li>

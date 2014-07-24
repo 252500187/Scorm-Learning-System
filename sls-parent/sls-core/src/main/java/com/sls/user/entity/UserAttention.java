@@ -6,6 +6,7 @@ public class UserAttention {
     private int newMessage;
 
     private String userName;
+    private String imgUrl;
 
     public UserAttention() {
     }
@@ -40,5 +41,13 @@ public class UserAttention {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

@@ -103,7 +103,7 @@ public class UserServiceImpl implements UserService {
         user.setRoleId(roleDao.findRoleByAuthority(DictConstant.ROLE_AUTHORITY_USER).getRoleId());
         user.setRegisterDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
         user.setUserName(DictConstant.DEFAULT_USER_NAME);
-        user.setScore(DictConstant.SCORE_0);
+        user.setScore(0);
         int id = userDao.addUser(user);
         user.setUserId(id);
         user.setImgUrl(DictConstant.DEFAULT_USER_PHOTO);
@@ -236,6 +236,8 @@ public class UserServiceImpl implements UserService {
         if (userAttentions.size() < 1) {
             userAttention.setNewMessage(0);
             userAttentionDao.addUserAttention(userAttention);
+            //增加被关注者的经验值
+            userDao.addScore(DictConstant.EXP_SCORE, userAttentionId);
         } else {
             userAttentionDao.delUserAttention(userAttention);
         }
