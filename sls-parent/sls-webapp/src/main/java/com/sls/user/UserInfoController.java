@@ -22,4 +22,10 @@ public class UserInfoController {
     public void userAttentionDeal(@RequestParam("userAttentionId") int userAttentionId) {
         userService.userAttentionDeal(userAttentionId);
     }
+
+    @RequestMapping(value = "addUserQuestion", method = {RequestMethod.POST})
+    @ResponseBody
+    public Boolean addUserQuestion(@RequestParam("questionDescribe") String questionDescribe, @RequestParam("answerUserId") int answerUserId) {
+        return userService.addUserQuestion(answerUserId, questionDescribe);
+    }
 }

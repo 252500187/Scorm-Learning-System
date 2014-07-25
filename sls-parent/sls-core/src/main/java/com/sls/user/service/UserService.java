@@ -4,6 +4,7 @@ import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.ScormSummarize;
 import com.sls.user.entity.User;
+import com.sls.user.entity.UserQuestion;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -48,4 +49,8 @@ public interface UserService {
     void userAttentionDeal(int userAttentionId);
 
     void clearAllNewMessage(int attentionUserId, HttpSession session);
+
+    List<UserQuestion> getUserAnsWerQuestionsByUserId(int userId);
+
+    Boolean addUserQuestion(int answerUserId, String questionDescribe);
 }

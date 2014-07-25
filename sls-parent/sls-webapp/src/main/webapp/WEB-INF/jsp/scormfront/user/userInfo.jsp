@@ -33,19 +33,10 @@
                 <div class="row">
                     <div class="col-md-8 profile-info">
                         <h1 style="font-weight:bold;">${user.userName}
-                            <c:if test="${showAttention}">
-                                <c:if test="${isAttention}">
-                                    <a class="btn blue" name="userAttention"
-                                       onclick="userAttentionDeal('${user.userId}')">关注</a>
-                                </c:if>
-                                <c:if test="${!isAttention}">
-                                    <a class="btn blue" name="userAttention"
-                                       onclick="userAttentionDeal('${user.userId}')">取消关注</a>
-                                </c:if>
-                            </c:if>
+                            <a class="btn blue" id="userAttention"
+                               onclick="userAttentionDeal('${user.userId}')">关注</a>
                         </h1>
                         <br/>
-
                         <c:if test="${fn:length(labels)>0}">
                             <p>
                                 爱好：
@@ -76,16 +67,69 @@
                             <div class="portlet-body">
                                 <ul class="list-unstyled">
                                     <li>
-                                        <span class="sale-info">上传课件数<i class="fa fa-img-down"></i></span>
+                                        <span class="sale-info">上传课件数</span>
                                         <span class="sale-num">${fn:length(upScorms)}</span>
                                     </li>
                                     <li>
-                                        <span class="sale-info">注册课件数<i class="fa fa-img-up"></i></span>
+                                        <span class="sale-info">注册课件数</span>
                                         <span class="sale-num">${fn:length(registerScorms)}</span>
+                                    </li>
+                                    <li>
+                                        <span class="sale-info">回答问题数</span>
+                                        <span class="sale-num">${fn:length(answerQuestions)}</span>
+                                    </li>
+                                    <li>
+                                        <c:if test="${showAttention}">
+                                            <c:if test="${!isAttention}">
+                                                <a class="btn green" id="downQuestion"
+                                                   onclick="downQuestion()">提问</a>
+                                                <a class="btn green" id="upQuestion"
+                                                   onclick="upQuestion()">取消提问</a>
+                                            </c:if>
+                                        </c:if>
                                     </li>
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="questionContent">
+            <hr/>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <div class="portlet box blue">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-file-text"></i>提问
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <form class="form-horizontal">
+                            <div class="form-body">
+                                <div class="form-group">
+                                    <label class="control-label col-md-2">问题描述:</label>
+
+                                    <div class="col-md-8">
+                                        <textarea class="form-control"
+                                                  id="questionDescribe" value=""/></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <a class="btn purple" onclick="submitQuestion()"><i class="fa fa-check"></i>
+                                                提交问题
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -132,6 +176,34 @@
                 </c:forEach>
             </div>
         </c:if>
+        <c:if test="${fn:length(answerQuestions)>0}">
+            <div class="row">
+                <h3 class="form-section">回答的问题</h3>
+                <hr/>
+                <div id="chats">
+                    <ul class="chats">
+                        <c:forEach var="question" items="${answerQuestions}">
+                            <span class="datetime">${question.askDate}</span>
+                            <li class="in">
+                                <div class="message">
+                                    <span class="arrow"></span>
+                                    <a class="name">问:</a>
+                                    <span class="body">${question.askContent}</span>
+                                </div>
+                            </li>
+                            <li class="out">
+                                <div class="message">
+                                    <span class="arrow"></span>
+                                    <a class="name">答:</a>
+                                    <span class="body">${question.answerContent}</span>
+                                </div>
+                            </li>
+                            <hr/>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </div>
+        </c:if>
     </div>
 </div>
 <%@include file="../index/footer.jsp" %>
@@ -158,6 +230,16 @@
     $(function () {
         Metronic.init();
         Layout.init();
+        $("#downQuestion").hide();
+        $("#upQuestion").hide();
+        $("#questionContent").hide();
+
+        <c:if test="${showAttention}">
+        <c:if test="${!isAttention}">
+        $("#userAttention").html("取消关注");
+        $("#downQuestion").show();
+        </c:if>
+        </c:if>
     });
 
     function userAttentionDeal(userId) {
@@ -165,18 +247,64 @@
             url: basePath + "user/info/userAttentionDeal?userAttentionId=" + userId,
             type: "GET",
             success: function () {
-                var attentionEle = $("[name = 'userAttention']");
+                var attentionEle = $("#userAttention");
+                var questionEle = $("#question");
                 if (attentionEle.html() == "关注") {
                     $("#alertPromptMessage").html("关注成功");
                     $("#alertPrompt").modal("show");
                     attentionEle.html("取消关注");
+                    questionEle.show();
+                    $("#downQuestion").show();
+                    $("#upQuestion").hide();
+                    $("#questionContent").hide();
                 } else {
-                    $("#alertPromptMessage").html("取消成功");
+                    $("#alertPromptMessage").html("已取消关注");
                     $("#alertPrompt").modal("show");
                     attentionEle.html("关注");
+                    questionEle.hide();
+                    $("#downQuestion").hide();
+                    $("#upQuestion").hide();
+                    $("#questionContent").hide();
                 }
             },
             error: doError
         })
+    }
+
+    function downQuestion() {
+        $("#questionContent").slideDown("slow");
+        $("#downQuestion").hide();
+        $("#upQuestion").show();
+    }
+
+    function upQuestion() {
+        $("#questionContent").slideUp("slow");
+        $("#upQuestion").hide();
+        $("#downQuestion").show();
+    }
+
+    function submitQuestion() {
+        if ($("#questionDescribe").val().trim() == "") {
+            return;
+        }
+        alert($("#questionDescribe").val());
+        $.ajax({
+            url: basePath + "user/info/addUserQuestion",
+            dataType: "json",
+            type: "post",
+            data: {
+                answerUserId: "${user.userId}",
+                questionDescribe: $("#questionDescribe").val()
+            },
+            success: function (result) {
+                if (result) {
+                    $("#alertPromptMessage").html("已提交问题");
+                } else {
+                    $("#alertPromptMessage").html("提交失败<p>1.请查看您是否已关注此用户。<br/>2.请查看您是否已经向该用户提交问题且该问题尚被未回答。</p>");
+                }
+                $("#alertPrompt").modal("show");
+            },
+            error: doError()
+        });
     }
 </script>

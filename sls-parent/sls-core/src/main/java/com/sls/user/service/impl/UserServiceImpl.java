@@ -9,14 +9,8 @@ import com.sls.scorm.entity.ScormSummarize;
 import com.sls.system.dao.LabelDao;
 import com.sls.system.entity.Label;
 import com.sls.system.service.DictService;
-import com.sls.user.dao.RoleDao;
-import com.sls.user.dao.UserAttentionDao;
-import com.sls.user.dao.UserDao;
-import com.sls.user.dao.UserRoleDao;
-import com.sls.user.entity.User;
-import com.sls.user.entity.UserAttention;
-import com.sls.user.entity.UserLevel;
-import com.sls.user.entity.UserRole;
+import com.sls.user.dao.*;
+import com.sls.user.entity.*;
 import com.sls.user.service.UserService;
 import com.sls.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +49,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserAttentionDao userAttentionDao;
+
+    @Autowired
+    private UserQuestionDao userQuestionDao;
 
     @Override
     public Page<User> findUserPageList(PageParameter pageParameter, User user) {
@@ -218,6 +215,9 @@ public class UserServiceImpl implements UserService {
             showAttention = false;
         } else {
             int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+            if (userId == userAttentionId) {
+                showAttention = false;
+            }
             if (userAttentionDao.findAttention(userId, userAttentionId).size() > 0) {
                 isAttention = false;
             }
@@ -258,5 +258,30 @@ public class UserServiceImpl implements UserService {
             session.setAttribute("attentionUsers", userAttentionList);
             session.setAttribute("messageNum", messageNum);
         }
+    }
+
+    @Override
+    public List<UserQuestion> getUserAnsWerQuestionsByUserId(int userId) {
+        return userQuestionDao.getUserAnsWerQuestionsByAnswerUserId(userId);
+    }
+
+    @Override
+    public Boolean addUserQuestion(int answerUserId, String questionDescribe) {
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        //若未关注或有未回答问题则失败
+        if (userAttentionDao.findAttention(userId, answerUserId).size() < 1
+                || userQuestionDao.findNoAnswerQuestions(answerUserId, userId).size() > 0) {
+            return false;
+        }
+        UserQuestion userQuestion = new UserQuestion();
+        userQuestion.setAnswerUserId(answerUserId);
+        userQuestion.setAskUserId(userId);
+        userQuestion.setAskDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
+        userQuestion.setAskContent(questionDescribe);
+        userQuestion.setAnswerContent("");
+        userQuestion.setNewAsk(DictConstant.IN_USE);
+        userQuestion.setNewAnswer(DictConstant.NO_USE);
+        userQuestionDao.addUserQuestion(userQuestion);
+        return true;
     }
 }

@@ -64,7 +64,7 @@ public class UserDaoImpl extends PageDao implements UserDao {
 
     @Override
     public Boolean checkRepeatUserName(String userName) {
-        String sql = "select * from sys_user where user_name =?";
+        String sql = "SELECT * FROM sys_user WHERE user_name =?";
         return !getJdbcTemplate().query(sql, new BeanPropertyRowMapper<User>(User.class), userName).isEmpty();
     }
 
