@@ -54,4 +54,47 @@ public class UserQuestionDaoImpl extends PageDao implements UserQuestionDao {
         String sql = "SELECT * FROM (SELECT * FROM us_user_question WHERE answer_user_id=?) a LEFT JOIN us_user_info b ON a.ask_user_id=b.user_id ORDER BY ask_date";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<UserQuestion>(UserQuestion.class), answerUserId);
     }
+
+    @Override
+    public UserQuestion getQuestionInfoByQuestionId(int questionId) {
+        String sql = "SELECT * FROM us_user_question WHERE question_id=?";
+        return getJdbcTemplate().queryForObject(sql, new BeanPropertyRowMapper<UserQuestion>(UserQuestion.class), questionId);
+    }
+
+    @Override
+    public void cancelNewAnswerByQuestionId(int questionId) {
+        String sql = "UPDATE us_user_question SET new_answer=? WHERE question_id=?";
+        getJdbcTemplate().update(sql, DictConstant.NO_USE, questionId);
+    }
+
+    @Override
+    public void changeQuestionAskContentByQuestionId(UserQuestion userQuestion) {
+        String sql = "UPDATE us_user_question SET ask_content=? WHERE question_id=?";
+        getJdbcTemplate().update(sql, userQuestion.getAskContent(), userQuestion.getQuestionId());
+    }
+
+    @Override
+    public void setNewAskByQuestionId(int questionId) {
+        String sql = "UPDATE us_user_question SET new_ask=? WHERE question_id=?";
+        getJdbcTemplate().update(sql, DictConstant.IN_USE, questionId);
+    }
+
+    @Override
+    public void cancelNewAskByQuestionId(int questionId) {
+        String sql = "UPDATE us_user_question SET new_ask=? WHERE question_id=?";
+        getJdbcTemplate().update(sql, DictConstant.NO_USE, questionId);
+    }
+
+
+    @Override
+    public void changeQuestionAnswerContentByQuestionId(UserQuestion userQuestion) {
+        String sql = "UPDATE us_user_question SET answer_content=? WHERE question_id=?";
+        getJdbcTemplate().update(sql, userQuestion.getAnswerContent(), userQuestion.getQuestionId());
+    }
+
+    @Override
+    public void setNewAnswerByQuestionId(int questionId) {
+        String sql = "UPDATE us_user_question SET new_answer=? WHERE question_id=?";
+        getJdbcTemplate().update(sql, DictConstant.IN_USE, questionId);
+    }
 }

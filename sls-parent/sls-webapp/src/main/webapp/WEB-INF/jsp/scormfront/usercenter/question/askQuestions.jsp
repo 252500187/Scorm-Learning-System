@@ -10,25 +10,25 @@
     <title>SLS | AttentionUsers</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <%@include file="../../includes/common.jsp" %>
+    <%@include file="../../../includes/common.jsp" %>
 </head>
 <body class="page-header-fixed" style="background-color: transparent">
 <div class="page-content" style="min-height:780px">
     <c:if test="${fn:length(questions)<1}">
-        暂无未回答问题
+        还未提问问题
     </c:if>
     <c:if test="${fn:length(questions)>0}">
         <div class="row mix-grid">
             <div class="col-md-12">
-                <h3 class="form-section">最新提问</h3>
+                <h3 class="form-section">最新回答</h3>
                 <hr/>
                 <c:forEach var="question" items="${questions}">
-                    <c:if test="${question.answerContent==''&&question.newAsk==1}">
+                    <c:if test="${question.answerContent!=''&&question.newAnswer==1}">
                         <div class="col-md-2 col-sm-2 mix mix_all" style=" display: block;">
-                            <a onclick="">
+                            <a onclick="lookQuestion('${question.questionId}')">
                                 <img src="${question.imgUrl}" class="img-responsive"
                                      alt="${question.userName}" style="height: 100px;width: 100px;">
-                                ${question.askDate}<br/><span class="badge">New</span>${question.userName}
+                                    ${question.askDate}<br/><span class="badge">New</span>${question.userName}
                             </a>
                         </div>
                     </c:if>
@@ -40,12 +40,12 @@
                 <h3 class="form-section">未回答</h3>
                 <hr/>
                 <c:forEach var="question" items="${questions}">
-                    <c:if test="${question.answerContent==''&&question.newAsk!=1}">
+                    <c:if test="${question.answerContent==''}">
                         <div class="col-md-2 col-sm-2 mix mix_all" style=" display: block;">
-                            <a onclick="">
+                            <a onclick="lookQuestion('${question.questionId}')">
                                 <img src="${question.imgUrl}" class="img-responsive"
                                      alt="${question.userName}" style="height: 100px;width: 100px;">
-                                ${question.askDate}<br/>${question.userName}
+                                    ${question.askDate}<br/>${question.userName}
                             </a>
                         </div>
                     </c:if>
@@ -57,12 +57,12 @@
                 <h3 class="form-section">已回答</h3>
                 <hr/>
                 <c:forEach var="question" items="${questions}">
-                    <c:if test="${question.answerContent!=''}">
+                    <c:if test="${question.answerContent!=''&&question.newAnswer!=1}">
                         <div class="col-md-2 col-sm-2 mix mix_all" style=" display: block;">
-                            <a onclick="">
+                            <a onclick="lookQuestion('${question.questionId}')">
                                 <img src="${question.imgUrl}" class="img-responsive"
                                      alt="${question.userName}" style="height: 100px;width: 100px;">
-                                ${question.askDate}<br/>${question.userName}
+                                    ${question.askDate}<br/>${question.userName}
                             </a>
                         </div>
                     </c:if>
@@ -77,4 +77,10 @@
     $(function () {
         Portfolio.init();
     })
+
+    function lookQuestion(questionId) {
+        parent.$(".modal-title").html("问题信息");
+        parent.$('#alertIframe').modal('show');
+        parent.$("#iframeInfo").attr("src", basePath + "user/center/lookQuestionInfoAsk?questionId=" + questionId);
+    }
 </script>

@@ -4,9 +4,9 @@ import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.service.ScormService;
 import com.sls.system.service.LabelService;
 import com.sls.user.entity.User;
+import com.sls.user.entity.UserQuestion;
 import com.sls.user.service.UserCenterService;
 import com.sls.user.service.UserService;
-import com.sls.util.DictConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +18,7 @@ import org.xml.sax.SAXException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
@@ -134,14 +135,14 @@ public class UserCenterController {
     @RequestMapping(value = "askQuestionsDo", method = {RequestMethod.GET})
     public String askQuestionsDo(HttpServletRequest request) {
         userCenterService.getAskQuestions(request);
-        return "scormfront/usercenter/askQuestions";
+        return "scormfront/usercenter/question/askQuestions";
     }
 
     //个人中心  提问我的
     @RequestMapping(value = "askUserQuestionsDo", method = {RequestMethod.GET})
     public String askUserQuestionsDo(HttpServletRequest request) {
         userCenterService.getUserQuestions(request);
-        return "scormfront/usercenter/askUserQuestions";
+        return "scormfront/usercenter/question/askUserQuestions";
     }
 
     @RequestMapping(value = "notesDo", method = {RequestMethod.GET})
@@ -162,5 +163,29 @@ public class UserCenterController {
     public String evaluateScormDo(HttpServletRequest request) {
         userCenterService.getAllRegisterScormInfo(request);
         return "scormfront/usercenter/evaluteScorm";
+    }
+
+    @RequestMapping(value = "lookQuestionInfoAsk", method = {RequestMethod.GET})
+    public String lookQuestionInfoAsk(HttpServletRequest request, HttpSession session, @RequestParam("questionId") int questionId) {
+        userCenterService.getQuestionInfoAsk(request, session, questionId);
+        return "scormfront/usercenter/question/questionInfoAsk";
+    }
+
+    @RequestMapping(value = "changeQuestionAskContent", method = {RequestMethod.POST})
+    @ResponseBody
+    public void changeQuestionAskContent(UserQuestion userQuestion) {
+        userCenterService.changeQuestionAskContent(userQuestion);
+    }
+
+    @RequestMapping(value = "lookQuestionInfoAnswer", method = {RequestMethod.GET})
+    public String lookQuestionInfoAnswer(HttpServletRequest request, HttpSession session, @RequestParam("questionId") int questionId) {
+        userCenterService.getQuestionInfoAnswer(request, session, questionId);
+        return "scormfront/usercenter/question/questionInfoAnswer";
+    }
+
+    @RequestMapping(value = "changeQuestionAnswerContent", method = {RequestMethod.POST})
+    @ResponseBody
+    public void changeQuestionAnswerContent(UserQuestion userQuestion) {
+        userCenterService.changeQuestionAnswerContent(userQuestion);
     }
 }

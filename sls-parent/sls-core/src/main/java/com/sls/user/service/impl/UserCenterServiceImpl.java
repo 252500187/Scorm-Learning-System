@@ -6,6 +6,7 @@ import com.sls.system.service.DictService;
 import com.sls.user.dao.UserDao;
 import com.sls.user.dao.UserQuestionDao;
 import com.sls.user.entity.User;
+import com.sls.user.entity.UserQuestion;
 import com.sls.user.service.UserCenterService;
 import com.sls.util.DictConstant;
 import com.sls.util.LoginUserUtil;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Transactional
@@ -40,24 +42,22 @@ public class UserCenterServiceImpl implements UserCenterService {
 
     @Override
     public void toUserInfo(HttpServletRequest request) {
-        List<User> userList = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName());
-        User user = userList.get(0);
+        User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
         user.setLevelName(userDao.findUserLevelNameByScore(user.getScore()).getLevelName());
         request.setAttribute("user", user);
     }
 
     @Override
     public void getAllRegisterScormInfo(HttpServletRequest request) {
-        List<User> userList = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName());
-        List<Scorm> scormList = scormDao.getAllRegisterScormInfoByUserId(userList.get(0).getUserId());
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        List<Scorm> scormList = scormDao.getAllRegisterScormInfoByUserId(userId);
         request.setAttribute("allScorm", scormList);
     }
 
     @Override
     public void getAllCollectScormInfo(HttpServletRequest request) {
-        List<User> userList = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName());
-        User user = userList.get(0);
-        List<Scorm> scormList = scormDao.getAllCollectScormInfoByUserId(user.getUserId());
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        List<Scorm> scormList = scormDao.getAllCollectScormInfoByUserId(userId);
         request.setAttribute("allScorm", scormList);
     }
 
@@ -81,5 +81,49 @@ public class UserCenterServiceImpl implements UserCenterService {
     public void getUserQuestions(HttpServletRequest request) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         request.setAttribute("questions", userQuestionDao.getUserQuestionsByAskUserId(userId));
+    }
+
+    @Override
+    public void getQuestionInfoAsk(HttpServletRequest request, HttpSession session, int questionId) {
+        UserQuestion userQuestion = userQuestionDao.getQuestionInfoByQuestionId(questionId);
+        User user = userDao.findUserAllInfoById(userQuestion.getAnswerUserId());
+        userQuestion.setUserName(user.getUserName());
+        request.setAttribute("question", userQuestion);
+        //todo 下面这句有bug
+        //取消新的回答及更新新的回答数目
+        userQuestionDao.cancelNewAnswerByQuestionId(questionId);
+        session.setAttribute("answerNum", userQuestionDao.getNewAnswerNumByUserId(userQuestion.getAskUserId()));
+    }
+
+    @Override
+    public void changeQuestionAskContent(UserQuestion userQuestion) {
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        UserQuestion oldUserQuestion = userQuestionDao.getQuestionInfoByQuestionId(userQuestion.getQuestionId());
+        if (oldUserQuestion.getAskUserId() == userId) {
+            userQuestionDao.changeQuestionAskContentByQuestionId(userQuestion);
+            userQuestionDao.setNewAskByQuestionId(userQuestion.getQuestionId());
+        }
+    }
+
+    @Override
+    public void getQuestionInfoAnswer(HttpServletRequest request, HttpSession session, int questionId) {
+        UserQuestion userQuestion = userQuestionDao.getQuestionInfoByQuestionId(questionId);
+        User user = userDao.findUserAllInfoById(userQuestion.getAskUserId());
+        userQuestion.setUserName(user.getUserName());
+        request.setAttribute("question", userQuestion);
+        //todo 下面这句有bug
+        //取消新的提问及更新新的提问数目
+        userQuestionDao.cancelNewAskByQuestionId(questionId);
+        session.setAttribute("questionNum", userQuestionDao.getNewQuestionNumByUserId(userQuestion.getAnswerUserId()));
+    }
+
+    @Override
+    public void changeQuestionAnswerContent(UserQuestion userQuestion) {
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        UserQuestion oldUserQuestion = userQuestionDao.getQuestionInfoByQuestionId(userQuestion.getQuestionId());
+        if (oldUserQuestion.getAnswerUserId() == userId) {
+            userQuestionDao.changeQuestionAnswerContentByQuestionId(userQuestion);
+            userQuestionDao.setNewAnswerByQuestionId(userQuestion.getQuestionId());
+        }
     }
 }

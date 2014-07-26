@@ -19,4 +19,18 @@ public interface UserQuestionDao {
     List<UserQuestion> getAskQuestionsByAskUserId(int askUserId);
 
     List<UserQuestion> getUserQuestionsByAskUserId(int answerUserId);
+
+    UserQuestion getQuestionInfoByQuestionId(int questionId);
+
+    void cancelNewAnswerByQuestionId(int questionId);
+
+    void changeQuestionAskContentByQuestionId(UserQuestion userQuestion);
+
+    void setNewAskByQuestionId(int questionId);
+
+    void cancelNewAskByQuestionId(int questionId);
+
+    void changeQuestionAnswerContentByQuestionId(UserQuestion userQuestion);
+
+    void setNewAnswerByQuestionId(int questionId);
 }
