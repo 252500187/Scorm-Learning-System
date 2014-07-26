@@ -35,6 +35,9 @@
                                     已完成
                                 </li>
                             </ul>
+                            <c:if test="${fn:length(allScorm)<1}">
+                                还未注册课件
+                            </c:if>
                             <div class="row mix-grid">
                                 <c:forEach var="scormInfo" items="${allScorm}">
                                     <c:if test="${scormInfo.completeDate == ''}">

@@ -35,6 +35,9 @@
                                     未通过
                                 </li>
                             </ul>
+                            <c:if test="${fn:length(allScorm)<1}">
+                                还未上传课件
+                            </c:if>
                             <div class="row mix-grid">
                                 <c:forEach var="scormInfo" items="${allScorm}">
                                     <div class="col-md-3 col-sm-4 mix mix_all

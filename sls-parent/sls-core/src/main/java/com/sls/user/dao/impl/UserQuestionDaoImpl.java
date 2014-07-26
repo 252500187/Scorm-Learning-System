@@ -42,4 +42,16 @@ public class UserQuestionDaoImpl extends PageDao implements UserQuestionDao {
         String sql = "SELECT COUNT(*) FROM us_user_question WHERE ask_user_id=? AND new_answer=?";
         return getJdbcTemplate().queryForObject(sql, Integer.class, userId, DictConstant.IN_USE);
     }
+
+    @Override
+    public List<UserQuestion> getAskQuestionsByAskUserId(int askUserId) {
+        String sql = "SELECT * FROM (SELECT * FROM us_user_question WHERE ask_user_id=?) a LEFT JOIN us_user_info b ON a.answer_user_id=b.user_id ORDER BY ask_date";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<UserQuestion>(UserQuestion.class), askUserId);
+    }
+
+    @Override
+    public List<UserQuestion> getUserQuestionsByAskUserId(int answerUserId) {
+        String sql = "SELECT * FROM (SELECT * FROM us_user_question WHERE answer_user_id=?) a LEFT JOIN us_user_info b ON a.ask_user_id=b.user_id ORDER BY ask_date";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<UserQuestion>(UserQuestion.class), answerUserId);
+    }
 }

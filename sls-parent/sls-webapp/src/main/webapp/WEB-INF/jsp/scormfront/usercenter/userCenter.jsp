@@ -60,43 +60,86 @@
                     </a>
                 </li>
                 <li>
+                    <a>
+                        <i class="fa fa-folder-open"></i>
+                        <span class="title">我的课件</span>
+                        <span class="selected"></span>
+                        <span class="arrow open"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a onclick="changeIframe('user/center/registerScormDo')">
+                                <i class="fa fa-briefcase"></i>
+                                <span class="title">
+                                    注册的课件
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a onclick="changeIframe('user/center/collectScormDo')">
+                                <i class="fa fa-folder-open-o"></i>
+                                <span class="title">
+                                    收藏的课件
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a onclick="changeIframe('user/center/myUpScormsDo')">
+                                <i class="fa fa-level-up"></i>
+                                <span class="title">
+                                    上传的课件
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                     <a onclick="changeIframe('user/center/upScormDo')">
                         <i class="fa fa-upload"></i>
-						<span class="title">
-							上传课件
-						</span>
-                    </a>
-                </li>
-                <li>
-                    <a onclick="changeIframe('user/center/registerScormDo')">
-                        <i class="fa fa-briefcase"></i>
-						<span class="title">
-							注册的课件
-						</span>
-                    </a>
-                </li>
-                <li>
-                    <a onclick="changeIframe('user/center/collectScormDo')">
-                        <i class="fa fa-folder-open-o"></i>
-						<span class="title">
-							收藏的课件
-						</span>
-                    </a>
-                </li>
-                <li>
-                    <a onclick="changeIframe('user/center/myUpScormsDo')">
-                        <i class="fa fa-level-up"></i>
-						<span class="title">
-							上传的课件
-						</span>
+                                <span class="title">
+                                    上传课件
+                                </span>
                     </a>
                 </li>
                 <li>
                     <a onclick="changeIframe('user/center/evaluateScormDo')">
                         <i class="fa fa-star"></i>
+                                <span class="title">
+                                    评价课件
+                                </span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="changeIframe('user/center/userAttentionDo')">
+                        <i class="fa fa-users"></i>
 						<span class="title">
-							评价课件
+							关注列表
 						</span>
+                        <c:if test="${sessionScope.messageNum>0}">
+                            <span class="badge">${sessionScope.messageNum}</span>
+                        </c:if>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="changeIframe('user/center/askQuestionsDo')">
+                        <i class="fa fa-comment-o"></i>
+						<span class="title">
+							我的提问
+						</span>
+                        <c:if test="${sessionScope.answerNum>0}">
+                            <span class="badge">${sessionScope.answerNum}</span>
+                        </c:if>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="changeIframe('user/center/askUserQuestionsDo')">
+                        <i class="fa fa-question"></i>
+						<span class="title">
+							提问我的
+						</span>
+                        <c:if test="${sessionScope.questionNum>0}">
+                            <span class="badge">${sessionScope.questionNum}</span>
+                        </c:if>
                     </a>
                 </li>
                 <li class="last ">
@@ -113,17 +156,6 @@
 						<span class="title">
 							我的笔记本
 						</span>
-                    </a>
-                </li>
-                <li>
-                    <a onclick="changeIframe('user/center/userAttentionDo')">
-                        <i class="fa fa-users"></i>
-						<span class="title">
-							关注列表
-						</span>
-                        <c:if test="${sessionScope.messageNum>0}">
-                            <span class="badge">${sessionScope.messageNum}</span>
-                        </c:if>
                     </a>
                 </li>
                 <li>
@@ -213,6 +245,7 @@
         Metronic.init(); // init metronic core componets
         Layout.init(); // init layout
         Tasks.initDashboardWidget();
+        $("#scorm").click();
         $("#statistic").click();
         $("#userCenterIndex").click();
     })

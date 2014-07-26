@@ -15,4 +15,8 @@ public interface UserQuestionDao {
     int getNewQuestionNumByUserId(int userId);
 
     int getNewAnswerNumByUserId(int userId);
+
+    List<UserQuestion> getAskQuestionsByAskUserId(int askUserId);
+
+    List<UserQuestion> getUserQuestionsByAskUserId(int answerUserId);
 }

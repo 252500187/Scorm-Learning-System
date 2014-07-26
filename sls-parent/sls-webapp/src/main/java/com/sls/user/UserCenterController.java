@@ -130,6 +130,20 @@ public class UserCenterController {
         return "scormfront/usercenter/userAttentions";
     }
 
+    //个人中心  我的提问
+    @RequestMapping(value = "askQuestionsDo", method = {RequestMethod.GET})
+    public String askQuestionsDo(HttpServletRequest request) {
+        userCenterService.getAskQuestions(request);
+        return "scormfront/usercenter/askQuestions";
+    }
+
+    //个人中心  提问我的
+    @RequestMapping(value = "askUserQuestionsDo", method = {RequestMethod.GET})
+    public String askUserQuestionsDo(HttpServletRequest request) {
+        userCenterService.getUserQuestions(request);
+        return "scormfront/usercenter/askUserQuestions";
+    }
+
     @RequestMapping(value = "notesDo", method = {RequestMethod.GET})
     public String notesDo(HttpServletRequest request, @RequestParam("scormId") String scormId) {
         scormService.getAllStudyNotesByScormIdAndUserId(Integer.parseInt(scormId), request);

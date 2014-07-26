@@ -46,10 +46,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <c:if test="${nextLevel==null}">
-                            <h3>恭喜，您已满级！</h3>
+                            <h3>${user.score}分,恭喜,您已满级！</h3>
                         </c:if>
                         <c:if test="${nextLevel!=null}">
-                            <h3>前往${nextLevel}之路:已完成${finalScore}%</h3>
+                            <h3>前往${nextLevel}之路:${user.score}分&nbsp;已完成${finalScore}%</h3>
                         </c:if>
                         <div class="progress progress-striped active">
                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"

@@ -17,6 +17,9 @@
 </head>
 <body class="page-header-fixed" style="background-color: transparent">
 <div class="page-content" style="min-height:780px">
+    <c:if test="${fn:length(allScorm)<1}">
+        还未收藏课件
+    </c:if>
     <div class="row">
         <div class="col-md-12">
             <div class="tabbable tabbable-custom boxless">

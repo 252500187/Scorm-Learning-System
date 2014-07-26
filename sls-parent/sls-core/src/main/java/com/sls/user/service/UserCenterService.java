@@ -12,4 +12,8 @@ public interface UserCenterService {
     void getAllCollectScormInfo(HttpServletRequest request);
 
     void getAllUpScormInfo(HttpServletRequest request);
+
+    void getAskQuestions(HttpServletRequest request);
+
+    void getUserQuestions(HttpServletRequest request);
 }

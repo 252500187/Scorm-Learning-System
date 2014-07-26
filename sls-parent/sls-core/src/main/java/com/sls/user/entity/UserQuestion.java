@@ -10,6 +10,9 @@ public class UserQuestion {
     private int newAsk;
     private int newAnswer;
 
+    private String userName;
+    private String imgUrl;
+
     public int getQuestionId() {
         return questionId;
     }
@@ -76,5 +79,21 @@ public class UserQuestion {
 
     public UserQuestion() {
 
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

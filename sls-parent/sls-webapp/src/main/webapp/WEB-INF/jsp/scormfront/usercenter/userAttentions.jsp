@@ -17,6 +17,9 @@
 </head>
 <body class="page-header-fixed" style="background-color: transparent">
 <div class="page-content" style="min-height:780px">
+    <c:if test="${fn:length(sessionScope.attentionUsers)<1}">
+        还未关注用户
+    </c:if>
     <div class="row mix-grid">
         <c:forEach var="attentionUser" items="${sessionScope.attentionUsers}">
             <div class="col-md-2 col-sm-2 mix mix_all" style=" display: block;">
