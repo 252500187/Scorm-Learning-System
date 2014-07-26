@@ -4,6 +4,7 @@ public class UserAttention {
     private int userId;
     private int userAttentionId;
     private int newMessage;
+    private int state;
 
     private String userName;
     private String imgUrl;
@@ -49,5 +50,13 @@ public class UserAttention {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 }

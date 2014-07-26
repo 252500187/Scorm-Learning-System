@@ -208,22 +208,27 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void getUserOperate(int userAttentionId, HttpServletRequest request) {
+    public void getUserOperate(int userInfoId, HttpServletRequest request) {
         Boolean isAttention = true;
         Boolean showAttention = true;
+        Boolean showQuestion = true;
         if (LoginUserUtil.getLoginName().equals("")) {
             showAttention = false;
         } else {
             int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-            if (userId == userAttentionId) {
+            if (userId == userInfoId) {
                 showAttention = false;
             }
-            if (userAttentionDao.findAttention(userId, userAttentionId).size() > 0) {
+            if (userAttentionDao.findInUseAttention(userId, userInfoId).size() > 0) {
                 isAttention = false;
+            }
+            if (userQuestionDao.findNoAnswerQuestions(userInfoId, userId).size() > 0) {
+                showQuestion = false;
             }
         }
         request.setAttribute("isAttention", isAttention);
         request.setAttribute("showAttention", showAttention);
+        request.setAttribute("showQuestion", showQuestion);
     }
 
     @Override
@@ -232,14 +237,22 @@ public class UserServiceImpl implements UserService {
         UserAttention userAttention = new UserAttention();
         userAttention.setUserAttentionId(userAttentionId);
         userAttention.setUserId(userId);
+        userAttention.setNewMessage(0);
+        userAttention.setState(DictConstant.IN_USE);
         List<UserAttention> userAttentions = userAttentionDao.findAttention(userId, userAttentionId);
+        //之前未加好友的处理
         if (userAttentions.size() < 1) {
-            userAttention.setNewMessage(0);
             userAttentionDao.addUserAttention(userAttention);
             //增加被关注者的经验值
             userDao.addScore(DictConstant.EXP_SCORE, userAttentionId);
         } else {
-            userAttentionDao.delUserAttention(userAttention);
+            //之前已加好友的处理
+            if (userAttentions.get(0).getState() == DictConstant.IN_USE) {
+                userAttention.setState(DictConstant.NO_USE);
+                userAttentionDao.changeUserAttentionState(userAttention);
+            } else {
+                userAttentionDao.changeUserAttentionState(userAttention);
+            }
         }
     }
 

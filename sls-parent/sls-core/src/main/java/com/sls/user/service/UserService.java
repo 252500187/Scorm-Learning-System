@@ -44,7 +44,7 @@ public interface UserService {
 
     void adminIndexStatisticInfo(HttpServletRequest request);
 
-    void getUserOperate(int userAttentionId, HttpServletRequest request);
+    void getUserOperate(int userInfoId, HttpServletRequest request);
 
     void userAttentionDeal(int userAttentionId);
 

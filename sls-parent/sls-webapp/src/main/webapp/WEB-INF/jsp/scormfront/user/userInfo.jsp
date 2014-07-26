@@ -79,14 +79,10 @@
                                         <span class="sale-num">${fn:length(answerQuestions)}</span>
                                     </li>
                                     <li>
-                                        <c:if test="${showAttention}">
-                                            <c:if test="${!isAttention}">
-                                                <a class="btn green" id="downQuestion"
-                                                   onclick="downQuestion()">提问</a>
-                                                <a class="btn green" id="upQuestion"
-                                                   onclick="upQuestion()">取消提问</a>
-                                            </c:if>
-                                        </c:if>
+                                        <a class="btn green" id="downQuestion"
+                                           onclick="downQuestion()">提问</a>
+                                        <a class="btn green" id="upQuestion"
+                                           onclick="upQuestion()">取消提问</a>
                                     </li>
                                 </ul>
                             </div>
@@ -230,13 +226,10 @@
     $(function () {
         Metronic.init();
         Layout.init();
-        $("#downQuestion").hide();
-        $("#upQuestion").hide();
-        $("#questionContent").hide();
-
-        <c:if test="${showAttention}">
-        <c:if test="${!isAttention}">
+        hideAllQuestionEle();
+        <c:if test="${showAttention&&!isAttention}">
         $("#userAttention").html("取消关注");
+        <c:if test="${showQuestion}">
         $("#downQuestion").show();
         </c:if>
         </c:if>
@@ -248,23 +241,19 @@
             type: "GET",
             success: function () {
                 var attentionEle = $("#userAttention");
-                var questionEle = $("#question");
                 if (attentionEle.html() == "关注") {
                     $("#alertPromptMessage").html("关注成功");
                     $("#alertPrompt").modal("show");
                     attentionEle.html("取消关注");
-                    questionEle.show();
+                    hideAllQuestionEle();
+                    <c:if test="${showQuestion}">
                     $("#downQuestion").show();
-                    $("#upQuestion").hide();
-                    $("#questionContent").hide();
+                    </c:if>
                 } else {
                     $("#alertPromptMessage").html("已取消关注");
                     $("#alertPrompt").modal("show");
                     attentionEle.html("关注");
-                    questionEle.hide();
-                    $("#downQuestion").hide();
-                    $("#upQuestion").hide();
-                    $("#questionContent").hide();
+                    hideAllQuestionEle();
                 }
             },
             error: doError
@@ -283,11 +272,16 @@
         $("#downQuestion").show();
     }
 
+    function hideAllQuestionEle() {
+        $("#downQuestion").hide();
+        $("#upQuestion").hide();
+        $("#questionContent").hide();
+    }
+
     function submitQuestion() {
         if ($("#questionDescribe").val().trim() == "") {
             return;
         }
-        alert($("#questionDescribe").val());
         $.ajax({
             url: basePath + "user/info/addUserQuestion",
             dataType: "json",
@@ -299,12 +293,13 @@
             success: function (result) {
                 if (result) {
                     $("#alertPromptMessage").html("已提交问题");
+                    hideAllQuestionEle();
                 } else {
                     $("#alertPromptMessage").html("提交失败<p>1.请查看您是否已关注此用户。<br/>2.请查看您是否已经向该用户提交问题且该问题尚被未回答。</p>");
                 }
                 $("#alertPrompt").modal("show");
             },
-            error: doError()
+            error: doError
         });
     }
 </script>

@@ -8,9 +8,11 @@ public interface UserAttentionDao {
 
     List<UserAttention> findAttention(int userId, int userAttentionId);
 
+    List<UserAttention> findInUseAttention(int userId, int userAttentionId);
+
     void addUserAttention(UserAttention userAttention);
 
-    void delUserAttention(UserAttention userAttention);
+    void changeUserAttentionState(UserAttention userAttention);
 
     List<UserAttention> getAttentionUsersByUserId(int userId);
 
