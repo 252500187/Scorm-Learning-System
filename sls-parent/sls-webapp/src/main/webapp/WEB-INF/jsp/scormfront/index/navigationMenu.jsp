@@ -27,8 +27,6 @@
                         <li>
                             <div class="mega-menu-content">
                                 <ul class="mega-menu-submenu">
-                                    <%--<ul class="col-md-4 mega-menu-submenu scroller"--%>
-                                    <%--style="height: ${fn:length(sessionScope.labels)*30>400?400:fn:length(sessionScope.labels)*30}px;">--%>
                                     <li>
                                         <a href="">
                                             <p>
@@ -77,15 +75,37 @@
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.userId!=null&&sessionScope.userId!=''}">
-                    <c:if test="${sessionScope.messageNum>0}">
+                    <c:if test="${sessionScope.messageNum+sessionScope.questionNum+sessionScope.answerNum>0}">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                                data-close-others="true">
                                 <span class="username" style="font-size: 20px;">新消息</span>
-                                <span class="badge badge-success">${sessionScope.messageNum}</span>
+                                <span class="badge badge-success">${sessionScope.messageNum+sessionScope.questionNum+sessionScope.answerNum}</span>
                                 <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu">
+                                <c:if test="${sessionScope.answerNum>0}">
+                                    <li>
+                                        <a onclick="">
+                                            <span class="label label-sm label-icon label-success">
+                                                <i class="fa fa-comment-o"></i>
+                                            </span>您的问题有${sessionScope.answerNum}个回答&nbsp;&nbsp;
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                </c:if>
+                                <c:if test="${sessionScope.questionNum>0}">
+                                    <li>
+                                        <a onclick="">
+                                                <span class="label label-sm label-icon label-success">
+                                                    <i class="fa fa-question"></i>
+                                                </span>有${sessionScope.questionNum}位用户向您提问&nbsp;&nbsp;
+                                        </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                </c:if>
                                 <c:forEach var="attentionUser" items="${sessionScope.attentionUsers}">
                                     <c:if test="${attentionUser.newMessage>0}">
                                         <li>

@@ -5,6 +5,7 @@ import com.sls.system.dao.LabelDao;
 import com.sls.user.dao.RoleDao;
 import com.sls.user.dao.UserAttentionDao;
 import com.sls.user.dao.UserDao;
+import com.sls.user.dao.UserQuestionDao;
 import com.sls.user.entity.User;
 import com.sls.login.service.LoginService;
 import com.sls.user.entity.UserAttention;
@@ -40,6 +41,9 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private UserAttentionDao userAttentionDao;
+
+    @Autowired
+    private UserQuestionDao userQuestionDao;
 
     public String toIndex(HttpServletRequest request, HttpSession session) {
         String loginName = LoginUserUtil.getLoginName();
@@ -106,5 +110,8 @@ public class LoginServiceImpl implements LoginService {
         }
         session.setAttribute("attentionUsers", userAttentionList);
         session.setAttribute("messageNum", messageNum);
+        //获取新的提问和回答数
+        session.setAttribute("questionNum", userQuestionDao.getNewQuestionNumByUserId(userId));
+        session.setAttribute("answerNum", userQuestionDao.getNewAnswerNumByUserId(userId));
     }
 }

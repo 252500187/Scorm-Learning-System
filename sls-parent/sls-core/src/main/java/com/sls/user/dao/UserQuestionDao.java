@@ -11,4 +11,8 @@ public interface UserQuestionDao {
     List<UserQuestion> findNoAnswerQuestions(int answerUserId, int askUserId);
 
     void addUserQuestion(UserQuestion userQuestion);
+
+    int getNewQuestionNumByUserId(int userId);
+
+    int getNewAnswerNumByUserId(int userId);
 }

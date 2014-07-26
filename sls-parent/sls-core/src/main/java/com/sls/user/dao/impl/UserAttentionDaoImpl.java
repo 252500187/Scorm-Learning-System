@@ -51,7 +51,7 @@ public class UserAttentionDaoImpl extends PageDao implements UserAttentionDao {
 
     @Override
     public void countNewMessageByAttentionUserId(int attentionUserId) {
-        String sql = "UPDATE us_user_attention SET new_message=new_message+1 WHERE user_attention_id=?";
-        getJdbcTemplate().update(sql, attentionUserId);
+        String sql = "UPDATE us_user_attention SET new_message=new_message+1 WHERE user_attention_id=? AND state=?";
+        getJdbcTemplate().update(sql, attentionUserId, DictConstant.IN_USE);
     }
 }
