@@ -7,11 +7,11 @@
 */
 package com.core.util.pinyin;
 
-import net.sourceforge.pinyin4j.PinyinHelper;
-import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
-import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
-import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
-import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
+//import net.sourceforge.pinyin4j.PinyinHelper;
+//import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
+//import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
+//import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
+//import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 
 /**
  * 汉字转换位汉语拼音，英文字符不变
@@ -41,14 +41,14 @@ public class Cn2Pinyin {
             return "";
         }
         StringBuilder pinyinName = new StringBuilder();
-        HanyuPinyinOutputFormat defaultFormat = new HanyuPinyinOutputFormat();
-        defaultFormat.setCaseType(HanyuPinyinCaseType.LOWERCASE);
-        defaultFormat.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
+//        HanyuPinyinOutputFormat defaultFormat = new HanyuPinyinOutputFormat();
+//        defaultFormat.setCaseType(HanyuPinyinCaseType.LOWERCASE);
+//        defaultFormat.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
         char[] nameChar = chines.toCharArray();
         for (char zhChar : nameChar) {
             if (zhChar > 128) {
-                String spell = returnFirstSpell ? getFirstSpellForChar(zhChar, defaultFormat) : getSpellForChar(zhChar, defaultFormat);
-                pinyinName.append(spell);
+//                String spell = returnFirstSpell ? getFirstSpellForChar(zhChar, defaultFormat) : getSpellForChar(zhChar, defaultFormat);
+//                pinyinName.append(spell);
             } else {
                 pinyinName.append(zhChar);
             }
@@ -56,21 +56,21 @@ public class Cn2Pinyin {
         return pinyinName.toString();
     }
 
-    private String getSpellForChar(char zhChar, HanyuPinyinOutputFormat defaultFormat) {
-        try {
-            String[] pinyin = PinyinHelper.toHanyuPinyinStringArray(zhChar, defaultFormat);
-            if (pinyin != null && pinyin.length != 0) {
-                return pinyin[0];
-            } else {
-                return String.valueOf(zhChar);
-            }
-        } catch (BadHanyuPinyinOutputFormatCombination badHanyuPinyinOutputFormatCombination) {
-            badHanyuPinyinOutputFormatCombination.printStackTrace();
-        }
-        return "";
-    }
+//    private String getSpellForChar(char zhChar, HanyuPinyinOutputFormat defaultFormat) {
+//        try {
+//            String[] pinyin = PinyinHelper.toHanyuPinyinStringArray(zhChar, defaultFormat);
+//            if (pinyin != null && pinyin.length != 0) {
+//                return pinyin[0];
+//            } else {
+//                return String.valueOf(zhChar);
+//            }
+//        } catch (BadHanyuPinyinOutputFormatCombination badHanyuPinyinOutputFormatCombination) {
+//            badHanyuPinyinOutputFormatCombination.printStackTrace();
+//        }
+//        return "";
+//    }
 
-    private String getFirstSpellForChar(char zhChar, HanyuPinyinOutputFormat defaultFormat) {
-        return getSpellForChar(zhChar, defaultFormat).substring(0, 1);
-    }
+//    private String getFirstSpellForChar(char zhChar, HanyuPinyinOutputFormat defaultFormat) {
+//        return getSpellForChar(zhChar, defaultFormat).substring(0, 1);
+//    }
 }
