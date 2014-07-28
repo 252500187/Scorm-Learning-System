@@ -41,8 +41,9 @@ public class UserCenterController {
     private LabelService labelService;
 
     @RequestMapping(value = "userCenterDo", method = {RequestMethod.GET})
-    public String userCenter(HttpServletRequest request) {
+    public String userCenter(HttpServletRequest request, @RequestParam("module") int module) {
         userCenterService.toUserCenter(request);
+        userCenterService.selectModule(request, module);
         return "scormfront/usercenter/userCenter";
     }
 

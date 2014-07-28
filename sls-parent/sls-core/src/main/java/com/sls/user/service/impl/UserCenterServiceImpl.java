@@ -41,6 +41,49 @@ public class UserCenterServiceImpl implements UserCenterService {
     }
 
     @Override
+    public void selectModule(HttpServletRequest request, int module) {
+        String centerUrl = new String();
+        switch (module) {
+            case 1:
+                centerUrl = "user/center/userCenterInfo";
+                break;
+            case 2:
+                centerUrl = "user/center/userInfoDo";
+                break;
+            case 3:
+                centerUrl = "user/center/registerScormDo";
+                break;
+            case 4:
+                centerUrl = "user/center/collectScormDo";
+                break;
+            case 5:
+                centerUrl = "user/center/myUpScormsDo";
+                break;
+            case 6:
+                centerUrl = "user/center/upScormDo";
+                break;
+            case 7:
+                centerUrl = "user/center/evaluateScormDo";
+                break;
+            case 8:
+                centerUrl = "user/center/userAttentionDo";
+                break;
+            case 9:
+                centerUrl = "user/center/askQuestionsDo";
+                break;
+            case 10:
+                centerUrl = "user/center/askUserQuestionsDo";
+                break;
+            case 11:
+                centerUrl = "user/center/addNote";
+                break;
+            case 12:
+                centerUrl = "user/center/scormNotesDo";
+        }
+        request.setAttribute("centerUrl", centerUrl);
+    }
+
+    @Override
     public void toUserInfo(HttpServletRequest request) {
         User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
         user.setLevelName(userDao.findUserLevelNameByScore(user.getScore()).getLevelName());

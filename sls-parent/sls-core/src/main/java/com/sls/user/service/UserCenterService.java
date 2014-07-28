@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 public interface UserCenterService {
     void toUserCenter(HttpServletRequest request);
 
+    void selectModule(HttpServletRequest request,int module);
+
     void toUserInfo(HttpServletRequest request);
 
     void getAllRegisterScormInfo(HttpServletRequest request);

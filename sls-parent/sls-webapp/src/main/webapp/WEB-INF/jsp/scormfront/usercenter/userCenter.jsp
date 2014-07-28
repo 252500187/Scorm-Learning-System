@@ -245,8 +245,7 @@
         Metronic.init(); // init metronic core componets
         Layout.init(); // init layout
         Tasks.initDashboardWidget();
-        $("#scorm").click();
-        $("#statistic").click();
+        $("#iframe").attr("src", "${centerUrl}");
         $("#userCenterIndex").click();
     })
 
