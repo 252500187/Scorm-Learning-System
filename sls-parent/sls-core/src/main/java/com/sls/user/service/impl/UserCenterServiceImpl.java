@@ -44,39 +44,51 @@ public class UserCenterServiceImpl implements UserCenterService {
     public void selectModule(HttpServletRequest request, int module) {
         String centerUrl = new String();
         switch (module) {
+            //统计信息
             case 1:
                 centerUrl = "user/center/userCenterInfo";
                 break;
+            //个人资料
             case 2:
                 centerUrl = "user/center/userInfoDo";
                 break;
+            //注册的课件
             case 3:
                 centerUrl = "user/center/registerScormDo";
                 break;
+            //收藏的课件
             case 4:
                 centerUrl = "user/center/collectScormDo";
                 break;
+            //上传的课件
             case 5:
                 centerUrl = "user/center/myUpScormsDo";
                 break;
+            //上传课件
             case 6:
                 centerUrl = "user/center/upScormDo";
                 break;
+            //评价课件
             case 7:
                 centerUrl = "user/center/evaluateScormDo";
                 break;
+            //用户关注列表
             case 8:
                 centerUrl = "user/center/userAttentionDo";
                 break;
+            //提的问题
             case 9:
                 centerUrl = "user/center/askQuestionsDo";
                 break;
+            //提问我的问题
             case 10:
                 centerUrl = "user/center/askUserQuestionsDo";
                 break;
+            //添加笔记
             case 11:
                 centerUrl = "user/center/addNote";
                 break;
+            //笔记本
             case 12:
                 centerUrl = "user/center/scormNotesDo";
         }

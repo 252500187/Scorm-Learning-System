@@ -87,7 +87,7 @@
                         <li style="margin-top: 5px"></li>
                         <c:if test="${sessionScope.answerNum>0}">
                             <li>
-                                <a  href="user/center/userCenterDo?module=9">
+                                <a href="user/center/userCenterDo?module=9">
                                     <span class="label label-sm label-icon label-success">
                                         <i class="fa fa-comment-o"></i>
                                     </span>您的问题有${sessionScope.answerNum}个回答&nbsp;&nbsp;
@@ -96,7 +96,7 @@
                         </c:if>
                         <c:if test="${sessionScope.questionNum>0}">
                             <li>
-                                <a  href="user/center/userCenterDo?module=10">
+                                <a href="user/center/userCenterDo?module=10">
                                     <span class="label label-sm label-icon label-success">
                                         <i class="fa fa-question"></i>
                                     </span>有${sessionScope.questionNum}位用户向您提问&nbsp;&nbsp;
@@ -154,7 +154,7 @@
                                 <a href="user/center/userCenterDo?module=2">
                                     <i class="fa fa-italic"></i>&nbsp;&nbsp;个人资料</a>
                             </li>
-                            <li>
+                            <li class="dropdown-submenu">
                                 <a>
                                     <i class="fa fa-folder-open"></i>&nbsp;&nbsp;我的课件</a>
                                 <ul class="dropdown-menu">
