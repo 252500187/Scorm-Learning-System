@@ -190,4 +190,16 @@ public class UserCenterController {
     public void changeQuestionAnswerContent(UserQuestion userQuestion) {
         userCenterService.changeQuestionAnswerContent(userQuestion);
     }
+
+    @RequestMapping(value = "cancelNewAskByQuestionId", method = {RequestMethod.POST})
+    @ResponseBody
+    public void cancelNewAskByQuestionId(@RequestParam("questionId") int questionId) {
+        userCenterService.cancelNewAskByQuestionId(questionId);
+    }
+
+    @RequestMapping(value = "cancelNewAnswerByQuestionId", method = {RequestMethod.POST})
+    @ResponseBody
+    public void cancelNewAnswerByQuestionId(@RequestParam("questionId") int questionId) {
+        userCenterService.cancelNewAnswerByQuestionId(questionId);
+    }
 }

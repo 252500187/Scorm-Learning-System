@@ -68,6 +68,14 @@
 </body>
 </html>
 <script type="text/javascript">
+    $.ajax({
+        url: basePath + "user/center/cancelNewAskByQuestionId",
+        data: {
+            questionId: "${question.questionId}"
+        },
+        type: "POST"
+    });
+
     function changeQuestionAnswerContent() {
         $.ajax({
             url: basePath + "user/center/changeQuestionAskContent",

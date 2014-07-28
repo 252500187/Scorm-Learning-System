@@ -149,10 +149,9 @@ public class UserCenterServiceImpl implements UserCenterService {
         User user = userDao.findUserAllInfoById(userQuestion.getAnswerUserId());
         userQuestion.setUserName(user.getUserName());
         request.setAttribute("question", userQuestion);
-        //todo 下面这句有bug
         //取消新的回答及更新新的回答数目
-        userQuestionDao.cancelNewAnswerByQuestionId(questionId);
-        session.setAttribute("answerNum", userQuestionDao.getNewAnswerNumByUserId(userQuestion.getAskUserId()));
+//        userQuestionDao.cancelNewAnswerByQuestionId(questionId);
+        session.setAttribute("answerNum", userQuestionDao.getNewAnswerNumByUserId(userQuestion.getAskUserId())-1);
     }
 
     @Override
@@ -171,11 +170,11 @@ public class UserCenterServiceImpl implements UserCenterService {
         User user = userDao.findUserAllInfoById(userQuestion.getAskUserId());
         userQuestion.setUserName(user.getUserName());
         request.setAttribute("question", userQuestion);
-        //todo 下面这句有bug
         //取消新的提问及更新新的提问数目
-        userQuestionDao.cancelNewAskByQuestionId(questionId);
-        session.setAttribute("questionNum", userQuestionDao.getNewQuestionNumByUserId(userQuestion.getAnswerUserId()));
+//        userQuestionDao.cancelNewAskByQuestionId(questionId);
+        session.setAttribute("questionNum", userQuestionDao.getNewQuestionNumByUserId(userQuestion.getAnswerUserId())-1);
     }
+
 
     @Override
     public void changeQuestionAnswerContent(UserQuestion userQuestion) {
@@ -185,6 +184,16 @@ public class UserCenterServiceImpl implements UserCenterService {
             userQuestionDao.changeQuestionAnswerContentByQuestionId(userQuestion);
             userQuestionDao.setNewAnswerByQuestionId(userQuestion.getQuestionId());
         }
+    }
+
+    @Override
+    public void cancelNewAnswerByQuestionId(int questionId) {
+        userQuestionDao.cancelNewAnswerByQuestionId(questionId);
+    }
+
+    @Override
+    public void cancelNewAskByQuestionId(int questionId) {
+        userQuestionDao.cancelNewAskByQuestionId(questionId);
     }
 
     @Override

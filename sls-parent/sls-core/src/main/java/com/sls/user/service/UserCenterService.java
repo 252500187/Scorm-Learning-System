@@ -10,7 +10,7 @@ import java.util.List;
 public interface UserCenterService {
     void toUserCenter(HttpServletRequest request);
 
-    void selectModule(HttpServletRequest request,int module);
+    void selectModule(HttpServletRequest request, int module);
 
     void toUserInfo(HttpServletRequest request);
 
@@ -31,6 +31,10 @@ public interface UserCenterService {
     void getQuestionInfoAnswer(HttpServletRequest request, HttpSession session, int questionId);
 
     void changeQuestionAnswerContent(UserQuestion userQuestion);
+
+    void cancelNewAnswerByQuestionId(int questionId);
+
+    void cancelNewAskByQuestionId(int questionId);
 
     List<UserAttention> getAttentionUsers();
 }
