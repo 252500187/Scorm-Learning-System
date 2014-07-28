@@ -544,7 +544,7 @@ public class ScormServiceImpl implements ScormService {
         if (scormSummarizes.size() > 0) {
             if (!("").equals(scormSummarizes.get(0).getTotalTime())) {
                 int[] splitTime = DateUtil.splitScormTime(scormSummarizes.get(0).getTotalTime());
-                scormSummarizes.get(0).setTotalTime(splitTime[0] + "小时" + splitTime[1] + "分钟" + splitTime[2] + "秒");
+                scormSummarizes.get(0).setTotalTime(splitTime[0] + "小时" + splitTime[1] + "分钟");
             }
             request.setAttribute("summarize", scormSummarizes.get(0));
         }

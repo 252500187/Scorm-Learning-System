@@ -7,12 +7,30 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8"/>
-    <title>SLS | AttentionUsers</title>
+    <title>SLS | AskQuestions</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../../includes/common.jsp" %>
 </head>
 <body class="page-header-fixed" style="background-color: transparent">
+<div class="row">
+    <div class="col-md-12">
+        <ul class="page-breadcrumb breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a onclick="parent.window.location.href=''">首页</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a>个人中心</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a>我的提问</a>
+            </li>
+        </ul>
+    </div>
+</div>
 <div class="page-content" style="min-height:780px">
     <c:if test="${fn:length(questions)<1}">
         还未提问问题

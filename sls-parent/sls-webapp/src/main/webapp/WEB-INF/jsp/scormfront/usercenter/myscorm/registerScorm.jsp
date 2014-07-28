@@ -21,8 +21,25 @@
     <div class="row">
         <div class="col-md-12">
             <div class="tabbable tabbable-custom boxless">
-                <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="page-breadcrumb breadcrumb">
+                                    <li>
+                                        <i class="fa fa-home"></i>
+                                        <a onclick="parent.window.location.href=''">首页</a>
+                                        <i class="fa fa-angle-right"></i>
+                                    </li>
+                                    <li>
+                                        <a>个人中心</a>
+                                        <i class="fa fa-angle-right"></i>
+                                    </li>
+                                    <li>
+                                        <a>注册的课件</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                         <div class="margin-top-10">
                             <ul class="mix-filter">
                                 <li class="filter" data-filter="all">
@@ -98,7 +115,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>

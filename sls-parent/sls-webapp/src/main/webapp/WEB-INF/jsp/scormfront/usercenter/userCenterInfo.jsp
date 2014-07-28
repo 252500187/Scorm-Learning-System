@@ -30,15 +30,15 @@
                         <ul class="page-breadcrumb breadcrumb">
                             <li>
                                 <i class="fa fa-home"></i>
-                                <a onclick="parent.window.location.href=''">Home</a>
+                                <a onclick="parent.window.location.href=''">首页</a>
                                 <i class="fa fa-angle-right"></i>
                             </li>
                             <li>
-                                <a>UserCenter</a>
+                                <a>个人中心</a>
                                 <i class="fa fa-angle-right"></i>
                             </li>
                             <li>
-                                <a>${user.userName}</a>
+                                <a>统计信息</a>
                             </li>
                         </ul>
                     </div>

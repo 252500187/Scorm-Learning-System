@@ -20,62 +20,77 @@
     <div class="row">
         <div class="col-md-12">
             <div class="tabbable tabbable-custom boxless">
-                <div class="tab-content">
-                    <div class="tab-pane active" id="tab_1">
-                        <!-- BEGIN FILTER -->
-                        <div class="margin-top-10">
-                            <ul class="mix-filter">
-                                <li class="filter" data-filter="all">
-                                    所有课件
+                <div class="tab-pane active" id="tab_1">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="page-breadcrumb breadcrumb">
+                                <li>
+                                    <i class="fa fa-home"></i>
+                                    <a onclick="parent.window.location.href=''">首页</a>
+                                    <i class="fa fa-angle-right"></i>
                                 </li>
-                                <li class="filter" data-filter="category_1">
-                                    已通过
+                                <li>
+                                    <a>个人中心</a>
+                                    <i class="fa fa-angle-right"></i>
                                 </li>
-                                <li class="filter" data-filter="category_2">
-                                    未通过
+                                <li>
+                                    <a>上传的课件</a>
                                 </li>
                             </ul>
-                            <c:if test="${fn:length(allScorm)<1}">
-                                还未上传课件
-                            </c:if>
-                            <div class="row mix-grid">
-                                <c:forEach var="scormInfo" items="${allScorm}">
-                                    <div class="col-md-3 col-sm-4 mix mix_all
+                        </div>
+                    </div>
+                    <div class="margin-top">
+                        <ul class="mix-filter">
+                            <li class="filter" data-filter="all">
+                                所有课件
+                            </li>
+                            <li class="filter" data-filter="category_1">
+                                已通过
+                            </li>
+                            <li class="filter" data-filter="category_2">
+                                未通过
+                            </li>
+                        </ul>
+                        <c:if test="${fn:length(allScorm)<1}">
+                            还未上传课件
+                        </c:if>
+                        <div class="row mix-grid">
+                            <c:forEach var="scormInfo" items="${allScorm}">
+                                <div class="col-md-3 col-sm-4 mix mix_all
                                     <c:if test='${scormInfo.inUse==1}'>
                                     category_1
                                     </c:if>
                                     <c:if test='${scormInfo.inUse!=1}'>
                                     category_1
                                     </c:if>"
-                                         style="display: block; opacity: 1;">
-                                        <div class="mix-inner">
-                                            <img src="${scormInfo.imgPath}" class="img-responsive"
-                                                 alt="${scormInfo.scormId}" style="height: 200px;width: 300px">
+                                     style="display: block; opacity: 1;">
+                                    <div class="mix-inner">
+                                        <img src="${scormInfo.imgPath}" class="img-responsive"
+                                             alt="${scormInfo.scormId}" style="height: 200px;width: 300px">
 
-                                            <div class="mix-details" style="height: 200px;width: 300px">
-                                                <h4></h4>
+                                        <div class="mix-details" style="height: 200px;width: 300px">
+                                            <h4></h4>
+                                            <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                课件名称:&nbsp;${scormInfo.scormName}
+                                            </h4>
+                                            <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                审核状态:&nbsp;${scormInfo.showInUse}
+                                            </h4>
+                                            <c:if test="${scormInfo.inUse==1}">
                                                 <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                    课件名称:&nbsp;${scormInfo.scormName}
+                                                    <a class="btn btn-sm blue"
+                                                       onclick="scormInfo('${scormInfo.scormId}')">课件信息</a>
                                                 </h4>
+                                            </c:if>
+                                            <c:if test="${scormInfo.inUse!=1}">
                                                 <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                    审核状态:&nbsp;${scormInfo.showInUse}
+                                                    目前课件不可使用
                                                 </h4>
-                                                <c:if test="${scormInfo.inUse==1}">
-                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                        <a class="btn btn-sm blue"
-                                                           onclick="scormInfo('${scormInfo.scormId}')">课件信息</a>
-                                                    </h4>
-                                                </c:if>
-                                                <c:if test="${scormInfo.inUse!=1}">
-                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                        目前课件不可使用
-                                                    </h4>
-                                                </c:if>
-                                            </div>
+                                            </c:if>
                                         </div>
                                     </div>
-                                </c:forEach>
-                            </div>
+                                </div>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>

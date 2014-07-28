@@ -17,22 +17,48 @@
 </head>
 <body class="page-header-fixed" style="background-color: transparent">
 <div class="page-content" style="min-height:780px">
-    <c:if test="${fn:length(sessionScope.attentionUsers)<1}">
-        还未关注用户
-    </c:if>
-    <div class="row mix-grid">
-        <c:forEach var="attentionUser" items="${sessionScope.attentionUsers}">
-            <div class="col-md-2 col-sm-2 mix mix_all" style=" display: block;">
-                <a onclick="top.userInfo('${attentionUser.userAttentionId}')">
-                    <img src="${attentionUser.imgUrl}" class="img-responsive"
-                         alt="${attentionUser.userName}" style="height: 100px;width: 100px;">
-                        ${attentionUser.userName}
-                    <c:if test="${attentionUser.newMessage>0}">
-                        <span class="badge">${attentionUser.newMessage}</span>
-                    </c:if>
-                </a>
+    <div class="tabbable tabbable-custom boxless">
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab_1">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="page-breadcrumb breadcrumb">
+                            <li>
+                                <i class="fa fa-home"></i>
+                                <a onclick="parent.window.location.href=''">首页</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>
+                                <a>个人中心</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>
+                            <li>
+                                <a>关注列表</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="margin-top">
+                    <div class="row mix-grid">
+                        <c:if test="${fn:length(sessionScope.attentionUsers)<1}">
+                            还未关注用户
+                        </c:if>
+                        <c:forEach var="attentionUser" items="${sessionScope.attentionUsers}">
+                            <div class="col-md-2 col-sm-2 mix mix_all" style=" display: block;">
+                                <a onclick="top.userInfo('${attentionUser.userAttentionId}')">
+                                    <img src="${attentionUser.imgUrl}" class="img-responsive"
+                                         alt="${attentionUser.userName}" style="height: 100px;width: 100px;">
+                                        ${attentionUser.userName}
+                                    <c:if test="${attentionUser.newMessage>0}">
+                                        <span class="badge">${attentionUser.newMessage}</span>
+                                    </c:if>
+                                </a>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
             </div>
-        </c:forEach>
+        </div>
     </div>
 </div>
 </body>

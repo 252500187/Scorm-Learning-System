@@ -27,6 +27,24 @@
 <body class="page-header-fixed" style="background-color: #ffffff">
 <div class="row">
     <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="page-breadcrumb breadcrumb">
+                    <li>
+                        <i class="fa fa-home"></i>
+                        <a onclick="parent.window.location.href=''">首页</a>
+                        <i class="fa fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <a>个人中心</a>
+                        <i class="fa fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <a>上传课件</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class="portlet box">
             <div class="portlet-body form">
                 <form class="form-horizontal" id="fileGetUp" method="post"
