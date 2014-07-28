@@ -21,100 +21,100 @@
     <div class="row">
         <div class="col-md-12">
             <div class="tabbable tabbable-custom boxless">
-                    <div class="tab-pane active" id="tab_1">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <ul class="page-breadcrumb breadcrumb">
-                                    <li>
-                                        <i class="fa fa-home"></i>
-                                        <a onclick="parent.window.location.href=''">首页</a>
-                                        <i class="fa fa-angle-right"></i>
-                                    </li>
-                                    <li>
-                                        <a>个人中心</a>
-                                        <i class="fa fa-angle-right"></i>
-                                    </li>
-                                    <li>
-                                        <a>注册的课件</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="margin-top-10">
-                            <ul class="mix-filter">
-                                <li class="filter" data-filter="all">
-                                    所有课件
+                <div class="tab-pane active" id="tab_1">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="page-breadcrumb breadcrumb">
+                                <li>
+                                    <i class="fa fa-home"></i>
+                                    <a onclick="parent.window.location.href=''">首页</a>
+                                    <i class="fa fa-angle-right"></i>
                                 </li>
-                                <li class="filter" data-filter="category_1">
-                                    进行中
+                                <li>
+                                    <a>个人中心</a>
+                                    <i class="fa fa-angle-right"></i>
                                 </li>
-                                <li class="filter" data-filter="category_2">
-                                    已完成
+                                <li>
+                                    <a>注册的课件</a>
                                 </li>
                             </ul>
-                            <c:if test="${fn:length(allScorm)<1}">
-                                还未注册课件
-                            </c:if>
-                            <div class="row mix-grid">
-                                <c:forEach var="scormInfo" items="${allScorm}">
-                                    <c:if test="${scormInfo.completeDate == ''}">
-                                        <div class="col-md-3 col-sm-4 mix mix_all category_1"
-                                             style=" display: block; opacity: 1;">
-                                            <div class="mix-inner">
-                                                <img src="${scormInfo.imgPath}" class="img-responsive"
-                                                     alt="${scormInfo.scormId}" style="height: 200px;width: 300px">
-
-                                                <div class="mix-details" style="height: 200px;width: 300px">
-                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                        课件名称:&nbsp;${scormInfo.scormName}</h4>
-                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                        状态:进行中</h4>
-                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                        <a class="btn btn-sm blue"
-                                                           onclick="study('${scormInfo.scormId}')">学习</a>
-                                                    </h4>
-                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                        <a class="btn btn-sm blue"
-                                                           onclick="top.scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
-                                                        <a class="btn btn-sm blue"
-                                                           onclick="scormComment('${scormInfo.scormId}')">评价课件</a>
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </c:if>
-                                    <c:if test="${scormInfo.completeDate != ''}">
-                                        <div class="col-md-3 col-sm-4 mix mix_all category_2"
-                                             style=" display: block; opacity: 1;">
-                                            <div class="mix-inner">
-                                                <img src="${scormInfo.imgPath}" class="img-responsive"
-                                                     alt="${scormInfo.scormId}" style="height: 200px;width: 300px">
-
-                                                <div class="mix-details">
-                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                        课件名称:&nbsp;${scormInfo.scormName}</h4>
-                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                        状态:&nbsp;已完成</h4>
-                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                        完成日期:&nbsp;${scormInfo.completeDate}</h4>
-                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                        <a class="btn btn-sm blue"
-                                                           onclick="study('${scormInfo.scormId}')">学习</a>
-                                                    </h4>
-                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                        <a class="btn btn-sm blue"
-                                                           onclick="top.scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
-                                                        <a class="btn btn-sm blue"
-                                                           onclick="scormComment('${scormInfo.scormId}')">评价课件</a>
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </c:if>
-                                </c:forEach>
-                            </div>
                         </div>
                     </div>
+                    <div class="margin-top-10">
+                        <ul class="mix-filter">
+                            <li class="filter" data-filter="all">
+                                所有课件
+                            </li>
+                            <li class="filter" data-filter="category_1">
+                                进行中
+                            </li>
+                            <li class="filter" data-filter="category_2">
+                                已完成
+                            </li>
+                        </ul>
+                        <c:if test="${fn:length(allScorm)<1}">
+                            还未注册课件
+                        </c:if>
+                        <div class="row mix-grid">
+                            <c:forEach var="scormInfo" items="${allScorm}">
+                                <c:if test="${scormInfo.completeDate == ''}">
+                                    <div class="col-md-3 col-sm-4 mix mix_all category_1"
+                                         style=" display: block; opacity: 1;">
+                                        <div class="mix-inner">
+                                            <img src="${scormInfo.imgPath}" class="img-responsive"
+                                                 alt="${scormInfo.scormId}" style="height: 164px;width: 246px">
+
+                                            <div class="mix-details">
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    课件名称:&nbsp;${scormInfo.scormName}</h4>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    状态:进行中</h4>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    <a class="btn btn-sm blue"
+                                                       onclick="study('${scormInfo.scormId}')">学习</a>
+                                                </h4>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    <a class="btn btn-sm blue"
+                                                       onclick="top.scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
+                                                    <a class="btn btn-sm blue"
+                                                       onclick="scormComment('${scormInfo.scormId}')">评价课件</a>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:if>
+                                <c:if test="${scormInfo.completeDate != ''}">
+                                    <div class="col-md-3 col-sm-4 mix mix_all category_2"
+                                         style=" display: block; opacity: 1;">
+                                        <div class="mix-inner">
+                                            <img src="${scormInfo.imgPath}" class="img-responsive"
+                                                 alt="${scormInfo.scormId}" style="height: 164px;width: 246px">
+
+                                            <div class="mix-details">
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    课件名称:&nbsp;${scormInfo.scormName}</h4>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    状态:&nbsp;已完成</h4>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    完成日期:&nbsp;${scormInfo.completeDate}</h4>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    <a class="btn btn-sm blue"
+                                                       onclick="study('${scormInfo.scormId}')">学习</a>
+                                                </h4>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    <a class="btn btn-sm blue"
+                                                       onclick="top.scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
+                                                    <a class="btn btn-sm blue"
+                                                       onclick="scormComment('${scormInfo.scormId}')">评价课件</a>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:if>
+                            </c:forEach>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -20,59 +20,59 @@
     <div class="row">
         <div class="col-md-12">
             <div class="tabbable tabbable-custom boxless">
-                    <div class="tab-pane active" id="tab_1">
-                        <!-- BEGIN FILTER -->
-                        <div class="margin-top-10">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <ul class="page-breadcrumb breadcrumb">
-                                        <li>
-                                            <i class="fa fa-home"></i>
-                                            <a onclick="parent.window.location.href=''">首页</a>
-                                            <i class="fa fa-angle-right"></i>
-                                        </li>
-                                        <li>
-                                            <a>个人中心</a>
-                                            <i class="fa fa-angle-right"></i>
-                                        </li>
-                                        <li>
-                                            <a>收藏的课件</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="row mix-grid">
-                                <c:if test="${fn:length(allScorm)<1}">
-                                    还未收藏课件
-                                </c:if>
-                                <c:forEach var="scormInfo" items="${allScorm}">
-                                    <div class="col-md-3 col-sm-4 mix mix_all"
-                                         style=" display: block; opacity: 1;">
-                                        <div class="mix-inner">
-                                            <img src="${scormInfo.imgPath}" class="img-responsive"
-                                                 alt="${scormInfo.scormId}" style="height: 200px;width: 300px">
-
-                                            <div class="mix-details" style="height: 200px;width: 300px">
-                                                <h4></h4>
-                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                    课件名称:&nbsp;${scormInfo.scormName}
-                                                </h4>
-                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                    收藏时间:&nbsp;${scormInfo.collectDate}
-                                                </h4>
-                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                    <a class="btn btn-sm blue"
-                                                       onclick="top.scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
-                                                    <a class="btn btn-sm blue"
-                                                       onclick="cancelCollect('${scormInfo.scormId}')">取消收藏</a>
-                                                </h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </c:forEach>
+                <div class="tab-pane active" id="tab_1">
+                    <!-- BEGIN FILTER -->
+                    <div class="margin-top-10">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="page-breadcrumb breadcrumb">
+                                    <li>
+                                        <i class="fa fa-home"></i>
+                                        <a onclick="parent.window.location.href=''">首页</a>
+                                        <i class="fa fa-angle-right"></i>
+                                    </li>
+                                    <li>
+                                        <a>个人中心</a>
+                                        <i class="fa fa-angle-right"></i>
+                                    </li>
+                                    <li>
+                                        <a>收藏的课件</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
+                        <div class="row mix-grid">
+                            <c:if test="${fn:length(allScorm)<1}">
+                                还未收藏课件
+                            </c:if>
+                            <c:forEach var="scormInfo" items="${allScorm}">
+                                <div class="col-md-3 col-sm-4 mix mix_all"
+                                     style=" display: block; opacity: 1;">
+                                    <div class="mix-inner">
+                                        <img src="${scormInfo.imgPath}" class="img-responsive"
+                                             alt="${scormInfo.scormId}" style="height: 164px;width: 246px">
+
+                                        <div class="mix-details">
+                                            <h4></h4>
+                                            <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                课件名称:&nbsp;${scormInfo.scormName}
+                                            </h4>
+                                            <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                收藏时间:&nbsp;${scormInfo.collectDate}
+                                            </h4>
+                                            <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                <a class="btn btn-sm blue"
+                                                   onclick="top.scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
+                                                <a class="btn btn-sm blue"
+                                                   onclick="cancelCollect('${scormInfo.scormId}')">取消收藏</a>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
                     </div>
+                </div>
 
             </div>
         </div>

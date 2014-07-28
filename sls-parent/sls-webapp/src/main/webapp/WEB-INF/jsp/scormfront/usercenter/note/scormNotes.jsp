@@ -62,9 +62,9 @@
                                  style=" display: block; opacity: 1;">
                                 <div class="mix-inner">
                                     <img src="img/note/1.jpg" class="img-responsive"
-                                         alt="笔记本" style="height: 200px;width: 300px">
+                                         alt="笔记本" style="height: 164px;width: 246px">
 
-                                    <div class="mix-details" style="height: 200px;width: 300px">
+                                    <div class="mix-details">
                                         <br/>
                                         <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                             笔记本</h4>
@@ -80,7 +80,7 @@
                                  style=" display: block; opacity: 1;">
                                 <div class="mix-inner">
                                     <img src="img/note/2.jpg" class="img-responsive"
-                                         alt="笔记本" style="height: 200px;width: 300px">
+                                         alt="笔记本" style="height: 164px;width: 246px">
 
                                     <div class="mix-details">
                                         <br/>
@@ -99,7 +99,7 @@
                                          style=" display: block; opacity: 1;">
                                         <div class="mix-inner">
                                             <img src="${scormInfo.imgPath}" class="img-responsive"
-                                                 alt="${scormInfo.scormId}" style="height: 200px;width: 300px">
+                                                 alt="${scormInfo.scormId}" style="height: 164px;width: 246px">
 
                                             <div class="mix-details">
                                                 <br/>
@@ -118,7 +118,7 @@
                                          style=" display: block; opacity: 1;">
                                         <div class="mix-inner">
                                             <img src="${scormInfo.imgPath}" class="img-responsive"
-                                                 alt="${scormInfo.scormId}" style="height: 200px;width: 300px">
+                                                 alt="${scormInfo.scormId}" style="height: 164px;width: 246px">
 
                                             <div class="mix-details">
                                                 <br/>
