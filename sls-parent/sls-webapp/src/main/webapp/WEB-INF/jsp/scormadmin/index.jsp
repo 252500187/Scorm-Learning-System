@@ -44,7 +44,7 @@
         </div>
         <div class="row-fluid">
             <div class="span12">
-                <iframe frameborder="no" id="iframe" style="width:100%;height:100%;overflow-y: hidden;"></iframe>
+                <iframe frameborder="no" id="iframe" style="width:100%;"></iframe>
             </div>
         </div>
         <div class="row-fluid">
@@ -68,7 +68,7 @@
 </html>
 <script type="text/javascript">
     $(function () {
-        $('#iframe').height(document.documentElement.clientHeight);
+        $('#iframe').height(document.documentElement.clientHeight-120);
         changeIframe('admin/user/adminIndexStatisticDo');
     });
 
