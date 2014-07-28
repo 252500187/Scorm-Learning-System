@@ -150,7 +150,7 @@
                             <label class="control-label col-md-2">添加到系列</label>
 
                             <div class="col-md-3">
-                                <input id="isGroup" type="checkbox" class="make-switch" checked data-on-color="primary"
+                                <input id="isGroup" type="checkbox" class="make-switch" data-on-color="primary"
                                        data-off-color="info">
                             </div>
                         </div>
@@ -189,14 +189,13 @@
 </html>
 <script>
     var haveGroup = "";
-    jQuery(document).ready(function () {
+    $(function () {
         Metronic.init();
         Layout.init();
         if ("${result}" != "") {
             parent.$("#alertPromptMessage").html("${result}");
             parent.$("#alertPrompt").modal("show");
         }
-        $("#isGroup").click();
         $("#isGroup").click(function () {
             if ($("#isGroup").attr("checked")) {
                 haveGroup = "true";
