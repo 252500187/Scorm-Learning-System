@@ -112,7 +112,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void editUser(HttpServletRequest request, User user) {
+    public void editUser(HttpSession session, HttpServletRequest request, User user) {
         User oldUser = userDao.findUserAllInfoById(user.getUserId());
         if (oldUser.getImgUrl().equals(DictConstant.DEFAULT_USER_PHOTO) && oldUser.getUserName().equals(DictConstant.DEFAULT_USER_NAME)) {
             userDao.addScore(DictConstant.EXP_SCORE, user.getUserId());
@@ -120,10 +120,11 @@ public class UserServiceImpl implements UserService {
         user.setUserName(BaseUtil.iso2utf(user.getUserName()));
         userDao.editUser(user);
         request.setAttribute("userName", user.getUserName());
+        session.setAttribute("userName", user.getUserName());
     }
 
     @Override
-    public void upHeadImg(HttpServletRequest request, String upImg) throws ServletException, IOException {
+    public void upHeadImg(HttpSession session, HttpServletRequest request, String upImg) throws ServletException, IOException {
         if (request.getParameter("haveImg").equals("")) {
             return;
         }
@@ -135,6 +136,7 @@ public class UserServiceImpl implements UserService {
         user.setImgUrl(fileUp.upImg(request, DictConstant.USER_PHOTO_NAME, "", userId + "time" + date.getTime() + DictConstant.PHOTO_FORM, upImg));
         userDao.upUserPhoto(user);
         request.setAttribute("imgUrl", user.getImgUrl());
+        session.setAttribute("userImg", user.getImgUrl());
     }
 
     @Override

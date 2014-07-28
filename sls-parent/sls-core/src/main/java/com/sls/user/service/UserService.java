@@ -26,9 +26,9 @@ public interface UserService {
 
     void addUser(User user);
 
-    void editUser(HttpServletRequest request, User user);
+    void editUser(HttpSession session, HttpServletRequest request, User user);
 
-    void upHeadImg(HttpServletRequest request, String upImg) throws ServletException, IOException;
+    void upHeadImg(HttpSession session, HttpServletRequest request, String upImg) throws ServletException, IOException;
 
     boolean checkRepeatLoginName(String loginName);
 

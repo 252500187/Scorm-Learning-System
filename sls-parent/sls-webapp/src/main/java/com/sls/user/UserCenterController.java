@@ -82,11 +82,11 @@ public class UserCenterController {
     }
 
     @RequestMapping(value = "editUserInfo", method = {RequestMethod.POST})
-    public String upHeadImg(HttpServletRequest request, User user, @RequestParam("myLabelList") String myLabelList) throws ServletException, IOException, ParserConfigurationException, SAXException,
+    public String upHeadImg(HttpSession session, HttpServletRequest request, User user, @RequestParam("myLabelList") String myLabelList) throws ServletException, IOException, ParserConfigurationException, SAXException,
             XPathExpressionException {
-        userService.editUser(request, user);
+        userService.editUser(session, request, user);
         labelService.editUserLabelList(myLabelList.trim());
-        userService.upHeadImg(request, "upImg");
+        userService.upHeadImg(session, request, "upImg");
         request.setAttribute("result", "修改成功");
         getUserInfo(request);
         return "scormfront/usercenter/userInfo";
