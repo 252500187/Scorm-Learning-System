@@ -40,10 +40,10 @@
                 </div>
                 <div class="margin-top">
                     <div class="row mix-grid">
-                        <c:if test="${fn:length(sessionScope.attentionUsers)<1}">
+                        <c:if test="${fn:length(attentionUsers)<1}">
                             还未关注用户
                         </c:if>
-                        <c:forEach var="attentionUser" items="${sessionScope.attentionUsers}">
+                        <c:forEach var="attentionUser" items="${attentionUsers}">
                             <div class="col-md-2 col-sm-2 mix mix_all" style=" display: block;">
                                 <a onclick="top.userInfo('${attentionUser.userAttentionId}')">
                                     <img src="${attentionUser.imgUrl}" class="img-responsive"
@@ -52,6 +52,9 @@
                                     <c:if test="${attentionUser.newMessage>0}">
                                         <span class="badge">${attentionUser.newMessage}</span>
                                     </c:if>
+                                </a>
+                                <a onclick="cancelAttention('${attentionUser.userAttentionId}')" class="badge">
+                                    取消关注
                                 </a>
                             </div>
                         </c:forEach>
@@ -67,4 +70,19 @@
     $(function () {
         Portfolio.init();
     })
+
+    function cancelAttention(userId) {
+        parent.$("#alertConfirmMessage").html("确认取消关注?");
+        parent.$("#promptButton1").unbind();
+        parent.$("#promptButton1").click(function () {
+            $.ajax({
+                url: basePath + "user/info/userAttentionDeal?userAttentionId=" + userId,
+                type: "GET",
+                success: function () {
+                    parent.changeIframe('user/center/userAttentionDo');
+                }
+            })
+        });
+        parent.$("#alertConfirm").modal("show");
+    }
 </script>

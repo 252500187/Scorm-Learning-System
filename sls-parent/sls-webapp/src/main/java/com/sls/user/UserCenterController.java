@@ -128,7 +128,8 @@ public class UserCenterController {
 
     //个人中心  关注列表
     @RequestMapping(value = "userAttentionDo", method = {RequestMethod.GET})
-    public String userAttentionDo() {
+    public String userAttentionDo(HttpServletRequest request) {
+        request.setAttribute("attentionUsers",userCenterService.getAttentionUsers());
         return "scormfront/usercenter/userAttentions";
     }
 

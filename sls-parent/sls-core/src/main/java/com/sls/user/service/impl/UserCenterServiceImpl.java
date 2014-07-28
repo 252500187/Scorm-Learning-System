@@ -3,9 +3,11 @@ package com.sls.user.service.impl;
 import com.sls.scorm.dao.ScormDao;
 import com.sls.scorm.entity.Scorm;
 import com.sls.system.service.DictService;
+import com.sls.user.dao.UserAttentionDao;
 import com.sls.user.dao.UserDao;
 import com.sls.user.dao.UserQuestionDao;
 import com.sls.user.entity.User;
+import com.sls.user.entity.UserAttention;
 import com.sls.user.entity.UserQuestion;
 import com.sls.user.service.UserCenterService;
 import com.sls.util.DictConstant;
@@ -32,6 +34,9 @@ public class UserCenterServiceImpl implements UserCenterService {
 
     @Autowired
     private UserQuestionDao userQuestionDao;
+
+    @Autowired
+    private UserAttentionDao userAttentionDao;
 
     @Override
     public void toUserCenter(HttpServletRequest request) {
@@ -180,5 +185,11 @@ public class UserCenterServiceImpl implements UserCenterService {
             userQuestionDao.changeQuestionAnswerContentByQuestionId(userQuestion);
             userQuestionDao.setNewAnswerByQuestionId(userQuestion.getQuestionId());
         }
+    }
+
+    @Override
+    public List<UserAttention> getAttentionUsers() {
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        return userAttentionDao.getAttentionUsersByUserId(userId);
     }
 }

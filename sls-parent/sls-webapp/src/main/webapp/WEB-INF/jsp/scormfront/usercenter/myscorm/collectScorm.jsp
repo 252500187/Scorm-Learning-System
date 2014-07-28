@@ -87,6 +87,7 @@
 
     function cancelCollect(scormId) {
         parent.$("#alertConfirmMessage").html("确认取消收藏?");
+        parent.$("#promptButton1").unbind();
         parent.$("#promptButton1").click(function () {
             $.ajax({
                 url: basePath + "user/scorm/collectDealScorm?scormId=" + scormId,

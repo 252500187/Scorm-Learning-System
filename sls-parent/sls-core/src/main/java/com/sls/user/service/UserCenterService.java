@@ -1,9 +1,11 @@
 package com.sls.user.service;
 
+import com.sls.user.entity.UserAttention;
 import com.sls.user.entity.UserQuestion;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 public interface UserCenterService {
     void toUserCenter(HttpServletRequest request);
@@ -29,4 +31,6 @@ public interface UserCenterService {
     void getQuestionInfoAnswer(HttpServletRequest request, HttpSession session, int questionId);
 
     void changeQuestionAnswerContent(UserQuestion userQuestion);
+
+    List<UserAttention> getAttentionUsers();
 }
