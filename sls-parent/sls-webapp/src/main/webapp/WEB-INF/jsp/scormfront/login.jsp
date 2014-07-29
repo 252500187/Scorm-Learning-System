@@ -19,10 +19,6 @@
         <img src="img/logo/logo-big.png" alt="SLS"/>
     </a>
 </div>
-
-<div class="menu-toggler sidebar-toggler">
-</div>
-
 <div class="content">
 
     <form class="login-form" action="loginResult" method="post" id="login">
@@ -211,6 +207,16 @@
         });
         <c:if test="${loginResult=='false'}">
         $("#loginError").show();
+        </c:if>
+        <c:if test="${page=='register'}">
+        $('.login-form').hide();
+        $('.forget-form').hide();
+        $('.register-form').show();
+        </c:if>
+        <c:if test="${page=='login'}">
+        $('.login-form').show();
+        $('.forget-form').hide();
+        $('.register-form').hide();
         </c:if>
     });
 </script>

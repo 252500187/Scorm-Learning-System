@@ -54,22 +54,22 @@
 <div class="input-group" style="margin-top: 15px">
     <input type="text" class="form-control" placeholder="搜索您感兴趣的内容..." id="queryInfo" name="query"
            style="width: 400px;height: 50px;"/>
-            <span class="input-group-btn" style="background-color: #4AA1FF;width: 80px;height: 50px;">
-                 <a style="color: #fff;margin-left: 18px;font-size: 20px;line-height: 50px;cursor: pointer;text-decoration: none;"
-                    onclick="findScorm()">搜索</a>
-            </span>
+    <span class="input-group-btn" style="background-color: #4AA1FF;width: 80px;height: 50px;">
+         <a style="color: #fff;margin-left: 18px;font-size: 20px;line-height: 50px;cursor: pointer;text-decoration: none;"
+            onclick="findScorm()">搜索</a>
+    </span>
 </div>
 
 <div class="top-menu" style="margin-top: -50px">
     <ul class="nav navbar-nav pull-right">
         <c:if test="${sessionScope.userId==null||sessionScope.userId==''}">
             <li class="dropdown dropdown-extended dropdown-notification" id="header_task_bar">
-                <a href="login" style="font-size: 20px;" class="dropdown-toggle">
+                <a href="login?page=register" style="font-size: 20px;" class="dropdown-toggle">
                     <i class="fa fa-user"></i>注册&nbsp;&nbsp;&nbsp;
                 </a>
             </li>
             <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
-                <a href="login" style="font-size: 20px;" class="dropdown-toggle">
+                <a href="login?page=login" style="font-size: 20px;" class="dropdown-toggle">
                     <i class="fa fa-sign-in"></i>登陆&nbsp;&nbsp;&nbsp;
                 </a>
             </li>

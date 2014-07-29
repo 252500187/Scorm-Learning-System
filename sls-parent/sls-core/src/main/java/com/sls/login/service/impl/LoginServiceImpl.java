@@ -14,6 +14,7 @@ import com.sls.util.LoginUserUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,6 +63,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     public ModelAndView loginResult(HttpServletRequest request, User user, HttpSession session) {
+        WebUtils.getAndClearSavedRequest(request);
         ModelAndView modelView = new ModelAndView();
         Subject currentUser = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(user.getLoginName(), user.getPassword());
@@ -94,12 +96,13 @@ public class LoginServiceImpl implements LoginService {
 
     public void setIndexInfo(HttpServletRequest request, HttpSession session) {
         session.setAttribute("labels", labelDao.getAllLabel());
-        request.setAttribute("scormSum", scormDao.indexFindTopScormByFieldName("register_sum", 8));
-        request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score", 8));
-        request.setAttribute("scormTime", scormDao.indexFindTopScormByFieldName("total_time", 8));
-        request.setAttribute("scormLevel", scormDao.indexFindTopScormByFieldName("recommend_level", 8));
+        request.setAttribute("scormSum", scormDao.indexFindTopScormByFieldName("register_sum", 6));
+        request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score", 6));
+        request.setAttribute("scormTime", scormDao.indexFindTopScormByFieldName("total_time", 6));
+        request.setAttribute("scormLevel", scormDao.indexFindTopScormByFieldName("recommend_level", 6));
         request.setAttribute("latestScorms", scormDao.findLatestScorms(10));
         request.setAttribute("recommendIndexScorms", scormDao.findRecommendIndexScorms());
+        request.setAttribute("recommendUsers", userDao.getNumUserOrderByScore(5));
     }
 
     public void setLoginIndexInfo(HttpSession session, int userId) {
