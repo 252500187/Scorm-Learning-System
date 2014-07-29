@@ -28,7 +28,7 @@
                     <div class="mega-menu-content">
                         <ul class="mega-menu-submenu">
                             <li>
-                                <a href="">
+                                <a onclick="sortByLabel('全部课件')">
                                     <p>
                                         全部课件&nbsp;<i class="m-icon-swapright"></i>
                                     </p>
@@ -38,7 +38,7 @@
                             </li>
                             <c:forEach var="label" items="${sessionScope.labels}">
                                 <li>
-                                    <a onclick="findByLabel('${label.labelName}')">
+                                    <a onclick="sortByLabel('${label.labelName}')">
                                         <i class="fa fa-tags"></i>${label.labelName}
                                     </a>
                                 </li>
@@ -251,8 +251,8 @@
         top.window.open(basePath + "tourist/scormInfo?scormId=" + scormId);
     }
 
-    function findByLabel(label) {
-        top.window.open(basePath + "tourist/findScorm?queryInfo=" + label);
+    function sortByLabel(label) {
+        top.window.open(basePath + "tourist/sortScorm?info=" + label);
     }
 
     function userInfo(userId) {

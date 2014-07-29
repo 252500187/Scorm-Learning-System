@@ -68,6 +68,13 @@ public class TouristController {
         return "scormfront/scorm/findResult";
     }
 
+    @RequestMapping(value = "sortScorm", method = {RequestMethod.GET})
+    public String sortScorm(@RequestParam("info") String sortInfo, HttpServletRequest request) {
+        scormService.sortScorm(BaseUtil.iso2utf(sortInfo), request);
+        scormService.findRecommendScorm(request);
+        scormService.findRegisterScorm(request);
+        return "scormfront/scorm/sortResult";
+    }
     @RequestMapping(value = "checkValidateCodeYesOrNot", method = {RequestMethod.POST})
     @ResponseBody
     public boolean checkValidateCodeYesOrNot(@RequestParam("validateCode") String validateCode, HttpServletRequest request) throws Exception {

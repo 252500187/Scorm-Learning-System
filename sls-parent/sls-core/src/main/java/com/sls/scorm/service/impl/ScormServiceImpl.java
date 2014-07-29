@@ -631,4 +631,9 @@ public class ScormServiceImpl implements ScormService {
         }
         return scorms;
     }
+
+    @Override
+    public void sortScorm(String info, HttpServletRequest request) {
+        request.setAttribute("info", info);
+        request.setAttribute("sortLabelScorm", scormDao.sortScormByLabelName(info));}
 }

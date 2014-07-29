@@ -179,4 +179,17 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
         String sql = "SELECT COUNT(*) FROM ss_scorm WHERE in_use=?";
         return getJdbcTemplate().queryForObject(sql, Integer.class, DictConstant.IN_USE);
     }
+
+    @Override
+    public List<Scorm> sortScormByLabelName(String info) {
+        String sql = "SELECT a.*,COUNT(TYPE) AS chapterNum FROM ss_scorm a,luss_scorm_sco b " +
+                "WHERE a.scorm_id = b.scorm_id AND b.user_id = -1 AND b.type = 'item' AND a.in_use = 1 " +
+                "AND a.scorm_id IN (SELECT DISTINCT c.scorm_id FROM ss_scorm c ,ss_scorm_label d,us_label e " +
+                "WHERE c.scorm_id=d.scorm_id AND e.label_id=d.label_id ";
+        if ( !"全部课件".equals(info.trim())) {                        //todo  将全部课件  用字典值代替
+            sql += "AND label_name LIKE '%" + info + "%'";
+        }
+        sql += ")GROUP BY a.scorm_id";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class));
+    }
 }
