@@ -48,11 +48,11 @@
             <ul class="page-breadcrumb breadcrumb">
                 <li>
                     <i class="fa fa-home"></i>
-                    <a href="">Home</a>
+                    <a href="">首页</a>
                     <i class="fa fa-angle-right"></i>
                 </li>
                 <li>
-                    <a>result</a>
+                    <a>搜索结果</a>
                     <i class="fa fa-angle-right"></i>
                 </li>
                 <li>

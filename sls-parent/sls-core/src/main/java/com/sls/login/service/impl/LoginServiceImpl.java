@@ -96,13 +96,13 @@ public class LoginServiceImpl implements LoginService {
 
     public void setIndexInfo(HttpServletRequest request, HttpSession session) {
         session.setAttribute("labels", labelDao.getAllLabel());
-        request.setAttribute("scormSum", scormDao.indexFindTopScormByFieldName("register_sum", 6));
-        request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score", 6));
-        request.setAttribute("scormTime", scormDao.indexFindTopScormByFieldName("total_time", 6));
-        request.setAttribute("scormLevel", scormDao.indexFindTopScormByFieldName("recommend_level", 6));
-        request.setAttribute("latestScorms", scormDao.findLatestScorms(10));
+        request.setAttribute("scormSum", scormDao.indexFindTopScormByFieldName("register_sum", 8));
+        request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score", 8));
+        request.setAttribute("scormTime", scormDao.indexFindTopScormByFieldName("total_time", 8));
+        request.setAttribute("scormLevel", scormDao.indexFindTopScormByFieldName("recommend_level", 8));
+        request.setAttribute("latestScorms", scormDao.findLatestScorms(7));
         request.setAttribute("recommendIndexScorms", scormDao.findRecommendIndexScorms());
-        request.setAttribute("recommendUsers", userDao.getNumUserOrderByScore(5));
+        request.setAttribute("recommendUsers", userDao.getNumUserOrderByScore(9));
     }
 
     public void setLoginIndexInfo(HttpSession session, int userId) {
