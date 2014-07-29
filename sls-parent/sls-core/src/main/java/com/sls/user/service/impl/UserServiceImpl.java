@@ -300,4 +300,9 @@ public class UserServiceImpl implements UserService {
         userQuestionDao.addUserQuestion(userQuestion);
         return true;
     }
+
+    @Override
+    public List<User> getNumRecommendUsers(int num) {
+        return userDao.getNumUserOrderByScore(num);
+    }
 }

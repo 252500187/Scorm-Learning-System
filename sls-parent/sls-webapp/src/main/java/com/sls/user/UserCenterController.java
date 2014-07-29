@@ -130,6 +130,7 @@ public class UserCenterController {
     @RequestMapping(value = "userAttentionDo", method = {RequestMethod.GET})
     public String userAttentionDo(HttpServletRequest request) {
         request.setAttribute("attentionUsers",userCenterService.getAttentionUsers());
+        request.setAttribute("recommendUsers",userService.getNumRecommendUsers(10));
         return "scormfront/usercenter/userAttentions";
     }
 

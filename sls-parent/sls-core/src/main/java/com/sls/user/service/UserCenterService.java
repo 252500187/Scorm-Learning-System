@@ -1,5 +1,6 @@
 package com.sls.user.service;
 
+import com.sls.user.entity.User;
 import com.sls.user.entity.UserAttention;
 import com.sls.user.entity.UserQuestion;
 

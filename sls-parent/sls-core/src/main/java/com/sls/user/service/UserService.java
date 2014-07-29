@@ -53,4 +53,6 @@ public interface UserService {
     List<UserQuestion> getUserAnsWerQuestionsByUserId(int userId);
 
     Boolean addUserQuestion(int answerUserId, String questionDescribe);
+
+    List<User> getNumRecommendUsers(int num);
 }

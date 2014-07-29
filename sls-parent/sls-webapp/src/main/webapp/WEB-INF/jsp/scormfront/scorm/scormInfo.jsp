@@ -64,7 +64,7 @@
                     <a class="btn blue" onclick="collectScorm('${scormInfo.scormId}')" name="collect">取消收藏</a>
                 </c:if>
             </c:if>
-            <br/>
+            <br/> <br/>
             <ul class="list-inline">
                 <li>评分:</li>
                 <li>${scormInfo.score}分</li>

@@ -127,8 +127,8 @@
             <li class="dropdown dropdown-user">
                 <a href="user/center/userCenterDo" class="dropdown-toggle" data-toggle="dropdown"
                    data-hover="dropdown" data-close-others="true">
-                    <img id="userTopImg" alt="${sessionScope.userName}" style="height: 40px;width: 40px"
-                         src="${sessionScope.userImg}"/>
+                    <img id="userTopImg" alt="${sessionScope.userName}" style="height: 45px;width: 45px"
+                         src="${sessionScope.userImg}" class="img-circle"/>
                             <span class="username" id="userTopName"
                                   style="font-size: 20px;">${sessionScope.userName}</span>
                     <i class="fa fa-angle-down"></i>
