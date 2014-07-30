@@ -18,24 +18,10 @@
         <fieldset>
             <legend></legend>
             <div class="control-group">
-                <label class="control-label">消息内容</label>
+                <label class="control-label" for="message">消息内容</label>
 
                 <div class="controls">
                     <textarea id="message" value=""/></textarea>
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label class="control-label">接收用户</label>
-
-                <div class="controls">
-                    <input type="checkbox" id="selectAll" onclick="selectAllUser()">全选<br/>
-
-                    <div style="max-height: 100px;width:250px;overflow-y: scroll">
-                        <c:forEach var="user" items="${users}">
-                            <input type="checkbox" name="user" value="${user.userId}">${user.userName}<br/>
-                        </c:forEach>
-                    </div>
                 </div>
             </div>
 
@@ -65,19 +51,10 @@
     function sendMessage() {
         if (!JC.validate(ruleLabel)) return;
         $("#saves").button('loading');
-        var userIds = "";
-        $("[name=user]").each(function () {
-            if ($(this).attr("checked")) {
-                userIds += $(this).val() + ",";
-            }
-        })
-        if (userIds = "") {
-            return;
-        }
         $.ajax({
-            url: basePath + "admin/user/sendMessage",
+            url: basePath + "admin/user/sendUserMessage",
             data: {
-                userIds: userIds,
+                userId: "${userId}",
                 content: $("#message").val().trim()
             },
             dataType: "json",
@@ -87,14 +64,6 @@
             },
             error: doError
         })
-    }
-
-    function selectAllUser() {
-        if ($("#selectAll").attr("checked")) {
-            $("[name=user]").attr("checked", true);
-        } else {
-            $("[name=user]").attr("checked", false);
-        }
     }
 
     function quit() {

@@ -111,7 +111,6 @@
             if (temp[i].inUse == "${shield}") {
                 operate = "取消";
             }
-
             temp[i].edit = "<a onclick=shieldUser(" + temp[i].userId + ",'" + operate + "')>" + operate + "屏蔽</a>&nbsp;<a onclick=sendMessage(" + temp[i].userId + ")>发送消息</a>";
             rowDataList.push(temp[i]);
         }
@@ -119,7 +118,7 @@
     }
 
     function sendMessage(userId) {
-        var path = basePath + "admin/user/sendMessageDo?userId=" + userId;
+        var path = basePath + "admin/user/sendUserMessageDo?userId=" + userId;
         $("#contentFrame").attr("src", path);
         $('#dataEdit').dialog({
             title: '<spring:message code="edit"/>',

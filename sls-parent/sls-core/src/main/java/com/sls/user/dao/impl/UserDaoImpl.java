@@ -170,4 +170,11 @@ public class UserDaoImpl extends PageDao implements UserDao {
         String sql = "SELECT * FROM us_user_info ORDER BY score DESC LIMIT ?";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<User>(User.class), num);
     }
+
+    @Override
+    public List<User> getAllUsersByInUse(int inUse) {
+        String sql = "SELECT * FROM us_user_info a LEFT JOIN us_user_role b ON a.user_id=b.user_id " +
+                "WHERE b.role_id = (SELECT role_id FROM us_role WHERE authority=?) AND a.user_id IN (SELECT user_id FROM us_user WHERE in_use=?)";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<User>(User.class), DictConstant.ROLE_AUTHORITY_USER, inUse);
+    }
 }

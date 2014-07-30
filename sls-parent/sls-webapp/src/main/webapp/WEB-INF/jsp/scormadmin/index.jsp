@@ -27,6 +27,7 @@
                     <li class="active"><a data-toggle="tab" onclick="changeIframe('admin/user/adminIndexStatisticDo')">统计信息</a>
                     </li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllUserDo')">用户管理</a></li>
+                    <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllMessageDo')">消息管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllDiscussDo')">评论管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/role/listAllRoleDo')">角色管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/label/listAllLabelDo')">标签管理</a></li>

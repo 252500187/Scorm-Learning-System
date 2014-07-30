@@ -53,4 +53,6 @@ public interface UserDao {
     int getUseUserNum();
 
     List<User> getNumUserOrderByScore(int num);
+
+    List<User> getAllUsersByInUse(int inUse);
 }

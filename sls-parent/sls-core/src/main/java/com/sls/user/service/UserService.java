@@ -15,11 +15,11 @@ import java.util.List;
 
 public interface UserService {
 
-    Page<User> findUserPageList(PageParameter pageParameter, User user);
+    Page<User> getUserPageList(PageParameter pageParameter, User user);
 
-    User findUserAllInfoById(int id);
+    User getUserAllInfoById(int id);
 
-    List<User> findUserByLoginName(String loginName);
+    List<User> getUserByLoginName(String loginName);
 
     Boolean checkRepeatLoginName(String loginName, String oldName);
 
@@ -35,11 +35,11 @@ public interface UserService {
 
     void shieldUser(int userId);
 
-    void findUserNextLevelNameByScore(HttpServletRequest request);
+    void getUserNextLevelNameByScore(HttpServletRequest request);
 
     void getPieCharts(HttpServletRequest request);
 
-    Page<ScormSummarize> findDiscussPageList(PageParameter pageParameter, ScormSummarize scormSummarize);
+    Page<ScormSummarize> getDiscussPageList(PageParameter pageParameter, ScormSummarize scormSummarize);
 
     void shieldDiscuss(int userId, int scormId);
 
@@ -57,7 +57,19 @@ public interface UserService {
 
     List<User> getNumRecommendUsers(int num);
 
-    void sendMessage(BackMessage backMessage);
+    void sendUserMessage(BackMessage backMessage);
+
+    void sendMessage(String content, String userIds);
 
     void cancelMessageByMessageId(int messageId);
+
+    Page<BackMessage> getMessagePageList(PageParameter pageParameter, BackMessage backMessage);
+
+    List<User> getAllInUseUsers();
+
+    void delMessage(int messageId);
+
+    BackMessage getMessageInfo(int messageId);
+
+    void transMessage(int messageId, String userIds);
 }

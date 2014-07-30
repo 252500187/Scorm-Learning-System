@@ -50,7 +50,7 @@ public class UserCenterController {
     //个人中心  首页
     @RequestMapping(value = "userCenterInfo", method = {RequestMethod.GET})
     public String userCenterInfo(HttpServletRequest request) {
-        userService.findUserNextLevelNameByScore(request);
+        userService.getUserNextLevelNameByScore(request);
         userService.getPieCharts(request);
         scormService.findRecommendScorm(request);
         scormService.findRegisterScorm(request);

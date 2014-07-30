@@ -6,6 +6,9 @@ public class BackMessage {
     private int userId;
     private String content;
     private int state;
+    private String date;
+
+    private String userName;
 
     public BackMessage() {
     }
@@ -48,5 +51,21 @@ public class BackMessage {
 
     public void setState(int state) {
         this.state = state;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

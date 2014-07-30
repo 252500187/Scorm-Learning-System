@@ -130,7 +130,7 @@ public class TouristController {
 
     @RequestMapping(value = "userInfo", method = {RequestMethod.GET})
     public String userInfo(@RequestParam("userId") int userId, HttpServletRequest request, HttpSession session) {
-        request.setAttribute("user", userService.findUserAllInfoById(userId));
+        request.setAttribute("user", userService.getUserAllInfoById(userId));
         request.setAttribute("labels", labelService.getLabelsByUserId(userId));
         request.setAttribute("registerScorms", scormService.getRegisterScormsByUserId(userId));
         request.setAttribute("upScorms", scormService.getUpScormsByUserId(userId));

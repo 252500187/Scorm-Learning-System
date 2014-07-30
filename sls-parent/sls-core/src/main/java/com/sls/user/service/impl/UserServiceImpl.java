@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
     private BackMessageDao backMessageDao;
 
     @Override
-    public Page<User> findUserPageList(PageParameter pageParameter, User user) {
+    public Page<User> getUserPageList(PageParameter pageParameter, User user) {
         Page<User> userPage = userDao.findUserPageList(pageParameter, user);
         for (User user1 : userPage.getResultList()) {
             user1.setShowInUse(dictService.changeDictCodeToValue(user1.getInUse(), DictConstant.STATE));
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserAllInfoById(int id) {
+    public User getUserAllInfoById(int id) {
         User user = userDao.findUserAllInfoById(id);
         user.setLevelName(userDao.findUserLevelNameByScore(user.getScore()).getLevelName());
         List<UserLevel> nextUserLevel = userDao.findUserNextLevelByScore(user.getScore());
@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findUserByLoginName(String loginName) {
+    public List<User> getUserByLoginName(String loginName) {
         return userDao.findInUseUserByLoginName(loginName);
     }
 
@@ -159,7 +159,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void findUserNextLevelNameByScore(HttpServletRequest request) {
+    public void getUserNextLevelNameByScore(HttpServletRequest request) {
         User user = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0);
         request.setAttribute("user", user);
         List<UserLevel> nextUserLevel = userDao.findUserNextLevelByScore(user.getScore());
@@ -178,7 +178,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<ScormSummarize> findDiscussPageList(PageParameter pageParameter, ScormSummarize scormSummarize) {
+    public Page<ScormSummarize> getDiscussPageList(PageParameter pageParameter, ScormSummarize scormSummarize) {
         return summarizeDao.findDiscussPageList(pageParameter, scormSummarize);
     }
 
@@ -310,14 +310,66 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void sendMessage(BackMessage backMessage) {
+    public void sendUserMessage(BackMessage backMessage) {
         backMessage.setAdminId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        backMessage.setDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
         backMessage.setState(DictConstant.IN_USE);
         backMessageDao.addBackMessage(backMessage);
     }
 
     @Override
+    public void sendMessage(String content, String userIds) {
+        BackMessage backMessage = new BackMessage();
+        backMessage.setAdminId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        backMessage.setDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
+        backMessage.setState(DictConstant.IN_USE);
+        backMessage.setContent(content);
+        for (String userId : userIds.split(",")) {
+            backMessage.setUserId(Integer.parseInt(userId));
+            backMessageDao.addBackMessage(backMessage);
+        }
+    }
+
+    @Override
     public void cancelMessageByMessageId(int messageId) {
         backMessageDao.cancelMessageByMessageId(messageId);
+    }
+
+    @Override
+    public Page<BackMessage> getMessagePageList(PageParameter pageParameter, BackMessage backMessage) {
+        Page<BackMessage> backMessagePage = backMessageDao.getMessagePageList(pageParameter, backMessage);
+        for (BackMessage oneBackMessage : backMessagePage.getResultList()) {
+            oneBackMessage.setUserName(userDao.findUserAllInfoById(oneBackMessage.getUserId()).getUserName());
+        }
+        return backMessagePage;
+    }
+
+    @Override
+    public List<User> getAllInUseUsers() {
+        return userDao.getAllUsersByInUse(DictConstant.IN_USE);
+    }
+
+    @Override
+    public void delMessage(int messageId) {
+        backMessageDao.delMessageByMessageId(messageId);
+    }
+
+    @Override
+    public BackMessage getMessageInfo(int messageId) {
+        BackMessage backMessage = backMessageDao.getMessageInfoByMessageId(messageId);
+        backMessage.setUserName(userDao.findUserAllInfoById(backMessage.getUserId()).getUserName());
+        return backMessage;
+    }
+
+    @Override
+    public void transMessage(int messageId, String userIds) {
+        BackMessage backMessage = backMessageDao.getMessageInfoByMessageId(messageId);
+        backMessage.setAdminId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        backMessage.setDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
+        backMessage.setState(DictConstant.IN_USE);
+        for (String userId : userIds.split(",")) {
+            backMessage.setUserId(Integer.parseInt(userId));
+            backMessageDao.addBackMessage(backMessage);
+        }
     }
 }

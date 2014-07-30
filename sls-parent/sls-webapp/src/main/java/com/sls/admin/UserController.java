@@ -34,7 +34,7 @@ public class UserController {
 
     @RequestMapping(value = "listAllUserDo", method = {RequestMethod.GET})
     public String listAllUserDo(HttpServletRequest request) {
-        request.setAttribute("myLoginId", userService.findUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        request.setAttribute("myLoginId", userService.getUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
         request.setAttribute("shield", DictConstant.NO_USE);
         return "scormadmin/user/listAllUserDo";
     }
@@ -48,7 +48,7 @@ public class UserController {
     @RequestMapping(value = "listAllUser", method = RequestMethod.POST)
     @ResponseBody
     public Page listAllUser(PageParameter pageParameter, User user) {
-        return userService.findUserPageList(pageParameter, user);
+        return userService.getUserPageList(pageParameter, user);
     }
 
     @RequestMapping(value = "addUserDo", method = {RequestMethod.GET})
@@ -76,7 +76,7 @@ public class UserController {
 
     @RequestMapping(value = "editUserDo", method = {RequestMethod.GET})
     public String editUserDo(HttpServletRequest request, @RequestParam("id") int id) {
-        User user = userService.findUserAllInfoById(id);
+        User user = userService.getUserAllInfoById(id);
         request.setAttribute("user", user);
         return "scormadmin/user/editUserDo";
     }
@@ -89,7 +89,7 @@ public class UserController {
     @RequestMapping(value = "listAllDiscuss", method = RequestMethod.POST)
     @ResponseBody
     public Page listAllDiscuss(PageParameter pageParameter, ScormSummarize scormSummarize) {
-        return userService.findDiscussPageList(pageParameter, scormSummarize);
+        return userService.getDiscussPageList(pageParameter, scormSummarize);
     }
 
     @RequestMapping(value = "shieldDiscuss", method = RequestMethod.POST)
@@ -98,15 +98,63 @@ public class UserController {
         userService.shieldDiscuss(scormSummarize.getUserId(), scormSummarize.getScormId());
     }
 
-    @RequestMapping(value = "sendMessageDo", method = {RequestMethod.GET})
-    public String sendMessageDo(HttpServletRequest request, @RequestParam("userId") int userId) {
+    @RequestMapping(value = "sendUserMessageDo", method = {RequestMethod.GET})
+    public String sendUserMessageDo(HttpServletRequest request, @RequestParam("userId") int userId) {
         request.setAttribute("userId", userId);
+        return "scormadmin/user/sendUserMessageDo";
+    }
+
+    @RequestMapping(value = "sendUserMessage", method = {RequestMethod.POST})
+    @ResponseBody
+    public void sendUserMessage(BackMessage backMessage) {
+        userService.sendUserMessage(backMessage);
+    }
+
+    @RequestMapping(value = "listAllMessageDo", method = {RequestMethod.GET})
+    public String listAllMessageDo() {
+        return "scormadmin/user/listAllMessageDo";
+    }
+
+    @RequestMapping(value = "listAllMessage", method = RequestMethod.POST)
+    @ResponseBody
+    public Page listAllDiscuss(PageParameter pageParameter, BackMessage backMessage) {
+        return userService.getMessagePageList(pageParameter, backMessage);
+    }
+
+    @RequestMapping(value = "sendMessageDo", method = {RequestMethod.GET})
+    public String sendMessageDo(HttpServletRequest request) {
+        request.setAttribute("users", userService.getAllInUseUsers());
         return "scormadmin/user/sendMessageDo";
     }
 
     @RequestMapping(value = "sendMessage", method = {RequestMethod.POST})
     @ResponseBody
-    public void sendMessageDo(BackMessage backMessage) {
-        userService.sendMessage(backMessage);
+    public void sendMessage(@RequestParam("content") String content, @RequestParam("userIds") String userIds) {
+        userService.sendMessage(content, userIds);
+    }
+
+    @RequestMapping(value = "delMessage", method = {RequestMethod.DELETE})
+    @ResponseBody
+    public void delMessage(@RequestParam("messageId") int messageId) {
+        userService.delMessage(messageId);
+    }
+
+    @RequestMapping(value = "lookMessageDo", method = {RequestMethod.GET})
+    public String lookMessageDo(HttpServletRequest request, @RequestParam("messageId") int messageId) {
+        request.setAttribute("message", userService.getMessageInfo(messageId));
+        return "scormadmin/user/oneMessageInfoDo";
+    }
+
+    @RequestMapping(value = "transMessageDo", method = {RequestMethod.GET})
+    public String transMessageDo(HttpServletRequest request, @RequestParam("messageId") int messageId) {
+        request.setAttribute("users", userService.getAllInUseUsers());
+        request.setAttribute("message", userService.getMessageInfo(messageId));
+        return "scormadmin/user/transMessageDo";
+    }
+
+    @RequestMapping(value = "transMessage", method = {RequestMethod.POST})
+    @ResponseBody
+    public void transMessage(@RequestParam("messageId") int messageId, @RequestParam("userIds") String userIds) {
+        userService.transMessage(messageId, userIds);
     }
 }
