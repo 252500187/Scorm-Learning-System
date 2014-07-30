@@ -27,6 +27,11 @@
                 <li>
                     <div class="mega-menu-content">
                         <ul class="mega-menu-submenu">
+                            <li>
+                                <p onclick="sortByLabel('0')">
+                                    全部课件&nbsp;<i class="m-icon-swapright"></i>
+                                </p>
+                            </li>
                             <li class="divider">
                             </li>
                             <c:forEach var="label" items="${sessionScope.labels}">
@@ -245,7 +250,7 @@
     }
 
     function sortByLabel(labelId) {
-        top.window.open(basePath + "tourist/sortScorm?info=" + labelId);
+        top.window.open(basePath + "tourist/sortScorm?labelId=" + labelId);
     }
 
     function userInfo(userId) {

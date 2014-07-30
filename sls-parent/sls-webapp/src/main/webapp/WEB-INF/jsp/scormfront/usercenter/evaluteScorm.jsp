@@ -8,13 +8,13 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8"/>
+    <title>SLS | Evaluate</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
     <script src="<c:url value="/metronic/assets/global/plugins/pace/pace.min.js"/>" type="text/javascript"></script>
     <link href="<c:url value="/metronic/assets/global/plugins/pace/themes/pace-theme-minimal.css"/>" rel="stylesheet"
           type="text/css"/>
-    <title>SLS | Evaluate</title>
 </head>
 <body class="page-header-fixed" style="background-color: transparent">
 <div class="page-content" style="min-height:780px">

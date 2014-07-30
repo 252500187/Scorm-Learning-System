@@ -24,6 +24,12 @@
         <div class="col-md-2">
             <hr/>
             <ul class="nav">
+                <li>
+                    <a onclick="sortByLabel('0')" style="font-size: 20px">
+                        全部课件
+                    </a>
+                </li>
+                <hr/>
                 <c:forEach var="label" items="${sessionScope.labels}">
                     <li>
                         <a onclick="sortByLabel('${label.labelId}')">
@@ -41,11 +47,15 @@
                     <ul class="page-breadcrumb breadcrumb">
                         <li>
                             <i class="fa fa-home"></i>
-                            <a href="">Home</a>
+                            <a href="">首页</a>
                             <i class="fa fa-angle-right"></i>
                         </li>
                         <li>
-                            <a>课件分类</a>
+                            <a onclick="sortByLabel('0')">课件分类</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a>${sortName}</a>
                         </li>
                     </ul>
                 </div>
@@ -158,8 +168,8 @@
         }
     }
 
-    function sortByLabel(label) {
-        window.location.href = basePath + "tourist/sortScorm?info=" + label;
+    function sortByLabel(labelId) {
+        window.location.href = basePath + "tourist/sortScorm?labelId=" + labelId;
     }
 
     function study(scormId) {

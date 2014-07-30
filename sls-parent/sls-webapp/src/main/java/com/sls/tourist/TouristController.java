@@ -69,7 +69,7 @@ public class TouristController {
     }
 
     @RequestMapping(value = "sortScorm", method = {RequestMethod.GET})
-    public String sortScorm(@RequestParam("info") int labelId, HttpServletRequest request) {
+    public String sortScorm(@RequestParam("labelId") int labelId, HttpServletRequest request) {
         scormService.sortScorm(labelId, request);
         return "scormfront/scorm/sortResult";
     }

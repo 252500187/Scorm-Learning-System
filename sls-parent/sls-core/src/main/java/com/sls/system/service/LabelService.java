@@ -26,7 +26,7 @@ public interface LabelService {
 
     void addLabel(Label label);
 
-    void findLabelById(String labelId, HttpServletRequest request);
+    void findLabelById(int labelId, HttpServletRequest request);
 
     void editLabel(Label label);
 

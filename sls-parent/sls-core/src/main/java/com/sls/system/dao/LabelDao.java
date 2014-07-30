@@ -27,7 +27,7 @@ public interface LabelDao {
 
     int addLabel(Label label);
 
-    Label findLabelById(String labelId);
+    Label findLabelById(int labelId);
 
     void editLabel(Label label);
 

@@ -54,7 +54,7 @@ public class LabelController {
     }
 
     @RequestMapping(value = "editLabelDo", method = {RequestMethod.GET})
-    public String editLabelDo(@RequestParam("labelId") String labelId, HttpServletRequest request) {
+    public String editLabelDo(@RequestParam("labelId") int labelId, HttpServletRequest request) {
         labelService.findLabelById(labelId, request);
         return "scormadmin/label/editLabelDo";
     }

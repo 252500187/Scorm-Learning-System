@@ -120,6 +120,14 @@
                         </c:if>
                     </a>
                 </li>
+                <li class="last ">
+                    <a onclick="changeIframe('user/center/addQuestionDo')">
+                        <i class="fa fa-plus"></i>
+						<span class="title">
+                            提交问题
+						</span>
+                    </a>
+                </li>
                 <li>
                     <a onclick="changeIframe('user/center/askQuestionsDo')">
                         <i class="fa fa-comment-o"></i>
@@ -143,7 +151,7 @@
                     </a>
                 </li>
                 <li class="last ">
-                    <a onclick="changeIframe('user/center/addNote')">
+                    <a onclick="changeIframe('user/center/addNoteDo')">
                         <i class="fa fa-plus"></i>
 						<span class="title">
 							添加笔记

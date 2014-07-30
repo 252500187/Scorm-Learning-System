@@ -90,7 +90,7 @@ public class LabelDaoImpl extends PageDao implements LabelDao {
     }
 
     @Override
-    public Label findLabelById(String labelId) {
+    public Label findLabelById(int labelId) {
         String sql = "select * from us_label where label_id =?";
         return getJdbcTemplate().queryForObject(sql, new BeanPropertyRowMapper<Label>(Label.class), labelId);
     }

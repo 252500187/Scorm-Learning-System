@@ -129,9 +129,16 @@ public class UserCenterController {
     //个人中心  关注列表
     @RequestMapping(value = "userAttentionDo", method = {RequestMethod.GET})
     public String userAttentionDo(HttpServletRequest request) {
-        request.setAttribute("attentionUsers",userCenterService.getAttentionUsers());
-        request.setAttribute("recommendUsers",userService.getNumRecommendUsers(10));
+        request.setAttribute("attentionUsers", userCenterService.getAttentionUsers());
+        request.setAttribute("recommendUsers", userService.getNumRecommendUsers(10));
         return "scormfront/usercenter/userAttentions";
+    }
+
+    //个人中心  添加问题
+    @RequestMapping(value = "addQuestionsDo", method = {RequestMethod.GET})
+    public String addQuestionsDo(HttpServletRequest request) {
+        request.setAttribute("attentionUsers", userCenterService.getAttentionUsers());
+        return "scormfront/usercenter/question/addQuestion";
     }
 
     //个人中心  我的提问
@@ -148,14 +155,16 @@ public class UserCenterController {
         return "scormfront/usercenter/question/askUserQuestions";
     }
 
+    //个人中心  笔记本
     @RequestMapping(value = "notesDo", method = {RequestMethod.GET})
     public String notesDo(HttpServletRequest request, @RequestParam("scormId") String scormId) {
         scormService.getAllStudyNotesByScormIdAndUserId(Integer.parseInt(scormId), request);
         return "scormfront/usercenter/note/notes";
     }
 
-    @RequestMapping(value = "addNote", method = {RequestMethod.GET})
-    public String addNote(HttpServletRequest request) {
+    //个人中心  添加笔记
+    @RequestMapping(value = "addNoteDo", method = {RequestMethod.GET})
+    public String addNoteDo(HttpServletRequest request) {
         userCenterService.getAllRegisterScormInfo(request);
         return "scormfront/usercenter/note/addNote";
     }

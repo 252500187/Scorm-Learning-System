@@ -97,7 +97,7 @@ public class LabelServiceImpl implements LabelService {
     }
 
     @Override
-    public void findLabelById(String labelId, HttpServletRequest request) {
+    public void findLabelById(int labelId, HttpServletRequest request) {
         request.setAttribute("label", labelDao.findLabelById(labelId));
     }
 

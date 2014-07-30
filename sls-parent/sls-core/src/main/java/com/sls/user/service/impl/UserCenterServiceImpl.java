@@ -91,7 +91,7 @@ public class UserCenterServiceImpl implements UserCenterService {
                 break;
             //添加笔记
             case 11:
-                centerUrl = "user/center/addNote";
+                centerUrl = "user/center/addNoteDo";
                 break;
             //笔记本
             case 12:

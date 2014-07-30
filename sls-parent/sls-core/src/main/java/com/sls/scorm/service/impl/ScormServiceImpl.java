@@ -634,6 +634,11 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void sortScorm(int labelId, HttpServletRequest request) {
+        if (labelId == 0) {
+            request.setAttribute("sortName", "全部课件");
+        } else {
+            request.setAttribute("sortName", labelDao.findLabelById(labelId).getLabelName());
+        }
         request.setAttribute("sortLabelScorm", scormDao.sortScormByLabelName(labelId));
     }
 }
