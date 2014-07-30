@@ -100,7 +100,7 @@ public class LoginServiceImpl implements LoginService {
         request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score", 8));
         request.setAttribute("scormTime", scormDao.indexFindTopScormByFieldName("total_time", 8));
         request.setAttribute("scormLevel", scormDao.indexFindTopScormByFieldName("recommend_level", 8));
-        request.setAttribute("latestScorms", scormDao.findLatestScorms(7));
+        request.setAttribute("latestScorms", scormDao.findLatestScorms(9));
         request.setAttribute("recommendIndexScorms", scormDao.findRecommendIndexScorms());
         request.setAttribute("recommendUsers", userDao.getNumUserOrderByScore(9));
     }
