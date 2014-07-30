@@ -27,18 +27,11 @@
                 <li>
                     <div class="mega-menu-content">
                         <ul class="mega-menu-submenu">
-                            <li>
-                                <a onclick="sortByLabel('全部课件')">
-                                    <p>
-                                        全部课件&nbsp;<i class="m-icon-swapright"></i>
-                                    </p>
-                                </a>
-                            </li>
                             <li class="divider">
                             </li>
                             <c:forEach var="label" items="${sessionScope.labels}">
                                 <li>
-                                    <a onclick="sortByLabel('${label.labelName}')">
+                                    <a onclick="sortByLabel('${label.labelId}')">
                                         <i class="fa fa-tags"></i>${label.labelName}
                                     </a>
                                 </li>

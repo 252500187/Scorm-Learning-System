@@ -7,7 +7,7 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8"/>
-    <title>SLS | FindResult</title>
+    <title>SLS |SortResult</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../../includes/common.jsp" %>
@@ -24,16 +24,9 @@
         <div class="col-md-2">
             <hr/>
             <ul class="nav">
-                <li>
-                    <a onclick="sortByLabel('全部课件')">
-                        <p>
-                            全部课件&nbsp;<i class="m-icon-swapright"></i>
-                        </p>
-                    </a>
-                </li>
                 <c:forEach var="label" items="${sessionScope.labels}">
                     <li>
-                        <a onclick="sortByLabel('${label.labelName}')">
+                        <a onclick="sortByLabel('${label.labelId}')">
                             <i class="fa fa-tags"></i>${label.labelName}
                         </a>
                     </li>
@@ -53,10 +46,6 @@
                         </li>
                         <li>
                             <a>课件分类</a>
-                            <i class="fa fa-angle-right"></i>
-                        </li>
-                        <li>
-                            <a>"${info}"</a>
                         </li>
                     </ul>
                 </div>
@@ -96,15 +85,17 @@
                                         <div class="visual">
 
                                         </div>
-                                             <div class="details">
-                                            <div class="number"><small>${scorm.scormName}</small>   </div>
+                                        <div class="details">
+                                            <div class="number">
+                                                <small>${scorm.scormName}</small>
+                                            </div>
 
                                             <div class="desc">评分:${scorm.score}分</div>
 
-                                             </div>
-                                            <a class="more" onclick="scormInfo('${scorm.scormId}')">
-                                                详细 <i class="m-icon-swapright m-icon-white"></i>
-                                            </a>
+                                        </div>
+                                        <a class="more" onclick="scormInfo('${scorm.scormId}')">
+                                            详细 <i class="m-icon-swapright m-icon-white"></i>
+                                        </a>
 
                                     </div>
 

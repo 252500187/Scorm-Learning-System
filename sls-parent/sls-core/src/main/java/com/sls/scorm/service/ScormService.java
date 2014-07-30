@@ -83,5 +83,5 @@ public interface ScormService {
 
     List<Scorm> getUpScormsByUserId(int userId);
 
-    void sortScorm(String info, HttpServletRequest request);
+    void sortScorm(int labelId, HttpServletRequest request);
 }

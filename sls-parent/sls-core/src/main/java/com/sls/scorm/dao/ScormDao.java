@@ -56,5 +56,5 @@ public interface ScormDao {
 
     int getUseScormNum();
 
-    List<Scorm> sortScormByLabelName(String info);
+    List<Scorm> sortScormByLabelName(int labelId);
 }
