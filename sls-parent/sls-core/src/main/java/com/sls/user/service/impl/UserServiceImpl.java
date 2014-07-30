@@ -53,6 +53,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserQuestionDao userQuestionDao;
 
+    @Autowired
+    private BackMessageDao backMessageDao;
+
     @Override
     public Page<User> findUserPageList(PageParameter pageParameter, User user) {
         Page<User> userPage = userDao.findUserPageList(pageParameter, user);
@@ -304,5 +307,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getNumRecommendUsers(int num) {
         return userDao.getNumUserOrderByScore(num);
+    }
+
+    @Override
+    public void sendMessage(BackMessage backMessage) {
+        backMessage.setAdminId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        backMessage.setState(DictConstant.IN_USE);
+        backMessageDao.addBackMessage(backMessage);
+    }
+
+    @Override
+    public void cancelMessageByMessageId(int messageId) {
+        backMessageDao.cancelMessageByMessageId(messageId);
     }
 }

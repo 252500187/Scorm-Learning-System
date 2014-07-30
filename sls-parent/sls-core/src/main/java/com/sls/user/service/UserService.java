@@ -3,6 +3,7 @@ package com.sls.user.service;
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.ScormSummarize;
+import com.sls.user.entity.BackMessage;
 import com.sls.user.entity.User;
 import com.sls.user.entity.UserQuestion;
 
@@ -55,4 +56,8 @@ public interface UserService {
     Boolean addUserQuestion(int answerUserId, String questionDescribe);
 
     List<User> getNumRecommendUsers(int num);
+
+    void sendMessage(BackMessage backMessage);
+
+    void cancelMessageByMessageId(int messageId);
 }

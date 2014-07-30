@@ -77,12 +77,36 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                        data-close-others="true">
-                        <span class="username" style="font-size: 20px;">新消息</span>
+                        <span style="font-size: 20px;">新消息</span>
                         <span class="badge badge-success">${sessionScope.messageNum+sessionScope.questionNum+sessionScope.answerNum}</span>
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu">
                         <li style="margin-top: 5px"></li>
+                        <c:if test="${fn:length(sessionScope.messages)>0}">
+                            <li class="dropdown-submenu">
+                                <a href="user/center/userCenterDo?module=9">
+                                <span class="label label-sm label-icon label-success">
+                                    <i class="fa fa-envelope-o"></i>
+                                </span>信件
+                                </a>
+
+
+                                <ul class="dropdown-menu">
+                                    <c:forEach var="message" items="${sessionScope.messages}">
+                                        <li style="padding: 15px;padding-bottom: 0px;"
+                                            name="${message.messageId}">
+                                                ${message.content}
+                                            <a onclick="cancelMessage('${message.messageId}')" style="color: #0000ff">已&nbsp;&nbsp;读</a>
+                                        </li>
+                                        <li class="divider" name="${message.messageId}">
+                                        </li>
+                                    </c:forEach>
+                                </ul>
+                            </li>
+                            <li class="divider">
+                            </li>
+                        </c:if>
                         <c:if test="${sessionScope.answerNum>0}">
                             <li>
                                 <a href="user/center/userCenterDo?module=9">
@@ -119,6 +143,7 @@
                                 </li>
                             </c:if>
                         </c:forEach>
+                        <li style="height: 10px"></li>
                     </ul>
                 </li>
             </c:if>
@@ -259,5 +284,17 @@
 
     function userInfo(userId) {
         top.window.open(basePath + "tourist/userInfo?userId=" + userId);
+    }
+
+    function cancelMessage(messageId) {
+        $("li [name='" + messageId + "']").hide();
+        $.ajax({
+            url: basePath + "user/info/cancelMessage",
+            dataType: "json",
+            type: "post",
+            data: {
+                messageId: messageId
+            }
+        });
     }
 </script>

@@ -30,4 +30,10 @@ public class UserInfoController {
     public Boolean addUserQuestion(@RequestParam("questionDescribe") String questionDescribe, @RequestParam("answerUserId") int answerUserId) {
         return userService.addUserQuestion(answerUserId, questionDescribe);
     }
+
+    @RequestMapping(value = "cancelMessage", method = {RequestMethod.POST})
+    @ResponseBody
+    public void cancelMessage(@RequestParam("messageId") int messageId) {
+        userService.cancelMessageByMessageId(messageId);
+    }
 }

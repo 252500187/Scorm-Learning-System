@@ -44,7 +44,6 @@
         loadData(listOption);
     }
 
-
     function shieldUser(id, operate) {
         $.messager.confirm("提示", "确认" + operate + "屏蔽用户？", function (r) {
             if (r) {
@@ -113,10 +112,20 @@
                 operate = "取消";
             }
 
-            temp[i].edit = "<a>查看</a>&nbsp;<a onclick=shieldUser(" + temp[i].userId + ",'" + operate + "')>" + operate + "屏蔽</a>&nbsp;";
+            temp[i].edit = "<a onclick=shieldUser(" + temp[i].userId + ",'" + operate + "')>" + operate + "屏蔽</a>&nbsp;<a onclick=sendMessage(" + temp[i].userId + ")>发送消息</a>";
             rowDataList.push(temp[i]);
         }
         return rowDataList;
+    }
+
+    function sendMessage(userId) {
+        var path = basePath + "admin/user/sendMessageDo?userId=" + userId;
+        $("#contentFrame").attr("src", path);
+        $('#dataEdit').dialog({
+            title: '<spring:message code="edit"/>',
+            height: 400,
+            width: 600
+        }).dialog('open');
     }
 
     $(function () {

@@ -3,6 +3,7 @@ package com.sls.admin;
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.ScormSummarize;
+import com.sls.user.entity.BackMessage;
 import com.sls.user.entity.User;
 import com.sls.user.service.UserService;
 import com.sls.util.DictConstant;
@@ -95,5 +96,17 @@ public class UserController {
     @ResponseBody
     public void shieldDiscuss(ScormSummarize scormSummarize) {
         userService.shieldDiscuss(scormSummarize.getUserId(), scormSummarize.getScormId());
+    }
+
+    @RequestMapping(value = "sendMessageDo", method = {RequestMethod.GET})
+    public String sendMessageDo(HttpServletRequest request, @RequestParam("userId") int userId) {
+        request.setAttribute("userId", userId);
+        return "scormadmin/user/sendMessageDo";
+    }
+
+    @RequestMapping(value = "sendMessage", method = {RequestMethod.POST})
+    @ResponseBody
+    public void sendMessageDo(BackMessage backMessage) {
+        userService.sendMessage(backMessage);
     }
 }

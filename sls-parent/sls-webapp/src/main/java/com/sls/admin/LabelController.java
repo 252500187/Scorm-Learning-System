@@ -24,9 +24,9 @@ public class LabelController {
     @Autowired
     private AutoCompleteService autoCompleteService;
 
-    @RequestMapping(value = "listAllLabelTreeDo", method = RequestMethod.GET)
-    public String listAllLabelTreeDo(HttpServletRequest request) {
-        return "scormadmin/label/listAllLabelTreeDo";
+    @RequestMapping(value = "listAllLabelDo", method = RequestMethod.GET)
+    public String listAllLabelDo() {
+        return "scormadmin/label/listAllLabelDo";
     }
 
     @RequestMapping(value = "listAllLabel", method = RequestMethod.POST)

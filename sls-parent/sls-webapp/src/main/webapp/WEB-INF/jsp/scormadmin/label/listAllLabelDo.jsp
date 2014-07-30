@@ -73,8 +73,8 @@
 
     function queryFormat(temp) {
         for (var i in temp) {
-            temp[i].operate = "<a onclick='editLabel(\"" + temp[i].labelId + "\")'><spring:message code="edit"/></a>&nbsp;&nbsp;"
-                    + "<a onclick='delLabel(\"" + temp[i].labelId + "\")'><spring:message code="delete"/></a>&nbsp;&nbsp;";
+            temp[i].operate = "<a onclick='editLabel(\"" + temp[i].labelId + "\")'>编辑</a>&nbsp;&nbsp;"
+                    + "<a onclick='delLabel(\"" + temp[i].labelId + "\")'>删除</a>&nbsp;&nbsp;";
         }
         return temp;
     }
