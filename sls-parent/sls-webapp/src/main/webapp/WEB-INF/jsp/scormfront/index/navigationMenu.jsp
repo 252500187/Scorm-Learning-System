@@ -244,8 +244,8 @@
         top.window.open(basePath + "tourist/scormInfo?scormId=" + scormId);
     }
 
-    function sortByLabel(label) {
-        top.window.open(basePath + "tourist/sortScorm?info=" + label);
+    function sortByLabel(labelId) {
+        top.window.open(basePath + "tourist/sortScorm?info=" + labelId);
     }
 
     function userInfo(userId) {

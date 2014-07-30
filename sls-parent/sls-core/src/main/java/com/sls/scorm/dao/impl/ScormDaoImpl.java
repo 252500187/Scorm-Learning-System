@@ -17,6 +17,10 @@ import java.util.List;
 
 @Repository("scormDao")
 public class ScormDaoImpl extends PageDao implements ScormDao {
+    private StringBuilder getSortScormResult(){
+        String sql = "SELECT * FROM `ss_scorm` WHERE scorm_id IN (SELECT scorm_id FROM `ss_scorm_label`";
+        return new StringBuilder(sql);
+    }
 
     @Override
     public int addScorm(Scorm scorm) {
@@ -182,11 +186,12 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
 
     @Override
     public List<Scorm> sortScormByLabelName(int labelId) {
-        String sql = "SELECT * FROM `ss_scorm` WHERE scorm_id IN (SELECT scorm_id FROM `ss_scorm_label` ";
+        StringBuilder sql = getSortScormResult();
+
         if (labelId != 0) {
-            sql += "WHERE label_id = " + labelId ;
+            sql.append( "WHERE label_id = ").append(labelId);
         }
-        sql += ")";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class));
+        sql.append(")");
+        return getJdbcTemplate().query(sql.toString(), new BeanPropertyRowMapper<Scorm>(Scorm.class));
     }
 }
