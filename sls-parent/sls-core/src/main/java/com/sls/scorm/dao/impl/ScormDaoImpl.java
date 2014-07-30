@@ -183,7 +183,7 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
     @Override
     public List<Scorm> sortScormByLabelName(int labelId) {
         String sql = "SELECT * FROM `ss_scorm` WHERE scorm_id IN (SELECT scorm_id FROM `ss_scorm_label` ";
-        if (labelId != 0) {                        //todo  将全部课件  用字典值代替
+        if (labelId != 0) {
             sql += "WHERE label_id = " + labelId ;
         }
         sql += ")";
