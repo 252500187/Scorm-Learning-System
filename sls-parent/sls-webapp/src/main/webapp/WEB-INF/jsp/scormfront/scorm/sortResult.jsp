@@ -18,234 +18,97 @@
 <body class="page-header-fixed" style="background-color: #ffffff;overflow-x:hidden">
 <%@include file="../index/navigationMenu.jsp" %>
 <div class="page-container" style="margin-top: 80px">
-<div class="row">
-<br/>
-
-<div class="col-md-2">
-    <hr/>
-    <ul class="nav">
-        <c:forEach var="label" items="${sessionScope.labels}">
-            <li>
-                <a onclick="sortByLabel('${label.labelName}')">
-                    <i class="fa fa-tags"></i>${label.labelName}
-                </a>
-            </li>
-        </c:forEach>
-    </ul>
-    <hr/>
-</div>
-<div class="col-md-7">
     <div class="row">
-        <div class="col-md-12">
-            <h3 class="page-title">
-                Result
-                <small>"${info}"分类结果</small>
-            </h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <ul class="page-breadcrumb breadcrumb">
-                <li>
-                    <i class="fa fa-home"></i>
-                    <a href="">Home</a>
-                    <i class="fa fa-angle-right"></i>
-                </li>
-                <li>
-                    <a>result</a>
-                    <i class="fa fa-angle-right"></i>
-                </li>
-                <li>
-                    <a>"${info}"</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 col-sm-8 article-block">
-            <c:if test="${fn:length(sortLabelScorm)<=0}">
-                <h3 class="page-title">Sorry</h3>
+        <br/>
 
-                <h3 class="page-title">
-                    没有相关标签课件
-                    <small>...</small>
-                </h3>
-            </c:if>
-            <c:if test="${fn:length(sortLabelScorm)>0}">
-                <h1>按此分类：</h1>
-                <c:forEach var="scorm" items="${sortLabelScorm}">
-                    <div class="row">
-                        <div class="col-md-4 blog-img blog-tag-data">
-                            <img src="${scorm.imgPath}" alt="img" class="img-responsive"
-                                 style="width: 300px">
-                            <ul class="list-inline">
-                                <li>
-                                    <i class="fa fa-calendar"></i>
-                                    <a>上传日期:${scorm.uploadDate}</a>
-                                </li>
-                                <li>
-                                    <i class="fa fa-folder-open-o"></i>
-                                    <a>章节数:${scorm.chapterNum}</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-8 blog-article">
-                            <h3><a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
-
-                            <p>评分:${scorm.score}分</p>
-
-                            <p>${scorm.description}</p>
-                            <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">
-                                详细 <i class="m-icon-swapright m-icon-white"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <hr>
+        <div class="col-md-2">
+            <hr/>
+            <ul class="nav">
+                <li>
+                    <a onclick="sortByLabel('全部课件')">
+                        <p>
+                            全部课件&nbsp;<i class="m-icon-swapright"></i>
+                        </p>
+                    </a>
+                </li>
+                <c:forEach var="label" items="${sessionScope.labels}">
+                    <li>
+                        <a onclick="sortByLabel('${label.labelName}')">
+                            <i class="fa fa-tags"></i>${label.labelName}
+                        </a>
+                    </li>
                 </c:forEach>
-            </c:if>
-
+            </ul>
+            <hr/>
         </div>
-    </div>
-</div>
-<div class="col-md-3 col-sm-4 blog-sidebar">
-    <h3 class="page-title">推荐给你</h3>
-    <hr/>
-    <c:if test="${fn:length(recommendScorm)<1}">
-        <h5>试着给自己添加标签</h5>
+        <div class="col-md-8">
 
-        <h5>我们会推荐相关课程！</h5>
-    </c:if>
-    <div class="top-news">
-        <c:if test="${fn:length(recommendScorm)>0}">
-            <a onclick="scormInfo('${recommendScorm[0].scormId}')" class="btn red">
-               <span>
-                    <c:if test="${recommendScorm[0].showRecommendLevel!=''}">
-                        <img src="${recommendScorm[0].showRecommendLevel}"
-                             style="width: 25px;height: 25px"/>&nbsp;
-                    </c:if>
-                    ${recommendScorm[0].scormName}
-                </span>
-                <em>评分：${recommendScorm[0].score}</em>
-                <em><i class="fa fa-tags"></i>${recommendScorm[0].labelName}</em>
-                <i class="fa fa-briefcase top-news-icon"></i>
-            </a>
-        </c:if>
-        <c:if test="${recommendScorm[1]!=null}">
-            <a onclick="scormInfo('${recommendScorm[1].scormId}')" class="btn green">
-                <span>
-                    <c:if test="${recommendScorm[1].showRecommendLevel!=''}">
-                        <img src="${recommendScorm[1].showRecommendLevel}"
-                             style="width: 25px;height: 25px"/>&nbsp;
-                    </c:if>
-                    ${recommendScorm[1].scormName}
-                </span>
-                <em>评分：${recommendScorm[1].score}</em>
-                <em><i class="fa fa-tags"></i>${recommendScorm[1].labelName}</em>
-                <i class="fa fa-music top-news-icon"></i>
-            </a>
-        </c:if>
-        <c:if test="${recommendScorm[2]!=null}">
-            <a onclick="scormInfo('${recommendScorm[2].scormId}')" class="btn blue">
-                <span>
-                    <c:if test="${recommendScorm[2].showRecommendLevel!=''}">
-                        <img src="${recommendScorm[2].showRecommendLevel}"
-                             style="width: 25px;height: 25px"/>&nbsp;
-                    </c:if>
-                    ${recommendScorm[2].scormName}
-                </span>
-                <em>评分：${recommendScorm[2].score}</em>
-                <em><i class="fa fa-tags"></i>${recommendScorm[2].labelName}</em>
-                <i class="fa fa-globe top-news-icon"></i>
-            </a>
-        </c:if>
-        <c:if test="${recommendScorm[3]!=null}">
-            <a onclick="scormInfo('${recommendScorm[3].scormId}')" class="btn yellow">
-                <span>
-                    <c:if test="${recommendScorm[3].showRecommendLevel!=''}">
-                        <img src="${recommendScorm[3].showRecommendLevel}"
-                             style="width: 25px;height: 25px"/>&nbsp;
-                    </c:if>
-                    ${recommendScorm[3].scormName}
-                </span>
-                <em>评分：${recommendScorm[3].score}</em>
-                <em><i class="fa fa-tags"></i>${recommendScorm[3].labelName}</em>
-                <i class="fa fa-book top-news-icon"></i>
-            </a>
-        </c:if>
-        <c:if test="${recommendScorm[4]!=null}">
-            <a onclick="scormInfo('${recommendScorm[4].scormId}')" class="btn purple">
-                <span>
-                    <c:if test="${recommendScorm[4].showRecommendLevel!=''}">
-                        <img src="${recommendScorm[4].showRecommendLevel}"
-                             style="width: 25px;height: 25px"/>&nbsp;
-                    </c:if>
-                    ${recommendScorm[4].scormName}
-                </span>
-                <em>评分：${recommendScorm[4].score}</em>
-                <em><i class="fa fa-tags"></i>${recommendScorm[4].labelName}</em>
-                <i class="fa fa-bolt top-news-icon"></i>
-            </a>
-        </c:if>
-    </div>
-    <div class="space20">
-    </div>
-    <br/>
-
-    <h3 class="page-title">名言名句</h3>
-    <hr/>
-    <div class="tabbable tabbable-custom">
-        <ul class="nav nav-tabs">
-            <li class="active">
-                <a data-toggle="tab" href="#tab_1_1">
-                    培 根</a>
-            </li>
-            <li>
-                <a data-toggle="tab" href="#tab_1_2">
-                    徐特立</a>
-            </li>
-        </ul>
-        <div class="tab-content">
-            <div id="tab_1_1" class="tab-pane active">
-
-                <p>
-                    把学问过于用作装饰是虚假；完全依学问上的规则而断事是书生的怪癖。
-                </p>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="page-breadcrumb breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="">Home</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a>课件分类</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a>"${info}"</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div id="tab_1_2" class="tab-pane">
+            <div class="row">
+                <div class="col-md-12 col-sm-8 article-block">
+                    <c:if test="${fn:length(sortLabelScorm)<=0}">
+                        <h3 class="page-title">Sorry</h3>
 
-                <p>
-                    学习要抓住基本知识：即不好高骛远，而忽略基本的东西。喜马拉雅山是世界著名的高山，因为它是建立在喜马拉雅山之上，
-                    盘基广大高原之上的一个高峰；假如把喜马拉雅山建立在河海平原上，八千公尺的高峰是难以存在的，犹如无源之水易于枯竭的。
-                </p>
+                        <h3 class="page-title">
+                            没有相关标签课件
+                            <small>...</small>
+                        </h3>
+                    </c:if>
+                    <c:if test="${fn:length(sortLabelScorm)>0}">
+                        <div class="row">
+                        <c:forEach var="scorm" items="${sortLabelScorm}">
+
+                            <div class="col-md-4">
+                                <img src="${scorm.imgPath}" alt="img" class="img-responsive"
+                                     style="width: 300px;height:200px">
+                                <ul class="list-inline">
+                                    <li>
+                                        <i class="fa fa-calendar"></i>
+                                        <a>上传日期:${scorm.uploadDate}</a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-folder-open-o"></i>
+                                        <a>章节数:${scorm.chapterNum}</a>
+                                    </li>
+                                </ul>
+                                <h3><a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
+                                <p>评分:${scorm.score}分</p>
+                                <%--考虑简介要不要，简介长度没定，那个DIV的大小就不定，可能会造成层次不齐--%>
+                                <%--<p>${scorm.description}</p>--%>
+                                <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">
+                                    详细 <i class="m-icon-swapright m-icon-white"></i>
+                                </a>
+                                <hr>
+                            </div>
+
+
+
+                        </c:forEach>
+                        </div>
+                    </c:if>
+
+                </div>
             </div>
         </div>
+
     </div>
-    <div class="space20">
-        <hr/>
-    </div>
-    <c:if test="${registerScorm!=null}">
-        <h3>最近学习</h3>
-        <hr/>
-    </c:if>
-    <div class="blog-twitter">
-        <c:forEach var="scorm" items="${registerScorm}">
-            <div class="blog-twitter-block">
-                <i class="fa fa-book blog-twiiter-icon"></i>
-                <a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a>
-                <a onclick="study('${scorm.scormId}')">
-                    <em>继续</em>
-                </a>
-                <c:if test="${scorm.lastVisitTime!=''}">
-                    <p>上次学习时间:${scorm.lastVisitTime}</p>
-                </c:if>
-                <c:if test="${scorm.lastVisitTime==''}">
-                    <p>还未学习！</p>
-                </c:if>
-            </div>
-        </c:forEach>
-    </div>
-</div>
-</div>
 </div>
 <%@include file="../index/footer.jsp" %>
 <div id="alertPrompt" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
@@ -293,7 +156,7 @@
     }
 
     function sortByLabel(label) {
-            window.location.href = basePath + "tourist/sortScorm?info=" + label;
+        window.location.href = basePath + "tourist/sortScorm?info=" + label;
     }
 
     function study(scormId) {
