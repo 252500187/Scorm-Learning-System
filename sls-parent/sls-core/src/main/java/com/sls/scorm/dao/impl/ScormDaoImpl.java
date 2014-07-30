@@ -17,7 +17,7 @@ import java.util.List;
 
 @Repository("scormDao")
 public class ScormDaoImpl extends PageDao implements ScormDao {
-    private StringBuilder getSortScormResult(){
+    private StringBuilder getSortScormResult() {
         String sql = "SELECT * FROM `ss_scorm` WHERE scorm_id IN (SELECT scorm_id FROM `ss_scorm_label`";
         return new StringBuilder(sql);
     }
@@ -187,9 +187,8 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
     @Override
     public List<Scorm> sortScormByLabelName(int labelId) {
         StringBuilder sql = getSortScormResult();
-
         if (labelId != 0) {
-            sql.append( "WHERE label_id = ").append(labelId);
+            sql.append("WHERE label_id = ").append(labelId);
         }
         sql.append(")");
         return getJdbcTemplate().query(sql.toString(), new BeanPropertyRowMapper<Scorm>(Scorm.class));
