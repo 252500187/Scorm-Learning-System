@@ -115,7 +115,7 @@
 </html>
 <script>
     var isScorm = "true";
-    jQuery(document).ready(function () {
+    $(function () {
         Metronic.init();
         Layout.init();
         if ("${result}" != "") {

@@ -96,6 +96,10 @@ public class UserCenterServiceImpl implements UserCenterService {
             //笔记本
             case 12:
                 centerUrl = "user/center/scormNotesDo";
+                break;
+            //提交问题
+            case 13:
+                centerUrl = "user/center/addQuestionDo";
         }
         request.setAttribute("centerUrl", centerUrl);
     }
@@ -151,7 +155,7 @@ public class UserCenterServiceImpl implements UserCenterService {
         request.setAttribute("question", userQuestion);
         //取消新的回答及更新新的回答数目
 //        userQuestionDao.cancelNewAnswerByQuestionId(questionId);
-        session.setAttribute("answerNum", userQuestionDao.getNewAnswerNumByUserId(userQuestion.getAskUserId())-1);
+        session.setAttribute("answerNum", userQuestionDao.getNewAnswerNumByUserId(userQuestion.getAskUserId()) - 1);
     }
 
     @Override
@@ -172,7 +176,7 @@ public class UserCenterServiceImpl implements UserCenterService {
         request.setAttribute("question", userQuestion);
         //取消新的提问及更新新的提问数目
 //        userQuestionDao.cancelNewAskByQuestionId(questionId);
-        session.setAttribute("questionNum", userQuestionDao.getNewQuestionNumByUserId(userQuestion.getAnswerUserId())-1);
+        session.setAttribute("questionNum", userQuestionDao.getNewQuestionNumByUserId(userQuestion.getAnswerUserId()) - 1);
     }
 
 

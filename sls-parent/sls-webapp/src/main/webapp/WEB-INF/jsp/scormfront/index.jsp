@@ -122,7 +122,7 @@
                         <ul class="feeds list-inline">
                             <c:forEach var="label" items="${labels}">
                                 <li style="background-color: #fff;">
-                                    <a onclick="findByLabel('${label.labelName}')"
+                                    <a onclick="sortByLabel('${label.labelId}')"
                                        style="text-decoration: none;cursor: pointer;">
                                         <i class="fa fa-tags"></i> ${label.labelName}
                                     </a>

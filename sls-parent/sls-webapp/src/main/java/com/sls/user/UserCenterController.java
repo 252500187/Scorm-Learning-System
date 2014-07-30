@@ -135,8 +135,8 @@ public class UserCenterController {
     }
 
     //个人中心  添加问题
-    @RequestMapping(value = "addQuestionsDo", method = {RequestMethod.GET})
-    public String addQuestionsDo(HttpServletRequest request) {
+    @RequestMapping(value = "addQuestionDo", method = {RequestMethod.GET})
+    public String addQuestionDo(HttpServletRequest request) {
         request.setAttribute("attentionUsers", userCenterService.getAttentionUsers());
         return "scormfront/usercenter/question/addQuestion";
     }

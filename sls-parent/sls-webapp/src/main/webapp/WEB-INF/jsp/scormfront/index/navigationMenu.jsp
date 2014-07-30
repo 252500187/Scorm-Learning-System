@@ -183,6 +183,10 @@
                                     <i class="fa fa-users"></i>&nbsp;&nbsp;关注列表</a>
                             </li>
                             <li>
+                                <a href="user/center/userCenterDo?module=13">
+                                    <i class="fa fa-plus"></i>&nbsp;&nbsp;提交问题</a>
+                            </li>
+                            <li>
                                 <a href="user/center/userCenterDo?module=9">
                                     <i class="fa fa-comment-o"></i>&nbsp;&nbsp;我的提问</a>
                             </li>

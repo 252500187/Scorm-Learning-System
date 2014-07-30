@@ -69,7 +69,7 @@
 </html>
 <script type="text/javascript">
     $.ajax({
-        url: basePath + "user/center/cancelNewAskByQuestionId",
+        url: basePath + "user/center/cancelNewAnswerByQuestionId",
         data: {
             questionId: "${question.questionId}"
         },
