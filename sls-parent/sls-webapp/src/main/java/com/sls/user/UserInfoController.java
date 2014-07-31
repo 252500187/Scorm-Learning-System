@@ -36,4 +36,11 @@ public class UserInfoController {
     public void cancelMessage(@RequestParam("messageId") int messageId) {
         userService.cancelMessageByMessageId(messageId);
     }
+
+    @RequestMapping(value = "changePassword",method = {RequestMethod.GET})
+    public String changePassword(@RequestParam("userId") int userId,HttpServletRequest request)   {
+        userService.toChangePassword(userId,request);
+        return "scormfront/changePassword" ;
+    }
+
 }

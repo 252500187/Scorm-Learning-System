@@ -372,4 +372,10 @@ public class UserServiceImpl implements UserService {
             backMessageDao.addBackMessage(backMessage);
         }
     }
+
+    @Override
+    public void toChangePassword(int userId,HttpServletRequest request) {
+        User user = userDao.findUserAllInfoById(userId);
+        request.setAttribute("user", user);
+    }
 }

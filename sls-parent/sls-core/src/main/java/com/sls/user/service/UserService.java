@@ -72,4 +72,6 @@ public interface UserService {
     BackMessage getMessageInfo(int messageId);
 
     void transMessage(int messageId, String userIds);
+
+    void toChangePassword(int userId,HttpServletRequest request);
 }
