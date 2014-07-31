@@ -46,14 +46,14 @@ public class NoteCollectDaoImpl extends PageDao implements NoteCollectDao {
 
     @Override
     public List<StudyNote> getAllStudyNotesByScormIdAndUserId(StudyNote studyNote) {
-        String sql = "SELECT lsn.*,ss.`scorm_name` FROM luss_study_note lsn JOIN ss_scorm ss ON lsn.`scorm_id` = ss.`scorm_id` WHERE user_id = ? ";
+        StringBuilder sql = new StringBuilder("SELECT lsn.*,ss.`scorm_name` FROM luss_study_note lsn JOIN ss_scorm ss ON lsn.`scorm_id` = ss.`scorm_id` WHERE user_id = ? ");
         if (studyNote.getScormId() != DictConstant.VOID_VALUE) {
-            sql += (" AND lsn.scorm_id = " + studyNote.getScormId());
+            sql.append(" AND lsn.scorm_id = " + studyNote.getScormId());
         }
         if (studyNote.getScormId() == 0) {
-            sql += (" AND lsn.scorm_id = ''");
+            sql.append(" AND lsn.scorm_id = ''");
         }
-        sql += " ORDER BY note_id DESC ";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<StudyNote>(StudyNote.class), studyNote.getUserId());
+        sql.append(" ORDER BY note_id DESC ");
+        return getJdbcTemplate().query(sql.toString(), new BeanPropertyRowMapper<StudyNote>(StudyNote.class), studyNote.getUserId());
     }
 }

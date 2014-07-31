@@ -1,15 +1,16 @@
 package com.sls.user;
 
 import com.sls.scorm.entity.ScoInfo;
-import com.sls.scorm.entity.ScormSummarize;
 import com.sls.scorm.entity.StudyNote;
 import com.sls.scorm.service.ScormService;
 import com.sls.user.service.UserCenterService;
-import com.sls.util.DictConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.xml.sax.SAXException;
 
 import javax.servlet.ServletException;
@@ -17,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller

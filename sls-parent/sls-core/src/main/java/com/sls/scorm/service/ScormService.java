@@ -2,10 +2,7 @@ package com.sls.scorm.service;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
-import com.sls.scorm.entity.ScoInfo;
-import com.sls.scorm.entity.Scorm;
-import com.sls.scorm.entity.ScormSummarize;
-import com.sls.scorm.entity.StudyNote;
+import com.sls.scorm.entity.*;
 import org.xml.sax.SAXException;
 
 import javax.servlet.ServletException;
@@ -84,4 +81,10 @@ public interface ScormService {
     List<Scorm> getUpScormsByUserId(int userId);
 
     void sortScorm(int labelId, HttpServletRequest request);
+
+    Page<PublicScorm> listAllPublicScormPageList(PageParameter pageParameter, PublicScorm publicScorm);
+
+    void delPublicScorm(int publicId);
+
+    List<Scorm> getAllInUseScorm();
 }

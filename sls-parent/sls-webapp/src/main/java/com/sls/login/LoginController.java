@@ -2,7 +2,6 @@ package com.sls.login;
 
 import com.sls.login.service.LoginService;
 import com.sls.user.entity.User;
-import com.sls.user.service.UserService;
 import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -26,10 +26,10 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" onclick="changeIframe('admin/user/adminIndexStatisticDo')">统计信息</a>
                     </li>
+                    <li><a data-toggle="tab" onclick="changeIframe('admin/role/listAllRoleDo')">角色管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllUserDo')">用户管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllMessageDo')">消息管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllDiscussDo')">评论管理</a></li>
-                    <li><a data-toggle="tab" onclick="changeIframe('admin/role/listAllRoleDo')">角色管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/label/listAllLabelDo')">标签管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/dict/listAllDictDefineDo')">字典管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/upScormDo')">上传课件</a>
@@ -37,6 +37,8 @@
                     <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listNotAuditScormInfoDo')">未审核课件</a>
                     </li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listAuditScormInfoDo')">课件管理</a>
+                    </li>
+                    <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listAllPublicScormDo')">公开课件</a>
                     </li>
                     <li class="pull-right"><a data-toggle="tab" onclick="window.location.href='logout'">退出</a></li>
                     <li class="pull-right"><a data-toggle="tab" onclick="">修改密码</a></li>

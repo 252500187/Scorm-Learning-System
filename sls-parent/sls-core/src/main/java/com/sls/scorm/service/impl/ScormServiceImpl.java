@@ -57,6 +57,9 @@ public class ScormServiceImpl implements ScormService {
     @Autowired
     private UserAttentionDao userAttentionDao;
 
+    @Autowired
+    private PublicScormDao publicScormDao;
+
     @Override
     public void getUpScormGroupsByUserId(HttpServletRequest request) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
@@ -640,5 +643,20 @@ public class ScormServiceImpl implements ScormService {
             request.setAttribute("sortName", labelDao.findLabelById(labelId).getLabelName());
         }
         request.setAttribute("sortLabelScorm", scormDao.sortScormByLabelName(labelId));
+    }
+
+    @Override
+    public Page<PublicScorm> listAllPublicScormPageList(PageParameter pageParameter, PublicScorm publicScorm) {
+        return publicScormDao.listAllPublicScormPageList(pageParameter, publicScorm);
+    }
+
+    @Override
+    public void delPublicScorm(int publicId) {
+        publicScormDao.delPublicScormByPublicId(publicId);
+    }
+
+    @Override
+    public List<Scorm> getAllInUseScorm() {
+        return scormDao.getAllScormByInUse(DictConstant.IN_USE);
     }
 }

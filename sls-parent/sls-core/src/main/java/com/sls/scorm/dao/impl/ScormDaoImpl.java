@@ -189,4 +189,10 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
         sql.append(")");
         return getJdbcTemplate().query(sql.toString(), new BeanPropertyRowMapper<Scorm>(Scorm.class), DictConstant.IN_USE);
     }
+
+    @Override
+    public List<Scorm> getAllScormByInUse(int inUse) {
+        String sql = "SELECT * FROM ss_scorm WHERE in_use=?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), DictConstant.IN_USE);
+    }
 }

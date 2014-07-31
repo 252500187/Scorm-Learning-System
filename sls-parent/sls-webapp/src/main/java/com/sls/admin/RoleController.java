@@ -1,6 +1,5 @@
 package com.sls.admin;
 
-import com.core.autocomplete.service.AutoCompleteService;
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.user.entity.Role;

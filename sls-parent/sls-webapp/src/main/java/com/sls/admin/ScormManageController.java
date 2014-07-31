@@ -2,6 +2,7 @@ package com.sls.admin;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
+import com.sls.scorm.entity.PublicScorm;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.service.ScormService;
 import com.sls.system.service.LabelService;
@@ -101,5 +102,28 @@ public class ScormManageController {
         labelService.getAllLabel(request);
         scormService.getUpScormGroupsByUserId(request);
         return "scormadmin/scorm/upScormDo";
+    }
+
+    @RequestMapping(value = "listAllPublicScormDo", method = {RequestMethod.GET})
+    public String listAllPublicScormDo() {
+        return "scormadmin/scorm/listAllPublicScormItemDo";
+    }
+
+    @RequestMapping(value = "listAllPublicScorm", method = {RequestMethod.GET, RequestMethod.POST})
+    @ResponseBody
+    public Page<PublicScorm> listAllPublicScorm(PageParameter pageParameter, PublicScorm publicScorm) {
+        return scormService.listAllPublicScormPageList(pageParameter, publicScorm);
+    }
+
+    @RequestMapping(value = "delPublicScorm", method = {RequestMethod.GET, RequestMethod.DELETE})
+    @ResponseBody
+    public void delPublicScorm(@RequestParam("publicId") int publicId) {
+        scormService.delPublicScorm(publicId);
+    }
+
+    @RequestMapping(value = "addPublicScormDo", method = {RequestMethod.GET})
+    public String addPublicScormDo(HttpServletRequest request) {
+        request.setAttribute("scorms", scormService.getAllInUseScorm());
+        return "scormadmin/scorm/addPublicScormDo";
     }
 }
