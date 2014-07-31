@@ -9,4 +9,6 @@ public interface PublicScormDao {
     Page<PublicScorm> listAllPublicScormPageList(PageParameter pageParameter, PublicScorm publicScorm);
 
     void delPublicScormByPublicId(int publicId);
+
+    void addPublicScorm(PublicScorm publicScorm);
 }

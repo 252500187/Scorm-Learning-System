@@ -29,4 +29,10 @@ public class PublicScormDaoImpl extends PageDao implements PublicScormDao {
         String sql = "DELETE FROM ss_public_scorm WHERE public_id=?";
         getJdbcTemplate().update(sql, publicId);
     }
+
+    @Override
+    public void addPublicScorm(PublicScorm publicScorm) {
+        String sql = "INSERT INTO ss_public_scorm(scorm_id,start_time,end_time,description)VALUES (:scormId,:startTime,:endTime,:description)";
+        getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(publicScorm));
+    }
 }

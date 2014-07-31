@@ -87,4 +87,6 @@ public interface ScormService {
     void delPublicScorm(int publicId);
 
     List<Scorm> getAllInUseScorm();
+
+    void addPublicScorm(PublicScorm publicScorm);
 }

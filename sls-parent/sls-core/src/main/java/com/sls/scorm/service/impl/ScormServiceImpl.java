@@ -659,4 +659,9 @@ public class ScormServiceImpl implements ScormService {
     public List<Scorm> getAllInUseScorm() {
         return scormDao.getAllScormByInUse(DictConstant.IN_USE);
     }
+
+    @Override
+    public void addPublicScorm(PublicScorm publicScorm) {
+        publicScormDao.addPublicScorm(publicScorm);
+    }
 }

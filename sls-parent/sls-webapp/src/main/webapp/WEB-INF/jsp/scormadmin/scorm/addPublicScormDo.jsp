@@ -18,10 +18,42 @@
         <fieldset>
             <legend></legend>
             <div class="control-group">
-                <label class="control-label" for="labelName">标签名</label>
+                <label class="control-label" for="startTime">开始时间</label>
 
                 <div class="controls">
-                    <input id="labelName" name="labelName" type="text"/>
+                    <input type="text" id="startTime" readonly="true"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="endTime">结束时间</label>
+
+                <div class="controls">
+                    <input id="endTime" name="endTime" type="text" readonly="true"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="scormId">选择课件</label>
+
+                <div class="controls">
+                    <select multiple="multiple" id="scormId">
+                        <c:forEach var="scorm" items="${scorms}">
+                            <option value="${scorm.scormId}"
+                                    <c:if test="${scorm.scormId==scorms[0].scormId}">
+                                        selected
+                                    </c:if>
+                                    >${scorm.scormName}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="description">描述</label>
+
+                <div class="controls">
+                    <textarea id="description"></textarea>
                 </div>
             </div>
 
@@ -39,30 +71,54 @@
 </body>
 </html>
 <script>
-    var ruleLabel = {
+    $("#startTime,#endTime").datetimepicker({
+        language: 'zh-CN',
+        format: 'yyyy-mm-dd hh:ii',
+        autoclose: true,
+        todayBtn: true,
+        todayHighlight: true
+    });
+
+    $("#startTime").click(function () {
+        $("#startTime").datetimepicker({endDate: $("#endTime").val()});
+    });
+
+    $("#endTime").click(function () {
+        $("#endTime").datetimepicker({startDate: $("#startTime").val()});
+    });
+
+    $("option").click(function () {
+        $("option").removeAttr("selected");
+        $(this).attr("selected", true);
+    });
+
+    var rule = {
         objInfo: {
-            labelName: {
-                checkEmpty: ["labelName", "标签名"],
-                max: ["labelName", 15, "标签名"],
-                ajax: [basePath + "admin/label/checkRepeatLabelName", {}, {labelName: "$('#labelName').val().trim()", oldLabelName: "''"},
-                    backFunc, "text", "POST"]
+            startTime: {
+                checkEmpty: ["startTime", "开始时间"]
+            },
+            endTime: {
+                checkEmpty: ["endTime", "结束时间"]
             }
         }
     };
 
     function save() {
-        if (!JC.validate(ruleLabel)) return;
+        if (!JC.validate(rule)) return;
         $("#saves").button('loading');
         $.ajax({
-            url: basePath + "admin/label/addLabel",
+            url: basePath + "admin/scorm/addPublicScorm",
             data: {
-                labelName: $("#labelName").val().trim()
+                scormId: $("#scormId").val()[0],
+                startTime: $("#startTime").val(),
+                endTime: $("#endTime").val(),
+                description: $("#description").val().trim()
             },
             dataType: "json",
             type: "POST",
             success: function () {
-                window.parent.$("#dataEdit").dialog('close');
-                window.parent.query();
+                parent.$("#dataEdit").dialog('close');
+                parent.query();
             },
             error: doError
         })

@@ -6,6 +6,7 @@ import com.sls.scorm.entity.PublicScorm;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.service.ScormService;
 import com.sls.system.service.LabelService;
+import com.sls.util.DateUtil;
 import com.sls.util.DictConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,7 +39,7 @@ public class ScormManageController {
         return "scormadmin/scorm/listNotAuditScormInfoDo";
     }
 
-    @RequestMapping(value = "listNotAuditScormInfo", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "listNotAuditScormInfo", method = {RequestMethod.POST})
     @ResponseBody
     public Page<Scorm> listNotAuditScormInfo(PageParameter pageParameter, Scorm scorm) {
         return scormService.listNotAuditScormPageList(pageParameter, scorm);
@@ -49,7 +50,7 @@ public class ScormManageController {
         return "scormadmin/scorm/listAuditScormInfoDo";
     }
 
-    @RequestMapping(value = "listAuditScormInfo", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "listAuditScormInfo", method = {RequestMethod.POST})
     @ResponseBody
     public Page<Scorm> listAuditScormInfo(PageParameter pageParameter, Scorm scorm) {
         return scormService.listAuditScormPageList(pageParameter, scorm);
@@ -109,13 +110,13 @@ public class ScormManageController {
         return "scormadmin/scorm/listAllPublicScormItemDo";
     }
 
-    @RequestMapping(value = "listAllPublicScorm", method = {RequestMethod.GET, RequestMethod.POST})
+    @RequestMapping(value = "listAllPublicScorm", method = {RequestMethod.POST})
     @ResponseBody
     public Page<PublicScorm> listAllPublicScorm(PageParameter pageParameter, PublicScorm publicScorm) {
         return scormService.listAllPublicScormPageList(pageParameter, publicScorm);
     }
 
-    @RequestMapping(value = "delPublicScorm", method = {RequestMethod.GET, RequestMethod.DELETE})
+    @RequestMapping(value = "delPublicScorm", method = {RequestMethod.DELETE})
     @ResponseBody
     public void delPublicScorm(@RequestParam("publicId") int publicId) {
         scormService.delPublicScorm(publicId);
@@ -125,5 +126,11 @@ public class ScormManageController {
     public String addPublicScormDo(HttpServletRequest request) {
         request.setAttribute("scorms", scormService.getAllInUseScorm());
         return "scormadmin/scorm/addPublicScormDo";
+    }
+
+    @RequestMapping(value = "addPublicScorm", method = {RequestMethod.POST})
+    @ResponseBody
+    public void addPublicScorm(PublicScorm publicScorm) {
+        scormService.addPublicScorm(publicScorm);
     }
 }
