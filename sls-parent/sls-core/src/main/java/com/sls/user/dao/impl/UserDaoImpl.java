@@ -179,8 +179,8 @@ public class UserDaoImpl extends PageDao implements UserDao {
     }
 
     @Override
-    public void changePassword(User user) {
-        String sql = "UPDATE us_user SET password = :password WHERE user_id = :userId";
-        getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(user));
+    public void changePassword(int userId, String password) {
+        String sql = "UPDATE us_user SET password = ? WHERE user_id = ?";
+        getJdbcTemplate().update(sql, password, userId);
     }
 }

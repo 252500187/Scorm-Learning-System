@@ -56,5 +56,5 @@ public interface UserDao {
 
     List<User> getAllUsersByInUse(int inUse);
 
-    void changePassword(User user);
+    void changePassword(int userId,String password);
 }

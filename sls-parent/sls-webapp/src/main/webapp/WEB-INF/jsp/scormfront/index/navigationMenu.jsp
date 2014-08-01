@@ -230,7 +230,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a onclick="changePassword('${sessionScope.userId}')">
+                        <a onclick="changePassword()">
                             <i class="fa fa-key"></i>&nbsp;&nbsp;修改密码</a>
                     </li>
                     <li class="divider">
@@ -282,9 +282,8 @@
         top.window.open(basePath + "tourist/sortScorm?labelId=" + labelId);
     }
 
-    function changePassword(userId){
-
-        top.window.open(basePath + "user/info/changePassword?userId=" + userId);
+    function changePassword(){
+        top.window.open(basePath + "user/info/changePasswordDo");
     }
 
     function userInfo(userId) {

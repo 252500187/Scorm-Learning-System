@@ -374,19 +374,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void toChangePassword(int userId,HttpServletRequest request) {
-        User user = userDao.findUserAllInfoById(userId);
-        request.setAttribute("user", user);
+    public void changePassword(String password) {
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        userDao.changePassword(userId, password);
     }
 
     @Override
-    public void changePassword(User user) {
-        userDao.changePassword(user);
-    }
-
-    @Override
-    public boolean checkOldPassword(String password, int userId) {
-        User user = userDao.findUserAllInfoById(userId);
-        return user.getPassword().equals(password);
+    public boolean checkOldPassword(String password) {
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        return userDao.findUserAllInfoById(userId).getPassword().equals(password);
     }
 }

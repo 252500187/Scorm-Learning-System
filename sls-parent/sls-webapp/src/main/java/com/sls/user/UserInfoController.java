@@ -38,22 +38,21 @@ public class UserInfoController {
         userService.cancelMessageByMessageId(messageId);
     }
 
-    @RequestMapping(value = "changePassword",method = {RequestMethod.GET})
-    public String changePassword(@RequestParam("userId") int userId,HttpServletRequest request)   {
-        userService.toChangePassword(userId,request);
-        return "scormfront/changePassword" ;
+    @RequestMapping(value = "changePasswordDo", method = {RequestMethod.GET})
+    public String changePassword() {
+        return "scormfront/changePassword";
     }
 
     @RequestMapping(value = "changePassword", method = {RequestMethod.POST})
     @ResponseBody
-    public void editUserPassword(User user) {
-        userService.changePassword(user);
+    public void editUserPassword(@RequestParam("password") String password) {
+        userService.changePassword(password);
     }
 
     @RequestMapping(value = "checkOldPassword", method = RequestMethod.POST)
     @ResponseBody
-    public boolean checkOldPassword(@RequestParam("oldPassword") String password,@RequestParam("userId") int userId) {
-        return userService.checkOldPassword(password,userId);
+    public boolean checkOldPassword(@RequestParam("oldPassword") String password) {
+        return userService.checkOldPassword(password);
     }
 
 }
