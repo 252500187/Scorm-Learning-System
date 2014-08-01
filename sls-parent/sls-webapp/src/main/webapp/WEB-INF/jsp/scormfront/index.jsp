@@ -71,6 +71,7 @@
             </div>
         </div>
         <br/>
+
         <div class="row">
             <c:if test="${recommendIndexScorms[5]!=null}">
                 <div class="col-md-3" style="padding-left: 35px">
@@ -108,6 +109,23 @@
                     <span>${recommendIndexScorms[8].scormName}</span>
                 </div>
             </c:if>
+        </div>
+        <hr/>
+        <h2 style="padding-left: 20px">
+            正在进行的公开课，快来参加！
+        </h2>
+        <br/>
+
+        <div class="row">
+            <c:forEach var="publicScorm" items="${publicScorms}">
+                <div class="col-md-3" style="padding-left: 35px">
+                    <div onclick="scormInfo('${publicScorm.scormId}')">
+                        <img src="${publicScorm.imgPath}" alt="${publicScorm.scormName}"
+                             style="height: 150px;width: 220px"/>
+                    </div>
+                    <span>${publicScorm.scormName}</span>
+                </div>
+            </c:forEach>
         </div>
         <br/>
         <div class="row">
@@ -169,7 +187,6 @@
 <div class="row">
     <div class="col-md-12" style="padding-left: 40px;">
         <div class="mix-grid">
-            <hr/>
             <h2>
                 <div class="caption-sidebar">推荐用户</div>
             </h2>

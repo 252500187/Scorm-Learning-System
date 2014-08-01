@@ -5,9 +5,14 @@ import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.scorm.dao.PublicScormDao;
 import com.sls.scorm.entity.PublicScorm;
+import com.sls.scorm.entity.Scorm;
+import com.sls.util.DateUtil;
+import com.sls.util.DictConstant;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository("publicScormDao")
 public class PublicScormDaoImpl extends PageDao implements PublicScormDao {
@@ -34,5 +39,12 @@ public class PublicScormDaoImpl extends PageDao implements PublicScormDao {
     public void addPublicScorm(PublicScorm publicScorm) {
         String sql = "INSERT INTO ss_public_scorm(scorm_id,start_time,end_time,description)VALUES (:scormId,:startTime,:endTime,:description)";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(publicScorm));
+    }
+
+    @Override
+    public List<Scorm> getPublicScorm(int num) {
+        String nowTime = DateUtil.getCurrentTimestamp().toString();
+        String sql = "SELECT * FROM ss_scorm WHERE scorm_id IN(SELECT scorm_id FROM ss_public_scorm WHERE start_time<=? AND end_time>=?) AND in_use=?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), nowTime, nowTime, DictConstant.IN_USE);
     }
 }

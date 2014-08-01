@@ -3,6 +3,9 @@ package com.sls.scorm.dao;
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.PublicScorm;
+import com.sls.scorm.entity.Scorm;
+
+import java.util.List;
 
 public interface PublicScormDao {
 
@@ -11,4 +14,6 @@ public interface PublicScormDao {
     void delPublicScormByPublicId(int publicId);
 
     void addPublicScorm(PublicScorm publicScorm);
+
+    List<Scorm> getPublicScorm(int num);
 }

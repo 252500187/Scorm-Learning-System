@@ -1,5 +1,6 @@
 package com.sls.login.service.impl;
 
+import com.sls.scorm.dao.PublicScormDao;
 import com.sls.scorm.dao.ScormDao;
 import com.sls.system.dao.LabelDao;
 import com.sls.user.dao.*;
@@ -45,6 +46,9 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     public BackMessageDao backMessageDao;
+
+    @Autowired
+    public PublicScormDao publicScormDao;
 
     public String toIndex(HttpServletRequest request, HttpSession session) {
         String loginName = LoginUserUtil.getLoginName();
@@ -99,9 +103,10 @@ public class LoginServiceImpl implements LoginService {
         request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score", 8));
         request.setAttribute("scormTime", scormDao.indexFindTopScormByFieldName("total_time", 8));
         request.setAttribute("scormLevel", scormDao.indexFindTopScormByFieldName("recommend_level", 8));
-        request.setAttribute("latestScorms", scormDao.findLatestScorms(9));
+        request.setAttribute("latestScorms", scormDao.findLatestScorms(12));
         request.setAttribute("recommendIndexScorms", scormDao.findRecommendIndexScorms());
         request.setAttribute("recommendUsers", userDao.getNumUserOrderByScore(9));
+        request.setAttribute("publicScorms", publicScormDao.getPublicScorm(8));
     }
 
     public void setLoginIndexInfo(HttpSession session, int userId) {
