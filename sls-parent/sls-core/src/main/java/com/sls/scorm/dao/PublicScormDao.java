@@ -17,5 +17,5 @@ public interface PublicScormDao {
 
     List<Scorm> getPublicScorm(int num);
 
-    Boolean isPublicScormByScormId(int scormId);
+    List<PublicScorm> getInTimePublicScormByScormId(int scormId);
 }

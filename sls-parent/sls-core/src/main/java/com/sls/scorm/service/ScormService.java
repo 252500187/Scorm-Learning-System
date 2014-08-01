@@ -89,4 +89,6 @@ public interface ScormService {
     List<Scorm> getAllInUseScorm();
 
     void addPublicScorm(PublicScorm publicScorm);
+
+    void getPublicScormInfo(int scormId, HttpServletRequest request);
 }

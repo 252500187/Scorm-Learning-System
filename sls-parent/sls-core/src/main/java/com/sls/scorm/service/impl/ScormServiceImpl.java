@@ -206,6 +206,7 @@ public class ScormServiceImpl implements ScormService {
         }
         scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
         request.setAttribute("scorm", scorm);
+        request.setAttribute("publicScorm", !publicScormDao.getInTimePublicScormByScormId(scormId).isEmpty());
     }
 
     @Override
@@ -415,7 +416,6 @@ public class ScormServiceImpl implements ScormService {
         boolean register = false;
         boolean study = false;
         boolean complete = false;
-        boolean publicScorm = false;
         if (!"".equals(LoginUserUtil.getLoginName())) {
             showCollect = true;
             if (scormDao.findScormInfoByScormId(scormId).getInUse() == DictConstant.IN_USE) {
@@ -435,16 +435,13 @@ public class ScormServiceImpl implements ScormService {
                 }
             }
         }
-        if (publicScormDao.isPublicScormByScormId(scormId)) {
-            publicScorm = true;
-        }
         request.setAttribute("showCollect", showCollect);
         request.setAttribute("showDiscussInput", showDiscussInput);
         request.setAttribute("collect", collect);
         request.setAttribute("register", register);
         request.setAttribute("study", study);
         request.setAttribute("complete", complete);
-        request.setAttribute("publicScorm", publicScorm);
+        request.setAttribute("publicScorm", !publicScormDao.getInTimePublicScormByScormId(scormId).isEmpty());
     }
 
     @Override
@@ -668,5 +665,11 @@ public class ScormServiceImpl implements ScormService {
     @Override
     public void addPublicScorm(PublicScorm publicScorm) {
         publicScormDao.addPublicScorm(publicScorm);
+    }
+
+    @Override
+    public void getPublicScormInfo(int scormId, HttpServletRequest request) {
+        request.setAttribute("scorm", scormDao.findScormInfoByScormId(scormId));
+        request.setAttribute("publicScorm", publicScormDao.getInTimePublicScormByScormId(scormId).get(0));
     }
 }

@@ -15,6 +15,7 @@ import org.xml.sax.SAXException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
@@ -104,5 +105,18 @@ public class StudyScormController {
         userCenterService.getAllRegisterScormInfo(request);
         request.setAttribute("result", "true");
         return "scormfront/usercenter/note/addNote";
+    }
+
+    @RequestMapping(value = "publicScormDiscusses", method = {RequestMethod.GET})
+    public String showPublicDiscusses(HttpSession session, HttpServletRequest request, @RequestParam("scormId") int scormId) {
+        session.setAttribute("showPublic", true);
+        scormService.getPublicScormInfo(scormId, request);
+        return "scormfront/scorm/publicScormDiscusses";
+    }
+
+    @RequestMapping(value = "isShowPublic", method = {RequestMethod.GET})
+    @ResponseBody
+    public Boolean isShowPublic(HttpSession session) {
+        return (Boolean) session.getAttribute("showPublic");
     }
 }

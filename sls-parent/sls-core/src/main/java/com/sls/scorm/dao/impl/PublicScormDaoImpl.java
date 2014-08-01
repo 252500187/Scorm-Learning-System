@@ -49,9 +49,9 @@ public class PublicScormDaoImpl extends PageDao implements PublicScormDao {
     }
 
     @Override
-    public Boolean isPublicScormByScormId(int scormId) {
+    public List<PublicScorm> getInTimePublicScormByScormId(int scormId) {
         String nowTime = DateUtil.getCurrentTimestamp().toString();
         String sql = "SELECT * FROM ss_public_scorm WHERE scorm_id=? AND start_time<=? AND end_time>=?";
-        return !getJdbcTemplate().query(sql, new BeanPropertyRowMapper<PublicScorm>(PublicScorm.class), scormId, nowTime, nowTime).isEmpty();
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<PublicScorm>(PublicScorm.class), scormId, nowTime, nowTime);
     }
 }
