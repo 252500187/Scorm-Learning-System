@@ -378,4 +378,15 @@ public class UserServiceImpl implements UserService {
         User user = userDao.findUserAllInfoById(userId);
         request.setAttribute("user", user);
     }
+
+    @Override
+    public void changePassword(User user) {
+        userDao.changePassword(user);
+    }
+
+    @Override
+    public boolean checkOldPassword(String password, int userId) {
+        User user = userDao.findUserAllInfoById(userId);
+        return user.getPassword().equals(password);
+    }
 }

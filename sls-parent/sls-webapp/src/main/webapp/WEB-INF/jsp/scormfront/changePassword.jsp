@@ -14,20 +14,12 @@
 </head>
 
 <body class="login">
-<div class="logo">
-    <a onclick="window.location.href='/sls/'">
-        <img src="img/logo/logo-big.png" alt="SLS"/>
-    </a>
-</div>
-<div class="content">
+<%@include file="index/navigationMenu.jsp" %>
+
+<div class="content" style="margin-top:160px">
 
     <form class="changePassword-form" method="post" id="changePassword">
         <h3 class="form-title">密码修改</h3>
-
-        <div class="alert alert-info display-hide" id="registerSuccess">
-            <button class="close" data-close="alert"></button>
-            <span>修改密码成功！</span>
-        </div>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">原密码</label>
 
@@ -47,12 +39,12 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">新密码</label>
+            <label class="control-label visible-ie8 visible-ie9">再次输入密码</label>
 
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
                 <input class="form-control placeholder-no-fix" type="password" placeholder="再次输入新密码"
-                       id="newPasswordAgain" name="newPasswordAgain"/>
+                       id="copyNewPassword" name="copyNewPassword"/>
             </div>
         </div>
         <div class="form-actions">
@@ -60,8 +52,15 @@
                 修改 <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
-    </form>
 
+
+    </form>
+    <form class="changeSuccess" id="changeSuccess" style="margin-top:160px">
+        <h3 class="form-title">密码修改</h3>
+        <div class="alert alert-info " >
+            <span>密码修改成功！</span>
+        </div>
+    </form>
 
 </div>
 </body>
@@ -71,5 +70,85 @@
         Metronic.init();
         Layout.init();
         Login.init();
+        $('.changePassword-form').show();
+        $('.changeSuccess').hide();
     });
+    $('#changePassword-form').validate({
+                errorElement: 'span',
+                errorClass: 'help-block',
+                focusInvalid: false,
+                rules: {
+                    oldPassword: {
+                        required: true,
+                        minlength: 6,
+                        remote: {
+                            url: basePath + "user/info/checkOldPassword",
+                            type: "post",
+                            dataType: "json",
+                            data: {
+                                oldPassword: function () {
+                                    return $("#oldPassword").val().trim();
+                                },
+                                userId: function(){
+                                    return ${user.userId};
+                                }
+
+                            }
+                        }
+                    },
+                    newPassword: {
+                        isImg: true
+                    },
+                    copyRegisterPassword: {
+                        equalTo: '#newPassword'
+                    }
+                },
+
+                messages: {
+                    oldPassword: {
+                        required: "请输入密码",
+                        minlength: "密码长度过小(6位)",
+                        remote: "密码输入不正确"
+                    },
+                    newPassword: {
+                        required: "请输入密码",
+                        minlength: "密码长度过小(6位)"
+                    },
+                    copyNewPassword: {
+                        equalTo: "两次输入密码不相同，请重新输入"
+                    }
+                },
+                highlight: function (element) {
+                    $(element).closest('.form-group').addClass('has-error');
+                },
+                success: function (label) {
+                    label.closest('.form-group').removeClass('has-error');
+                    label.remove();
+                },
+                errorPlacement: function (error, element) {
+                    if (element.attr("name") == "upImg" || element.attr("name") == "upScorm") {
+                        error.insertAfter(element.parent().parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                },
+                submitHandler: function () {
+
+                    $.ajax({
+                        url: basePath + "user/info/changePassword",
+                        data: {
+                            userId: ${user.userId},
+                            password: $("#newPassword").val().md5()
+                        },
+                        dataType: "json",
+                        type: "POST",
+                        success: function () {
+                            $('.changePassword-form').hide();
+                            $('.changeSuccess').show();
+                        },
+                        error: doError
+                    })
+                }
+            }
+    );
 </script>

@@ -177,4 +177,10 @@ public class UserDaoImpl extends PageDao implements UserDao {
                 "WHERE b.role_id = (SELECT role_id FROM us_role WHERE authority=?) AND a.user_id IN (SELECT user_id FROM us_user WHERE in_use=?)";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<User>(User.class), DictConstant.ROLE_AUTHORITY_USER, inUse);
     }
+
+    @Override
+    public void changePassword(User user) {
+        String sql = "UPDATE us_user SET password = :password WHERE user_id = :userId";
+        getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(user));
+    }
 }

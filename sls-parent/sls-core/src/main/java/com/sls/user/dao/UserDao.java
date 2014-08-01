@@ -55,4 +55,6 @@ public interface UserDao {
     List<User> getNumUserOrderByScore(int num);
 
     List<User> getAllUsersByInUse(int inUse);
+
+    void changePassword(User user);
 }

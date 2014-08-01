@@ -74,4 +74,8 @@ public interface UserService {
     void transMessage(int messageId, String userIds);
 
     void toChangePassword(int userId,HttpServletRequest request);
+
+    void changePassword(User user);
+
+    boolean checkOldPassword(String password,int userId);
 }

@@ -1,5 +1,6 @@
 package com.sls.user;
 
+import com.sls.user.entity.User;
 import com.sls.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,6 +42,18 @@ public class UserInfoController {
     public String changePassword(@RequestParam("userId") int userId,HttpServletRequest request)   {
         userService.toChangePassword(userId,request);
         return "scormfront/changePassword" ;
+    }
+
+    @RequestMapping(value = "changePassword", method = {RequestMethod.POST})
+    @ResponseBody
+    public void editUserPassword(User user) {
+        userService.changePassword(user);
+    }
+
+    @RequestMapping(value = "checkOldPassword", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean checkOldPassword(@RequestParam("oldPassword") String password,@RequestParam("userId") int userId) {
+        return userService.checkOldPassword(password,userId);
     }
 
 }
