@@ -43,9 +43,16 @@
                 (已完成)
             </c:if>
             ${scormInfo.scormName}
+            <c:if test="${publicScorm}">
+                （正在进行公开课，赶快来学习吧！）
+            </c:if>
         </h3><br/>
         <hr/>
         <div class="form-group profile-info">
+            <c:if test="${publicScorm}">
+                <img src="img/scormInfo/public.png"
+                     style="width: 200px;height: 200px;margin-left:300px;position: absolute">
+            </c:if>
             <c:if test="${study}">
                 <a class="btn green m-icon" onclick="study('${scormInfo.scormId}')">
                     进行学习

@@ -415,6 +415,7 @@ public class ScormServiceImpl implements ScormService {
         boolean register = false;
         boolean study = false;
         boolean complete = false;
+        boolean publicScorm = false;
         if (!"".equals(LoginUserUtil.getLoginName())) {
             showCollect = true;
             if (scormDao.findScormInfoByScormId(scormId).getInUse() == DictConstant.IN_USE) {
@@ -434,12 +435,16 @@ public class ScormServiceImpl implements ScormService {
                 }
             }
         }
+        if (publicScormDao.isPublicScormByScormId(scormId)) {
+            publicScorm = true;
+        }
         request.setAttribute("showCollect", showCollect);
         request.setAttribute("showDiscussInput", showDiscussInput);
         request.setAttribute("collect", collect);
         request.setAttribute("register", register);
         request.setAttribute("study", study);
         request.setAttribute("complete", complete);
+        request.setAttribute("publicScorm", publicScorm);
     }
 
     @Override

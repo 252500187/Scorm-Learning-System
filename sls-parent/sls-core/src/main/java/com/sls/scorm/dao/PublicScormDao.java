@@ -16,4 +16,6 @@ public interface PublicScormDao {
     void addPublicScorm(PublicScorm publicScorm);
 
     List<Scorm> getPublicScorm(int num);
+
+    Boolean isPublicScormByScormId(int scormId);
 }
