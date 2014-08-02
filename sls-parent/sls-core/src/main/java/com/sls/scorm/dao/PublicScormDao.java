@@ -18,4 +18,6 @@ public interface PublicScormDao {
     List<Scorm> getPublicScorm(int num);
 
     List<PublicScorm> getInTimePublicScormByScormId(int scormId);
+
+    Boolean isInTimeByPublicId(int publicId);
 }

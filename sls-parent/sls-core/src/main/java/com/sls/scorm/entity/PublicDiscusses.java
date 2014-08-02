@@ -7,6 +7,9 @@ public class PublicDiscusses {
     private String sendTime;
     private String discuss;
 
+    private String userName;
+    private String imgUrl;
+
     public PublicDiscusses() {
     }
 
@@ -48,5 +51,21 @@ public class PublicDiscusses {
 
     public void setDiscussId(int discussId) {
         this.discussId = discussId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

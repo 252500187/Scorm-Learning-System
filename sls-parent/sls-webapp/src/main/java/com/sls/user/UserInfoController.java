@@ -54,5 +54,4 @@ public class UserInfoController {
     public boolean checkOldPassword(@RequestParam("oldPassword") String password) {
         return userService.checkOldPassword(password);
     }
-
 }

@@ -5,6 +5,7 @@ import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.StudyNote;
 import com.sls.scorm.service.ScormService;
 import com.sls.user.service.UserCenterService;
+import com.sls.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,7 +49,7 @@ public class StudyScormController {
     @RequestMapping(value = "studyScorm", method = {RequestMethod.GET})
     public String studyScorm(HttpServletRequest request, @RequestParam("scormId") int scormId) {
         scormService.studyScorm(scormId, request);
-        scormService.getDiscusses(scormId, request);
+        scormService.getComments(scormId, request);
         scormService.setScormSummarizeInfo(scormId);
         scormService.getSummarizeInfo(scormId, request);
         scormService.getAllStudyNotesByScormIdAndUserId(scormId, request);
@@ -123,7 +124,16 @@ public class StudyScormController {
 
     @RequestMapping(value = "sendDiscuss", method = {RequestMethod.POST})
     @ResponseBody
-    public void sendDiscuss(PublicDiscusses publicDiscusses) {
+    public String[] sendDiscuss(PublicDiscusses publicDiscusses) {
+        publicDiscusses.setSendTime(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
         scormService.sendDiscuss(publicDiscusses);
+        String[] time = {publicDiscusses.getSendTime()};
+        return time;
+    }
+
+    @RequestMapping(value = "getDiscuss", method = {RequestMethod.POST})
+    @ResponseBody
+    public List<PublicDiscusses> getDiscuss(@RequestParam("lastTime") String lastTime, PublicDiscusses publicDiscusses) {
+        return scormService.getPublicDiscusses(lastTime, publicDiscusses);
     }
 }

@@ -58,7 +58,7 @@ public interface ScormService {
 
     Boolean evaluateScorm(ScormSummarize scormSummarize);
 
-    void getDiscusses(int scormId, HttpServletRequest request);
+    void getComments(int scormId, HttpServletRequest request);
 
     void discussScorm(ScormSummarize scormSummarize);
 
@@ -93,4 +93,6 @@ public interface ScormService {
     void getPublicScormInfo(int scormId, HttpServletRequest request);
 
     void sendDiscuss(PublicDiscusses publicDiscusses);
+
+    List<PublicDiscusses> getPublicDiscusses(String lastTime, PublicDiscusses publicDiscusses);
 }

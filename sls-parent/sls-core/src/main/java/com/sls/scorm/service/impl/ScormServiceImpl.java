@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -524,7 +525,7 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void getDiscusses(int scormId, HttpServletRequest request) {
+    public void getComments(int scormId, HttpServletRequest request) {
         request.setAttribute("allComments", summarizeDao.getAllCommentsByScormId(scormId));
         if (!("").equals(LoginUserUtil.getLoginName())) {
             request.setAttribute("user", userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0));
@@ -674,6 +675,8 @@ public class ScormServiceImpl implements ScormService {
     public void getPublicScormInfo(int scormId, HttpServletRequest request) {
         request.setAttribute("scorm", scormDao.findScormInfoByScormId(scormId));
         request.setAttribute("publicScorm", publicScormDao.getInTimePublicScormByScormId(scormId).get(0));
+        request.setAttribute("userId", userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        request.setAttribute("nowTime", DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
     }
 
     @Override
@@ -681,5 +684,13 @@ public class ScormServiceImpl implements ScormService {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         publicDiscusses.setUserId(userId);
         publicDiscussesDao.addPublicDiscusses(publicDiscusses);
+    }
+
+    @Override
+    public List<PublicDiscusses> getPublicDiscusses(String lastTime, PublicDiscusses publicDiscusses) {
+        if (publicScormDao.isInTimeByPublicId(publicDiscusses.getPublicId())) {
+            return publicDiscussesDao.getInlineDiscussesByPublicIdAndTime(lastTime, publicDiscusses.getPublicId(), publicDiscusses.getUserId());
+        }
+        return new ArrayList<PublicDiscusses>();
     }
 }
