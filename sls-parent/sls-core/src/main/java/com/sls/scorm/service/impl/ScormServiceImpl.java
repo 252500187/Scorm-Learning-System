@@ -60,6 +60,9 @@ public class ScormServiceImpl implements ScormService {
     @Autowired
     private PublicScormDao publicScormDao;
 
+    @Autowired
+    private PublicDiscussesDao publicDiscussesDao;
+
     @Override
     public void getUpScormGroupsByUserId(HttpServletRequest request) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
@@ -671,5 +674,12 @@ public class ScormServiceImpl implements ScormService {
     public void getPublicScormInfo(int scormId, HttpServletRequest request) {
         request.setAttribute("scorm", scormDao.findScormInfoByScormId(scormId));
         request.setAttribute("publicScorm", publicScormDao.getInTimePublicScormByScormId(scormId).get(0));
+    }
+
+    @Override
+    public void sendDiscuss(PublicDiscusses publicDiscusses) {
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        publicDiscusses.setUserId(userId);
+        publicDiscussesDao.addPublicDiscusses(publicDiscusses);
     }
 }

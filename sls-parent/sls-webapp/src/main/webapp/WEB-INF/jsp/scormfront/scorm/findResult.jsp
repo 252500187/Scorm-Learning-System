@@ -378,8 +378,6 @@
 </div>
 </body>
 </html>
-<script src="<c:url value="/metronic/assets/global/plugins/bootstrap-sessiontimeout/jquery.sessionTimeout.js"/>"
-        type="text/javascript"></script>
 <script type="text/javascript">
     function findScorm() {
         if ($("#queryInfo").val() != "") {

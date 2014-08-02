@@ -1,5 +1,6 @@
 package com.sls.user;
 
+import com.sls.scorm.entity.PublicDiscusses;
 import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.StudyNote;
 import com.sls.scorm.service.ScormService;
@@ -118,5 +119,11 @@ public class StudyScormController {
     @ResponseBody
     public Boolean isShowPublic(HttpSession session) {
         return (Boolean) session.getAttribute("showPublic");
+    }
+
+    @RequestMapping(value = "sendDiscuss", method = {RequestMethod.POST})
+    @ResponseBody
+    public void sendDiscuss(PublicDiscusses publicDiscusses) {
+        scormService.sendDiscuss(publicDiscusses);
     }
 }
