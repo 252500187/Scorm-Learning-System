@@ -13,9 +13,9 @@
     <%@include file="../includes/common.jsp" %>
 </head>
 
-<body class="page-header-fixed" style="background-color: #ffffff;overflow-x:hidden">
+<body class="login" style="background-color: #ffffff;overflow-x:hidden">
 <%@include file="index/navigationMenu.jsp" %>
-<div class="page-container">
+<div class="content" style="margin-top:12%">
 
     <form class="changePassword-form" method="post" id="changePassword">
         <h3 class="form-title">密码修改</h3>
