@@ -94,5 +94,5 @@ public interface ScormService {
 
     void sendDiscuss(PublicDiscusses publicDiscusses);
 
-    List<PublicDiscusses> getPublicDiscusses(String lastTime, PublicDiscusses publicDiscusses);
+    List<PublicDiscusses> getPublicDiscusses(PublicDiscusses publicDiscusses);
 }

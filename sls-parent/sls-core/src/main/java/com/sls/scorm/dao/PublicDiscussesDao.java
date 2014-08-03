@@ -8,5 +8,7 @@ public interface PublicDiscussesDao {
 
     void addPublicDiscusses(PublicDiscusses publicDiscusses);
 
-    List<PublicDiscusses> getInlineDiscussesByPublicIdAndTime(String lastTime, int publicId, int userId);
+    List<PublicDiscusses> getInlineDiscussesByPublicIdAndDiscussId(PublicDiscusses publicDiscusses);
+
+    List<PublicDiscusses> getPublicDiscussesByPublicIdAndNowTime(int publicId, String nowTime);
 }

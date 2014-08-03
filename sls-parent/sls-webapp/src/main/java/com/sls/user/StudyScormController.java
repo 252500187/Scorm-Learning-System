@@ -124,16 +124,13 @@ public class StudyScormController {
 
     @RequestMapping(value = "sendDiscuss", method = {RequestMethod.POST})
     @ResponseBody
-    public String[] sendDiscuss(PublicDiscusses publicDiscusses) {
-        publicDiscusses.setSendTime(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
+    public void sendDiscuss(PublicDiscusses publicDiscusses) {
         scormService.sendDiscuss(publicDiscusses);
-        String[] time = {publicDiscusses.getSendTime()};
-        return time;
     }
 
     @RequestMapping(value = "getDiscuss", method = {RequestMethod.POST})
     @ResponseBody
-    public List<PublicDiscusses> getDiscuss(@RequestParam("lastTime") String lastTime, PublicDiscusses publicDiscusses) {
-        return scormService.getPublicDiscusses(lastTime, publicDiscusses);
+    public List<PublicDiscusses> getDiscuss(PublicDiscusses publicDiscusses) {
+        return scormService.getPublicDiscusses(publicDiscusses);
     }
 }

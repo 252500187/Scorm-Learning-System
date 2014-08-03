@@ -673,23 +673,33 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public void getPublicScormInfo(int scormId, HttpServletRequest request) {
+        PublicScorm publicScorm = publicScormDao.getInTimePublicScormByScormId(scormId).get(0);
+        String nowTime = DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss");
+        request.setAttribute("publicScorm", publicScorm);
         request.setAttribute("scorm", scormDao.findScormInfoByScormId(scormId));
-        request.setAttribute("publicScorm", publicScormDao.getInTimePublicScormByScormId(scormId).get(0));
         request.setAttribute("userId", userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
-        request.setAttribute("nowTime", DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
+        List<PublicDiscusses> publicDiscussesList = publicDiscussesDao.getPublicDiscussesByPublicIdAndNowTime(publicScorm.getPublicId(), nowTime);
+        request.setAttribute("discussId", 0);
+        if (!publicDiscussesList.isEmpty()) {
+            request.setAttribute("discussId", publicDiscussesList.get(0).getDiscussId());
+        }
     }
 
     @Override
     public void sendDiscuss(PublicDiscusses publicDiscusses) {
+        if (!publicScormDao.isInTimeByPublicId(publicDiscusses.getPublicId())) {
+            return;
+        }
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         publicDiscusses.setUserId(userId);
+        publicDiscusses.setSendTime(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
         publicDiscussesDao.addPublicDiscusses(publicDiscusses);
     }
 
     @Override
-    public List<PublicDiscusses> getPublicDiscusses(String lastTime, PublicDiscusses publicDiscusses) {
+    public List<PublicDiscusses> getPublicDiscusses(PublicDiscusses publicDiscusses) {
         if (publicScormDao.isInTimeByPublicId(publicDiscusses.getPublicId())) {
-            return publicDiscussesDao.getInlineDiscussesByPublicIdAndTime(lastTime, publicDiscusses.getPublicId(), publicDiscusses.getUserId());
+            return publicDiscussesDao.getInlineDiscussesByPublicIdAndDiscussId(publicDiscusses);
         }
         return new ArrayList<PublicDiscusses>();
     }

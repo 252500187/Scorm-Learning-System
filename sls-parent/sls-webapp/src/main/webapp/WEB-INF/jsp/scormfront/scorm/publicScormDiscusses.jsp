@@ -15,7 +15,7 @@
 <body class="page-header-fixed">
 <div class="row">
     <div class="col-md-12">
-        <span class="datetime" hidden="true">${nowTime}</span>
+        <p class="discussId" hidden="false">${discussId}</p>
 
         <div class="portlet-body">
             <div id="discusses" style="height: 310px;overflow-y:auto" data-always-visible="1" data-rail-visible1="1">
@@ -54,14 +54,7 @@
             data: {
                 publicId: "${publicScorm.publicId}",
                 discuss: $("#discuss").val().trim()
-            },
-            success: function (time) {
-                $("ul").append("<li class='out'><div class='message'><span class='arrow'></span>" +
-                        "<a class='name'>我 </a><span class='datetime'>" + time[0] +
-                        "</span><span class='body'>" + $("#discuss").val() + "</span></div></li>");
-                document.getElementById('discusses').scrollTop = document.getElementById('discusses').scrollHeight;
-            },
-            error: doError
+            }
         });
     }
 
@@ -70,18 +63,30 @@
             url: basePath + "user/scorm/getDiscuss",
             type: "post",
             data: {
-                lastTime: $("span.datetime").last().html(),
-                publicId: "${publicScorm.publicId}",
-                userId: "${userId}"
+                discussId: $("p.discussId").last().html(),
+                publicId: "${publicScorm.publicId}"
             },
             success: function (discusses) {
                 for (var i in discusses) {
-                    $("ul").append("<li class='in'><img class='avatar img-responsive' src='" + discusses[i].imgUrl + "'/><div class='message'><span class='arrow'></span>" +
-                            "<a onclick='' class='name'>" + discusses[i].userName + "</a><span class='datetime'>" + discusses[i].sendTime + "</span><span class='body'>" + discusses[i].discuss + "</span></div></li>");
+                    if (discusses[i].userId == "${userId}") {
+                        $("ul").append("<li class='out'><div class='message'><span class='arrow'></span>" +
+                                "<a class='name'>我&nbsp;</a><span class='datetime'>" + discusses[i].sendTime +
+                                "</span><p class='discussId' hidden='true'>" + discusses[i].discussId +
+                                "</p><span class='body'>" + discusses[i].discuss + "</span></div></li>");
+                    } else {
+                        $("ul").append("<li class='in'><img class='avatar img-responsive' src='" + discusses[i].imgUrl + "'/><div class='message'><span class='arrow'></span>" +
+                                "<a onclick='userInfo(" + discusses[i].userId + ")' class='name'>" + discusses[i].userName + "</a><span class='datetime'>" + discusses[i].sendTime +
+                                "</span><span class='body'>" + discusses[i].discuss + "</span></div><p class='discussId' hidden='true'>" + discusses[i].discussId +
+                                "</p></li>");
+                    }
                     document.getElementById('discusses').scrollTop = document.getElementById('discusses').scrollHeight;
                 }
             },
             error: doError
         });
+    }
+
+    function userInfo(userId) {
+        top.window.open(basePath + "tourist/userInfo?userId=" + userId);
     }
 </script>

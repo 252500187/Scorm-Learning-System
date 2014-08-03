@@ -19,9 +19,15 @@ public class PublicDiscussesDaoImpl extends PageDao implements PublicDiscussesDa
     }
 
     @Override
-    public List<PublicDiscusses> getInlineDiscussesByPublicIdAndTime(String lastTime, int publicId, int userId) {
-        String sql = "SELECT a.*,b.user_name,b.img_url FROM ss_public_discusses a, us_user_info b WHERE a.user_id=b.user_id " +
-                "AND a.public_id=? AND send_time>? AND a.user_id!=? ORDER BY a.send_time";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<PublicDiscusses>(PublicDiscusses.class), publicId, lastTime, userId);
+    public List<PublicDiscusses> getInlineDiscussesByPublicIdAndDiscussId(PublicDiscusses publicDiscusses) {
+        String sql = "SELECT a.*,b.user_name,b.img_url FROM ss_public_discusses a, us_user_info b " +
+                "WHERE a.user_id=b.user_id AND a.public_id=? AND a.discuss_id>? ORDER BY a.send_time";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<PublicDiscusses>(PublicDiscusses.class), publicDiscusses.getPublicId(), publicDiscusses.getDiscussId());
+    }
+
+    @Override
+    public List<PublicDiscusses> getPublicDiscussesByPublicIdAndNowTime(int publicId, String nowTime) {
+        String sql = "SELECT * FROM ss_public_discusses WHERE public_id=? AND send_time<=? ORDER BY send_time DESC LIMIT 1";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<PublicDiscusses>(PublicDiscusses.class), publicId, nowTime);
     }
 }
