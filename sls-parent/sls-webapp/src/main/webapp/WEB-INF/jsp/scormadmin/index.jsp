@@ -7,10 +7,9 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8"/>
-    <title>SLS | Welcome to SLS</title>
+    <title>SLS | Welcome to Back</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>SCORM LEARNING OF SEEK</title>
     <%@include file="../includes/adminCommon.jsp" %>
 </head>
 <body style="overflow: hidden;">
@@ -26,20 +25,55 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" onclick="changeIframe('admin/user/adminIndexStatisticDo')">统计信息</a>
                     </li>
-                    <li><a data-toggle="tab" onclick="changeIframe('admin/role/listAllRoleDo')">角色管理</a></li>
-                    <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllUserDo')">用户管理</a></li>
-                    <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllMessageDo')">消息管理</a></li>
-                    <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllDiscussDo')">评论管理</a></li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+                            用户相关
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <li><a data-toggle="tab" onclick="changeIframe('admin/role/listAllRoleDo')">角色管理</a></li>
+                            <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllUserDo')">用户管理</a></li>
+                            <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllMessageDo')">发送消息管理</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+                            课件相关
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/upScormDo')">上传课件</a>
+                            </li>
+                            <li><a data-toggle="tab"
+                                   onclick="changeIframe('admin/scorm/listNotAuditScormInfoDo')">未审核课件</a>
+                            </li>
+                            <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listAuditScormInfoDo')">课件管理</a>
+                            </li>
+                            <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listAllPublicScormDo')">公开课件</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+                            审查管理
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllDiscussDo')">评论管理</a></li>
+                            <li><a data-toggle="tab"
+                                   onclick="changeIframe('admin/user/listAllPublicDiscussDo')">讨论管理</a></li>
+                            <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllQuestionDo')">问题管理</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li><a data-toggle="tab" onclick="changeIframe('admin/label/listAllLabelDo')">标签管理</a></li>
                     <li><a data-toggle="tab" onclick="changeIframe('admin/dict/listAllDictDefineDo')">字典管理</a></li>
-                    <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/upScormDo')">上传课件</a>
-                    </li>
-                    <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listNotAuditScormInfoDo')">未审核课件</a>
-                    </li>
-                    <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listAuditScormInfoDo')">课件管理</a>
-                    </li>
-                    <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listAllPublicScormDo')">公开课件</a>
-                    </li>
+
                     <li class="pull-right"><a data-toggle="tab" onclick="window.location.href='logout'">退出</a></li>
                     <li class="pull-right"><a data-toggle="tab" onclick="">修改密码</a></li>
                 </ul>
@@ -71,7 +105,7 @@
 </html>
 <script type="text/javascript">
     $(function () {
-        $('#iframe').height(document.documentElement.clientHeight-120);
+        $('#iframe').height(document.documentElement.clientHeight - 120);
         changeIframe('admin/user/adminIndexStatisticDo');
     });
 

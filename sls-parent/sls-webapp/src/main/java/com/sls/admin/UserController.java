@@ -82,8 +82,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "listAllDiscussDo", method = {RequestMethod.GET})
-    public String listAllDiscussDo(HttpServletRequest request) {
-        return "scormadmin/discuss/listAllDiscussDo";
+    public String listAllDiscussDo() {
+        return "scormadmin/check/listAllDiscussDo";
     }
 
     @RequestMapping(value = "listAllDiscuss", method = RequestMethod.POST)
@@ -156,5 +156,15 @@ public class UserController {
     @ResponseBody
     public void transMessage(@RequestParam("messageId") int messageId, @RequestParam("userIds") String userIds) {
         userService.transMessage(messageId, userIds);
+    }
+
+    @RequestMapping(value = "listAllPublicDiscussDo", method = {RequestMethod.GET})
+    public String listAllPublicDiscussDo() {
+        return "scormadmin/check/listAllPublicDiscussDo";
+    }
+
+    @RequestMapping(value = "listAllQuestionDo", method = {RequestMethod.GET})
+    public String listAllQuestionDo() {
+        return "scormadmin/check/listAllQuestionDo";
     }
 }
