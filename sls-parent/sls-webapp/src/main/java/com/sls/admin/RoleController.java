@@ -27,6 +27,6 @@ public class RoleController {
     @RequestMapping(value = "listAllRole", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public Page<Role> listAllRole(PageParameter pageParameter, Role role) {
-        return roleService.findRolePageList(pageParameter, role);
+        return roleService.listRolePageList(pageParameter, role);
     }
 }

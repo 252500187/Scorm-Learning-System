@@ -11,7 +11,10 @@ import com.sls.system.service.DictService;
 import com.sls.user.dao.UserAttentionDao;
 import com.sls.user.dao.UserDao;
 import com.sls.user.entity.User;
-import com.sls.util.*;
+import com.sls.util.DateUtil;
+import com.sls.util.DictConstant;
+import com.sls.util.FileUp;
+import com.sls.util.LoginUserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,9 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 @Transactional
@@ -683,24 +684,5 @@ public class ScormServiceImpl implements ScormService {
         if (!publicDiscussesList.isEmpty()) {
             request.setAttribute("discussId", publicDiscussesList.get(0).getDiscussId());
         }
-    }
-
-    @Override
-    public void sendDiscuss(PublicDiscusses publicDiscusses) {
-        if (!publicScormDao.isInTimeByPublicId(publicDiscusses.getPublicId())) {
-            return;
-        }
-        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-        publicDiscusses.setUserId(userId);
-        publicDiscusses.setSendTime(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
-        publicDiscussesDao.addPublicDiscusses(publicDiscusses);
-    }
-
-    @Override
-    public List<PublicDiscusses> getPublicDiscusses(PublicDiscusses publicDiscusses) {
-        if (publicScormDao.isInTimeByPublicId(publicDiscusses.getPublicId())) {
-            return publicDiscussesDao.getInlineDiscussesByPublicIdAndDiscussId(publicDiscusses);
-        }
-        return new ArrayList<PublicDiscusses>();
     }
 }

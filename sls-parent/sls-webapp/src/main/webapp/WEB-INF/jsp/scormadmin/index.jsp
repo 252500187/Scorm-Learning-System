@@ -50,7 +50,7 @@
                             <li><a data-toggle="tab"
                                    onclick="changeIframe('admin/scorm/listNotAuditScormInfoDo')">未审核课件</a>
                             </li>
-                            <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listAuditScormInfoDo')">课件管理</a>
+                            <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listAuditScormInfoDo')">已审核课件管理</a>
                             </li>
                             <li><a data-toggle="tab" onclick="changeIframe('admin/scorm/listAllPublicScormDo')">公开课件</a>
                             </li>
@@ -63,9 +63,9 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllDiscussDo')">评论管理</a></li>
+                            <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllDiscussDo')">课件评论管理</a></li>
                             <li><a data-toggle="tab"
-                                   onclick="changeIframe('admin/user/listAllPublicDiscussDo')">讨论管理</a></li>
+                                   onclick="changeIframe('admin/user/listAllPublicDiscussDo')">公开课讨论管理</a></li>
                             <li><a data-toggle="tab" onclick="changeIframe('admin/user/listAllQuestionDo')">问题管理</a>
                             </li>
                         </ul>

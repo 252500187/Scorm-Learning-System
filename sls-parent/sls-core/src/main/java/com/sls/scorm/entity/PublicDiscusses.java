@@ -9,6 +9,7 @@ public class PublicDiscusses {
 
     private String userName;
     private String imgUrl;
+    private String inUse;
 
     public PublicDiscusses() {
     }
@@ -67,5 +68,13 @@ public class PublicDiscusses {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public String getInUse() {
+        return inUse;
+    }
+
+    public void setInUse(String inUse) {
+        this.inUse = inUse;
     }
 }

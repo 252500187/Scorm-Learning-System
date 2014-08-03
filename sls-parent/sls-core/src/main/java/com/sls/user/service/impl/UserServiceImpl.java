@@ -2,8 +2,11 @@ package com.sls.user.service.impl;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
+import com.sls.scorm.dao.PublicDiscussesDao;
+import com.sls.scorm.dao.PublicScormDao;
 import com.sls.scorm.dao.ScormDao;
 import com.sls.scorm.dao.SummarizeDao;
+import com.sls.scorm.entity.PublicDiscusses;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.entity.ScormSummarize;
 import com.sls.system.dao.LabelDao;
@@ -20,6 +23,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -56,8 +60,14 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private BackMessageDao backMessageDao;
 
+    @Autowired
+    private PublicScormDao publicScormDao;
+
+    @Autowired
+    private PublicDiscussesDao publicDiscussesDao;
+
     @Override
-    public Page<User> getUserPageList(PageParameter pageParameter, User user) {
+    public Page<User> listUserPageList(PageParameter pageParameter, User user) {
         Page<User> userPage = userDao.findUserPageList(pageParameter, user);
         for (User user1 : userPage.getResultList()) {
             user1.setShowInUse(dictService.changeDictCodeToValue(user1.getInUse(), DictConstant.STATE));
@@ -383,5 +393,35 @@ public class UserServiceImpl implements UserService {
     public boolean checkOldPassword(String password) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         return userDao.findUserAllInfoById(userId).getPassword().equals(password);
+    }
+
+
+    @Override
+    public void sendDiscuss(PublicDiscusses publicDiscusses) {
+        if (!publicScormDao.isInTimeByPublicId(publicDiscusses.getPublicId())) {
+            return;
+        }
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        publicDiscusses.setUserId(userId);
+        publicDiscusses.setSendTime(DateUtil.getSystemDate("yyyy-MM-dd HH:mm:ss"));
+        publicDiscussesDao.addPublicDiscusses(publicDiscusses);
+    }
+
+    @Override
+    public List<PublicDiscusses> getPublicDiscusses(PublicDiscusses publicDiscusses) {
+        if (publicScormDao.isInTimeByPublicId(publicDiscusses.getPublicId())) {
+            return publicDiscussesDao.getInlineDiscussesByPublicIdAndDiscussId(publicDiscusses);
+        }
+        return new ArrayList<PublicDiscusses>();
+    }
+
+    @Override
+    public Page<PublicDiscusses> listAllPublicDiscuss(PageParameter pageParameter, PublicDiscusses publicDiscusses) {
+        return publicDiscussesDao.listAllPublicDiscuss(pageParameter, publicDiscusses);
+    }
+
+    @Override
+    public void delDiscuss(int discussId) {
+        publicDiscussesDao.delDiscussByDiscussId(discussId);
     }
 }

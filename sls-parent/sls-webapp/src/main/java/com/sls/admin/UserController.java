@@ -2,6 +2,7 @@ package com.sls.admin;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
+import com.sls.scorm.entity.PublicDiscusses;
 import com.sls.scorm.entity.ScormSummarize;
 import com.sls.user.entity.BackMessage;
 import com.sls.user.entity.User;
@@ -48,7 +49,7 @@ public class UserController {
     @RequestMapping(value = "listAllUser", method = RequestMethod.POST)
     @ResponseBody
     public Page listAllUser(PageParameter pageParameter, User user) {
-        return userService.getUserPageList(pageParameter, user);
+        return userService.listUserPageList(pageParameter, user);
     }
 
     @RequestMapping(value = "addUserDo", method = {RequestMethod.GET})
@@ -163,8 +164,26 @@ public class UserController {
         return "scormadmin/check/listAllPublicDiscussDo";
     }
 
+    @RequestMapping(value = "listAllPublicDiscuss", method = {RequestMethod.POST})
+    @ResponseBody
+    public Page listAllPublicDiscuss(PageParameter pageParameter, PublicDiscusses publicDiscusses) {
+        return userService.listAllPublicDiscuss(pageParameter, publicDiscusses);
+    }
+
     @RequestMapping(value = "listAllQuestionDo", method = {RequestMethod.GET})
     public String listAllQuestionDo() {
         return "scormadmin/check/listAllQuestionDo";
     }
+
+    @RequestMapping(value = "delDiscuss", method = {RequestMethod.POST})
+    @ResponseBody
+    public void delDiscuss(@RequestParam("discussId") int discussId) {
+        userService.delDiscuss(discussId);
+    }
+
+//    @RequestMapping(value = "listAllQuestion", method = {RequestMethod.GET})
+//    @ResponseBody
+//    public Page listAllQuestion() {
+//
+//    }
 }

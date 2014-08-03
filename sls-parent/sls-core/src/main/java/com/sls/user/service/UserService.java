@@ -2,6 +2,7 @@ package com.sls.user.service;
 
 import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
+import com.sls.scorm.entity.PublicDiscusses;
 import com.sls.scorm.entity.ScormSummarize;
 import com.sls.user.entity.BackMessage;
 import com.sls.user.entity.User;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public interface UserService {
 
-    Page<User> getUserPageList(PageParameter pageParameter, User user);
+    Page<User> listUserPageList(PageParameter pageParameter, User user);
 
     User getUserAllInfoById(int id);
 
@@ -76,4 +77,12 @@ public interface UserService {
     void changePassword(String password);
 
     boolean checkOldPassword(String password);
+
+    void sendDiscuss(PublicDiscusses publicDiscusses);
+
+    List<PublicDiscusses> getPublicDiscusses(PublicDiscusses publicDiscusses);
+
+    Page<PublicDiscusses> listAllPublicDiscuss(PageParameter pageParameter, PublicDiscusses publicDiscusses);
+
+    void delDiscuss(int discussId);
 }

@@ -91,8 +91,4 @@ public interface ScormService {
     void addPublicScorm(PublicScorm publicScorm);
 
     void getPublicScormInfo(int scormId, HttpServletRequest request);
-
-    void sendDiscuss(PublicDiscusses publicDiscusses);
-
-    List<PublicDiscusses> getPublicDiscusses(PublicDiscusses publicDiscusses);
 }

@@ -5,6 +5,7 @@ import com.sls.scorm.entity.ScoInfo;
 import com.sls.scorm.entity.StudyNote;
 import com.sls.scorm.service.ScormService;
 import com.sls.user.service.UserCenterService;
+import com.sls.user.service.UserService;
 import com.sls.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +34,9 @@ public class StudyScormController {
 
     @Autowired
     private UserCenterService userCenterService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "registerScorm", method = {RequestMethod.GET})
     @ResponseBody
@@ -125,12 +129,12 @@ public class StudyScormController {
     @RequestMapping(value = "sendDiscuss", method = {RequestMethod.POST})
     @ResponseBody
     public void sendDiscuss(PublicDiscusses publicDiscusses) {
-        scormService.sendDiscuss(publicDiscusses);
+        userService.sendDiscuss(publicDiscusses);
     }
 
     @RequestMapping(value = "getDiscuss", method = {RequestMethod.POST})
     @ResponseBody
     public List<PublicDiscusses> getDiscuss(PublicDiscusses publicDiscusses) {
-        return scormService.getPublicDiscusses(publicDiscusses);
+        return userService.getPublicDiscusses(publicDiscusses);
     }
 }

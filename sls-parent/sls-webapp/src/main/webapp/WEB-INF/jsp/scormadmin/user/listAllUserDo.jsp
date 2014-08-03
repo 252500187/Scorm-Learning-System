@@ -52,7 +52,7 @@
                     dataType: "json",
                     type: "POST",
                     success: function () {
-                        $.messager.alert("成功", operate + "屏蔽成功！", "", function () {
+                        $.messager.alert("提示", operate + "屏蔽成功", "", function () {
                             query();
                         })
                     },
@@ -121,7 +121,7 @@
         var path = basePath + "admin/user/sendUserMessageDo?userId=" + userId;
         $("#contentFrame").attr("src", path);
         $('#dataEdit').dialog({
-            title: '<spring:message code="edit"/>',
+            title: '编辑',
             height: 400,
             width: 600
         }).dialog('open');
