@@ -193,4 +193,10 @@ public class UserController {
     public void listAllQuestion(@RequestParam("questionId") int questionId) {
         userService.delQuestion(questionId);
     }
+
+    @RequestMapping(value = "lookQuestion", method = {RequestMethod.GET})
+    public String lookQuestion(HttpServletRequest request, @RequestParam("questionId") int questionId) {
+        userService.lookQuestionInfo(request, questionId);
+        return "scormadmin/check/questionInfo";
+    }
 }

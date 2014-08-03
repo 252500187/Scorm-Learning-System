@@ -434,4 +434,14 @@ public class UserServiceImpl implements UserService {
     public void delQuestion(int questionId) {
         userQuestionDao.delQuestionByQuestionId(questionId);
     }
+
+    @Override
+    public void lookQuestionInfo(HttpServletRequest request, int questionId) {
+        UserQuestion userQuestion = userQuestionDao.getQuestionInfoByQuestionId(questionId);
+        User askUser = userDao.findUserAllInfoById(userQuestion.getAskUserId());
+        User answerUser = userDao.findUserAllInfoById(userQuestion.getAnswerUserId());
+        request.setAttribute("question", userQuestion);
+        request.setAttribute("askUser", askUser);
+        request.setAttribute("answerUser", answerUser);
+    }
 }

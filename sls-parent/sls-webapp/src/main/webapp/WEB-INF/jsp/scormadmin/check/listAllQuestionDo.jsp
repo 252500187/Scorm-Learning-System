@@ -102,7 +102,13 @@
     })
 
     function lookQuestion(questionId) {
-
+        var path = basePath + "admin/user/lookQuestion?questionId=" + questionId;
+        $("#contentFrame").attr("src", path);
+        $('#dataEdit').dialog({
+            title: '查看',
+            height: 400,
+            width: 600
+        }).dialog('open');
     }
 
     function delQuestion(questionId) {

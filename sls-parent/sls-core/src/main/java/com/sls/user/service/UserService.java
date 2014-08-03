@@ -89,4 +89,6 @@ public interface UserService {
     Page<UserQuestion> listAllQuestion(PageParameter pageParameter, UserQuestion userQuestion);
 
     void delQuestion(int questionId);
+
+    void lookQuestionInfo(HttpServletRequest request, int questionId);
 }
