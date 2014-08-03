@@ -85,4 +85,8 @@ public interface UserService {
     Page<PublicDiscusses> listAllPublicDiscuss(PageParameter pageParameter, PublicDiscusses publicDiscusses);
 
     void delDiscuss(int discussId);
+
+    Page<UserQuestion> listAllQuestion(PageParameter pageParameter, UserQuestion userQuestion);
+
+    void delQuestion(int questionId);
 }

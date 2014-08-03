@@ -1,5 +1,7 @@
 package com.sls.user.dao;
 
+import com.core.page.entity.Page;
+import com.core.page.entity.PageParameter;
 import com.sls.user.entity.UserQuestion;
 
 import java.util.List;
@@ -33,4 +35,8 @@ public interface UserQuestionDao {
     void changeQuestionAnswerContentByQuestionId(UserQuestion userQuestion);
 
     void setNewAnswerByQuestionId(int questionId);
+
+    Page<UserQuestion> listAllQuestion(PageParameter pageParameter, UserQuestion userQuestion);
+
+    void delQuestionByQuestionId(int questionId);
 }

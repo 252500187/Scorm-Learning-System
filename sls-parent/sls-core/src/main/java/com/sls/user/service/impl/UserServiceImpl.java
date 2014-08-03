@@ -424,4 +424,14 @@ public class UserServiceImpl implements UserService {
     public void delDiscuss(int discussId) {
         publicDiscussesDao.delDiscussByDiscussId(discussId);
     }
+
+    @Override
+    public Page<UserQuestion> listAllQuestion(PageParameter pageParameter, UserQuestion userQuestion) {
+        return userQuestionDao.listAllQuestion(pageParameter, userQuestion);
+    }
+
+    @Override
+    public void delQuestion(int questionId) {
+        userQuestionDao.delQuestionByQuestionId(questionId);
+    }
 }

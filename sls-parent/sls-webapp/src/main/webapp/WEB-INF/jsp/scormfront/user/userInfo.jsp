@@ -39,7 +39,7 @@
                         <br/>
                         <c:if test="${fn:length(labels)>0}">
                             <p>
-                                爱好：
+                                关注：
                                 <c:forEach var="label" items="${labels}">
                                     <a onclick="findByLabel('${label.labelName}')"> <i
                                             class="fa fa-tags"></i>${label.labelName},</a>

@@ -6,6 +6,7 @@ import com.sls.scorm.entity.PublicDiscusses;
 import com.sls.scorm.entity.ScormSummarize;
 import com.sls.user.entity.BackMessage;
 import com.sls.user.entity.User;
+import com.sls.user.entity.UserQuestion;
 import com.sls.user.service.UserService;
 import com.sls.util.DictConstant;
 import com.sls.util.LoginUserUtil;
@@ -170,20 +171,26 @@ public class UserController {
         return userService.listAllPublicDiscuss(pageParameter, publicDiscusses);
     }
 
-    @RequestMapping(value = "listAllQuestionDo", method = {RequestMethod.GET})
-    public String listAllQuestionDo() {
-        return "scormadmin/check/listAllQuestionDo";
-    }
-
     @RequestMapping(value = "delDiscuss", method = {RequestMethod.POST})
     @ResponseBody
     public void delDiscuss(@RequestParam("discussId") int discussId) {
         userService.delDiscuss(discussId);
     }
 
-//    @RequestMapping(value = "listAllQuestion", method = {RequestMethod.GET})
-//    @ResponseBody
-//    public Page listAllQuestion() {
-//
-//    }
+    @RequestMapping(value = "listAllQuestionDo", method = {RequestMethod.GET})
+    public String listAllQuestionDo() {
+        return "scormadmin/check/listAllQuestionDo";
+    }
+
+    @RequestMapping(value = "listAllQuestion", method = {RequestMethod.POST})
+    @ResponseBody
+    public Page listAllQuestion(PageParameter pageParameter, UserQuestion userQuestion) {
+        return userService.listAllQuestion(pageParameter, userQuestion);
+    }
+
+    @RequestMapping(value = "delQuestion", method = {RequestMethod.POST})
+    @ResponseBody
+    public void listAllQuestion(@RequestParam("questionId") int questionId) {
+        userService.delQuestion(questionId);
+    }
 }

@@ -1,6 +1,8 @@
 package com.sls.user.dao.impl;
 
 import com.core.page.dao.PageDao;
+import com.core.page.entity.Page;
+import com.core.page.entity.PageParameter;
 import com.sls.user.dao.UserQuestionDao;
 import com.sls.user.entity.UserQuestion;
 import com.sls.util.DictConstant;
@@ -96,5 +98,23 @@ public class UserQuestionDaoImpl extends PageDao implements UserQuestionDao {
     public void setNewAnswerByQuestionId(int questionId) {
         String sql = "UPDATE us_user_question SET new_answer=? WHERE question_id=?";
         getJdbcTemplate().update(sql, DictConstant.IN_USE, questionId);
+    }
+
+    @Override
+    public Page<UserQuestion> listAllQuestion(PageParameter pageParameter, UserQuestion userQuestion) {
+        StringBuilder sql = new StringBuilder("SELECT * FROM us_user_question WHERE 1=1 ");
+        if (!("").equals(userQuestion.getAskContent())) {
+            sql.append(" AND ask_content like '%").append(userQuestion.getAskContent().trim()).append("%'");
+        }
+        if (!("").equals(userQuestion.getAnswerContent())) {
+            sql.append(" AND answer_content like '%").append(userQuestion.getAnswerContent().trim()).append("%'");
+        }
+        return queryForPage(pageParameter, sql.toString(), new BeanPropertySqlParameterSource(userQuestion), new BeanPropertyRowMapper<UserQuestion>(UserQuestion.class));
+    }
+
+    @Override
+    public void delQuestionByQuestionId(int questionId) {
+        String sql = "DELETE FROM us_user_question WHERE question_id=?";
+        getJdbcTemplate().update(sql, questionId);
     }
 }
