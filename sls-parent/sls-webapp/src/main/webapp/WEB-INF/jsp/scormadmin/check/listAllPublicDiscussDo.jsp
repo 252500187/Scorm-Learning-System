@@ -85,7 +85,7 @@
             if (temp[i].inUse == "0") {
                 operate = "取消";
             }
-            temp[i].operate = "<a onclick=shieldUser(" + temp[i].userId + ",'" + operate + "')>" + operate + "屏蔽</a>&nbsp;&nbsp;" +
+            temp[i].operate = "<a onclick=shieldUser(" + temp[i].userId + ",'" + operate + "')>" + operate + "屏蔽用户</a>&nbsp;&nbsp;" +
                     "<a onclick=delDiscuss('" + temp[i].discussId + "')>删除</a>";
             rowDataList.push(temp[i]);
         }
