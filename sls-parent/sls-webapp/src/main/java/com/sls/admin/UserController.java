@@ -83,9 +83,32 @@ public class UserController {
         return "scormadmin/user/editUserDo";
     }
 
+    @RequestMapping(value = "changePassword", method = {RequestMethod.POST})
+    @ResponseBody
+    public void editUserPassword(@RequestParam("password") String password) {
+        userService.changePassword(password);
+    }
+
+    @RequestMapping(value = "checkOldPassword", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean checkOldPassword(@RequestParam("oldPassword") String password) {
+        return userService.checkOldPassword(password);
+    }
+
+    @RequestMapping(value = "checkNewPassword", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean checkNewPassword(@RequestParam("newPassword") String newPassword) {
+        return !userService.checkOldPassword(newPassword);
+    }
+
     @RequestMapping(value = "listAllDiscussDo", method = {RequestMethod.GET})
     public String listAllDiscussDo() {
         return "scormadmin/check/listAllDiscussDo";
+    }
+
+    @RequestMapping(value = "changePasswordDo", method = {RequestMethod.GET})
+    public String changePasswordDo() {
+        return "scormadmin/changePassword";
     }
 
     @RequestMapping(value = "listAllDiscuss", method = RequestMethod.POST)

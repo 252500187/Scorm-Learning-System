@@ -75,7 +75,7 @@
                     <li><a data-toggle="tab" onclick="changeIframe('admin/dict/listAllDictDefineDo')">字典管理</a></li>
 
                     <li class="pull-right"><a data-toggle="tab" onclick="window.location.href='logout'">退出</a></li>
-                    <li class="pull-right"><a data-toggle="tab" onclick="">修改密码</a></li>
+                    <li class="pull-right"><a data-toggle="tab" onclick="changeIframe('admin/user/changePasswordDo')">修改密码</a></li>
                 </ul>
             </div>
         </div>
