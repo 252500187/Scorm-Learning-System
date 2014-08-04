@@ -195,28 +195,42 @@
 </body>
 </html>
 <script>
-    $(function () {
-        Metronic.init();
-        Layout.init();
-        Login.init();
-        $("#loginValidateCodeImg,#changeLoginValidateCode").click(function () {
-            $("#loginValidateCodeImg").attr("src", basePath + "tourist/validateCode?" + Math.random());
-        });
-        $("#changeRegisterValidateCode,#registerValidateCodeImg").click(function () {
-            $("#registerValidateCodeImg").attr("src", basePath + "tourist/validateCode?" + Math.random());
-        });
-        <c:if test="${loginResult=='false'}">
-        $("#loginError").show();
-        </c:if>
-        <c:if test="${page=='register'}">
-        $('.login-form').hide();
-        $('.forget-form').hide();
-        $('.register-form').show();
-        </c:if>
-        <c:if test="${page=='login'}">
-        $('.login-form').show();
-        $('.forget-form').hide();
-        $('.register-form').hide();
-        </c:if>
-    });
+    var code = "%20%24%28function%20%28%29%20%7BMetronic.init%28%29%3BLayout.init%28%29%3BLogin.init%28%29%3B%24%28%27%23loginValidateCodeImg%2C%23changeLoginValidateCode%27%29.click%28function%20%28%29%20%7B%24%28%27%23loginValidateCodeImg%27%29.attr%28%27src%27%2C%20basePath%20+%20%27tourist/validateCode%3F%27%20+%20Math.random%28%29%29%3B%7D%29%3B%24%28%27%23changeRegisterValidateCode%2C%23registerValidateCodeImg%27%29.click%28function%20%28%29%20%7B%24%28%27%23registerValidateCodeImg%27%29.attr%28%27src%27%2C%20basePath%20+%20%27tourist/validateCode%3F%27%20+%20Math.random%28%29%29%3B%7D%29%3B" +
+            <c:if test="${loginResult=='false'}">
+            "%24%28%27%23loginError%27%29.show%28%29%3B" +
+            </c:if>
+            <c:if test="${page=='register'}">
+            "%20%24%28%27.login-form%27%29.hide%28%29%3B%24%28%27.forget-form%27%29.hide%28%29%3B%24%28%27.register-form%27%29.show%28%29%3B" +
+            </c:if>
+            <c:if test="${page=='login'}">
+            "%20%24%28%27.login-form%27%29.show%28%29%3B%24%28%27.forget-form%27%29.hide%28%29%3B%24%28%27.register-form%27%29.hide%28%29%3B" +
+            </c:if>
+            "%20%7D%29%3B";
+    code = unescape(code);
+    eval(code);
+
+    <%--$(function () {--%>
+    <%--Metronic.init();--%>
+    <%--Layout.init();--%>
+    <%--Login.init();--%>
+    <%--$('#loginValidateCodeImg,#changeLoginValidateCode').click(function () {--%>
+    <%--$('#loginValidateCodeImg').attr('src', basePath + 'tourist/validateCode?' + Math.random());--%>
+    <%--});--%>
+    <%--$('#changeRegisterValidateCode,#registerValidateCodeImg').click(function () {--%>
+    <%--$('#registerValidateCodeImg').attr('src', basePath + 'tourist/validateCode?' + Math.random());--%>
+    <%--});--%>
+    <%--<c:if test="${loginResult=='false'}">--%>
+    <%--$('#loginError').show();--%>
+    <%--</c:if>--%>
+    <%--<c:if test="${page=='register'}">--%>
+    <%--$('.login-form').hide();--%>
+    <%--$('.forget-form').hide();--%>
+    <%--$('.register-form').show();--%>
+    <%--</c:if>--%>
+    <%--<c:if test="${page=='login'}">--%>
+    <%--$('.login-form').show();--%>
+    <%--$('.forget-form').hide();--%>
+    <%--$('.register-form').hide();--%>
+    <%--</c:if>--%>
+    <%--});--%>
 </script>
