@@ -43,6 +43,11 @@
         loadData(listOption);
     }
 
+    $(function () {
+        initDataGrid();
+        query();
+    })
+
     function initDataGrid() {
         $('#dataTable').datagrid({
             title: "讨论列表",
@@ -91,11 +96,6 @@
         }
         return rowDataList;
     }
-
-    $(function () {
-        initDataGrid();
-        query();
-    })
 
     function shieldUser(id, operate) {
         $.messager.confirm("提示", "确认" + operate + "屏蔽用户？", function (r) {
