@@ -54,7 +54,7 @@
         </div>
     </form>
 
-    <form class="changeSuccess" id="changeSuccess" style="margin-top:160px">
+    <form class="changeSuccess" id="changeSuccess">
         <h3 class="form-title">密码修改</h3>
 
         <div class="alert alert-info ">
@@ -91,7 +91,17 @@
                     },
                     newPassword: {
                         required: true,
-                        minlength: 6
+                        minlength: 6,
+                        remote: {
+                            url: basePath + "user/info/checkNewPassword",
+                            type: "post",
+                            dataType: "json",
+                            data: {
+                                newPassword: function () {
+                                    return $("#newPassword").val().md5();
+                                }
+                            }
+                        }
 
                     },
                     copyNewPassword: {
@@ -107,7 +117,8 @@
                     },
                     newPassword: {
                         required: "请输入新密码",
-                        minlength: "密码长度过小(6位)"
+                        minlength: "密码长度过小(6位)",
+                        remote: "新密码不能与旧密码相同"
                     },
                     copyNewPassword: {
                         required: "请再次输入新密码",

@@ -54,4 +54,10 @@ public class UserInfoController {
     public boolean checkOldPassword(@RequestParam("oldPassword") String password) {
         return userService.checkOldPassword(password);
     }
+
+    @RequestMapping(value = "checkNewPassword", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean checkNewPassword(@RequestParam("newPassword") String newPassword) {
+        return !userService.checkOldPassword(newPassword);
+    }
 }
