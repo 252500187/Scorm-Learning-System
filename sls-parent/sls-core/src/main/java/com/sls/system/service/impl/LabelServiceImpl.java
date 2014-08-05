@@ -27,7 +27,7 @@ public class LabelServiceImpl implements LabelService {
 
     @Override
     public void getAllUserLabel(HttpServletRequest request) {
-        request.setAttribute("labelList", labelDao.getAllUserLabel(getUserId()));
+        request.setAttribute("labelList", labelDao.getAllUserCanSelectLabels(getUserId()));
     }
 
     private int getUserId() {

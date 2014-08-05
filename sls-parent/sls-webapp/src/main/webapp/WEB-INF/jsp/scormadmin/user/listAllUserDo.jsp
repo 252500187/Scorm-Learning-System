@@ -22,7 +22,7 @@
         <a class="btn btn-primary" onclick="query()"><spring:message code="query"/></a>
     </form>
     <table id="dataTable"></table>
-    <div id="dataEdit" closed="true" modal="true" style="overflow: hidden">
+    <div id="dataEdit" closed="true" modal="true" style="overflow: hidden;" closable="true">
         <iframe style="width: 100%;height: 100%"
                 id="contentFrame"
                 name="contentFrame"
@@ -111,17 +111,29 @@
             if (temp[i].inUse == "${shield}") {
                 operate = "取消";
             }
-            temp[i].edit = "<a onclick=shieldUser(" + temp[i].userId + ",'" + operate + "')>" + operate + "屏蔽</a>&nbsp;<a onclick=sendMessage(" + temp[i].userId + ")>发送消息</a>";
+            temp[i].edit = "<a onclick=lookUser(" + temp[i].userId + ")>查看</a>&nbsp;" +
+                    "<a onclick=shieldUser(" + temp[i].userId + ",'" + operate + "')>" + operate + "屏蔽</a>&nbsp;" +
+                    "<a onclick=sendMessage(" + temp[i].userId + ")>发送消息</a>";
             rowDataList.push(temp[i]);
         }
         return rowDataList;
+    }
+
+    function lookUser(userId) {
+        var path = basePath + "admin/user/userInfo?userId=" + userId;
+        $("#contentFrame").attr("src", path);
+        $('#dataEdit').dialog({
+            title: '用户信息',
+            height: 400,
+            width: 600
+        }).dialog('open');
     }
 
     function sendMessage(userId) {
         var path = basePath + "admin/user/sendUserMessageDo?userId=" + userId;
         $("#contentFrame").attr("src", path);
         $('#dataEdit').dialog({
-            title: '编辑',
+            title: '发送消息',
             height: 400,
             width: 600
         }).dialog('open');

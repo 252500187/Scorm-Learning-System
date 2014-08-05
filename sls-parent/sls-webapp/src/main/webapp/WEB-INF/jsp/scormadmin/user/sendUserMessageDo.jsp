@@ -31,7 +31,7 @@
                 <div class="controls">
                     <input id="saves" name="saves" type="button" onclick="sendMessage()" class="btn btn-primary"
                            value="发送"/>
-                    <input type="button" onclick="quit()" class="btn btn-primary" value="取消"/>
+                    <input type="button" onclick="quit()" class="btn btn-primary" value="关闭"/>
                 </div>
             </div>
         </fieldset>

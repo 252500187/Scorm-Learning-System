@@ -91,4 +91,6 @@ public interface UserService {
     void delQuestion(int questionId);
 
     void lookQuestionInfo(HttpServletRequest request, int questionId);
+
+    void getUserAdminInfo(HttpServletRequest request, int userId);
 }

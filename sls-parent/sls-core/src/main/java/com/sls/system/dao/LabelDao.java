@@ -7,7 +7,7 @@ import com.sls.system.entity.Label;
 import java.util.List;
 
 public interface LabelDao {
-    List<Label> getAllUserLabel(int userId);
+    List<Label> getAllUserCanSelectLabels(int userId);
 
     void delAllUserLabelsByUserId(int userId);
 

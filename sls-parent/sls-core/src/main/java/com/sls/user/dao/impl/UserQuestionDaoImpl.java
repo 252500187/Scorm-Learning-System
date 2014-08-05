@@ -17,8 +17,14 @@ public class UserQuestionDaoImpl extends PageDao implements UserQuestionDao {
 
     @Override
     public List<UserQuestion> getUserAnsWerQuestionsByAnswerUserId(int answerUserId) {
-        String sql = "SELECT * FROM us_user_question WHERE answer_user_id=? AND answer_content!=''";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<UserQuestion>(UserQuestion.class), answerUserId);
+        String sql = "SELECT * FROM us_user_question WHERE answer_user_id=? AND new_ask=? AND new_answer=?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<UserQuestion>(UserQuestion.class), answerUserId, DictConstant.NO_USE, DictConstant.NO_USE);
+    }
+
+    @Override
+    public List<UserQuestion> getUserAskQuestionsByAnswerUserId(int answerUserId) {
+        String sql = "SELECT * FROM us_user_question WHERE ask_user_id=? AND new_ask=? AND new_answer=?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<UserQuestion>(UserQuestion.class), answerUserId, DictConstant.NO_USE, DictConstant.NO_USE);
     }
 
     @Override

@@ -21,7 +21,7 @@ public class LabelDaoImpl extends PageDao implements LabelDao {
     }
 
     @Override
-    public List<Label> getAllUserLabel(int userId) {
+    public List<Label> getAllUserCanSelectLabels(int userId) {
         String sql = "SELECT * FROM us_label WHERE label_id NOT IN " +
                 " (SELECT label_id FROM us_user_label WHERE user_id=?)";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Label>(Label.class), userId);
@@ -42,7 +42,7 @@ public class LabelDaoImpl extends PageDao implements LabelDao {
 
     @Override
     public List<Label> getLabelsByUserId(int userId) {
-        String sql = "SELECT uul.*,ul.`label_name` FROM us_user_label uul JOIN us_label ul ON uul.`label_id` = ul.`label_id` WHERE user_id = ?";
+        String sql = "SELECT * FROM us_label WHERE label_id IN (SELECT label_id FROM us_user_label WHERE user_id=?)";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Label>(Label.class), userId);
     }
 

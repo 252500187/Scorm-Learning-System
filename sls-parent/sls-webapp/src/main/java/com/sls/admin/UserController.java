@@ -222,4 +222,10 @@ public class UserController {
         userService.lookQuestionInfo(request, questionId);
         return "scormadmin/check/questionInfo";
     }
+
+    @RequestMapping(value = "userInfo", method = {RequestMethod.GET})
+    public String userInfo(HttpServletRequest request, @RequestParam("userId") int userId) {
+        userService.getUserAdminInfo(request, userId);
+        return "scormadmin/user/userInfo";
+    }
 }

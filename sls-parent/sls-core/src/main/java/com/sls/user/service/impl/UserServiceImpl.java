@@ -444,4 +444,14 @@ public class UserServiceImpl implements UserService {
         request.setAttribute("askUser", askUser);
         request.setAttribute("answerUser", answerUser);
     }
+
+    @Override
+    public void getUserAdminInfo(HttpServletRequest request, int userId) {
+        request.setAttribute("user", userDao.findUserAllInfoById(userId));
+        request.setAttribute("labels", labelDao.getLabelsByUserId(userId));
+        request.setAttribute("upScorms", scormDao.getAllUpScormInfoByUserId(userId));
+        request.setAttribute("registerScorms", scormDao.findRegisterScormByUserId(userId));
+        request.setAttribute("answerQuestion", userQuestionDao.getUserAnsWerQuestionsByAnswerUserId(userId));
+        request.setAttribute("askQuestion", userQuestionDao.getUserAskQuestionsByAnswerUserId(userId));
+    }
 }

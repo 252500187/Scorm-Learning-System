@@ -62,7 +62,7 @@
 
                 <div class="controls">
                     <input id="saves" name="saves" type="button" onclick="save()" class="btn btn-primary" value="确认"/>
-                    <input type="button" onclick="quit()" class="btn btn-primary" value="取消"/>
+                    <input type="button" onclick="quit()" class="btn btn-primary" value="关闭"/>
                 </div>
             </div>
         </fieldset>
