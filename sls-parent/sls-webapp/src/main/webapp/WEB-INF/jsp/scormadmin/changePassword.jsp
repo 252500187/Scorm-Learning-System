@@ -69,7 +69,9 @@
         Metronic.init();
         Layout.init();
         $(".changeSuccess").hide();
+        $("input").val("");
     });
+
     $('#changePassword').validate({
                 errorElement: 'span',
                 errorClass: 'help-block',
@@ -117,7 +119,7 @@
                     newPassword: {
                         required: "请输入新密码",
                         minlength: "密码长度过小(6位)",
-                        remote:"新密码不能与旧密码相同"
+                        remote: "新密码不能与旧密码相同"
 
                     },
                     copyNewPassword: {

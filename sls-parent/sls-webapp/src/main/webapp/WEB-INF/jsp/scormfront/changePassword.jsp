@@ -70,7 +70,9 @@
         Metronic.init();
         Layout.init();
         $(".changeSuccess").hide();
+        $("input").val("");
     });
+
     $('#changePassword').validate({
                 errorElement: 'span',
                 errorClass: 'help-block',
