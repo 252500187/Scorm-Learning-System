@@ -96,4 +96,6 @@ public interface UserService {
     void getUserAdminInfo(HttpServletRequest request, int userId);
 
     Page getAnnouncementPageList(PageParameter pageParameter, BackAnnouncement backAnnouncement);
+
+    void sendAnnouncement(BackAnnouncement backAnnouncement);
 }

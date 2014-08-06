@@ -25,4 +25,10 @@ public class BackAnnouncementDaoImpl extends PageDao implements BackAnnouncement
         return queryForPage(pageParameter, sql.toString(), new BeanPropertySqlParameterSource(backAnnouncement), new BeanPropertyRowMapper<BackAnnouncement>(BackAnnouncement.class));
 
     }
+
+    @Override
+    public void addBackAnnouncement(BackAnnouncement backAnnouncement) {
+        String sql = "INSERT INTO us_back_announcement(admin_id, date, announcement_theme, announcement_content) VALUES( :adminId,:date,:announcementTheme,:announcementContent)";
+        getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(backAnnouncement));
+    }
 }

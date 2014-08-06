@@ -463,4 +463,11 @@ public class UserServiceImpl implements UserService {
         Page<BackAnnouncement> backAnnouncementPage = backAnnouncementDao.getAnnouncementPageList(pageParameter, backAnnouncement);
         return backAnnouncementPage;
     }
+
+    @Override
+    public void sendAnnouncement(BackAnnouncement backAnnouncement) {
+        backAnnouncement.setAdminId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        backAnnouncement.setDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
+        backAnnouncementDao.addBackAnnouncement(backAnnouncement);
+    }
 }

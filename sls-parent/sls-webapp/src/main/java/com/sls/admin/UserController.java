@@ -142,10 +142,21 @@ public class
         return "scormadmin/user/sendUserMessageDo";
     }
 
+    @RequestMapping(value = "sendAnnouncementDo", method = {RequestMethod.GET})
+    public String sendAnnouncementDo() {
+        return "scormadmin/user/sendAnnouncementDo";
+    }
+
     @RequestMapping(value = "sendUserMessage", method = {RequestMethod.POST})
     @ResponseBody
     public void sendUserMessage(BackMessage backMessage) {
         userService.sendUserMessage(backMessage);
+    }
+
+    @RequestMapping(value = "sendAnnouncement", method = {RequestMethod.POST})
+    @ResponseBody
+    public void sendAnnouncement(BackAnnouncement backAnnouncement) {
+        userService.sendAnnouncement(backAnnouncement);
     }
 
     @RequestMapping(value = "listAllMessageDo", method = {RequestMethod.GET})
