@@ -4,6 +4,7 @@ import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.PublicDiscusses;
 import com.sls.scorm.entity.ScormSummarize;
+import com.sls.user.entity.BackAnnouncement;
 import com.sls.user.entity.BackMessage;
 import com.sls.user.entity.User;
 import com.sls.user.entity.UserQuestion;
@@ -23,7 +24,8 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @Transactional
 @RequestMapping("/admin/user/")
-public class UserController {
+public class
+        UserController {
 
     @Autowired
     private UserService userService;
@@ -106,6 +108,11 @@ public class UserController {
         return "scormadmin/check/listAllDiscussDo";
     }
 
+    @RequestMapping(value = "listAllAnnouncementDo", method = {RequestMethod.GET})
+    public String listAllAnnouncementDo() {
+        return "scormadmin/user/listAllAnnouncementDo";
+    }
+
     @RequestMapping(value = "changePasswordDo", method = {RequestMethod.GET})
     public String changePasswordDo() {
         return "scormadmin/changePassword";
@@ -115,6 +122,12 @@ public class UserController {
     @ResponseBody
     public Page listAllDiscuss(PageParameter pageParameter, ScormSummarize scormSummarize) {
         return userService.getDiscussPageList(pageParameter, scormSummarize);
+    }
+
+    @RequestMapping(value = "listAllAnnouncement", method = RequestMethod.POST)
+    @ResponseBody
+    public Page listAllAnnouncement(PageParameter pageParameter, BackAnnouncement backAnnouncement) {
+        return userService.getAnnouncementPageList(pageParameter, backAnnouncement);
     }
 
     @RequestMapping(value = "shieldDiscuss", method = RequestMethod.POST)

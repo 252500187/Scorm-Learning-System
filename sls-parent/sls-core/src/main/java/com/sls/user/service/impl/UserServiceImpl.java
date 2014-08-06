@@ -61,6 +61,9 @@ public class UserServiceImpl implements UserService {
     private BackMessageDao backMessageDao;
 
     @Autowired
+    private BackAnnouncementDao backAnnouncementDao;
+
+    @Autowired
     private PublicScormDao publicScormDao;
 
     @Autowired
@@ -453,5 +456,11 @@ public class UserServiceImpl implements UserService {
         request.setAttribute("registerScorms", scormDao.findRegisterScormByUserId(userId));
         request.setAttribute("answerQuestion", userQuestionDao.getUserAnsWerQuestionsByAnswerUserId(userId));
         request.setAttribute("askQuestion", userQuestionDao.getUserAskQuestionsByAnswerUserId(userId));
+    }
+
+    @Override
+    public Page getAnnouncementPageList(PageParameter pageParameter, BackAnnouncement backAnnouncement) {
+        Page<BackAnnouncement> backAnnouncementPage = backAnnouncementDao.getAnnouncementPageList(pageParameter, backAnnouncement);
+        return backAnnouncementPage;
     }
 }

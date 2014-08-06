@@ -4,6 +4,7 @@ import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.PublicDiscusses;
 import com.sls.scorm.entity.ScormSummarize;
+import com.sls.user.entity.BackAnnouncement;
 import com.sls.user.entity.BackMessage;
 import com.sls.user.entity.User;
 import com.sls.user.entity.UserQuestion;
@@ -93,4 +94,6 @@ public interface UserService {
     void lookQuestionInfo(HttpServletRequest request, int questionId);
 
     void getUserAdminInfo(HttpServletRequest request, int userId);
+
+    Page getAnnouncementPageList(PageParameter pageParameter, BackAnnouncement backAnnouncement);
 }
