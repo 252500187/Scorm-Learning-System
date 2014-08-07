@@ -18,10 +18,10 @@
         <fieldset>
             <legend></legend>
             <div class="control-group">
-                <label class="control-label">公告标题${announcement.announcementTheme}</label>
+                <label class="control-label">公告标题</label>
 
                 <div class="controls">
-                    <textarea id="announcementTheme" value=""/></textarea>
+                    <textarea id="announcementTheme">${announcement.announcementTheme}</textarea>
                 </div>
             </div>
 
@@ -29,15 +29,15 @@
                 <label class="control-label">公告内容</label>
 
                 <div class="controls">
-                    <textarea id="announcementContent" value=""/></textarea>
+                    <textarea id="announcementContent">${announcement.announcementTheme}</textarea>
                 </div>
             </div>
 
             <div class="control-group">
                 <label class="control-label"></label>
                 <div class="controls">
-                    <input id="send" name="send" type="button" onclick="sendAnnouncement()" class="btn btn-primary"
-                           value="发布"/>
+                    <input id="edit" name="edit" type="button" onclick="editAnnouncement()" class="btn btn-primary"
+                           value="修改"/>
                     <input type="button" onclick="quit()" class="btn btn-primary" value="关闭"/>
                 </div>
             </div>
@@ -58,12 +58,13 @@
         }
     };
 
-    function sendAnnouncement() {
+    function editAnnouncement() {
         if (!JC.validate(ruleLabel)) return;
-        $("#send").button('loading');
+        $("#edit").button('loading');
         $.ajax({
-            url: basePath + "admin/user/sendAnnouncement",
+            url: basePath + "admin/user/editAnnouncement",
             data: {
+                announcementId: ${announcement.announcementId},
                 announcementTheme: $("#announcementTheme").val().trim(),
                 announcementContent: $("#announcementContent").val().trim()
             },

@@ -56,7 +56,7 @@
                 [
                     {field: 'check', title: "<input type='checkbox' id='selectAll' onclick='selectAllAnnouncement()'>全选", align: 'center', width: 50},
                     {field: 'date', title: '发布日期', sortable: true, align: 'center', width: 100 },
-                    {field: 'announcementTheme', title: '公告主题', align: 'center', width: 150},
+                    {field: 'announcementTheme', title: '公告标题', align: 'center', width: 150},
                     {field: 'announcementContent', title: '公告内容', align: 'center', width: 600 },
                     {field: 'operate', title: '操作', align: 'center', width: 100 }
                 ]
@@ -91,7 +91,7 @@
 
     function queryFormat(temp) {
         for (var i in temp) {
-            temp[i].operate = "<a onclick='lookAnnouncement(\"" + temp[i].announcementId + "\")'>查看</a>&nbsp;&nbsp;"
+            temp[i].operate = "<a onclick='editAnnouncement(\"" + temp[i].announcementId + "\")'>编辑</a>&nbsp;&nbsp;"
                     + "<a onclick='delAnnouncement(\"" + temp[i].announcementId + "\")'>删除</a>&nbsp;&nbsp;";
             temp[i].check = "<input type='checkbox' name='announcement' value='" + temp[i].announcementId + "'>";
         }
@@ -108,11 +108,11 @@
         }).dialog('open');
     }
 
-    function lookAnnouncement(announcementId) {
-        var path = basePath + "admin/user/lookAnnouncementDo?announcementId=" + announcementId;
+    function editAnnouncement(announcementId) {
+        var path = basePath + "admin/user/editAnnouncementDo?announcementId=" + announcementId;
         $("#contentList").attr("src", path);
         $('#dataEdit').dialog({
-            title: '消息内容',
+            title: '公告内容',
             height: 400,
             width: 600
         }).dialog('open');
@@ -130,7 +130,11 @@
         $.ajax({
             url: basePath + "admin/user/delAnnouncement?announcementId=" + announcementId,
             dataType: "json",
-            type: "DELETE"
+            type: "DELETE",
+            success: function () {
+                query();
+            },
+            error: doError
         })
     }
 

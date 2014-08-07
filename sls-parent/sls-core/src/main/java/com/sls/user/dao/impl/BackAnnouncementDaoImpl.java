@@ -31,4 +31,23 @@ public class BackAnnouncementDaoImpl extends PageDao implements BackAnnouncement
         String sql = "INSERT INTO us_back_announcement(admin_id, date, announcement_theme, announcement_content) VALUES( :adminId,:date,:announcementTheme,:announcementContent)";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(backAnnouncement));
     }
+
+    @Override
+    public void delAnnouncementById(int announcementId) {
+        String sql = "DELETE FROM us_back_announcement WHERE announcement_id=?";
+        getJdbcTemplate().update(sql, announcementId);
+    }
+
+    @Override
+    public BackAnnouncement getAnnouncementById(int announcementId) {
+        String sql = "SELECT * FROM `us_back_announcement` WHERE announcement_id = ?";
+        return getJdbcTemplate().queryForObject(sql, new BeanPropertyRowMapper<BackAnnouncement>(BackAnnouncement.class), announcementId);
+
+    }
+
+    @Override
+    public void editAnnouncement(BackAnnouncement backAnnouncement) {
+        String sql = "UPDATE us_back_announcement SET admin_id=:adminId, announcement_theme=:announcementTheme,announcement_content=:announcementContent WHERE announcement_id=:announcementId ";
+        getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(backAnnouncement));
+    }
 }

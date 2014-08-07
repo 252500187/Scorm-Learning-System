@@ -98,4 +98,10 @@ public interface UserService {
     Page getAnnouncementPageList(PageParameter pageParameter, BackAnnouncement backAnnouncement);
 
     void sendAnnouncement(BackAnnouncement backAnnouncement);
+
+    void delAnnouncement(int announcementId);
+
+    BackAnnouncement getAnnouncementInfo(int announcementId);
+
+    void editAnnouncement(BackAnnouncement backAnnouncement);
 }

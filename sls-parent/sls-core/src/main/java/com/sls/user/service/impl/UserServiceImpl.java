@@ -470,4 +470,21 @@ public class UserServiceImpl implements UserService {
         backAnnouncement.setDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
         backAnnouncementDao.addBackAnnouncement(backAnnouncement);
     }
+
+    @Override
+    public void delAnnouncement(int announcementId) {
+        backAnnouncementDao.delAnnouncementById(announcementId);
+    }
+
+    @Override
+    public BackAnnouncement getAnnouncementInfo(int announcementId) {
+        BackAnnouncement backAnnouncement = backAnnouncementDao.getAnnouncementById(announcementId);
+        return backAnnouncement;
+    }
+
+    @Override
+    public void editAnnouncement(BackAnnouncement backAnnouncement) {
+        backAnnouncement.setAdminId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        backAnnouncementDao.editAnnouncement(backAnnouncement);
+    }
 }

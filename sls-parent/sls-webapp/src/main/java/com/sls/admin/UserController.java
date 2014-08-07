@@ -188,10 +188,29 @@ public class
         userService.delMessage(messageId);
     }
 
+    @RequestMapping(value = "delAnnouncement", method = {RequestMethod.DELETE})
+    @ResponseBody
+    public void delAnnouncement(@RequestParam("announcementId") int announcementId) {
+        userService.delAnnouncement(announcementId);
+    }
+
+    @RequestMapping(value = "editAnnouncement", method = {RequestMethod.POST})
+    @ResponseBody
+    public void editAnnouncement(BackAnnouncement backAnnouncement) {
+        userService.editAnnouncement(backAnnouncement);
+    }
+
     @RequestMapping(value = "lookMessageDo", method = {RequestMethod.GET})
     public String lookMessageDo(HttpServletRequest request, @RequestParam("messageId") int messageId) {
         request.setAttribute("message", userService.getMessageInfo(messageId));
         return "scormadmin/user/oneMessageInfoDo";
+    }
+
+    @RequestMapping(value = "editAnnouncementDo", method = {RequestMethod.GET})
+    public String editAnnouncementDo(HttpServletRequest request, @RequestParam("announcementId") int announcementId) {
+        BackAnnouncement backAnnouncement = userService.getAnnouncementInfo(announcementId);
+        request.setAttribute("announcement", backAnnouncement);
+        return "scormadmin/user/editAnnouncementDo";
     }
 
     @RequestMapping(value = "transMessageDo", method = {RequestMethod.GET})

@@ -9,4 +9,10 @@ public interface BackAnnouncementDao {
     Page<BackAnnouncement> getAnnouncementPageList(PageParameter pageParameter, BackAnnouncement backAnnouncement);
 
     void addBackAnnouncement(BackAnnouncement backAnnouncement);
+
+    void delAnnouncementById(int announcementId);
+
+    BackAnnouncement getAnnouncementById(int announcementId);
+
+    void editAnnouncement(BackAnnouncement backAnnouncement);
 }
