@@ -128,6 +128,7 @@
             </c:forEach>
         </div>
         <br/>
+
         <div class="row">
             <div class="col-md-12" style="padding-left: 40px;">
                 <div class="portlet">
@@ -154,6 +155,17 @@
     </div>
     <div class="col-md-3" style="margin-top: -35px">
         <div class="portlet">
+            <h1>
+                <div class="caption-sidebar">公告</div>
+
+            </h1>
+            <hr/>
+            <c:if test="${fn:length(announcement)<1}">
+                <h5>暂时没有公告</h5>
+            </c:if>
+            <c:forEach var="announcement" items="${announcements}">
+                <h5>${announcement.announcementTheme}</h5>
+            </c:forEach>
             <div class="portlet-title">
                 <h1>
                     <div class="caption-sidebar">最新上传</div>
