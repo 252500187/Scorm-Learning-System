@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.naming.AuthenticationException;
@@ -38,5 +39,17 @@ public class LoginController {
     @RequestMapping(value = "/", method = {RequestMethod.GET})
     public String toIndex(HttpServletRequest request, HttpSession session) {
         return loginService.toIndex(request, session);
+    }
+
+    @RequestMapping(value = "/sendPasswordEmail", method = RequestMethod.POST)
+    @ResponseBody
+    public Boolean sendPasswordEmail(@RequestParam("email") String email, @RequestParam("basePath") String basePath) {
+        return loginService.sendPasswordEmail(email, basePath);
+    }
+
+    @RequestMapping(value = "/emailChangePassword", method = RequestMethod.GET)
+    public String sendPasswordEmail(HttpServletRequest request, @RequestParam("key") String key) {
+        request.setAttribute("key", key);
+        return "scormfront/forgetChangePassword";
     }
 }

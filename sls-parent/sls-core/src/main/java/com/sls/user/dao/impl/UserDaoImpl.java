@@ -183,4 +183,10 @@ public class UserDaoImpl extends PageDao implements UserDao {
         String sql = "UPDATE us_user SET password = ? WHERE user_id = ?";
         getJdbcTemplate().update(sql, password, userId);
     }
+
+    @Override
+    public List<User> findInUseUserByEmail(String email) {
+        String sql = "SELECT a.* FROM us_user_info a,us_user b WHERE a.user_id=b.user_id AND a.email=? AND b.in_use=?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<User>(User.class), email, DictConstant.IN_USE);
+    }
 }

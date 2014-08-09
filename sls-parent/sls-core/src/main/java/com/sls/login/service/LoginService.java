@@ -10,4 +10,6 @@ public interface LoginService {
     String toIndex(HttpServletRequest request, HttpSession session);
 
     ModelAndView loginResult(HttpServletRequest request, User user, HttpSession session);
+
+    Boolean sendPasswordEmail(String email, String basePath);
 }

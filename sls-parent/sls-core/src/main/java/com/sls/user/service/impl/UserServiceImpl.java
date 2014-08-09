@@ -161,26 +161,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void sendPasswordEmail(String email) {
-        MailSenderInfo mailInfo = new MailSenderInfo();
-        mailInfo.setMailServerHost("smtp.163.com");
-        mailInfo.setMailServerPort("25");
-        mailInfo.setValidate(true);
-        mailInfo.setUserName("252500187@qq.com");
-        mailInfo.setPassword("bblllmukk");
-        mailInfo.setFromAddress("252500187@qq.com");//发送方邮箱
-        mailInfo.setToAddress(email);//接收方邮箱
-        mailInfo.setSubject("重置登陆密码");
-        mailInfo.setContent("亲爱的用户：您好！<br>您收到这封电子邮件是因为您 (也可能是某人冒充您的名义) \" +\n" +
-                "                \"需要申请一个新密码。假如这不是您本人所申请，请不用理会这封电子邮件。\" +\n" +
-                "                \"但是如果您持续收到这类的信件骚扰，请您尽快联络管理。<br>要使用新的密码, 请点击以下链接进行密码重置：\" +\n" +
-                "                \"<a target='_blank' rel='nofollow' style='color: #0041D3; text-decoration: underline' \" +\n" +
-                "                \"href='\" + url + \"/resetPassword?desCheckKey=\" + desCheckKey + \"&id=\" + encontent + \"'>重置密码</a>");
-        SimpleMailSender sms = new SimpleMailSender();
-        sms.sendHtmlMail(mailInfo);
-    }
-
-    @Override
     public void shieldUser(int userId) {
         User user = userDao.findUserAllInfoById(userId);
         if (user.getInUse() == DictConstant.NO_USE) {

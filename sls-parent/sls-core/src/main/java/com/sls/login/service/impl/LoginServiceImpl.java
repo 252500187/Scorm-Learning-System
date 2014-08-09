@@ -4,11 +4,12 @@ import com.sls.scorm.dao.PublicScormDao;
 import com.sls.scorm.dao.ScormDao;
 import com.sls.system.dao.LabelDao;
 import com.sls.user.dao.*;
-import com.sls.user.entity.User;
+import com.sls.user.entity.*;
 import com.sls.login.service.LoginService;
-import com.sls.user.entity.UserAttention;
+import com.sls.util.DateUtil;
 import com.sls.util.DictConstant;
 import com.sls.util.LoginUserUtil;
+import com.sls.util.StringUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -18,9 +19,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.mail.*;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
 @Transactional
 @Service("loginService")
@@ -31,6 +36,9 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private RoleDao roleDao;
+
+    @Autowired
+    private ChangePasswordDao changePasswordDao;
 
     @Autowired
     private ScormDao scormDao;
@@ -122,5 +130,45 @@ public class LoginServiceImpl implements LoginService {
         session.setAttribute("answerNum", userQuestionDao.getNewAnswerNumByUserId(userId));
         //获取后台传送的消息
         session.setAttribute("messages", backMessageDao.getNewMessageByUserId(userId));
+    }
+
+    @Override
+    public Boolean sendPasswordEmail(String email, String basePath) {
+        List<User> userList = userDao.findInUseUserByEmail(email);
+        if (userList.size() < 1) {
+            return false;
+        }
+        String key = StringUtil.generateUUID();
+        sendEmail(email, key, basePath);
+        addChangePassword(userList.get(0).getUserId(), key);
+        return true;
+    }
+
+    void sendEmail(String email, String key, String basePath) {
+        MailSenderInfo mailInfo = new MailSenderInfo();
+        mailInfo.setMailServerHost("smtp.qq.com");
+        mailInfo.setMailServerPort("25");
+        mailInfo.setValidate(true);
+        mailInfo.setUserName("252500187@qq.com");
+        mailInfo.setPassword("bblllmukk");
+        mailInfo.setFromAddress("252500187@qq.com");//发送方邮箱
+        mailInfo.setToAddress(email);//接收方邮箱
+        mailInfo.setSubject("重置登陆密码");
+        mailInfo.setContent("亲爱的用户：您好！<br>您收到这封电子邮件是因为您 (也可能是某人冒充您的名义) 需要申请一个新密码。假如这不是您本人所申请，请不用理会这封电子邮件。<br>" +
+                "要使用新的密码, 请点击重置密码进行密码重置：" +
+                "<a href='" + basePath + "emailChangePassword?key=" + key + "'>重置密码</a><br/>" +
+                "若无法点击，可访问以下链接:<br/>" +
+                basePath + "emailChangePassword?key=" + key);
+        SimpleMailSender sms = new SimpleMailSender();
+        sms.sendHtmlMail(mailInfo);
+    }
+
+    void addChangePassword(int userId, String key) {
+        ChangePassword changePassword = new ChangePassword();
+        changePassword.setUserId(userId);
+        changePassword.setChangeKey(key);
+        changePassword.setSendDate(DateUtil.getCurrentTimestamp().toString().substring(0, 19));
+        changePassword.setState(DictConstant.IN_USE);
+        changePasswordDao.addChangePassword(changePassword);
     }
 }

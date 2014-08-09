@@ -15,18 +15,18 @@ $(function(){
 
 function doError(data){
     if(data.status==404){
-        alert("对不起,出错了","未找到请求地址","error");
+//        alert("对不起,出错了","未找到请求地址","error");
         return
     }
     if(data.statusText.indexOf("Failure")!=-1){
-        alert("对不起,出错了","操作超时，请检查网络连接","error");
+//        alert("对不起,出错了","操作超时，请检查网络连接","error");
         return
     }
-    if(data.statusText=="timeout"){
-        alert("对不起,出错了","操作超时，请检查网络连接","error");
-    }else{
-        alert("对不起,出错了","error","error");
-    }
+//    if(data.statusText=="timeout"){
+//        alert("对不起,出错了","操作超时，请检查网络连接","error");
+//    }else{
+//        alert("对不起,出错了","error","error");
+//    }
 }
 var listOption = {
     pageSize:10,

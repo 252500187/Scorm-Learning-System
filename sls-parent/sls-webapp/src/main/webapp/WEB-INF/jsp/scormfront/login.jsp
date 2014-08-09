@@ -101,23 +101,23 @@
         <h3>忘记密码 ?</h3>
 
         <p>
-            输入您注册帐号时填写的邮箱，我们会向您发送一封重置密码的邮件哦！
+            输入您注册帐号时填写的邮箱，我们会向您发送一封重置密码的邮件！
         </p>
 
         <div class="form-group">
             <div class="input-icon">
                 <i class="fa fa-envelope"></i>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="Email"
-                       name="email"/>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="请输入注册时的邮箱"
+                       id="forgetEmail"/>
             </div>
         </div>
         <div class="form-actions">
             <button type="button" id="back-btn" class="btn">
                 <i class="m-icon-swapleft"></i> 返回
             </button>
-            <button class="btn blue pull-right">
+            <a class="btn blue pull-right" onclick="forgetPassword()">
                 发送 <i class="m-icon-swapright m-icon-white"></i>
-            </button>
+            </a>
         </div>
     </form>
 
@@ -209,28 +209,46 @@
     code = unescape(code);
     eval(code);
 
-    <%--$(function () {--%>
-    <%--Metronic.init();--%>
-    <%--Layout.init();--%>
-    <%--Login.init();--%>
-    <%--$('#loginValidateCodeImg,#changeLoginValidateCode').click(function () {--%>
-    <%--$('#loginValidateCodeImg').attr('src', basePath + 'tourist/validateCode?' + Math.random());--%>
-    <%--});--%>
-    <%--$('#changeRegisterValidateCode,#registerValidateCodeImg').click(function () {--%>
-    <%--$('#registerValidateCodeImg').attr('src', basePath + 'tourist/validateCode?' + Math.random());--%>
-    <%--});--%>
-    <%--<c:if test="${loginResult=='false'}">--%>
-    <%--$('#loginError').show();--%>
-    <%--</c:if>--%>
-    <%--<c:if test="${page=='register'}">--%>
-    <%--$('.login-form').hide();--%>
-    <%--$('.forget-form').hide();--%>
-    <%--$('.register-form').show();--%>
-    <%--</c:if>--%>
-    <%--<c:if test="${page=='login'}">--%>
-    <%--$('.login-form').show();--%>
-    <%--$('.forget-form').hide();--%>
-    <%--$('.register-form').hide();--%>
-    <%--</c:if>--%>
-    <%--});--%>
+    function forgetPassword() {
+        $.ajax({
+            url: basePath + "sendPasswordEmail",
+            data: {
+                basePath: basePath,
+                email: $("#forgetEmail").val()
+            },
+            type: "post",
+            success: function (result) {
+                if (result) {
+                    alert("yes");
+                } else {
+                    alert("no");
+                }
+            }
+        });
+    }
+
+    $(function () {
+        Metronic.init();
+        Layout.init();
+        Login.init();
+        $('#loginValidateCodeImg,#changeLoginValidateCode').click(function () {
+            $('#loginValidateCodeImg').attr('src', basePath + 'tourist/validateCode?' + Math.random());
+        });
+        $('#changeRegisterValidateCode,#registerValidateCodeImg').click(function () {
+            $('#registerValidateCodeImg').attr('src', basePath + 'tourist/validateCode?' + Math.random());
+        });
+        <c:if test="${loginResult=='false'}">
+        $('#loginError').show();
+        </c:if>
+        <c:if test="${page=='register'}">
+        $('.login-form').hide();
+        $('.forget-form').hide();
+        $('.register-form').show();
+        </c:if>
+        <c:if test="${page=='login'}">
+        $('.login-form').show();
+        $('.forget-form').hide();
+        $('.register-form').hide();
+        </c:if>
+    });
 </script>

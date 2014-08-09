@@ -56,5 +56,7 @@ public interface UserDao {
 
     List<User> getAllUsersByInUse(int inUse);
 
-    void changePassword(int userId,String password);
+    void changePassword(int userId, String password);
+
+    List<User> findInUseUserByEmail(String email);
 }
