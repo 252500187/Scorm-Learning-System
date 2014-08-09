@@ -2,6 +2,7 @@ package com.sls.user.dao.impl;
 
 import com.core.page.dao.PageDao;
 import com.sls.user.dao.UserAttentionDao;
+import com.sls.user.entity.User;
 import com.sls.user.entity.UserAttention;
 import com.sls.util.DictConstant;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -53,5 +54,12 @@ public class UserAttentionDaoImpl extends PageDao implements UserAttentionDao {
     public void countNewMessageByAttentionUserId(int attentionUserId) {
         String sql = "UPDATE us_user_attention SET new_message=new_message+1 WHERE user_attention_id=? AND state=?";
         getJdbcTemplate().update(sql, attentionUserId, DictConstant.IN_USE);
+    }
+
+    @Override
+    public List<User> getAttentionUserUsersByUserId(int attentionUserId) {
+        String sql = "SELECT a.* FROM us_user_info a,us_user b WHERE a.user_id=b.user_id AND b.in_use=? " +
+                "AND a.user_id IN (SELECT user_id FROM us_user_attention WHERE user_attention_id=? AND state=?)";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<User>(User.class), DictConstant.IN_USE, attentionUserId, DictConstant.IN_USE);
     }
 }

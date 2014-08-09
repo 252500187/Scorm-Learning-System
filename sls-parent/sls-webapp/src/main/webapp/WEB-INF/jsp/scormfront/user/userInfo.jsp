@@ -67,15 +67,19 @@
                             <div class="portlet-body">
                                 <ul class="list-unstyled">
                                     <li>
-                                        <span class="sale-info">上传课件数</span>
+                                        <span class="sale-info">上传课件</span>
                                         <span class="sale-num">${fn:length(upScorms)}</span>
                                     </li>
                                     <li>
-                                        <span class="sale-info">注册课件数</span>
+                                        <span class="sale-info">注册课件</span>
                                         <span class="sale-num">${fn:length(registerScorms)}</span>
                                     </li>
                                     <li>
-                                        <span class="sale-info">回答问题数</span>
+                                        <span class="sale-info">关注人数</span>
+                                        <span class="sale-num">${fn:length(attentionUsers)}</span>
+                                    </li>
+                                    <li>
+                                        <span class="sale-info">回答问题</span>
                                         <span class="sale-num">${fn:length(answerQuestions)}</span>
                                     </li>
                                     <li>

@@ -73,12 +73,12 @@
             </li>
         </c:if>
         <c:if test="${sessionScope.userId!=null&&sessionScope.userId!=''}">
-            <c:if test="${sessionScope.messageNum+sessionScope.questionNum+sessionScope.answerNum>0}">
+            <c:if test="${fn:length(sessionScope.messages)+sessionScope.attentionMessageNum+sessionScope.questionNum+sessionScope.answerNum>0}">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                        data-close-others="true">
                         <span style="font-size: 20px;">新消息</span>
-                        <span class="badge badge-success">${sessionScope.messageNum+sessionScope.questionNum+sessionScope.answerNum}</span>
+                        <span class="badge badge-success">${fn:length(sessionScope.messages)+sessionScope.attentionMessageNum+sessionScope.questionNum+sessionScope.answerNum}</span>
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu">
@@ -90,8 +90,6 @@
                                     <i class="fa fa-envelope-o"></i>
                                 </span>信件
                                 </a>
-
-
                                 <ul class="dropdown-menu">
                                     <c:forEach var="message" items="${sessionScope.messages}">
                                         <li style="padding: 15px;padding-bottom: 0px;"
@@ -282,7 +280,7 @@
         top.window.open(basePath + "tourist/sortScorm?labelId=" + labelId);
     }
 
-    function changePassword(){
+    function changePassword() {
         top.window.open(basePath + "user/info/changePasswordDo");
     }
 

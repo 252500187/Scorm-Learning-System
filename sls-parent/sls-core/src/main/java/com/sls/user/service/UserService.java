@@ -49,6 +49,8 @@ public interface UserService {
 
     void getUserOperate(int userInfoId, HttpServletRequest request);
 
+    List<User> getAttentionUserUsersByUserId(int userId);
+
     void userAttentionDeal(int userAttentionId);
 
     void clearAllNewMessage(int attentionUserId, HttpSession session);

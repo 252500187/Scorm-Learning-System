@@ -154,18 +154,20 @@
         </div>
     </div>
     <div class="col-md-3" style="margin-top: -35px">
-        <div class="portlet">
+        <div class="portlet-title">
             <h1>
                 <div class="caption-sidebar">公告</div>
-
             </h1>
-            <hr/>
-            <c:if test="${fn:length(announcement)<1}">
-                <h5>暂时没有公告</h5>
-            </c:if>
-            <c:forEach var="announcement" items="${announcements}">
-                <h5>${announcement.announcementTheme}</h5>
-            </c:forEach>
+            <br/>
+
+            <div class="portlet-body">
+                <c:if test="${fn:length(announcement)<1}">
+                    <h5>暂时没有公告</h5>
+                </c:if>
+                <c:forEach var="announcement" items="${announcements}">
+                    <h5>${announcement.announcementTheme}</h5>
+                </c:forEach>
+            </div>
             <div class="portlet-title">
                 <h1>
                     <div class="caption-sidebar">最新上传</div>
@@ -176,12 +178,10 @@
                     <c:forEach var="latest" items="${latestScorms}">
                         <li style="background-color: #fff;">
                             <div class="col1">
-                                <div class="cont">
+                                <div class="cont" onclick="scormInfo('${latest.scormId}')">
                                     <div class="cont-col1">
-                                        <div>
-                                            <img style="width: 100px;height: 60px;" src="${latest.imgPath}"
-                                                 class="img-rounded">
-                                        </div>
+                                        <img style="width: 100px;height: 60px;" src="${latest.imgPath}"
+                                             class="img-rounded">
                                     </div>
                                     <div class="cont-col2">
                                         <div class="desc-sidebar">${latest.scormName}</div>

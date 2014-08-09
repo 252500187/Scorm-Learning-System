@@ -385,7 +385,11 @@ public class ScormServiceImpl implements ScormService {
         if (!("").equals(LoginUserUtil.getLoginName())) {
             request.setAttribute("userId", userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
         }
-        request.setAttribute("groupScorms", groupDao.getGroupScormsByScormId(scormId));
+        List<Scorm> scorms = groupDao.getGroupScormsByScormId(scormId);
+        for (Scorm scorm : scorms) {
+            scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
+        }
+        request.setAttribute("groupScorms", scorms);
         getScoList(request, scormId);
     }
 

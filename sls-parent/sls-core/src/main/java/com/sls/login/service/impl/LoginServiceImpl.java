@@ -116,7 +116,7 @@ public class LoginServiceImpl implements LoginService {
             messageNum += userAttention.getNewMessage();
         }
         session.setAttribute("attentionUsers", userAttentionList);
-        session.setAttribute("messageNum", messageNum);
+        session.setAttribute("attentionMessageNum", messageNum);
         //获取新的提问和回答数
         session.setAttribute("questionNum", userQuestionDao.getNewQuestionNumByUserId(userId));
         session.setAttribute("answerNum", userQuestionDao.getNewAnswerNumByUserId(userId));

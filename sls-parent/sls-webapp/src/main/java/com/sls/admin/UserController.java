@@ -24,8 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @Transactional
 @RequestMapping("/admin/user/")
-public class
-        UserController {
+public class UserController {
 
     @Autowired
     private UserService userService;

@@ -251,6 +251,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> getAttentionUserUsersByUserId(int userId) {
+        return userAttentionDao.getAttentionUserUsersByUserId(userId);
+    }
+
+    @Override
     public void userAttentionDeal(int userAttentionId) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         UserAttention userAttention = new UserAttention();

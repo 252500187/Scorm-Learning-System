@@ -1,5 +1,6 @@
 package com.sls.user.dao;
 
+import com.sls.user.entity.User;
 import com.sls.user.entity.UserAttention;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface UserAttentionDao {
     void clearAllNewMessageByUserIdAndAttentionUserId(int userId, int attentionUserId);
 
     void countNewMessageByAttentionUserId(int attentionUserId);
+
+    List<User> getAttentionUserUsersByUserId(int attentionUserId);
 }
