@@ -100,6 +100,15 @@
     <form class="forget-form">
         <h3>忘记密码 ?</h3>
 
+        <div class="alert alert-info display-hide" id="emailSendSuccess">
+            <button class="close" data-close="alert"></button>
+            <span>邮件已发送！</span>
+        </div>
+
+        <div class="alert alert-info display-hide" id="emailSendError">
+            <button class="close" data-close="alert"></button>
+            <span>发送邮件失败，请核实邮箱地址！</span>
+        </div>
         <p>
             输入您注册帐号时填写的邮箱，我们会向您发送一封重置密码的邮件！
         </p>
@@ -107,17 +116,17 @@
         <div class="form-group">
             <div class="input-icon">
                 <i class="fa fa-envelope"></i>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="请输入注册时的邮箱"
-                       id="forgetEmail"/>
+                <input class="form-control placeholder-no-fix" type="text" placeholder="请输入注册时填写的邮箱"
+                       id="forgetEmail" name="forgetEmail"/>
             </div>
         </div>
         <div class="form-actions">
             <button type="button" id="back-btn" class="btn">
                 <i class="m-icon-swapleft"></i> 返回
             </button>
-            <a class="btn blue pull-right" onclick="forgetPassword()">
+            <button class="btn blue pull-right" type="submit">
                 发送 <i class="m-icon-swapright m-icon-white"></i>
-            </a>
+            </button>
         </div>
     </form>
 
@@ -159,7 +168,7 @@
 
             <div class="input-icon">
                 <i class="fa fa-envelope"></i>
-                <input id="email" class="form-control placeholder-no-fix" type="text" placeholder="输入Email（密码找回）"
+                <input id="email" class="form-control placeholder-no-fix" type="text" placeholder="输入Email（用于密码找回）"
                        name="email"/>
             </div>
         </div>
@@ -209,46 +218,28 @@
     code = unescape(code);
     eval(code);
 
-    function forgetPassword() {
-        $.ajax({
-            url: basePath + "sendPasswordEmail",
-            data: {
-                basePath: basePath,
-                email: $("#forgetEmail").val()
-            },
-            type: "post",
-            success: function (result) {
-                if (result) {
-                    alert("yes");
-                } else {
-                    alert("no");
-                }
-            }
-        });
-    }
-
-    $(function () {
-        Metronic.init();
-        Layout.init();
-        Login.init();
-        $('#loginValidateCodeImg,#changeLoginValidateCode').click(function () {
-            $('#loginValidateCodeImg').attr('src', basePath + 'tourist/validateCode?' + Math.random());
-        });
-        $('#changeRegisterValidateCode,#registerValidateCodeImg').click(function () {
-            $('#registerValidateCodeImg').attr('src', basePath + 'tourist/validateCode?' + Math.random());
-        });
-        <c:if test="${loginResult=='false'}">
-        $('#loginError').show();
-        </c:if>
-        <c:if test="${page=='register'}">
-        $('.login-form').hide();
-        $('.forget-form').hide();
-        $('.register-form').show();
-        </c:if>
-        <c:if test="${page=='login'}">
-        $('.login-form').show();
-        $('.forget-form').hide();
-        $('.register-form').hide();
-        </c:if>
-    });
+    <%--$(function () {--%>
+    <%--Metronic.init();--%>
+    <%--Layout.init();--%>
+    <%--Login.init();--%>
+    <%--$('#loginValidateCodeImg,#changeLoginValidateCode').click(function () {--%>
+    <%--$('#loginValidateCodeImg').attr('src', basePath + 'tourist/validateCode?' + Math.random());--%>
+    <%--});--%>
+    <%--$('#changeRegisterValidateCode,#registerValidateCodeImg').click(function () {--%>
+    <%--$('#registerValidateCodeImg').attr('src', basePath + 'tourist/validateCode?' + Math.random());--%>
+    <%--});--%>
+    <%--<c:if test="${loginResult=='false'}">--%>
+    <%--$('#loginError').show();--%>
+    <%--</c:if>--%>
+    <%--<c:if test="${page=='register'}">--%>
+    <%--$('.login-form').hide();--%>
+    <%--$('.forget-form').hide();--%>
+    <%--$('.register-form').show();--%>
+    <%--</c:if>--%>
+    <%--<c:if test="${page=='login'}">--%>
+    <%--$('.login-form').show();--%>
+    <%--$('.forget-form').hide();--%>
+    <%--$('.register-form').hide();--%>
+    <%--</c:if>--%>
+    <%--});--%>
 </script>

@@ -72,22 +72,17 @@ var Login = function () {
             errorElement: 'span', //default input error message container
             errorClass: 'help-block', // default input error message class
             focusInvalid: false, // do not focus the last invalid input
-            ignore: "",
             rules: {
-                email: {
+                forgetEmail: {
                     required: true,
                     email: true
                 }
             },
             messages: {
-                email: {
-                    required: "请输入邮箱",
+                forgetEmail: {
+                    required: "请输入注册时填写的邮箱",
                     email: "邮箱格式不正确"
                 }
-            },
-
-            invalidHandler: function (event, validator) { //display error alert on form submit
-
             },
 
             highlight: function (element) { // hightlight error inputs
@@ -105,7 +100,21 @@ var Login = function () {
             },
 
             submitHandler: function (form) {
-                form.submit();
+                $.ajax({
+                    url: basePath + "sendPasswordEmail",
+                    data: {
+                        basePath: basePath,
+                        email: $("#forgetEmail").val()
+                    },
+                    type: "post",
+                    success: function (result) {
+                        if (result) {
+                            $('#emailSendSuccess').show();
+                        } else {
+                            $('#emailSendError').show();
+                        }
+                    }
+                });
             }
         });
 
@@ -118,7 +127,6 @@ var Login = function () {
             jQuery('.login-form').show();
             jQuery('.forget-form').hide();
         });
-
     }
 
     var handleRegister = function () {
