@@ -284,7 +284,6 @@
                                         </li>
                                         <br/>
                                         <li>评论内容:</li>
-                                        <li>${summarize.discuss}</li>
                                         <li>
                                             <c:if test="${summarize.discuss!=''}">
                                                 ${summarize.discuss}

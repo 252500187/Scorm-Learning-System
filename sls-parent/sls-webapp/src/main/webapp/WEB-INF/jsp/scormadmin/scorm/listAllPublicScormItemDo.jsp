@@ -71,7 +71,7 @@
 
     function queryFormat(temp) {
         for (var i in temp) {
-            temp[i].operate = "<a onclick='delPublicScorm(" + temp[i].publicId + ")'>删除</a>";
+            temp[i].operate = "<a onclick='delPublicScorm(" + temp[i].publicId + ")'>取消</a>";
         }
         return temp;
     }
@@ -90,12 +90,16 @@
     }
 
     function delPublicScorm(publicId) {
-        $.ajax({
-            url: basePath + "admin/scorm/delPublicScorm?publicId=" + publicId,
-            dataType: "json",
-            type: "DELETE",
-            success: function () {
-                parent.query();
+        $.messager.confirm("提示", "确认取消该公开课？", function (r) {
+            if (r) {
+                $.ajax({
+                    url: basePath + "admin/scorm/delPublicScorm?publicId=" + publicId,
+                    dataType: "json",
+                    type: "DELETE",
+                    success: function () {
+                        query();
+                    }
+                })
             }
         })
     }
