@@ -177,6 +177,13 @@ public class UserCenterController {
         return "scormfront/usercenter/evaluteScorm";
     }
 
+     //个人中心  日程表
+    @RequestMapping(value = "calendarDo", method = {RequestMethod.GET})
+    public String calendarDo(HttpServletRequest request) {
+
+        return "scormfront/usercenter/calendar";
+    }
+
     @RequestMapping(value = "lookQuestionInfoAsk", method = {RequestMethod.GET})
     public String lookQuestionInfoAsk(HttpServletRequest request, HttpSession session, @RequestParam("questionId") int questionId) {
         userCenterService.getQuestionInfoAsk(request, session, questionId);

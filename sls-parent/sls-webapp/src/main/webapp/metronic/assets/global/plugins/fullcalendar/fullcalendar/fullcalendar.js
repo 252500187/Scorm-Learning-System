@@ -45,9 +45,9 @@ var defaults = {
 	
 	// time formats
 	titleFormat: {
-		month: 'MMMM yyyy',
-		week: "MMM d[ yyyy]{ '&#8212;'[ MMM] d yyyy}",
-		day: 'dddd, MMM d, yyyy'
+		month: 'yyyy MMMM',
+		week: "yyyy MMM d[ yyyy]{ '&#8212;'[ MMM] d}",
+		day: 'yyyy, MMM d dddd'
 	},
 	columnFormat: {
 		month: 'ddd',
@@ -60,20 +60,20 @@ var defaults = {
 	
 	// locale
 	isRTL: false,
-	firstDay: 0,
-	monthNames: ['January','February','March','April','May','June','July','August','September','October','November','December'],
-	monthNamesShort: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-	dayNames: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-	dayNamesShort: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+	firstDay: 1,
+	monthNames: ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'],
+	monthNamesShort: ['一','二','三','四','五','六','七','八','九','十','十一','十二'],
+	dayNames: ['周日','周一','周二','周三','周四','周五','周六'],
+	dayNamesShort: ['六','一','二','三','四','五','六'],
 	buttonText: {
 		prev: "<span class='fc-text-arrow'>&lsaquo;</span>",
 		next: "<span class='fc-text-arrow'>&rsaquo;</span>",
 		prevYear: "<span class='fc-text-arrow'>&laquo;</span>",
 		nextYear: "<span class='fc-text-arrow'>&raquo;</span>",
-		today: 'today',
-		month: 'month',
-		week: 'week',
-		day: 'day'
+		today: '今天',
+		month: '月',
+		week: '周',
+		day: '日'
 	},
 	
 	// jquery-ui theming
@@ -2753,7 +2753,7 @@ function AgendaDayView(element, calendar) {
 
 setDefaults({
 	allDaySlot: true,
-	allDayText: 'all-day',
+	allDayText: '新的任务',
 	firstHour: 6,
 	slotMinutes: 30,
 	defaultEventMinutes: 120,
