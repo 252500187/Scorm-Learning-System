@@ -28,6 +28,10 @@ public class Scorm {
     private String lastVisitTime;
     private String chapterNum;
 
+    private String startTime;
+    private String endTime;
+    private String publicDescription;
+
     public Scorm() {
         registerSum = 0;
         recommendLevel = DictConstant.RECOMMEND_0;
@@ -213,5 +217,29 @@ public class Scorm {
 
     public void setPassDate(String passDate) {
         this.passDate = passDate;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getPublicDescription() {
+        return publicDescription;
+    }
+
+    public void setPublicDescription(String publicDescription) {
+        this.publicDescription = publicDescription;
     }
 }

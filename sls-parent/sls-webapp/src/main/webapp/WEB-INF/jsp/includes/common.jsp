@@ -27,6 +27,7 @@
 <%--<!-- END GLOBAL MANDATORY STYLES -->--%>
 
 <%--<!-- BEGIN PAGE LEVEL STYLES -->--%>
+<link href="<c:url value="/metronic/assets/admin/pages/css/pricing-table.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/metronic/assets/global/plugins/select2/select2.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/metronic/assets/admin/pages/css/login-soft.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/metronic/assets/admin/pages/css/error.css"/>" rel="stylesheet" type="text/css"/>
@@ -60,7 +61,6 @@
 <script src="<c:url value="/metronic/assets/global/plugins/bootstrap/js/bootstrap.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/metronic/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/jquery.blockui.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/jquery.cokie.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/uniform/jquery.uniform.min.js"/>" type="text/javascript"></script>

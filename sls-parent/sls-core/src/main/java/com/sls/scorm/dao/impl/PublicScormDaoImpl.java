@@ -44,7 +44,8 @@ public class PublicScormDaoImpl extends PageDao implements PublicScormDao {
     @Override
     public List<Scorm> getPublicScorm(int num) {
         String nowTime = DateUtil.getCurrentTimestamp().toString();
-        String sql = "SELECT * FROM ss_scorm WHERE scorm_id IN(SELECT scorm_id FROM ss_public_scorm WHERE start_time<=? AND end_time>=?) AND in_use=? LIMIT ?";
+        String sql = "SELECT a.*,b.start_time,b.end_time,b.description AS publicDescription FROM" +
+                "(SELECT * FROM ss_scorm WHERE scorm_id IN(SELECT scorm_id FROM ss_public_scorm WHERE start_time<=? AND end_time>=?) AND in_use=? LIMIT ?) a ,ss_public_scorm b WHERE a.scorm_id=b.scorm_id";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), nowTime, nowTime, DictConstant.IN_USE, num);
     }
 

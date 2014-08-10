@@ -16,185 +16,223 @@
 <%@include file="index/navigationMenu.jsp" %>
 <div class="page-container">
 <div class="row">
-    <div class="col-md-9">
-        <div class="row">
-            <c:if test="${recommendIndexScorms[0]!=null}">
-                <div class="col-md-6" style="padding-left: 35px">
-                    <div onclick="scormInfo('${recommendIndexScorms[0].scormId}')">
-                        <img src="${recommendIndexScorms[0].imgPath}" alt="${recommendIndexScorms[0].scormName}"
-                             style="height: 300px;width: 440px"/>
-                    </div>
-                    <span>${recommendIndexScorms[0].scormName}</span>
+<div class="col-md-9">
+    <div class="row">
+        <c:if test="${recommendIndexScorms[0]!=null}">
+            <div class="col-md-6" style="padding-left: 35px">
+                <div onclick="scormInfo('${recommendIndexScorms[0].scormId}')">
+                    <img src="${recommendIndexScorms[0].imgPath}" alt="${recommendIndexScorms[0].scormName}"
+                         style="height: 300px;width: 440px"/>
                 </div>
-            </c:if>
-
-            <div class="col-md-6">
-                <div class="row">
-
-                    <c:if test="${recommendIndexScorms[1]!=null}">
-                        <div class="col-md-6">
-                            <div onclick="scormInfo('${recommendIndexScorms[1].scormId}')">
-                                <img src="${recommendIndexScorms[1].imgPath}" alt="${recommendIndexScorms[1].scormName}"
-                                     style="height: 150px;width: 220px"/>
-                            </div>
-                            <span>${recommendIndexScorms[1].scormName}</span>
-                        </div>
-                    </c:if>
-                    <c:if test="${recommendIndexScorms[2]!=null}">
-                        <div class="col-md-6">
-                            <div onclick="scormInfo('${recommendIndexScorms[2].scormId}')">
-                                <img src="${recommendIndexScorms[2].imgPath}" alt="${recommendIndexScorms[2].scormName}"
-                                     style="height: 150px;width: 220px"/>
-                            </div>
-                            <span>${recommendIndexScorms[2].scormName}</span>
-                        </div>
-                    </c:if>
-                    <c:if test="${recommendIndexScorms[3]!=null}">
-                        <div class="col-md-6">
-                            <div onclick="scormInfo('${recommendIndexScorms[3].scormId}')">
-                                <img src="${recommendIndexScorms[3].imgPath}" alt="${recommendIndexScorms[3].scormName}"
-                                     style="height: 150px;width: 220px"/>
-                            </div>
-                            <span>${recommendIndexScorms[3].scormName}</span>
-                        </div>
-                    </c:if>
-                    <c:if test="${recommendIndexScorms[4]!=null}">
-                        <div class="col-md-6">
-                            <div onclick="scormInfo('${recommendIndexScorms[4].scormId}')">
-                                <img src="${recommendIndexScorms[4].imgPath}" alt="${recommendIndexScorms[4].scormName}"
-                                     style="height: 150px;width: 220px"/>
-                            </div>
-                            <span>${recommendIndexScorms[4].scormName}</span>
-                        </div>
-                    </c:if>
-                </div>
+                <span>${recommendIndexScorms[0].scormName}</span>
             </div>
-        </div>
-        <br/>
+        </c:if>
 
-        <div class="row">
-            <c:if test="${recommendIndexScorms[5]!=null}">
-                <div class="col-md-3" style="padding-left: 35px">
-                    <div onclick="scormInfo('${recommendIndexScorms[5].scormId}')">
-                        <img src="${recommendIndexScorms[5].imgPath}" alt="${recommendIndexScorms[5].scormName}"
-                             style="height: 150px;width: 220px"/>
-                    </div>
-                    <span>${recommendIndexScorms[5].scormName}</span>
-                </div>
-            </c:if>
-            <c:if test="${recommendIndexScorms[6]!=null}">
-                <div class="col-md-3">
-                    <div onclick="scormInfo('${recommendIndexScorms[6].scormId}')">
-                        <img src="${recommendIndexScorms[6].imgPath}" alt="${recommendIndexScorms[6].scormName}"
-                             style="height: 150px;width: 220px"/>
-                    </div>
-                    <span>${recommendIndexScorms[6].scormName}</span>
-                </div>
-            </c:if>
-            <c:if test="${recommendIndexScorms[7]!=null}">
-                <div class="col-md-3">
-                    <div onclick="scormInfo('${recommendIndexScorms[7].scormId}')">
-                        <img src="${recommendIndexScorms[7].imgPath}" alt="${recommendIndexScorms[7].scormName}"
-                             style="height: 150px;width: 220px"/>
-                    </div>
-                    <span>${recommendIndexScorms[7].scormName}</span>
-                </div>
-            </c:if>
-            <c:if test="${recommendIndexScorms[8]!=null}">
-                <div class="col-md-3">
-                    <div onclick="scormInfo('${recommendIndexScorms[8].scormId}')">
-                        <img src="${recommendIndexScorms[8].imgPath}" alt="${recommendIndexScorms[8].scormName}"
-                             style="height: 150px;width: 220px"/>
-                    </div>
-                    <span>${recommendIndexScorms[8].scormName}</span>
-                </div>
-            </c:if>
-        </div>
-        <hr/>
-        <h2 style="padding-left: 20px">
-            正在进行的公开课，快来参加！
-        </h2>
-        <br/>
+        <div class="col-md-6">
+            <div class="row">
 
-        <div class="row">
-            <c:forEach var="publicScorm" items="${publicScorms}">
-                <div class="col-md-3" style="padding-left: 35px">
-                    <div onclick="scormInfo('${publicScorm.scormId}')">
-                        <img src="${publicScorm.imgPath}" alt="${publicScorm.scormName}"
-                             style="height: 150px;width: 220px"/>
+                <c:if test="${recommendIndexScorms[1]!=null}">
+                    <div class="col-md-6">
+                        <div onclick="scormInfo('${recommendIndexScorms[1].scormId}')">
+                            <img src="${recommendIndexScorms[1].imgPath}" alt="${recommendIndexScorms[1].scormName}"
+                                 style="height: 150px;width: 220px"/>
+                        </div>
+                        <span>${recommendIndexScorms[1].scormName}</span>
                     </div>
-                    <span>${publicScorm.scormName}</span>
-                </div>
-            </c:forEach>
-        </div>
-        <br/>
-
-        <div class="row">
-            <div class="col-md-12" style="padding-left: 40px;">
-                <div class="portlet">
-                    <div class="portlet-title sidebar-title">
-                        <h2>
-                            <div class="caption-sidebar">分类</div>
-                        </h2>
+                </c:if>
+                <c:if test="${recommendIndexScorms[2]!=null}">
+                    <div class="col-md-6">
+                        <div onclick="scormInfo('${recommendIndexScorms[2].scormId}')">
+                            <img src="${recommendIndexScorms[2].imgPath}" alt="${recommendIndexScorms[2].scormName}"
+                                 style="height: 150px;width: 220px"/>
+                        </div>
+                        <span>${recommendIndexScorms[2].scormName}</span>
                     </div>
-                    <div class="portlet-body">
-                        <ul class="feeds list-inline">
-                            <c:forEach var="label" items="${labels}">
-                                <li style="background-color: #fff;">
-                                    <a onclick="sortByLabel('${label.labelId}')"
-                                       style="text-decoration: none;cursor: pointer;">
-                                        <i class="fa fa-tags"></i> ${label.labelName}
-                                    </a>
-                                </li>
-                            </c:forEach>
-                        </ul>
+                </c:if>
+                <c:if test="${recommendIndexScorms[3]!=null}">
+                    <div class="col-md-6">
+                        <div onclick="scormInfo('${recommendIndexScorms[3].scormId}')">
+                            <img src="${recommendIndexScorms[3].imgPath}" alt="${recommendIndexScorms[3].scormName}"
+                                 style="height: 150px;width: 220px"/>
+                        </div>
+                        <span>${recommendIndexScorms[3].scormName}</span>
                     </div>
-                </div>
+                </c:if>
+                <c:if test="${recommendIndexScorms[4]!=null}">
+                    <div class="col-md-6">
+                        <div onclick="scormInfo('${recommendIndexScorms[4].scormId}')">
+                            <img src="${recommendIndexScorms[4].imgPath}" alt="${recommendIndexScorms[4].scormName}"
+                                 style="height: 150px;width: 220px"/>
+                        </div>
+                        <span>${recommendIndexScorms[4].scormName}</span>
+                    </div>
+                </c:if>
             </div>
         </div>
     </div>
-    <div class="col-md-3" style="margin-top: -35px">
-        <div class="portlet-title">
-            <h1>
-                <div class="caption-sidebar">公告</div>
-            </h1>
-            <br/>
+    <br/>
 
-            <div class="portlet-body">
-                <c:if test="${fn:length(announcement)<1}">
-                    <h5>暂时没有公告</h5>
-                </c:if>
-                <c:forEach var="announcement" items="${announcements}">
-                    <h5>${announcement.announcementTheme}</h5>
-                </c:forEach>
+    <div class="row">
+        <c:if test="${recommendIndexScorms[5]!=null}">
+            <div class="col-md-3" style="padding-left: 35px">
+                <div onclick="scormInfo('${recommendIndexScorms[5].scormId}')">
+                    <img src="${recommendIndexScorms[5].imgPath}" alt="${recommendIndexScorms[5].scormName}"
+                         style="height: 150px;width: 220px"/>
+                </div>
+                <span>${recommendIndexScorms[5].scormName}</span>
             </div>
-            <div class="portlet-title">
-                <h1>
-                    <div class="caption-sidebar">最新上传</div>
-                </h1>
+        </c:if>
+        <c:if test="${recommendIndexScorms[6]!=null}">
+            <div class="col-md-3">
+                <div onclick="scormInfo('${recommendIndexScorms[6].scormId}')">
+                    <img src="${recommendIndexScorms[6].imgPath}" alt="${recommendIndexScorms[6].scormName}"
+                         style="height: 150px;width: 220px"/>
+                </div>
+                <span>${recommendIndexScorms[6].scormName}</span>
             </div>
-            <div class="portlet-body">
-                <ul class="feeds">
-                    <c:forEach var="latest" items="${latestScorms}">
-                        <li style="background-color: #fff;">
-                            <div class="col1">
-                                <div class="cont" onclick="scormInfo('${latest.scormId}')">
-                                    <div class="cont-col1">
-                                        <img style="width: 100px;height: 60px;" src="${latest.imgPath}"
-                                             class="img-rounded">
+        </c:if>
+        <c:if test="${recommendIndexScorms[7]!=null}">
+            <div class="col-md-3">
+                <div onclick="scormInfo('${recommendIndexScorms[7].scormId}')">
+                    <img src="${recommendIndexScorms[7].imgPath}" alt="${recommendIndexScorms[7].scormName}"
+                         style="height: 150px;width: 220px"/>
+                </div>
+                <span>${recommendIndexScorms[7].scormName}</span>
+            </div>
+        </c:if>
+        <c:if test="${recommendIndexScorms[8]!=null}">
+            <div class="col-md-3">
+                <div onclick="scormInfo('${recommendIndexScorms[8].scormId}')">
+                    <img src="${recommendIndexScorms[8].imgPath}" alt="${recommendIndexScorms[8].scormName}"
+                         style="height: 150px;width: 220px"/>
+                </div>
+                <span>${recommendIndexScorms[8].scormName}</span>
+            </div>
+        </c:if>
+    </div>
+    <br/><br/>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-cogs"></i>正在进行的公开课，快来参加！
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row margin-bottom-40">
+                        <c:forEach var="scorm" items="${publicScorms}">
+                            <div class="col-md-3">
+                                <div class="pricing hover-effect">
+                                    <div class="pricing-head">
+                                        <h3>${scorm.scormName}<span>
+                                                ${scorm.publicDescription} </span>
+                                        </h3>
+                                        <h4><i style="font-size: 15px">${scorm.startTime}</i>-<i
+                                                style="font-size: 15px">${scorm.endTime}</i>
+											<span>
+											正在进行中... </span>
+                                        </h4>
                                     </div>
-                                    <div class="cont-col2">
-                                        <div class="desc-sidebar">${latest.scormName}</div>
-                                        <div class="date-sidebar">${latest.uploadDate}</div>
+                                    <ul class="pricing-content list-unstyled">
+                                        <li>
+                                            <img src="${scorm.imgPath}" class="img-responsive">
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-tags"></i>课件分数:&nbsp;${scorm.score}分
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-asterisk"></i>推荐等级:&nbsp;${scorm.recommendLevel}级
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-heart"></i>注册人数:&nbsp;${scorm.registerSum}人
+                                        </li>
+                                    </ul>
+                                    <div class="pricing-footer">
+                                        <p>
+                                                ${scorm.description}
+                                        </p>
+                                        <a onclick="scormInfo(${scorm.scormId})" class="btn yellow-crusta">
+                                            查看 <i class="m-icon-swapright m-icon-white"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                    </c:forEach>
-                </ul>
+                        </c:forEach>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <br/>
+
+    <div class="row">
+        <div class="col-md-12" style="padding-left: 40px;">
+            <div class="portlet">
+                <div class="portlet-title sidebar-title">
+                    <h2>
+                        <div class="caption-sidebar">分类</div>
+                    </h2>
+                </div>
+                <div class="portlet-body">
+                    <ul class="feeds list-inline">
+                        <c:forEach var="label" items="${labels}">
+                            <li style="background-color: #fff;">
+                                <a onclick="sortByLabel('${label.labelId}')"
+                                   style="text-decoration: none;cursor: pointer;">
+                                    <i class="fa fa-tags"></i> ${label.labelName}
+                                </a>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-3" style="margin-top: -35px">
+    <div class="portlet-title">
+        <h1>
+            <div class="caption-sidebar">公告</div>
+        </h1>
+        <br/>
+
+        <div class="portlet-body">
+            <c:if test="${fn:length(announcement)<1}">
+                <h5>暂时没有公告</h5>
+            </c:if>
+            <c:forEach var="announcement" items="${announcements}">
+                <h5>${announcement.announcementTheme}</h5>
+            </c:forEach>
+        </div>
+        <div class="portlet-title">
+            <h1>
+                <div class="caption-sidebar">最新上传</div>
+            </h1>
+        </div>
+        <div class="portlet-body">
+            <ul class="feeds">
+                <c:forEach var="latest" items="${latestScorms}">
+                    <li style="background-color: #fff;">
+                        <div class="col1">
+                            <div class="cont" onclick="scormInfo('${latest.scormId}')">
+                                <div class="cont-col1">
+                                    <img style="width: 100px;height: 60px;" src="${latest.imgPath}"
+                                         class="img-rounded">
+                                </div>
+                                <div class="cont-col2">
+                                    <div class="desc-sidebar">${latest.scormName}</div>
+                                    <div class="date-sidebar">${latest.uploadDate}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </c:forEach>
+            </ul>
+        </div>
+    </div>
+</div>
 </div>
 <div class="row">
     <div class="col-md-12" style="padding-left: 40px;">

@@ -117,8 +117,8 @@
             dataType: "json",
             type: "POST",
             success: function () {
-                parent.$("#dataEdit").dialog('close');
                 parent.query();
+                parent.$("#dataEdit").dialog('close');
             },
             error: doError
         })

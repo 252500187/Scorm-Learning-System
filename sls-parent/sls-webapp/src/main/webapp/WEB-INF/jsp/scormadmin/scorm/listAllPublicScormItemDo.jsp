@@ -23,6 +23,16 @@
     </form>
     <table id="dataTable"></table>
 </div>
+<div id="dataEdit" closed="true" modal="true" style="overflow: hidden" closable="true">
+    <iframe style="width: 100%;height: 100%"
+            id="contentFrame"
+            name="contentFrame"
+            marginheight="0"
+            marginwidth="0"
+            frameborder="0" src=""
+            allowTransparency="true">
+    </iframe>
+</div>
 </body>
 </html>
 <script type="text/javascript">
@@ -77,8 +87,8 @@
     }
 
     function addPublicScorm() {
-        var contentFrame = parent.$("#contentFrame");
-        var dataEdit = parent.$('#dataEdit');
+        var contentFrame = $("#contentFrame");
+        var dataEdit = $('#dataEdit');
         contentFrame[0].contentWindow.document.write("");
         contentFrame.attr("src", basePath + "admin/scorm/addPublicScormDo");
         dataEdit.dialog({

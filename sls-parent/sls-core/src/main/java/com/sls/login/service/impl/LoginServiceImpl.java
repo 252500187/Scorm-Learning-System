@@ -2,6 +2,7 @@ package com.sls.login.service.impl;
 
 import com.sls.scorm.dao.PublicScormDao;
 import com.sls.scorm.dao.ScormDao;
+import com.sls.scorm.entity.Scorm;
 import com.sls.system.dao.LabelDao;
 import com.sls.user.dao.*;
 import com.sls.user.entity.*;
@@ -114,7 +115,7 @@ public class LoginServiceImpl implements LoginService {
         request.setAttribute("latestScorms", scormDao.findLatestScorms(12));
         request.setAttribute("recommendIndexScorms", scormDao.findRecommendIndexScorms());
         request.setAttribute("recommendUsers", userDao.getNumUserOrderByScore(9));
-        request.setAttribute("publicScorms", publicScormDao.getPublicScorm(8));
+        request.setAttribute("publicScorms", publicScormDao.getPublicScorm(4));
     }
 
     public void setLoginIndexInfo(HttpSession session, int userId) {
