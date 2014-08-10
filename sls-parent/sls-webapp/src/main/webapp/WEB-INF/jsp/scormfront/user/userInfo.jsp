@@ -25,7 +25,7 @@
             <div class="col-md-4">
                 <ul class="list-unstyled profile-nav">
                     <li>
-                        <img src="${user.imgUrl}" class="img-responsive" alt=""/>
+                        <img src="${user.imgUrl}" class="img-responsive" alt="${user.userName}"/>
                     </li>
                 </ul>
             </div>
@@ -33,8 +33,10 @@
                 <div class="row">
                     <div class="col-md-8 profile-info">
                         <h1 style="font-weight:bold;">${user.userName}
-                            <a class="btn blue" id="userAttention"
-                               onclick="userAttentionDeal('${user.userId}')">关注</a>
+                            <c:if test="${showAttention}">
+                                <a class="btn blue" id="userAttention"
+                                   onclick="userAttentionDeal('${user.userId}')">关注</a>
+                            </c:if>
                         </h1>
                         <br/>
                         <c:if test="${fn:length(labels)>0}">
@@ -46,10 +48,20 @@
                                 </c:forEach>
                             </p><br/>
                         </c:if>
-                        <p>
-                            等级：<span style="font-weight:bold;"> ${user.levelName}</span>&nbsp;&nbsp;${user.score}分
-                        </p>
-
+                        <ul class="list-inline">
+                            <li>性别:</li>
+                            <li><c:if test="${user.sex==1}">男</c:if>
+                                <c:if test="${user.sex!=1}">女</c:if>
+                            </li>
+                        </ul>
+                        <ul class="list-inline">
+                            <li>注册日期:</li>
+                            <li>${user.registerDate}</li>
+                        </ul>
+                        <ul class="list-inline">
+                            <li>用户等级:</li>
+                            <li>${user.levelName}&nbsp;&nbsp;${user.score}分</li>
+                        </ul>
                         <div class="progress progress-striped active">
                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
                                  aria-valuemin="0"
