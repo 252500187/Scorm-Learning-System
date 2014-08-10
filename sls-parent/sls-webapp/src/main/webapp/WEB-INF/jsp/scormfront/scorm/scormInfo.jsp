@@ -26,13 +26,13 @@
 <div class="col-md-8">
 <%--课件基本信息--%>
 <div class="row">
-    <div class="col-md-5">
-        <img style="width: 300px" src="img/scormInfo/flag_top.png" alt=""/><br/>
-        <img id="scormImg" src="${scormInfo.imgPath}" class="img-rounded"
-             style="width: 300px;height: 200px" alt="${scormInfo.scormName}"/><br/>
-        <img style="width: 300px" src="img/scormInfo/flag_center.png" alt=""/>
+    <div class="col-md-4">
+        <img class="img-responsive" src="img/scormInfo/flag_top.png" alt=""/><br/>
+        <img id="scormImg" src="${scormInfo.imgPath}"
+             class="img-responsive" alt="${scormInfo.scormName}"/><br/>
+        <img class="img-responsive" src="img/scormInfo/flag_center.png" alt=""/>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-8">
         <br/><br/>
 
         <h3 class="caption-sidebar">
@@ -73,7 +73,7 @@
             </c:if>
             <br/> <br/>
             <ul class="list-inline">
-                <li>评分:</li>
+                <li>课件评分:</li>
                 <li>${scormInfo.score}分</li>
                 <div class="progress progress-striped active" style="width: 250px;">
                     <div class="progress-bar progress-bar-info"
@@ -84,7 +84,19 @@
                 </div>
             </ul>
             <ul class="list-inline">
-                <li>标签:</li>
+                <li>上传用户:</li>
+                <li><a onclick="userInfo(${scormInfo.uploadUserId})">${scormInfo.showUploadUserId}</a></li>
+            </ul>
+            <ul class="list-inline">
+                <li>上传日期:</li>
+                <li>${scormInfo.passDate}</li>
+            </ul>
+            <ul class="list-inline">
+                <li>注册人数:</li>
+                <li>${scormInfo.registerSum}人</li>
+            </ul>
+            <ul class="list-inline">
+                <li>课件标签:</li>
                 <li>
                     <c:forEach var="label" items="${labels}">
                         <a onclick="findByLabel('${label.labelName}')">
@@ -94,7 +106,7 @@
                 </li>
             </ul>
             <ul class="list-inline">
-                <li>简介:</li>
+                <li>课件简介:</li>
                 <li>${scormInfo.description}</li>
             </ul>
         </div>
@@ -104,108 +116,148 @@
 <%--课件学习情况，章节列表，学习笔记，评论等--%>
 <div class="row">
 <div class="col-md-8">
-    <c:if test="${fn:length(registerUsers)>0}">
-        <div class="portlet">
-            <div class="portlet-title sidebar-title">
-                <div class="caption-sidebar">注册用户</div>
-                <div class="tools">
-                    <a href="javascript:;" class="collapse">
-                    </a>
+    <c:if test="${fn:length(groupScorms)>0}">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet">
+                    <div class="portlet-title sidebar-title">
+                        <div class="caption-sidebar">系列课程</div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <c:forEach var="scorm" items="${groupScorms}">
+                            <a onclick="scormInfo('${scorm.scormId}')">
+                                <div class="col-md-4 mix mix_all" style=" display: block;">
+                                    <img src="${scorm.imgPath}" class="img-responsive"/>
+                                    <c:if test="${scorm.showRecommendLevel!=''}">
+                                        <img src="${scorm.showRecommendLevel}"
+                                             style="width: 15px;height: 15px"/>
+                                    </c:if><p class="pull-right">${scorm.scormName}</p>
+                                </div>
+                            </a>
+                        </c:forEach>
+                    </div>
                 </div>
             </div>
-            <div class="portlet-body">
-                <c:forEach var="user" items="${registerUsers}">
-                    <a onclick="userInfo('${user.userId}')">
-                        <div class="col-md-3 mix mix_all" style=" display: block;">
-                            <img src="${user.imgUrl}" width="80px" height="80px" class="img-rounded"/>
-
-                            <p style="margin-left: 16px">${user.userName}</p>
+        </div>
+    </c:if>
+    <c:if test="${fn:length(registerUsers)>0}">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet">
+                    <div class="portlet-title sidebar-title">
+                        <div class="caption-sidebar">注册用户</div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse">
+                            </a>
                         </div>
-                    </a>
-                </c:forEach>
+                    </div>
+                    <div class="portlet-body">
+                        <c:forEach var="user" items="${registerUsers}">
+                            <a onclick="userInfo('${user.userId}')">
+                                <div class="col-md-3 mix mix_all" style=" display: block;">
+                                    <img src="${user.imgUrl}" class="img-responsive"/>
+
+                                    <p class="pull-right">${user.userName}</p>
+                                </div>
+                            </a>
+                        </c:forEach>
+                    </div>
+                </div>
             </div>
         </div>
     </c:if>
     <c:if test="${study&&fn:length(noteList)>0}">
-        <div class="portlet">
-            <div class="portlet-title sidebar-title">
-                <div class="caption-sidebar">学习笔记</div>
-                <div class="tools">
-                    <a href="javascript:;" class="collapse">
-                    </a>
-                </div>
-            </div>
-            <div class="portlet-body">
-                <ul class="feeds">
-                    <% String[] color = {"success", "info", "danger", "warning"}; %>
-                    <c:forEach var="note" items="${noteList}">
-                        <div class="note note-<%=color[(int)(Math.random()*100)%4]%>">
-                            <h4 class="block">${note.date}</h4>
-
-                            <p>
-                                <c:if test="${note.noteType==text}">
-                                    ${note.note}
-                                </c:if>
-                                <c:if test="${note.noteType!=text}">
-                                    <img src="${note.note}"/>
-                                </c:if>
-                            </p>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet">
+                    <div class="portlet-title sidebar-title">
+                        <div class="caption-sidebar">学习笔记</div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse">
+                            </a>
                         </div>
-                    </c:forEach>
-                </ul>
+                    </div>
+                    <div class="portlet-body">
+                        <ul class="feeds">
+                            <% String[] color = {"success", "info", "danger", "warning"}; %>
+                            <c:forEach var="note" items="${noteList}">
+                                <div class="note note-<%=color[(int)(Math.random()*100)%4]%>">
+                                    <h4 class="block">${note.date}</h4>
+
+                                    <p>
+                                        <c:if test="${note.noteType==text}">
+                                            ${note.note}
+                                        </c:if>
+                                        <c:if test="${note.noteType!=text}">
+                                            <img src="${note.note}"/>
+                                        </c:if>
+                                    </p>
+                                </div>
+                            </c:forEach>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </c:if>
     <c:if test="${fn:length(allComments)>0||!register}">
-        <div class="portlet">
-            <div class="portlet-title sidebar-title">
-                <div class="caption-sidebar">评论</div>
-                <div class="tools">
-                    <a href="javascript:;" class="collapse">
-                    </a>
-                </div>
-            </div>
-            <div class="portlet-body">
-                <ul class="feeds">
-                    <li style="background-color: #fff;">
-                        <div class="cont">
-                            <div class="cont-col2">
-                                <c:if test="${showDiscussInput}">
-                                    <div class="chat-form">
-                                        <div class="input-cont">
-                                            <input class="form-control" type="text" id="discuss"
-                                                   placeholder="说点什么？"/>
-                                        </div>
-                                        <div class="btn-cont">
-                                            <span class="arrow"></span>
-                                            <a onclick="changeDiscuss()" class="btn blue icn-only">
-                                                <i class="fa fa-check icon-white"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <br/>
-                                </c:if>
-                                <ul class="chats">
-                                    <c:forEach var="comment" items="${allComments}">
-                                        <c:if test="${comment.userId!=userId}">
-                                            <li class="in">
-                                        </c:if>
-                                        <c:if test="${comment.userId==userId}">
-                                            <li class="out">
-                                        </c:if>
-                                        <div class="message">
-                                            <span class="arrow"></span>
-                                            <a class="name">${comment.userName}</a>
-                                            <span class="datetime">${comment.discussDate}</span>
-                                            <span class="body">${comment.discuss}</span>
-                                        </div>
-                                        </li>
-                                    </c:forEach>
-                                </ul>
-                            </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet">
+                    <div class="portlet-title sidebar-title">
+                        <div class="caption-sidebar">评论</div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse">
+                            </a>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                    <div class="portlet-body">
+                        <ul class="feeds">
+                            <li style="background-color: #fff;">
+                                <div class="cont">
+                                    <div class="cont-col2">
+                                        <c:if test="${showDiscussInput}">
+                                            <div class="chat-form">
+                                                <div class="input-cont">
+                                                    <input class="form-control" type="text" id="discuss"
+                                                           placeholder="说点什么？"/>
+                                                </div>
+                                                <div class="btn-cont">
+                                                    <span class="arrow"></span>
+                                                    <a onclick="changeDiscuss()" class="btn blue icn-only">
+                                                        <i class="fa fa-check icon-white"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                        </c:if>
+                                        <ul class="chats">
+                                            <c:forEach var="comment" items="${allComments}">
+                                                <c:if test="${comment.userId!=userId}">
+                                                    <li class="in">
+                                                </c:if>
+                                                <c:if test="${comment.userId==userId}">
+                                                    <li class="out">
+                                                </c:if>
+                                                <div class="message">
+                                                    <span class="arrow"></span>
+                                                    <a class="name">${comment.userName}</a>
+                                                    <span class="datetime">${comment.discussDate}</span>
+                                                    <span class="body">${comment.discuss}</span>
+                                                </div>
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </c:if>
@@ -214,180 +266,145 @@
     <%--学习情况--%>
     <c:if test="${study}">
         <div class="row">
-            <div class="portlet">
-                <div class="portlet-title sidebar-title">
-                    <div class="caption-sidebar">学习情况</div>
-                    <div class="tools">
-                        <a href="javascript:;" class="collapse">
-                        </a>
+            <div class="col-md-12">
+                <div class="portlet">
+                    <div class="portlet-title sidebar-title">
+                        <div class="caption-sidebar">学习情况</div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse">
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="portlet-body">
-                    <ul class="feeds">
-                        <li style="background-color: #fff;">
-                            <div class="col1">
-                                <div class="cont">
-                                    <ul class="list-inline">
-                                        <li>注册日期:</li>
-                                        <li>
-                                                ${summarize.registerDate}
-                                        </li>
-                                        <br/>
-                                        <li>完成时间:</li>
-                                        <li>
-                                            <c:if test="${summarize.completeDate!=''}">
-                                                ${summarize.completeDate}
-                                            </c:if>
-                                            <c:if test="${summarize.completeDate==''}">
-                                                未完成
-                                            </c:if>
-                                        </li>
-                                        <br/>
-                                        <li>课件成绩:</li>
-                                        <li>
-                                            <c:if test="${summarize.grade!=''}">
-                                                ${summarize.grade}
-                                            </c:if>
-                                            <c:if test="${summarize.grade==''}">
-                                                无成绩
-                                            </c:if>
-                                        </li>
-                                        <br/>
-                                        <li>学习总时间:</li>
-                                        <li>
-                                            <c:if test="${summarize.totalTime!=''}">
-                                                ${summarize.totalTime}
-                                            </c:if>
-                                            <c:if test="${summarize.totalTime==''}">
-                                                未记录
-                                            </c:if>
-                                        </li>
-                                        <br/>
-                                        <li>我的评分:</li>
-                                        <li>
-                                            <c:if test="${summarize.score!='0'}">
-                                                ${summarize.score}
-                                            </c:if>
-                                            <c:if test="${summarize.score=='0'}">
-                                                未评分
-                                            </c:if>
-                                        </li>
-                                        <br/>
-                                        <li>评论日期:</li>
-                                        <li>
-                                            <c:if test="${summarize.discussDate!=''}">
-                                                ${summarize.discussDate}
-                                            </c:if>
-                                            <c:if test="${summarize.discussDate==''}">
-                                                未评论
-                                            </c:if>
-                                        </li>
-                                        <br/>
-                                        <li>评论内容:</li>
-                                        <li>
-                                            <c:if test="${summarize.discuss!=''}">
-                                                ${summarize.discuss}
-                                            </c:if>
-                                        </li>
-                                    </ul>
+                    <div class="portlet-body">
+                        <ul class="feeds">
+                            <li style="background-color: #fff;">
+                                <div class="col1">
+                                    <div class="cont">
+                                        <ul class="list-inline">
+                                            <li>注册日期:</li>
+                                            <li>
+                                                    ${summarize.registerDate}
+                                            </li>
+                                            <br/>
+                                            <li>完成时间:</li>
+                                            <li>
+                                                <c:if test="${summarize.completeDate!=''}">
+                                                    ${summarize.completeDate}
+                                                </c:if>
+                                                <c:if test="${summarize.completeDate==''}">
+                                                    未完成
+                                                </c:if>
+                                            </li>
+                                            <br/>
+                                            <li>课件成绩:</li>
+                                            <li>
+                                                <c:if test="${summarize.grade!=''}">
+                                                    ${summarize.grade}
+                                                </c:if>
+                                                <c:if test="${summarize.grade==''}">
+                                                    无成绩
+                                                </c:if>
+                                            </li>
+                                            <br/>
+                                            <li>学习总时间:</li>
+                                            <li>
+                                                <c:if test="${summarize.totalTime!=''}">
+                                                    ${summarize.totalTime}
+                                                </c:if>
+                                                <c:if test="${summarize.totalTime==''}">
+                                                    未记录
+                                                </c:if>
+                                            </li>
+                                            <br/>
+                                            <li>我的评分:</li>
+                                            <li>
+                                                <c:if test="${summarize.score!='0'}">
+                                                    ${summarize.score}
+                                                </c:if>
+                                                <c:if test="${summarize.score=='0'}">
+                                                    未评分
+                                                </c:if>
+                                            </li>
+                                            <br/>
+                                            <li>评论日期:</li>
+                                            <li>
+                                                <c:if test="${summarize.discussDate!=''}">
+                                                    ${summarize.discussDate}
+                                                </c:if>
+                                                <c:if test="${summarize.discussDate==''}">
+                                                    未评论
+                                                </c:if>
+                                            </li>
+                                            <br/>
+                                            <li>评论内容:</li>
+                                            <li>
+                                                <c:if test="${summarize.discuss!=''}">
+                                                    ${summarize.discuss}
+                                                </c:if>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </c:if>
     <%--章节列表--%>
     <div class="row">
-        <div class="portlet">
-            <div class="portlet-title sidebar-title">
-                <div class="caption-sidebar">章节列表</div>
-                <div class="tools">
-                    <a href="javascript:;" class="collapse">
-                    </a>
+        <div class="col-md-12">
+            <div class="portlet">
+                <div class="portlet-title sidebar-title">
+                    <div class="caption-sidebar">章节列表</div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse">
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="portlet-body">
-                <ul class="feeds">
-                    <li style="background-color: #fff;">
-                        <div class="col1">
-                            <div class="cont">
-                                <div class="ztree" id="chapterList"></div>
+                <div class="portlet-body">
+                    <ul class="feeds">
+                        <li style="background-color: #fff;">
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="ztree" id="chapterList"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col2">
-                        </div>
-                    </li>
-                </ul>
+                            <div class="col2">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    <%--系列课件--%>
-    <c:if test="${fn:length(groupScorms)>0}">
-        <div class="row">
-            <div class="portlet">
-                <div class="portlet-title sidebar-title">
-                    <div class="caption-sidebar">系列课程</div>
-                    <div class="tools">
-                        <a href="javascript:;" class="collapse">
-                        </a>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <ul class="feeds">
-                        <li style="background-color: #fff;">
-                            <div class="col1">
-                                <div class="cont">
-                                    <c:forEach var="groupScorm" items="${groupScorms}">
-                                        <br/>
-                                        <a onclick="scormInfo('${groupScorm.scormId}')">
-                                            <img src="${groupScorm.imgPath}" width="80px" height="80px"
-                                                 class="img-rounded"/>
-                                            <c:if test="${groupScorm.showRecommendLevel!=''}">
-                                                <img src="${groupScorm.showRecommendLevel}"
-                                                     style="width: 15px;height: 15px"/>
-                                            </c:if>&nbsp;${groupScorm.scormName}
-                                        </a><br/>
-                                    </c:forEach>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </c:if>
-    <%--其他课件--%>
+    <%--作者更多课件--%>
     <c:if test="${fn:length(otherScorms)>0}">
         <div class="row">
-            <div class="portlet">
-                <div class="portlet-title sidebar-title">
-                    <div class="caption-sidebar">作者更多课件</div>
-                    <div class="tools">
-                        <a href="javascript:;" class="collapse">
-                        </a>
+            <div class="col-md-12">
+                <div class="portlet">
+                    <div class="portlet-title sidebar-title">
+                        <div class="caption-sidebar">作者更多课件</div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse">
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="portlet-body">
-                    <ul class="feeds">
-                        <li style="background-color: #fff;">
-                            <div class="col1">
-                                <div class="cont">
-                                    <c:forEach var="scorm" items="${otherScorms}">
-                                        <br/>
-                                        <a onclick="scormInfo('${scorm.scormId}')">
-                                            <img src="${scorm.imgPath}" width="80px" height="80px" class="img-rounded"/>
-                                            <c:if test="${scorm.showRecommendLevel!=''}">
-                                                <img src="${scorm.showRecommendLevel}"
-                                                     style="width: 15px;height: 15px"/>
-                                            </c:if>&nbsp;${scorm.scormName}
-                                        </a><br/>
-                                    </c:forEach>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                    <div class="portlet-body">
+                        <div class="col-md-10">
+                            <c:forEach var="scorm" items="${otherScorms}">
+                                <br/>
+                                <a onclick="scormInfo('${scorm.scormId}')">
+                                    <img src="${scorm.imgPath}" class="img-responsive"/>
+                                    <c:if test="${scorm.showRecommendLevel!=''}">
+                                        <img src="${scorm.showRecommendLevel}"
+                                             style="width: 15px;height: 15px"/>
+                                    </c:if>&nbsp;${scorm.scormName}
+                                </a><br/>
+                            </c:forEach>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -56,7 +56,6 @@ public class TouristController {
         scormService.getSummarizeInfo(scormId, request);
         scormService.getAllStudyNotesByScormIdAndUserId(scormId, request);
         scormService.getAllRegisterUsers(scormId, request);
-        scormService.getUseUpScormsByScormId(scormId, request);
         return "scormfront/scorm/scormInfo";
     }
 

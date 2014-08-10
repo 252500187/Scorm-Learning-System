@@ -7,7 +7,7 @@
 <!--<![endif]-->
 
 <div class="page-header navbar navbar-fixed-top" style="box-shadow: 1px 1px 10px #969696;">
-<div class="page-header-inner">
+<div class="page-header-inner" style="margin-left: 30px">
 <div class="page-logo">
     <a href="">
         <img src="img/logo/index_logo.png" alt="logo" class="logo-default"

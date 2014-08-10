@@ -379,17 +379,26 @@ public class ScormServiceImpl implements ScormService {
             return;
         }
         scormInfo.setShowRecommendLevel(dictService.changeDictCodeToValue(scormInfo.getRecommendLevel(), DictConstant.RECOMMEND));
+        scormInfo.setShowUploadUserId(userDao.findUserAllInfoById(scormInfo.getUploadUserId()).getUserName());
         request.setAttribute("scormInfo", scormInfo);
         request.setAttribute("labels", labelDao.getLabelByScormId(scormId));
         request.setAttribute("allComments", summarizeDao.getAllCommentsByScormId(scormId));
         if (!("").equals(LoginUserUtil.getLoginName())) {
             request.setAttribute("userId", userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
         }
-        List<Scorm> scorms = groupDao.getGroupScormsByScormId(scormId);
-        for (Scorm scorm : scorms) {
+        //找到同系列课件
+        List<Scorm> groupScorms = groupDao.getGroupScormsByScormId(scormId);
+        for (Scorm scorm : groupScorms) {
             scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
         }
-        request.setAttribute("groupScorms", scorms);
+        request.setAttribute("groupScorms", groupScorms);
+        //找到用户上传的其他课件
+        List<Scorm> otherScorms = scormDao.getAllUpScormInfoByUserId(scormInfo.getUploadUserId());
+        for (Scorm scorm : otherScorms) {
+            scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
+        }
+        request.setAttribute("otherScorms", otherScorms);
+        //找到章节结构
         getScoList(request, scormId);
     }
 
