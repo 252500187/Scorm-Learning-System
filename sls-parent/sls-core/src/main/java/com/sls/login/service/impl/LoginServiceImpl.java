@@ -139,12 +139,12 @@ public class LoginServiceImpl implements LoginService {
             return false;
         }
         String key = StringUtil.generateUUID();
-        sendEmail(email, key, basePath);
+        sendEmail(email, key, basePath, userList.get(0).getUserId());
         addChangePassword(userList.get(0).getUserId(), key);
         return true;
     }
 
-    void sendEmail(String email, String key, String basePath) {
+    void sendEmail(String email, String key, String basePath, int userId) {
         MailSenderInfo mailInfo = new MailSenderInfo();
         mailInfo.setMailServerHost("smtp.qq.com");
         mailInfo.setMailServerPort("25");
@@ -153,12 +153,12 @@ public class LoginServiceImpl implements LoginService {
         mailInfo.setPassword("bblllmukk");
         mailInfo.setFromAddress("252500187@qq.com");//发送方邮箱
         mailInfo.setToAddress(email);//接收方邮箱
-        mailInfo.setSubject("重置登陆密码");
+        mailInfo.setSubject("SLS学习平台重置密码");
         mailInfo.setContent("亲爱的用户：您好！<br>您收到这封电子邮件是因为您 (也可能是某人冒充您的名义) 需要申请一个新密码。假如这不是您本人所申请，请不用理会这封电子邮件。<br>" +
                 "要使用新的密码, 请点击重置密码进行密码重置：" +
-                "<a href='" + basePath + "emailChangePassword?key=" + key + "'>重置密码</a><br/>" +
+                "<a href='" + basePath + "emailChangePassword?userId=" + userId + "&key=" + key + "'>重置密码</a><br/>" +
                 "若无法点击，可访问以下链接:<br/>" +
-                basePath + "emailChangePassword?key=" + key);
+                basePath + "emailChangePassword?userId=" + userId + "&key=" + key);
         SimpleMailSender sms = new SimpleMailSender();
         sms.sendHtmlMail(mailInfo);
     }

@@ -69,6 +69,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PublicDiscussesDao publicDiscussesDao;
 
+    @Autowired
+    private ChangePasswordDao changePasswordDao;
+
     @Override
     public Page<User> listUserPageList(PageParameter pageParameter, User user) {
         Page<User> userPage = userDao.findUserPageList(pageParameter, user);
@@ -491,5 +494,15 @@ public class UserServiceImpl implements UserService {
     public void editAnnouncement(BackAnnouncement backAnnouncement) {
         backAnnouncement.setAdminId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
         backAnnouncementDao.editAnnouncement(backAnnouncement);
+    }
+
+    @Override
+    public Boolean forgetChangePassword(int userId, String password, String key) {
+        if (changePasswordDao.findInUseItemByUserIdAndKey(userId, key).size() < 1) {
+            return false;
+        }
+        userDao.changePassword(userId, password);
+        changePasswordDao.changeToNoUseStateByUserId(userId);
+        return true;
     }
 }

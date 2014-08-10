@@ -2,6 +2,7 @@ package com.sls.login;
 
 import com.sls.login.service.LoginService;
 import com.sls.user.entity.User;
+import com.sls.user.service.UserService;
 import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,9 @@ public class LoginController {
 
     @Autowired
     private LoginService loginService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/login", method = {RequestMethod.GET})
     public String login(HttpServletRequest request, @RequestParam("page") String page) {
@@ -48,8 +52,15 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/emailChangePassword", method = RequestMethod.GET)
-    public String sendPasswordEmail(HttpServletRequest request, @RequestParam("key") String key) {
+    public String sendPasswordEmail(HttpServletRequest request, @RequestParam("key") String key, @RequestParam("userId") String userId) {
         request.setAttribute("key", key);
+        request.setAttribute("userId", userId);
         return "scormfront/forgetChangePassword";
+    }
+
+    @RequestMapping(value = "/forgetChangePassword", method = RequestMethod.POST)
+    @ResponseBody
+    public Boolean forgetChangePassword(@RequestParam("userId") int userId, @RequestParam("password") String password, @RequestParam("key") String key) {
+        return userService.forgetChangePassword(userId, password, key);
     }
 }

@@ -106,4 +106,6 @@ public interface UserService {
     BackAnnouncement getAnnouncementInfo(int announcementId);
 
     void editAnnouncement(BackAnnouncement backAnnouncement);
+
+    Boolean forgetChangePassword(int userId, String password, String key);
 }
