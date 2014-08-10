@@ -14,7 +14,7 @@
 </head>
 <body class="page-header-fixed" style="background-color: #ffffff;overflow-x:hidden">
 <%@include file="index/navigationMenu.jsp" %>
-<div class="page-container" style="margin-left: 20px;margin-right: 20px">
+<div class="page-container" style="margin-left: 30px;margin-right: 20px">
 <div class="row">
     <div class="col-md-9">
         <div class="row">
@@ -111,61 +111,32 @@
                 </div>
             </c:if>
         </div>
-        <br/><br/>
+        <br/>
 
         <div class="row">
             <div class="col-md-12">
-                <div class="portlet">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            正在进行的公开课，快来参加！
+                <hr/>
+                <h2>
+                    <div class="caption-sidebar">推荐用户</div>
+                </h2>
+            </div>
+            <br/><br/>
+            <c:forEach var="user" items="${recommendUsers}">
+                <div class="col-md-2">
+                    <div class="meet-our-team">
+                        <h3>${user.userName}
+                            <small>经验值:${user.score}</small>
+                        </h3>
+                        <div class="team-info">
+                            <a onclick="userInfo(${user.userId})" class="pull-right btn grey">查看信息<i class="m-icon-swapright m-icon-white"></i>
+                            </a>
                         </div>
-                    </div>
-                    <div class="portlet-body">
-                        <div class="row margin-bottom-40">
-                            <c:forEach var="scorm" items="${publicScorms}">
-                                <div class="col-md-3">
-                                    <div class="pricing hover-effect">
-                                        <div class="pricing-head">
-                                            <h3>${scorm.scormName}<span>
-                                                    ${scorm.publicDescription} </span>
-                                            </h3>
-                                            <h4><i style="font-size: 15px">${scorm.startTime}</i>-<i
-                                                    style="font-size: 15px">${scorm.endTime}</i>
-											<span>
-											正在进行中... </span>
-                                            </h4>
-                                        </div>
-                                        <ul class="pricing-content list-unstyled">
-                                            <li>
-                                                <img src="${scorm.imgPath}" class="img-responsive">
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-star"></i>课件分数:&nbsp;${scorm.score}分
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-signal"></i>推荐等级:&nbsp;${scorm.recommendLevel}级
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-users"></i>注册人数:&nbsp;${scorm.registerSum}人
-                                            </li>
-                                        </ul>
-                                        <div class="pricing-footer">
-                                            <p>
-                                                    ${scorm.description}
-                                            </p>
-                                            <a onclick="scormInfo(${scorm.scormId})" class="btn yellow-crusta">
-                                                查看 <i class="m-icon-swapright m-icon-white"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </c:forEach>
-                        </div>
+                        <img src="${user.imgUrl}" alt="${user.userName}" class="img-responsive"/>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
+        <br/>
     </div>
     <div class="col-md-3" style="margin-top: -35px">
         <div class="portlet-title">
@@ -176,12 +147,13 @@
         <div class="portlet-body">
             <br/>
             <c:if test="${fn:length(announcement)<1}">
-                <h5>暂时没有公告</h5>
+                <h5>暂无公告</h5>
             </c:if>
             <c:forEach var="announcement" items="${announcements}">
                 <h5>${announcement.announcementTheme}</h5>
             </c:forEach>
         </div>
+        <hr/>
         <div class="portlet-title">
             <h1>
                 <div class="caption-sidebar">最新上传</div>
@@ -192,12 +164,14 @@
                 <c:forEach var="latest" items="${latestScorms}">
                     <li>
                         <div class="col1">
-                            <div class="cont" onclick="scormInfo('${latest.scormId}')">
+                            <div class="cont">
                                 <div class="cont-col1">
-                                    <img src="${latest.imgPath}" class="img-rounded" style="width: 100px;height: 60px">
+                                    <img src="${latest.imgPath}" onclick="scormInfo('${latest.scormId}')"
+                                         class="img-rounded" style="width: 100px;height: 60px">
                                 </div>
                                 <div class="cont-col2">
-                                    <div class="desc-sidebar">${latest.scormName}</div>
+                                    <div class="desc-sidebar"
+                                         onclick="scormInfo('${latest.scormId}')">${latest.scormName}</div>
                                     <div class="date-sidebar">${latest.uploadDate}</div>
                                 </div>
                             </div>
@@ -212,27 +186,62 @@
     <div class="col-md-12">
         <hr/>
         <h2>
-            <div class="caption-sidebar">推荐用户</div>
+            <div class="caption-sidebar">正在进行的公开课，快来参加！</div>
         </h2>
-        <br/>
+        <br/><br/>
 
-        <div class="tiles">
-            <c:forEach var="user" items="${recommendUsers}">
-                <div class="tile image" onclick="userInfo('${user.userId}')">
-                    <div class="tile-body">
-                        <img src="${user.imgUrl}" alt="${user.userName}"
-                             class="img-responsive">
-                    </div>
-                    <div class="tile-object">
-                        <div class="number">
-                                ${user.userName}
+        <div class="portlet">
+            <%--<div class="portlet-title">--%>
+            <%--<div class="caption">--%>
+            <%--正在进行的公开课，快来参加！--%>
+            <%--</div>--%>
+            <%--</div>--%>
+            <div class="portlet-body">
+                <div class="row margin-bottom-40">
+                    <c:forEach var="scorm" items="${publicScorms}">
+                        <div class="col-md-3">
+                            <div class="pricing hover-effect">
+                                <div class="pricing-head">
+                                    <h3>${scorm.scormName}<span>
+                                            ${scorm.publicDescription} </span>
+                                    </h3>
+                                    <h4><i style="font-size: 15px">${scorm.startTime}</i>-<i
+                                            style="font-size: 15px">${scorm.endTime}</i>
+											<span>
+											正在进行中... </span>
+                                    </h4>
+                                </div>
+                                <ul class="pricing-content list-unstyled">
+                                    <li>
+                                        <img src="${scorm.imgPath}" class="img-responsive">
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-star"></i>课件分数:&nbsp;${scorm.score}分
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-signal"></i>推荐等级:&nbsp;${scorm.recommendLevel}级
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-users"></i>注册人数:&nbsp;${scorm.registerSum}人
+                                    </li>
+                                </ul>
+                                <div class="pricing-footer">
+                                    <p>
+                                            ${scorm.description}
+                                    </p>
+                                    <a onclick="scormInfo(${scorm.scormId})" class="btn yellow-crusta">
+                                        查看 <i class="m-icon-swapright m-icon-white"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </c:forEach>
                 </div>
-            </c:forEach>
+            </div>
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-md-12">
         <hr/>
@@ -252,25 +261,30 @@
         </div>
     </c:forEach>
 </div>
+<%int i = 0;%>
 <div class="row">
-    <hr/>
-    <h2>
-        <div class="caption-sidebar">课件评分</div>
-    </h2>
-    <br/><br/>
-    <%int i = 0;%>
-    <div class="row">
+    <div class="col-md-12">
+        <hr/>
+        <h2>
+            <div class="caption-sidebar">课件评分</div>
+        </h2>
+    </div>
+    <div class="row thumbnails">
         <c:forEach var="scorm" items="${scormScore}">
         <div class="col-md-3">
-            <div class="thumbnail">
-                <a onclick="scormInfo('${scorm.scormId}')">
-                    <img src="${scorm.imgPath}" alt="${scorm.scormName}" class="img-responsive">
-                </a>
-            </div>
-            <span class="span-name">${scorm.scormName}</span>
+            <div class="meet-our-team">
+                <h3>${scorm.scormName}
+                    <small>${scorm.passDate}</small>
+                </h3>
+                <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"/>
 
-            <div>
-                <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
+                <div class="team-info">
+                    <p>
+                            ${scorm.description}
+                    </p>
+                    <a onclick="scormInfo(${scorm.scormId})" class="btn blue pull-right">查看<i
+                            class="m-icon-swapright m-icon-white"></i></a>
+                </div>
             </div>
         </div>
         <%
@@ -278,30 +292,35 @@
             if (i == 4) {
         %>
     </div>
-    <div class="row">
+    <div class="row thumbnails">
         <%}%>
         </c:forEach>
     </div>
 </div>
+<% i = 0;%>
 <div class="row">
-    <hr/>
-    <h2>
-        <div class="caption-sidebar">推荐等级</div>
-    </h2>
-    <br/><br/>
-    <% i = 0;%>
-    <div class="row">
+    <div class="col-md-12">
+        <hr/>
+        <h2>
+            <div class="caption-sidebar">推荐等级</div>
+        </h2>
+    </div>
+    <div class="row thumbnails">
         <c:forEach var="scorm" items="${scormLevel}">
         <div class="col-md-3">
-            <div class="thumbnail">
-                <a onclick="scormInfo('${scorm.scormId}')">
-                    <img src="${scorm.imgPath}" alt="${scorm.scormName}" class="img-responsive">
-                </a>
-            </div>
-            <span class="span-name">${scorm.scormName}</span>
+            <div class="meet-our-team">
+                <h3>${scorm.scormName}
+                    <small>${scorm.passDate}</small>
+                </h3>
+                <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"/>
 
-            <div>
-                <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
+                <div class="team-info">
+                    <p>
+                            ${scorm.description}
+                    </p>
+                    <a onclick="scormInfo(${scorm.scormId})" class="btn blue pull-right">查看<i
+                            class="m-icon-swapright m-icon-white"></i></a>
+                </div>
             </div>
         </div>
         <%
@@ -309,30 +328,35 @@
             if (i == 4) {
         %>
     </div>
-    <div class="row">
+    <div class="row thumbnails">
         <%}%>
         </c:forEach>
     </div>
 </div>
+<% i = 0;%>
 <div class="row">
-    <hr/>
-    <h2>
-        <div class="caption-sidebar">学习时间</div>
-    </h2>
-    <br/><br/>
-    <% i = 0;%>
-    <div class="row">
+    <div class="col-md-12">
+        <hr/>
+        <h2>
+            <div class="caption-sidebar">学习时间</div>
+        </h2>
+    </div>
+    <div class="row thumbnails">
         <c:forEach var="scorm" items="${scormTime}">
         <div class="col-md-3">
-            <div class="thumbnail">
-                <a onclick="scormInfo('${scorm.scormId}')">
-                    <img src="${scorm.imgPath}" alt="${scorm.scormName}" class="img-responsive">
-                </a>
-            </div>
-            <span class="span-name">${scorm.scormName}</span>
+            <div class="meet-our-team">
+                <h3>${scorm.scormName}
+                    <small>${scorm.passDate}</small>
+                </h3>
+                <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"/>
 
-            <div>
-                <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
+                <div class="team-info">
+                    <p>
+                            ${scorm.description}
+                    </p>
+                    <a onclick="scormInfo(${scorm.scormId})" class="btn blue pull-right">查看<i
+                            class="m-icon-swapright m-icon-white"></i></a>
+                </div>
             </div>
         </div>
         <%
@@ -340,30 +364,35 @@
             if (i == 4) {
         %>
     </div>
-    <div class="row">
+    <div class="row thumbnails">
         <%}%>
         </c:forEach>
     </div>
 </div>
+<% i = 0;%>
 <div class="row">
-    <hr/>
-    <h2>
-        <div class="caption-sidebar">注册人数</div>
-    </h2>
-    <br/><br/>
-    <% i = 0;%>
-    <div class="row">
+    <div class="col-md-12">
+        <hr/>
+        <h2>
+            <div class="caption-sidebar">注册人数</div>
+        </h2>
+    </div>
+    <div class="row thumbnails">
         <c:forEach var="scorm" items="${scormSum}">
         <div class="col-md-3">
-            <div class="thumbnail">
-                <a onclick="scormInfo('${scorm.scormId}')">
-                    <img src="${scorm.imgPath}" alt="${scorm.scormName}" class="img-responsive">
-                </a>
-            </div>
-            <span class="span-name">${scorm.scormName}</span>
+            <div class="meet-our-team">
+                <h3>${scorm.scormName}
+                    <small>${scorm.passDate}</small>
+                </h3>
+                <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"/>
 
-            <div>
-                <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
+                <div class="team-info">
+                    <p>
+                            ${scorm.description}
+                    </p>
+                    <a onclick="scormInfo(${scorm.scormId})" class="btn blue pull-right">查看<i
+                            class="m-icon-swapright m-icon-white"></i></a>
+                </div>
             </div>
         </div>
         <%
@@ -371,15 +400,14 @@
             if (i == 4) {
         %>
     </div>
-    <div class="row">
+    <div class="row thumbnails">
         <%}%>
         </c:forEach>
     </div>
 </div>
 </div>
-<br/>
+<br/><br/>
 <hr/>
-<br/>
 <%@include file="index/footer.jsp" %>
 </body>
 </html>
