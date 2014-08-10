@@ -14,191 +14,167 @@
 </head>
 <body class="page-header-fixed" style="background-color: #ffffff;overflow-x:hidden">
 <%@include file="index/navigationMenu.jsp" %>
-<div class="page-container">
+<div class="page-container" style="margin-left: 20px;margin-right: 20px">
 <div class="row">
-<div class="col-md-9">
-    <div class="row">
-        <c:if test="${recommendIndexScorms[0]!=null}">
-            <div class="col-md-6" style="padding-left: 35px">
-                <div onclick="scormInfo('${recommendIndexScorms[0].scormId}')">
-                    <img src="${recommendIndexScorms[0].imgPath}" alt="${recommendIndexScorms[0].scormName}"
-                         style="height: 300px;width: 440px"/>
+    <div class="col-md-9">
+        <div class="row">
+            <c:if test="${recommendIndexScorms[0]!=null}">
+                <div class="col-md-6">
+                    <div onclick="scormInfo('${recommendIndexScorms[0].scormId}')">
+                        <img src="${recommendIndexScorms[0].imgPath}" alt="${recommendIndexScorms[0].scormName}"
+                             class="img-responsive"/>
+                    </div>
+                    <span>${recommendIndexScorms[0].scormName}</span>
                 </div>
-                <span>${recommendIndexScorms[0].scormName}</span>
-            </div>
-        </c:if>
+            </c:if>
 
-        <div class="col-md-6">
-            <div class="row">
-
-                <c:if test="${recommendIndexScorms[1]!=null}">
-                    <div class="col-md-6">
-                        <div onclick="scormInfo('${recommendIndexScorms[1].scormId}')">
-                            <img src="${recommendIndexScorms[1].imgPath}" alt="${recommendIndexScorms[1].scormName}"
-                                 style="height: 150px;width: 220px"/>
-                        </div>
-                        <span>${recommendIndexScorms[1].scormName}</span>
-                    </div>
-                </c:if>
-                <c:if test="${recommendIndexScorms[2]!=null}">
-                    <div class="col-md-6">
-                        <div onclick="scormInfo('${recommendIndexScorms[2].scormId}')">
-                            <img src="${recommendIndexScorms[2].imgPath}" alt="${recommendIndexScorms[2].scormName}"
-                                 style="height: 150px;width: 220px"/>
-                        </div>
-                        <span>${recommendIndexScorms[2].scormName}</span>
-                    </div>
-                </c:if>
-                <c:if test="${recommendIndexScorms[3]!=null}">
-                    <div class="col-md-6">
-                        <div onclick="scormInfo('${recommendIndexScorms[3].scormId}')">
-                            <img src="${recommendIndexScorms[3].imgPath}" alt="${recommendIndexScorms[3].scormName}"
-                                 style="height: 150px;width: 220px"/>
-                        </div>
-                        <span>${recommendIndexScorms[3].scormName}</span>
-                    </div>
-                </c:if>
-                <c:if test="${recommendIndexScorms[4]!=null}">
-                    <div class="col-md-6">
-                        <div onclick="scormInfo('${recommendIndexScorms[4].scormId}')">
-                            <img src="${recommendIndexScorms[4].imgPath}" alt="${recommendIndexScorms[4].scormName}"
-                                 style="height: 150px;width: 220px"/>
-                        </div>
-                        <span>${recommendIndexScorms[4].scormName}</span>
-                    </div>
-                </c:if>
-            </div>
-        </div>
-    </div>
-    <br/>
-
-    <div class="row">
-        <c:if test="${recommendIndexScorms[5]!=null}">
-            <div class="col-md-3" style="padding-left: 35px">
-                <div onclick="scormInfo('${recommendIndexScorms[5].scormId}')">
-                    <img src="${recommendIndexScorms[5].imgPath}" alt="${recommendIndexScorms[5].scormName}"
-                         style="height: 150px;width: 220px"/>
-                </div>
-                <span>${recommendIndexScorms[5].scormName}</span>
-            </div>
-        </c:if>
-        <c:if test="${recommendIndexScorms[6]!=null}">
-            <div class="col-md-3">
-                <div onclick="scormInfo('${recommendIndexScorms[6].scormId}')">
-                    <img src="${recommendIndexScorms[6].imgPath}" alt="${recommendIndexScorms[6].scormName}"
-                         style="height: 150px;width: 220px"/>
-                </div>
-                <span>${recommendIndexScorms[6].scormName}</span>
-            </div>
-        </c:if>
-        <c:if test="${recommendIndexScorms[7]!=null}">
-            <div class="col-md-3">
-                <div onclick="scormInfo('${recommendIndexScorms[7].scormId}')">
-                    <img src="${recommendIndexScorms[7].imgPath}" alt="${recommendIndexScorms[7].scormName}"
-                         style="height: 150px;width: 220px"/>
-                </div>
-                <span>${recommendIndexScorms[7].scormName}</span>
-            </div>
-        </c:if>
-        <c:if test="${recommendIndexScorms[8]!=null}">
-            <div class="col-md-3">
-                <div onclick="scormInfo('${recommendIndexScorms[8].scormId}')">
-                    <img src="${recommendIndexScorms[8].imgPath}" alt="${recommendIndexScorms[8].scormName}"
-                         style="height: 150px;width: 220px"/>
-                </div>
-                <span>${recommendIndexScorms[8].scormName}</span>
-            </div>
-        </c:if>
-    </div>
-    <br/><br/>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="portlet">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-cogs"></i>正在进行的公开课，快来参加！
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <div class="row margin-bottom-40">
-                        <c:forEach var="scorm" items="${publicScorms}">
-                            <div class="col-md-3">
-                                <div class="pricing hover-effect">
-                                    <div class="pricing-head">
-                                        <h3>${scorm.scormName}<span>
-                                                ${scorm.publicDescription} </span>
-                                        </h3>
-                                        <h4><i style="font-size: 15px">${scorm.startTime}</i>-<i
-                                                style="font-size: 15px">${scorm.endTime}</i>
-											<span>
-											正在进行中... </span>
-                                        </h4>
-                                    </div>
-                                    <ul class="pricing-content list-unstyled">
-                                        <li>
-                                            <img src="${scorm.imgPath}" class="img-responsive">
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-tags"></i>课件分数:&nbsp;${scorm.score}分
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-asterisk"></i>推荐等级:&nbsp;${scorm.recommendLevel}级
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-heart"></i>注册人数:&nbsp;${scorm.registerSum}人
-                                        </li>
-                                    </ul>
-                                    <div class="pricing-footer">
-                                        <p>
-                                                ${scorm.description}
-                                        </p>
-                                        <a onclick="scormInfo(${scorm.scormId})" class="btn yellow-crusta">
-                                            查看 <i class="m-icon-swapright m-icon-white"></i>
-                                        </a>
-                                    </div>
-                                </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <c:if test="${recommendIndexScorms[1]!=null}">
+                        <div class="col-md-6">
+                            <div onclick="scormInfo('${recommendIndexScorms[1].scormId}')">
+                                <img src="${recommendIndexScorms[1].imgPath}" alt="${recommendIndexScorms[1].scormName}"
+                                     class="img-responsive"/>
                             </div>
-                        </c:forEach>
-                    </div>
+                            <span>${recommendIndexScorms[1].scormName}</span>
+                        </div>
+                    </c:if>
+                    <c:if test="${recommendIndexScorms[2]!=null}">
+                        <div class="col-md-6">
+                            <div onclick="scormInfo('${recommendIndexScorms[2].scormId}')">
+                                <img src="${recommendIndexScorms[2].imgPath}" alt="${recommendIndexScorms[2].scormName}"
+                                     class="img-responsive"/>
+                            </div>
+                            <span>${recommendIndexScorms[2].scormName}</span>
+                        </div>
+                    </c:if>
+                </div>
+                <div class="row">
+                    <c:if test="${recommendIndexScorms[3]!=null}">
+                        <div class="col-md-6">
+                            <div onclick="scormInfo('${recommendIndexScorms[3].scormId}')">
+                                <img src="${recommendIndexScorms[3].imgPath}" alt="${recommendIndexScorms[3].scormName}"
+                                     class="img-responsive"/>
+                            </div>
+                            <span>${recommendIndexScorms[3].scormName}</span>
+                        </div>
+                    </c:if>
+                    <c:if test="${recommendIndexScorms[4]!=null}">
+                        <div class="col-md-6">
+                            <div onclick="scormInfo('${recommendIndexScorms[4].scormId}')">
+                                <img src="${recommendIndexScorms[4].imgPath}" alt="${recommendIndexScorms[4].scormName}"
+                                     class="img-responsive"/>
+                            </div>
+                            <span>${recommendIndexScorms[4].scormName}</span>
+                        </div>
+                    </c:if>
                 </div>
             </div>
         </div>
-    </div>
-    <br/>
-
-    <div class="row">
-        <div class="col-md-12" style="padding-left: 40px;">
-            <div class="portlet">
-                <div class="portlet-title sidebar-title">
-                    <h2>
-                        <div class="caption-sidebar">分类</div>
-                    </h2>
-                </div>
-                <div class="portlet-body">
-                    <ul class="feeds list-inline">
-                        <c:forEach var="label" items="${labels}">
-                            <li style="background-color: #fff;">
-                                <a onclick="sortByLabel('${label.labelId}')"
-                                   style="text-decoration: none;cursor: pointer;">
-                                    <i class="fa fa-tags"></i> ${label.labelName}
-                                </a>
-                            </li>
-                        </c:forEach>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-md-3" style="margin-top: -35px">
-    <div class="portlet-title">
-        <h1>
-            <div class="caption-sidebar">公告</div>
-        </h1>
         <br/>
 
+        <div class="row">
+            <c:if test="${recommendIndexScorms[5]!=null}">
+                <div class="col-md-3">
+                    <div onclick="scormInfo('${recommendIndexScorms[5].scormId}')">
+                        <img src="${recommendIndexScorms[5].imgPath}" alt="${recommendIndexScorms[5].scormName}"
+                             class="img-responsive"/>
+                    </div>
+                    <span>${recommendIndexScorms[5].scormName}</span>
+                </div>
+            </c:if>
+            <c:if test="${recommendIndexScorms[6]!=null}">
+                <div class="col-md-3">
+                    <div onclick="scormInfo('${recommendIndexScorms[6].scormId}')">
+                        <img src="${recommendIndexScorms[6].imgPath}" alt="${recommendIndexScorms[6].scormName}"
+                             class="img-responsive"/>
+                    </div>
+                    <span>${recommendIndexScorms[6].scormName}</span>
+                </div>
+            </c:if>
+            <c:if test="${recommendIndexScorms[7]!=null}">
+                <div class="col-md-3">
+                    <div onclick="scormInfo('${recommendIndexScorms[7].scormId}')">
+                        <img src="${recommendIndexScorms[7].imgPath}" alt="${recommendIndexScorms[7].scormName}"
+                             class="img-responsive"/>
+                    </div>
+                    <span>${recommendIndexScorms[7].scormName}</span>
+                </div>
+            </c:if>
+            <c:if test="${recommendIndexScorms[8]!=null}">
+                <div class="col-md-3">
+                    <div onclick="scormInfo('${recommendIndexScorms[8].scormId}')">
+                        <img src="${recommendIndexScorms[8].imgPath}" alt="${recommendIndexScorms[8].scormName}"
+                             class="img-responsive"/>
+                    </div>
+                    <span>${recommendIndexScorms[8].scormName}</span>
+                </div>
+            </c:if>
+        </div>
+        <br/><br/>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            正在进行的公开课，快来参加！
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row margin-bottom-40">
+                            <c:forEach var="scorm" items="${publicScorms}">
+                                <div class="col-md-3">
+                                    <div class="pricing hover-effect">
+                                        <div class="pricing-head">
+                                            <h3>${scorm.scormName}<span>
+                                                    ${scorm.publicDescription} </span>
+                                            </h3>
+                                            <h4><i style="font-size: 15px">${scorm.startTime}</i>-<i
+                                                    style="font-size: 15px">${scorm.endTime}</i>
+											<span>
+											正在进行中... </span>
+                                            </h4>
+                                        </div>
+                                        <ul class="pricing-content list-unstyled">
+                                            <li>
+                                                <img src="${scorm.imgPath}" class="img-responsive">
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i>课件分数:&nbsp;${scorm.score}分
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-signal"></i>推荐等级:&nbsp;${scorm.recommendLevel}级
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-users"></i>注册人数:&nbsp;${scorm.registerSum}人
+                                            </li>
+                                        </ul>
+                                        <div class="pricing-footer">
+                                            <p>
+                                                    ${scorm.description}
+                                            </p>
+                                            <a onclick="scormInfo(${scorm.scormId})" class="btn yellow-crusta">
+                                                查看 <i class="m-icon-swapright m-icon-white"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3" style="margin-top: -35px">
+        <div class="portlet-title">
+            <h1>
+                <div class="caption-sidebar">公告</div>
+            </h1>
+        </div>
         <div class="portlet-body">
+            <br/>
             <c:if test="${fn:length(announcement)<1}">
                 <h5>暂时没有公告</h5>
             </c:if>
@@ -214,12 +190,11 @@
         <div class="portlet-body">
             <ul class="feeds">
                 <c:forEach var="latest" items="${latestScorms}">
-                    <li style="background-color: #fff;">
+                    <li>
                         <div class="col1">
                             <div class="cont" onclick="scormInfo('${latest.scormId}')">
                                 <div class="cont-col1">
-                                    <img style="width: 100px;height: 60px;" src="${latest.imgPath}"
-                                         class="img-rounded">
+                                    <img src="${latest.imgPath}" class="img-rounded" style="width: 100px;height: 60px">
                                 </div>
                                 <div class="cont-col2">
                                     <div class="desc-sidebar">${latest.scormName}</div>
@@ -233,150 +208,178 @@
         </div>
     </div>
 </div>
-</div>
 <div class="row">
-    <div class="col-md-12" style="padding-left: 40px;">
-        <div class="mix-grid">
-            <h2>
-                <div class="caption-sidebar">推荐用户</div>
-            </h2>
-            <br/>
-            <br/>
+    <div class="col-md-12">
+        <hr/>
+        <h2>
+            <div class="caption-sidebar">推荐用户</div>
+        </h2>
+        <br/>
 
-            <div class="tiles">
-                <c:forEach var="user" items="${recommendUsers}">
-                    <div class="tile image" onclick="userInfo('${user.userId}')">
-                        <div class="tile-body">
-                            <img src="${user.imgUrl}" alt="${user.userName}" style="width: 150px;height: 150px;"
-                                 class="img-rounded">
-                        </div>
-                        <div class="tile-object">
-                            <div class="number">
-                                    ${user.userName}
-                            </div>
+        <div class="tiles">
+            <c:forEach var="user" items="${recommendUsers}">
+                <div class="tile image" onclick="userInfo('${user.userId}')">
+                    <div class="tile-body">
+                        <img src="${user.imgUrl}" alt="${user.userName}"
+                             class="img-responsive">
+                    </div>
+                    <div class="tile-object">
+                        <div class="number">
+                                ${user.userName}
                         </div>
                     </div>
-                </c:forEach>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <hr/>
+        <h2>
+            <div class="caption-sidebar">课件分类</div>
+        </h2>
+    </div>
+    <% String color[] = {"green", "red", "blue", "yellow"};%>
+    <c:forEach var="label" items="${labels}">
+        <div class="col-md-2">
+            <div class="top-news">
+                <a onclick="sortByLabel('${label.labelId}" class="btn <%=color[(int)(Math.random()*100)%4]%>">
+                    <span><i class="fa fa-tags"></i> ${label.labelName}</span>
+                    <i class="fa fa-tags top-news-icon"></i>
+                </a>
             </div>
         </div>
+    </c:forEach>
+</div>
+<div class="row">
+    <hr/>
+    <h2>
+        <div class="caption-sidebar">课件评分</div>
+    </h2>
+    <br/><br/>
+    <%int i = 0;%>
+    <div class="row">
+        <c:forEach var="scorm" items="${scormScore}">
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <a onclick="scormInfo('${scorm.scormId}')">
+                    <img src="${scorm.imgPath}" alt="${scorm.scormName}" class="img-responsive">
+                </a>
+            </div>
+            <span class="span-name">${scorm.scormName}</span>
+
+            <div>
+                <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
+            </div>
+        </div>
+        <%
+            i++;
+            if (i == 4) {
+        %>
+    </div>
+    <div class="row">
+        <%}%>
+        </c:forEach>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12" style="padding-left: 40px;">
-        <div class="mix-grid">
-            <hr/>
-            <h2>
-                <div class="caption-sidebar">课件评分</div>
-            </h2>
-            <br/>
-            <br/>
-            <c:forEach var="scorm" items="${scormScore}">
-                <div class="col-md-4 mix mix_all category_1"
-                     style=" display: block; opacity: 1;width: 300px;">
-                    <div>
-                        <div class="thumbnail">
-                            <a onclick="scormInfo('${scorm.scormId}')">
-                                <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
-                            </a>
-                        </div>
-                        <span class="span-name">${scorm.scormName}</span>
-                    </div>
-                    <div>
-                        <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
-                    </div>
-                </div>
-            </c:forEach>
+    <hr/>
+    <h2>
+        <div class="caption-sidebar">推荐等级</div>
+    </h2>
+    <br/><br/>
+    <% i = 0;%>
+    <div class="row">
+        <c:forEach var="scorm" items="${scormLevel}">
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <a onclick="scormInfo('${scorm.scormId}')">
+                    <img src="${scorm.imgPath}" alt="${scorm.scormName}" class="img-responsive">
+                </a>
+            </div>
+            <span class="span-name">${scorm.scormName}</span>
+
+            <div>
+                <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
+            </div>
         </div>
+        <%
+            i++;
+            if (i == 4) {
+        %>
+    </div>
+    <div class="row">
+        <%}%>
+        </c:forEach>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12" style="padding-left: 40px;">
-        <div class="mix-grid">
-            <hr/>
-            <h2>
-                <div class="caption-sidebar">推荐等级</div>
-            </h2>
-            <br/>
-            <br/>
-            <c:forEach var="scorm" items="${scormLevel}">
-                <div class="col-md-4 mix mix_all category_1"
-                     style=" display: block; opacity: 1;width: 300px;">
-                    <div>
-                        <div class="thumbnail">
-                            <a onclick="scormInfo('${scorm.scormId}')">
-                                <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
-                            </a>
-                        </div>
-                        <span class="span-name">${scorm.scormName}</span>
-                    </div>
-                    <div>
-                        <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
-                    </div>
-                </div>
-            </c:forEach>
+    <hr/>
+    <h2>
+        <div class="caption-sidebar">学习时间</div>
+    </h2>
+    <br/><br/>
+    <% i = 0;%>
+    <div class="row">
+        <c:forEach var="scorm" items="${scormTime}">
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <a onclick="scormInfo('${scorm.scormId}')">
+                    <img src="${scorm.imgPath}" alt="${scorm.scormName}" class="img-responsive">
+                </a>
+            </div>
+            <span class="span-name">${scorm.scormName}</span>
+
+            <div>
+                <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
+            </div>
         </div>
+        <%
+            i++;
+            if (i == 4) {
+        %>
+    </div>
+    <div class="row">
+        <%}%>
+        </c:forEach>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12" style="padding-left: 40px;">
-        <div class="mix-grid">
-            <hr/>
-            <h2>
-                <div class="caption-sidebar">学习时间</div>
-            </h2>
-            <br/>
-            <br/>
-            <c:forEach var="scorm" items="${scormTime}">
-                <div class="col-md-4 mix mix_all category_3"
-                     style=" display: block; opacity: 1;width: 300px;">
-                    <div>
-                        <div class="thumbnail">
-                            <a onclick="scormInfo('${scorm.scormId}')">
-                                <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
-                            </a>
-                        </div>
-                        <span>${scorm.scormName}</span>
-                    </div>
-                    <div>
-                        <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
-                    </div>
-                </div>
-            </c:forEach>
+    <hr/>
+    <h2>
+        <div class="caption-sidebar">注册人数</div>
+    </h2>
+    <br/><br/>
+    <% i = 0;%>
+    <div class="row">
+        <c:forEach var="scorm" items="${scormSum}">
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <a onclick="scormInfo('${scorm.scormId}')">
+                    <img src="${scorm.imgPath}" alt="${scorm.scormName}" class="img-responsive">
+                </a>
+            </div>
+            <span class="span-name">${scorm.scormName}</span>
+
+            <div>
+                <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
+            </div>
         </div>
+        <%
+            i++;
+            if (i == 4) {
+        %>
+    </div>
+    <div class="row">
+        <%}%>
+        </c:forEach>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12" style="padding-left: 40px;">
-        <div class="mix-grid">
-            <hr/>
-            <h2>
-                <div class="caption-sidebar">注册人数</div>
-            </h2>
-            <br/>
-            <br/>
-            <c:forEach var="scorm" items="${scormSum}">
-                <div class="col-md-4 mix mix_all category_4"
-                     style=" display: block; opacity: 1;width: 300px;">
-                    <div>
-                        <div class="thumbnail">
-                            <a onclick="scormInfo('${scorm.scormId}')">
-                                <img src="${scorm.imgPath}" alt="" style="width: 300px;height: 200px;">
-                            </a>
-                        </div>
-                        <span>${scorm.scormName}</span>
-                    </div>
-                    <div>
-                        <p style="height: 50px;overflow: hidden"> ${scorm.description}</p>
-                    </div>
-                </div>
-            </c:forEach>
-        </div>
-    </div>
 </div>
 <br/>
 <hr/>
 <br/>
-</div>
 <%@include file="index/footer.jsp" %>
 </body>
 </html>
