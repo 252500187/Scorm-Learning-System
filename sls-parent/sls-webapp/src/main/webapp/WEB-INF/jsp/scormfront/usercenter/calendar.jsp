@@ -56,9 +56,18 @@
 </div>
 <script>
     $(function () {
+        var temp;
         Metronic.init(); // init metronic core componets
         Layout.init(); // init layout
-        Calendar.init();
+        $.ajax({
+            url: basePath + "user/center/getRegisterScorms",
+            dataType: "json",
+            type: "post",
+            success: function (result) {
+                Calendar.init(result);
+            },
+            error: doError
+        });
     });
 </script>
 </body>

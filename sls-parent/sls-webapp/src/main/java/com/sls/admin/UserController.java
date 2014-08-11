@@ -193,6 +193,18 @@ public class UserController {
         userService.delAnnouncement(announcementId);
     }
 
+    @RequestMapping(value = "cancelSendAnnouncement", method = {RequestMethod.POST})
+       @ResponseBody
+       public void cancelSendAnnouncement(@RequestParam("announcementId") int announcementId) {
+        userService.cancelSendAnnouncement(announcementId);
+    }
+
+    @RequestMapping(value = "sendAnnouncement", method = {RequestMethod.POST})
+    @ResponseBody
+    public void sendAnnouncement(@RequestParam("announcementId") int announcementId) {
+        userService.sendAnnouncement(announcementId);
+    }
+
     @RequestMapping(value = "editAnnouncement", method = {RequestMethod.POST})
     @ResponseBody
     public void editAnnouncement(BackAnnouncement backAnnouncement) {

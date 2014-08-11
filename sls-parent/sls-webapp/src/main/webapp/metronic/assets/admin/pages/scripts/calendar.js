@@ -3,16 +3,15 @@ var Calendar = function () {
 
     return {
         //main function to initiate the module
-        init: function () {
-            Calendar.initCalendar();
+        init: function (temp) {
+            Calendar.initCalendar(temp);
         },
 
-        initCalendar: function () {
+        initCalendar: function (temp) {
 
             if (!jQuery().fullCalendar) {
                 return;
             }
-
             var date = new Date();
             var d = date.getDate();
             var m = date.getMonth();
@@ -21,7 +20,7 @@ var Calendar = function () {
             var h = {};
 
             if (Metronic.isRTL()) {
-                 if ($('#calendar').parents(".portlet").width() <= 720) {
+                if ($('#calendar').parents(".portlet").width() <= 720) {
                     $('#calendar').addClass("mobile");
                     h = {
                         right: 'title, prev, next',
@@ -35,9 +34,9 @@ var Calendar = function () {
                         center: '',
                         left: 'agendaDay, agendaWeek, month, today, prev,next'
                     };
-                }                
+                }
             } else {
-                 if ($('#calendar').parents(".portlet").width() <= 720) {
+                if ($('#calendar').parents(".portlet").width() <= 720) {
                     $('#calendar').addClass("mobile");
                     h = {
                         left: 'title, prev, next',
@@ -53,7 +52,6 @@ var Calendar = function () {
                     };
                 }
             }
-           
 
             var initDrag = function (el) {
                 // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
@@ -89,12 +87,9 @@ var Calendar = function () {
 
             //predefined events
             $('#event_box').html("");
-//            addEvent("My Event 1");
-//            addEvent("My Event 2");
-//            addEvent("My Event 3");
-//            addEvent("My Event 4");
-//            addEvent("My Event 5");
-//            addEvent("My Event 6");
+            for (var i = 0; i < temp.length; i++) {
+                addEvent(temp[i].scormName);
+            }
 
             $('#calendar').fullCalendar('destroy'); // destroy the calendar
             $('#calendar').fullCalendar({ //re-initialize the calendar
