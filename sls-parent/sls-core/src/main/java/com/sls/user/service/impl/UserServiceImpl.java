@@ -478,9 +478,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void sendAnnouncement(BackAnnouncement backAnnouncement) {
+    public void addAnnouncement(BackAnnouncement backAnnouncement) {
         backAnnouncement.setAdminId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
         backAnnouncement.setDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
+        backAnnouncement.setState(DictConstant.IN_USE);
+        backAnnouncementDao.setOtherAnnouncementNoUse();
         backAnnouncementDao.addBackAnnouncement(backAnnouncement);
     }
 

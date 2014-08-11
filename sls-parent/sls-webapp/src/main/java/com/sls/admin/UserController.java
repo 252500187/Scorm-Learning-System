@@ -141,9 +141,9 @@ public class UserController {
         return "scormadmin/user/sendUserMessageDo";
     }
 
-    @RequestMapping(value = "sendAnnouncementDo", method = {RequestMethod.GET})
-    public String sendAnnouncementDo() {
-        return "scormadmin/user/sendAnnouncementDo";
+    @RequestMapping(value = "addAnnouncementDo", method = {RequestMethod.GET})
+    public String addAnnouncementDo() {
+        return "scormadmin/user/addAnnouncementDo";
     }
 
     @RequestMapping(value = "sendUserMessage", method = {RequestMethod.POST})
@@ -152,10 +152,10 @@ public class UserController {
         userService.sendUserMessage(backMessage);
     }
 
-    @RequestMapping(value = "sendAnnouncement", method = {RequestMethod.POST})
+    @RequestMapping(value = "addAnnouncement", method = {RequestMethod.POST})
     @ResponseBody
-    public void sendAnnouncement(BackAnnouncement backAnnouncement) {
-        userService.sendAnnouncement(backAnnouncement);
+    public void addAnnouncement(BackAnnouncement backAnnouncement) {
+        userService.addAnnouncement(backAnnouncement);
     }
 
     @RequestMapping(value = "listAllMessageDo", method = {RequestMethod.GET})

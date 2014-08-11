@@ -101,7 +101,7 @@ public interface UserService {
 
     Page getAnnouncementPageList(PageParameter pageParameter, BackAnnouncement backAnnouncement);
 
-    void sendAnnouncement(BackAnnouncement backAnnouncement);
+    void addAnnouncement(BackAnnouncement backAnnouncement);
 
     void delAnnouncement(int announcementId);
 

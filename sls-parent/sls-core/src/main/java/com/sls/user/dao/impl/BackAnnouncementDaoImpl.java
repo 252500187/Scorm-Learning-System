@@ -6,6 +6,7 @@ import com.core.page.entity.PageParameter;
 import com.sls.user.dao.BackAnnouncementDao;
 import com.sls.user.entity.BackAnnouncement;
 import com.sls.user.entity.BackMessage;
+import com.sls.util.DictConstant;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.stereotype.Repository;
@@ -28,7 +29,7 @@ public class BackAnnouncementDaoImpl extends PageDao implements BackAnnouncement
 
     @Override
     public void addBackAnnouncement(BackAnnouncement backAnnouncement) {
-        String sql = "INSERT INTO us_back_announcement(admin_id, date, announcement_theme, announcement_content) VALUES( :adminId,:date,:announcementTheme,:announcementContent)";
+        String sql = "INSERT INTO us_back_announcement(admin_id, date, announcement_theme, announcement_content, state) VALUES( :adminId,:date,:announcementTheme,:announcementContent,:state)";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(backAnnouncement));
     }
 
@@ -49,5 +50,11 @@ public class BackAnnouncementDaoImpl extends PageDao implements BackAnnouncement
     public void editAnnouncement(BackAnnouncement backAnnouncement) {
         String sql = "UPDATE us_back_announcement SET admin_id=:adminId, announcement_theme=:announcementTheme,announcement_content=:announcementContent WHERE announcement_id=:announcementId ";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(backAnnouncement));
+    }
+
+    @Override
+    public void setOtherAnnouncementNoUse() {
+        String sql = "UPDATE `us_back_announcement` SET state = ? ";
+        getJdbcTemplate().update(sql, DictConstant.NO_USE);
     }
 }

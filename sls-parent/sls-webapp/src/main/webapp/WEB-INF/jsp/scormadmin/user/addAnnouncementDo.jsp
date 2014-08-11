@@ -36,8 +36,8 @@
             <div class="control-group">
                 <label class="control-label"></label>
                 <div class="controls">
-                    <input id="send" name="send" type="button" onclick="sendAnnouncement()" class="btn btn-primary"
-                           value="发布"/>
+                    <input id="send" name="send" type="button" onclick="addAnnouncement()" class="btn btn-primary"
+                           value="添加"/>
                     <input type="button" onclick="quit()" class="btn btn-primary" value="关闭"/>
                 </div>
             </div>
@@ -58,11 +58,11 @@
         }
     };
 
-    function sendAnnouncement() {
+    function addAnnouncement() {
         if (!JC.validate(ruleLabel)) return;
         $("#send").button('loading');
         $.ajax({
-            url: basePath + "admin/user/sendAnnouncement",
+            url: basePath + "admin/user/addAnnouncement",
             data: {
                 announcementTheme: $("#announcementTheme").val().trim(),
                 announcementContent: $("#announcementContent").val().trim()
