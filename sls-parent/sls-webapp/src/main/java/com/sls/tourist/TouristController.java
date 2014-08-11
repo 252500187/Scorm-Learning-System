@@ -141,6 +141,7 @@ public class TouristController {
         request.setAttribute("upScorms", scormService.getUpScormsByUserId(userId));
         request.setAttribute("attentionUsers", userService.getAttentionUserUsersByUserId(userId));
         request.setAttribute("answerQuestions", userService.getUserAnsWerQuestionsByUserId(userId));
+        userService.getPieCharts(request);
         userService.getUserOperate(userId, request);
         userService.clearAllNewMessage(userId, session);
         return "scormfront/user/userInfo";

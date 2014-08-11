@@ -115,7 +115,7 @@
                                     <c:forEach var="scorm" items="${registerScorm}">
                                         <div class="blog-twitter-block">
                                             <i class="fa fa-book blog-twiiter-icon"></i>
-                                            <a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a>
+                                            <a onclick="top.scormInfo('${scorm.scormId}')">${scorm.scormName}</a>
                                             <a onclick="study('${scorm.scormId}')">
                                                 <em>继续</em>
                                             </a>
@@ -146,7 +146,7 @@
                 </c:if>
                 <div class="top-news">
                     <c:if test="${recommendScorm[0]!=null}">
-                        <a onclick="scormInfo('${recommendScorm[0].scormId}')" class="btn red">
+                        <a onclick="top.scormInfo('${recommendScorm[0].scormId}')" class="btn red">
                                         <span>
                                             <c:if test="${recommendScorm[0].showRecommendLevel!=''}">
                                                 <img src="${recommendScorm[0].showRecommendLevel}"
@@ -160,7 +160,7 @@
                         </a>
                     </c:if>
                     <c:if test="${recommendScorm[1]!=null}">
-                        <a onclick="scormInfo('${recommendScorm[1].scormId}')" class="btn green">
+                        <a onclick="top.scormInfo('${recommendScorm[1].scormId}')" class="btn green">
                                          <span>
                                             <c:if test="${recommendScorm[1].showRecommendLevel!=''}">
                                                 <img src="${recommendScorm[1].showRecommendLevel}"
@@ -174,7 +174,7 @@
                         </a>
                     </c:if>
                     <c:if test="${recommendScorm[2]!=null}">
-                        <a onclick="scormInfo('${recommendScorm[2].scormId}')" class="btn blue">
+                        <a onclick="top.scormInfo('${recommendScorm[2].scormId}')" class="btn blue">
                                        <span>
                                             <c:if test="${recommendScorm[2].showRecommendLevel!=''}">
                                                 <img src="${recommendScorm[2].showRecommendLevel}"
@@ -188,7 +188,7 @@
                         </a>
                     </c:if>
                     <c:if test="${recommendScorm[3]!=null}">
-                        <a onclick="scormInfo('${recommendScorm[3].scormId}')" class="btn yellow">
+                        <a onclick="top.scormInfo('${recommendScorm[3].scormId}')" class="btn yellow">
                                          <span>
                                             <c:if test="${recommendScorm[3].showRecommendLevel!=''}">
                                                 <img src="${recommendScorm[3].showRecommendLevel}"
@@ -202,7 +202,7 @@
                         </a>
                     </c:if>
                     <c:if test="${recommendScorm[4]!=null}">
-                        <a onclick="scormInfo('${recommendScorm[4].scormId}')" class="btn purple">
+                        <a onclick="top.scormInfo('${recommendScorm[4].scormId}')" class="btn purple">
                                          <span>
                                             <c:if test="${recommendScorm[4].showRecommendLevel!=''}">
                                                 <img src="${recommendScorm[4].showRecommendLevel}"
