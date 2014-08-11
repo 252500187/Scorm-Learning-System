@@ -7,6 +7,7 @@ import com.sls.user.entity.User;
 import com.sls.user.entity.UserQuestion;
 import com.sls.user.service.UserCenterService;
 import com.sls.user.service.UserService;
+import com.sls.util.LoginUserUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +23,7 @@ import javax.servlet.http.HttpSession;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @Transactional
@@ -218,5 +220,11 @@ public class UserCenterController {
     @ResponseBody
     public void cancelNewAnswerByQuestionId(@RequestParam("questionId") int questionId) {
         userCenterService.cancelNewAnswerByQuestionId(questionId);
+    }
+
+    @RequestMapping(value = "getRegisterScorms", method = {RequestMethod.POST})
+    @ResponseBody
+    public List<Scorm> getRegisterScorms() {
+        return scormService.getRegisterScormsByUserId(userService.getUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
     }
 }
