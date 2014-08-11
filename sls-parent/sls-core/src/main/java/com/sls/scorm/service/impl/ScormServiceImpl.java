@@ -399,7 +399,7 @@ public class ScormServiceImpl implements ScormService {
         }
         request.setAttribute("groupScorms", groupScorms);
         //找到用户上传的其他课件
-        List<Scorm> otherScorms = scormDao.getAllUpScormInfoByUserId(scormInfo.getUploadUserId());
+        List<Scorm> otherScorms = scormDao.getInUseUpScormInfoByUserId(scormInfo.getUploadUserId());
         for (Scorm scorm : otherScorms) {
             scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
         }
@@ -633,9 +633,9 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void getUseUpScormsByScormId(int scormId, HttpServletRequest request) {
+    public void getUserUpScormsByScormId(int scormId, HttpServletRequest request) {
         int userId = scormDao.findScormInfoByScormId(scormId).getUploadUserId();
-        List<Scorm> scorms = scormDao.getAllUpScormInfoByUserId(userId);
+        List<Scorm> scorms = scormDao.getInUseUpScormInfoByUserId(userId);
         for (Scorm scorm : scorms) {
             scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
         }
@@ -653,7 +653,7 @@ public class ScormServiceImpl implements ScormService {
 
     @Override
     public List<Scorm> getUpScormsByUserId(int userId) {
-        List<Scorm> scorms = scormDao.getAllUpScormInfoByUserId(userId);
+        List<Scorm> scorms = scormDao.getInUseUpScormInfoByUserId(userId);
         for (Scorm scorm : scorms) {
             scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
         }

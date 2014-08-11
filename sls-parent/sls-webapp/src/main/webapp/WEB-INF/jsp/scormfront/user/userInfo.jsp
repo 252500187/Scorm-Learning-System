@@ -144,7 +144,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-9">
         <c:if test="${fn:length(upScorms)>0}">
             <div class="row">
                 <div class="col-md-12">
@@ -174,11 +174,13 @@
                                             </div>
                                             <div class="details">
                                                 <div class="number">
-                                                    <small style="font-size: 20px"><c:if
-                                                            test="${scorm.showRecommendLevel!=''}">
-                                                        <img src="${scorm.showRecommendLevel}"
-                                                             style="width: 20px;height: 20px"/>&nbsp;
-                                                    </c:if>${scorm.scormName}</small>
+                                                    <p style="font-size: 20px">
+                                                        <c:if test="${scorm.showRecommendLevel!=''}">
+                                                            <img src="${scorm.showRecommendLevel}"
+                                                                 style="width: 20px;height: 20px;margin-left: 12px"/>&nbsp;
+                                                        </c:if>
+                                                            ${scorm.scormName}
+                                                    </p>
                                                 </div>
                                                 <div class="desc">评分:${scorm.score}分</div>
                                             </div>
@@ -269,7 +271,7 @@
             <br/>
         </c:if>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <c:if test="${fn:length(userPeiCharts)>0}">
             <div class="row">
                 <div class="col-md-12">
@@ -292,14 +294,22 @@
                 <div class="col-md-12">
                     <div class="portlet">
                         <div class="portlet-title sidebar-title">
-                            <div class="caption-sidebar">粉丝用户</div>
+                            <div class="caption-sidebar">粉丝人数</div>
                             <div class="tools">
                                 <a href="javascript:;" class="collapse">
                                 </a>
                             </div>
                         </div>
                         <div class="portlet-body">
-
+                            <c:forEach var="user" items="${attentionUsers}">
+                                <div class="col-md-12">
+                                    <img src="${user.imgUrl}" class="img-responsive" style="height: 100px;"
+                                         onclick="userInfo('${user.userId}')"/>
+                                    <a onclick="userInfo('${user.userId}')">
+                                            ${user.userName}
+                                    </a><br/><br/>
+                                </div>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>

@@ -57,7 +57,7 @@ public class StudyScormController {
         scormService.setScormSummarizeInfo(scormId);
         scormService.getSummarizeInfo(scormId, request);
         scormService.getAllStudyNotesByScormIdAndUserId(scormId, request);
-        scormService.getUseUpScormsByScormId(scormId, request);
+        scormService.getUserUpScormsByScormId(scormId, request);
         scormService.getAllRegisterUsers(scormId, request);
         return "scormfront/scorm/studyScorm";
     }

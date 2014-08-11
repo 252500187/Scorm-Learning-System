@@ -117,25 +117,60 @@
         <div class="col-md-12">
             <hr/>
             <h2>
-                <div class="caption-sidebar">推荐用户</div>
+                <div class="caption-sidebar">正在进行的公开课，快来参加！</div>
             </h2>
-        </div>
-        <br/><br/>
-        <c:forEach var="user" items="${recommendUsers}">
-            <div class="col-md-2">
-                <div class="meet-our-team">
-                    <h3>${user.userName}
-                        <small>经验值:${user.score}</small>
-                    </h3>
-                    <div class="team-info">
-                        <a onclick="userInfo(${user.userId})" class="pull-right btn grey">查看信息<i
-                                class="m-icon-swapright m-icon-white"></i>
-                        </a>
+            <br/><br/>
+
+            <div class="portlet">
+                <%--<div class="portlet-title">--%>
+                <%--<div class="caption">--%>
+                <%--正在进行的公开课，快来参加！--%>
+                <%--</div>--%>
+                <%--</div>--%>
+                <div class="portlet-body">
+                    <div class="row margin-bottom-40">
+                        <c:forEach var="scorm" items="${publicScorms}">
+                            <div class="col-md-3">
+                                <div class="pricing hover-effect">
+                                    <div class="pricing-head">
+                                        <h3>${scorm.scormName}<span>
+                                                ${scorm.publicDescription} </span>
+                                        </h3>
+                                        <h4><i style="font-size: 15px">${scorm.startTime}</i>-<i
+                                                style="font-size: 15px">${scorm.endTime}</i>
+											<span>
+											正在进行中... </span>
+                                        </h4>
+                                    </div>
+                                    <ul class="pricing-content list-unstyled">
+                                        <li>
+                                            <img src="${scorm.imgPath}" class="img-responsive">
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-star"></i>课件分数:&nbsp;${scorm.score}分
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-signal"></i>推荐等级:&nbsp;${scorm.recommendLevel}级
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-users"></i>注册人数:&nbsp;${scorm.registerSum}人
+                                        </li>
+                                    </ul>
+                                    <div class="pricing-footer">
+                                        <p>
+                                                ${scorm.description}
+                                        </p>
+                                        <a onclick="scormInfo(${scorm.scormId})" class="btn yellow-crusta">
+                                            查看 <i class="m-icon-swapright m-icon-white"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
                     </div>
-                    <img src="${user.imgUrl}" alt="${user.userName}" class="img-responsive"/>
                 </div>
             </div>
-        </c:forEach>
+        </div>
     </div>
     <br/>
 </div>
@@ -198,64 +233,24 @@
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <hr/>
-        <h2>
-            <div class="caption-sidebar">正在进行的公开课，快来参加！</div>
-        </h2>
-        <br/><br/>
-
-        <div class="portlet">
-            <%--<div class="portlet-title">--%>
-            <%--<div class="caption">--%>
-            <%--正在进行的公开课，快来参加！--%>
-            <%--</div>--%>
-            <%--</div>--%>
-            <div class="portlet-body">
-                <div class="row margin-bottom-40">
-                    <c:forEach var="scorm" items="${publicScorms}">
-                        <div class="col-md-3">
-                            <div class="pricing hover-effect">
-                                <div class="pricing-head">
-                                    <h3>${scorm.scormName}<span>
-                                            ${scorm.publicDescription} </span>
-                                    </h3>
-                                    <h4><i style="font-size: 15px">${scorm.startTime}</i>-<i
-                                            style="font-size: 15px">${scorm.endTime}</i>
-											<span>
-											正在进行中... </span>
-                                    </h4>
-                                </div>
-                                <ul class="pricing-content list-unstyled">
-                                    <li>
-                                        <img src="${scorm.imgPath}" class="img-responsive">
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-star"></i>课件分数:&nbsp;${scorm.score}分
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-signal"></i>推荐等级:&nbsp;${scorm.recommendLevel}级
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-users"></i>注册人数:&nbsp;${scorm.registerSum}人
-                                    </li>
-                                </ul>
-                                <div class="pricing-footer">
-                                    <p>
-                                            ${scorm.description}
-                                    </p>
-                                    <a onclick="scormInfo(${scorm.scormId})" class="btn yellow-crusta">
-                                        查看 <i class="m-icon-swapright m-icon-white"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
+    <div class="row">
+        <div class="col-md-12">
+            <hr/>
+            <h2>
+                <div class="caption-sidebar">课件分类</div>
+            </h2>
+        </div>
+        <% String color[] = {"green", "red", "blue", "yellow"};%>
+        <c:forEach var="label" items="${labels}">
+            <div class="col-md-6">
+                <div class="top-news">
+                    <a onclick="sortByLabel('${label.labelId}" class="btn <%=color[(int)(Math.random()*100)%4]%>">
+                        <span><i class="fa fa-tags"></i> ${label.labelName}</span>
+                        <i class="fa fa-tags top-news-icon"></i>
+                    </a>
                 </div>
             </div>
-        </div>
+        </c:forEach>
     </div>
 </div>
 
@@ -263,17 +258,22 @@
     <div class="col-md-12">
         <hr/>
         <h2>
-            <div class="caption-sidebar">课件分类</div>
+            <div class="caption-sidebar">推荐用户</div>
         </h2>
     </div>
-    <% String color[] = {"green", "red", "blue", "yellow"};%>
-    <c:forEach var="label" items="${labels}">
+    <br/><br/>
+    <c:forEach var="user" items="${recommendUsers}">
         <div class="col-md-2">
-            <div class="top-news">
-                <a onclick="sortByLabel('${label.labelId}" class="btn <%=color[(int)(Math.random()*100)%4]%>">
-                    <span><i class="fa fa-tags"></i> ${label.labelName}</span>
-                    <i class="fa fa-tags top-news-icon"></i>
-                </a>
+            <div class="meet-our-team">
+                <h3>${user.userName}
+                    <small>经验值:${user.score}</small>
+                </h3>
+                <div class="team-info">
+                    <a onclick="userInfo(${user.userId})" class="pull-right btn grey">查看信息<i
+                            class="m-icon-swapright m-icon-white"></i>
+                    </a>
+                </div>
+                <img src="${user.imgUrl}" alt="${user.userName}" class="img-responsive" style="height: 100px"/>
             </div>
         </div>
     </c:forEach>

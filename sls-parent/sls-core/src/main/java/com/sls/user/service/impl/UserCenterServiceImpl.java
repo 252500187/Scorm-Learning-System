@@ -128,7 +128,7 @@ public class UserCenterServiceImpl implements UserCenterService {
     @Override
     public void getAllUpScormInfo(HttpServletRequest request) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-        List<Scorm> scormList = scormDao.getAllUpScormInfoByUserId(userId);
+        List<Scorm> scormList = scormDao.getInUseUpScormInfoByUserId(userId);
         for (Scorm oneScorm : scormList) {
             oneScorm.setShowInUse(dictService.changeDictCodeToValue(oneScorm.getInUse(), DictConstant.SCORM_STATE));
         }

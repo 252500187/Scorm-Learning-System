@@ -76,11 +76,11 @@ public interface ScormService {
 
     void getAllRegisterUsers(int scormId, HttpServletRequest request);
 
-    void getUseUpScormsByScormId(int scormId, HttpServletRequest request);
-
-    List<Scorm> getRegisterScormsByUserId(int userId);
+    void getUserUpScormsByScormId(int scormId, HttpServletRequest request);
 
     List<Scorm> getUpScormsByUserId(int userId);
+
+    List<Scorm> getRegisterScormsByUserId(int userId);
 
     void sortScorm(int labelId, HttpServletRequest request);
 
