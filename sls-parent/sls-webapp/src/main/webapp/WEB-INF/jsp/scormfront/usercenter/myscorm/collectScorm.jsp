@@ -21,7 +21,6 @@
         <div class="col-md-12">
             <div class="tabbable tabbable-custom boxless">
                 <div class="tab-pane active" id="tab_1">
-                    <!-- BEGIN FILTER -->
                     <div class="margin-top-10">
                         <div class="row">
                             <div class="col-md-12">
@@ -45,12 +44,14 @@
                             <c:if test="${fn:length(allScorm)<1}">
                                 还未收藏课件
                             </c:if>
-                            <c:forEach var="scormInfo" items="${allScorm}">
+                            <%int i = 0;%>
+                            <div class="row">
+                                <c:forEach var="scormInfo" items="${allScorm}">
                                 <div class="col-md-3 col-sm-4 mix mix_all"
                                      style=" display: block; opacity: 1;">
                                     <div class="mix-inner">
                                         <img src="${scormInfo.imgPath}" class="img-responsive"
-                                             alt="${scormInfo.scormId}" style="height: 164px;width: 246px">
+                                             alt="${scormInfo.scormId}">
 
                                         <div class="mix-details">
                                             <h4></h4>
@@ -69,11 +70,20 @@
                                         </div>
                                     </div>
                                 </div>
-                            </c:forEach>
+                                <%
+                                    i++;
+                                    if (i % 4 == 0) {
+                                %>
+                            </div>
+                            <br/>
+
+                            <div class="row">
+                                <%}%>
+                                </c:forEach>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

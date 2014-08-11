@@ -21,41 +21,43 @@
         <div class="col-md-12">
             <div class="tabbable tabbable-custom boxless">
                 <div class="tab-pane active" id="tab_1">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="page-breadcrumb breadcrumb">
-                                <li>
-                                    <i class="fa fa-home"></i>
-                                    <a onclick="parent.window.location.href=''">首页</a>
-                                    <i class="fa fa-angle-right"></i>
+                    <div class="margin-top-10">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="page-breadcrumb breadcrumb">
+                                    <li>
+                                        <i class="fa fa-home"></i>
+                                        <a onclick="parent.window.location.href=''">首页</a>
+                                        <i class="fa fa-angle-right"></i>
+                                    </li>
+                                    <li>
+                                        <a>个人中心</a>
+                                        <i class="fa fa-angle-right"></i>
+                                    </li>
+                                    <li>
+                                        <a>上传的课件</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row mix-grid">
+                            <ul class="mix-filter">
+                                <li class="filter" data-filter="all">
+                                    所有课件
                                 </li>
-                                <li>
-                                    <a>个人中心</a>
-                                    <i class="fa fa-angle-right"></i>
+                                <li class="filter" data-filter="category_1">
+                                    已通过
                                 </li>
-                                <li>
-                                    <a>上传的课件</a>
+                                <li class="filter" data-filter="category_2">
+                                    未通过
                                 </li>
                             </ul>
-                        </div>
-                    </div>
-                    <div class="margin-top">
-                        <ul class="mix-filter">
-                            <li class="filter" data-filter="all">
-                                所有课件
-                            </li>
-                            <li class="filter" data-filter="category_1">
-                                已通过
-                            </li>
-                            <li class="filter" data-filter="category_2">
-                                未通过
-                            </li>
-                        </ul>
-                        <c:if test="${fn:length(allScorm)<1}">
-                            还未上传课件
-                        </c:if>
-                        <div class="row mix-grid">
-                            <c:forEach var="scormInfo" items="${allScorm}">
+                            <c:if test="${fn:length(allScorm)<1}">
+                                还未上传课件
+                            </c:if>
+                            <%int i = 0;%>
+                            <div class="row">
+                                <c:forEach var="scormInfo" items="${allScorm}">
                                 <div class="col-md-3 col-sm-4 mix mix_all
                                     <c:if test='${scormInfo.inUse==1}'>
                                     category_1
@@ -66,7 +68,7 @@
                                      style="display: block; opacity: 1;">
                                     <div class="mix-inner">
                                         <img src="${scormInfo.imgPath}" class="img-responsive"
-                                             alt="${scormInfo.scormId}" style="height: 164px;width: 246px">
+                                             alt="${scormInfo.scormId}">
 
                                         <div class="mix-details">
                                             <h4></h4>
@@ -90,7 +92,17 @@
                                         </div>
                                     </div>
                                 </div>
-                            </c:forEach>
+                                <%
+                                    i++;
+                                    if (i % 4 == 0) {
+                                %>
+                            </div>
+                            <br/>
+
+                            <div class="row">
+                                <%}%>
+                                </c:forEach>
+                            </div>
                         </div>
                     </div>
                 </div>
