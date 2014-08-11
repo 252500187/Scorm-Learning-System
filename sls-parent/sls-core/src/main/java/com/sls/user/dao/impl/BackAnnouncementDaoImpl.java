@@ -11,6 +11,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 @Repository("backAnnouncementDao")
 public class BackAnnouncementDaoImpl extends PageDao implements BackAnnouncementDao {
@@ -68,5 +70,11 @@ public class BackAnnouncementDaoImpl extends PageDao implements BackAnnouncement
     public void sendAnnouncement(int announcementId) {
         String sql = "UPDATE `us_back_announcement` SET STATE = ? WHERE announcement_id = ? ";
         getJdbcTemplate().update(sql, DictConstant.IN_USE, announcementId);
+    }
+
+    @Override
+    public List<BackAnnouncement> getInUseAnnouncement() {
+        String sql = "SELECT * FROM `us_back_announcement` WHERE state = ?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<BackAnnouncement>(BackAnnouncement.class),DictConstant.IN_USE);
     }
 }

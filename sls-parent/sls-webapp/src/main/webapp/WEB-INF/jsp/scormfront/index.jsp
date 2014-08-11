@@ -139,20 +139,28 @@
         </div>
         <br/>
     </div>
+
+
     <div class="col-md-3" style="margin-top: -35px">
-        <div class="portlet-title">
-            <h1>
-                <div class="caption-sidebar">公告</div>
-            </h1>
-        </div>
-        <div class="portlet-body">
-            <br/>
-            <c:if test="${fn:length(announcement)<1}">
-                <h5>暂无公告</h5>
-            </c:if>
-            <c:forEach var="announcement" items="${announcements}">
-                <h5>${announcement.announcementTheme}</h5>
-            </c:forEach>
+        <div class="meet-our-team">
+        <div class="team-info" style="margin-top:30px;padding-top:0px ">
+            <h3 style="margin-top:10px;padding-bottom: 2px;margin-bottom: 2px">
+                <i class="fa fa-bullhorn"></i>公告：
+            </h3>
+                <ul class="page-breadcrumb breadcrumb">
+                    <c:forEach var="announcement" items="${announcements}">
+                    <li>
+                        <div class="col1">
+                            <div class="cont">
+                                <div class="cont-col1">标题：&nbsp;&nbsp;<a>${announcement.announcementTheme}</a>
+                                </div>
+                                <div class="cont-col1">内容：&nbsp;&nbsp;${announcement.announcementContent}
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    </c:forEach>
+                </ul>
         </div>
         <hr/>
         <div class="portlet-title">
