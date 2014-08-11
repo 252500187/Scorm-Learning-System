@@ -57,12 +57,10 @@
                             </li>
                         </ul>
                         <div class="row mix-grid">
-
                             <div class="col-md-3 col-sm-4 mix mix_all category_0"
                                  style=" display: block; opacity: 1;">
                                 <div class="mix-inner">
-                                    <img src="img/note/1.jpg" class="img-responsive"
-                                         alt="笔记本" style="height: 164px;width: 246px">
+                                    <img src="img/note/1.jpg" class="img-responsive" alt="笔记本">
 
                                     <div class="mix-details">
                                         <br/>
@@ -75,12 +73,10 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-md-3 col-sm-4 mix mix_all category_1"
                                  style=" display: block; opacity: 1;">
                                 <div class="mix-inner">
-                                    <img src="img/note/2.jpg" class="img-responsive"
-                                         alt="笔记本" style="height: 164px;width: 246px">
+                                    <img src="img/note/2.jpg" class="img-responsive" alt="笔记本">
 
                                     <div class="mix-details">
                                         <br/>
@@ -93,45 +89,56 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <hr/>
+                        <% int i = 0;%>
+                        <div class="row mix-grid">
                             <c:forEach var="scormInfo" items="${allScorm}">
-                                <c:if test="${scormInfo.completeDate == ''}">
-                                    <div class="col-md-3 col-sm-4 mix mix_all category_2"
-                                         style=" display: block; opacity: 1;">
-                                        <div class="mix-inner">
-                                            <img src="${scormInfo.imgPath}" class="img-responsive"
-                                                 alt="${scormInfo.scormId}" style="height: 164px;width: 246px">
+                            <c:if test="${scormInfo.completeDate == ''}">
+                                <div class="col-md-3 col-sm-4 mix mix_all category_2"
+                                     style=" display: block; opacity: 1;">
+                                    <div class="mix-inner">
+                                        <img src="${scormInfo.imgPath}" class="img-responsive"
+                                             alt="${scormInfo.scormId}">
 
-                                            <div class="mix-details">
-                                                <br/>
-                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                    《${scormInfo.scormName}》相关的笔记</h4>
-                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                    <a class="btn btn-sm blue"
-                                                       onclick="openNote('${scormInfo.scormId}')">打开</a>&nbsp;
-                                                </h4>
-                                            </div>
+                                        <div class="mix-details">
+                                            <br/>
+                                            <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                《${scormInfo.scormName}》相关的笔记</h4>
+                                            <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                <a class="btn btn-sm blue"
+                                                   onclick="openNote('${scormInfo.scormId}')">打开</a>&nbsp;
+                                            </h4>
                                         </div>
                                     </div>
-                                </c:if>
-                                <c:if test="${scormInfo.completeDate != ''}">
-                                    <div class="col-md-3 col-sm-4 mix mix_all category_3"
-                                         style=" display: block; opacity: 1;">
-                                        <div class="mix-inner">
-                                            <img src="${scormInfo.imgPath}" class="img-responsive"
-                                                 alt="${scormInfo.scormId}" style="height: 164px;width: 246px">
+                                </div>
+                            </c:if>
+                            <c:if test="${scormInfo.completeDate != ''}">
+                                <div class="col-md-3 col-sm-4 mix mix_all category_3"
+                                     style=" display: block; opacity: 1;">
+                                    <div class="mix-inner">
+                                        <img src="${scormInfo.imgPath}" class="img-responsive"
+                                             alt="${scormInfo.scormId}">
 
-                                            <div class="mix-details">
-                                                <br/>
-                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                    《${scormInfo.scormName}》相关的笔记</h4>
-                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                    <a class="btn btn-sm blue"
-                                                       onclick="openNote('${scormInfo.scormId}')">打开</a>&nbsp;
-                                                </h4>
-                                            </div>
+                                        <div class="mix-details">
+                                            <br/>
+                                            <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                《${scormInfo.scormName}》相关的笔记</h4>
+                                            <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                <a class="btn btn-sm blue"
+                                                   onclick="openNote('${scormInfo.scormId}')">打开</a>&nbsp;
+                                            </h4>
                                         </div>
                                     </div>
-                                </c:if>
+                                </div>
+                            </c:if>
+                            <%
+                                i++;
+                                if (i % 4 == 0) {
+                            %>
+                        </div>
+                        <div class="row mix-grid">
+                            <% }%>
                             </c:forEach>
                         </div>
                     </div>

@@ -50,47 +50,47 @@
                 <%--&lt;%&ndash;<p class="page-title">${userName}</p>&ndash;%&gt;--%>
                 <%--</div>--%>
             </div>
-            <c:forEach items="${noteList}" varStatus="status">
+            <c:forEach begin="0" step="2" items="${noteList}" varStatus="status">
                 <div class="bb-item">
-                        <%--页面头--%>
-                    <div class="head-Info" style="padding-left: 5%"
-                         name="${noteList[status.index].noteId}">
+
+                    <div class="head-Info" style="padding-left: 5%">
                             ${noteList[status.index].date}<br/>
                         <small>${noteList[status.index].time}</small>
                         <br/>
 
                         <h3 class="page-title">${noteList[status.index].scormName}</h3>
-                        <a onclick="delNote(${noteList[status.index].noteId})">撕掉</a>
                     </div>
-                    <div class="head-Info" style="text-align: right;padding-right: 5%;"
-                         name="${noteList[status.index+1].noteId}">
+
+                    <div class="head-Info" style="text-align: right;padding-right: 5%;">
                             ${noteList[status.index+1].date}<br/>
                         &nbsp;&nbsp;
                         <small>${noteList[status.index+1].time}</small>
                         <br/>
 
                         <h3 class="page-title">${noteList[status.index+1].scormName}</h3>
-                        <a onclick="delNote(${noteList[status.index+1].noteId})">撕掉</a>
                     </div>
-                        <%--页面体--%>
-                    <div class="bb-custom-side" name="${noteList[status.index].noteId}">
+
+                    <div class="bb-custom-side">
                         <c:if test="${noteList[status.index].noteType == -1 }">
                             <p>${noteList[status.index].note}</p>
                         </c:if>
                         <c:if test="${noteList[status.index].noteType != -1 }">
-                            <img style="max-height: 250px;max-width: 350px"
-                                 src="${noteList[status.index].imgPath}" alt=""/>
+                            <img style="max-height: 250px;max-width: 350px" src="${noteList[status.index].imgPath}"/>
                         </c:if>
+                        <a onclick="delNote('${noteList[status.index].noteId}')"
+                           style="margin-left: 10px">撕掉</a>
                     </div>
-                    <div class="bb-custom-side" name="${noteList[status.index+1].noteId}">
+
+                    <div class="bb-custom-side">
                         <c:if test="${noteList[status.index+1].noteType == -1 }">
                             <p>${noteList[status.index+1].note}</p>
                         </c:if>
                         <c:if test="${noteList[status.index+1].noteType != -1 }">
-                            <img style="max-height: 250px;max-width: 350px"
-                                 src="${noteList[status.index+1].imgPath}" alt=""/>
+                            <img style="max-height: 250px;max-width: 350px" src="${noteList[status.index+1].imgPath}"/>
                         </c:if>
+                        <a onclick="delNote('${noteList[status.index+1].noteId}')" style="margin-left: 10px">撕掉</a>
                     </div>
+
                 </div>
             </c:forEach>
         </div>
@@ -108,26 +108,22 @@
 <script src="booknote/js/jquery.bookblock.js"></script>
 <script type="text/javascript">
     $(function () {
-        Page.init();
         parent.$("#maskNotes").modal("hide");
+        Page.init();
     })
 
     function delNote(noteId) {
-        $.messager.confirm("提示", "确认撕掉该页笔记", function (r) {
-            if (r) {
-                $.ajax({
-                    url: basePath + "user/center/delNote",
-                    data: {
-                        noteId: noteId
-                    },
-                    dataType: "json",
-                    type: "POST",
-                    success: function () {
-                        window.location.href = basePath + "user/center/notesDo?scormId=${scormId}";
-                    },
-                    error: doError
-                })
-            }
+        $.ajax({
+            url: basePath + "user/center/delNote",
+            data: {
+                noteId: noteId
+            },
+            dataType: "json",
+            type: "POST",
+            success: function () {
+                window.location.href = basePath + "user/center/notesDo?scormId=${scormId}";
+            },
+            error: doError
         })
     }
 

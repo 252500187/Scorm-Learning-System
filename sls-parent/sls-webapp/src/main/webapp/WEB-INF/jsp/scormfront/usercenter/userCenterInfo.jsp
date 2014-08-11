@@ -60,7 +60,7 @@
                         </div>
                         <hr>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div class="portlet blue box">
                             <div class="portlet-title">
                                 <div class="caption">
@@ -83,8 +83,16 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <blockquote class="hero">
+                                <p>
+                                    学知不足，业精于勤。
+                                </p>
+                                <small>（唐）韩愈</small>
+                            </blockquote>
+                        </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <div class="portlet green box">
                             <div class="portlet-title">
                                 <div class="caption">
@@ -125,14 +133,6 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="col-md-12">
-                        <blockquote class="hero">
-                            <p>
-                                学知不足，业精于勤。
-                            </p>
-                            <small>（唐）韩愈</small>
-                        </blockquote>
-                    </div>
                 </div>
             </div>
             <div class="col-md-3">

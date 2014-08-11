@@ -16,6 +16,9 @@
 <%@include file="index/navigationMenu.jsp" %>
 <div class="page-container" style="margin-left: 30px;margin-right: 20px">
 <div class="row">
+
+</div>
+<div class="row">
     <div class="col-md-9">
         <div class="row">
             <c:if test="${recommendIndexScorms[0]!=null}">
@@ -128,7 +131,8 @@
                             <small>经验值:${user.score}</small>
                         </h3>
                         <div class="team-info">
-                            <a onclick="userInfo(${user.userId})" class="pull-right btn grey">查看信息<i class="m-icon-swapright m-icon-white"></i>
+                            <a onclick="userInfo(${user.userId})" class="pull-right btn grey">查看信息<i
+                                    class="m-icon-swapright m-icon-white"></i>
                             </a>
                         </div>
                         <img src="${user.imgUrl}" alt="${user.userName}" class="img-responsive"/>
