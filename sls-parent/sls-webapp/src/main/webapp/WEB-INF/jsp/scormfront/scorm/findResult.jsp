@@ -135,38 +135,6 @@
                     <hr>
                 </c:forEach>
             </c:if>
-            <c:if test="${fn:length(findDescriptionScorm)>0}">
-                <h1>按描述</h1>
-                <c:forEach var="scorm" items="${findDescriptionScorm}">
-                    <div class="row">
-                        <div class="col-md-4 blog-img blog-tag-data">
-                            <img src="${scorm.imgPath}" alt="img" class="img-responsive"
-                                 style="width: 300px">
-                            <ul class="list-inline">
-                                <li>
-                                    <i class="fa fa-calendar"></i>
-                                    <a>上传日期:${scorm.uploadDate}</a>
-                                </li>
-                                <li>
-                                    <i class="fa fa-folder-open-o"></i>
-                                    <a>章节数:${scorm.chapterNum}</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-8 blog-article">
-                            <h3><a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
-
-                            <p>评分:${scorm.score}分</p>
-
-                            <p>${scorm.description}</p>
-                            <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">
-                                详细 <i class="m-icon-swapright m-icon-white"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <hr>
-                </c:forEach>
-            </c:if>
             <c:if test="${fn:length(findScoreScorm)>0}">
                 <h1>按评分</h1>
                 <c:forEach var="scorm" items="${findScoreScorm}">

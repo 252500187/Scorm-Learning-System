@@ -159,8 +159,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean checkRepeatLoginName(String loginName) {
+    public Boolean checkRepeatLoginName(String loginName) {
         return !userDao.checkRepeatLoginName(loginName);
+    }
+
+    @Override
+    public Boolean checkRepeatEmail(String email) {
+        return !userDao.checkRepeatEmail(email);
     }
 
     @Override

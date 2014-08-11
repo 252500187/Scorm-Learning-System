@@ -646,28 +646,28 @@ var Charts = function () {
 //                    }
 //                });
 //
-//            // GRAPH 3
-//            $.plot($("#pie_chart_3"), data, {
-//                    series: {
-//                        pie: {
-//                            show: true,
-//                            radius: 1,
-//                            label: {
-//                                show: true,
-//                                radius: 3 / 4,
-//                                formatter: function (label, series) {
-//                                    return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
-//                                },
-//                                background: {
-//                                    opacity: 0.5
-//                                }
-//                            }
-//                        }
-//                    },
-//                    legend: {
-//                        show: false
-//                    }
-//                });
+            // GRAPH 3
+            $.plot($("#pie_chart_3"), data, {
+                    series: {
+                        pie: {
+                            show: true,
+                            radius: 1,
+                            label: {
+                                show: true,
+                                radius: 3 / 4,
+                                formatter: function (label, series) {
+                                    return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
+                                },
+                                background: {
+                                    opacity: 0.5
+                                }
+                            }
+                        }
+                    },
+                    legend: {
+                        show: false
+                    }
+                });
 //
 //            // GRAPH 4
 //            $.plot($("#pie_chart_4"), data, {
@@ -716,27 +716,27 @@ var Charts = function () {
 //                        show: false
 //                    }
 //                });
-
-            // GRAPH 6
-            $.plot($("#pie_chart_6"), data, {
-                    series: {
-                        pie: {
-                            show: true,
-                            radius: 1,
-                            label: {
-                                show: true,
-                                radius: 2 / 3,
-                                formatter: function (label, series) {
-                                    return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
-                                },
-                                threshold: 0.1
-                            }
-                        }
-                    },
-                    legend: {
-                        show: false
-                    }
-                });
+//
+//            // GRAPH 6
+//            $.plot($("#pie_chart_6"), data, {
+//                    series: {
+//                        pie: {
+//                            show: true,
+//                            radius: 1,
+//                            label: {
+//                                show: true,
+//                                radius: 2 / 3,
+//                                formatter: function (label, series) {
+//                                    return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
+//                                },
+//                                threshold: 0.1
+//                            }
+//                        }
+//                    },
+//                    legend: {
+//                        show: false
+//                    }
+//                });
 
 //            // GRAPH 7
 //            $.plot($("#pie_chart_7"), data, {

@@ -20,6 +20,8 @@ public interface UserDao {
 
     Boolean checkRepeatLoginName(String loginName);
 
+    Boolean checkRepeatEmail(String email);
+
     Boolean checkRepeatUserName(String userName);
 
     int addUser(User user);

@@ -19,11 +19,7 @@
 <body class="page-header-fixed" style="background-color: #ffffff;overflow-x:hidden">
 <%@include file="../index/navigationMenu.jsp" %>
 <div class="page-container">
-<%--左侧旁白--%>
-<div class="col-md-2">
-</div>
-<%--正文部分--%>
-<div class="col-md-8">
+<div class="col-md-8 col-md-offset-1">
 <%--课件基本信息--%>
 <div class="row">
     <div class="col-md-4">

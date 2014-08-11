@@ -49,6 +49,12 @@ public class TouristController {
         return userService.checkRepeatLoginName(loginName);
     }
 
+    @RequestMapping(value = "checkRepeatEmail", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean checkRepeatEmail(@RequestParam("email") String email) {
+        return userService.checkRepeatEmail(email);
+    }
+
     @RequestMapping(value = "scormInfo", method = {RequestMethod.GET})
     public String scormInfo(@RequestParam("scormId") int scormId, HttpServletRequest request) {
         scormService.getAllAboutScormInfo(scormId, request);

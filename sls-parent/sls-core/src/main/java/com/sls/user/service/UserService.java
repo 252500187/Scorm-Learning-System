@@ -33,7 +33,9 @@ public interface UserService {
 
     void upHeadImg(HttpSession session, HttpServletRequest request, String upImg) throws ServletException, IOException;
 
-    boolean checkRepeatLoginName(String loginName);
+    Boolean checkRepeatLoginName(String loginName);
+
+    Boolean checkRepeatEmail(String email);
 
     void shieldUser(int userId);
 

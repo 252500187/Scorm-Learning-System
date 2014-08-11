@@ -577,7 +577,6 @@ public class ScormServiceImpl implements ScormService {
     public void findScorm(String info, HttpServletRequest request) {
         request.setAttribute("info", info);
         request.setAttribute("findNameScorm", scormDao.queryScormByFieldName(info, "scorm_name"));
-        request.setAttribute("findDescriptionScorm", scormDao.queryScormByFieldName(info, "description"));
         request.setAttribute("findScoreScorm", scormDao.queryScormByFieldName(info, "score"));
         request.setAttribute("findLabelScorm", scormDao.queryScormByLabelName(info));
     }

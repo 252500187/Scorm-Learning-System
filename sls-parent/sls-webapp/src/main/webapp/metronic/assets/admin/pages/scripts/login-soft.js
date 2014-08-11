@@ -165,7 +165,17 @@ var Login = function () {
                 },
                 email: {
                     required: true,
-                    email: true
+                    email: true,
+                    remote: {
+                        url: basePath + "tourist/checkRepeatEmail",
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                            email: function () {
+                                return $("#email").val();
+                            }
+                        }
+                    }
                 },
                 registerValidateCode: {
                     required: true,
@@ -201,7 +211,8 @@ var Login = function () {
                 },
                 email: {
                     required: "请输入邮箱",
-                    email: "邮箱格式不正确"
+                    email: "邮箱格式不正确",
+                    remote:"邮箱已被注册"
                 },
                 registerValidateCode: {
                     required: "请输入验证码",

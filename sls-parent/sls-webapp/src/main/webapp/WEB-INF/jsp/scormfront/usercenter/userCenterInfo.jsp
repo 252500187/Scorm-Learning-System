@@ -69,8 +69,6 @@
                                 <div class="tools">
                                     <a href="javascript:;" class="collapse">
                                     </a>
-                                    <a href="#portlet-config" data-toggle="modal" class="config">
-                                    </a>
                                     <a href="javascript:;" class="reload">
                                     </a>
                                     <a href="javascript:;" class="remove">
@@ -81,7 +79,7 @@
                                 <c:if test="${fn:length(userPeiCharts)<1}">
                                     <h3 id="studyDistribute">您还没有注册过课程，试着去注册课程吧！</h3>
                                 </c:if>
-                                <div id="pie_chart_6" class="chart">
+                                <div id="pie_chart_3" class="chart">
                                 </div>
                             </div>
                         </div>
@@ -94,8 +92,6 @@
                                 </div>
                                 <div class="tools">
                                     <a href="javascript:;" class="collapse">
-                                    </a>
-                                    <a href="#portlet-config" data-toggle="modal" class="config">
                                     </a>
                                     <a href="javascript:;" class="reload">
                                     </a>
@@ -122,6 +118,7 @@
                                                 <p>还未学习！</p>
                                             </c:if>
                                         </div>
+                                        <hr/>
                                     </c:forEach>
                                 </div>
                             </div>
