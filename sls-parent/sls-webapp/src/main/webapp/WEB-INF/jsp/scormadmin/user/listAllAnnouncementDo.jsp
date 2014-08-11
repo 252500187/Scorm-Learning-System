@@ -22,7 +22,7 @@
         <input type="text" class="input-medium"
                name="announcementTheme" id="announcementTheme" value=""/>
         <a class="btn btn-primary" onclick="query()">查询</a>
-        <a class="btn btn-primary" onclick="sendAnnouncement()">发布公告</a>
+        <a class="btn btn-primary" onclick="addAnnouncement()">新增</a>
         <a class="btn btn-primary" onclick="delManyAnnouncement()">删除</a>
     </form>
     <table id="dataTable"></table>
@@ -55,11 +55,11 @@
             columns: [
                 [
                     {field: 'check', title: "<input type='checkbox' id='selectAll' onclick='selectAllAnnouncement()'>全选", align: 'center', width: 50},
-                    {field: 'date', title: '发布日期', sortable: true, align: 'center', width: 100 },
+                    {field: 'date', title: '发布日期', sortable: true, align: 'center', width: 150 },
                     {field: 'announcementTheme', title: '公告标题', align: 'center', width: 150},
-                    {field: 'announcementContent', title: '公告内容', align: 'center', width: 600 },
+                    {field: 'announcementContent', title: '公告内容', align: 'center', width: 500 },
                     {field: 'state', title: '状态', align: 'center', width: 100 },
-                    {field: 'operate', title: '操作', align: 'center', width: 100 }
+                    {field: 'operate', title: '操作', align: 'center', width: 150 }
                 ]
             ],
             sortName: "",
@@ -92,18 +92,28 @@
 
     function queryFormat(temp) {
         for (var i in temp) {
+            var operate = "";
+            if (temp[i].state == "1") {
+                temp[i].state = "已发布";
+                operate = "<a onclick='cancelSendAnnouncement(\"" + temp[i].announcementId + "\")'>取消</a>&nbsp;&nbsp;"
+            } else {
+                temp[i].state = "未发布";
+                operate = "<a onclick='sendAnnouncement(\"" + temp[i].announcementId + "\")'>发布</a>&nbsp;&nbsp;"
+            }
             temp[i].operate = "<a onclick='editAnnouncement(\"" + temp[i].announcementId + "\")'>编辑</a>&nbsp;&nbsp;"
+                    + operate
                     + "<a onclick='delAnnouncement(\"" + temp[i].announcementId + "\")'>删除</a>&nbsp;&nbsp;";
             temp[i].check = "<input type='checkbox' name='announcement' value='" + temp[i].announcementId + "'>";
+
         }
         return temp;
     }
 
-    function sendAnnouncement() {
+    function addAnnouncement() {
         var path = basePath + "admin/user/addAnnouncementDo";
         $("#contentList").attr("src", path);
         $('#dataEdit').dialog({
-            title: '添加公告',
+            title: '新增',
             height: 400,
             width: 600
         }).dialog('open');
@@ -132,6 +142,30 @@
             url: basePath + "admin/user/delAnnouncement?announcementId=" + announcementId,
             dataType: "json",
             type: "DELETE",
+            success: function () {
+                query();
+            },
+            error: doError
+        })
+    }
+
+    function cancelSendAnnouncement(announcementId){
+        $.ajax({
+            url: basePath + "admin/user/cancelSendAnnouncement?announcementId=" + announcementId,
+            dataType: "json",
+            type: "POST",
+            success: function () {
+                query();
+            },
+            error: doError
+        })
+    }
+
+    function sendAnnouncement(announcementId){
+        $.ajax({
+            url: basePath + "admin/user/sendAnnouncement?announcementId=" + announcementId,
+            dataType: "json",
+            type: "POST",
             success: function () {
                 query();
             },

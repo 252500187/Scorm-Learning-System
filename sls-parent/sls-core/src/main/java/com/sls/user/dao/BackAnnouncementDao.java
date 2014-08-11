@@ -17,4 +17,8 @@ public interface BackAnnouncementDao {
     void editAnnouncement(BackAnnouncement backAnnouncement);
 
     void setOtherAnnouncementNoUse();
+
+    void cancelSendAnnouncement(int announcementId);
+
+    void sendAnnouncement(int announcementId);
 }

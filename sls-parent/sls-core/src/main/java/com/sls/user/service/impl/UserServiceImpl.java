@@ -481,8 +481,7 @@ public class UserServiceImpl implements UserService {
     public void addAnnouncement(BackAnnouncement backAnnouncement) {
         backAnnouncement.setAdminId(userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
         backAnnouncement.setDate(DateUtil.getCurrentTimestamp().toString().substring(0, 16));
-        backAnnouncement.setState(DictConstant.IN_USE);
-        backAnnouncementDao.setOtherAnnouncementNoUse();
+        backAnnouncement.setState(DictConstant.NO_USE);
         backAnnouncementDao.addBackAnnouncement(backAnnouncement);
     }
 
@@ -511,5 +510,16 @@ public class UserServiceImpl implements UserService {
         userDao.changePassword(userId, password);
         changePasswordDao.changeToNoUseStateByUserId(userId);
         return true;
+    }
+
+    @Override
+    public void cancelSendAnnouncement(int announcementId) {
+        backAnnouncementDao.cancelSendAnnouncement(announcementId);
+    }
+
+    @Override
+    public void sendAnnouncement(int announcementId) {
+        backAnnouncementDao.setOtherAnnouncementNoUse();
+        backAnnouncementDao.sendAnnouncement(announcementId);
     }
 }

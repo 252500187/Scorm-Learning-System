@@ -57,4 +57,16 @@ public class BackAnnouncementDaoImpl extends PageDao implements BackAnnouncement
         String sql = "UPDATE `us_back_announcement` SET state = ? ";
         getJdbcTemplate().update(sql, DictConstant.NO_USE);
     }
+
+    @Override
+    public void cancelSendAnnouncement(int announcementId) {
+        String sql = "UPDATE `us_back_announcement` SET STATE = ? WHERE announcement_id = ? ";
+        getJdbcTemplate().update(sql, DictConstant.NO_USE, announcementId);
+    }
+
+    @Override
+    public void sendAnnouncement(int announcementId) {
+        String sql = "UPDATE `us_back_announcement` SET STATE = ? WHERE announcement_id = ? ";
+        getJdbcTemplate().update(sql, DictConstant.IN_USE, announcementId);
+    }
 }

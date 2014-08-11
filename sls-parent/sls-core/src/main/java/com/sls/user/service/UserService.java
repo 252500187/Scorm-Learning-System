@@ -110,4 +110,8 @@ public interface UserService {
     void editAnnouncement(BackAnnouncement backAnnouncement);
 
     Boolean forgetChangePassword(int userId, String password, String key);
+
+    void cancelSendAnnouncement(int announcementId);
+
+    void sendAnnouncement(int announcementId);
 }
