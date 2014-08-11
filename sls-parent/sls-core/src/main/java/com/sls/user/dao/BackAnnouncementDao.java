@@ -21,4 +21,6 @@ public interface BackAnnouncementDao {
     void cancelSendAnnouncement(int announcementId);
 
     void sendAnnouncement(int announcementId);
+
+    List<BackAnnouncement> getInUseAnnouncement();
 }

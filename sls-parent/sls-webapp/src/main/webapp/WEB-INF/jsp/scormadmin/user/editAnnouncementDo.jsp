@@ -29,7 +29,7 @@
                 <label class="control-label">公告内容</label>
 
                 <div class="controls">
-                    <textarea id="announcementContent">${announcement.announcementTheme}</textarea>
+                    <textarea id="announcementContent">${announcement.announcementContent}</textarea>
                 </div>
             </div>
 

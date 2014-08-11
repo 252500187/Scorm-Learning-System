@@ -57,6 +57,9 @@ public class LoginServiceImpl implements LoginService {
     public BackMessageDao backMessageDao;
 
     @Autowired
+    public BackAnnouncementDao backAnnouncementDao;
+
+    @Autowired
     public PublicScormDao publicScormDao;
 
     public String toIndex(HttpServletRequest request, HttpSession session) {
@@ -116,6 +119,7 @@ public class LoginServiceImpl implements LoginService {
         request.setAttribute("recommendIndexScorms", scormDao.findRecommendIndexScorms());
         request.setAttribute("recommendUsers", userDao.getNumUserOrderByScore(6));
         request.setAttribute("publicScorms", publicScormDao.getPublicScorm(4));
+        request.setAttribute("announcements",backAnnouncementDao.getInUseAnnouncement());
     }
 
     public void setLoginIndexInfo(HttpSession session, int userId) {
