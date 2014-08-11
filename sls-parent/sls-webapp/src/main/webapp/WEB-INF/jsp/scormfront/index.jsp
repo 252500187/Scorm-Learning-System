@@ -174,8 +174,6 @@
     </div>
     <br/>
 </div>
-
-
 <div class="col-md-3" style="margin-top: -35px">
     <c:if test="${fn:length(announcements)>0}">
         <div class="row">
@@ -253,6 +251,8 @@
         </c:forEach>
     </div>
 </div>
+</div>
+
 <div class="row">
     <div class="col-md-12">
         <hr/>
@@ -277,7 +277,7 @@
         </div>
     </c:forEach>
 </div>
-<%int i = 0;%>
+    <%int i = 0;%>
 <div class="row">
     <div class="col-md-12">
         <hr/>
@@ -313,7 +313,7 @@
         </c:forEach>
     </div>
 </div>
-<% i = 0;%>
+    <% i = 0;%>
 <div class="row">
     <div class="col-md-12">
         <hr/>
@@ -349,7 +349,7 @@
         </c:forEach>
     </div>
 </div>
-<% i = 0;%>
+    <% i = 0;%>
 <div class="row">
     <div class="col-md-12">
         <hr/>
@@ -385,7 +385,7 @@
         </c:forEach>
     </div>
 </div>
-<% i = 0;%>
+    <% i = 0;%>
 <div class="row">
     <div class="col-md-12">
         <hr/>
@@ -421,9 +421,12 @@
         </c:forEach>
     </div>
 </div>
-</div>
+
 <br/><br/>
 <hr/>
+
+<%--todo 收个尾--%>
+
 <%@include file="index/footer.jsp" %>
 </body>
 </html>
