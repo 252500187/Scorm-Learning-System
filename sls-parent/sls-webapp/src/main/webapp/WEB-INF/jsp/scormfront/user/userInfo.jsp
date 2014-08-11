@@ -145,7 +145,6 @@
 </div>
 <div class="row">
     <div class="col-md-8">
-        <%int i = 0;%>
         <c:if test="${fn:length(upScorms)>0}">
             <div class="row">
                 <div class="portlet">
@@ -159,25 +158,35 @@
                     <div class="portlet-body">
                         <div class="row">
                             <c:forEach var="scorm" items="${upScorms}">
-                            <div class="col-md-3">
-                                <img src="${scorm.imgPath}" class="img-responsive"
-                                     onclick="scormInfo('${scorm.scormId}')"/>
-                                <a onclick="scormInfo('${scorm.scormId}')">
-                                    <c:if test="${scorm.showRecommendLevel!=''}">
-                                        <img src="${scorm.showRecommendLevel}"
-                                             style="width: 15px;height: 15px"/>&nbsp;
-                                    </c:if>${scorm.scormName}
-                                </a>
-                            </div>
-                            <%
-                                i++;
-                                if (i % 4 == 0) {
-                            %>
-                        </div>
-                        <br/>
-
-                        <div class="row">
-                            <%}%>
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 margin-bottom-10">
+                                    <div class="dashboard-stat blue-madison">
+                                    </div>
+                                    <img src="${scorm.imgPath}" class="img-responsive" style="height:150px">
+                                    <ul class="list-inline">
+                                        <li>
+                                            <i class="fa fa-calendar"></i>
+                                            <a>上传日期:${scorm.passDate}</a>
+                                        </li>
+                                    </ul>
+                                    <div class="dashboard-stat blue-madison">
+                                        <div class="visual">
+                                        </div>
+                                        <div class="details">
+                                            <div class="number">
+                                                <small style="font-size: 20px"><c:if
+                                                        test="${scorm.showRecommendLevel!=''}">
+                                                    <img src="${scorm.showRecommendLevel}"
+                                                         style="width: 20px;height: 20px"/>&nbsp;
+                                                </c:if>${scorm.scormName}</small>
+                                            </div>
+                                            <div class="desc">评分:${scorm.score}分</div>
+                                        </div>
+                                        <a class="more" onclick="scormInfo('${scorm.scormId}')">
+                                            详细 <i class="m-icon-swapright m-icon-white"></i>
+                                        </a>
+                                    </div>
+                                    <hr>
+                                </div>
                             </c:forEach>
                         </div>
                     </div>
@@ -186,7 +195,6 @@
             <br/>
         </c:if>
         <c:if test="${fn:length(registerScorms)>0}">
-            <%i = 0;%>
             <div class="row">
                 <div class="portlet">
                     <div class="portlet-title sidebar-title">
@@ -199,25 +207,16 @@
                     <div class="portlet-body">
                         <div class="row">
                             <c:forEach var="scorm" items="${registerScorms}">
-                            <div class="col-md-3">
-                                <img src="${scorm.imgPath}" class="img-responsive"
-                                     onclick="scormInfo('${scorm.scormId}')"/>
-                                <a onclick="scormInfo('${scorm.scormId}')">
-                                    <c:if test="${scorm.showRecommendLevel!=''}">
-                                        <img src="${scorm.showRecommendLevel}"
-                                             style="width: 15px;height: 15px"/>&nbsp;
-                                    </c:if>${scorm.scormName}
-                                </a>
-                            </div>
-                            <%
-                                i++;
-                                if (i % 4 == 0) {
-                            %>
-                        </div>
-                        <br/>
-
-                        <div class="row">
-                            <%}%>
+                                <div class="col-md-3">
+                                    <img src="${scorm.imgPath}" class="img-responsive" style="height: 120px;"
+                                         onclick="scormInfo('${scorm.scormId}')"/>
+                                    <a onclick="scormInfo('${scorm.scormId}')">
+                                        <c:if test="${scorm.showRecommendLevel!=''}">
+                                            <img src="${scorm.showRecommendLevel}"
+                                                 style="width: 15px;height: 15px;margin: 10px"/>&nbsp;
+                                        </c:if>${scorm.scormName}
+                                    </a>
+                                </div>
                             </c:forEach>
                         </div>
                     </div>

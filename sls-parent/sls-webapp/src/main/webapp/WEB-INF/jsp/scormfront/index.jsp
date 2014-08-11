@@ -16,9 +16,6 @@
 <%@include file="index/navigationMenu.jsp" %>
 <div class="page-container" style="margin-left: 30px;margin-right: 20px">
 <div class="row">
-
-</div>
-<div class="row">
     <div class="col-md-9">
         <div class="row">
             <c:if test="${recommendIndexScorms[0]!=null}">
@@ -280,7 +277,7 @@
                 <h3>${scorm.scormName}
                     <small>${scorm.passDate}</small>
                 </h3>
-                <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"/>
+                <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive" style="height: 200px"/>
 
                 <div class="team-info">
                     <p>
@@ -316,7 +313,7 @@
                 <h3>${scorm.scormName}
                     <small>${scorm.passDate}</small>
                 </h3>
-                <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"/>
+                <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive" style="height: 200px"/>
 
                 <div class="team-info">
                     <p>
@@ -352,7 +349,7 @@
                 <h3>${scorm.scormName}
                     <small>${scorm.passDate}</small>
                 </h3>
-                <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"/>
+                <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive" style="height: 200px"/>
 
                 <div class="team-info">
                     <p>
@@ -388,7 +385,7 @@
                 <h3>${scorm.scormName}
                     <small>${scorm.passDate}</small>
                 </h3>
-                <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"/>
+                <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive" style="height: 200px"/>
 
                 <div class="team-info">
                     <p>

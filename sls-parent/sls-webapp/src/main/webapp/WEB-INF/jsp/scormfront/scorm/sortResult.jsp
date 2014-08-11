@@ -63,7 +63,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-8 article-block">
                     <c:if test="${fn:length(sortLabelScorm)<=0}">
-                        <h3 class="page-title">Sorry</h3>
+                        <h3 class="page-title">对不起</h3>
 
                         <h3 class="page-title">
                             没有相关标签课件
@@ -73,14 +73,11 @@
                     <c:if test="${fn:length(sortLabelScorm)>0}">
                         <div class="row">
                             <c:forEach var="scorm" items="${sortLabelScorm}">
-
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 margin-bottom-10">
                                     <div class="dashboard-stat blue-madison">
-
                                     </div>
                                     <img src="${scorm.imgPath}" alt="img" class="img-responsive"
-                                         style="width: 400px;height:200px">
-
+                                         style="height:200px">
                                     <ul class="list-inline">
                                         <li>
                                             <i class="fa fa-calendar"></i>
@@ -88,7 +85,7 @@
                                         </li>
                                         <li>
                                             <i class="fa fa-folder-open-o"></i>
-                                            <a>总章节数:${scorm.chapterNum}</a>
+                                            <a>章节数:${scorm.chapterNum}</a>
                                         </li>
                                     </ul>
                                     <div class="dashboard-stat blue-madison">
@@ -97,7 +94,10 @@
                                         </div>
                                         <div class="details">
                                             <div class="number">
-                                                <small>${scorm.scormName}</small>
+                                                <small style="font-size: 20px"><c:if test="${scorm.showRecommendLevel!=''}">
+                                                    <img src="${scorm.showRecommendLevel}"
+                                                         style="width: 20px;height: 20px"/>&nbsp;
+                                                </c:if>${scorm.scormName}</small>
                                             </div>
 
                                             <div class="desc">评分:${scorm.score}分</div>
@@ -106,21 +106,15 @@
                                         <a class="more" onclick="scormInfo('${scorm.scormId}')">
                                             详细 <i class="m-icon-swapright m-icon-white"></i>
                                         </a>
-
                                     </div>
-
                                     <hr>
                                 </div>
-
-
                             </c:forEach>
                         </div>
                     </c:if>
-
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <%@include file="../index/footer.jsp" %>

@@ -47,8 +47,8 @@
                                 <div class="col-md-3 col-sm-4 mix mix_all category_1"
                                      style=" display: block; opacity: 1;">
                                     <div class="mix-inner">
-                                        <img src="${scormInfo.imgPath}" class="img-responsive"
-                                             alt="${scormInfo.scormId}" style="height: 164px;width: 246px">
+                                        <img src="${scormInfo.imgPath}" class="img-responsive" style="height: 200px"
+                                             alt="${scormInfo.scormId}">
 
                                         <div class="mix-details">
                                             <h4></h4>

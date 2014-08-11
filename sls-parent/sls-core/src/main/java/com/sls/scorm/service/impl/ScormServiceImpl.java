@@ -667,7 +667,11 @@ public class ScormServiceImpl implements ScormService {
         } else {
             request.setAttribute("sortName", labelDao.findLabelById(labelId).getLabelName());
         }
-        request.setAttribute("sortLabelScorm", scormDao.sortScormByLabelName(labelId));
+        List<Scorm> scormList = scormDao.sortScormByLabelName(labelId);
+        for (Scorm scorm : scormList) {
+            scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
+        }
+        request.setAttribute("sortLabelScorm", scormList);
     }
 
     @Override

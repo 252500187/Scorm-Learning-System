@@ -38,7 +38,7 @@
     <div class="row">
         <div class="col-md-12">
             <h3 class="page-title">
-                Result
+                结果
                 <small>"${info}"搜索结果</small>
             </h3>
         </div>
@@ -64,7 +64,7 @@
     <div class="row">
         <div class="col-md-12 col-sm-8 article-block">
             <c:if test="${fn:length(findNameScorm)<=0&&fn:length(findDescriptionScorm)<=0&&fn:length(findScoreScorm)<=0&&fn:length(findLabelScorm)<=0}">
-                <h3 class="page-title">Sorry</h3>
+                <h3 class="page-title">对不起</h3>
 
                 <h3 class="page-title">
                     没有相关搜索结果

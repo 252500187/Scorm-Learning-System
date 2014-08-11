@@ -117,7 +117,7 @@
             <div class="col-md-12">
                 <div class="portlet">
                     <div class="portlet-title sidebar-title">
-                        <div class="caption-sidebar">系列课程</div>
+                        <div class="caption-sidebar">本系列课程</div>
                         <div class="tools">
                             <a href="javascript:;" class="collapse">
                             </a>
@@ -127,11 +127,14 @@
                         <c:forEach var="scorm" items="${groupScorms}">
                             <a onclick="scormInfo('${scorm.scormId}')">
                                 <div class="col-md-4 mix mix_all" style=" display: block;">
-                                    <img src="${scorm.imgPath}" class="img-responsive"/>
-                                    <c:if test="${scorm.showRecommendLevel!=''}">
-                                        <img src="${scorm.showRecommendLevel}"
-                                             style="width: 15px;height: 15px"/>
-                                    </c:if><p class="pull-right">${scorm.scormName}</p>
+                                    <img src="${scorm.imgPath}" class="img-responsive" style="height: 150px"/>
+
+                                    <p class="pull-right">
+                                        <c:if test="${scorm.showRecommendLevel!=''}">
+                                            <img src="${scorm.showRecommendLevel}"
+                                                 style="width: 15px;height: 15px"/>
+                                        </c:if>${scorm.scormName}
+                                    </p>
                                 </div>
                             </a>
                         </c:forEach>
@@ -155,7 +158,7 @@
                         <c:forEach var="user" items="${registerUsers}">
                             <a onclick="userInfo('${user.userId}')">
                                 <div class="col-md-3 mix mix_all" style=" display: block;">
-                                    <img src="${user.imgUrl}" class="img-responsive"/>
+                                    <img src="${user.imgUrl}" class="img-responsive" style="height: 120px"/>
 
                                     <p class="pull-right">${user.userName}</p>
                                 </div>
@@ -392,7 +395,7 @@
                             <c:forEach var="scorm" items="${otherScorms}">
                                 <br/>
                                 <a onclick="scormInfo('${scorm.scormId}')">
-                                    <img src="${scorm.imgPath}" class="img-responsive"/>
+                                    <img src="${scorm.imgPath}" class="img-responsive" style="height: 200px"/>
                                     <c:if test="${scorm.showRecommendLevel!=''}">
                                         <img src="${scorm.showRecommendLevel}"
                                              style="width: 15px;height: 15px"/>

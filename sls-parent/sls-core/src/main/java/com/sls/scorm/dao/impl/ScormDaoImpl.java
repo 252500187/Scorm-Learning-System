@@ -182,11 +182,11 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
 
     @Override
     public List<Scorm> sortScormByLabelName(int labelId) {
-        StringBuilder sql = new StringBuilder("SELECT * FROM `ss_scorm` WHERE in_use=? AND scorm_id IN (SELECT scorm_id FROM `ss_scorm_label`");
+        StringBuilder sql = new StringBuilder("SELECT a.*,COUNT(b.type) AS chapterNum FROM (SELECT * FROM ss_scorm WHERE in_use=? AND scorm_id IN (SELECT scorm_id FROM ss_scorm_label ");
         if (labelId != 0) {
-            sql.append("WHERE label_id = ").append(labelId);
+            sql.append(" WHERE label_id = ").append(labelId);
         }
-        sql.append(")");
+        sql.append(")) a ,luss_scorm_sco b WHERE a.scorm_id=b.scorm_id GROUP BY a.scorm_id");
         return getJdbcTemplate().query(sql.toString(), new BeanPropertyRowMapper<Scorm>(Scorm.class), DictConstant.IN_USE);
     }
 

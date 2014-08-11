@@ -46,41 +46,31 @@
                                     还未收藏课件
                                 </c:if>
                             </div>
-                            <%int i = 0;%>
                             <div class="row">
                                 <c:forEach var="scormInfo" items="${allScorm}">
-                                <div class="col-md-3 col-sm-4 mix mix_all"
-                                     style=" display: block; opacity: 1;">
-                                    <div class="mix-inner">
-                                        <img src="${scormInfo.imgPath}" class="img-responsive"
-                                             alt="${scormInfo.scormId}">
+                                    <div class="col-md-3 col-sm-4 mix mix_all"
+                                         style=" display: block; opacity: 1;">
+                                        <div class="mix-inner">
+                                            <img src="${scormInfo.imgPath}" class="img-responsive" style="height: 200px"
+                                                 alt="${scormInfo.scormId}">
 
-                                        <div class="mix-details">
-                                            <h4></h4>
-                                            <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                课件名称:&nbsp;${scormInfo.scormName}
-                                            </h4>
-                                            <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                收藏时间:&nbsp;${scormInfo.collectDate}
-                                            </h4>
-                                            <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                <a class="btn btn-sm blue"
-                                                   onclick="top.scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
-                                                <a class="btn btn-sm blue"
-                                                   onclick="cancelCollect('${scormInfo.scormId}')">取消收藏</a>
-                                            </h4>
+                                            <div class="mix-details">
+                                                <h4></h4>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    课件名称:&nbsp;${scormInfo.scormName}
+                                                </h4>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    收藏时间:&nbsp;${scormInfo.collectDate}
+                                                </h4>
+                                                <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                    <a class="btn btn-sm blue"
+                                                       onclick="top.scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
+                                                    <a class="btn btn-sm blue"
+                                                       onclick="cancelCollect('${scormInfo.scormId}')">取消收藏</a>
+                                                </h4>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <%
-                                    i++;
-                                    if (i % 4 == 0) {
-                                %>
-                            </div>
-                            <br/>
-
-                            <div class="row">
-                                <%}%>
                                 </c:forEach>
                             </div>
                         </div>

@@ -57,52 +57,42 @@
                                     还未上传课件
                                 </c:if>
                             </div>
-                            <%int i = 0;%>
                             <div class="row">
                                 <c:forEach var="scormInfo" items="${allScorm}">
-                                <div class="col-md-3 col-sm-4 mix mix_all
+                                    <div class="col-md-3 col-sm-4 mix mix_all
                                     <c:if test='${scormInfo.inUse==1}'>
                                     category_1
                                     </c:if>
                                     <c:if test='${scormInfo.inUse!=1}'>
                                     category_1
                                     </c:if>"
-                                     style="display: block; opacity: 1;">
-                                    <div class="mix-inner">
-                                        <img src="${scormInfo.imgPath}" class="img-responsive"
-                                             alt="${scormInfo.scormId}">
+                                         style="display: block; opacity: 1;">
+                                        <div class="mix-inner">
+                                            <img src="${scormInfo.imgPath}" class="img-responsive" style="height: 200px"
+                                                 alt="${scormInfo.scormId}">
 
-                                        <div class="mix-details">
-                                            <h4></h4>
-                                            <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                课件名称:&nbsp;${scormInfo.scormName}
-                                            </h4>
-                                            <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                审核状态:&nbsp;${scormInfo.showInUse}
-                                            </h4>
-                                            <c:if test="${scormInfo.inUse==1}">
+                                            <div class="mix-details">
+                                                <h4></h4>
                                                 <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                    <a class="btn btn-sm blue"
-                                                       onclick="scormInfo('${scormInfo.scormId}')">课件信息</a>
+                                                    课件名称:&nbsp;${scormInfo.scormName}
                                                 </h4>
-                                            </c:if>
-                                            <c:if test="${scormInfo.inUse!=1}">
                                                 <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                    目前课件不可使用
+                                                    审核状态:&nbsp;${scormInfo.showInUse}
                                                 </h4>
-                                            </c:if>
+                                                <c:if test="${scormInfo.inUse==1}">
+                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                        <a class="btn btn-sm blue"
+                                                           onclick="scormInfo('${scormInfo.scormId}')">课件信息</a>
+                                                    </h4>
+                                                </c:if>
+                                                <c:if test="${scormInfo.inUse!=1}">
+                                                    <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                                        目前课件不可使用
+                                                    </h4>
+                                                </c:if>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <%
-                                    i++;
-                                    if (i % 4 == 0) {
-                                %>
-                            </div>
-                            <br/>
-
-                            <div class="row">
-                                <%}%>
                                 </c:forEach>
                             </div>
                         </div>
