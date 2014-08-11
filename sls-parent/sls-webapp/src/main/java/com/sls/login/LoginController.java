@@ -29,7 +29,12 @@ public class LoginController {
     private UserService userService;
 
     @RequestMapping(value = "/login", method = {RequestMethod.GET})
-    public String login(HttpServletRequest request, @RequestParam("page") String page) {
+    public String login(HttpServletRequest request) {
+        String page = "";
+        try {
+            page = request.getParameter("page");
+        } catch (Exception e) {
+        }
         WebUtils.getAndClearSavedRequest(request);
         request.setAttribute("page", page);
         return "scormfront/login";

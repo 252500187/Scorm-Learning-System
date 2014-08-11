@@ -42,6 +42,8 @@ public interface ScormService {
 
     void getAllStudyNotesByScormIdAndUserId(int scormId, HttpServletRequest request);
 
+    void delNote(int noteId);
+
     void upStudyImg(HttpServletRequest request, String upImg, StudyNote studyNote) throws ServletException, IOException;
 
     Page<Scorm> listNotAuditScormPageList(PageParameter pageParameter, Scorm scorm);

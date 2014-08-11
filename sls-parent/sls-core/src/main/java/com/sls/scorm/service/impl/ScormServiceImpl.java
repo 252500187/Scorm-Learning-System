@@ -189,6 +189,12 @@ public class ScormServiceImpl implements ScormService {
         request.setAttribute("noteList", studyNoteList);
         request.setAttribute("userName", user.getUserName());
         request.setAttribute("text", DictConstant.TEXT_TYPE);
+        request.setAttribute("scormId", scormId);
+    }
+
+    @Override
+    public void delNote(int noteId) {
+        noteCollectDao.delNoteByNoteId(noteId);
     }
 
     @Override

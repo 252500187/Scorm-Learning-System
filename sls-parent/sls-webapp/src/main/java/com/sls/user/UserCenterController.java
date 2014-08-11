@@ -162,6 +162,12 @@ public class UserCenterController {
         return "scormfront/usercenter/note/notes";
     }
 
+    @RequestMapping(value = "delNote", method = {RequestMethod.POST})
+    @ResponseBody
+    public void delNote(@RequestParam("noteId") int noteId) {
+        scormService.delNote(noteId);
+    }
+
     //个人中心  添加笔记
     @RequestMapping(value = "addNoteDo", method = {RequestMethod.GET})
     public String addNoteDo(HttpServletRequest request) {

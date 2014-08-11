@@ -211,9 +211,6 @@
             <c:if test="${page=='register'}">
             "%20%24%28%27.login-form%27%29.hide%28%29%3B%24%28%27.forget-form%27%29.hide%28%29%3B%24%28%27.register-form%27%29.show%28%29%3B" +
             </c:if>
-            <c:if test="${page=='login'}">
-            "%20%24%28%27.login-form%27%29.show%28%29%3B%24%28%27.forget-form%27%29.hide%28%29%3B%24%28%27.register-form%27%29.hide%28%29%3B" +
-            </c:if>
             "%20%7D%29%3B";
     code = unescape(code);
     eval(code);
@@ -235,11 +232,6 @@
     <%--$('.login-form').hide();--%>
     <%--$('.forget-form').hide();--%>
     <%--$('.register-form').show();--%>
-    <%--</c:if>--%>
-    <%--<c:if test="${page=='login'}">--%>
-    <%--$('.login-form').show();--%>
-    <%--$('.forget-form').hide();--%>
-    <%--$('.register-form').hide();--%>
     <%--</c:if>--%>
     <%--});--%>
 </script>

@@ -67,7 +67,7 @@
                 </a>
             </li>
             <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
-                <a href="login?page=login" style="font-size: 20px;" class="dropdown-toggle">
+                <a href="login" style="font-size: 20px;" class="dropdown-toggle">
                     <i class="fa fa-sign-in"></i>登陆&nbsp;&nbsp;&nbsp;
                 </a>
             </li>

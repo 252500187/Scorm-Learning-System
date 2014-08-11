@@ -50,24 +50,30 @@
                 <%--&lt;%&ndash;<p class="page-title">${userName}</p>&ndash;%&gt;--%>
                 <%--</div>--%>
             </div>
-            <c:forEach begin="0" step="2" items="${noteList}" varStatus="status">
+            <c:forEach items="${noteList}" varStatus="status">
                 <div class="bb-item">
-                    <div class="head-Info" style="padding-left: 5%">
+                        <%--页面头--%>
+                    <div class="head-Info" style="padding-left: 5%"
+                         name="${noteList[status.index].noteId}">
                             ${noteList[status.index].date}<br/>
                         <small>${noteList[status.index].time}</small>
                         <br/>
 
                         <h3 class="page-title">${noteList[status.index].scormName}</h3>
+                        <a onclick="delNote(${noteList[status.index].noteId})">撕掉</a>
                     </div>
-                    <div class="head-Info" style="text-align: right;padding-right: 5%;">
+                    <div class="head-Info" style="text-align: right;padding-right: 5%;"
+                         name="${noteList[status.index+1].noteId}">
                             ${noteList[status.index+1].date}<br/>
                         &nbsp;&nbsp;
                         <small>${noteList[status.index+1].time}</small>
                         <br/>
 
                         <h3 class="page-title">${noteList[status.index+1].scormName}</h3>
+                        <a onclick="delNote(${noteList[status.index+1].noteId})">撕掉</a>
                     </div>
-                    <div class="bb-custom-side">
+                        <%--页面体--%>
+                    <div class="bb-custom-side" name="${noteList[status.index].noteId}">
                         <c:if test="${noteList[status.index].noteType == -1 }">
                             <p>${noteList[status.index].note}</p>
                         </c:if>
@@ -75,10 +81,8 @@
                             <img style="max-height: 250px;max-width: 350px"
                                  src="${noteList[status.index].imgPath}" alt=""/>
                         </c:if>
-                        <br/>
-                        <a onclick="">修改</a>&nbsp;&nbsp;<a onclick="">删除</a>
                     </div>
-                    <div class="bb-custom-side">
+                    <div class="bb-custom-side" name="${noteList[status.index+1].noteId}">
                         <c:if test="${noteList[status.index+1].noteType == -1 }">
                             <p>${noteList[status.index+1].note}</p>
                         </c:if>
@@ -86,7 +90,6 @@
                             <img style="max-height: 250px;max-width: 350px"
                                  src="${noteList[status.index+1].imgPath}" alt=""/>
                         </c:if>
-                        <a onclick="">修改</a>&nbsp;&nbsp;<a onclick="">删除</a>
                     </div>
                 </div>
             </c:forEach>
@@ -104,6 +107,30 @@
 <script src="booknote/js/jquerypp.custom.js"></script>
 <script src="booknote/js/jquery.bookblock.js"></script>
 <script type="text/javascript">
+    $(function () {
+        Page.init();
+        parent.$("#maskNotes").modal("hide");
+    })
+
+    function delNote(noteId) {
+        $.messager.confirm("提示", "确认撕掉该页笔记", function (r) {
+            if (r) {
+                $.ajax({
+                    url: basePath + "user/center/delNote",
+                    data: {
+                        noteId: noteId
+                    },
+                    dataType: "json",
+                    type: "POST",
+                    success: function () {
+                        window.location.href = basePath + "user/center/notesDo?scormId=${scormId}";
+                    },
+                    error: doError
+                })
+            }
+        })
+    }
+
     var Page = (function () {
         var config = {
                     $bookBlock: $('#bb-bookblock'),
@@ -181,9 +208,4 @@
 
         return { init: init };
     })();
-
-    $(function () {
-        Page.init();
-        parent.$("#maskNotes").modal("hide");
-    })
 </script>

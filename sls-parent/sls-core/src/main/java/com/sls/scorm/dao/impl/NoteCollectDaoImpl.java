@@ -56,4 +56,10 @@ public class NoteCollectDaoImpl extends PageDao implements NoteCollectDao {
         sql.append(" ORDER BY note_id DESC ");
         return getJdbcTemplate().query(sql.toString(), new BeanPropertyRowMapper<StudyNote>(StudyNote.class), studyNote.getUserId());
     }
+
+    @Override
+    public void delNoteByNoteId(int noteId) {
+        String sql = "DELETE FROM luss_study_note WHERE note_id=?";
+        getJdbcTemplate().update(sql, noteId);
+    }
 }
