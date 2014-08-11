@@ -41,9 +41,11 @@
                             </div>
                         </div>
                         <div class="row mix-grid">
-                            <c:if test="${fn:length(allScorm)<1}">
-                                还未收藏课件
-                            </c:if>
+                            <div class="col-md-12">
+                                <c:if test="${fn:length(allScorm)<1}">
+                                    还未收藏课件
+                                </c:if>
+                            </div>
                             <%int i = 0;%>
                             <div class="row">
                                 <c:forEach var="scormInfo" items="${allScorm}">

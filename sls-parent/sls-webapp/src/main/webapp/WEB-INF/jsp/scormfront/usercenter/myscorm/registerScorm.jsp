@@ -42,20 +42,22 @@
                             </div>
                         </div>
                         <div class="row mix-grid">
-                            <ul class="mix-filter">
-                                <li class="filter" data-filter="all">
-                                    所有课件
-                                </li>
-                                <li class="filter" data-filter="category_1">
-                                    进行中
-                                </li>
-                                <li class="filter" data-filter="category_2">
-                                    已完成
-                                </li>
-                            </ul>
-                            <c:if test="${fn:length(allScorm)<1}">
-                                还未注册课件
-                            </c:if>
+                            <div class="col-md-12">
+                                <ul class="mix-filter">
+                                    <li class="filter" data-filter="all">
+                                        所有课件
+                                    </li>
+                                    <li class="filter" data-filter="category_1">
+                                        进行中
+                                    </li>
+                                    <li class="filter" data-filter="category_2">
+                                        已完成
+                                    </li>
+                                </ul>
+                                <c:if test="${fn:length(allScorm)<1}">
+                                    还未注册课件
+                                </c:if>
+                            </div>
                             <%int i = 0;%>
                             <div class="row">
                                 <c:forEach var="scormInfo" items="${allScorm}">

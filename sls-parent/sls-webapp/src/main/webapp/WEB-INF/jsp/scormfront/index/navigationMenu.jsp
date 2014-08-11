@@ -146,7 +146,7 @@
                 </li>
             </c:if>
             <li class="dropdown dropdown-user">
-                <a href="user/center/userCenterDo" class="dropdown-toggle" data-toggle="dropdown"
+                <a class="dropdown-toggle" data-toggle="dropdown" onclick="toUserCenter()"
                    data-hover="dropdown" data-close-others="true">
                     <img id="userTopImg" alt="${sessionScope.userName}" style="height: 45px;width: 45px"
                          src="${sessionScope.userImg}" class="img-circle"/>
@@ -176,7 +176,7 @@
                                     <i class="fa fa-italic"></i>&nbsp;&nbsp;个人资料</a>
                             </li>
                             <li class="dropdown-submenu">
-                                <a>
+                                <a href="user/center/userCenterDo?module=3">
                                     <i class="fa fa-folder-open"></i>&nbsp;&nbsp;我的课件</a>
                                 <ul class="dropdown-menu">
                                     <li>
@@ -298,5 +298,9 @@
                 messageId: messageId
             }
         });
+    }
+
+    function toUserCenter() {
+        window.location.href = "user/center/userCenterDo?module=1";
     }
 </script>
