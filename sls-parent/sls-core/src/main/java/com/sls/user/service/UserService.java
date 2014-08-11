@@ -4,6 +4,7 @@ import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.PublicDiscusses;
 import com.sls.scorm.entity.ScormSummarize;
+import com.sls.system.entity.Label;
 import com.sls.user.entity.BackAnnouncement;
 import com.sls.user.entity.BackMessage;
 import com.sls.user.entity.User;
@@ -41,7 +42,7 @@ public interface UserService {
 
     void getUserNextLevelNameByScore(HttpServletRequest request);
 
-    void getPieCharts(HttpServletRequest request);
+    List<Label> getPieCharts(int userId);
 
     Page<ScormSummarize> getDiscussPageList(PageParameter pageParameter, ScormSummarize scormSummarize);
 

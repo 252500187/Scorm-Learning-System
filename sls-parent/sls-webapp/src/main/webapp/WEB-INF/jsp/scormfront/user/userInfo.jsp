@@ -84,7 +84,7 @@
                                 <span class="sale-num">${fn:length(registerScorms)}</span>
                             </li>
                             <li>
-                                <span class="sale-info">关注人数</span>
+                                <span class="sale-info">粉丝人数</span>
                                 <span class="sale-num">${fn:length(attentionUsers)}</span>
                             </li>
                             <li>
@@ -147,47 +147,49 @@
     <div class="col-md-8">
         <c:if test="${fn:length(upScorms)>0}">
             <div class="row">
-                <div class="portlet">
-                    <div class="portlet-title sidebar-title">
-                        <div class="caption-sidebar">上传的课件</div>
-                        <div class="tools">
-                            <a href="javascript:;" class="collapse">
-                            </a>
+                <div class="col-md-12">
+                    <div class="portlet">
+                        <div class="portlet-title sidebar-title">
+                            <div class="caption-sidebar">上传的课件</div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="portlet-body">
-                        <div class="row">
-                            <c:forEach var="scorm" items="${upScorms}">
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 margin-bottom-10">
-                                    <div class="dashboard-stat blue-madison">
-                                    </div>
-                                    <img src="${scorm.imgPath}" class="img-responsive" style="height:150px">
-                                    <ul class="list-inline">
-                                        <li>
-                                            <i class="fa fa-calendar"></i>
-                                            <a>上传日期:${scorm.passDate}</a>
-                                        </li>
-                                    </ul>
-                                    <div class="dashboard-stat blue-madison">
-                                        <div class="visual">
+                        <div class="portlet-body">
+                            <div class="row">
+                                <c:forEach var="scorm" items="${upScorms}">
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 margin-bottom-10">
+                                        <div class="dashboard-stat blue-madison">
                                         </div>
-                                        <div class="details">
-                                            <div class="number">
-                                                <small style="font-size: 20px"><c:if
-                                                        test="${scorm.showRecommendLevel!=''}">
-                                                    <img src="${scorm.showRecommendLevel}"
-                                                         style="width: 20px;height: 20px"/>&nbsp;
-                                                </c:if>${scorm.scormName}</small>
+                                        <img src="${scorm.imgPath}" class="img-responsive" style="height:150px">
+                                        <ul class="list-inline">
+                                            <li>
+                                                <i class="fa fa-calendar"></i>
+                                                <a>上传日期:${scorm.passDate}</a>
+                                            </li>
+                                        </ul>
+                                        <div class="dashboard-stat blue-madison">
+                                            <div class="visual">
                                             </div>
-                                            <div class="desc">评分:${scorm.score}分</div>
+                                            <div class="details">
+                                                <div class="number">
+                                                    <small style="font-size: 20px"><c:if
+                                                            test="${scorm.showRecommendLevel!=''}">
+                                                        <img src="${scorm.showRecommendLevel}"
+                                                             style="width: 20px;height: 20px"/>&nbsp;
+                                                    </c:if>${scorm.scormName}</small>
+                                                </div>
+                                                <div class="desc">评分:${scorm.score}分</div>
+                                            </div>
+                                            <a class="more" onclick="scormInfo('${scorm.scormId}')">
+                                                详细 <i class="m-icon-swapright m-icon-white"></i>
+                                            </a>
                                         </div>
-                                        <a class="more" onclick="scormInfo('${scorm.scormId}')">
-                                            详细 <i class="m-icon-swapright m-icon-white"></i>
-                                        </a>
+                                        <hr>
                                     </div>
-                                    <hr>
-                                </div>
-                            </c:forEach>
+                                </c:forEach>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -196,28 +198,30 @@
         </c:if>
         <c:if test="${fn:length(registerScorms)>0}">
             <div class="row">
-                <div class="portlet">
-                    <div class="portlet-title sidebar-title">
-                        <div class="caption-sidebar">注册的课件</div>
-                        <div class="tools">
-                            <a href="javascript:;" class="collapse">
-                            </a>
+                <div class="col-md-12">
+                    <div class="portlet">
+                        <div class="portlet-title sidebar-title">
+                            <div class="caption-sidebar">注册的课件</div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="portlet-body">
-                        <div class="row">
-                            <c:forEach var="scorm" items="${registerScorms}">
-                                <div class="col-md-3">
-                                    <img src="${scorm.imgPath}" class="img-responsive" style="height: 120px;"
-                                         onclick="scormInfo('${scorm.scormId}')"/>
-                                    <a onclick="scormInfo('${scorm.scormId}')">
-                                        <c:if test="${scorm.showRecommendLevel!=''}">
-                                            <img src="${scorm.showRecommendLevel}"
-                                                 style="width: 15px;height: 15px;margin: 10px"/>&nbsp;
-                                        </c:if>${scorm.scormName}
-                                    </a>
-                                </div>
-                            </c:forEach>
+                        <div class="portlet-body">
+                            <div class="row">
+                                <c:forEach var="scorm" items="${registerScorms}">
+                                    <div class="col-md-3">
+                                        <img src="${scorm.imgPath}" class="img-responsive" style="height: 120px;"
+                                             onclick="scormInfo('${scorm.scormId}')"/>
+                                        <a onclick="scormInfo('${scorm.scormId}')">
+                                            <c:if test="${scorm.showRecommendLevel!=''}">
+                                                <img src="${scorm.showRecommendLevel}"
+                                                     style="width: 15px;height: 15px;margin: 10px"/>&nbsp;
+                                            </c:if>${scorm.scormName}
+                                        </a>
+                                    </div>
+                                </c:forEach>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -226,36 +230,38 @@
         </c:if>
         <c:if test="${fn:length(answerQuestions)>0}">
             <div class="row">
-                <div class="portlet">
-                    <div class="portlet-title sidebar-title">
-                        <div class="caption-sidebar">回答的问题</div>
-                        <div class="tools">
-                            <a href="javascript:;" class="collapse">
-                            </a>
+                <div class="col-md-12">
+                    <div class="portlet">
+                        <div class="portlet-title sidebar-title">
+                            <div class="caption-sidebar">回答的问题</div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="portlet-body">
-                        <div id="chats">
-                            <ul class="chats">
-                                <c:forEach var="question" items="${answerQuestions}">
-                                    <span class="datetime">${question.askDate}</span>
-                                    <li class="in">
-                                        <div class="message">
-                                            <span class="arrow"></span>
-                                            <a class="name">问:</a>
-                                            <span class="body">${question.askContent}</span>
-                                        </div>
-                                    </li>
-                                    <li class="out">
-                                        <div class="message">
-                                            <span class="arrow"></span>
-                                            <a class="name">答:</a>
-                                            <span class="body">${question.answerContent}</span>
-                                        </div>
-                                    </li>
-                                    <hr/>
-                                </c:forEach>
-                            </ul>
+                        <div class="portlet-body">
+                            <div id="chats">
+                                <ul class="chats">
+                                    <c:forEach var="question" items="${answerQuestions}">
+                                        <span class="datetime">${question.askDate}</span>
+                                        <li class="in">
+                                            <div class="message">
+                                                <span class="arrow"></span>
+                                                <a class="name">问:</a>
+                                                <span class="body">${question.askContent}</span>
+                                            </div>
+                                        </li>
+                                        <li class="out">
+                                            <div class="message">
+                                                <span class="arrow"></span>
+                                                <a class="name">答:</a>
+                                                <span class="body">${question.answerContent}</span>
+                                            </div>
+                                        </li>
+                                        <hr/>
+                                    </c:forEach>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -265,16 +271,36 @@
     </div>
     <div class="col-md-4">
         <c:if test="${fn:length(userPeiCharts)>0}">
-            <div class="portlet">
-                <div class="portlet-title sidebar-title">
-                    <div class="caption-sidebar">擅长领域</div>
-                    <div class="tools">
-                        <a href="javascript:;" class="collapse">
-                        </a>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet">
+                        <div class="portlet-title sidebar-title">
+                            <div class="caption-sidebar">擅长领域</div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div id="pie_chart_3" class="chart">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="portlet-body">
-                    <div id="pie_chart_3" class="chart">
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet">
+                        <div class="portlet-title sidebar-title">
+                            <div class="caption-sidebar">粉丝用户</div>
+                            <div class="tools">
+                                <a href="javascript:;" class="collapse">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+
+                        </div>
                     </div>
                 </div>
             </div>

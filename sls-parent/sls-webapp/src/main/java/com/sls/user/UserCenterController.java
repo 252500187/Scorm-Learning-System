@@ -53,9 +53,9 @@ public class UserCenterController {
     @RequestMapping(value = "userCenterInfo", method = {RequestMethod.GET})
     public String userCenterInfo(HttpServletRequest request) {
         userService.getUserNextLevelNameByScore(request);
-        userService.getPieCharts(request);
         scormService.findRecommendScorm(request);
         scormService.findRegisterScorm(request);
+        request.setAttribute("userPeiCharts", userService.getPieCharts(-1));
         return "scormfront/usercenter/userCenterInfo";
     }
 
@@ -185,7 +185,7 @@ public class UserCenterController {
         return "scormfront/usercenter/evaluteScorm";
     }
 
-     //个人中心  日程表
+    //个人中心  日程表
     @RequestMapping(value = "calendarDo", method = {RequestMethod.GET})
     public String calendarDo(HttpServletRequest request) {
 

@@ -74,7 +74,7 @@ public class BackAnnouncementDaoImpl extends PageDao implements BackAnnouncement
 
     @Override
     public List<BackAnnouncement> getInUseAnnouncement() {
-        String sql = "SELECT * FROM `us_back_announcement` WHERE state = ?";
+        String sql = "SELECT * FROM us_back_announcement WHERE state = ?";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<BackAnnouncement>(BackAnnouncement.class),DictConstant.IN_USE);
     }
 }
