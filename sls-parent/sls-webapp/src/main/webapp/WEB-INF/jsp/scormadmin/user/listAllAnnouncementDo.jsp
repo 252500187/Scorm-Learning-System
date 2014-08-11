@@ -58,6 +58,7 @@
                     {field: 'date', title: '发布日期', sortable: true, align: 'center', width: 100 },
                     {field: 'announcementTheme', title: '公告标题', align: 'center', width: 150},
                     {field: 'announcementContent', title: '公告内容', align: 'center', width: 600 },
+                    {field: 'state', title: '状态', align: 'center', width: 100 },
                     {field: 'operate', title: '操作', align: 'center', width: 100 }
                 ]
             ],
@@ -99,10 +100,10 @@
     }
 
     function sendAnnouncement() {
-        var path = basePath + "admin/user/sendAnnouncementDo";
+        var path = basePath + "admin/user/addAnnouncementDo";
         $("#contentList").attr("src", path);
         $('#dataEdit').dialog({
-            title: '发布公告',
+            title: '添加公告',
             height: 400,
             width: 600
         }).dialog('open');

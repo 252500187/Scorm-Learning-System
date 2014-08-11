@@ -6,6 +6,7 @@ public class BackAnnouncement {
     private String date;
     private String announcementTheme;
     private String announcementContent;
+    private int state;
 
     public int getAnnouncementId() {
         return announcementId;
@@ -45,6 +46,14 @@ public class BackAnnouncement {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 
 }
