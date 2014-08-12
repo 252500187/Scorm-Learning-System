@@ -11,11 +11,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../includes/common.jsp" %>
+    <style>
+        .page-content{
+            margin-left:0 !important ;
+        }
+    </style>
 </head>
 <body class="page-header-fixed" style="background-color: #ffffff;overflow-x:hidden">
 <div class="page-container" style="margin-left: 10px;magin-top:10px">
     <div class="page-content-wrapper">
-        <div class="page-content" style="margin-left: 10px">
+        <div class="page-content" style="margin-left:0 !important;">
             <div class="row">
                 <div class="col-md-12">
                     <div id="" class="portlet box blue">
