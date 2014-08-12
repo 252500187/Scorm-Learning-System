@@ -1,21 +1,13 @@
 package com.sls.user.entity;
 
 public class CalendarEvent {
-    private int id;
+    private int calendarId;
     private String title;
     private String start;
     private String end;
     private int userId;
 
     public CalendarEvent() {}
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
@@ -47,5 +39,13 @@ public class CalendarEvent {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public int getCalendarId() {
+        return calendarId;
+    }
+
+    public void setCalendarId(int calendarId) {
+        this.calendarId = calendarId;
     }
 }
