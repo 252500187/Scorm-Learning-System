@@ -17,7 +17,9 @@
 <div class="page-container" style="margin-left: 30px;margin-right: 20px">
 <div class="row">
 <div class="col-md-9">
+    <a name="bestHot"></a>
     <div class="row">
+
         <c:if test="${recommendIndexScorms[0]!=null}">
             <div class="col-md-6">
                 <div onclick="scormInfo('${recommendIndexScorms[0].scormId}')">
@@ -120,8 +122,9 @@
                 <div class="caption-sidebar">正在进行的公开课，快来参加！</div>
             </h2>
             <br/><br/>
-
+            <a name="publicClass"></a>
             <div class="portlet">
+
                 <%--<div class="portlet-title">--%>
                 <%--<div class="caption">--%>
                 <%--正在进行的公开课，快来参加！--%>
@@ -178,6 +181,7 @@
     <c:if test="${fn:length(announcements)>0}">
         <div class="row">
             <div class="meet-our-team">
+                <a name="announcement"></a>
                 <div class="team-info" style="margin-top:30px;padding-top:0px ">
                     <h3 style="margin-top:10px;padding-bottom: 2px;margin-bottom: 2px">
                         <i class="fa fa-bullhorn"></i>公告：
@@ -203,6 +207,7 @@
     </c:if>
     <div class="row">
         <div class="col-md-12">
+            <a name="recentUp"></a>
             <div class="portlet-title">
                 <h1>
                     <div class="caption-sidebar">最新上传</div>
@@ -232,6 +237,7 @@
         </div>
     </div>
     <div class="row">
+        <a name="scormSort"></a>
         <div class="col-md-12">
             <hr/>
             <h2>
@@ -252,7 +258,7 @@
     </div>
 </div>
 </div>
-
+<a name="recommandUsers"></a>
 <div class="row">
     <div class="col-md-12">
         <hr/>
@@ -278,6 +284,7 @@
     </c:forEach>
 </div>
     <%int i = 0;%>
+<a name="scormScore"></a>
 <div class="row">
     <div class="col-md-12">
         <hr/>
@@ -314,6 +321,7 @@
     </div>
 </div>
     <% i = 0;%>
+<a name="recommandLevel"></a>
 <div class="row">
     <div class="col-md-12">
         <hr/>
@@ -350,6 +358,7 @@
     </div>
 </div>
     <% i = 0;%>
+<a name="studyTime"></a>
 <div class="row">
     <div class="col-md-12">
         <hr/>
@@ -386,6 +395,7 @@
     </div>
 </div>
     <% i = 0;%>
+<a name="registerNum"></a>
 <div class="row">
     <div class="col-md-12">
         <hr/>
@@ -424,8 +434,70 @@
 
 <br/><br/>
 <hr/>
+<div class="row">
+    <a class="icon-btn" href="#announcement">
+        <i class="fa fa-bullhorn"></i>
+        <div>公告</div>
+        <span class="badge badge-success">1</span>
+    </a>
 
-<%--todo 收个尾--%>
+    <a class="icon-btn" href="#bestHot">
+        <i class="fa fa-fire"></i>
+        <div>最热课件</div>
+        <span class="badge badge-important">9</span>
+    </a>
+
+    <a class="icon-btn" href="#publicClass">
+        <i class="fa fa-flag"></i>
+        <div>公开课</div>
+        <span class="badge badge-info">4</span>
+    </a>
+
+    <a class="icon-btn" href="#recommandUsers">
+        <i class="fa fa-group"></i>
+        <div>推荐用户</div>
+        <span class="badge badge-success">4</span>
+    </a>
+
+    <a class="icon-btn" href="#scormScore">
+        <i class="fa fa-edit"></i>
+        <div>课件评分</div>
+        <span class="badge badge-info">8</span>
+    </a>
+
+    <a class="icon-btn" href="#recommandLevel">
+        <i class="fa fa-level-up"></i>
+        <div>推荐等级</div>
+        <span class="badge badge-important">8</span>
+    </a>
+
+    <a class="icon-btn" href="#studyTime">
+        <i class="fa fa-clock-o"></i>
+        <div>学习时间</div>
+        <span class="badge badge-success">4</span>
+    </a>
+
+    <a class="icon-btn" href="#registerNum">
+        <i class="fa fa-male"></i>
+        <div>注册人数</div>
+        <span class="badge badge-info">4</span>
+    </a>
+
+
+
+    <a class="icon-btn" href="#recentUp">
+        <i class="fa fa-group"></i>
+        <div>最新上传</div>
+        <span class="badge badge-success">1</span>
+    </a>
+
+    <a class="icon-btn" href="#scormSort">
+        <i class="fa fa-group"></i>
+        <div>课件分类</div>
+        <span class="badge badge-important">1</span>
+    </a>
+</div>
+<br/>
 
 <%@include file="index/footer.jsp" %>
 </body>
