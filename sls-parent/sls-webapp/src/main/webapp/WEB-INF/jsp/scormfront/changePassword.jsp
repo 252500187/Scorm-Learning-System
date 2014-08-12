@@ -11,6 +11,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../includes/common.jsp" %>
+    <style>
+        .page-content{
+            margin-left:0 !important ;
+        }
+    </style>
 </head>
 <body class="page-header-fixed" style="background-color: #ffffff;overflow-x:hidden">
 <%@include file="index/navigationMenu.jsp" %>
