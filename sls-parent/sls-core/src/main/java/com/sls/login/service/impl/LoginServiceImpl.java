@@ -111,11 +111,11 @@ public class LoginServiceImpl implements LoginService {
 
     public void setIndexInfo(HttpServletRequest request, HttpSession session) {
         session.setAttribute("labels", labelDao.getAllLabel());
-        request.setAttribute("scormSum", scormDao.indexFindTopScormByFieldName("register_sum", 8));
-        request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score", 8));
-        request.setAttribute("scormTime", scormDao.indexFindTopScormByFieldName("total_time", 8));
-        request.setAttribute("scormLevel", scormDao.indexFindTopScormByFieldName("recommend_level", 8));
-        request.setAttribute("latestScorms", scormDao.findLatestScorms(10));
+        request.setAttribute("scormSum", scormDao.indexFindTopScormByFieldName("register_sum", 4));
+        request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score", 4));
+        request.setAttribute("scormTime", scormDao.indexFindTopScormByFieldName("total_time", 4));
+        request.setAttribute("scormLevel", scormDao.indexFindTopScormByFieldName("recommend_level", 4));
+        request.setAttribute("latestScorms", scormDao.findLatestScorms(12));
         request.setAttribute("recommendIndexScorms", scormDao.findRecommendIndexScorms());
         request.setAttribute("recommendUsers", userDao.getNumUserOrderByScore(6));
         request.setAttribute("publicScorms", publicScormDao.getPublicScorm(4));
