@@ -12,63 +12,94 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../includes/common.jsp" %>
 </head>
+<body class="page-header-fixed" style="background-color: #ffffff;overflow-x:hidden">
+<div class="page-container" style="margin-left: 10px;magin-top:10px">
+    <div class="page-content-wrapper">
+        <div class="page-content" style="margin-left: 10px">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="" class="portlet box blue">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                修改密码
+                            </div>
+                            <div class="tools hidden-xs">
+                                <a class="reload" href="javascript:;"></a>
+                            </div>
+                        </div>
+                        <div class="portlet-body form">
+                            <form class="form-horizontal" id="changePassword" method="post" enctype="multipart/form-data">
+                                    <div class="form-body">
+                                        <div class="tab-content">
+                                            <div class="alert alert-success display-none" id="successInfo">
+                                                <button class="close" data-dismiss="alert"></button>
+                                                密码修改成功!
+                                            </div>
+                                            <div id="changePasswordTable" class="tab-pane active">
+                                                <h3>填写信息</h3>
+                                                <div class="form-group"  style="margin-left: 150px">
+                                                    <label class="control-label col-md-2">输入原来密码:<span class="required">
+													* </span></label>
 
-<body class="login" style="background-color: #ffffff;overflow-x:hidden">
-<div class="content" style="margin-top:6%">
-    <form class="changePassword-form" method="post" id="changePassword">
-        <h3 class="form-title">密码修改</h3>
+                                                    <div class="col-md-3">
+                                                        <input class="form-control form-control-inline input-medium date-picker"
+                                                               id="oldPassword" name="oldPassword" type="text" value=""/>
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="form-group"  style="margin-left: 150px">
+                                                    <label class="control-label col-md-2">输入新的密码:<span class="required">
+													* </span></label>
 
-        <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">原密码</label>
+                                                    <div class="col-md-3">
+                                                        <input class="form-control form-control-inline input-medium date-picker"
+                                                               id="newPassword" name="newPassword" type="password" value="" style="width:160px;"/>
+                                                    </div>
+                                                </div>
+                                                </br>
+                                                <div class="form-group"  style="margin-left: 150px">
+                                                    <label class="control-label col-md-2">输入新的密码:<span class="required">
+													* </span></label>
 
-            <div class="input-icon">
-                <i class="fa fa-user"></i>
-                <input class="form-control placeholder-no-fix" type="text" placeholder="输入原来密码"
-                       id="oldPassword" name="oldPassword" value=""/>
+                                                    <div class="col-md-3">
+                                                        <input class="form-control form-control-inline input-medium date-picker"
+                                                               id="copyNewPassword" name="copyNewPassword" type="password" value="" style="width:160px;"/>
+                                                    </div>
+                                                </div>
+                                                </br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-offset-3 col-md-9">
+                                                    <button class="btn blue" type="submit"><i
+                                                            class="fa fa-check"></i>
+                                                        修改
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">新密码</label>
-
-            <div class="input-icon">
-                <i class="fa fa-lock"></i>
-                <input class="form-control placeholder-no-fix" type="password" placeholder="输入新密码"
-                       id="newPassword" name="newPassword" value=""/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">再次输入密码</label>
-
-            <div class="input-icon">
-                <i class="fa fa-lock"></i>
-                <input class="form-control placeholder-no-fix" type="password" placeholder="再次输入新密码"
-                       id="copyNewPassword" name="copyNewPassword" value=""/>
-            </div>
-        </div>
-        <div class="form-actions">
-            <button type="submit" class="btn blue pull-right">
-                修改密码 <i class="m-icon-swapright m-icon-white"></i>
-            </button>
-        </div>
-    </form>
-
-    <form class="changeSuccess" id="changeSuccess">
-        <h3 class="form-title">密码修改</h3>
-
-        <div class="alert alert-info ">
-            <span>密码修改成功！</span>
-
-        </div>
-    </form>
-
+    </div>
 </div>
 </body>
 </html>
 <script>
+
     $(function () {
         Metronic.init();
         Layout.init();
-        $(".changeSuccess").hide();
+        $("#successInfo").attr("style","display:none");
         $("input").val("");
     });
 
@@ -114,13 +145,12 @@
                 messages: {
                     oldPassword: {
                         required: "请输入旧密码",
-                        remote: "密码输入不正确"
+                        remote: "密码不正确"
                     },
                     newPassword: {
                         required: "请输入新密码",
                         minlength: "密码长度过小(6位)",
                         remote: "新密码不能与旧密码相同"
-
                     },
                     copyNewPassword: {
                         required: "请再次输入新密码",
@@ -146,10 +176,10 @@
                         dataType: "json",
                         type: "POST",
                         success: function () {
-                            $('.changePassword-form').hide();
-                            $('.changeSuccess').show();
+                            $("#successInfo").attr("style","display:block");
+                            $("input").val("");
                         },
-                        error: doError
+                        error:doError
                     })
                 }
             }
