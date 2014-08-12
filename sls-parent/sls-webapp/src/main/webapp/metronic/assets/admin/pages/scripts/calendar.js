@@ -102,7 +102,6 @@ var Calendar = function () {
                     m = m<10 ? ("0"+m) : m;
                     d = date.getDate();
                     d = d < 10 ? ("0" + d) : d;
-                    alert(y+","+m+","+d);
                     var resultDate = y + "-" + m + "-" + d;
                     // retrieve the dropped element's stored Event Object
                     var originalEventObject = $(this).data('eventObject');
@@ -127,7 +126,6 @@ var Calendar = function () {
                             end: resultDate
                         },
                         success: function () {
-                            alert("添加日程成功！");
                         },
                         error: doError
                     });
@@ -137,25 +135,25 @@ var Calendar = function () {
                         $(this).remove();
                     }
                 },
-//                eventDrop: function (event, delta, revertFunc) {
-//                    d = parseInt(d) + delta;
-//                    var resultDate = y + "-" + m + "-" + d;
-//                    $.ajax({
-//                        url: basePath + "user/center/changeCalendarEvents",
-//                        dataType: "json",
-//                        type: "post",
-//                        data: {
-//                            id: event.id,
-//                            title: event.title,
-//                            start: resultDate,
-//                            end: resultDate
-//                        },
-//                        success: function () {
-//                            alert("改")
-//                        },
-//                        error: doError
-//                    });
-//                },
+                eventDrop: function (event, delta, revertFunc) {
+                    d = parseInt(d) + delta;
+                    var resultDate = y + "-" + m + "-" + d;
+                    $.ajax({
+                        url: basePath + "user/center/changeCalendarEvents",
+                        dataType: "json",
+                        type: "post",
+                        data: {
+                            id: event.id,
+                            title: event.title,
+                            start: resultDate,
+                            end: resultDate
+                        },
+                        success: function () {
+                            alert("改")
+                        },
+                        error: doError
+                    });
+                },
                 events: function (start, end, callback) {
                     $.ajax({
                         url: basePath + "user/center/getCalendarEvents",
@@ -164,11 +162,11 @@ var Calendar = function () {
                         success: function (list) {
                             var events = [];
                             for (var i = 0; i < list.length; i++) {
-                                var title = list[i].title;
-                                var start = new Date(list[i].start);
                                 events.push({
-                                    title: title,
-                                    start: start
+                                    id: list[i].id,
+                                    title: list[i].title,
+                                    start: new Date(list[i].start),
+                                    end: new Date(list[i].end)
                                 })
                             }
                             callback(events);
