@@ -5,10 +5,7 @@ import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.PublicDiscusses;
 import com.sls.scorm.entity.ScormSummarize;
 import com.sls.system.entity.Label;
-import com.sls.user.entity.BackAnnouncement;
-import com.sls.user.entity.BackMessage;
-import com.sls.user.entity.User;
-import com.sls.user.entity.UserQuestion;
+import com.sls.user.entity.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -115,4 +112,8 @@ public interface UserService {
     void cancelSendAnnouncement(int announcementId);
 
     void sendAnnouncement(int announcementId);
+
+    void addCalendarEvent(int userId, CalendarEvent calendarEvent);
+
+    List<CalendarEvent> getAllCalendarEventsByUserId(int userId);
 }

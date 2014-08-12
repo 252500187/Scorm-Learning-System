@@ -3,6 +3,7 @@ package com.sls.user;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.service.ScormService;
 import com.sls.system.service.LabelService;
+import com.sls.user.entity.CalendarEvent;
 import com.sls.user.entity.User;
 import com.sls.user.entity.UserQuestion;
 import com.sls.user.service.UserCenterService;
@@ -23,7 +24,9 @@ import javax.servlet.http.HttpSession;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @Transactional
@@ -231,6 +234,29 @@ public class UserCenterController {
     @RequestMapping(value = "getRegisterScorms", method = {RequestMethod.POST})
     @ResponseBody
     public List<Scorm> getRegisterScorms() {
-        return scormService.getRegisterScormsByUserId(userService.getUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId());
+        int userId = userService.getUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        return scormService.getRegisterScormsByUserId(userId);
+    }
+
+    @RequestMapping(value = "getCalendarEvents", method = {RequestMethod.POST})
+    @ResponseBody
+    public List<CalendarEvent> getCalendarEvents() {
+        int userId = userService.getUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        return userService.getAllCalendarEventsByUserId(userId);
+    }
+
+    @RequestMapping(value = "addCalendarEvents", method = {RequestMethod.POST})
+    @ResponseBody
+    public void addCalendarEvents(CalendarEvent calendarEvent) {
+        userService.addCalendarEvent(userService.getUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId(),calendarEvent);
+    }
+
+    @RequestMapping(value = "changeCalendarEvents", method = {RequestMethod.POST})
+    @ResponseBody
+    public void changeCalendarEvents(CalendarEvent calendarEvent) {
+        int userId = userService.getUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+//        userService.setCalendarEventDate(calendarEvent);
+//        userService.delCalendarEvent(userId,calendarEvent);
+        userService.addCalendarEvent(userId,calendarEvent);
     }
 }

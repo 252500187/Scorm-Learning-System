@@ -19,7 +19,6 @@
     <script src="<c:url value="/metronic/assets/admin/pages/scripts/calendar.js"/>" type="text/javascript"></script>
 </head>
 <body class="page-header-fixed ">
-<div class="page-container">
     <div class="page-content-wrapper">
         <div class="row">
             <div class="col-md-12">
@@ -32,10 +31,10 @@
                     <div class="portlet-body">
                         <div class="row">
                             <div class="col-md-3 col-sm-12">
-                                <h3>添加学习日程</h3>
+                                <h3 class="caption">添加学习日程</h3>
 
                                 <div id="external-events">
-                                    <div><h3 class="event-form-title">课件列表</h3></div>
+                                    <div><h4>课件列表</h4></div>
                                     <div id="event_box">
                                     </div>
                                     <label for="drop-remove">
