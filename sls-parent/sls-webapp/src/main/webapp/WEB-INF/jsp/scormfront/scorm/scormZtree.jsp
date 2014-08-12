@@ -21,7 +21,7 @@
 </head>
 <body>
 <div id="scoTree" class="ztree"
-     style="width:100%; height:500px; border: 0px solid; float: left; overflow-x:auto; overflow-y:auto">
+     style="width:100%; height:400px; border: 0px solid; float: left; overflow-x:auto; overflow-y:auto">
 </div>
 </body>
 </html>

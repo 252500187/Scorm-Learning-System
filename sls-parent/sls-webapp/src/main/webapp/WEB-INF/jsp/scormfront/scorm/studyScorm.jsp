@@ -61,7 +61,7 @@
                 <img src="${scorm.imgPath}" style="width: 100%;margin-top: 10px; margin-bottom: 10px"/>
                 <br/>
                 <hr/>
-                <iframe id="ztree" scrolling="no" style="width:100%; min-height:500px;border:0px;"
+                <iframe id="ztree" scrolling="no" style="width:100%; min-height:450px;border:0px;"
                         allowfullscreen>
                 </iframe>
             </div>

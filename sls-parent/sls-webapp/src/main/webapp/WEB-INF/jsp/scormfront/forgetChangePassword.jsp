@@ -13,44 +13,84 @@
     <%@include file="../includes/common.jsp" %>
 </head>
 
-<body class="login" style="background-color: #ffffff;overflow-x:hidden">
+<body class="page-header-fixed" style="background-color: #ffffff;overflow-x:hidden">
 <%@include file="index/navigationMenu.jsp" %>
-<div class="content" style="margin-top:12%">
-    <form class="changePassword-form" method="post" id="changePassword">
-        <h3 class="form-title">密码修改</h3>
+<div class="page-container">
 
-        <div class="alert alert-info display-hide" id="changePasswordSuccess">
-            <button class="close" data-close="alert"></button>
-            <span>密码修改成功！</span>
-        </div>
-        <div class="alert alert-info display-hide" id="changePasswordError">
-            <button class="close" data-close="alert"></button>
-            <span>密码修改失败！可尝试重新发送重置密码邮件</span>
-        </div>
-        <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">新密码</label>
+    <div class="page-content">
+        <div class="row">
+            <div class="col-md-7 col-md-offset-3">
+                <div class="portlet box blue">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            修改密码
+                        </div>
+                    </div>
+                    <div class="portlet-body form">
+                        <form class="form-horizontal" method="post" id="changePassword">
+                            <div class="form-body">
+                                <div class="tab-content">
+                                    <div class="alert alert-info display-hide" id="changePasswordSuccess">
+                                        <button class="close" data-close="alert"></button>
+                                        <span>密码修改成功！</span>
+                                    </div>
+                                    <div class="alert alert-info display-hide" id="changePasswordError">
+                                        <button class="close" data-close="alert"></button>
+                                        <span>密码修改失败！可尝试重新发送重置密码邮件</span>
+                                    </div>
 
-            <div class="input-icon">
-                <i class="fa fa-lock"></i>
-                <input class="form-control placeholder-no-fix" type="password" placeholder="输入新密码"
-                       id="newPassword" name="newPassword" value=""/>
+                                    <br/>
+
+                                    <div id="changePasswordTable" class="tab-pane active">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-md-offset-1">新密码:<span
+                                                    class="required">
+													* </span></label>
+
+
+                                            <div class="col-md-3">
+                                                <input class="form-control form-control-inline input-medium date-picker"
+                                                       id="newPassword" name="newPassword" type="text" value=""
+                                                       placeholder="输入新密码"/>
+                                            </div>
+                                        </div>
+                                        <br/>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-md-offset-1">再次输入:<span
+                                                    class="required">
+													* </span></label>
+
+                                            <div class="col-md-3">
+                                                <input class="form-control form-control-inline input-medium date-picker"
+                                                       id="copyNewPassword" name="copyNewPassword" type="password"
+                                                       value=""
+                                                       placeholder="再次输入新密码"/>
+                                            </div>
+                                        </div>
+                                        </br>
+                                    </div>
+                                    <div class="form-actions">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-offset-3 col-md-9">
+                                                    <button class="btn blue" type="submit"><i
+                                                            class="fa fa-check"></i>
+                                                        修改
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">再次输入密码</label>
+    </div>
 
-            <div class="input-icon">
-                <i class="fa fa-lock"></i>
-                <input class="form-control placeholder-no-fix" type="password" placeholder="再次输入新密码"
-                       id="copyNewPassword" name="copyNewPassword" value=""/>
-            </div>
-        </div>
-        <div class="form-actions">
-            <button type="submit" class="btn blue pull-right">
-                修改密码 <i class="m-icon-swapright m-icon-white"></i>
-            </button>
-        </div>
-    </form>
 </div>
 </body>
 </html>

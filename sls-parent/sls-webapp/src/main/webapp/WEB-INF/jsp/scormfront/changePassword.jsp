@@ -12,64 +12,68 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <%@include file="../includes/common.jsp" %>
     <style>
-        .page-content{
-            margin-left:0 !important ;
+        .page-content {
+            margin-left: 0 !important;
         }
     </style>
 </head>
 <body class="page-header-fixed" style="background-color: #ffffff;overflow-x:hidden">
 <%@include file="index/navigationMenu.jsp" %>
-<div class="page-container" style="margin-left: 10px;magin-top:10px">
+<div class="page-container">
     <div class="page-content-wrapper">
-        <div class="page-content" style="margin-left: 10px">
+        <div class="page-content">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-7 col-md-offset-3">
                     <div id="" class="portlet box blue">
                         <div class="portlet-title">
                             <div class="caption">
                                 修改密码
                             </div>
-                            <div class="tools hidden-xs">
-                                <a class="reload" href="javascript:;"></a>
-                            </div>
                         </div>
                         <div class="portlet-body form">
-                            <form class="form-horizontal" id="changePassword" method="post" enctype="multipart/form-data">
+                            <form class="form-horizontal" id="changePassword" method="post">
                                 <div class="form-body">
                                     <div class="tab-content">
                                         <div class="alert alert-success display-none" id="successInfo">
                                             <button class="close" data-dismiss="alert"></button>
                                             密码修改成功!
                                         </div>
+                                        <br/>
+
                                         <div id="changePasswordTable" class="tab-pane active">
-                                            <h3>填写信息</h3>
-                                            <div class="form-group"  style="margin-left: 150px">
-                                                <label class="control-label col-md-2">输入原来密码:<span class="required">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-md-offset-1">原密码:<span
+                                                        class="required">
 													* </span></label>
+
 
                                                 <div class="col-md-3">
                                                     <input class="form-control form-control-inline input-medium date-picker"
-                                                           id="oldPassword" name="oldPassword" type="text" value=""/>
+                                                           id="oldPassword" name="oldPassword" type="text" value=""
+                                                           placeholder="输入原密码"/>
                                                 </div>
                                             </div>
                                             <br/>
-                                            <div class="form-group"  style="margin-left: 150px">
-                                                <label class="control-label col-md-2">输入新的密码:<span class="required">
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-md-offset-1">新密码:<span class="required">
 													* </span></label>
 
                                                 <div class="col-md-3">
                                                     <input class="form-control form-control-inline input-medium date-picker"
-                                                           id="newPassword" name="newPassword" type="password" value="" style="width:160px;"/>
+                                                           id="newPassword" name="newPassword" type="password" value=""
+                                                           placeholder="输入新密码"/>
                                                 </div>
                                             </div>
                                             </br>
-                                            <div class="form-group"  style="margin-left: 150px">
-                                                <label class="control-label col-md-2">输入新的密码:<span class="required">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3 col-md-offset-1">再次输入:<span class="required">
 													* </span></label>
 
                                                 <div class="col-md-3">
                                                     <input class="form-control form-control-inline input-medium date-picker"
-                                                           id="copyNewPassword" name="copyNewPassword" type="password" value="" style="width:160px;"/>
+                                                           id="copyNewPassword" name="copyNewPassword" type="password"
+                                                           value="" placeholder="再次输入新密码"/>
                                                 </div>
                                             </div>
                                             </br>
@@ -86,10 +90,8 @@
                                                 </button>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
-
                             </form>
                         </div>
                     </div>
@@ -105,7 +107,7 @@
     $(function () {
         Metronic.init();
         Layout.init();
-        $("#successInfo").attr("style","display:none");
+        $("#successInfo").attr("style", "display:none");
         $("input").val("");
     });
 
@@ -182,10 +184,10 @@
                         dataType: "json",
                         type: "POST",
                         success: function () {
-                            $("#successInfo").attr("style","display:block");
+                            $("#successInfo").attr("style", "display:block");
                             $("input").val("");
                         },
-                        error:doError
+                        error: doError
                     })
                 }
             }
