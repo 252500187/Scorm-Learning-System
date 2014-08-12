@@ -27,6 +27,7 @@
 <%--<!-- END GLOBAL MANDATORY STYLES -->--%>
 
 <%--<!-- BEGIN PAGE LEVEL STYLES -->--%>
+<link href="<c:url value="/metronic/assets/admin/pages/css/news.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/metronic/assets/admin/pages/css/about-us.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/metronic/assets/admin/pages/css/pricing-table.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/metronic/assets/global/plugins/select2/select2.css"/>" rel="stylesheet" type="text/css"/>

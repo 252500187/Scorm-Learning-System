@@ -270,31 +270,44 @@
 <c:if test="${fn:length(otherScorms)>0}">
     <div class="row" name="protectEye">
         <div class="col-md-12">
-            <div class="portlet box purple">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-file-text"></i>作者更多课件
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <div class="row">
-                        <c:forEach var="scorm" items="${otherScorms}">
-                            <a onclick="scormInfo('${scorm.scormId}')">
-                                <div class="col-md-1 mix mix_all" style=" display: block;">
-                                    <img src="${scorm.imgPath}" width="80px" height="80px" class="img-rounded"/>
+            <hr/>
+            <h2>
+                <div class="caption-sidebar">更多课件</div>
+            </h2>
+        </div>
+        <div class="col-md-12">
+            <div class="portlet-body">
+                <div class="row">
+                    <c:forEach var="scorm" items="${otherScorms}">
+                        <a onclick="scormInfo('${scorm.scormId}')">
+                            <div class="col-md-3">
+                                <div class="news-blocks">
+                                    <h3>
+                                        <a onclick="scormInfo('${scorm.scormId}')">
+                                            <c:if test="${scorm.showRecommendLevel!=''}">
+                                                <img src="${scorm.showRecommendLevel}"
+                                                     style="width: 30px;height: 30px"/>&nbsp;
+                                            </c:if>${scorm.scormName} </a>
+                                    </h3>
 
+                                    <div class="news-block-tags">
+                                        <strong>${scorm.score}分</strong>
+                                        <em>${scorm.registerSum}人注册</em>
+                                    </div>
                                     <p>
-                                        <c:if test="${scorm.showRecommendLevel!=''}">
-                                            <img src="${scorm.showRecommendLevel}"
-                                                 style="width: 15px;height: 15px"/>&nbsp;
-                                        </c:if>${scorm.scormName}
+                                        <img class="news-block-img pull-right" style="width: 200px;height: 150px"
+                                             src="${scorm.imgPath}" alt="${scorm.scormName}">${scorm.description}
                                     </p>
+                                    <a href="page_news_item.html" class="news-block-btn">
+                                        查看 <i class="m-icon-swapright m-icon-black"></i>
+                                    </a>
                                 </div>
-                            </a>
-                        </c:forEach>
-                    </div>
+                            </div>
+                        </a>
+                    </c:forEach>
                 </div>
             </div>
+
         </div>
     </div>
 </c:if>
@@ -310,7 +323,7 @@
                 <div class="portlet-body">
                     <div class="row">
                         <c:forEach var="user" items="${registerUsers}">
-                            <a onclick="userInfo('${user.userId}')">
+                            <a>
                                 <div class="col-md-1 mix mix_all" style=" display: block;">
                                     <img src="${user.imgUrl}" width="80px" height="80px" class="img-rounded"/>
 
