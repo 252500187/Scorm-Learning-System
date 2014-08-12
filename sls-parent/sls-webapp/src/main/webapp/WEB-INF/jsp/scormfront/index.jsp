@@ -371,9 +371,9 @@
 <div class="col-md-3" style="margin-top: -35px">
     <c:if test="${fn:length(announcements)>0}">
         <div class="row">
-            <div class="meet-our-team">
-                <a name="announcement"></a>
+            <a name="announcement"></a>
 
+            <div class="meet-our-team">
                 <div class="team-info" style="margin-top:30px;padding-top:0px ">
                     <h3 style="margin-top:10px;padding-bottom: 2px;margin-bottom: 2px">
                         <i class="fa fa-bullhorn"></i>公告：
@@ -454,76 +454,78 @@
 </div>
 <br/><br/>
 <hr/>
-<div class="row" style="box-shadow: 0px 0px 10px #888888;">
+<div class="row" style="box-shadow: 0px 0px 10px #888888 inset;">
     <div class="col-md-12" style="padding: 20px">
-        <a class="icon-btn" href="#announcement">
-            <i class="fa fa-bullhorn"></i>
+        <c:if test="${fn:length(announcements)>0}">
+            <a class="icon-btn" href="#announcement">
+                <i class="fa fa-bullhorn"></i>
 
-            <div>公告</div>
-            <span class="badge badge-success">1</span>
-        </a>
+                <div>公告</div>
+                <span class="badge badge-success"></span>
+            </a>
+        </c:if>
 
         <a class="icon-btn" href="#bestHot">
             <i class="fa fa-fire"></i>
 
             <div>最热课件</div>
-            <span class="badge badge-important">9</span>
+            <span class="badge badge-important"></span>
         </a>
 
         <a class="icon-btn" href="#publicClass">
             <i class="fa fa-flag"></i>
 
             <div>公开课</div>
-            <span class="badge badge-info">4</span>
+            <span class="badge badge-info"></span>
         </a>
 
         <a class="icon-btn" href="#recommandUsers">
             <i class="fa fa-group"></i>
 
             <div>推荐用户</div>
-            <span class="badge badge-success">4</span>
+            <span class="badge badge-success"></span>
+        </a>
+
+        <a class="icon-btn" href="#recentUp">
+            <i class="fa fa-upload"></i>
+
+            <div>最新上传</div>
+            <span class="badge badge-success"></span>
+        </a>
+
+        <a class="icon-btn" href="#scormSort">
+            <i class="fa fa-folder-open"></i>
+
+            <div>课件分类</div>
+            <span class="badge badge-important"></span>
         </a>
 
         <a class="icon-btn" href="#scormScore">
             <i class="fa fa-edit"></i>
 
             <div>课件评分</div>
-            <span class="badge badge-info">8</span>
+            <span class="badge badge-info"></span>
         </a>
 
         <a class="icon-btn" href="#recommandLevel">
             <i class="fa fa-level-up"></i>
 
             <div>推荐等级</div>
-            <span class="badge badge-important">8</span>
+            <span class="badge badge-important"></span>
         </a>
 
         <a class="icon-btn" href="#studyTime">
             <i class="fa fa-clock-o"></i>
 
             <div>学习时间</div>
-            <span class="badge badge-success">4</span>
+            <span class="badge badge-success"></span>
         </a>
 
         <a class="icon-btn" href="#registerNum">
             <i class="fa fa-male"></i>
 
             <div>注册人数</div>
-            <span class="badge badge-info">4</span>
-        </a>
-
-        <a class="icon-btn" href="#recentUp">
-            <i class="fa fa-group"></i>
-
-            <div>最新上传</div>
-            <span class="badge badge-success">1</span>
-        </a>
-
-        <a class="icon-btn" href="#scormSort">
-            <i class="fa fa-group"></i>
-
-            <div>课件分类</div>
-            <span class="badge badge-important">1</span>
+            <span class="badge badge-info"></span>
         </a>
     </div>
 </div>
