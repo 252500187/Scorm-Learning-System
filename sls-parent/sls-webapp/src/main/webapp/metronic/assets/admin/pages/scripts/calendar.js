@@ -3,20 +3,19 @@ var Calendar = function () {
 
     return {
         //main function to initiate the module
-        init: function (temp) {
-            Calendar.initCalendar(temp);
+        init: function (result) {
+            Calendar.initCalendar(result);
         },
 
-        initCalendar: function (temp) {
+        initCalendar: function (result) {
 
             if (!jQuery().fullCalendar) {
                 return;
             }
             var date = new Date();
-            var d = date.getDate();
-            var m = date.getMonth();
-            var y = date.getFullYear();
-
+            var d;     //日
+            var m;     //月
+            var y;     //年
             var h = {};
 
             if (Metronic.isRTL()) {
@@ -87,8 +86,8 @@ var Calendar = function () {
 
             //predefined events
             $('#event_box').html("");
-            for (var i = 0; i < temp.length; i++) {
-                addEvent(temp[i].scormName);
+            for (var i = 0; i < result.length; i++) {
+                addEvent(result[i].scormName);
             }
 
             $('#calendar').fullCalendar('destroy'); // destroy the calendar
@@ -98,7 +97,13 @@ var Calendar = function () {
                 editable: true,
                 droppable: true, // this allows things to be dropped onto the calendar !!!
                 drop: function (date, allDay) { // this function is called when something is dropped
-
+                    y = date.getFullYear();
+                    m = date.getMonth()+1;
+                    m = m<10 ? ("0"+m) : m;
+                    d = date.getDate();
+                    d = d < 10 ? ("0" + d) : d;
+                    alert(y+","+m+","+d);
+                    var resultDate = y + "-" + m + "-" + d;
                     // retrieve the dropped element's stored Event Object
                     var originalEventObject = $(this).data('eventObject');
                     // we need to copy it, so that multiple events don't have a reference to the same object
@@ -112,60 +117,65 @@ var Calendar = function () {
                     // render the event on the calendar
                     // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
                     $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-
+                    $.ajax({
+                        url: basePath + "user/center/addCalendarEvents",
+                        dataType: "json",
+                        type: "post",
+                        data: {
+                            title: copiedEventObject.title,
+                            start: resultDate,
+                            end: resultDate
+                        },
+                        success: function () {
+                            alert("添加日程成功！");
+                        },
+                        error: doError
+                    });
                     // is the "remove after drop" checkbox checked?
                     if ($('#drop-remove').is(':checked')) {
                         // if so, remove the element from the "Draggable Events" list
                         $(this).remove();
                     }
+                },
+//                eventDrop: function (event, delta, revertFunc) {
+//                    d = parseInt(d) + delta;
+//                    var resultDate = y + "-" + m + "-" + d;
+//                    $.ajax({
+//                        url: basePath + "user/center/changeCalendarEvents",
+//                        dataType: "json",
+//                        type: "post",
+//                        data: {
+//                            id: event.id,
+//                            title: event.title,
+//                            start: resultDate,
+//                            end: resultDate
+//                        },
+//                        success: function () {
+//                            alert("改")
+//                        },
+//                        error: doError
+//                    });
+//                },
+                events: function (start, end, callback) {
+                    $.ajax({
+                        url: basePath + "user/center/getCalendarEvents",
+                        dataType: "json",
+                        type: "POST",
+                        success: function (list) {
+                            var events = [];
+                            for (var i = 0; i < list.length; i++) {
+                                var title = list[i].title;
+                                var start = new Date(list[i].start);
+                                events.push({
+                                    title: title,
+                                    start: start
+                                })
+                            }
+                            callback(events);
+                        }
+                    });
                 }
-//                events: [{
-//                        title: 'All Day Event',
-//                        start: new Date(y, m, 1),
-//                        backgroundColor: Metronic.getBrandColor('yellow')
-//                    }, {
-//                        title: 'Long Event',
-//                        start: new Date(y, m, d - 5),
-//                        end: new Date(y, m, d - 2),
-//                        backgroundColor: Metronic.getBrandColor('green')
-//                    }, {
-//                        title: 'Repeating Event',
-//                        start: new Date(y, m, d - 3, 16, 0),
-//                        allDay: false,
-//                        backgroundColor: Metronic.getBrandColor('red')
-//                    }, {
-//                        title: 'Repeating Event',
-//                        start: new Date(y, m, d + 4, 16, 0),
-//                        allDay: false,
-//                        backgroundColor: Metronic.getBrandColor('green')
-//                    }, {
-//                        title: 'Meeting',
-//                        start: new Date(y, m, d, 10, 30),
-//                        allDay: false,
-//                    }, {
-//                        title: 'Lunch',
-//                        start: new Date(y, m, d, 12, 0),
-//                        end: new Date(y, m, d, 14, 0),
-//                        backgroundColor: Metronic.getBrandColor('grey'),
-//                        allDay: false,
-//                    }, {
-//                        title: 'Birthday Party',
-//                        start: new Date(y, m, d + 1, 19, 0),
-//                        end: new Date(y, m, d + 1, 22, 30),
-//                        backgroundColor: Metronic.getBrandColor('purple'),
-//                        allDay: false,
-//                    }, {
-//                        title: 'Click for Google',
-//                        start: new Date(y, m, 28),
-//                        end: new Date(y, m, 29),
-//                        backgroundColor: Metronic.getBrandColor('yellow'),
-//                        url: 'http://google.com/',
-//                    }
-//                ]
             });
-
         }
-
     };
-
 }();

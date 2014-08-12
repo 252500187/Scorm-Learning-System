@@ -525,4 +525,15 @@ public class UserServiceImpl implements UserService {
         backAnnouncementDao.setOtherAnnouncementNoUse();
         backAnnouncementDao.sendAnnouncement(announcementId);
     }
+
+    @Override
+    public void addCalendarEvent(int userId, CalendarEvent calendarEvent) {
+        calendarEvent.setUserId(userId);
+        userDao.addCalendarEvent(calendarEvent);
+    }
+
+    @Override
+    public List<CalendarEvent> getAllCalendarEventsByUserId(int userId) {
+        return userDao.getAllCalendarEventsByUserId(userId);
+    }
 }

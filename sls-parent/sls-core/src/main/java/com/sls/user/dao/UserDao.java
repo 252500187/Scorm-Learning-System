@@ -5,6 +5,7 @@ import com.core.page.entity.PageParameter;
 import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.entity.ScormSummarize;
 import com.sls.system.entity.Label;
+import com.sls.user.entity.CalendarEvent;
 import com.sls.user.entity.User;
 import com.sls.user.entity.UserLevel;
 
@@ -61,4 +62,8 @@ public interface UserDao {
     void changePassword(int userId, String password);
 
     List<User> findInUseUserByEmail(String email);
+
+    int addCalendarEvent(CalendarEvent calendarEvent);
+
+    List<CalendarEvent> getAllCalendarEventsByUserId(int userId);
 }

@@ -5,6 +5,7 @@ import com.core.page.entity.Page;
 import com.core.page.entity.PageParameter;
 import com.sls.system.entity.Label;
 import com.sls.user.dao.UserDao;
+import com.sls.user.entity.CalendarEvent;
 import com.sls.user.entity.User;
 import com.sls.user.entity.UserLevel;
 import com.sls.util.DictConstant;
@@ -194,5 +195,19 @@ public class UserDaoImpl extends PageDao implements UserDao {
     public List<User> findInUseUserByEmail(String email) {
         String sql = "SELECT a.* FROM us_user_info a,us_user b WHERE a.user_id=b.user_id AND a.email=? AND b.in_use=?";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<User>(User.class), email, DictConstant.IN_USE);
+    }
+
+    @Override
+    public int addCalendarEvent(CalendarEvent calendarEvent) {
+        String sql = "INSERT INTO calendar_events(title,start,end, user_id)VALUES(:title, :start, :end, :userId)";
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(calendarEvent), keyHolder);
+        return keyHolder.getKey().intValue();
+    }
+
+    @Override
+    public List<CalendarEvent> getAllCalendarEventsByUserId(int userId) {
+        String sql = "SELECT * FROM calendar_events WHERE user_id=?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<CalendarEvent>(CalendarEvent.class), userId);
     }
 }
