@@ -205,7 +205,6 @@
     </c:forEach>
 </div>
 
-<%int i = 0;%>
 <a name="scormScore"></a>
 
 <div class="row">
@@ -237,17 +236,9 @@
                         </div>
                     </div>
                 </div>
-                <%
-                    i++;
-                    if (i == 4) {
-                %>
-            </div>
-            <div class="row thumbnails">
-                <%}%>
                 </c:forEach>
             </div>
         </div>
-        <% i = 0;%>
         <a name="recommandLevel"></a>
 
         <div class="row">
@@ -276,17 +267,9 @@
                         </div>
                     </div>
                 </div>
-                <%
-                    i++;
-                    if (i == 4) {
-                %>
-            </div>
-            <div class="row thumbnails">
-                <%}%>
                 </c:forEach>
             </div>
         </div>
-        <% i = 0;%>
         <a name="studyTime"></a>
 
         <div class="row">
@@ -315,17 +298,11 @@
                         </div>
                     </div>
                 </div>
-                <%
-                    i++;
-                    if (i == 4) {
-                %>
-            </div>
-            <div class="row thumbnails">
-                <%}%>
+
                 </c:forEach>
             </div>
         </div>
-        <% i = 0;%>
+
         <a name="registerNum"></a>
 
         <div class="row">
@@ -354,13 +331,6 @@
                         </div>
                     </div>
                 </div>
-                <%
-                    i++;
-                    if (i == 4) {
-                %>
-            </div>
-            <div class="row thumbnails">
-                <%}%>
                 </c:forEach>
             </div>
         </div>
@@ -442,7 +412,7 @@
         <c:forEach var="label" items="${labels}">
             <div class="col-md-10 col-md-offset-1" style="margin-top: 30px">
                 <div class="top-news">
-                    <a onclick="sortByLabel('${label.labelId}" class="btn <%=color[(int)(Math.random()*100)%4]%>">
+                    <a onclick="sortByLabel(${label.labelId})" class="btn <%=color[(int)(Math.random()*100)%4]%>">
                         <span style="padding: 20px"><i class="fa fa-tags"></i> ${label.labelName}</span>
                         <i class="fa fa-tags top-news-icon"></i>
                     </a>

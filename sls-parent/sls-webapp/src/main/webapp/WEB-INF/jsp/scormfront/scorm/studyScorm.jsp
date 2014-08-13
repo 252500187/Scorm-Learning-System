@@ -267,120 +267,112 @@
         </div>
     </div>
 </div>
-<c:if test="${fn:length(groupScorms)>0}">
-    <div class="row" name="protectEye">
-        <div class="col-md-12">
-            <hr/>
-            <h2>
-                <div class="caption-sidebar">同系列课件(建议学习完本课程后继续学习这些课程)</div>
-            </h2>
-        </div>
-        <div class="col-md-12">
-            <div class="portlet-body">
-                <div class="row">
-                    <c:forEach var="scorm" items="${groupScorms}">
-                        <a onclick="scormInfo('${scorm.scormId}')">
-                            <div class="col-md-3">
-                                <div class="news-blocks">
-                                    <h3>
-                                        <a onclick="scormInfo('${scorm.scormId}')">
-                                            <c:if test="${scorm.showRecommendLevel!=''}">
-                                                <img src="${scorm.showRecommendLevel}"
-                                                     style="width: 30px;height: 30px"/>&nbsp;
-                                            </c:if>${scorm.scormName} </a>
-                                    </h3>
+<div class="row" name="protectEye" style="padding: 20px">
+    <div class="col-md-10">
+        <c:if test="${fn:length(groupScorms)>0}">
+            <div class="row">
+                <div class="col-md-12">
+                    <hr/>
+                    <h2>
+                        <div class="caption-sidebar">同系列课件
+                            <small>(学习完本课程后，可继续学习这些课程)</small>
+                        </div>
+                        <br/>
+                    </h2>
+                </div>
+                <div class="col-md-12">
+                    <div class="portlet-body">
+                        <div class="row">
+                            <c:forEach var="scorm" items="${groupScorms}">
+                                <a onclick="scormInfo('${scorm.scormId}')">
+                                    <div class="col-md-3">
+                                        <div class="news-blocks">
+                                            <h3>
+                                                <a onclick="scormInfo('${scorm.scormId}')">
+                                                    <c:if test="${scorm.showRecommendLevel!=''}">
+                                                        <img src="${scorm.showRecommendLevel}"
+                                                             style="width: 30px;height: 30px"/>&nbsp;
+                                                    </c:if>${scorm.scormName} </a>
+                                            </h3>
 
-                                    <div class="news-block-tags">
-                                        <strong>${scorm.score}分</strong>
-                                        <em>${scorm.registerSum}人注册</em>
+                                            <div class="news-block-tags">
+                                                <strong>${scorm.score}分</strong>
+                                                <em>${scorm.registerSum}人注册</em>
+                                                <hr/>
+                                            </div>
+                                            <p>
+                                                <img class="news-block-img pull-right"
+                                                     style="width: 200px;height: 150px"
+                                                     src="${scorm.imgPath}"
+                                                     alt="${scorm.scormName}">${scorm.description}
+                                            </p>
+                                            <a onclick="scormInfo('${scorm.scormId}')" class="news-block-btn blue">
+                                                查看 <i class="m-icon-swapright m-icon-black"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <p>
-                                        <img class="news-block-img pull-right" style="width: 200px;height: 150px"
-                                             src="${scorm.imgPath}" alt="${scorm.scormName}">${scorm.description}
-                                    </p>
-                                    <a href="page_news_item.html" class="news-block-btn">
-                                        查看 <i class="m-icon-swapright m-icon-black"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </a>
-                    </c:forEach>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</c:if>
-<c:if test="${fn:length(otherScorms)>0}">
-    <div class="row" name="protectEye">
-        <div class="col-md-12">
-            <hr/>
-            <h2>
-                <div class="caption-sidebar">更多课件</div>
-            </h2>
-        </div>
-        <div class="col-md-12">
-            <div class="portlet-body">
-                <div class="row">
-                    <c:forEach var="scorm" items="${otherScorms}">
-                        <a onclick="scormInfo('${scorm.scormId}')">
-                            <div class="col-md-3">
-                                <div class="news-blocks">
-                                    <h3>
-                                        <a onclick="scormInfo('${scorm.scormId}')">
-                                            <c:if test="${scorm.showRecommendLevel!=''}">
-                                                <img src="${scorm.showRecommendLevel}"
-                                                     style="width: 30px;height: 30px"/>&nbsp;
-                                            </c:if>${scorm.scormName} </a>
-                                    </h3>
-
-                                    <div class="news-block-tags">
-                                        <strong>${scorm.score}分</strong>
-                                        <em>${scorm.registerSum}人注册</em>
-                                    </div>
-                                    <p>
-                                        <img class="news-block-img pull-right" style="width: 200px;height: 150px"
-                                             src="${scorm.imgPath}" alt="${scorm.scormName}">${scorm.description}
-                                    </p>
-                                    <a href="page_news_item.html" class="news-block-btn">
-                                        查看 <i class="m-icon-swapright m-icon-black"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </a>
-                    </c:forEach>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</c:if>
-<c:if test="${fn:length(registerUsers)>0}">
-    <div class="row" name="protectEye">
-        <div class="col-md-12">
-            <div class="portlet box purple">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-file-text"></i>注册用户
+                                </a>
+                            </c:forEach>
+                        </div>
                     </div>
-                </div>
-                <div class="portlet-body">
-                    <div class="row">
-                        <c:forEach var="user" items="${registerUsers}">
-                            <a>
-                                <div class="col-md-1 mix mix_all" style=" display: block;">
-                                    <img src="${user.imgUrl}" width="80px" height="80px" class="img-rounded"/>
 
-                                    <p>${user.userName}</p>
-                                </div>
-                            </a>
-                        </c:forEach>
-                    </div>
                 </div>
             </div>
-        </div>
+        </c:if>
+        <c:if test="${fn:length(otherScorms)>0}">
+            <div class="row">
+                <div class="col-md-12">
+                    <hr/>
+                    <h2>
+                        <div class="caption-sidebar">作者课件</div>
+                    </h2>
+                </div>
+                <c:forEach var="scorm" items="${otherScorms}">
+                    <div class="col-md-3">
+                        <div class="meet-our-team">
+                            <h3 style="height: 35px;overflow: hidden">${scorm.scormName}
+                            </h3>
+                            <small>${scorm.passDate}</small>
+                            <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"
+                                 style="height: 150px"/>
+
+                            <div class="team-info">
+                                <p style="height: 20px;overflow: hidden">
+                                        ${scorm.description}
+                                </p>
+                                <a onclick="scormInfo(${scorm.scormId})" class="btn blue pull-right">查看<i
+                                        class="m-icon-swapright m-icon-white"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
+        </c:if>
     </div>
-</c:if>
+    <div class="col-md-2">
+        <c:if test="${fn:length(registerUsers)>0}">
+            <div class="row">
+                <div class="col-md-12">
+                    <hr/>
+                    <h2>
+                        <div class="caption-sidebar">注册用户
+                        </div>
+                        <br/>
+                    </h2>
+                </div>
+                <c:forEach var="user" items="${registerUsers}">
+                    <div class="col-md-6">
+                        <a onclick="userInfo(${user.userId})">
+                            <img src="${user.imgUrl}" style="height: 80px;" class="img-responsive">
+
+                            <p>${user.userName}</p>
+                        </a>
+                    </div>
+                </c:forEach>
+            </div>
+        </c:if>
+    </div>
+</div>
 </div>
 <%@include file="../index/footer.jsp" %>
 <div id="alertConfirm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
