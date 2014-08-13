@@ -69,6 +69,8 @@
 <%--<!-- END CORE PLUGINS -->--%>
 
 <%--<!-- BEGIN PAGE LEVEL PLUGINS -->--%>
+<script src="<c:url value="/metronic/assets/global/plugins/jquery-bootpag/jquery.bootpag.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/global/plugins/holder.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js"/>" type="text/javascript"></script>
@@ -105,6 +107,7 @@
 <%--<!-- BEGIN PAGE LEVEL SCRIPTS -->--%>
 <script src="<c:url value="/metronic/assets/global/scripts/metronic.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/admin/layout/scripts/layout.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/metronic/assets/admin/pages/scripts/ui-general.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/admin/pages/scripts/index.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/admin/pages/scripts/tasks.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/admin/pages/scripts/login-soft.js"/>" type="text/javascript"></script>

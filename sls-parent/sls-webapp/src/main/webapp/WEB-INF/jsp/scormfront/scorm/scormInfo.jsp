@@ -192,7 +192,7 @@
                                             ${note.note}
                                         </c:if>
                                         <c:if test="${note.noteType!=text}">
-                                            <img src="${note.note}"/>
+                                            <img src="${note.imgPath}" class="img-responsive" style="height: 150px"/>
                                         </c:if>
                                     </p>
                                 </div>
