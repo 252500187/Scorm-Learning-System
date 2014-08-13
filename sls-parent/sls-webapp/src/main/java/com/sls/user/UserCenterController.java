@@ -247,16 +247,13 @@ public class UserCenterController {
 
     @RequestMapping(value = "addCalendarEvents", method = {RequestMethod.POST})
     @ResponseBody
-    public void addCalendarEvents(CalendarEvent calendarEvent) {
-        userService.addCalendarEvent(userService.getUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId(),calendarEvent);
+    public int addCalendarEvents(CalendarEvent calendarEvent) {
+        return userService.addCalendarEvent(userService.getUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId(), calendarEvent);
     }
 
-    @RequestMapping(value = "changeCalendarEvents", method = {RequestMethod.POST})
+    @RequestMapping(value = "delCalendarEvent", method = {RequestMethod.POST})
     @ResponseBody
-    public void changeCalendarEvents(CalendarEvent calendarEvent) {
-        int userId = userService.getUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
-//        userService.setCalendarEventDate(calendarEvent);
-//        userService.delCalendarEvent(userId,calendarEvent);
-        userService.addCalendarEvent(userId,calendarEvent);
+    public void delCalendarEvent(@RequestParam("calendarId") int calendarId) {
+        userService.delCalendarEventByCalendarId(calendarId);
     }
 }

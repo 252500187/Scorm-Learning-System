@@ -98,11 +98,12 @@ var Calendar = function () {
                 droppable: true, // this allows things to be dropped onto the calendar !!!
                 drop: function (date, allDay) { // this function is called when something is dropped
                     y = date.getFullYear();
-                    m = date.getMonth()+1;
-                    m = m<10 ? ("0"+m) : m;
+                    m = date.getMonth() + 1;
+                    m = m < 10 ? ("0" + m) : m;
                     d = date.getDate();
                     d = d < 10 ? ("0" + d) : d;
                     var resultDate = y + "-" + m + "-" + d;
+                    var thisObj = $(this);
                     // retrieve the dropped element's stored Event Object
                     var originalEventObject = $(this).data('eventObject');
                     // we need to copy it, so that multiple events don't have a reference to the same object
@@ -115,7 +116,6 @@ var Calendar = function () {
 
                     // render the event on the calendar
                     // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-                    $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
                     $.ajax({
                         url: basePath + "user/center/addCalendarEvents",
                         dataType: "json",
@@ -125,35 +125,37 @@ var Calendar = function () {
                             start: resultDate,
                             end: resultDate
                         },
-                        success: function () {
+                        success: function (calendarId) {
+                            copiedEventObject.calendarId = calendarId;
+                            $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
                         },
                         error: doError
                     });
                     // is the "remove after drop" checkbox checked?
                     if ($('#drop-remove').is(':checked')) {
                         // if so, remove the element from the "Draggable Events" list
-                        $(this).remove();
+                        thisObj.remove();
                     }
                 },
-                eventDrop: function (event, delta, revertFunc) {
-                    d = parseInt(d) + delta;
-                    var resultDate = y + "-" + m + "-" + d;
-                    $.ajax({
-                        url: basePath + "user/center/changeCalendarEvents",
-                        dataType: "json",
-                        type: "post",
-                        data: {
-                            id: event.id,
-                            title: event.title,
-                            start: resultDate,
-                            end: resultDate
-                        },
-                        success: function () {
-                            alert("改")
-                        },
-                        error: doError
-                    });
-                },
+//                eventDrop: function (event, delta, revertFunc) {
+//                    d = parseInt(d) + delta;
+//                    var resultDate = y + "-" + m + "-" + d;
+//                    $.ajax({
+//                        url: basePath + "user/center/changeCalendarEvents",
+//                        dataType: "json",
+//                        type: "post",
+//                        data: {
+//                            id: event.id,
+//                            title: event.title,
+//                            start: resultDate,
+//                            end: resultDate
+//                        },
+//                        success: function () {
+//                            alert("改")
+//                        },
+//                        error: doError
+//                    });
+//                },
                 events: function (start, end, callback) {
                     $.ajax({
                         url: basePath + "user/center/getCalendarEvents",
@@ -163,7 +165,7 @@ var Calendar = function () {
                             var events = [];
                             for (var i = 0; i < list.length; i++) {
                                 events.push({
-                                    id: list[i].id,
+                                    id: list[i].calendarId,
                                     title: list[i].title,
                                     start: new Date(list[i].start),
                                     end: new Date(list[i].end)
@@ -171,6 +173,17 @@ var Calendar = function () {
                             }
                             callback(events);
                         }
+                    });
+                },
+                eventClick: function (event) {
+                    $.ajax({
+                        url: basePath + "user/center/delCalendarEvent?calendarId=" + event.id,
+                        dataType: "json",
+                        type: "post",
+                        success: function () {
+                            $("#calendar").fullCalendar("removeEvents",event.id);
+                        },
+                        error: doError
                     });
                 }
             });

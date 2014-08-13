@@ -527,13 +527,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addCalendarEvent(int userId, CalendarEvent calendarEvent) {
+    public int addCalendarEvent(int userId, CalendarEvent calendarEvent) {
         calendarEvent.setUserId(userId);
-        userDao.addCalendarEvent(calendarEvent);
+        return userDao.addCalendarEvent(calendarEvent);
     }
 
     @Override
     public List<CalendarEvent> getAllCalendarEventsByUserId(int userId) {
         return userDao.getAllCalendarEventsByUserId(userId);
+    }
+
+    @Override
+    public void delCalendarEventByCalendarId(int calendarId) {
+        userDao.delCalendarEventByCalendarId(calendarId);
     }
 }
