@@ -16,8 +16,8 @@
 <div class="container-fluid" style="padding: 0">
     <div class="row-fluid">
         <div class="row" style="margin-left: 0">
-            <div class="span12">
-                <img src="img/logo/logo_blue.jpg" style="height: 70px;width: 1364px;"/>
+            <div class="span12" style="background: #1E90FF ">
+                <img src="img/logo/logo_white.png"/>
             </div>
         </div>
         <div class="row-fluid">
