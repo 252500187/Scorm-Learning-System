@@ -26,7 +26,7 @@
     <ul class="nav">
         <c:forEach var="label" items="${sessionScope.labels}">
             <li>
-                <a onclick="findByLabel('${label.labelName}')">
+                <a onclick="sortByLabel(${label.labelId})">
                     <i class="fa fa-tags"></i>${label.labelName}
                 </a>
             </li>
