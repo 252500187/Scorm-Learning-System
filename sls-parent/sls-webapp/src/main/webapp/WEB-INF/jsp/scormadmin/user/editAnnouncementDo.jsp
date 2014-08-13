@@ -21,7 +21,7 @@
                 <label class="control-label">公告标题</label>
 
                 <div class="controls">
-                    <textarea id="announcementTheme">${announcement.announcementTheme}</textarea>
+                    <textarea id="announcementTitle">${announcement.announcementTitle}</textarea>
                 </div>
             </div>
 
@@ -49,8 +49,8 @@
 <script>
     var ruleLabel = {
         objInfo: {
-            announcementTheme: {
-                checkEmpty: ["announcementTheme", "公告主题"]
+            announcementTitle: {
+                checkEmpty: ["announcementTitle", "公告主题"]
             },
             announcementContent: {
                 checkEmpty: ["announcementContent", "公告内容"]
@@ -65,7 +65,7 @@
             url: basePath + "admin/user/editAnnouncement",
             data: {
                 announcementId: ${announcement.announcementId},
-                announcementTheme: $("#announcementTheme").val().trim(),
+                announcementTitle: $("#announcementTitle").val().trim(),
                 announcementContent: $("#announcementContent").val().trim()
             },
             dataType: "json",

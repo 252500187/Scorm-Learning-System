@@ -4,7 +4,7 @@ public class BackAnnouncement {
     private int announcementId;
     private int adminId;
     private String date;
-    private String announcementTheme;
+    private String announcementTitle;
     private String announcementContent;
     private int state;
 
@@ -24,12 +24,12 @@ public class BackAnnouncement {
         this.adminId = adminId;
     }
 
-    public String getAnnouncementTheme() {
-        return announcementTheme;
+    public String getAnnouncementTitle() {
+        return announcementTitle;
     }
 
-    public void setAnnouncementTheme(String announcementTheme) {
-        this.announcementTheme = announcementTheme;
+    public void setAnnouncementTitle(String announcementTitle) {
+        this.announcementTitle = announcementTitle;
     }
 
     public String getAnnouncementContent() {

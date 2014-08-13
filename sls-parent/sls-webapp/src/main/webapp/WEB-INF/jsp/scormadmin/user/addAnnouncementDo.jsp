@@ -18,10 +18,10 @@
         <fieldset>
             <legend></legend>
             <div class="control-group">
-                <label class="control-label">公告标题${announcement.announcementTheme}</label>
+                <label class="control-label">公告标题${announcement.announcementTitle}</label>
 
                 <div class="controls">
-                    <textarea id="announcementTheme" value=""/></textarea>
+                    <textarea id="announcementTitle" value=""/></textarea>
                 </div>
             </div>
 
@@ -49,8 +49,8 @@
 <script>
     var ruleLabel = {
         objInfo: {
-            announcementTheme: {
-                checkEmpty: ["announcementTheme", "公告主题"]
+            announcementTitle: {
+                checkEmpty: ["announcementTitle", "公告主题"]
             },
             announcementContent: {
                 checkEmpty: ["announcementContent", "公告内容"]
@@ -64,7 +64,7 @@
         $.ajax({
             url: basePath + "admin/user/addAnnouncement",
             data: {
-                announcementTheme: $("#announcementTheme").val().trim(),
+                announcementTitle: $("#announcementTitle").val().trim(),
                 announcementContent: $("#announcementContent").val().trim()
             },
             dataType: "json",

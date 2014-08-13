@@ -22,8 +22,8 @@ public class BackAnnouncementDaoImpl extends PageDao implements BackAnnouncement
         if (!("").equals(backAnnouncement.getDate()) ){
             sql.append(" AND date like '%").append(backAnnouncement.getDate().trim()).append("%'");
         }
-        if (!("").equals(backAnnouncement.getAnnouncementTheme())) {
-            sql.append(" AND announcement_theme like '%").append(backAnnouncement.getAnnouncementTheme().trim()).append("%'");
+        if (!("").equals(backAnnouncement.getAnnouncementTitle())) {
+            sql.append(" AND announcement_title like '%").append(backAnnouncement.getAnnouncementTitle().trim()).append("%'");
         }
         return queryForPage(pageParameter, sql.toString(), new BeanPropertySqlParameterSource(backAnnouncement), new BeanPropertyRowMapper<BackAnnouncement>(BackAnnouncement.class));
 
@@ -31,7 +31,7 @@ public class BackAnnouncementDaoImpl extends PageDao implements BackAnnouncement
 
     @Override
     public void addBackAnnouncement(BackAnnouncement backAnnouncement) {
-        String sql = "INSERT INTO us_back_announcement(admin_id, date, announcement_theme, announcement_content, state) VALUES( :adminId,:date,:announcementTheme,:announcementContent,:state)";
+        String sql = "INSERT INTO us_back_announcement(admin_id, date, announcement_title, announcement_content, state) VALUES( :adminId,:date,:announcementTitle,:announcementContent,:state)";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(backAnnouncement));
     }
 
@@ -50,7 +50,7 @@ public class BackAnnouncementDaoImpl extends PageDao implements BackAnnouncement
 
     @Override
     public void editAnnouncement(BackAnnouncement backAnnouncement) {
-        String sql = "UPDATE us_back_announcement SET admin_id=:adminId, announcement_theme=:announcementTheme,announcement_content=:announcementContent WHERE announcement_id=:announcementId ";
+        String sql = "UPDATE us_back_announcement SET admin_id=:adminId, announcement_title=:announcementTitle,announcement_content=:announcementContent WHERE announcement_id=:announcementId ";
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(backAnnouncement));
     }
 

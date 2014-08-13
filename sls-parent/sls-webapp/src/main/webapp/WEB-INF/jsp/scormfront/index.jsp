@@ -353,7 +353,7 @@
                             <li>
                                 <div class="col1">
                                     <div class="cont">
-                                        <div class="cont-col1">标题：&nbsp;&nbsp;<a>${announcement.announcementTheme}</a>
+                                        <div class="cont-col1">标题：&nbsp;&nbsp;<a>${announcement.announcementTitle}</a>
                                         </div>
                                         <div class="cont-col1">内容：&nbsp;&nbsp;${announcement.announcementContent}
                                         </div>

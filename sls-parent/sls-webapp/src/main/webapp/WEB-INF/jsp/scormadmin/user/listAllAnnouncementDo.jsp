@@ -20,7 +20,7 @@
                name="date" id="date" value=""/>
         公告标题
         <input type="text" class="input-medium"
-               name="announcementTheme" id="announcementTheme" value=""/>
+               name="announcementTitle" id="announcementTitle" value=""/>
         <a class="btn btn-primary" onclick="query()">查询</a>
         <a class="btn btn-primary" onclick="addAnnouncement()">新增</a>
         <a class="btn btn-primary" onclick="delManyAnnouncement()">删除</a>
@@ -42,7 +42,7 @@
 <script type="text/javascript">
     function query() {
         listOption.url = basePath + "admin/user/listAllAnnouncement";
-        listOption.data = "date=" + $("#date").val().trim() + "&announcementTheme=" + $("#announcementTheme").val().trim();
+        listOption.data = "date=" + $("#date").val().trim() + "&announcementTitle=" + $("#announcementTitle").val().trim();
         listOption.pageNumber = 1;
         loadData(listOption);
     }
@@ -56,7 +56,7 @@
                 [
                     {field: 'check', title: "<input type='checkbox' id='selectAll' onclick='selectAllAnnouncement()'>全选", align: 'center', width: 50},
                     {field: 'date', title: '发布日期', sortable: true, align: 'center', width: 150 },
-                    {field: 'announcementTheme', title: '公告标题', align: 'center', width: 150},
+                    {field: 'announcementTitle', title: '公告标题', align: 'center', width: 150},
                     {field: 'announcementContent', title: '公告内容', align: 'center', width: 500 },
                     {field: 'state', title: '状态', align: 'center', width: 100 },
                     {field: 'operate', title: '操作', align: 'center', width: 150 }
