@@ -17,7 +17,7 @@
     <div class="row-fluid">
         <div class="row" style="margin-left: 0">
             <div class="span12">
-                <img src="img/logo/logo.gif"/>
+                <img src="img/logo/logo_blue.jpg" style="height: 70px;width: 1364px;"/>
             </div>
         </div>
         <div class="row-fluid">
