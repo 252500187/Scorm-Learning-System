@@ -210,4 +210,10 @@ public class UserDaoImpl extends PageDao implements UserDao {
         String sql = "SELECT * FROM us_calendar_events WHERE user_id=?";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<CalendarEvent>(CalendarEvent.class), userId);
     }
+
+    @Override
+    public void delCalendarEventByCalendarId(int calendarId) {
+        String sql = "DELETE FROM us_calendar_events WHERE calendar_id=?";
+        getJdbcTemplate().update(sql,calendarId);
+    }
 }

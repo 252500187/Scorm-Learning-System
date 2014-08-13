@@ -113,7 +113,9 @@ public interface UserService {
 
     void sendAnnouncement(int announcementId);
 
-    void addCalendarEvent(int userId, CalendarEvent calendarEvent);
+    int addCalendarEvent(int userId, CalendarEvent calendarEvent);
 
     List<CalendarEvent> getAllCalendarEventsByUserId(int userId);
+
+    void delCalendarEventByCalendarId(int calendarId);
 }

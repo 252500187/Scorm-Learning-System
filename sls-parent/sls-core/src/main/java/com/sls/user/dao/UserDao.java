@@ -66,4 +66,6 @@ public interface UserDao {
     int addCalendarEvent(CalendarEvent calendarEvent);
 
     List<CalendarEvent> getAllCalendarEventsByUserId(int userId);
+
+    void delCalendarEventByCalendarId(int calendarId);
 }
