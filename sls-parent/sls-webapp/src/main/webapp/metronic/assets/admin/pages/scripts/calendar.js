@@ -56,7 +56,8 @@ var Calendar = function () {
                 // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                 // it doesn't need to have a start or end
                 var eventObject = {
-                    title: $.trim(el.text()) // use the element's text as the event title
+                    title: $.trim(el.text()), // use the element's text as the event title
+                    scormId: el.find("input").val()
                 };
                 // store the Event Object in the DOM element so we can get to it later
                 el.data('eventObject', eventObject);
@@ -68,9 +69,11 @@ var Calendar = function () {
                 });
             }
 
-            var addEvent = function (title) {
-                title = title.length == 0 ? "Untitled Event" : title;
-                var html = $('<div class="external-event label label-default">' + title + '</div>');
+            var addEvent = function (scorm) {
+//                title = title.length == 0 ? "Untitled Event" : title;
+//                var html = $('<div class="external-event label label-default alert alert-info display-hide">' +
+//                    '<button type="hidden" class="close" data-close="alert">' + title + '</button></div>');
+                var html = $('<div class="external-event label label-default"><h4>'+scorm.scormName+'</h4><input type="hidden" value="'+scorm.scormId+'" /></div>');
                 jQuery('#event_box').append(html);
                 initDrag(html);
             }
@@ -79,15 +82,15 @@ var Calendar = function () {
                 initDrag($(this))
             });
 
-            $('#event_add').unbind('click').click(function () {
-                var title = $('#event_title').val();
-                addEvent(title);
-            });
+//            $('#event_add').unbind('click').click(function () {
+//                var title = $('#event_title').val();
+//                addEvent(title);
+//            });
 
             //predefined events
             $('#event_box').html("");
             for (var i = 0; i < result.length; i++) {
-                addEvent(result[i].scormName);
+                addEvent(result[i]);
             }
 
             $('#calendar').fullCalendar('destroy'); // destroy the calendar
@@ -108,7 +111,6 @@ var Calendar = function () {
                     var originalEventObject = $(this).data('eventObject');
                     // we need to copy it, so that multiple events don't have a reference to the same object
                     var copiedEventObject = $.extend({}, originalEventObject);
-
                     // assign it the date that was reported
                     copiedEventObject.start = date;
                     copiedEventObject.allDay = allDay;
@@ -121,13 +123,14 @@ var Calendar = function () {
                         dataType: "json",
                         type: "post",
                         data: {
-                            title: copiedEventObject.title,
-                            start: resultDate,
-                            end: resultDate
+                            scormId: copiedEventObject.scormId,
+                            startDate: resultDate,
+                            endDate: resultDate
                         },
                         success: function (calendarId) {
                             copiedEventObject.calendarId = calendarId;
                             $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+                            location.reload();
                         },
                         error: doError
                     });
@@ -137,25 +140,6 @@ var Calendar = function () {
                         thisObj.remove();
                     }
                 },
-//                eventDrop: function (event, delta, revertFunc) {
-//                    d = parseInt(d) + delta;
-//                    var resultDate = y + "-" + m + "-" + d;
-//                    $.ajax({
-//                        url: basePath + "user/center/changeCalendarEvents",
-//                        dataType: "json",
-//                        type: "post",
-//                        data: {
-//                            id: event.id,
-//                            title: event.title,
-//                            start: resultDate,
-//                            end: resultDate
-//                        },
-//                        success: function () {
-//                            alert("改")
-//                        },
-//                        error: doError
-//                    });
-//                },
                 events: function (start, end, callback) {
                     $.ajax({
                         url: basePath + "user/center/getCalendarEvents",
@@ -166,9 +150,9 @@ var Calendar = function () {
                             for (var i = 0; i < list.length; i++) {
                                 events.push({
                                     id: list[i].calendarId,
-                                    title: list[i].title,
-                                    start: new Date(list[i].start),
-                                    end: new Date(list[i].end)
+                                    title: list[i].scormName,
+                                    start: new Date(list[i].startDate),
+                                    end: new Date(list[i].endDate)
                                 })
                             }
                             callback(events);
@@ -181,7 +165,7 @@ var Calendar = function () {
                         dataType: "json",
                         type: "post",
                         success: function () {
-                            $("#calendar").fullCalendar("removeEvents",event.id);
+                            $("#calendar").fullCalendar("removeEvents", event.id);
                         },
                         error: doError
                     });

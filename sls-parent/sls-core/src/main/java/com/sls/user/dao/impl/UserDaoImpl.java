@@ -199,7 +199,7 @@ public class UserDaoImpl extends PageDao implements UserDao {
 
     @Override
     public int addCalendarEvent(CalendarEvent calendarEvent) {
-        String sql = "INSERT INTO us_calendar_events(title,start,end, user_id)VALUES(:title, :start, :end, :userId)";
+        String sql = "INSERT INTO us_calendar_events(scorm_id,start_date,end_date, user_id)VALUES(:scormId, :startDate, :endDate, :userId)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         getNamedParameterJdbcTemplate().update(sql, new BeanPropertySqlParameterSource(calendarEvent), keyHolder);
         return keyHolder.getKey().intValue();
@@ -207,7 +207,7 @@ public class UserDaoImpl extends PageDao implements UserDao {
 
     @Override
     public List<CalendarEvent> getAllCalendarEventsByUserId(int userId) {
-        String sql = "SELECT * FROM us_calendar_events WHERE user_id=?";
+        String sql = "SELECT uce.*,ss.scorm_name FROM us_calendar_events uce JOIN ss_scorm ss ON uce.scorm_id = ss.scorm_id WHERE uce.user_id=?";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<CalendarEvent>(CalendarEvent.class), userId);
     }
 

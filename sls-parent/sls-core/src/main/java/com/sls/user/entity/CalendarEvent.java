@@ -2,35 +2,44 @@ package com.sls.user.entity;
 
 public class CalendarEvent {
     private int calendarId;
-    private String title;
-    private String start;
-    private String end;
+    private String scormName;
+    private int scormId;
+    private String startDate;
+    private String endDate;
     private int userId;
 
     public CalendarEvent() {}
 
-    public String getTitle() {
-        return title;
+    public int getCalendarId() {
+        return calendarId;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setCalendarId(int calendarId) {
+        this.calendarId = calendarId;
     }
 
-    public String getStart() {
-        return start;
+    public int getScormId() {
+        return scormId;
     }
 
-    public void setStart(String start) {
-        this.start = start;
+    public void setScormId(int scormId) {
+        this.scormId = scormId;
     }
 
-    public String getEnd() {
-        return end;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setEnd(String end) {
-        this.end = end;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
     public int getUserId() {
@@ -41,11 +50,11 @@ public class CalendarEvent {
         this.userId = userId;
     }
 
-    public int getCalendarId() {
-        return calendarId;
+    public String getScormName() {
+        return scormName;
     }
 
-    public void setCalendarId(int calendarId) {
-        this.calendarId = calendarId;
+    public void setScormName(String scormName) {
+        this.scormName = scormName;
     }
 }
