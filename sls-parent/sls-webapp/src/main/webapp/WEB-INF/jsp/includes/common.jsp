@@ -27,6 +27,7 @@
 <%--<!-- END GLOBAL MANDATORY STYLES -->--%>
 
 <%--<!-- BEGIN PAGE LEVEL STYLES -->--%>
+<link href="<c:url value="/metronic/assets/admin/pages/css/coming-soon.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/metronic/assets/admin/pages/css/news.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/metronic/assets/admin/pages/css/about-us.css"/>" rel="stylesheet" type="text/css"/>
 <link href="<c:url value="/metronic/assets/admin/pages/css/pricing-table.css"/>" rel="stylesheet" type="text/css"/>
@@ -89,6 +90,7 @@
 <script src="<c:url value="/metronic/assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/jquery.sparkline.min.js"/>" type="text/javascript"></script>
 
+<script src="<c:url value="/metronic/assets/global/plugins/countdown/jquery.countdown.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/jquery-validation/js/jquery.validate.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/global/plugins/backstretch/jquery.backstretch.min.js"/>" type="text/javascript"></script>
 <script type="text/javascript" src="<c:url value="/metronic/assets/global/plugins/select2/select2.min.js"/>"></script>
@@ -113,4 +115,5 @@
 <script src="<c:url value="/metronic/assets/admin/pages/scripts/login-soft.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/metronic/assets/admin/pages/scripts/charts.js"/>"></script>
 <script src="<c:url value="/metronic/assets/admin/pages/scripts/portfolio.js"/>"></script>
+<script src="<c:url value="/metronic/assets/admin/pages/scripts/coming-soon.js"/>" type="text/javascript"></script>
 <%--<!-- END PAGE LEVEL SCRIPTS -->--%>
