@@ -378,6 +378,13 @@ public class ScormServiceImpl implements ScormService {
         summarizeDao.changeCompleteInfoByScormIdAndUserId(scormSummarize);
     }
 
+    public List<Scorm> changeScormListRecommendLevel(List<Scorm> scorms) {
+        for (Scorm scorm : scorms) {
+            scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
+        }
+        return scorms;
+    }
+
     @Override
     public void getAllAboutScormInfo(int scormId, HttpServletRequest request) {
         Scorm scormInfo = scormDao.findScormInfoByScormId(scormId);
@@ -394,16 +401,10 @@ public class ScormServiceImpl implements ScormService {
         }
         //找到同系列课件
         List<Scorm> groupScorms = groupDao.getGroupScormsByScormId(scormId);
-        for (Scorm scorm : groupScorms) {
-            scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
-        }
-        request.setAttribute("groupScorms", groupScorms);
+        request.setAttribute("groupScorms", changeScormListRecommendLevel(groupScorms));
         //找到用户上传的其他课件
         List<Scorm> otherScorms = scormDao.getInUseUpScormInfoByUserId(scormInfo.getUploadUserId());
-        for (Scorm scorm : otherScorms) {
-            scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
-        }
-        request.setAttribute("otherScorms", otherScorms);
+        request.setAttribute("otherScorms", changeScormListRecommendLevel(otherScorms));
         //找到章节结构
         getScoList(request, scormId);
     }
@@ -636,28 +637,19 @@ public class ScormServiceImpl implements ScormService {
     public void getUserUpScormsByScormId(int scormId, HttpServletRequest request) {
         int userId = scormDao.findScormInfoByScormId(scormId).getUploadUserId();
         List<Scorm> scorms = scormDao.getInUseUpScormInfoByUserId(userId);
-        for (Scorm scorm : scorms) {
-            scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
-        }
-        request.setAttribute("otherScorms", scorms);
+        request.setAttribute("otherScorms", changeScormListRecommendLevel(scorms));
     }
 
     @Override
     public List<Scorm> getRegisterScormsByUserId(int userId) {
         List<Scorm> scorms = scormDao.findRegisterScormByUserId(userId);
-        for (Scorm scorm : scorms) {
-            scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
-        }
-        return scorms;
+        return changeScormListRecommendLevel(scorms);
     }
 
     @Override
     public List<Scorm> getUpScormsByUserId(int userId) {
         List<Scorm> scorms = scormDao.getInUseUpScormInfoByUserId(userId);
-        for (Scorm scorm : scorms) {
-            scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
-        }
-        return scorms;
+        return changeScormListRecommendLevel(scorms);
     }
 
     @Override
@@ -668,10 +660,7 @@ public class ScormServiceImpl implements ScormService {
             request.setAttribute("sortName", labelDao.findLabelById(labelId).getLabelName());
         }
         List<Scorm> scormList = scormDao.sortScormByLabelName(labelId);
-        for (Scorm scorm : scormList) {
-            scorm.setShowRecommendLevel(dictService.changeDictCodeToValue(scorm.getRecommendLevel(), DictConstant.RECOMMEND));
-        }
-        request.setAttribute("sortLabelScorm", scormList);
+        request.setAttribute("sortLabelScorm", changeScormListRecommendLevel(scormList));
     }
 
     @Override
@@ -706,5 +695,11 @@ public class ScormServiceImpl implements ScormService {
         if (!publicDiscussesList.isEmpty()) {
             request.setAttribute("discussId", publicDiscussesList.get(0).getDiscussId());
         }
+    }
+
+    @Override
+    public void getScormGroupsByScormId(int scormId, HttpServletRequest request) {
+        List<Scorm> scormList = groupDao.getGroupScormsByScormId(scormId);
+        request.setAttribute("groupScorms", changeScormListRecommendLevel(scormList));
     }
 }

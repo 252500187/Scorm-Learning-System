@@ -93,4 +93,6 @@ public interface ScormService {
     void addPublicScorm(PublicScorm publicScorm);
 
     void getPublicScormInfo(int scormId, HttpServletRequest request);
+
+    void getScormGroupsByScormId(int scormId, HttpServletRequest request);
 }

@@ -267,6 +267,50 @@
         </div>
     </div>
 </div>
+<c:if test="${fn:length(groupScorms)>0}">
+    <div class="row" name="protectEye">
+        <div class="col-md-12">
+            <hr/>
+            <h2>
+                <div class="caption-sidebar">同系列课件(建议学习完本课程后继续学习这些课程)</div>
+            </h2>
+        </div>
+        <div class="col-md-12">
+            <div class="portlet-body">
+                <div class="row">
+                    <c:forEach var="scorm" items="${groupScorms}">
+                        <a onclick="scormInfo('${scorm.scormId}')">
+                            <div class="col-md-3">
+                                <div class="news-blocks">
+                                    <h3>
+                                        <a onclick="scormInfo('${scorm.scormId}')">
+                                            <c:if test="${scorm.showRecommendLevel!=''}">
+                                                <img src="${scorm.showRecommendLevel}"
+                                                     style="width: 30px;height: 30px"/>&nbsp;
+                                            </c:if>${scorm.scormName} </a>
+                                    </h3>
+
+                                    <div class="news-block-tags">
+                                        <strong>${scorm.score}分</strong>
+                                        <em>${scorm.registerSum}人注册</em>
+                                    </div>
+                                    <p>
+                                        <img class="news-block-img pull-right" style="width: 200px;height: 150px"
+                                             src="${scorm.imgPath}" alt="${scorm.scormName}">${scorm.description}
+                                    </p>
+                                    <a href="page_news_item.html" class="news-block-btn">
+                                        查看 <i class="m-icon-swapright m-icon-black"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </a>
+                    </c:forEach>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</c:if>
 <c:if test="${fn:length(otherScorms)>0}">
     <div class="row" name="protectEye">
         <div class="col-md-12">
