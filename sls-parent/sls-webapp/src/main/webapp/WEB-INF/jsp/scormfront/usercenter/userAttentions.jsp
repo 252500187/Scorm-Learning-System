@@ -48,7 +48,7 @@
                                 <div class="col-md-2 col-sm-2 mix mix_all" style=" display: block;">
                                     <a onclick="top.userInfo('${attentionUser.userAttentionId}')">
                                         <img src="${attentionUser.imgUrl}" class="img-responsive"
-                                             alt="${attentionUser.userName}" style="height: 100px;width: 100px;">
+                                             alt="${attentionUser.userName}" style="height: 100px;">
                                             ${attentionUser.userName}
                                         <c:if test="${attentionUser.newMessage>0}">
                                             <span class="badge">${attentionUser.newMessage}</span>
@@ -69,7 +69,7 @@
             <hr/>
             <c:forEach var="user" items="${recommendUsers}">
                 <a onclick="top.userInfo('${user.userId}')">
-                    <img src="${user.imgUrl}" alt="${user.userName}" class="img-rounded" style="height: 100px;width: 100px;">
+                    <img src="${user.imgUrl}" alt="${user.userName}" class="img-responsive" style="width: 200px;">
                         ${user.userName}
                 </a>
                 <br/><br/>
