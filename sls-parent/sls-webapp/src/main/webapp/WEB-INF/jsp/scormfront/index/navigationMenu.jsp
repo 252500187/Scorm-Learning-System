@@ -244,6 +244,10 @@
                             <a href="user/center/userCenterDo?module=12">
                                 <i class="fa fa-book"></i>&nbsp;&nbsp;我的笔记本</a>
                         </li>
+                        <li>
+                            <a href="user/center/userCenterDo?module=14">
+                                <i class="fa fa-book"></i>&nbsp;&nbsp;日程表</a>
+                        </li>
                     </ul>
                 </li>
                 <li>
