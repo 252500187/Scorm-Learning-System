@@ -68,4 +68,6 @@ public interface UserDao {
     List<CalendarEvent> getAllCalendarEventsByUserId(int userId);
 
     void delCalendarEventByCalendarId(int calendarId);
+
+    List<CalendarEvent> getPromptCalendarEvents(int userId, String format);
 }
