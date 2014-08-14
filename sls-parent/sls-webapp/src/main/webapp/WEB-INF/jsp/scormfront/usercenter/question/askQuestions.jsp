@@ -38,23 +38,6 @@
     <c:if test="${fn:length(questions)>0}">
         <div class="row mix-grid">
             <div class="col-md-12">
-                <h3 class="form-section">最新回答</h3>
-                <hr/>
-                <c:forEach var="question" items="${questions}">
-                    <c:if test="${question.answerContent!=''&&question.newAnswer==1}">
-                        <div class="col-md-2 col-sm-2 mix mix_all" style=" display: block;">
-                            <a onclick="lookQuestion('${question.questionId}')">
-                                <img src="${question.imgUrl}" class="img-responsive"
-                                     alt="${question.userName}" style="height: 100px;width: 100px;">
-                                    ${question.askDate}<br/><span class="badge">New</span>${question.userName}
-                            </a>
-                        </div>
-                    </c:if>
-                </c:forEach>
-            </div>
-        </div>
-        <div class="row mix-grid">
-            <div class="col-md-12">
                 <h3 class="form-section">未回答</h3>
                 <hr/>
                 <c:forEach var="question" items="${questions}">
@@ -75,7 +58,7 @@
                 <h3 class="form-section">已回答</h3>
                 <hr/>
                 <c:forEach var="question" items="${questions}">
-                    <c:if test="${question.answerContent!=''&&question.newAnswer!=1}">
+                    <c:if test="${question.answerContent!=''}">
                         <div class="col-md-2 col-sm-2 mix mix_all" style=" display: block;">
                             <a onclick="lookQuestion('${question.questionId}')">
                                 <img src="${question.imgUrl}" class="img-responsive"
