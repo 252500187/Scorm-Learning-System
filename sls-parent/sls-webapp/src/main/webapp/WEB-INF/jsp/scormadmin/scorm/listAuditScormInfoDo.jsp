@@ -82,9 +82,7 @@
 
     function queryFormat(temp) {
         for (var i in temp) {
-            temp[i].operate = "<a onclick='scormInfo(\"" + temp[i].scormId + "\")'>查看</a>&nbsp;&nbsp;" +
-                    "<a onclick=''>注册用户</a>&nbsp;&nbsp;" +
-                    "<a onclick=''>课件评论</a>";
+            temp[i].operate = "<a onclick='scormInfo(\"" + temp[i].scormId + "\")'>查看</a>&nbsp;&nbsp;";
             if (temp[i].recommendLevel == "6") {
                 temp[i].recommendLevel = "(首页显示)6级"
             } else {
