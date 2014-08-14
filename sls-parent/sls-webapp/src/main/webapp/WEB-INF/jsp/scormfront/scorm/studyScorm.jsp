@@ -58,7 +58,7 @@
 
                     <div class="caption-sidebar">${scorm.scormName}</div>
                 </div>
-                <img src="${scorm.imgPath}" style="width: 100%;margin-top: 10px; margin-bottom: 10px"/>
+                <img src="${scorm.imgPath}" class="img-responsive" style="height: 100px"/>
                 <br/>
                 <hr/>
                 <iframe id="ztree" scrolling="no" style="width:100%; min-height:450px;border:0px;"
