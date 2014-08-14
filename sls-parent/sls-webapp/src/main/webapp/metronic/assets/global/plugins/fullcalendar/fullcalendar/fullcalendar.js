@@ -23,7 +23,7 @@ var defaults = {
 	header: {
 		left: 'title',
 		center: '',
-		right: 'today prev,next'
+//		right: 'today prev,next'
 	},
 	weekends: true,
 	weekNumbers: false,
@@ -72,8 +72,8 @@ var defaults = {
 		nextYear: "<span class='fc-text-arrow'>&raquo;</span>",
 		today: '今天',
 		month: '月',
-		week: '周',
-		day: '日'
+		week: '',
+		day: ''
 	},
 	
 	// jquery-ui theming
@@ -751,7 +751,7 @@ function Header(calendar, options) {
 					$("<tr/>")
 						.append(renderSection('left'))
 						.append(renderSection('center'))
-						.append(renderSection('right'))
+//						.append(renderSection('right'))
 				);
 			return element;
 		}
