@@ -24,7 +24,9 @@ import javax.mail.*;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 
@@ -135,6 +137,9 @@ public class LoginServiceImpl implements LoginService {
         session.setAttribute("answerNum", userQuestionDao.getNewAnswerNumByUserId(userId));
         //获取后台传送的消息
         session.setAttribute("messages", backMessageDao.getNewMessageByUserId(userId));
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        session.setAttribute("calendarEvents",userDao.getPromptCalendarEvents(userId,dateFormat.format(date)));
     }
 
     @Override

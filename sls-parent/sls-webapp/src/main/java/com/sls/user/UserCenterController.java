@@ -191,7 +191,6 @@ public class UserCenterController {
     //个人中心  日程表
     @RequestMapping(value = "calendarDo", method = {RequestMethod.GET})
     public String calendarDo(HttpServletRequest request) {
-
         return "scormfront/usercenter/calendar";
     }
 

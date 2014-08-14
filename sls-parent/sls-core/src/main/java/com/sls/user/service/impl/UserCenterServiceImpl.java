@@ -100,6 +100,9 @@ public class UserCenterServiceImpl implements UserCenterService {
             //提交问题
             case 13:
                 centerUrl = "user/center/addQuestionDo";
+            //日程
+            case 14:
+                centerUrl = "user/center/calendarDo";
         }
         request.setAttribute("centerUrl", centerUrl);
     }
