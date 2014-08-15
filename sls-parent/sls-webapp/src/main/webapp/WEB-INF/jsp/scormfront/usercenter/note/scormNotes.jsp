@@ -46,9 +46,6 @@
                             <li class="filter" data-filter="category_0" id="allNotes">
                                 全部笔记
                             </li>
-                            <li class="filter" data-filter="category_1">
-                                碎片笔记
-                            </li>
                             <li class="filter" data-filter="category_2">
                                 未完成课件笔记
                             </li>
@@ -69,22 +66,6 @@
                                         <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                             <a class="btn btn-sm blue"
                                                onclick="openNote('-1')">打开</a>&nbsp;
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-sm-4 mix mix_all category_1"
-                                 style=" display: block; opacity: 1;">
-                                <div class="mix-inner">
-                                    <img src="img/note/2.jpg" class="img-responsive" alt="笔记本">
-
-                                    <div class="mix-details">
-                                        <br/>
-                                        <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                            碎片笔记本</h4>
-                                        <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                            <a class="btn btn-sm blue"
-                                               onclick="openNote('0')">打开</a>&nbsp;
                                         </h4>
                                     </div>
                                 </div>

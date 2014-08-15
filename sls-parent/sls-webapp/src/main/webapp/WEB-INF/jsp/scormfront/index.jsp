@@ -373,7 +373,7 @@
 
             <div class="portlet-title">
                 <h1>
-                    <div class="caption-sidebar">最新上传</div>
+                    <div class="caption-sidebar" style="padding-bottom: 15px">最新上传</div>
                 </h1>
             </div>
             <div class="portlet-body">
