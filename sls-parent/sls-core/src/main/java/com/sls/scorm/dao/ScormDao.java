@@ -59,8 +59,4 @@ public interface ScormDao {
     List<Scorm> sortScormByLabelName(int labelId);
 
     List<Scorm> getAllScormByInUse(int inUse);
-
-    List<Scorm> findGroupScormsByNum(int num);
-
-    List<Scorm> findGroupsScormByGroupId(int groupId);
 }

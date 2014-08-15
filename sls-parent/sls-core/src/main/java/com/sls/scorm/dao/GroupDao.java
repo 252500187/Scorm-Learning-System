@@ -17,4 +17,8 @@ public interface GroupDao {
     List<Scorm> getGroupScormsByGroupId(int groupId);
 
     double getGroupScoreByGroupId(int groupId);
+
+    List<Scorm> findGroupScormsByNum(int num);
+
+    Boolean notHaveInUseScormCheckByGroupId(int groupId);
 }

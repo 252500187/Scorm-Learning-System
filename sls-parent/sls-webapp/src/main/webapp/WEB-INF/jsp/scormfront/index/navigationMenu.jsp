@@ -333,7 +333,7 @@
         window.location.href = "user/center/userCenterDo?module=1";
     }
 
-    function groupInfo(groupId) {
-        top.window.open(basePath + "tourist/groupsScorm?groupId=" + groupId);
+    function groupInfo() {
+        top.window.open(basePath + "tourist/groupsScorm");
     }
 </script>

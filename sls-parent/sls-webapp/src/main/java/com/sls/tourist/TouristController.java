@@ -150,8 +150,8 @@ public class TouristController {
     }
 
     @RequestMapping(value = "groupsScorm", method = {RequestMethod.GET})
-    public String groupsScorm(HttpServletRequest request, @RequestParam("groupId") int groupId) {
-        request.setAttribute("groupsScorm", scormService.findGroupsScorm(groupId));
+    public String groupsScorm(HttpServletRequest request) {
+        request.setAttribute("groupsScorm", scormService.findGroupsScorm());
         request.setAttribute("latestScorms", scormService.findLatestScormsByNum(10));
         return "scormfront/scorm/groupscorm/allGroupsScorm";
     }

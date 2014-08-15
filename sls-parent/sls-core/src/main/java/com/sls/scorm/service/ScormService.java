@@ -96,7 +96,7 @@ public interface ScormService {
 
     void getScormGroupsByScormId(int scormId, HttpServletRequest request);
 
-    List<Scorm> findGroupsScorm(int groupId);
+    List<Scorm> findGroupsScorm();
 
     List<Scorm> findLatestScormsByNum(int num);
 

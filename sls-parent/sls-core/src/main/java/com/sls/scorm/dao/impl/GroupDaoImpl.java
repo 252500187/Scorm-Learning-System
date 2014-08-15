@@ -49,4 +49,21 @@ public class GroupDaoImpl extends PageDao implements GroupDao {
         String sql = "SELECT AVG(score) FROM ss_scorm WHERE scorm_id IN (SELECT scorm_id FROM ss_scorm_group WHERE group_id=?)";
         return getJdbcTemplate().queryForObject(sql, Double.class, groupId);
     }
+
+    @Override
+    public List<Scorm> findGroupScormsByNum(int num) {
+        StringBuilder sql = new StringBuilder("SELECT groups.group_id,groups.groupNum,a.* FROM (SELECT *,COUNT(*) groupNum " +
+                " FROM ss_scorm_group GROUP BY group_id) groups,ss_scorm a WHERE groups.scorm_id=a.scorm_id AND groups.groupNum!=1");
+        if (num != -1) {
+            sql.append(" LIMIT ?");
+        }
+        return getJdbcTemplate().query(sql.toString(), new BeanPropertyRowMapper<Scorm>(Scorm.class), num);
+    }
+
+    @Override
+    public Boolean notHaveInUseScormCheckByGroupId(int groupId) {
+        String sql = "SELECT(SELECT COUNT(*) FROM ss_scorm_group WHERE group_id=?)=" +
+                "(SELECT COUNT(*) FROM ss_scorm WHERE scorm_id IN (SELECT scorm_id  FROM ss_scorm_group WHERE group_id=?) AND in_use=?)";
+        return getJdbcTemplate().queryForObject(sql, Integer.class, groupId, groupId, DictConstant.IN_USE) == 0;
+    }
 }

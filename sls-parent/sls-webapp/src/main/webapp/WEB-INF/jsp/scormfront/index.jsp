@@ -379,11 +379,11 @@
             <c:forEach var="group" items="${groupScorms}">
                 <div class="row" style="padding-bottom:10px">
                     <div class="col-md-5">
-                        <img src="${group.imgPath}" onclick="groupInfo('${group.groupId}')"
+                        <img src="${group.imgPath}" onclick="lookGroups(${group.groupId})"
                              class="img-responsive" style="height: 80px;">
                     </div>
                     <div class="col-md-7">
-                        <a onclick="groupInfo('${group.groupId}')">
+                        <a onclick="lookGroups(${group.groupId})">
                                 ${group.scormName}系列
                         </a><br/><br/>
 
@@ -534,6 +534,14 @@
     </div>
 </div>
 <br/>
+<div id="groupScormModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="row" id="groupScormsPage" style="padding: 20px">
+            </div>
+        </div>
+    </div>
+</div>
 <%@include file="index/footer.jsp" %>
 </body>
 </html>
@@ -543,5 +551,26 @@
         Layout.init();
         Portfolio.init();
     });
+
+    function lookGroups(groupId) {
+        $.ajax({
+            url: basePath + "tourist/getGroupScorms",
+            dataType: "json",
+            type: "post",
+            data: {
+                groupId: groupId
+            },
+            success: function (result) {
+                for (var i in result) {
+                    $("#groupScormsPage").append("<div class='col-md-4'>" +
+                            "<img src='" + result[i].imgPath + "' class='img-responsive' style='height:150px'/>" +
+                            "<a onclick='scormInfo(" + result[i].scormId + ")'>" + result[i].scormName + "</a>" +
+                            "</div>");
+                }
+                $("#groupScormModal").modal();
+            },
+            error: doError
+        });
+    }
 </script>
 

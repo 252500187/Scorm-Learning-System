@@ -19,32 +19,32 @@
     <div class="row">
         <div class="col-md-9">
             <div class="row">
-                <c:forEach var="scorm" items="${groupsScorm}">
+                <c:forEach var="group" items="${groupsScorm}">
                     <div class="col-md-4">
                         <div class="pricing pricing-active hover-effect">
                             <div class="pricing-head pricing-head-active">
-                                <h3 style="height: 50px;overflow: hidden">${scorm.scormName}&nbsp;系列
+                                <h3 style="height: 50px;overflow: hidden">${group.scormName}&nbsp;系列
                                 </h3>
-                                <h4><i>${scorm.groupScore}&nbsp;分</i>
+                                <h4><i>${group.groupScore}&nbsp;分</i>
                                     <span>系列平均分</span>
                                 </h4>
                             </div>
                             <ul class="pricing-content list-unstyled">
                                 <li>
-                                    <img src="${scorm.imgPath}" class="img-responsive center" style="height: 150px">
+                                    <img src="${group.imgPath}" class="img-responsive center" style="height: 150px">
                                 </li>
                                 <li>
-                                    <i class="fa fa-folder-open"></i>课件数目:&nbsp;${scorm.groupNum}
+                                    <i class="fa fa-folder-open"></i>课件数目:&nbsp;${group.groupNum}
                                 </li>
                                 <li>
-                                    <i class="fa fa-upload"></i>发布时间;&nbsp;${scorm.passDate}
+                                    <i class="fa fa-upload"></i>发布时间;&nbsp;${group.passDate}
                                 </li>
                             </ul>
                             <div class="pricing-footer">
                                 <p style="height: 20px;overflow: hidden">
-                                    简介:&nbsp;${scorm.description}
+                                    简介:&nbsp;${group.description}
                                 </p>
-                                <a class="btn yellow-crusta" onclick="lookGroups(${scorm.groupId})">
+                                <a class="btn yellow-crusta" onclick="lookGroups(${group.groupId})">
                                     查看系列<i class="m-icon-swapright m-icon-white"></i>
                                 </a>
                             </div>
@@ -89,14 +89,13 @@
         </div>
     </div>
 </div>
-<div id="scormModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+<div id="groupScormModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="row" id="groupScormsPage" style="padding: 20px">
             </div>
         </div>
     </div>
-
 </div>
 <%@include file="../../index/footer.jsp" %>
 </body>
@@ -123,7 +122,7 @@
                             "<a onclick='scormInfo(" + result[i].scormId + ")'>" + result[i].scormName + "</a>" +
                             "</div>");
                 }
-                $("#scormModal").modal();
+                $("#groupScormModal").modal();
             },
             error: doError
         });

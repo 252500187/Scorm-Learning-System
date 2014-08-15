@@ -1,5 +1,6 @@
 package com.sls.login.service.impl;
 
+import com.sls.scorm.dao.GroupDao;
 import com.sls.scorm.dao.PublicScormDao;
 import com.sls.scorm.dao.ScormDao;
 import com.sls.scorm.entity.Scorm;
@@ -25,10 +26,7 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 @Transactional
 @Service("loginService")
@@ -63,6 +61,9 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     public PublicScormDao publicScormDao;
+
+    @Autowired
+    public GroupDao groupDao;
 
     public String toIndex(HttpServletRequest request, HttpSession session) {
         String loginName = LoginUserUtil.getLoginName();
@@ -121,8 +122,16 @@ public class LoginServiceImpl implements LoginService {
         request.setAttribute("recommendIndexScorms", scormDao.findRecommendIndexScorms());
         request.setAttribute("recommendUsers", userDao.getUsersOrderByScoreAndNum(6));
         request.setAttribute("publicScorms", publicScormDao.getPublicScorm(4));
-        request.setAttribute("announcements",backAnnouncementDao.getInUseAnnouncement());
-        request.setAttribute("groupScorms", scormDao.findGroupScormsByNum(10));
+        request.setAttribute("announcements", backAnnouncementDao.getInUseAnnouncement());
+        List<Scorm> groups = groupDao.findGroupScormsByNum(10);
+        List<Scorm> useGroups = new ArrayList<Scorm>();
+        for (Scorm group : groups) {
+            if (!groupDao.notHaveInUseScormCheckByGroupId(group.getGroupId())) {
+                group.setGroupScore(groupDao.getGroupScoreByGroupId(group.getGroupId()));
+                useGroups.add(group);
+            }
+        }
+        request.setAttribute("groupScorms", useGroups);
     }
 
     public void setLoginIndexInfo(HttpSession session, int userId) {
@@ -140,7 +149,7 @@ public class LoginServiceImpl implements LoginService {
         session.setAttribute("messages", backMessageDao.getNewMessageByUserId(userId));
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        session.setAttribute("calendarEvents",userDao.getPromptCalendarEvents(userId,dateFormat.format(date)));
+        session.setAttribute("calendarEvents", userDao.getPromptCalendarEvents(userId, dateFormat.format(date)));
     }
 
     @Override

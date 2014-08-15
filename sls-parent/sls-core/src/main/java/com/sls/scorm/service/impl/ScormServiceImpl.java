@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -704,12 +705,16 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public List<Scorm> findGroupsScorm(int groupId) {
-        List<Scorm> groups = scormDao.findGroupsScormByGroupId(groupId);
-        for (Scorm scorm : groups) {
-            scorm.setGroupScore(groupDao.getGroupScoreByGroupId(scorm.getGroupId()));
+    public List<Scorm> findGroupsScorm() {
+        List<Scorm> groups = groupDao.findGroupScormsByNum(10);
+        List<Scorm> useGroups = new ArrayList<Scorm>();
+        for (Scorm group : groups) {
+            if (!groupDao.notHaveInUseScormCheckByGroupId(group.getGroupId())) {
+                group.setGroupScore(groupDao.getGroupScoreByGroupId(group.getGroupId()));
+                useGroups.add(group);
+            }
         }
-        return groups;
+        return useGroups;
     }
 
     @Override
