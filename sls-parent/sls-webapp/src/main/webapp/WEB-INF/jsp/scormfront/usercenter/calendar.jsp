@@ -37,9 +37,6 @@
                                     <div><h4>课件列表</h4></div>
                                     <div id="event_box">
                                     </div>
-                                    <label for="drop-remove">
-                                        <input type="checkbox" id="drop-remove"/>拖拽后移除</label>
-                                    <hr class="visible-xs"/>
                                 </div>
                             </div>
                             <div class="col-md-9 col-sm-12">
