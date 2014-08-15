@@ -581,11 +581,11 @@ public class ScormServiceImpl implements ScormService {
     }
 
     @Override
-    public void findScorm(String info, HttpServletRequest request) {
+    public void findResult(String info, HttpServletRequest request) {
         request.setAttribute("info", info);
         request.setAttribute("findNameScorm", scormDao.queryScormByFieldName(info, "scorm_name"));
         request.setAttribute("findScoreScorm", scormDao.queryScormByFieldName(info, "score"));
-        request.setAttribute("findLabelScorm", scormDao.queryScormByLabelName(info));
+        request.setAttribute("findUsers", userDao.queryUsersByName(info));
     }
 
     @Override

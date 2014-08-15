@@ -70,4 +70,6 @@ public interface UserDao {
     void delCalendarEventByCalendarId(int calendarId);
 
     List<CalendarEvent> getPromptCalendarEvents(int userId, String format);
+
+    List<User> queryUsersByName(String userName);
 }

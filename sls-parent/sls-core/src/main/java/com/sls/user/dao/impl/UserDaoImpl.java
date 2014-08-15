@@ -223,4 +223,10 @@ public class UserDaoImpl extends PageDao implements UserDao {
         String sql = "SELECT uce.*,ss.scorm_name FROM us_calendar_events uce JOIN ss_scorm ss ON uce.scorm_id = ss.scorm_id WHERE user_id =? AND ? BETWEEN start_date AND end_date\n";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<CalendarEvent>(CalendarEvent.class), userId, formatDate);
     }
+
+    @Override
+    public List<User> queryUsersByName(String userName) {
+        String sql = "SELECT * FROM us_user_info WHERE user_name LIKE '%"+userName+"%'";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<User>(User.class));
+    }
 }

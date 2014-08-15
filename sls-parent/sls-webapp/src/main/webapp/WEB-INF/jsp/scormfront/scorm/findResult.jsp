@@ -63,7 +63,7 @@
     </div>
     <div class="row">
         <div class="col-md-12 col-sm-8 article-block">
-            <c:if test="${fn:length(findNameScorm)<=0&&fn:length(findDescriptionScorm)<=0&&fn:length(findScoreScorm)<=0&&fn:length(findLabelScorm)<=0}">
+            <c:if test="${fn:length(findNameScorm)<=0&&fn:length(findScoreScorm)<=0&&fn:length(findUsers)<=0}">
                 <h3 class="page-title">对不起</h3>
 
                 <h3 class="page-title">
@@ -72,7 +72,7 @@
                 </h3>
             </c:if>
             <c:if test="${fn:length(findNameScorm)>0}">
-                <h1>按名称</h1>
+                <h1>按课件名称</h1>
                 <c:forEach var="scorm" items="${findNameScorm}">
                     <div class="row">
                         <div class="col-md-4 blog-img blog-tag-data">
@@ -103,9 +103,9 @@
                     <hr>
                 </c:forEach>
             </c:if>
-            <c:if test="${fn:length(findLabelScorm)>0}">
-                <h1>按标签</h1>
-                <c:forEach var="scorm" items="${findLabelScorm}">
+            <c:if test="${fn:length(findScoreScorm)>0}">
+                <h1>按课件评分</h1>
+                <c:forEach var="scorm" items="${findScoreScorm}">
                     <div class="row">
                         <div class="col-md-4 blog-img blog-tag-data">
                             <img src="${scorm.imgPath}" alt="img" class="img-responsive"
@@ -135,36 +135,26 @@
                     <hr>
                 </c:forEach>
             </c:if>
-            <c:if test="${fn:length(findScoreScorm)>0}">
-                <h1>按评分</h1>
-                <c:forEach var="scorm" items="${findScoreScorm}">
-                    <div class="row">
-                        <div class="col-md-4 blog-img blog-tag-data">
-                            <img src="${scorm.imgPath}" alt="img" class="img-responsive"
-                                 style="width: 300px">
-                            <ul class="list-inline">
-                                <li>
-                                    <i class="fa fa-calendar"></i>
-                                    <a>上传日期:${scorm.uploadDate}</a>
-                                </li>
-                                <li>
-                                    <i class="fa fa-folder-open-o"></i>
-                                    <a>章节数:${scorm.chapterNum}</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-8 blog-article">
-                            <h3><a onclick="scormInfo('${scorm.scormId}')">${scorm.scormName}</a></h3>
-
-                            <p>评分:${scorm.score}分</p>
-
-                            <p>${scorm.description}</p>
-                            <a class="btn blue" onclick="scormInfo('${scorm.scormId}')">
-                                详细 <i class="m-icon-swapright m-icon-white"></i>
-                            </a>
-                        </div>
+            <c:if test="${fn:length(findUsers)>0}">
+                <h1>搜索到的用户</h1>
+                <c:forEach var="user" items="${findUsers}">
+                    <div class="col-md-3 blog-img blog-tag-data">
+                        <img src="${user.imgUrl}" alt="img" class="img-responsive"
+                             style="width: 300px">
                     </div>
-                    <hr>
+                    <div class="col-md-3 blog-article">
+                        <h3><a onclick="userInfo('${user.userId}')">${user.userName}</a></h3>
+
+                        <p>性别:&nbsp;&nbsp;
+                            <c:if test="${user.sex==1}">男</c:if>
+                            <c:if test="${user.sex!=1}">女</c:if>
+                        </p>
+
+                        <p>经验值:&nbsp;&nbsp;${user.score}分</p>
+                        <a class="btn blue" onclick="userInfo('${user.userId}')">
+                            查看 <i class="m-icon-swapright m-icon-white"></i>
+                        </a>
+                    </div>
                 </c:forEach>
             </c:if>
         </div>

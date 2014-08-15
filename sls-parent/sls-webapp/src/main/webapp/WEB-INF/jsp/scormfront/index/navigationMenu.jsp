@@ -85,7 +85,7 @@
                 <li style="margin-top: 5px"></li>
                 <c:if test="${fn:length(sessionScope.messages)>0}">
                     <li class="dropdown-submenu">
-                        <a href="user/center/userCenterDo?module=9">
+                        <a>
                                 <span class="label label-sm label-icon label-success">
                                     <i class="fa fa-envelope-o"></i>
                                 </span>信件
@@ -322,6 +322,9 @@
             type: "post",
             data: {
                 messageId: messageId
+            },
+            success: function () {
+                window.location.href="";
             }
         });
     }
