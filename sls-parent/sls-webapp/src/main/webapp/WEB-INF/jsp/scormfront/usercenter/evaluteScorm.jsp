@@ -40,31 +40,33 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- BEGIN FILTER -->
-                    <div class="margin-top-10">
-                        <div class="row mix-grid">
-                            <c:forEach var="scormInfo" items="${allScorm}">
-                                <div class="col-md-3 col-sm-4 mix mix_all category_1"
-                                     style=" display: block; opacity: 1;">
-                                    <div class="mix-inner">
-                                        <img src="${scormInfo.imgPath}" class="img-responsive" style="height: 200px"
-                                             alt="${scormInfo.scormId}">
+                    <div class="row mix-grid">
+                        <div class="col-md-12">
+                            <c:if test="${fn:length(allScorm)<1}">
+                                还未注册课件
+                            </c:if>
+                        </div>
+                        <c:forEach var="scormInfo" items="${allScorm}">
+                            <div class="col-md-3 col-sm-4 mix mix_all category_1"
+                                 style=" display: block; opacity: 1;">
+                                <div class="mix-inner">
+                                    <img src="${scormInfo.imgPath}" class="img-responsive" style="height: 200px"
+                                         alt="${scormInfo.scormId}">
 
-                                        <div class="mix-details">
-                                            <h4></h4>
-                                            <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                课件名称:&nbsp;${scormInfo.scormName}</h4>
-                                            <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
-                                                <a class="btn btn-sm blue"
-                                                   onclick="top.scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
-                                                <a class="btn btn-sm blue"
-                                                   onclick="scormComment('${scormInfo.scormId}')">评价课件</a>
-                                            </h4>
-                                        </div>
+                                    <div class="mix-details">
+                                        <h4></h4>
+                                        <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                            课件名称:&nbsp;${scormInfo.scormName}</h4>
+                                        <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
+                                            <a class="btn btn-sm blue"
+                                               onclick="top.scormInfo('${scormInfo.scormId}')">课件信息</a>&nbsp;
+                                            <a class="btn btn-sm blue"
+                                               onclick="scormComment('${scormInfo.scormId}')">评价课件</a>
+                                        </h4>
                                     </div>
                                 </div>
-                            </c:forEach>
-                        </div>
+                            </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>

@@ -26,7 +26,7 @@ public class UserDaoImpl extends PageDao implements UserDao {
     }
 
     private StringBuilder getUserManageSql() {
-        String sql = "SELECT   a.`user_id`,a.`login_name`,d.`user_name`,c.role_name,d.register_date,a.`in_use`, d.`email`,d.`score` FROM us_user a, us_user_role b, us_role c, us_user_info d " +
+        String sql = "SELECT   a.user_id,a.login_name,d.user_name,c.role_name,d.register_date,a.in_use, d.email,d.score FROM us_user a, us_user_role b, us_role c, us_user_info d " +
                 "WHERE a.user_id = b.user_id AND b.role_id = c.role_id  AND d.user_id = a.user_id";
         return new StringBuilder(sql);
     }
@@ -34,6 +34,7 @@ public class UserDaoImpl extends PageDao implements UserDao {
     @Override
     public Page<User> findUserPageList(PageParameter pageParameter, User user) {
         StringBuilder sql = getUserManageSql();
+        sql.append(" AND b.role_id!=1");
         if (!("").equals(user.getLoginName())) {
             sql.append(" AND a.login_name like '%").append(user.getLoginName().trim()).append("%'");
         }
@@ -214,12 +215,12 @@ public class UserDaoImpl extends PageDao implements UserDao {
     @Override
     public void delCalendarEventByCalendarId(int calendarId) {
         String sql = "DELETE FROM us_calendar_events WHERE calendar_id=?";
-        getJdbcTemplate().update(sql,calendarId);
+        getJdbcTemplate().update(sql, calendarId);
     }
 
     @Override
     public List<CalendarEvent> getPromptCalendarEvents(int userId, String formatDate) {
         String sql = "SELECT uce.*,ss.scorm_name FROM us_calendar_events uce JOIN ss_scorm ss ON uce.scorm_id = ss.scorm_id WHERE user_id =? AND ? BETWEEN start_date AND end_date\n";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<CalendarEvent>(CalendarEvent.class), userId,formatDate);
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<CalendarEvent>(CalendarEvent.class), userId, formatDate);
     }
 }

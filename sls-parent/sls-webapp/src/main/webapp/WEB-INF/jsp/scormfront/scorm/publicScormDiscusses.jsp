@@ -45,15 +45,26 @@
         Metronic.init();
         Layout.init();
         setInterval("getDiscusses()", 1000);
+        $("#discuss").bind("keydown", function (e) {
+            if (e.which == 13) {
+                sendDiscuss();
+            }
+        });
     });
 
     function sendDiscuss() {
+        if ($("#discuss").val().trim() == "") {
+            return;
+        }
         $.ajax({
             url: basePath + "user/scorm/sendDiscuss",
             type: "post",
             data: {
                 publicId: "${publicScorm.publicId}",
                 discuss: $("#discuss").val().trim()
+            },
+            success: function () {
+                $("#discuss").val("");
             }
         });
     }

@@ -303,7 +303,7 @@
                         <div class="portlet-body">
                             <c:forEach var="user" items="${attentionUsers}">
                                 <div class="col-md-12">
-                                    <img src="${user.imgUrl}" class="img-responsive" style="height: 100px;"
+                                    <img src="${user.imgUrl}" class="img-responsive" style="width: 200px;"
                                          onclick="userInfo('${user.userId}')"/>
                                     <a onclick="userInfo('${user.userId}')">
                                             ${user.userName}

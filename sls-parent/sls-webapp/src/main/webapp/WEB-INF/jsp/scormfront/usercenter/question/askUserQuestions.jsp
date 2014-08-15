@@ -45,7 +45,7 @@
                         <div class="col-md-2 col-sm-2 mix mix_all" style=" display: block;">
                             <a onclick="lookQuestion('${question.questionId}')">
                                 <img src="${question.imgUrl}" class="img-responsive"
-                                     alt="${question.userName}" style="height: 100px;width: 100px;">
+                                     alt="${question.userName}" style="height: 100px;">
                                 ${question.askDate}<br/>${question.userName}
                             </a>
                         </div>
@@ -62,7 +62,7 @@
                         <div class="col-md-2 col-sm-2 mix mix_all" style=" display: block;">
                             <a onclick="lookQuestion('${question.questionId}')">
                                 <img src="${question.imgUrl}" class="img-responsive"
-                                     alt="${question.userName}" style="height: 100px;width: 100px;">
+                                     alt="${question.userName}" style="height: 100px;">
                                 ${question.askDate}<br/>${question.userName}
                             </a>
                         </div>
