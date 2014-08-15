@@ -702,4 +702,23 @@ public class ScormServiceImpl implements ScormService {
         List<Scorm> scormList = groupDao.getGroupScormsByScormId(scormId);
         request.setAttribute("groupScorms", changeScormListRecommendLevel(scormList));
     }
+
+    @Override
+    public List<Scorm> findGroupsScorm(int groupId) {
+        List<Scorm> groups = scormDao.findGroupsScormByGroupId(groupId);
+        for (Scorm scorm : groups) {
+            scorm.setGroupScore(groupDao.getGroupScoreByGroupId(scorm.getGroupId()));
+        }
+        return groups;
+    }
+
+    @Override
+    public List<Scorm> findLatestScormsByNum(int num) {
+        return scormDao.findLatestScormsByNum(num);
+    }
+
+    @Override
+    public List<Scorm> getGroupScorms(int groupId) {
+        return groupDao.getGroupScormsByGroupId(groupId);
+    }
 }

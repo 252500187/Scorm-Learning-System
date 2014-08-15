@@ -95,4 +95,10 @@ public interface ScormService {
     void getPublicScormInfo(int scormId, HttpServletRequest request);
 
     void getScormGroupsByScormId(int scormId, HttpServletRequest request);
+
+    List<Scorm> findGroupsScorm(int groupId);
+
+    List<Scorm> findLatestScormsByNum(int num);
+
+    List<Scorm> getGroupScorms(int groupId);
 }

@@ -1,5 +1,6 @@
 package com.sls.tourist;
 
+import com.sls.scorm.entity.Scorm;
 import com.sls.scorm.service.ScormService;
 import com.sls.system.service.LabelService;
 import com.sls.user.entity.User;
@@ -23,6 +24,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Random;
+import java.util.List;
 
 @Controller
 @Transactional
@@ -147,9 +149,16 @@ public class TouristController {
         return "scormfront/user/userInfo";
     }
 
-//    @RequestMapping(value = "sortScorm", method = {RequestMethod.GET})
-//    public String sortScorm(@RequestParam("labelId") int labelId, HttpServletRequest request) {
-//        scormService.sortScorm(labelId, request);
-//        return "scormfront/scorm/sortResult";
-//    }
+    @RequestMapping(value = "groupsScorm", method = {RequestMethod.GET})
+    public String groupsScorm(HttpServletRequest request, @RequestParam("groupId") int groupId) {
+        request.setAttribute("groupsScorm", scormService.findGroupsScorm(groupId));
+        request.setAttribute("latestScorms", scormService.findLatestScormsByNum(10));
+        return "scormfront/scorm/groupscorm/allGroupsScorm";
+    }
+
+    @RequestMapping(value = "getGroupScorms", method = {RequestMethod.POST})
+    @ResponseBody
+    public List<Scorm> getGroupScorms(@RequestParam("groupId") int groupId) {
+        return scormService.getGroupScorms(groupId);
+    }
 }

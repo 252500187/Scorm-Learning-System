@@ -17,7 +17,7 @@ public class GroupDaoImpl extends PageDao implements GroupDao {
     public List<Scorm> getGroupScormsByScormId(int scormId) {
         String sql = "SELECT a.* FROM ss_scorm a, ss_scorm_group b WHERE a.scorm_id=b.scorm_id AND a.in_use=? " +
                 "AND b.group_id=(SELECT group_id FROM ss_scorm_group WHERE scorm_id=?) AND a.scorm_id!=? ";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), DictConstant.IN_USE, scormId,scormId);
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), DictConstant.IN_USE, scormId, scormId);
     }
 
     @Override
@@ -36,5 +36,17 @@ public class GroupDaoImpl extends PageDao implements GroupDao {
     public void addScormGroup(int scormId, int groupId) {
         String sql = "INSERT INTO ss_scorm_group (group_id,scorm_id) VALUES(?,?)";
         getJdbcTemplate().update(sql, groupId, scormId);
+    }
+
+    @Override
+    public List<Scorm> getGroupScormsByGroupId(int groupId) {
+        String sql = "SELECT * FROM ss_scorm WHERE scorm_id IN (SELECT scorm_id FROM ss_scorm_group WHERE group_id=?) AND in_use=?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), groupId, DictConstant.IN_USE);
+    }
+
+    @Override
+    public double getGroupScoreByGroupId(int groupId) {
+        String sql = "SELECT AVG(score) FROM ss_scorm WHERE scorm_id IN (SELECT scorm_id FROM ss_scorm_group WHERE group_id=?)";
+        return getJdbcTemplate().queryForObject(sql, Double.class, groupId);
     }
 }

@@ -137,7 +137,7 @@
                             <div class="pricing hover-effect">
                                 <div class="pricing-head">
                                     <h3>${scorm.scormName}
-                                        <span style="height: 20px;overflow: hidden"> ${scorm.publicDescription} </span>
+                                        <span style="height: 18px;overflow: hidden"> ${scorm.publicDescription} </span>
                                     </h3>
                                     <h4><i style="font-size: 15px">${scorm.startTime}</i>-<i
                                             style="font-size: 15px">${scorm.endTime}</i>
@@ -147,7 +147,7 @@
                                 </div>
                                 <ul class="pricing-content list-unstyled">
                                     <li>
-                                        <img src="${scorm.imgPath}" class="img-responsive">
+                                        <img src="${scorm.imgPath}" class="img-responsive" style="height: 150px">
                                     </li>
                                     <li>
                                         <i class="fa fa-star"></i>课件分数:&nbsp;${scorm.score}分
@@ -373,6 +373,7 @@
 
             <h1 style="padding-bottom: 30px">
                 <div class="caption-sidebar">课件系列</div>
+                <div class="caption-sidebar pull-right"><a onclick="groupInfo('-1')">更多</a></div>
             </h1>
             <hr/>
             <c:forEach var="group" items="${groupScorms}">
@@ -385,6 +386,7 @@
                         <a onclick="groupInfo('${group.groupId}')">
                                 ${group.scormName}系列
                         </a><br/><br/>
+
                         <p>系列上传日期:<br/>${group.uploadDate}</p>
                     </div>
                 </div>

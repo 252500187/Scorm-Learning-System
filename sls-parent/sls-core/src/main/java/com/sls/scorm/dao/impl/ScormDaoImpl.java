@@ -193,10 +193,26 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), DictConstant.IN_USE);
     }
 
+    StringBuilder getGroupScormsSql() {
+        StringBuilder sql = new StringBuilder("SELECT groups.group_id,groups.groupNum,a.* FROM (SELECT *,COUNT(*) groupNum " +
+                " FROM ss_scorm_group GROUP BY group_id) groups,ss_scorm a WHERE groups.scorm_id=a.scorm_id AND groups.groupNum!=1");
+        return sql;
+    }
+
     @Override
     public List<Scorm> findGroupScormsByNum(int num) {
-        String sql = "SELECT groups.group_id,groups.groupNum,a.* FROM (SELECT *,COUNT(*) groupNum FROM ss_scorm_group GROUP BY group_id) groups," +
-                "ss_scorm a WHERE groups.scorm_id=a.scorm_id AND groups.groupNum!=1 LIMIT ?";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), num);
+        StringBuilder sql = getGroupScormsSql();
+        sql.append(" LIMIT ?");
+        return getJdbcTemplate().query(sql.toString(), new BeanPropertyRowMapper<Scorm>(Scorm.class), num);
+    }
+
+    @Override
+    public List<Scorm> findGroupsScormByGroupId(int groupId) {
+        StringBuilder sql = getGroupScormsSql();
+        if (groupId != -1) {
+            sql.append(" AND groups.group_id=?");
+            return getJdbcTemplate().query(sql.toString(), new BeanPropertyRowMapper<Scorm>(Scorm.class), groupId);
+        }
+        return getJdbcTemplate().query(sql.toString(), new BeanPropertyRowMapper<Scorm>(Scorm.class));
     }
 }

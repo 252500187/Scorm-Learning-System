@@ -13,4 +13,8 @@ public interface GroupDao {
     void addDefaultScormGroup(int scormId);
 
     void addScormGroup(int scormId, int groupId);
+
+    List<Scorm> getGroupScormsByGroupId(int groupId);
+
+    double getGroupScoreByGroupId(int groupId);
 }

@@ -3,6 +3,8 @@ package com.sls.scorm.entity;
 import com.sls.util.DateUtil;
 import com.sls.util.DictConstant;
 
+import java.util.List;
+
 public class Scorm {
     private int scormId;
     private String scormName;
@@ -34,6 +36,7 @@ public class Scorm {
 
     private int groupId;
     private String groupNum;
+    private double groupScore;
 
     public Scorm() {
         registerSum = 0;
@@ -260,5 +263,13 @@ public class Scorm {
 
     public void setGroupId(int groupId) {
         this.groupId = groupId;
+    }
+
+    public double getGroupScore() {
+        return groupScore;
+    }
+
+    public void setGroupScore(double groupScore) {
+        this.groupScore = groupScore;
     }
 }

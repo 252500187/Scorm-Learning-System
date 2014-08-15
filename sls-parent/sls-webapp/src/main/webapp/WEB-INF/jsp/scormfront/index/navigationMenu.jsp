@@ -334,10 +334,6 @@
     }
 
     function groupInfo(groupId) {
-        top.window.open(basePath + "tourist/info/changePasswordDo");
-    }
-
-    function groups() {
-        top.window.open(basePath + "user/info/changePasswordDo");
+        top.window.open(basePath + "tourist/groupsScorm?groupId=" + groupId);
     }
 </script>

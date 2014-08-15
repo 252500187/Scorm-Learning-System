@@ -399,7 +399,7 @@
     }
 
     function upQuestion() {
-        $("#questionContent").slideUp("slow");
+        $("#questionContent").slideUp("fast");
         $("#upQuestion").hide();
         $("#downQuestion").show();
     }
