@@ -71,7 +71,7 @@
                 userIds += $(this).val() + ",";
             }
         })
-        if (userIds = "") {
+        if (userIds == "") {
             return;
         }
         $.ajax({
@@ -83,6 +83,7 @@
             dataType: "json",
             type: "POST",
             success: function () {
+                parent.query();
                 parent.$("#dataEdit").dialog('close');
             },
             error: doError

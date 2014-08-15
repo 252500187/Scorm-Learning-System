@@ -147,7 +147,11 @@
         $.ajax({
             url: basePath + "admin/user/delMessage?messageId=" + messageId,
             dataType: "json",
-            type: "DELETE"
+            type: "DELETE",
+            success: function () {
+                query();
+                $("#selectAll").attr("checked",false);
+            }
         })
     }
 
