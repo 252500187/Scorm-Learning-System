@@ -40,8 +40,8 @@
                     <p>
                         关注：
                         <c:forEach var="label" items="${labels}">
-                            <a onclick="findByLabel('${label.labelName}')"> <i
-                                    class="fa fa-tags"></i>${label.labelName},</a>
+                            <a onclick="sortByLabel('${label.labelId}')"> <i
+                                    class="fa fa-tags"></i>${label.labelName},</a>&nbsp;&nbsp;
                         </c:forEach>
                     </p><br/>
                 </c:if>

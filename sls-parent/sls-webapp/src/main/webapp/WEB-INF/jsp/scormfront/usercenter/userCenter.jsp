@@ -24,23 +24,21 @@
                 </li>
                 <li class="start">
                     <a id="userCenterIndex">
-                        <i class="fa fa-user"></i><br/>
-                        <span class="title">
                         <table>
                             <tr>
                                 <td>
-                                    &nbsp;<img id="userHeadPhoto" src="${user.imgUrl}" class="img-rounded" alt="用户头像"
-                                               style="max-width:100px;max-height:100px"/>
+                                    <i class="fa fa-user"></i><br/>
+                                    <img id="userHeadPhoto" src="${user.imgUrl}" class="img-rounded" alt="用户头像"
+                                         style="max-width:100px;max-height:100px;padding-right: 10px"/>
                                 </td>
                                 <td>
-                                    <span style="margin-left:10px">昵称</span>:&nbsp;&nbsp;<span
+                                    <span>昵称:</span><br/><span
                                         id="userNickName">${user.userName}</span><br/>
-                                    <span style="margin-left:10px">分数</span>:&nbsp;&nbsp;${user.score}<br/>
-                                    <span style="margin-left:10px">等级</span>:&nbsp;&nbsp;${user.levelName}<br/>
+                                    <span>分数</span>:&nbsp;&nbsp;${user.score}分<br/>
+                                    <span>等级</span>:&nbsp;&nbsp;${user.levelName}<br/>
                                 </td>
                             </tr>
                         </table>
-                        </span>
                     </a>
                 </li>
                 <li>

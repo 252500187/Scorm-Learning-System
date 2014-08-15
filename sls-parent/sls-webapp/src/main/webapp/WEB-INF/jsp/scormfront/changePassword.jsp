@@ -49,7 +49,7 @@
 
                                                 <div class="col-md-3">
                                                     <input class="form-control form-control-inline input-medium date-picker"
-                                                           id="oldPassword" name="oldPassword" type="text" value=""
+                                                           id="oldPassword" name="oldPassword" type="password" value=""
                                                            placeholder="输入原密码"/>
                                                 </div>
                                             </div>
