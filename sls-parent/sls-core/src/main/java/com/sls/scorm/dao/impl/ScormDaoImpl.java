@@ -147,15 +147,6 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
     }
 
     @Override
-    public List<Scorm> queryScormByLabelName(String info) {
-        String sql = "SELECT a.*,COUNT(TYPE) AS chapterNum FROM ss_scorm a,luss_scorm_sco b " +
-                "WHERE a.scorm_id = b.scorm_id AND b.user_id = -1 AND b.type = 'item' AND a.in_use = 1 " +
-                "AND a.scorm_id IN (SELECT DISTINCT c.scorm_id FROM ss_scorm c ,ss_scorm_label d,us_label e " +
-                "WHERE c.scorm_id=d.scorm_id AND e.label_id=d.label_id AND label_name LIKE '%" + info + "%')GROUP BY a.scorm_id";
-        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class));
-    }
-
-    @Override
     public String findCompleteRateByScormId(int scormId) {
         String sql = "SELECT (SELECT COUNT(*) FROM luss_scorm_summarize WHERE scorm_id=? AND user_id!=? AND complete_date!='')/COUNT(*) " +
                 "FROM luss_scorm_summarize WHERE scorm_id=? AND user_id!=?";
@@ -163,7 +154,7 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
     }
 
     @Override
-    public List<Scorm> findLatestScorms(int i) {
+    public List<Scorm> findLatestScormsByNum(int i) {
         String sql = "SELECT * FROM ss_scorm WHERE in_use=? ORDER BY upload_date DESC LIMIT ?";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), DictConstant.IN_USE, i);
     }
@@ -200,5 +191,12 @@ public class ScormDaoImpl extends PageDao implements ScormDao {
     public List<Scorm> getAllScormByInUse(int inUse) {
         String sql = "SELECT * FROM ss_scorm WHERE in_use=?";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), DictConstant.IN_USE);
+    }
+
+    @Override
+    public List<Scorm> findGroupScormsByNum(int num) {
+        String sql = "SELECT groups.group_id,groups.groupNum,a.* FROM (SELECT *,COUNT(*) groupNum FROM ss_scorm_group GROUP BY group_id) groups," +
+                "ss_scorm a WHERE groups.scorm_id=a.scorm_id AND groups.groupNum!=1 LIMIT ?";
+        return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<Scorm>(Scorm.class), num);
     }
 }

@@ -219,23 +219,23 @@
             </div>
             <div class="row thumbnails">
                 <c:forEach var="scorm" items="${scormScore}">
-                <div class="col-md-3">
-                    <div class="meet-our-team">
-                        <h3 style="height: 35px;overflow: hidden">${scorm.scormName}
-                        </h3>
-                        <small>${scorm.passDate}</small>
-                        <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"
-                             style="height: 150px"/>
+                    <div class="col-md-3">
+                        <div class="meet-our-team">
+                            <h3 style="height: 35px;overflow: hidden">${scorm.scormName}
+                            </h3>
+                            <small>${scorm.passDate}</small>
+                            <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"
+                                 style="height: 150px"/>
 
-                        <div class="team-info">
-                            <p style="height: 20px;overflow: hidden">
-                                    ${scorm.description}
-                            </p>
-                            <a onclick="scormInfo(${scorm.scormId})" class="btn blue pull-right">查看<i
-                                    class="m-icon-swapright m-icon-white"></i></a>
+                            <div class="team-info">
+                                <p style="height: 20px;overflow: hidden">
+                                        ${scorm.description}
+                                </p>
+                                <a onclick="scormInfo(${scorm.scormId})" class="btn blue pull-right">查看<i
+                                        class="m-icon-swapright m-icon-white"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </c:forEach>
             </div>
         </div>
@@ -250,23 +250,23 @@
             </div>
             <div class="row thumbnails">
                 <c:forEach var="scorm" items="${scormLevel}">
-                <div class="col-md-3">
-                    <div class="meet-our-team">
-                        <h3 style="height: 35px;overflow: hidden">${scorm.scormName}
-                        </h3>
-                        <small>${scorm.passDate}</small>
-                        <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"
-                             style="height: 150px"/>
+                    <div class="col-md-3">
+                        <div class="meet-our-team">
+                            <h3 style="height: 35px;overflow: hidden">${scorm.scormName}
+                            </h3>
+                            <small>${scorm.passDate}</small>
+                            <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"
+                                 style="height: 150px"/>
 
-                        <div class="team-info">
-                            <p style="height: 20px;overflow: hidden">
-                                    ${scorm.description}
-                            </p>
-                            <a onclick="scormInfo(${scorm.scormId})" class="btn blue pull-right">查看<i
-                                    class="m-icon-swapright m-icon-white"></i></a>
+                            <div class="team-info">
+                                <p style="height: 20px;overflow: hidden">
+                                        ${scorm.description}
+                                </p>
+                                <a onclick="scormInfo(${scorm.scormId})" class="btn blue pull-right">查看<i
+                                        class="m-icon-swapright m-icon-white"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </c:forEach>
             </div>
         </div>
@@ -281,23 +281,23 @@
             </div>
             <div class="row thumbnails">
                 <c:forEach var="scorm" items="${scormTime}">
-                <div class="col-md-3">
-                    <div class="meet-our-team">
-                        <h3 style="height: 35px;overflow: hidden">${scorm.scormName}
-                        </h3>
-                        <small>${scorm.passDate}</small>
-                        <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"
-                             style="height: 150px"/>
+                    <div class="col-md-3">
+                        <div class="meet-our-team">
+                            <h3 style="height: 35px;overflow: hidden">${scorm.scormName}
+                            </h3>
+                            <small>${scorm.passDate}</small>
+                            <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"
+                                 style="height: 150px"/>
 
-                        <div class="team-info">
-                            <p style="height: 20px;overflow: hidden">
-                                    ${scorm.description}
-                            </p>
-                            <a onclick="scormInfo(${scorm.scormId})" class="btn blue pull-right">查看<i
-                                    class="m-icon-swapright m-icon-white"></i></a>
+                            <div class="team-info">
+                                <p style="height: 20px;overflow: hidden">
+                                        ${scorm.description}
+                                </p>
+                                <a onclick="scormInfo(${scorm.scormId})" class="btn blue pull-right">查看<i
+                                        class="m-icon-swapright m-icon-white"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
                 </c:forEach>
             </div>
@@ -314,23 +314,23 @@
             </div>
             <div class="row thumbnails">
                 <c:forEach var="scorm" items="${scormSum}">
-                <div class="col-md-3">
-                    <div class="meet-our-team">
-                        <h3 style="height: 35px;overflow: hidden">${scorm.scormName}
-                        </h3>
-                        <small>${scorm.passDate}</small>
-                        <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"
-                             style="height: 150px"/>
+                    <div class="col-md-3">
+                        <div class="meet-our-team">
+                            <h3 style="height: 35px;overflow: hidden">${scorm.scormName}
+                            </h3>
+                            <small>${scorm.passDate}</small>
+                            <img src="${scorm.imgPath}" alt="${scorm.imgPath}" class="img-responsive"
+                                 style="height: 150px"/>
 
-                        <div class="team-info">
-                            <p style="height: 20px;overflow: hidden">
-                                    ${scorm.description}
-                            </p>
-                            <a onclick="scormInfo(${scorm.scormId})" class="btn blue pull-right">查看<i
-                                    class="m-icon-swapright m-icon-white"></i></a>
+                            <div class="team-info">
+                                <p style="height: 20px;overflow: hidden">
+                                        ${scorm.description}
+                                </p>
+                                <a onclick="scormInfo(${scorm.scormId})" class="btn blue pull-right">查看<i
+                                        class="m-icon-swapright m-icon-white"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </c:forEach>
             </div>
         </div>
@@ -368,7 +368,32 @@
         </div>
     </c:if>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-11 col-md-offset-1">
+            <a name="groupScorms"></a>
+
+            <h1 style="padding-bottom: 30px">
+                <div class="caption-sidebar">课件系列</div>
+            </h1>
+            <hr/>
+            <c:forEach var="group" items="${groupScorms}">
+                <div class="row" style="padding-bottom:10px">
+                    <div class="col-md-5">
+                        <img src="${group.imgPath}" onclick="groupInfo('${group.groupId}')"
+                             class="img-responsive" style="height: 80px;">
+                    </div>
+                    <div class="col-md-7">
+                        <a onclick="groupInfo('${group.groupId}')">
+                                ${group.scormName}系列
+                        </a><br/><br/>
+                        <p>系列上传日期:<br/>${group.uploadDate}</p>
+                    </div>
+                </div>
+                <hr/>
+            </c:forEach>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-11 col-md-offset-1">
             <a name="recentUp"></a>
 
             <div class="portlet-title">
@@ -399,21 +424,21 @@
             </div>
         </div>
     </div>
-    <div class="row" style="margin-top: 100px">
+    <hr/>
+    <div class="row" style="margin-top: 20px">
         <a name="scormSort"></a>
 
-        <div class="col-md-12">
-            <hr/>
+        <div class="col-md-11 col-md-offset-1">
             <h2>
                 <div class="caption-sidebar">课件分类</div>
             </h2>
         </div>
         <% String color[] = {"green", "red", "blue", "yellow"};%>
         <c:forEach var="label" items="${labels}">
-            <div class="col-md-10 col-md-offset-1" style="margin-top: 30px">
+            <div class="col-md-9 col-md-offset-1" style="margin-top: 5px">
                 <div class="top-news">
                     <a onclick="sortByLabel(${label.labelId})" class="btn <%=color[(int)(Math.random()*100)%4]%>">
-                        <span style="padding: 20px"><i class="fa fa-tags"></i> ${label.labelName}</span>
+                        <span style="padding: 5px"><i class="fa fa-tags"></i> ${label.labelName}</span>
                         <i class="fa fa-tags top-news-icon"></i>
                     </a>
                 </div>
@@ -435,6 +460,27 @@
             </a>
         </c:if>
 
+        <a class="icon-btn" href="#groupScorms">
+            <i class="fa fa-upload"></i>
+
+            <div>课件系列</div>
+            <span class="badge badge-success"></span>
+        </a>
+
+        <a class="icon-btn" href="#recentUp">
+            <i class="fa fa-upload"></i>
+
+            <div>最新上传</div>
+            <span class="badge badge-success"></span>
+        </a>
+
+        <a class="icon-btn" href="#scormSort">
+            <i class="fa fa-folder-open"></i>
+
+            <div>课件分类</div>
+            <span class="badge badge-important"></span>
+        </a>
+
         <a class="icon-btn" href="#bestHot">
             <i class="fa fa-fire"></i>
 
@@ -454,20 +500,6 @@
 
             <div>推荐用户</div>
             <span class="badge badge-success"></span>
-        </a>
-
-        <a class="icon-btn" href="#recentUp">
-            <i class="fa fa-upload"></i>
-
-            <div>最新上传</div>
-            <span class="badge badge-success"></span>
-        </a>
-
-        <a class="icon-btn" href="#scormSort">
-            <i class="fa fa-folder-open"></i>
-
-            <div>课件分类</div>
-            <span class="badge badge-important"></span>
         </a>
 
         <a class="icon-btn" href="#scormScore">

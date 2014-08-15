@@ -55,7 +55,7 @@ public interface UserDao {
 
     int getUseUserNum();
 
-    List<User> getNumUserOrderByScore(int num);
+    List<User> getUsersOrderByScoreAndNum(int num);
 
     List<User> getAllUsersByInUse(int inUse);
 

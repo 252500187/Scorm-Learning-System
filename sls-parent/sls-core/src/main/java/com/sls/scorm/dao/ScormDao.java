@@ -46,11 +46,9 @@ public interface ScormDao {
 
     List<Scorm> queryScormByFieldName(String info, String fieldName);
 
-    List<Scorm> queryScormByLabelName(String info);
-
     String findCompleteRateByScormId(int scormId);
 
-    List<Scorm> findLatestScorms(int i);
+    List<Scorm> findLatestScormsByNum(int i);
 
     List<Scorm> findRecommendIndexScorms();
 
@@ -61,4 +59,6 @@ public interface ScormDao {
     List<Scorm> sortScormByLabelName(int labelId);
 
     List<Scorm> getAllScormByInUse(int inUse);
+
+    List<Scorm> findGroupScormsByNum(int num);
 }

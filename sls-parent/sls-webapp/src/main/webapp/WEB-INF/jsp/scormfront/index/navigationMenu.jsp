@@ -324,12 +324,20 @@
                 messageId: messageId
             },
             success: function () {
-                window.location.href="";
+                window.location.href = "";
             }
         });
     }
 
     function toUserCenter() {
         window.location.href = "user/center/userCenterDo?module=1";
+    }
+
+    function groupInfo(groupId) {
+        top.window.open(basePath + "tourist/info/changePasswordDo");
+    }
+
+    function groups() {
+        top.window.open(basePath + "user/info/changePasswordDo");
     }
 </script>

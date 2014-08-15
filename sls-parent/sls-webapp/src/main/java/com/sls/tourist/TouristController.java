@@ -146,4 +146,10 @@ public class TouristController {
         userService.clearAllNewMessage(userId, session);
         return "scormfront/user/userInfo";
     }
+
+//    @RequestMapping(value = "sortScorm", method = {RequestMethod.GET})
+//    public String sortScorm(@RequestParam("labelId") int labelId, HttpServletRequest request) {
+//        scormService.sortScorm(labelId, request);
+//        return "scormfront/scorm/sortResult";
+//    }
 }

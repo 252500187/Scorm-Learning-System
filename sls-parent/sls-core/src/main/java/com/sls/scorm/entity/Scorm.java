@@ -32,6 +32,9 @@ public class Scorm {
     private String endTime;
     private String publicDescription;
 
+    private int groupId;
+    private String groupNum;
+
     public Scorm() {
         registerSum = 0;
         recommendLevel = DictConstant.RECOMMEND_0;
@@ -241,5 +244,21 @@ public class Scorm {
 
     public void setPublicDescription(String publicDescription) {
         this.publicDescription = publicDescription;
+    }
+
+    public String getGroupNum() {
+        return groupNum;
+    }
+
+    public void setGroupNum(String groupNum) {
+        this.groupNum = groupNum;
+    }
+
+    public int getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
     }
 }

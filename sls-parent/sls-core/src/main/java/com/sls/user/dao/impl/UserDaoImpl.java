@@ -174,7 +174,7 @@ public class UserDaoImpl extends PageDao implements UserDao {
     }
 
     @Override
-    public List<User> getNumUserOrderByScore(int num) {
+    public List<User> getUsersOrderByScoreAndNum(int num) {
         String sql = "SELECT * FROM us_user_info ORDER BY score DESC LIMIT ?";
         return getJdbcTemplate().query(sql, new BeanPropertyRowMapper<User>(User.class), num);
     }

@@ -335,7 +335,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getNumRecommendUsers(int num) {
-        return userDao.getNumUserOrderByScore(num);
+        return userDao.getUsersOrderByScoreAndNum(num);
     }
 
     @Override

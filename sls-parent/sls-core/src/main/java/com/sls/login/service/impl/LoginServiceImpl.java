@@ -117,11 +117,12 @@ public class LoginServiceImpl implements LoginService {
         request.setAttribute("scormScore", scormDao.indexFindTopScormByFieldName("score", 4));
         request.setAttribute("scormTime", scormDao.indexFindTopScormByFieldName("total_time", 4));
         request.setAttribute("scormLevel", scormDao.indexFindTopScormByFieldName("recommend_level", 4));
-        request.setAttribute("latestScorms", scormDao.findLatestScorms(12));
+        request.setAttribute("latestScorms", scormDao.findLatestScormsByNum(10));
         request.setAttribute("recommendIndexScorms", scormDao.findRecommendIndexScorms());
-        request.setAttribute("recommendUsers", userDao.getNumUserOrderByScore(6));
+        request.setAttribute("recommendUsers", userDao.getUsersOrderByScoreAndNum(6));
         request.setAttribute("publicScorms", publicScormDao.getPublicScorm(4));
         request.setAttribute("announcements",backAnnouncementDao.getInUseAnnouncement());
+        request.setAttribute("groupScorms", scormDao.findGroupScormsByNum(10));
     }
 
     public void setLoginIndexInfo(HttpSession session, int userId) {
