@@ -59,6 +59,7 @@
                         <br/>
 
                         <h3 class="page-title">${noteList[status.index].scormName}</h3>
+                        <a onclick="delNote('${noteList[status.index].noteId}')" style="font-size: 20px">撕&nbsp;掉</a>
                     </div>
 
                     <div class="head-Info" style="text-align: right;padding-right: 5%;">
@@ -68,6 +69,7 @@
                         <br/>
 
                         <h3 class="page-title">${noteList[status.index+1].scormName}</h3>
+                        <a onclick="delNote('${noteList[status.index+1].noteId}')" style="font-size: 20px">撕&nbsp;掉</a><br/>
                     </div>
 
                     <div class="bb-custom-side">
@@ -77,8 +79,6 @@
                         <c:if test="${noteList[status.index].noteType != -1 }">
                             <img style="max-height: 250px;max-width: 350px" src="${noteList[status.index].imgPath}"/>
                         </c:if>
-                        <a onclick="delNote('${noteList[status.index].noteId}')"
-                           style="margin-left: 10px">撕掉</a>
                     </div>
 
                     <div class="bb-custom-side">
@@ -88,9 +88,7 @@
                         <c:if test="${noteList[status.index+1].noteType != -1 }">
                             <img style="max-height: 250px;max-width: 350px" src="${noteList[status.index+1].imgPath}"/>
                         </c:if>
-                        <a onclick="delNote('${noteList[status.index+1].noteId}')" style="margin-left: 10px">撕掉</a>
                     </div>
-
                 </div>
             </c:forEach>
         </div>
