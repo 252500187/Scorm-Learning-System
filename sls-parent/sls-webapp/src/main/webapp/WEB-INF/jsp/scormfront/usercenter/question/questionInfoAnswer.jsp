@@ -78,10 +78,10 @@
 
     function changeQuestionAnswerContent() {
         $.ajax({
-            url: basePath + "user/center/changeQuestionAskContent",
+            url: basePath + "user/center/changeQuestionAnswerContent",
             data: {
                 questionId: "${question.questionId}",
-                askContent: $("#askContent").val().trim()
+                answerContent: $("#askContent").val().trim()
             },
             type: "POST",
             success: function () {
