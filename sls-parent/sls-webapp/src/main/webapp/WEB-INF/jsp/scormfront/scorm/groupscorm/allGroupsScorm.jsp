@@ -117,7 +117,7 @@
             },
             success: function (result) {
                 for (var i in result) {
-                    $("#groupScormsPage").append("<div class='col-md-4'>" +
+                    $("#groupScormsPage").append("<div class='col-md-4' style='margin-bottom: 20px'>" +
                             "<img src='" + result[i].imgPath + "' class='img-responsive' style='height:150px'/>" +
                             "<a onclick='scormInfo(" + result[i].scormId + ")'>" + result[i].scormName + "</a>" +
                             "</div>");
