@@ -108,6 +108,7 @@
     });
 
     function lookGroups(groupId) {
+        $("#groupScormsPage").children().remove();
         $.ajax({
             url: basePath + "tourist/getGroupScorms",
             dataType: "json",

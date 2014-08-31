@@ -38,4 +38,6 @@ public interface UserCenterService {
     void cancelNewAskByQuestionId(int questionId);
 
     List<UserAttention> getAttentionUsers();
+
+    void getRecordInfo(HttpServletRequest request, int scormId);
 }

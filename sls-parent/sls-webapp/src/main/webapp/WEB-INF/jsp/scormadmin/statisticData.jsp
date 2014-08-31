@@ -21,7 +21,7 @@
 <div class="page-container">
     <div class="page-content">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="portlet blue box">
                     <div class="portlet-title">
                         <div class="caption">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="portlet box purple">
                     <div class="portlet-title">
                         <div class="caption">
@@ -64,7 +64,7 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                <h3>课件注册数目排行</h3>
+                <h3>注册人数排行</h3>
                 <hr/>
                 <c:forEach var="scorm" items="${scormSum}">
                     <div class="alert alert-block alert-info fade in">
@@ -72,7 +72,7 @@
                         <h4 class="alert-heading">${scorm.scormName}</h4>
 
                         <p>
-                            注册数目:${scorm.registerSum}<br/>
+                            注册数目:${scorm.registerSum}<br/><br/>
                             课件描述: ${scorm.description}
                         </p>
 
@@ -84,7 +84,7 @@
                 </c:forEach>
             </div>
             <div class="col-md-3">
-                <h3>课件学习时间排行</h3>
+                <h3>学习时间排行</h3>
                 <hr/>
                 <c:forEach var="scorm" items="${scormTime}">
                     <div class="alert alert-block alert-info fade in">
@@ -92,7 +92,7 @@
                         <h4 class="alert-heading">${scorm.scormName}</h4>
 
                         <p>
-                            学习时间:${scorm.totalTime}<br/>
+                            学习时间:${scorm.totalTime}<br/><br/>
                             课件描述: ${scorm.description}
                         </p>
 
@@ -104,7 +104,7 @@
                 </c:forEach>
             </div>
             <div class="col-md-3">
-                <h3>课件评分排行</h3>
+                <h3>评分排行</h3>
                 <hr/>
                 <c:forEach var="scorm" items="${scormScore}">
                     <div class="alert alert-block alert-info fade in">
@@ -112,7 +112,7 @@
                         <h4 class="alert-heading">${scorm.scormName}</h4>
 
                         <p>
-                            评分:${scorm.score}<br/>
+                            评分:${scorm.score}<br/><br/>
                             课件描述: ${scorm.description}
                         </p>
 
@@ -124,7 +124,7 @@
                 </c:forEach>
             </div>
             <div class="col-md-3">
-                <h3>课件推荐等级排行</h3>
+                <h3>推荐等级排行</h3>
                 <hr/>
                 <c:forEach var="scorm" items="${scormLevel}">
                     <div class="alert alert-block alert-info fade in">
@@ -132,7 +132,7 @@
                         <h4 class="alert-heading">${scorm.scormName}</h4>
 
                         <p>
-                            推荐等级:${scorm.recommendLevel}级<br/>
+                            推荐等级:${scorm.recommendLevel}级<br/><br/>
                             课件描述: ${scorm.description}
                         </p>
 

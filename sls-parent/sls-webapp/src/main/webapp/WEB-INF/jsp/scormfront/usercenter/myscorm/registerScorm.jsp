@@ -75,7 +75,9 @@
                                                         状态:进行中</h4>
                                                     <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                         <a class="btn btn-sm blue"
-                                                           onclick="study('${scormInfo.scormId}')">学习</a>
+                                                           onclick="study('${scormInfo.scormId}')">学习课件</a>&nbsp;
+                                                        <a class="btn btn-sm blue"
+                                                           onclick="studyRecord('${scormInfo.scormId}')">学习记录</a>
                                                     </h4>
                                                     <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                         <a class="btn btn-sm blue"
@@ -104,7 +106,9 @@
                                                         完成日期:&nbsp;${scormInfo.completeDate}</h4>
                                                     <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                         <a class="btn btn-sm blue"
-                                                           onclick="study('${scormInfo.scormId}')">学习</a>
+                                                           onclick="study('${scormInfo.scormId}')">学习课件</a>
+                                                        <a class="btn btn-sm blue"
+                                                           onclick="studyRecord('${scormInfo.scormId}')">学习记录</a>
                                                     </h4>
                                                     <h4 style="margin-top:0px;padding-top:10px;margin-bottom: 0px;padding-bottom: 0px">
                                                         <a class="btn btn-sm blue"
@@ -138,6 +142,11 @@
         parent.$("#iframeInfo").attr("src", basePath + "user/dealScorm/review?scormId=" + scormId);
     }
 
+    function studyRecord(scormId) {
+        parent.$(".modal-title").html("学习记录");
+        parent.$('#alertIframe').modal('show');
+        parent.$("#iframeInfo").attr("src", basePath + "user/center/studyRecord?scormId=" + scormId);
+    }
 
     function study(scormId) {
         parent.window.open(basePath + "user/scorm/studyScorm?scormId=" + scormId);

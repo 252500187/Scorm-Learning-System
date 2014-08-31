@@ -66,6 +66,9 @@ public class ScormServiceImpl implements ScormService {
     @Autowired
     private PublicDiscussesDao publicDiscussesDao;
 
+    @Autowired
+    private ScormRecordDao scormRecordDao;
+
     @Override
     public void getUpScormGroupsByUserId(HttpServletRequest request) {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
@@ -258,6 +261,8 @@ public class ScormServiceImpl implements ScormService {
                 break;
             }
         }
+        ScormRecord scormRecord = new ScormRecord(userId, scormId, scoId, DateUtil.getCurrentTimestamp().toString().substring(0, 19));
+        scormRecordDao.addStudyRecord(scormRecord);
     }
 
     public void changeState(Sco sco, List<Sco> scoList) {
@@ -579,6 +584,7 @@ public class ScormServiceImpl implements ScormService {
             }
             request.setAttribute("summarize", scormSummarizes.get(0));
         }
+        request.setAttribute("records", scormRecordDao.getRecordListByUserIdAndScormId(userId, scormId));
     }
 
     @Override

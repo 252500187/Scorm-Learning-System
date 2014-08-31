@@ -262,6 +262,33 @@
     </c:if>
 </div>
 <div class="col-md-4">
+    <%--章节列表--%>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet">
+                <div class="portlet-title sidebar-title">
+                    <div class="caption-sidebar">章节列表</div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse">
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <ul class="feeds">
+                        <li style="background-color: #fff;">
+                            <div class="col1">
+                                <div class="cont">
+                                    <div class="ztree" id="chapterList"></div>
+                                </div>
+                            </div>
+                            <div class="col2">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     <%--学习情况--%>
     <c:if test="${study}">
         <div class="row">
@@ -351,33 +378,29 @@
             </div>
         </div>
     </c:if>
-    <%--章节列表--%>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="portlet">
-                <div class="portlet-title sidebar-title">
-                    <div class="caption-sidebar">章节列表</div>
-                    <div class="tools">
-                        <a href="javascript:;" class="collapse">
-                        </a>
+    <%--学习记录--%>
+    <c:if test="${fn:length(records)>0}">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet">
+                    <div class="portlet-title sidebar-title">
+                        <div class="caption-sidebar">学习记录</div>
+                        <div class="tools">
+                            <a href="javascript:;" class="collapse">
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="portlet-body">
-                    <ul class="feeds">
-                        <li style="background-color: #fff;">
-                            <div class="col1">
-                                <div class="cont">
-                                    <div class="ztree" id="chapterList"></div>
-                                </div>
+                    <div class="portlet-body">
+                        <c:forEach var="record" items="${records}" varStatus="status">
+                            <div class="note note-info">
+                                <h4 class="block">${record.studyTime}&nbsp;&nbsp;学习章节${record.title}</h4>
                             </div>
-                            <div class="col2">
-                            </div>
-                        </li>
-                    </ul>
+                        </c:forEach>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </c:if>
     <%--作者更多课件--%>
     <c:if test="${fn:length(otherScorms)>0}">
         <div class="row">

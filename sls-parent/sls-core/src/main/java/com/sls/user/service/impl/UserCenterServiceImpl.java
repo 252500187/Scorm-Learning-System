@@ -1,6 +1,7 @@
 package com.sls.user.service.impl;
 
 import com.sls.scorm.dao.ScormDao;
+import com.sls.scorm.dao.ScormRecordDao;
 import com.sls.scorm.entity.Scorm;
 import com.sls.system.service.DictService;
 import com.sls.user.dao.UserAttentionDao;
@@ -37,6 +38,9 @@ public class UserCenterServiceImpl implements UserCenterService {
 
     @Autowired
     private UserAttentionDao userAttentionDao;
+
+    @Autowired
+    private ScormRecordDao scormRecordDao;
 
     @Override
     public void toUserCenter(HttpServletRequest request) {
@@ -100,7 +104,7 @@ public class UserCenterServiceImpl implements UserCenterService {
             //提交问题
             case 13:
                 centerUrl = "user/center/addQuestionDo";
-            //日程
+                //日程
             case 14:
                 centerUrl = "user/center/calendarDo";
         }
@@ -207,5 +211,11 @@ public class UserCenterServiceImpl implements UserCenterService {
     public List<UserAttention> getAttentionUsers() {
         int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
         return userAttentionDao.getAttentionUsersByUserId(userId);
+    }
+
+    @Override
+    public void getRecordInfo(HttpServletRequest request, int scormId) {
+        int userId = userDao.findInUseUserByLoginName(LoginUserUtil.getLoginName()).get(0).getUserId();
+        request.setAttribute("records", scormRecordDao.getRecordListByUserIdAndScormId(userId, scormId));
     }
 }

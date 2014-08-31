@@ -88,7 +88,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-2">选择SCORM课件<br/>（仅支持1.2版本）</label>
+                            <label class="control-label col-md-2">选择SCORM课件</label>
 
                             <div class="col-md-10">
                                 <div class="fileinput fileinput-new" data-provides="fileinput">

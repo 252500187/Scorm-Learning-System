@@ -255,4 +255,10 @@ public class UserCenterController {
     public void delCalendarEvent(@RequestParam("calendarId") int calendarId) {
         userService.delCalendarEventByCalendarId(calendarId);
     }
+
+    @RequestMapping(value = "studyRecord", method = {RequestMethod.GET})
+    public String studyRecord(HttpServletRequest request, @RequestParam("scormId") int scormId) {
+        userCenterService.getRecordInfo(request, scormId);
+        return "scormfront/usercenter/myscorm/scormRecord";
+    }
 }

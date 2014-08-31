@@ -534,7 +534,9 @@
     </div>
 </div>
 <br/>
-<div id="groupScormModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+
+<div id="groupScormModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="row" id="groupScormsPage" style="padding: 20px">
@@ -553,6 +555,7 @@
     });
 
     function lookGroups(groupId) {
+        $("#groupScormsPage").children().remove();
         $.ajax({
             url: basePath + "tourist/getGroupScorms",
             dataType: "json",

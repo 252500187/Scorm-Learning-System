@@ -66,7 +66,7 @@
             </table>
         </div>
         <div class="span8">
-            <iframe id="scormIframe" style="width:98%; height:800px;border:0px;overflow-x:auto; overflow-y:auto"
+            <iframe id="scormIframe" style="width:95%;border:0px;"
                     allowfullscreen>
             </iframe>
         </div>
@@ -75,7 +75,9 @@
                 <img id="scormImg" src="${scorm.imgPath}" class="img-polaroid">
                 <table class="table table-hover">
                     <tr>
-                        <td><nobr>课件名称</nobr></td>
+                        <td>
+                            <nobr>课件名称</nobr>
+                        </td>
                         <td>${scorm.scormName}</td>
                     </tr>
 
@@ -193,7 +195,8 @@
         </c:if>
         $.fn.zTree.init($("#menuTree"), settingMenu, zNodes);
         $.fn.zTree.getZTreeObj("menuTree").expandAll(true);
-        $("#scormIframe").attr("src", basePath + "img/studyscormdefaultimg/" + Math.floor(Math.random() * 10) + ".jpg");
+        $("#scormIframe").attr("src", basePath + "img/studyscormdefaultimg/5.jpg");
+        $("#scormIframe").css("height", document.documentElement.clientHeight-20);
     });
 
     function approveScorm() {
